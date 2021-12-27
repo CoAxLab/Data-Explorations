@@ -16,7 +16,7 @@ execute:
 
 # Information about where the book exists on the web
 repository:
-  url                       : https://github.com/parenthetical-e/explorations-book
+  url                       : https://github.com/CoAxLab/Data-Explorations
   path_to_book              : book/
   branch                    : main
 
