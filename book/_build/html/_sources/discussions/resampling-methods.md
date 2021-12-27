@@ -1,0 +1,5 @@
+# Discussion questions: 
+
+1. A selling point for adopting a permutation test to evaluate the empirical probability of your null hypothesis is that it does not assume a shape (or, more accurately, a particular distribution) of your test statistic under the null hypothesis. But there is an assumption built into the permutation test that may not be valid in some cases. What is this assumption and how might it not be valid in specific contexts?
+
+Permutation tests rely on resampling *without replacement* while bootstrapping relies on resampling *with replacement*. This simple difference in how resampling is done determines whether you are testing against a null distribution or the confidence of a set of estimated effects. Explain why sampling with or without replacement leads to these two different outcomes.

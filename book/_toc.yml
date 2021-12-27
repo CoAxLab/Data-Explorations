@@ -1,0 +1,105 @@
+format: jb-book
+root: intro
+
+parts:
+  - caption: Phase 1 - Assessing the scene
+    chapters:
+    - file: lectures/the-value-of-openness
+      sections:
+      - file: notebooks/01-Introduction-to-data-investigations
+      - file: discussions/the-value-of-openness
+    - file: lectures/what-is-a-theory
+      sections: 
+      - file: discussions/what-is-a-theory
+    - file: lectures/constructing-a-testable-hypothesis
+      sections:
+      - file: notebooks/04 - VSNCONTROLINTRO - Constructing a testable hypothesis
+      - file: discussions/constructing-a-testable-hypothesis
+  - caption: Phase 2 - Evaluating the evidence
+    chapters:
+    - file: lectures/data-as-objects-and-architectures
+      sections:
+      - file: notebooks/05 - Data as objects and architectures
+      - file: discussions/data-as-objects-and-architectures
+    - file: lectures/techniques-for-data-cleansing
+      sections:
+      - file: notebooks/06 - Techniques for data cleansing
+      - file: discussions/techniques-for-data-cleansing
+    - file: lectures/visualization-as-analysis
+      sections:
+      - file: notebooks/07 - Visualization as analysis
+      - file: discussions/visualization-as-analysis
+    - file: lectures/a-visualization-vocabulary
+      sections:
+      - file: discussions/a-visualization-vocabulary
+    - file: lectures/what-is-learnable
+      sections:
+      - file: discussions/what-is-learnable
+    - file: lectures/the-bias-variance-tradeoff
+      sections:
+      - file: discussions/the-bias-variance-tradeoff
+    - file: lectures/linear-models
+      sections:
+      - file: notebooks/09 - Linear models
+      - file: discussions/linear-models
+    - file: lectures/the-ordinary-least-squares-solution
+      sections: 
+      - file: notebooks/10 - Least squares and model evaluation
+      - file: discussions/the-ordinary-least-squares-solution
+    - file: lectures/limits-of-linear-regression
+      sections: 
+      - file: notebooks/11 - Limits of linear models
+      - file: discussions/limits-of-linear-regression
+    - file: lectures/mixed-effects-models
+      sections: 
+      - file: notebooks/12 - Mixed effect models
+      - file: discussions/mixed-effects-models
+    - file: lectures/classifiers
+      sections:
+      - file: notebooks/13 - Classifiers
+      - file: discussions/classifiers
+    - file: lectures/the-beauty-of-knn
+      sections:
+      - file: notebooks/14 - The beauty of kNN
+      - file: disucssions/the-beauty-of-knn
+    - file: lectures/cross-validation
+      sections: 
+      - file: notebooks/15 - Cross validation
+      - file: discussions/cross-validation
+    - file: lectures/resampling-methods
+      sections:
+      - file: notebooks/16 - Resampling methods
+      - file: discussions/resampling-methods
+    - file: lectures/power-analysis-via-simulations
+      sections:
+      - file: notebooks/17 - Power analyses via simulations
+      - file: discussions/power-analysis-via-simulations
+    - file: lectures/mediation-and-moderation
+      sections:
+      - file: notebooks/18 - Mediation, moderation, & graphs
+      - file: discussions/mediation-and-moderation
+    - file: lectures/selecting-the-best-model
+      sections: 
+      - file: notebooks/20 - Selecting the best model
+      - file: discussions/selecting-the-best-model
+    - file: lectures/regularized-regression
+      sections: 
+      - file: notebooks/19 - Regularized regression
+      - file: discussions/regularized-regression
+    - file: lectures/principal-component-methods
+      sections:
+      - file: notebooks/21 - Principal component methods
+      - file: discussions/principal-component-methods
+  - caption: Phase 3 - Solving the mystery
+    chapters:
+    - file: lectures/reconsidering-the-p-value
+      sections:
+      - file: discussions/reconsidering-the-p-value
+    - file: lectures/bayes-factor-accepting-the-null
+      sections: 
+      - file: notebooks/25 - Bayes factor accepting the null
+      - file: discussions/bayes-factor-accepting-the-null
+    - file: lectures/telling-your-data-story
+      sections:
+      - file: discussions/telling-your-data-story
+

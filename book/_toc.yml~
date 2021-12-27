@@ -1,0 +1,7 @@
+format: jb-article
+root: intro
+
+sections: 
+- file: data-as-objects-and-architectures
+  sections:
+  - file: notebooks/05 - Data as objects and architectures
