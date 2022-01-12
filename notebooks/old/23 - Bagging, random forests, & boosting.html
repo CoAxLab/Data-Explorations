@@ -41,7 +41,7 @@
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -684,7 +684,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -724,7 +724,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+        <div class="d-none d-md-block col-md-2 bd-toc show">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -756,42 +756,7 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Bagging and random forests</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Bagging and random forests
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#goals-of-the-lab">
-     Goals of the lab:
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#boosting">
-   Boosting
-  </a>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="bagging-and-random-forests">
@@ -826,10 +791,10 @@
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed </span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
 <span class="n">idx</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">Carseats</span><span class="p">)</span>
 <span class="n">test</span><span class="o">=</span><span class="nf">sample</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="m">50</span><span class="p">)</span> <span class="c1">#sample 50 for the test set</span>
-<span class="n">tune</span> <span class="o">=</span> <span class="nf">sample</span><span class="p">(</span><span class="n">idx[</span><span class="o">-</span><span class="n">test]</span><span class="p">,</span> <span class="m">150</span><span class="p">)</span> <span class="c1">#150 for the tuning set</span>
-<span class="n">train</span> <span class="o">=</span> <span class="n">idx[</span><span class="o">-</span><span class="nf">c</span><span class="p">(</span><span class="n">test</span><span class="p">,</span><span class="n">tune</span><span class="p">)</span><span class="n">]</span> <span class="c1">##select indices that are not in tune or test</span>
+<span class="n">tune</span> <span class="o">=</span> <span class="nf">sample</span><span class="p">(</span><span class="n">idx</span><span class="p">[</span><span class="o">-</span><span class="n">test</span><span class="p">],</span> <span class="m">150</span><span class="p">)</span> <span class="c1">#150 for the tuning set</span>
+<span class="n">train</span> <span class="o">=</span> <span class="n">idx</span><span class="p">[</span><span class="o">-</span><span class="nf">c</span><span class="p">(</span><span class="n">test</span><span class="p">,</span><span class="n">tune</span><span class="p">)]</span> <span class="c1">##select indices that are not in tune or test</span>
 
-<span class="n">bag.sales</span><span class="o">=</span><span class="nf">randomForest</span><span class="p">(</span><span class="n">Sales</span><span class="o">~</span><span class="n">.,data</span><span class="o">=</span><span class="n">Carseats</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">mtry</span><span class="o">=</span><span class="m">10</span><span class="p">,</span>
+<span class="n">bag.sales</span><span class="o">=</span><span class="nf">randomForest</span><span class="p">(</span><span class="n">Sales</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">Carseats</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">mtry</span><span class="o">=</span><span class="m">10</span><span class="p">,</span>
                        <span class="n">importance</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span> <span class="c1"># runs the bagging.</span>
 <span class="c1">#the arg. mtry=11 indicates that all 11 predictors should be considered</span>
 <span class="c1">#for each split of the tree (i.e., bagging should be done, m=p)</span>
@@ -854,12 +819,12 @@ No. of variables tried at each split: 10
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#test set performance of this bagged regression</span>
-<span class="n">sales.test</span> <span class="o">=</span> <span class="n">Carseats</span><span class="o">$</span><span class="n">Sales[</span><span class="o">-</span><span class="n">train]</span>
-<span class="n">yhat.bag</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">bag.sales</span><span class="p">,</span> <span class="n">newdata</span><span class="o">=</span><span class="n">Carseats[</span><span class="o">-</span><span class="n">train</span> <span class="p">,</span><span class="n">]</span><span class="p">)</span>
+<span class="n">sales.test</span> <span class="o">=</span> <span class="n">Carseats</span><span class="o">$</span><span class="n">Sales</span><span class="p">[</span><span class="o">-</span><span class="n">train</span><span class="p">]</span>
+<span class="n">yhat.bag</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">bag.sales</span><span class="p">,</span> <span class="n">newdata</span><span class="o">=</span><span class="n">Carseats</span><span class="p">[</span><span class="o">-</span><span class="n">train</span> <span class="p">,])</span>
 <span class="nf">require</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
 <span class="nf">ggplot</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">yhat</span><span class="o">=</span><span class="n">yhat.bag</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">sales.test</span><span class="p">),</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">y</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">yhat</span><span class="p">))</span> <span class="o">+</span> 
     <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span> <span class="nf">geom_abline</span><span class="p">(</span><span class="n">slope</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="n">intercept</span><span class="o">=</span><span class="m">0</span><span class="p">)</span>
-<span class="nf">mean</span><span class="p">((</span><span class="n">yhat.bag</span> <span class="o">-</span> <span class="n">sales.test</span><span class="p">)</span><span class="n">^2</span><span class="p">)</span>
+<span class="nf">mean</span><span class="p">((</span><span class="n">yhat.bag</span> <span class="o">-</span> <span class="n">sales.test</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -873,10 +838,10 @@ the number of trees grown by <code class="docutils literal notranslate"><span cl
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">4</span><span class="p">)</span>
-<span class="n">bag.sales</span><span class="o">=</span><span class="nf">randomForest</span><span class="p">(</span><span class="n">Sales</span><span class="o">~</span><span class="n">.,data</span><span class="o">=</span><span class="n">Carseats</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">mtry</span><span class="o">=</span><span class="m">10</span><span class="p">,</span>
+<span class="n">bag.sales</span><span class="o">=</span><span class="nf">randomForest</span><span class="p">(</span><span class="n">Sales</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">Carseats</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">mtry</span><span class="o">=</span><span class="m">10</span><span class="p">,</span>
                        <span class="n">importance</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">ntree</span><span class="o">=</span><span class="m">25</span><span class="p">)</span> <span class="c1">#grow 25 trees</span>
-<span class="n">yhat.bag</span> <span class="o">=</span> <span class="nf">predict </span><span class="p">(</span><span class="n">bag.sales</span><span class="p">,</span><span class="n">newdata</span><span class="o">=</span><span class="n">Carseats[</span><span class="o">-</span><span class="n">train</span> <span class="p">,</span><span class="n">]</span><span class="p">)</span>
-<span class="nf">mean</span><span class="p">((</span><span class="n">yhat.bag</span><span class="o">-</span><span class="n">sales.test</span><span class="p">)</span><span class="n">^2</span><span class="p">)</span>
+<span class="n">yhat.bag</span> <span class="o">=</span> <span class="nf">predict </span><span class="p">(</span><span class="n">bag.sales</span><span class="p">,</span><span class="n">newdata</span><span class="o">=</span><span class="n">Carseats</span><span class="p">[</span><span class="o">-</span><span class="n">train</span> <span class="p">,])</span>
+<span class="nf">mean</span><span class="p">((</span><span class="n">yhat.bag</span><span class="o">-</span><span class="n">sales.test</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -887,10 +852,10 @@ the number of trees grown by <code class="docutils literal notranslate"><span cl
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
-<span class="n">rf.sales</span><span class="o">=</span><span class="nf">randomForest</span><span class="p">(</span><span class="n">Sales</span><span class="o">~</span><span class="n">.,data</span><span class="o">=</span><span class="n">Carseats</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">train</span> <span class="p">,</span>
+<span class="n">rf.sales</span><span class="o">=</span><span class="nf">randomForest</span><span class="p">(</span><span class="n">Sales</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">Carseats</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">train</span> <span class="p">,</span>
 <span class="n">mtry</span><span class="o">=</span><span class="m">6</span><span class="p">,</span> <span class="n">importance</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
-<span class="n">yhat.rf</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">rf.sales</span><span class="p">,</span> <span class="n">newdata</span><span class="o">=</span><span class="n">Carseats[</span><span class="o">-</span><span class="n">train</span> <span class="p">,</span><span class="n">]</span><span class="p">)</span>
-<span class="nf">mean</span><span class="p">((</span><span class="n">yhat.rf</span><span class="o">-</span><span class="n">sales.test</span><span class="p">)</span><span class="n">^2</span><span class="p">)</span>
+<span class="n">yhat.rf</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">rf.sales</span><span class="p">,</span> <span class="n">newdata</span><span class="o">=</span><span class="n">Carseats</span><span class="p">[</span><span class="o">-</span><span class="n">train</span> <span class="p">,])</span>
+<span class="nf">mean</span><span class="p">((</span><span class="n">yhat.rf</span><span class="o">-</span><span class="n">sales.test</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -955,7 +920,7 @@ improvement over bagging in this case.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed </span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
-<span class="n">boost.sales</span> <span class="o">=</span><span class="nf">gbm</span><span class="p">(</span><span class="n">Sales</span><span class="o">~</span><span class="n">.,data</span><span class="o">=</span><span class="n">Carseats[train</span> <span class="p">,</span><span class="n">]</span><span class="p">,</span> <span class="n">distribution</span><span class="o">=</span>
+<span class="n">boost.sales</span> <span class="o">=</span><span class="nf">gbm</span><span class="p">(</span><span class="n">Sales</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">Carseats</span><span class="p">[</span><span class="n">train</span> <span class="p">,],</span> <span class="n">distribution</span><span class="o">=</span>
                   <span class="s">&quot;gaussian&quot;</span><span class="p">,</span> <span class="n">n.trees</span><span class="o">=</span><span class="m">5000</span><span class="p">,</span> <span class="n">interaction.depth</span><span class="o">=</span><span class="m">4</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -997,9 +962,9 @@ improvement over bagging in this case.</p>
 <p>Now we’ll use the boosted model to predict <code class="docutils literal notranslate"><span class="pre">Sales</span></code> in the test set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">yhat.boost</span><span class="o">=</span><span class="nf">predict</span><span class="p">(</span><span class="n">boost.sales</span><span class="p">,</span><span class="n">newdata</span><span class="o">=</span><span class="n">Carseats[</span><span class="o">-</span><span class="n">train</span> <span class="p">,</span><span class="n">]</span><span class="p">,</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">yhat.boost</span><span class="o">=</span><span class="nf">predict</span><span class="p">(</span><span class="n">boost.sales</span><span class="p">,</span><span class="n">newdata</span><span class="o">=</span><span class="n">Carseats</span><span class="p">[</span><span class="o">-</span><span class="n">train</span> <span class="p">,],</span>
 <span class="n">n.trees</span><span class="o">=</span><span class="m">5000</span><span class="p">)</span>
-<span class="nf">mean</span><span class="p">((</span><span class="n">yhat.boost</span> <span class="o">-</span> <span class="n">sales.test</span><span class="p">)</span><span class="n">^2</span><span class="p">)</span>
+<span class="nf">mean</span><span class="p">((</span><span class="n">yhat.boost</span> <span class="o">-</span> <span class="n">sales.test</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1034,21 +999,23 @@ improvement over bagging in this case.</p>
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
+        
+            <!-- Previous / next buttons -->
 <div class='prev-next-area'>
 </div>
-            
+        
         </div>
     </div>
     <footer class="footer">
-  <p>
-    
-      By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
+    <div class="container">
+      <p>
+        
+          By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
+        
+            &copy; Copyright 2022.<br/>
+      </p>
+    </div>
+  </footer>
 </main>
 
 

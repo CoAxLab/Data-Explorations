@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -686,7 +686,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -726,7 +726,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+        <div class="d-none d-md-block col-md-2 bd-toc show">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -768,52 +768,7 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Mediation and moderation</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Mediation and moderation
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#goals">
-     Goals:
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-difference-between-mediation-and-moderation">
-   The difference between mediation and moderation
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mediation-in-r">
-   Mediation in R
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#moderation-in-r">
-   Moderation in R
-  </a>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="mediation-and-moderation">
@@ -1030,9 +985,9 @@ F-statistic: 68.21 on 3 and 89 DF,  p-value: &lt; 2.2e-16
 <span class="n">Cars93</span> <span class="o">%&gt;%</span>
   <span class="c1"># make a new variable for split half vis: is horsepower above or below median?</span>
   <span class="nf">mutate</span><span class="p">(</span><span class="n">highHorsepower</span> <span class="o">=</span> <span class="nf">factor</span><span class="p">(</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">Horsepower</span> <span class="o">&lt;</span> <span class="n">medH</span><span class="p">,</span><span class="s">&quot;Low&quot;</span><span class="p">,</span><span class="s">&quot;High&quot;</span><span class="p">),</span><span class="n">levels</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Low&quot;</span><span class="p">,</span><span class="s">&quot;High&quot;</span><span class="p">)))</span> <span class="o">%&gt;%</span> <span class="c1"># &quot;levels&quot; just makes &quot;low&quot; appear on left</span>
-  <span class="nf">ggplot</span><span class="p">(</span><span class="nf">.,aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">Weight</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">MPG.highway</span><span class="p">))</span> <span class="o">+</span> 
+  <span class="nf">ggplot</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">Weight</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">MPG.highway</span><span class="p">))</span> <span class="o">+</span> 
   <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span> <span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;lm&quot;</span><span class="p">,</span><span class="n">se</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span> <span class="o">+</span> <span class="c1"># add points and a fit line</span>
-  <span class="nf">facet_grid</span><span class="p">(</span><span class="n">.~highHorsepower</span><span class="p">)</span>
+  <span class="nf">facet_grid</span><span class="p">(</span><span class="n">.</span><span class="o">~</span><span class="n">highHorsepower</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1069,8 +1024,8 @@ F-statistic: 68.21 on 3 and 89 DF,  p-value: &lt; 2.2e-16
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
+        
+            <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="../lectures/mediation-and-moderation.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1087,17 +1042,19 @@ F-statistic: 68.21 on 3 and 89 DF,  p-value: &lt; 2.2e-16
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+        
         </div>
     </div>
     <footer class="footer">
-  <p>
-    
-      By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
+    <div class="container">
+      <p>
+        
+          By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
+        
+            &copy; Copyright 2022.<br/>
+      </p>
+    </div>
+  </footer>
 </main>
 
 

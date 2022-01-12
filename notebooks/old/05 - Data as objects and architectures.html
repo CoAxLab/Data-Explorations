@@ -41,7 +41,7 @@
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -682,7 +682,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -722,7 +722,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+        <div class="d-none d-md-block col-md-2 bd-toc show">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -819,107 +819,7 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Tutorial: Data processing in R</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-basics">
-   1. The basics
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#getting-started">
-     1.1 Getting started
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#basic-r-commands">
-     1.2 Basic R Commands
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tidy-data">
-   2. Tidy data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pipes-the-operator">
-   3. Pipes - the %&gt;% operator
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#transforming-data">
-   4. Transforming data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#transforming-existing-variables-and-creating-new-variables-mutate">
-     4.1 Transforming existing variables and creating new variables -
-     <strong>
-      mutate()
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#summarizing-variables-summarise">
-     4.2 Summarizing variables - summarise()
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#filtering-a-data-frame-by-removing-rows-based-on-a-condition-filter">
-     4.3 Filtering a data.frame by removing rows based on a condition - filter()
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#removing-selecting-columns-to-keep-select">
-     4.4 Removing/selecting columns to keep - select()
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sorting-the-data-frame-by-columns-arrange">
-     4.5 Sorting the data.frame by columns - arrange()
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#combine-concatenate-values-from-two-columns-into-one-unite">
-     4.6 combine/concatenate values from two columns into one - unite()
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#split-variable-into-multiple-variables-separate">
-     4.7 split variable into multiple variables - separate()
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#performing-the-same-operation-for-multiple-groups-and-combining-the-results">
-   5. Performing the same operation for multiple groups and combining the results
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#restructuring-data-frames-long-to-wide-wide-to-long-and-merging-data-frames">
-   6. Restructuring data.frames - long to wide, wide to long, and merging data.frames.
-  </a>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-data-processing-in-r">
@@ -991,7 +891,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">6+2</span>
 <span class="m">10-3</span><span class="o">*</span><span class="m">4</span>
-<span class="m">5</span><span class="n">^3</span>
+<span class="m">5</span><span class="o">^</span><span class="m">3</span>
 </pre></div>
 </div>
 </div>
@@ -1065,7 +965,7 @@
 <p>In a vector, you can index data by its position:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a[2]</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="m">2</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1075,7 +975,7 @@
 <p>You can index data by its column and row number in a data frame:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data[2</span><span class="p">,</span><span class="m">1</span><span class="n">]</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1102,7 +1002,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;Column 3&quot;</span><span class="p">)</span>
-<span class="n">data[</span><span class="p">,</span><span class="m">3</span><span class="n">]</span>
+<span class="n">data</span><span class="p">[,</span><span class="m">3</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1121,7 +1021,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;Row 1&quot;</span><span class="p">)</span>
-<span class="n">data[1</span><span class="p">,</span><span class="n">]</span>
+<span class="n">data</span><span class="p">[</span><span class="m">1</span><span class="p">,]</span>
 </pre></div>
 </div>
 </div>
@@ -2101,21 +2001,23 @@
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
+        
+            <!-- Previous / next buttons -->
 <div class='prev-next-area'>
 </div>
-            
+        
         </div>
     </div>
     <footer class="footer">
-  <p>
-    
-      By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
+    <div class="container">
+      <p>
+        
+          By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
+        
+            &copy; Copyright 2022.<br/>
+      </p>
+    </div>
+  </footer>
 </main>
 
 

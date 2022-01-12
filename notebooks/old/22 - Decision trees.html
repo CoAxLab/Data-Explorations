@@ -41,7 +41,7 @@
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -684,7 +684,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -724,7 +724,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+        <div class="d-none d-md-block col-md-2 bd-toc show">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -769,55 +769,7 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Tree-based methods</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Tree-based methods
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#goals-of-the-lab">
-   Goals of the lab:
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pros-and-cons-of-trees-the-statistical-ones">
-   Pros and cons of trees (the statistical ones)
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#some-solutions">
-   Some solutions
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fitting-classification-trees">
-   Fitting classification trees
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fitting-trees-to-predict-continuous-variables-aka-regression-trees">
-   Fitting trees to predict continuous variables (AKA, “regression trees”)
-  </a>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
   <div class="section" id="tree-based-methods">
@@ -909,7 +861,7 @@ Installing package into ‘/usr/local/lib/R/site-library’
 <p>Now we’ll use the <code class="docutils literal notranslate"><span class="pre">tree</span></code> function to fit a classification tree. This will predict <code class="docutils literal notranslate"><span class="pre">High</span></code> using all variables except <code class="docutils literal notranslate"><span class="pre">Sales</span></code> (which we transformed above into <code class="docutils literal notranslate"><span class="pre">High</span></code>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">tree.carseats</span> <span class="o">&lt;-</span> <span class="nf">tree</span><span class="p">(</span><span class="n">High</span><span class="o">~</span><span class="n">.-Sales</span><span class="p">,</span> <span class="n">Carseats</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">tree.carseats</span> <span class="o">&lt;-</span> <span class="nf">tree</span><span class="p">(</span><span class="n">High</span><span class="o">~</span><span class="n">.</span><span class="o">-</span><span class="n">Sales</span><span class="p">,</span> <span class="n">Carseats</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1025,16 +977,16 @@ Misclassification error rate: 0.09 = 36 / 400
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed </span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
 <span class="n">idx</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">Carseats</span><span class="p">)</span>
 <span class="n">test</span><span class="o">=</span><span class="nf">sample</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="m">100</span><span class="p">)</span> <span class="c1">#sample 50 for the test set</span>
-<span class="n">tune</span> <span class="o">=</span> <span class="nf">sample</span><span class="p">(</span><span class="n">idx[</span><span class="o">-</span><span class="n">test]</span><span class="p">,</span> <span class="m">150</span><span class="p">)</span> <span class="c1">#150 for the tuning set</span>
-<span class="n">train</span> <span class="o">=</span> <span class="n">idx[</span><span class="o">!</span><span class="p">(</span><span class="n">idx</span> <span class="o">%in%</span> <span class="nf">c</span><span class="p">(</span><span class="n">tune</span><span class="p">,</span> <span class="n">test</span><span class="p">))</span><span class="n">]</span> <span class="c1">##select indices that are not in tune or test</span>
-<span class="n">Carseats.tune</span><span class="o">=</span><span class="n">Carseats[tune</span><span class="p">,</span><span class="n">]</span> <span class="c1">#indices for test set</span>
-<span class="n">Carseats.test</span><span class="o">=</span><span class="n">Carseats[test</span><span class="p">,</span><span class="n">]</span>
-<span class="n">Carseats.train</span><span class="o">=</span><span class="n">Carseats[train</span><span class="p">,</span><span class="n">]</span> 
+<span class="n">tune</span> <span class="o">=</span> <span class="nf">sample</span><span class="p">(</span><span class="n">idx</span><span class="p">[</span><span class="o">-</span><span class="n">test</span><span class="p">],</span> <span class="m">150</span><span class="p">)</span> <span class="c1">#150 for the tuning set</span>
+<span class="n">train</span> <span class="o">=</span> <span class="n">idx</span><span class="p">[</span><span class="o">!</span><span class="p">(</span><span class="n">idx</span> <span class="o">%in%</span> <span class="nf">c</span><span class="p">(</span><span class="n">tune</span><span class="p">,</span> <span class="n">test</span><span class="p">))]</span> <span class="c1">##select indices that are not in tune or test</span>
+<span class="n">Carseats.tune</span><span class="o">=</span><span class="n">Carseats</span><span class="p">[</span><span class="n">tune</span><span class="p">,]</span> <span class="c1">#indices for test set</span>
+<span class="n">Carseats.test</span><span class="o">=</span><span class="n">Carseats</span><span class="p">[</span><span class="n">test</span><span class="p">,]</span>
+<span class="n">Carseats.train</span><span class="o">=</span><span class="n">Carseats</span><span class="p">[</span><span class="n">train</span><span class="p">,]</span> 
 
-<span class="n">High.test</span><span class="o">=</span><span class="n">Carseats</span><span class="o">$</span><span class="n">High[test]</span> <span class="c1">#get test data</span>
+<span class="n">High.test</span><span class="o">=</span><span class="n">Carseats</span><span class="o">$</span><span class="n">High</span><span class="p">[</span><span class="n">test</span><span class="p">]</span> <span class="c1">#get test data</span>
 <span class="c1">#tree.carseats=tree(High~.-Sales, Carseats, subset=c(tune,train)) #hacked model</span>
 <span class="nf">print</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">tune</span><span class="p">,</span><span class="n">train</span><span class="p">)))</span>
-<span class="n">tree.carseats</span><span class="o">=</span><span class="nf">tree</span><span class="p">(</span><span class="n">High</span><span class="o">~</span><span class="n">.-Sales</span><span class="p">,</span> <span class="n">Carseats</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">tune</span><span class="p">)</span> <span class="c1">#tuned model</span>
+<span class="n">tree.carseats</span><span class="o">=</span><span class="nf">tree</span><span class="p">(</span><span class="n">High</span><span class="o">~</span><span class="n">.</span><span class="o">-</span><span class="n">Sales</span><span class="p">,</span> <span class="n">Carseats</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">tune</span><span class="p">)</span> <span class="c1">#tuned model</span>
 <span class="n">tree.pred</span><span class="o">=</span><span class="nf">predict</span><span class="p">(</span><span class="n">tree.carseats</span><span class="p">,</span> <span class="n">Carseats.test</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;class&quot;</span><span class="p">)</span> <span class="c1">#make a prediction using the test set</span>
 <span class="c1">#class instructs R to return the class prediction</span>
 <span class="nf">table</span><span class="p">(</span><span class="n">tree.pred</span><span class="p">,</span> <span class="n">High.test</span><span class="p">)</span> <span class="c1">#compare predictions with test data</span>
@@ -1127,7 +1079,7 @@ attr(,&quot;class&quot;)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#prune.carseats=prune.misclass(tree.carseats,best=14) #hacked model</span>
-<span class="n">tree.carseats</span><span class="o">=</span><span class="nf">tree</span><span class="p">(</span><span class="n">High</span><span class="o">~</span><span class="n">.-Sales</span><span class="p">,</span> <span class="n">Carseats</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">train</span><span class="p">)</span> <span class="c1">#tuned model</span>
+<span class="n">tree.carseats</span><span class="o">=</span><span class="nf">tree</span><span class="p">(</span><span class="n">High</span><span class="o">~</span><span class="n">.</span><span class="o">-</span><span class="n">Sales</span><span class="p">,</span> <span class="n">Carseats</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">train</span><span class="p">)</span> <span class="c1">#tuned model</span>
 <span class="n">prune.carseats</span><span class="o">=</span><span class="nf">prune.misclass</span><span class="p">(</span><span class="n">tree.carseats</span><span class="p">,</span><span class="n">best</span><span class="o">=</span><span class="m">10</span><span class="p">)</span> <span class="c1">#tuned model</span>
 <span class="nf">plot</span><span class="p">(</span><span class="n">prune.carseats</span><span class="p">)</span> <span class="c1">#plotting the newly pruned tree</span>
 <span class="nf">text</span><span class="p">(</span><span class="n">prune.carseats</span><span class="p">,</span> <span class="n">pretty</span><span class="o">=</span><span class="m">0</span><span class="p">)</span>
@@ -1176,7 +1128,7 @@ tree.pred No Yes
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">Carseats</span><span class="o">$</span><span class="n">High</span> <span class="o">&lt;-</span> <span class="kc">NULL</span>
 <span class="nf">set.seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
-<span class="n">tree.sales</span><span class="o">=</span><span class="nf">tree</span><span class="p">(</span><span class="n">Sales</span><span class="o">~</span><span class="n">.,Carseats</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">train</span><span class="p">)</span> <span class="c1">#fit the regression tree, using same training set as in previous section. </span>
+<span class="n">tree.sales</span><span class="o">=</span><span class="nf">tree</span><span class="p">(</span><span class="n">Sales</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="n">Carseats</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">train</span><span class="p">)</span> <span class="c1">#fit the regression tree, using same training set as in previous section. </span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">tree.sales</span><span class="p">)</span> <span class="c1">#summarize</span>
 </pre></div>
 </div>
@@ -1239,13 +1191,13 @@ Distribution of residuals:
 <p>This is a very simple model, but let’s trust our cross-validation model that this is the best way to avoid overfitting.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">yhat</span><span class="o">=</span><span class="nf">predict</span><span class="p">(</span><span class="n">prune.sales</span><span class="p">,</span><span class="n">newdata</span><span class="o">=</span><span class="n">Carseats[</span><span class="o">-</span><span class="n">train</span> <span class="p">,</span><span class="n">]</span><span class="p">)</span> <span class="c1"># Use the tree sales</span>
-<span class="n">sales.test</span><span class="o">=</span><span class="n">Carseats[</span><span class="o">-</span><span class="n">train</span><span class="p">,</span> <span class="s">&quot;Sales&quot;</span><span class="n">]</span> <span class="c1"># extract the correct predictions for the test trials</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">yhat</span><span class="o">=</span><span class="nf">predict</span><span class="p">(</span><span class="n">prune.sales</span><span class="p">,</span><span class="n">newdata</span><span class="o">=</span><span class="n">Carseats</span><span class="p">[</span><span class="o">-</span><span class="n">train</span> <span class="p">,])</span> <span class="c1"># Use the tree sales</span>
+<span class="n">sales.test</span><span class="o">=</span><span class="n">Carseats</span><span class="p">[</span><span class="o">-</span><span class="n">train</span><span class="p">,</span> <span class="s">&quot;Sales&quot;</span><span class="p">]</span> <span class="c1"># extract the correct predictions for the test trials</span>
 <span class="nf">require</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
 <span class="nf">ggplot</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">yhat</span><span class="o">=</span><span class="n">yhat</span><span class="p">,</span><span class="n">sales.test</span><span class="o">=</span><span class="n">sales.test</span><span class="p">),</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">yhat</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">sales.test</span><span class="p">))</span> <span class="o">+</span> 
     <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span> 
     <span class="nf">geom_abline</span><span class="p">(</span><span class="n">slope</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="n">intercept</span><span class="o">=</span><span class="m">0</span><span class="p">)</span>
-<span class="nf">mean</span><span class="p">((</span><span class="n">yhat</span><span class="o">-</span><span class="n">sales.test</span><span class="p">)</span><span class="n">^2</span><span class="p">)</span>
+<span class="nf">mean</span><span class="p">((</span><span class="n">yhat</span><span class="o">-</span><span class="n">sales.test</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1284,21 +1236,23 @@ actual carseat sales.</p>
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
+        
+            <!-- Previous / next buttons -->
 <div class='prev-next-area'>
 </div>
-            
+        
         </div>
     </div>
     <footer class="footer">
-  <p>
-    
-      By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
+    <div class="container">
+      <p>
+        
+          By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
+        
+            &copy; Copyright 2022.<br/>
+      </p>
+    </div>
+  </footer>
 </main>
 
 
