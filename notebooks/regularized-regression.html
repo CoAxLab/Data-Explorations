@@ -1,0 +1,1108 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regularized regression &#8212; Data explorations</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Discussion questions:" href="../discussions/regularized-regression.html" />
+    <link rel="prev" title="Regularized regression" href="../lectures/regularized-regression.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/brain.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data explorations</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Data explorations
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Phase 1 - Assessing the scene
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="art-of-data-investigations.html">
+   Tutorial: Getting started
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-value-of-openness.html">
+   The value of openness
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-value-of-openness.html">
+     The value of openness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-value-of-openness.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/what-is-a-theory.html">
+   What is a theory?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/what-is-a-theory.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/constructing-a-testable-hypothesis.html">
+   Constructing a testable hypothesis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/constructing-a-testable-hypothesis.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Phase 2 - Evaluating the evidence
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/data-as-objects-and-architectures.html">
+   Data as objects and architectures
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data-as-objects-and-architectures.html">
+     Data as objects and architectures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/data-as-objects-and-architectures.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/techniques-for-data-cleansing.html">
+   Techniques for data cleansing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="techniques-for-data-cleansing.html">
+     Techniques for data cleansing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/techniques-for-data-cleansing.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/visualization-as-analysis.html">
+   Visualization as analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="visualization-as-analysis.html">
+     Visualization as analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/visualization-as-analysis.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/a-visualization-vocabulary.html">
+   A visualization vocabulary
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/a-visualization-vocabulary.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/what-is-learnable.html">
+   What is learnable?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-bias-variance-tradeoff.html">
+   The bias-variance tradeoff
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-bias-variance-tradeoff.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/linear-models.html">
+   Linear models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="linear-models.html">
+     Linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/linear-models.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-ordinary-least-squares-solution.html">
+   The ordinary least squares solution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-ordinary-least-squares-solution.html">
+     The ordinary least squares solution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-ordinary-least-squares-solution.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/limits-of-linear-regression.html">
+   Limits of linear regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="limits-of-linear-regression.html">
+     Limits of linear regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/limits-of-linear-regression.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/mixed-effects-models.html">
+   Mixed effects models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mixed-effects-models.html">
+     Mixed-effects models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/mixed-effects-models.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/classifiers.html">
+   Classifiers
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="classifiers.html">
+     Classifiers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/classifiers.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-beauty-of-knn.html">
+   The beauty of kNN
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-beauty-of-knn.html">
+     The beauty of kNN
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/cross-validation.html">
+   Cross validation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cross-validation.html">
+     Cross-validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/cross-validation.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/resampling-methods.html">
+   Resampling methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="resampling-methods.html">
+     Resampling methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/resampling-methods.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/power-analysis-via-simulations.html">
+   Power analysis via simulations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="power-analysis-via-simulations.html">
+     Power analysis via simulations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/power-analysis-via-simulations.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/mediation-and-moderation.html">
+   Mediation and moderation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mediation-and-moderation.html">
+     Mediation and moderation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/mediation-and-moderation.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/selecting-the-best-model.html">
+   Selecting the best model
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+  <label for="toctree-checkbox-20">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="selecting-the-best-model.html">
+     Selecting the best model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/selecting-the-best-model.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../lectures/regularized-regression.html">
+   Regularized regression
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+  <label for="toctree-checkbox-21">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Regularized regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/regularized-regression.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/principal-component-methods.html">
+   The value of openness
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="principal-component-methods.html">
+     Principal component methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/principal-component-methods.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Phase 3 - Solving the mystery
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/reconsidering-the-p-value.html">
+   Reconsidering the p-value
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/reconsidering-the-p-value.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/bayes-factor-accepting-the-null.html">
+   Bayes factor: accepting the null
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+  <label for="toctree-checkbox-24">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bayes-factor-accepting-the-null.html">
+     Bayes factor: accepting the null
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/bayes-factor-accepting-the-null.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/telling-your-data-story.html">
+   Telling your data story
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+  <label for="toctree-checkbox-25">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/telling-your-data-story.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/regularized-regression.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/notebooks/regularized-regression.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/notebooks/regularized-regression.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Regularized regression
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goals">
+     Goals:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ridge-regression">
+   Ridge Regression
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#an-important-note-about-validation-and-test-sets">
+   An important note about validation and test sets
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lasso">
+   LASSO
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="regularized-regression">
+<h1>Regularized regression<a class="headerlink" href="#regularized-regression" title="Permalink to this headline">¶</a></h1>
+<p>This lab dives deeper into ridge regression and LASSO and how to implement these tehcniques in R.</p>
+<div class="section" id="goals">
+<h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Learn to use the <code class="docutils literal notranslate"><span class="pre">glmnet</span></code> function.</p></li>
+<li><p>Understand that hyperparameter selection should also be validated.</p></li>
+</ul>
+<p>This lab draws from the practice sets at the end of Chapter 6 in James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2013). “An introduction to statistical learning: with applications in r.”</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="tex2jax_ignore mathjax_ignore section" id="ridge-regression">
+<h1>Ridge Regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">¶</a></h1>
+<p>For this tutorial we will load the <a class="reference external" href="https://vincentarelbundock.github.io/Rdatasets/doc/ISLR/Hitters.html">Hitters (baseball) dataset</a> included in ISLR.</p>
+<p>Ridge regression is made easy with the <a class="reference external" href="https://cran.r-project.org/web/packages/glmnet/glmnet.pdf"><code class="docutils literal notranslate"><span class="pre">glmnet</span></code> package</a>, so we’ll install that to start.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># install.packages(&quot;ISLR&quot;) # uncomment if you haven&#39;t installed this library</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ISLR</span><span class="p">)</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">Hitters</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+</pre></div>
+</div>
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'AtBat'</li><li>'Hits'</li><li>'HmRun'</li><li>'Runs'</li><li>'RBI'</li><li>'Walks'</li><li>'Years'</li><li>'CAtBat'</li><li>'CHits'</li><li>'CHmRun'</li><li>'CRuns'</li><li>'CRBI'</li><li>'CWalks'</li><li>'League'</li><li>'Division'</li><li>'PutOuts'</li><li>'Assists'</li><li>'Errors'</li><li>'Salary'</li><li>'NewLeague'</li></ol>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># install.packages(&quot;glmnet&quot;, dependencies = TRUE) # uncomment if you haven&#39;t installed this library</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">glmnet</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+
+also installing the dependencies ‘iterators’, ‘foreach’, ‘shape’, ‘lars’
+
+
+Loading required package: Matrix
+
+Loaded glmnet 4.1-1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Remember that, for ridge regression, you need to find the best tuning parameter (<span class="math notranslate nohighlight">\(\lambda\)</span>) to use. This tuning parameter determines the sparsity of the model, or the impact of each predictor, using the L2 norm. This contrasts with LASSO, which conducts <em>feature selection</em> using the L1 norm. In both cases, the larger the <span class="math notranslate nohighlight">\(\lambda\)</span> value, the more pressure there is on the <span class="math notranslate nohighlight">\(\beta\)</span> coefficients to become very small (ridge regression) or to become 0 (LASSO).</p>
+<p>Let’s start by establishing the range of <span class="math notranslate nohighlight">\(\lambda\)</span> values we’ll be considering.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use a non-linear search on lambda</span>
+<span class="n">lambda_search_space</span> <span class="o">=</span> <span class="m">10</span><span class="o">^</span><span class="nf">seq</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">-2</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="m">100</span><span class="p">)</span> <span class="c1">#create a search space from (10^10):(10^-2), 100 samples long</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">lambda_search_space</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;sample&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;lambda&quot;</span><span class="p">)</span>
+
+<span class="c1">#this will span a range of models, from the null model containing only the intercept (lambda = 10^10, extremely sparse)</span>
+<span class="c1">#to the least squares fit (lambda = 0, lenient)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/regularized-regression_5_0.png" src="../_images/regularized-regression_5_0.png" />
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">glmnet</span></code> package requires that you use matrices instead of dataframes, and that x and y are specified separately. So let’s select x and y.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define x without the first column</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nf">model.matrix</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.</span><span class="p">,</span> <span class="n">Hitters</span><span class="p">)[,</span><span class="m">-1</span><span class="p">]</span> <span class="c1">#without first intercept column</span>
+<span class="c1">#the model.matrix function also automatically transforms qualitative variables</span>
+<span class="c1">#into dummy variables and gets rid of NAs</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">Hitters</span><span class="o">$</span><span class="n">Salary</span><span class="p">[</span><span class="o">!</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">Hitters</span><span class="o">$</span><span class="n">Salary</span><span class="p">))]</span> <span class="c1">#selecting y from the dataframe - get rid of NAs so that rows are matched with those in x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, technically you are using an <em>elastic net</em> algorithm when using the <code class="docutils literal notranslate"><span class="pre">glmnet</span></code> function. So we have to set <span class="math notranslate nohighlight">\(\alpha\)</span> to zero in order to run pure ridge regression. If <span class="math notranslate nohighlight">\(\alpha\)</span> is 0, then a ridge regression model is fit, and if <span class="math notranslate nohighlight">\(\alpha\)</span> is 1, then a LASSO model is fit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ridge.mod</span> <span class="o">=</span> <span class="nf">glmnet</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="m">0</span><span class="p">,</span> <span class="n">lambda</span><span class="o">=</span><span class="n">lambda_search_space</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ridge regression returns all <em>p</em> variables for each value of <span class="math notranslate nohighlight">\(\lambda\)</span>. Thus we get a matrix of regression coefficients instead of a vector.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="nf">coef</span><span class="p">(</span><span class="n">ridge.mod</span><span class="p">))</span> <span class="c1">#this gives 20 rows (one for each predictor, plus a new intercept)</span>
+<span class="c1">#and 100 columns, one for each value of lambda in the search space</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>20</li><li>100</li></ol>
+</div></div>
+</div>
+<p>Let’s look at all 20 coefficients (including the intercept) when <span class="math notranslate nohighlight">\(\lambda = 11497.57\)</span> (i.e., the 50th entry in the <span class="math notranslate nohighlight">\(\lambda\)</span> vector)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">lambda_search_space</span><span class="p">[</span><span class="m">50</span><span class="p">]</span> <span class="c1">#getting particular value of lambda</span>
+<span class="nf">plot</span><span class="p">(</span><span class="nf">coef</span><span class="p">(</span><span class="n">ridge.mod</span><span class="p">)[,</span><span class="m">50</span><span class="p">])</span> <span class="c1">#getting coeff. for that value of lamba, all coeff.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">11497.5699539774</div><img alt="../_images/regularized-regression_13_1.png" src="../_images/regularized-regression_13_1.png" />
+</div>
+</div>
+<p>Here you can see that many of them are near zero in value while a few terms retain strong, non-zero values.</p>
+<p>Now what happens if we make <span class="math notranslate nohighlight">\(\lambda\)</span> really <em>really</em> large?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">lambda_search_space</span><span class="p">[</span><span class="m">3</span><span class="p">]</span>
+<span class="nf">plot</span><span class="p">(</span><span class="nf">coef</span><span class="p">(</span><span class="n">ridge.mod</span><span class="p">)[</span><span class="m">2</span><span class="o">:</span><span class="m">20</span><span class="p">,</span><span class="m">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">5722367659.35022</div><img alt="../_images/regularized-regression_15_1.png" src="../_images/regularized-regression_15_1.png" />
+</div>
+</div>
+<p>Notice a difference between when <span class="math notranslate nohighlight">\(\lambda = 11498\)</span> and when <span class="math notranslate nohighlight">\(\lambda = 5722367659\)</span>?</p>
+<p>The coefficients are much smaller. The larger the value of <span class="math notranslate nohighlight">\(\lambda\)</span>, the more sparse the model. In other words, as <span class="math notranslate nohighlight">\(\lambda\)</span> increases, the flexibility of the fit <em>decreases</em>. This decreases the variance of the model and increases bias.</p>
+<p>You can test any value of <span class="math notranslate nohighlight">\(\lambda\)</span> using the <code class="docutils literal notranslate"><span class="pre">predict()</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="nf">predict</span><span class="p">(</span><span class="n">ridge.mod</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="m">50</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;coefficients&quot;</span><span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">20</span><span class="p">,])</span> <span class="c1">#s=lambda=50</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/regularized-regression_18_0.png" src="../_images/regularized-regression_18_0.png" />
+</div>
+</div>
+<p>Let’s create a simple 50/50 split for the training and test set for the ridge regression.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span> <span class="c1"># Use the same seed so we get the same results</span>
+
+<span class="c1"># Create your validation sets</span>
+<span class="n">train</span><span class="o">=</span><span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="m">2</span><span class="p">)</span> <span class="c1">#50/50 split into training and test sets</span>
+<span class="n">test</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">train</span><span class="p">)</span> <span class="c1">#get test indices (not training indices)</span>
+<span class="n">y.test</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">test</span><span class="p">]</span>
+
+<span class="c1"># Make a training model using the training set (for all values of lambda)</span>
+<span class="n">ridge.mod</span> <span class="o">=</span> <span class="nf">glmnet</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">train</span><span class="p">,],</span> <span class="n">y</span><span class="p">[</span><span class="n">train</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="m">0</span><span class="p">,</span> <span class="n">lambda</span><span class="o">=</span><span class="n">lambda_search_space</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="m">1e-12</span><span class="p">)</span> <span class="c1">#threshold specifies the convergence criterion</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s now test different fits using different <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># With lambda = 1e10 (10^10)</span>
+<span class="c1">#note that this is like a null, intercept-only model</span>
+<span class="n">ridge.pred</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">ridge.mod</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="m">1e10</span><span class="p">,</span> <span class="n">newx</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="n">test</span><span class="p">,])</span>
+<span class="nf">mean</span><span class="p">((</span><span class="n">ridge.pred</span> <span class="o">-</span> <span class="n">y.test</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
+
+<span class="c1"># With lambda = 4 (s=lambda)</span>
+<span class="n">ridge.pred</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">ridge.mod</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="m">4</span><span class="p">,</span> <span class="n">newx</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="n">test</span><span class="p">,])</span>
+<span class="nf">mean</span><span class="p">((</span><span class="n">ridge.pred</span> <span class="o">-</span> <span class="n">y.test</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
+
+<span class="c1"># With lambda = 0 (note that this is OLS regression)</span>
+<span class="n">ridge.pred</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">ridge.mod</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="m">0</span><span class="p">,</span> <span class="n">newx</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="n">test</span><span class="p">,])</span>
+<span class="nf">mean</span><span class="p">((</span><span class="n">ridge.pred</span> <span class="o">-</span> <span class="n">y.test</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">224669.833069663</div><div class="output text_html">142199.150722761</div><div class="output text_html">167789.778381119</div></div>
+</div>
+<p>When <span class="math notranslate nohighlight">\(\lambda\)</span> was large, the MSE was worse than OLS. When it’s smaller (but not 0), it improves upon the OLS MSE. Hence we need to maximize the bias-variance tradeoff.</p>
+</div>
+<hr class="docutils" />
+<div class="tex2jax_ignore mathjax_ignore section" id="an-important-note-about-validation-and-test-sets">
+<h1>An important note about validation and test sets<a class="headerlink" href="#an-important-note-about-validation-and-test-sets" title="Permalink to this headline">¶</a></h1>
+<p>Remember, if we want to test the predictive utility of a model, it’s important to separate estimates from training and test data. We did this above at a basic level, for the glm regression variables. But this separation should also include the model and variable selection step (i.e., in this context, <span class="math notranslate nohighlight">\(\lambda\)</span>).
+So, the determination of which model is best must be made using training and test observations separate from the estimation of the general linear model. If we use the same data to perform best subset selection as we do to estimate and/or test our final model, then the estimate of test error will be contaminated.</p>
+<p><strong>Note: You will need sufficient power to split your data into the required number of training and validation sets.</strong></p>
+<p>Here, we need to use a separate training and validation set to find and test the best <span class="math notranslate nohighlight">\(\lambda\)</span>. Let’s find the best <span class="math notranslate nohighlight">\(\lambda\)</span> using 10-fold cross-validation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">2</span><span class="p">)</span> <span class="c1"># Use the same seed so we get the same results</span>
+
+<span class="c1"># Create your validation sets</span>
+<span class="n">train</span><span class="o">=</span><span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="m">2</span><span class="p">)</span> <span class="c1">#50/50 split into training and test sets</span>
+<span class="n">test</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">train</span><span class="p">)</span> <span class="c1">#get test indices (not training indices)</span>
+
+<span class="c1">#split each of the training and test phases into two </span>
+<span class="c1">#need to have separate validation sets for lambda and for beta estimates</span>
+
+<span class="n">train_hyperparameter</span> <span class="o">=</span> <span class="nf">sample</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="nf">length</span><span class="p">(</span><span class="n">train</span><span class="p">)</span><span class="o">/</span><span class="m">2</span><span class="p">)</span>
+<span class="n">train_glm</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">train_hyperparameter</span><span class="p">)</span>
+
+<span class="n">test_hyperparameter</span> <span class="o">=</span> <span class="nf">sample</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="nf">length</span><span class="p">(</span><span class="n">test</span><span class="p">)</span><span class="o">/</span><span class="m">2</span><span class="p">)</span>
+<span class="n">test_glm</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">test_hyperparameter</span><span class="p">)</span>
+
+<span class="c1">#make sure that the samples do not overlap</span>
+<span class="nf">sum</span><span class="p">(</span><span class="n">test_hyperparameter</span> <span class="o">==</span> <span class="n">train_hyperparameter</span><span class="p">)</span> 
+<span class="nf">sum</span><span class="p">(</span><span class="n">test_glm</span> <span class="o">==</span> <span class="n">train_glm</span><span class="p">)</span> 
+<span class="nf">sum</span><span class="p">(</span><span class="n">train_hyperparameter</span> <span class="o">==</span> <span class="n">train_glm</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0</div><div class="output text_html">0</div><div class="output text_html">0</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using 10-fold CV, cross-validate on the training data</span>
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+<span class="n">cv.out</span> <span class="o">=</span> <span class="nf">cv.glmnet</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">train_hyperparameter</span><span class="p">,],</span> <span class="n">y</span><span class="p">[</span><span class="n">train_hyperparameter</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="m">0</span><span class="p">)</span> <span class="c1">#alpha=0=ridge regression</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">cv.out</span><span class="p">)</span> <span class="c1">#defaults to 10-fold CV</span>
+<span class="n">bestlam</span> <span class="o">=</span> <span class="n">cv.out</span><span class="o">$</span><span class="n">lambda.min</span>
+<span class="n">bestlam</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">135.145590162423</div><img alt="../_images/regularized-regression_27_1.png" src="../_images/regularized-regression_27_1.png" />
+</div>
+</div>
+<p>The <span class="math notranslate nohighlight">\(\lambda\)</span> with the lowest cross-validation MSE is <span class="math notranslate nohighlight">\(\lambda = 390.75\)</span>. We can use this value of <span class="math notranslate nohighlight">\(\lambda\)</span> to look at our hold-out test accuracy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#passing in the trained model object, the best lambda, and the test data</span>
+<span class="n">ridge.pred</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">ridge.mod</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">bestlam</span><span class="p">,</span> <span class="n">newx</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="n">test_hyperparameter</span><span class="p">,])</span> 
+<span class="nf">mean</span><span class="p">((</span><span class="n">ridge.pred</span> <span class="o">-</span><span class="n">y</span><span class="p">[</span><span class="n">test_hyperparameter</span><span class="p">])</span><span class="o">^</span><span class="m">2</span><span class="p">)</span> <span class="c1">#MSE</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">119507.530651601</div></div>
+</div>
+<p>Using this best lambda, we can also get the actual regression coefficients for all 20 parameters in the model (including the intercept). Here, we refit the ridge regression model on the training dataset dedicated for this purpose (<code class="docutils literal notranslate"><span class="pre">train_glm</span></code>) and then look at coefficient predictions for the <code class="docutils literal notranslate"><span class="pre">test_glm</span></code> dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># First setup the model</span>
+<span class="n">out</span> <span class="o">=</span> <span class="nf">glmnet</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">train_glm</span><span class="p">,],</span><span class="n">y</span><span class="p">[</span><span class="n">train_glm</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="m">0</span><span class="p">)</span>
+
+<span class="c1"># # Then predict.</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">predict</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;coefficients&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">bestlam</span><span class="p">,</span> <span class="n">newx</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="n">test_glm</span><span class="p">,])[</span><span class="m">1</span><span class="o">:</span><span class="m">20</span><span class="p">,])</span> <span class="c1"># &quot;s = bestlam&quot; picks out the winning value and shows those coefs.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  (Intercept)         AtBat          Hits         HmRun          Runs 
+-38.812546181   0.007535828   1.517425980  -4.090339763   1.407753980 
+          RBI         Walks         Years        CAtBat         CHits 
+  1.037274878   2.172859070  -3.143396736   0.014712552   0.109118248 
+       CHmRun         CRuns          CRBI        CWalks       LeagueN 
+  0.177487099   0.183558581   0.171052370  -0.023204448  10.742320818 
+    DivisionW       PutOuts       Assists        Errors    NewLeagueN 
+-88.771290300   0.234770575  -0.035088669  -1.551198110  -7.358141646 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="tex2jax_ignore mathjax_ignore section" id="lasso">
+<h1>LASSO<a class="headerlink" href="#lasso" title="Permalink to this headline">¶</a></h1>
+<p>In order to run LASSO, you repeat the same steps as shown in the example above but replace alpha=0 with alpha=1. Try re-running the cells above with LASSO instead of ridge regression and see how it changes!</p>
+<p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../lectures/regularized-regression.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Regularized regression</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../discussions/regularized-regression.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Discussion questions:</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
+        
+            &copy; Copyright 2022.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

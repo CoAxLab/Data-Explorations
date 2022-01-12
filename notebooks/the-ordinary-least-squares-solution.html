@@ -1,0 +1,1186 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The ordinary least squares solution &#8212; Data explorations</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Discussion questions:" href="../discussions/the-ordinary-least-squares-solution.html" />
+    <link rel="prev" title="The ordinary least squares solution" href="../lectures/the-ordinary-least-squares-solution.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/brain.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data explorations</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Data explorations
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Phase 1 - Assessing the scene
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="art-of-data-investigations.html">
+   Tutorial: Getting started
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-value-of-openness.html">
+   The value of openness
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-value-of-openness.html">
+     The value of openness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-value-of-openness.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/what-is-a-theory.html">
+   What is a theory?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/what-is-a-theory.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/constructing-a-testable-hypothesis.html">
+   Constructing a testable hypothesis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/constructing-a-testable-hypothesis.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Phase 2 - Evaluating the evidence
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/data-as-objects-and-architectures.html">
+   Data as objects and architectures
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data-as-objects-and-architectures.html">
+     Data as objects and architectures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/data-as-objects-and-architectures.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/techniques-for-data-cleansing.html">
+   Techniques for data cleansing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="techniques-for-data-cleansing.html">
+     Techniques for data cleansing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/techniques-for-data-cleansing.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/visualization-as-analysis.html">
+   Visualization as analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="visualization-as-analysis.html">
+     Visualization as analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/visualization-as-analysis.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/a-visualization-vocabulary.html">
+   A visualization vocabulary
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/a-visualization-vocabulary.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/what-is-learnable.html">
+   What is learnable?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-bias-variance-tradeoff.html">
+   The bias-variance tradeoff
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-bias-variance-tradeoff.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/linear-models.html">
+   Linear models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="linear-models.html">
+     Linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/linear-models.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../lectures/the-ordinary-least-squares-solution.html">
+   The ordinary least squares solution
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     The ordinary least squares solution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-ordinary-least-squares-solution.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/limits-of-linear-regression.html">
+   Limits of linear regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="limits-of-linear-regression.html">
+     Limits of linear regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/limits-of-linear-regression.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/mixed-effects-models.html">
+   Mixed effects models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mixed-effects-models.html">
+     Mixed-effects models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/mixed-effects-models.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/classifiers.html">
+   Classifiers
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="classifiers.html">
+     Classifiers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/classifiers.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-beauty-of-knn.html">
+   The beauty of kNN
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-beauty-of-knn.html">
+     The beauty of kNN
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/cross-validation.html">
+   Cross validation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cross-validation.html">
+     Cross-validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/cross-validation.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/resampling-methods.html">
+   Resampling methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="resampling-methods.html">
+     Resampling methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/resampling-methods.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/power-analysis-via-simulations.html">
+   Power analysis via simulations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="power-analysis-via-simulations.html">
+     Power analysis via simulations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/power-analysis-via-simulations.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/mediation-and-moderation.html">
+   Mediation and moderation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mediation-and-moderation.html">
+     Mediation and moderation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/mediation-and-moderation.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/selecting-the-best-model.html">
+   Selecting the best model
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+  <label for="toctree-checkbox-20">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="selecting-the-best-model.html">
+     Selecting the best model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/selecting-the-best-model.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/regularized-regression.html">
+   Regularized regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+  <label for="toctree-checkbox-21">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="regularized-regression.html">
+     Regularized regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/regularized-regression.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/principal-component-methods.html">
+   The value of openness
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="principal-component-methods.html">
+     Principal component methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/principal-component-methods.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Phase 3 - Solving the mystery
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/reconsidering-the-p-value.html">
+   Reconsidering the p-value
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/reconsidering-the-p-value.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/bayes-factor-accepting-the-null.html">
+   Bayes factor: accepting the null
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+  <label for="toctree-checkbox-24">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bayes-factor-accepting-the-null.html">
+     Bayes factor: accepting the null
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/bayes-factor-accepting-the-null.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/telling-your-data-story.html">
+   Telling your data story
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+  <label for="toctree-checkbox-25">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/telling-your-data-story.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/the-ordinary-least-squares-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/notebooks/the-ordinary-least-squares-solution.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/notebooks/the-ordinary-least-squares-solution.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   The ordinary least squares solution
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goals">
+     Goals:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#derivatives">
+   Derivatives
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-a-derivative">
+     What is a derivative?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples">
+     Examples
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tips-on-calculating-the-derivative">
+     Tips on calculating the derivative
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#a-constant-function">
+       1. A constant function
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-power-rule">
+       2. The Power Rule
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#taking-out-a-constant">
+       3. Taking out a constant
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#added-functions">
+       4. Added functions
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#functions-with-two-variables">
+       5. Functions with two variables
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-the-derivative-to-find-minimizing-values-2-worked-examples">
+     Using the derivative to find minimizing values: 2 worked examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logarithms">
+   Logarithms
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-a-logarithm">
+     What is a logarithm?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#working-with-logarithms">
+     Working with logarithms
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#e">
+       1. e
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#product">
+       2. Product
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#quotient">
+       3. Quotient
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#exponents">
+       4. Exponents
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#derivative">
+       5. Derivative
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-are-we-using-logarithms-in-this-class">
+     Why are we using logarithms in this class?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#expected-values">
+   Expected values
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="the-ordinary-least-squares-solution">
+<h1>The ordinary least squares solution<a class="headerlink" href="#the-ordinary-least-squares-solution" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial and the previous one explore math concepts that will be helpful for understanding the lectures and homeworks.</p>
+<div class="section" id="goals">
+<h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Refresher on derivatives, logarithms and expected values</p></li>
+</ul>
+<p>This lab draws from <a class="reference external" href="https://tutorial.math.lamar.edu/pdf/calculus_cheat_sheet_derivatives.pdf">Paul’s Math Notes</a>.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="tex2jax_ignore mathjax_ignore section" id="derivatives">
+<h1>Derivatives<a class="headerlink" href="#derivatives" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-a-derivative">
+<h2>What is a derivative?<a class="headerlink" href="#what-is-a-derivative" title="Permalink to this headline">¶</a></h2>
+<p>The formal definition of a derivative is:</p>
+<div class="math notranslate nohighlight">
+\[\frac{df}{dx} = \lim_{h \to 0} \frac{f(x + h) - f(x)}{h}\]</div>
+<p>The plain language definition of a derivative is something along the lines of, “How is my function <span class="math notranslate nohighlight">\(f\)</span> changing with respect to the variable <span class="math notranslate nohighlight">\(x\)</span>?” You can also think of a derivative as the slope of a function for given values of the variables.</p>
+<p><em>See these two videos (<a class="reference external" href="https://www.youtube.com/watch?v=tt2DGYOi3hc&amp;list=PLmxWmlga0Kgoe-gvtTW4i32Lc_3JI_bEK&amp;index=6">video 1</a>, <a class="reference external" href="https://www.youtube.com/watch?v=50Bda5VKbqA&amp;list=PLmxWmlga0Kgoe-gvtTW4i32Lc_3JI_bEK&amp;index=7">video 2</a>) for a satisfying explanation of how these two definitions connect.</em></p>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>Two quick examples to drive home the idea of what a derivative is:</p>
+<p><strong>1.</strong>   The derivative of <span class="math notranslate nohighlight">\(x^2\)</span> is <span class="math notranslate nohighlight">\(2x\)</span>. Let’s plot both of these functions in R.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">0.1</span><span class="p">)</span> <span class="c1"># x is a vector with numbers from 1 to 10</span>
+<span class="n">f</span> <span class="o">&lt;-</span> <span class="n">x</span><span class="o">^</span><span class="m">2</span> <span class="c1"># f is a vector with the values of the function for x = 1 to x = 10</span>
+<span class="n">df_dx</span> <span class="o">&lt;-</span> <span class="m">2</span><span class="o">*</span><span class="n">x</span> <span class="c1"># df_dx is a vector with the values of the derivative for x = 1 to x = 10</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="n">x_dat</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">,</span><span class="n">df_dx</span><span class="o">=</span><span class="n">df_dx</span><span class="p">)</span> <span class="c1"># make a data frame so we can plot these nicely</span>
+<span class="n">x_dat</span> <span class="o">&lt;-</span> <span class="nf">gather</span><span class="p">(</span><span class="n">x_dat</span><span class="p">,</span> <span class="s">&quot;func&quot;</span><span class="p">,</span><span class="s">&quot;value&quot;</span><span class="p">,</span><span class="n">f</span><span class="o">:</span><span class="n">df_dx</span><span class="p">)</span> <span class="c1"># put data frame in long form</span>
+<span class="n">x_dat</span><span class="o">$</span><span class="n">func</span> <span class="o">&lt;-</span> <span class="n">x_dat</span><span class="o">$</span><span class="n">func</span> <span class="o">%&gt;%</span> <span class="nf">factor</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="nf">relevel</span><span class="p">(</span><span class="s">&quot;f&quot;</span><span class="p">)</span> <span class="c1"># makes it so &quot;f&quot; is the function plotted on left</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">x_dat</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">value</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span> <span class="nf">facet_grid</span><span class="p">(</span><span class="n">.</span> <span class="o">~</span> <span class="n">func</span><span class="p">)</span> <span class="c1"># plot func</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/the-ordinary-least-squares-solution_5_0.png" src="../_images/the-ordinary-least-squares-solution_5_0.png" />
+</div>
+</div>
+<p>Notice how, in the “f” plot, the slope of the line increases as the value of <code class="docutils literal notranslate"><span class="pre">x</span></code> increases. This is reflected in the “df_dx” plot: larger values of <code class="docutils literal notranslate"><span class="pre">x</span></code> have a larger derivative, and this increase is linear.</p>
+<p><strong>2.</strong>   The derivative of <span class="math notranslate nohighlight">\(cos(x)\)</span> is <span class="math notranslate nohighlight">\(-sin(x)\)</span>. Let’s plot both of these.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">0.1</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">&lt;-</span> <span class="nf">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x_min</span> <span class="o">&lt;-</span> <span class="n">x</span><span class="p">[</span><span class="nf">which.min</span><span class="p">(</span><span class="n">f</span><span class="p">)]</span> <span class="c1"># find the x value where f is at minimum</span>
+<span class="n">df_dx</span> <span class="o">&lt;-</span> <span class="o">-</span><span class="nf">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x_dat</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">,</span><span class="n">df_dx</span><span class="o">=</span><span class="n">df_dx</span><span class="p">)</span> <span class="c1"># make a data frame so we can plot these nicely</span>
+<span class="n">x_dat</span> <span class="o">&lt;-</span> <span class="nf">gather</span><span class="p">(</span><span class="n">x_dat</span><span class="p">,</span> <span class="s">&quot;func&quot;</span><span class="p">,</span><span class="s">&quot;value&quot;</span><span class="p">,</span><span class="n">f</span><span class="o">:</span><span class="n">df_dx</span><span class="p">)</span> <span class="c1"># put data frame in long form</span>
+<span class="n">x_dat</span><span class="o">$</span><span class="n">func</span> <span class="o">&lt;-</span> <span class="n">x_dat</span><span class="o">$</span><span class="n">func</span> <span class="o">%&gt;%</span> <span class="nf">factor</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="nf">relevel</span><span class="p">(</span><span class="s">&quot;f&quot;</span><span class="p">)</span> <span class="c1"># makes it so &quot;f&quot; is the function plotted on left</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">x_dat</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">value</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span> <span class="nf">facet_grid</span><span class="p">(</span><span class="n">.</span> <span class="o">~</span> <span class="n">func</span><span class="p">)</span> <span class="o">+</span>
+      <span class="nf">geom_vline</span><span class="p">(</span><span class="n">xintercept</span> <span class="o">=</span> <span class="n">x_min</span><span class="p">,</span><span class="n">linetype</span><span class="o">=</span><span class="s">&quot;dashed&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span><span class="c1"># add line where f is min</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/the-ordinary-least-squares-solution_8_0.png" src="../_images/the-ordinary-least-squares-solution_8_0.png" />
+</div>
+</div>
+<p>At <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">0</span></code>, the slope of the function is 0. Then it becomes negative, with increasing steepness from <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">0</span></code> to around <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">1.5</span></code>, and decreasing steepness from there to around <code class="docutils literal notranslate"><span class="pre">x=3</span></code>. This description of the slope matches how the derivative looks.</p>
+<p>The main reason for us to work with derivatives in this class is as a tool for finding what value of <span class="math notranslate nohighlight">\(x\)</span> minimizes <span class="math notranslate nohighlight">\(f(x)\)</span>. When <span class="math notranslate nohighlight">\(f(x)\)</span> reaches a local minimum or maximum, the derivative is 0 (like at the red dotted line in the second example above). So if we’re trying to find the value of <span class="math notranslate nohighlight">\(\beta_0\)</span> that minimizes the Mean Squared Error (MSE - see lecture on Least Squares Solution), we can take the derivative of MSE with respect to <span class="math notranslate nohighlight">\(\beta_0\)</span> (<span class="math notranslate nohighlight">\(\frac{dMSE}{d\beta_0}\)</span>), set it to 0, and then solve for <span class="math notranslate nohighlight">\(\beta_0\)</span>. We’ll work through a couple examples of finding the value that minimizes a function. But first, a few tips on <em>how</em> to calculate the derivative of a function.</p>
+</div>
+<div class="section" id="tips-on-calculating-the-derivative">
+<h2>Tips on calculating the derivative<a class="headerlink" href="#tips-on-calculating-the-derivative" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="a-constant-function">
+<h3>1. A constant function<a class="headerlink" href="#a-constant-function" title="Permalink to this headline">¶</a></h3>
+<p>If your function is a constant, e.g. <span class="math notranslate nohighlight">\(f(x) = 3\)</span>, then the derivative is 0. This makes sense if you picture the plot of <span class="math notranslate nohighlight">\(f(x)=3\)</span>. No matter what the value of <span class="math notranslate nohighlight">\(x\)</span>, the value of <span class="math notranslate nohighlight">\(f(x)\)</span> is 3, so the plot of <span class="math notranslate nohighlight">\(f(x) = 3\)</span> is a flat line with slope 0. As a general expression of this rule:
+$<span class="math notranslate nohighlight">\(\frac{d}{dx}(c) = 0\)</span>$</p>
+</div>
+<div class="section" id="the-power-rule">
+<h3>2. The Power Rule<a class="headerlink" href="#the-power-rule" title="Permalink to this headline">¶</a></h3>
+<p>If the function you’re working with fits the format <span class="math notranslate nohighlight">\(f(x) = x^n\)</span>, then you can calculate the derivative as <span class="math notranslate nohighlight">\(\frac{df}{dx} = nx^{n-1}\)</span>. For example, <span class="math notranslate nohighlight">\(\frac{d}{dx}(x^3) = 3x^{2}\)</span>, and <span class="math notranslate nohighlight">\(\frac{d}{dx}(x^{p+q+1}) = (p+q+1)x^{p+q}\)</span>. The general expression of this rule is:
+$<span class="math notranslate nohighlight">\(\frac{d}{dx}(x^n) = nx^{n-1}\)</span>$</p>
+<p>Note that a lot of functions can be rewritten to match the <span class="math notranslate nohighlight">\(x^n\)</span> format:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\frac{d}{dx}(\frac{1}{x}) = \frac{d}{dx}(x ^ {-1}) = -x^{-2} = -\frac{1}{x^2}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{d}{dx}(\sqrt{x}) = \frac{d}{dx}(x^{\frac{1}{2}}) = \frac{1}{2}x^{-\frac{1}{2}} = \frac{1}{2\sqrt{x}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{d}{dx}(x) = \frac{d}{dx}(x^1) = 1x^0 = 1\)</span>.</p></li>
+</ul>
+</div>
+<div class="section" id="taking-out-a-constant">
+<h3>3. Taking out a constant<a class="headerlink" href="#taking-out-a-constant" title="Permalink to this headline">¶</a></h3>
+<p>If your function is multiplied by a constant, your derivative will also by multiplied by that constant. For example, <span class="math notranslate nohighlight">\(\frac{d}{dx}(4x^2) = 4(2x) = 8x\)</span>. As a general expression of this rule:
+$<span class="math notranslate nohighlight">\(\frac{d}{dx}(cf(x)) = c\frac{df}{dx}\)</span>$</p>
+</div>
+<div class="section" id="added-functions">
+<h3>4. Added functions<a class="headerlink" href="#added-functions" title="Permalink to this headline">¶</a></h3>
+<p>If your function is actually two functions added together, like <span class="math notranslate nohighlight">\(3x - x^2\)</span>, then you can just take the derivative of each term separately (<span class="math notranslate nohighlight">\(3x\)</span>, then <span class="math notranslate nohighlight">\(-x^2\)</span>) and add them together: <span class="math notranslate nohighlight">\(\frac{d}{dx}(3x-x^2) = 3 - 2x\)</span>. As a general expression of this rule:
+$<span class="math notranslate nohighlight">\(\frac{d}{dx}(f(x) + g(x)) = \frac{df}{dx} + \frac{dg}{dx}\)</span>$</p>
+</div>
+<div class="section" id="functions-with-two-variables">
+<h3>5. Functions with two variables<a class="headerlink" href="#functions-with-two-variables" title="Permalink to this headline">¶</a></h3>
+<p>The reason we talk about taking the derivative <em>with respect to <span class="math notranslate nohighlight">\(x\)</span></em> is that in cases where the function has multiple variables, you need to specify which variable you are focusing on: my function <span class="math notranslate nohighlight">\(f(x_1,x_2)\)</span> could change with respect to <span class="math notranslate nohighlight">\(x_1\)</span> differently from how it changes with respect to <span class="math notranslate nohighlight">\(x_2\)</span>, and thus <span class="math notranslate nohighlight">\(\frac{df}{dx_1} \neq \frac{df}{dx_2}\)</span>. If you’re calculating the derivative with respect to one variable, you can treat the other variable as if it is a constant. For example, the derivative of <span class="math notranslate nohighlight">\(2x_1 + 4x_1x_2 - {x_2}^2\)</span> with respect to <span class="math notranslate nohighlight">\(x_1\)</span> is <span class="math notranslate nohighlight">\(2 + 4x_2\)</span>. We ignore the last term because it doesn’t contain <span class="math notranslate nohighlight">\(x_1\)</span>, so we view it as a constant and its derivative (according to rule 1 above) is 0. The derivative of this function with respect to <span class="math notranslate nohighlight">\(x_2\)</span> is <span class="math notranslate nohighlight">\(4x_1 - 2x_2\)</span>.</p>
+</div>
+</div>
+<div class="section" id="using-the-derivative-to-find-minimizing-values-2-worked-examples">
+<h2>Using the derivative to find minimizing values: 2 worked examples<a class="headerlink" href="#using-the-derivative-to-find-minimizing-values-2-worked-examples" title="Permalink to this headline">¶</a></h2>
+<p>Now we’ll practice finding the value of <span class="math notranslate nohighlight">\(x\)</span> for which <span class="math notranslate nohighlight">\(f(x)\)</span> is minimal.</p>
+<p><strong>Example 1</strong> <span class="math notranslate nohighlight">\(f(x) = (x-2)^2 + 6\)</span></p>
+<p>Let’s see what a plot of this function looks like:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">0.1</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">x</span><span class="m">-2</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> <span class="m">6</span>
+<span class="n">x_dat</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">f</span><span class="p">)</span>
+<span class="nf">require</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span> <span class="c1">#in case you need to load the library again</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">x_dat</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">f</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_line</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/the-ordinary-least-squares-solution_19_0.png" src="../_images/the-ordinary-least-squares-solution_19_0.png" />
+</div>
+</div>
+<p>Just looking at the plot above, we can tell the minimum of <span class="math notranslate nohighlight">\(f(x)\)</span> is where <span class="math notranslate nohighlight">\(x=2\)</span>. But let’s make sure, using the derivative method!</p>
+<p>\begin{eqnarray}
+\frac{d}{dx}((x-2)^2 + 6) &amp;=&amp; \frac{d}{dx}(x-2)^2 + \frac{d}{dx}6  \
+&amp;=&amp; \frac{d}{dx}(x^2-4x+4) + 0 \
+&amp;=&amp; \frac{d}{dx}(x^2)-4\frac{d}{dx}x+\frac{d}{dx}4 \
+&amp;=&amp; 2x - 4
+\end{eqnarray}</p>
+<p>In the first line, I split up the function using rule <strong>4</strong>. Then I expanded the <span class="math notranslate nohighlight">\((x-2)^2\)</span> term using the <a class="reference external" href="https://www.mathsisfun.com/definitions/foil-method.html">Foil method</a>, set <span class="math notranslate nohighlight">\(\frac{d}{dx}6\)</span> to 0 as in rule <strong>1</strong>, and finally took the derivative of <span class="math notranslate nohighlight">\(x^2 - 4x + 4\)</span> by applying rule <strong>2</strong> to the first term, rules <strong>2</strong> and <strong>3</strong> to the second term, and rule <strong>1</strong> to the last term.</p>
+<p>Now let’s set it to 0 and solve for x.</p>
+<p>\begin{eqnarray}
+2x - 4 &amp;=&amp; 0  \
+2x  &amp;=&amp; 4  \
+x  &amp;=&amp; 2
+\end{eqnarray}</p>
+<p>So <span class="math notranslate nohighlight">\(f(x)\)</span> is at a minimal value when <span class="math notranslate nohighlight">\(x=2\)</span>, which matches what we see in the plot above.</p>
+<p><strong>Example 2</strong> <span class="math notranslate nohighlight">\(f(x_1,x_2) = 4x_1x_2 + \frac{1}{x_2} + {x_1}^2\)</span></p>
+<p>This one’s a little trickier to visualize since there’s two input variables, so let’s just jump right into finding the minimizing solutions for <span class="math notranslate nohighlight">\(x_1\)</span>.</p>
+<p>\begin{eqnarray}
+\frac{d}{dx_1}(4x_1x_2 + \frac{1}{x_2} + {x_1}^2) &amp;=&amp; \frac{d}{dx_1}(4x_1x_2) + \frac{d}{dx_1}(\frac{1}{x_2}) +  \frac{d}{dx_1}{x_1}^2 \
+&amp;=&amp; 4x_2  + 2x_1\
+\end{eqnarray}</p>
+<p>We split up the three terms. The second term becomes 0 because when we’re taking the derivative with respect to <span class="math notranslate nohighlight">\(x_1\)</span>, we can think of terms that only contain <span class="math notranslate nohighlight">\(x_2\)</span> as constant (rule <strong>5</strong>) and then apply rule <strong>1</strong>. The first term, <span class="math notranslate nohighlight">\(4x_1x_2\)</span>, can be expressed as <span class="math notranslate nohighlight">\((4x_2)x_1\)</span>, and the <span class="math notranslate nohighlight">\(4x_2\)</span> term can be moved outside the derivative as a constant (rules <strong>3</strong>,<strong>5</strong>). Then use rule <strong>2</strong> to find <span class="math notranslate nohighlight">\(\frac{d}{dx_1} x_1\)</span> and <span class="math notranslate nohighlight">\(\frac{d}{dx_1} {x_1}^2\)</span>.</p>
+<p>Setting <span class="math notranslate nohighlight">\(\frac{df}{dx_1}\)</span> to 0 and solving for <span class="math notranslate nohighlight">\(x_1\)</span>, we find that the minimizing value of <span class="math notranslate nohighlight">\(x_1\)</span> is <span class="math notranslate nohighlight">\(-2x_2\)</span>.</p>
+<p>Repeat for <span class="math notranslate nohighlight">\(x_2\)</span>:</p>
+<p>\begin{eqnarray}
+\frac{d}{dx_2}(4x_1x_2 + \frac{1}{x_2} + {x_1}^2) &amp;=&amp; \frac{d}{dx_2}(4x_1x_2) + \frac{d}{dx_2}(\frac{1}{x_2}) + \frac{d}{dx_2}({x_1}^2)  \
+&amp;=&amp; 4x_1 - \frac{1}{{x_2}^2}  \
+\end{eqnarray}</p>
+<p>The derivative of the third term is 0 because of rules <strong>1</strong> and <strong>5</strong>. We find the derivative of the second term using rule <strong>2</strong> and of the first term using rules <strong>3</strong> and <strong>5</strong>.</p>
+<p>Setting the derivative to 0 and solving for <span class="math notranslate nohighlight">\(x_2\)</span>:</p>
+<p>\begin{eqnarray}
+4x_1 - \frac{1}{{x_2}^2} &amp;=&amp; 0  \
+{x_2}^2 &amp;=&amp; \frac{1}{4x_1}  \
+\end{eqnarray}</p>
+<p>Since we know the minimizing value for <span class="math notranslate nohighlight">\(x_1\)</span> is <span class="math notranslate nohighlight">\(-2x_2\)</span> from our work above, we can try plugging that in here to find the values of <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> that will minimize the whole function:</p>
+<p>\begin{eqnarray}
+{x_2}^2 &amp;=&amp; \frac{1}{4(-2x_2)}  \
+-8 {x_2}^3 &amp;=&amp; 1  \
+{x_2}^3 &amp;=&amp; -\frac{1}{8} \
+{x_2} &amp;=&amp; -\frac{1}{2}
+\end{eqnarray}</p>
+<p>Plugging this into our equation for <span class="math notranslate nohighlight">\(x_1\)</span>, we get <span class="math notranslate nohighlight">\(x_1 = -2x_2 = 1\)</span>. So <span class="math notranslate nohighlight">\(f(x_1,x_2)\)</span> is minimized at <span class="math notranslate nohighlight">\(x_1 = 1\)</span>, <span class="math notranslate nohighlight">\(x_2 = -\frac{1}{2}\)</span></p>
+<p>That’s all for derivatives! Let’s move on to logarithms.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="tex2jax_ignore mathjax_ignore section" id="logarithms">
+<h1>Logarithms<a class="headerlink" href="#logarithms" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-a-logarithm">
+<h2>What is a logarithm?<a class="headerlink" href="#what-is-a-logarithm" title="Permalink to this headline">¶</a></h2>
+<p>Using a logarithm is the opposite of using an exponent: You can re-write the function <span class="math notranslate nohighlight">\(4^x = 16\)</span> as <span class="math notranslate nohighlight">\(x = \log_{4}16\)</span>. The small number at the base of <span class="math notranslate nohighlight">\(\log\)</span> (the <em>base</em>) is the number that will be raised to a certain power, and the big number is what we get once it’s been raised to that power. <span class="math notranslate nohighlight">\(\log_{5}25 = 2\)</span> because <span class="math notranslate nohighlight">\(5^2 = 25\)</span>, and <span class="math notranslate nohighlight">\(\log_{2}16 = 4\)</span> because <span class="math notranslate nohighlight">\(2^4=16\)</span>.</p>
+<p>When we use logarithms in this class, we’ll use the <em>natural log</em>: this is a logarithm where the base is always <a class="reference external" href="https://www.youtube.com/watch?v=_-x90wGBD8U"><span class="math notranslate nohighlight">\(e\)</span></a>. We write natural logs as \ln$.</p>
+<div class="math notranslate nohighlight">
+\[\ln{x} = \log_{e}x\]</div>
+</div>
+<div class="section" id="working-with-logarithms">
+<h2>Working with logarithms<a class="headerlink" href="#working-with-logarithms" title="Permalink to this headline">¶</a></h2>
+<p>Here’s a couple basic rules for working with natural logarithms. You can read more about these rules <a class="reference external" href="https://mathinsight.org/logarithm_basics">here</a>.</p>
+<div class="section" id="e">
+<h3>1. e<a class="headerlink" href="#e" title="Permalink to this headline">¶</a></h3>
+<p>Taking the natural log of <span class="math notranslate nohighlight">\(e\)</span> is 1. Similarly, <span class="math notranslate nohighlight">\(\ln e^x = x\)</span> and <span class="math notranslate nohighlight">\(e^{\ln{x}} = x\)</span>. Try proving this to yourself using our definition of natural logs above.</p>
+</div>
+<div class="section" id="product">
+<h3>2. Product<a class="headerlink" href="#product" title="Permalink to this headline">¶</a></h3>
+<p>The natural log of a product is the sum of the natural logs of its factors:</p>
+<div class="math notranslate nohighlight">
+\[\ln{xy} = \ln{x} + \ln{y}\]</div>
+</div>
+<div class="section" id="quotient">
+<h3>3. Quotient<a class="headerlink" href="#quotient" title="Permalink to this headline">¶</a></h3>
+<p>The natural log of two terms divided is the natural log of the numerator minus the natural log of the denominator.</p>
+<div class="math notranslate nohighlight">
+\[\ln{\frac{x}{y}} = \ln{x} - \ln{y}\]</div>
+</div>
+<div class="section" id="exponents">
+<h3>4. Exponents<a class="headerlink" href="#exponents" title="Permalink to this headline">¶</a></h3>
+<p>You can move the exponent inside a log term to the outside as a coefficient.</p>
+<div class="math notranslate nohighlight">
+\[\ln{x^y} = y\ln{x}\]</div>
+</div>
+<div class="section" id="derivative">
+<h3>5. Derivative<a class="headerlink" href="#derivative" title="Permalink to this headline">¶</a></h3>
+<p>The derivative of <span class="math notranslate nohighlight">\(ln(x)\)</span> is <span class="math notranslate nohighlight">\(\frac{1}{x}\)</span> (relatedly, the derivative of <span class="math notranslate nohighlight">\(e^x\)</span> is <span class="math notranslate nohighlight">\(e^x\)</span>).</p>
+</div>
+</div>
+<div class="section" id="why-are-we-using-logarithms-in-this-class">
+<h2>Why are we using logarithms in this class?<a class="headerlink" href="#why-are-we-using-logarithms-in-this-class" title="Permalink to this headline">¶</a></h2>
+<p>The logarithm function is monotonically increasing. For our purposes, that means that when we take the log (natural log or otherwise) of a function, the values of the input variables where that functions reaches a local minimum or maximum are the same before and after the transformation. Here’s a quick demonstration of that idea:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">0.1</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">x</span><span class="m">-2</span><span class="p">)</span><span class="o">^</span><span class="m">2</span> <span class="o">+</span> <span class="m">6</span>
+<span class="n">log_f</span> <span class="o">&lt;-</span> <span class="nf">log</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">x_dat</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">log_f</span><span class="p">)</span>
+<span class="nf">require</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="n">x_dat</span> <span class="o">&lt;-</span> <span class="nf">gather</span><span class="p">(</span><span class="n">x_dat</span><span class="p">,</span><span class="s">&quot;func&quot;</span><span class="p">,</span><span class="s">&quot;value&quot;</span><span class="p">,</span><span class="n">f</span><span class="o">:</span><span class="n">log_f</span><span class="p">)</span> <span class="c1">#put this in long form</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">x_dat</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">value</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span> <span class="nf">facet_grid</span><span class="p">(</span><span class="n">.</span><span class="o">~</span><span class="n">func</span><span class="p">)</span> <span class="c1">#plot function and log transformation of function side by side. </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/the-ordinary-least-squares-solution_27_0.png" src="../_images/the-ordinary-least-squares-solution_27_0.png" />
+</div>
+</div>
+<p>Even though the log transformation is flatter than the original function, it still has a minimum at x = 2.</p>
+<p>In the sections on maximum likelihood estimation discussed in readings and lecture, the task is to find values of <span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span> that maximize the likelihood for simple linear regression. The likelihood function is calculated as:</p>
+<div class="math notranslate nohighlight">
+\[ \prod_{i=1}^{n} p(y_i | x_i; \beta_0, \beta_1, \sigma) =  \prod_{i=1}^{n} \frac{1} {{\sigma \sqrt {2\pi } }} e^{{\frac{ - ( {y_i - (\beta_0 + \beta_1x_i) })^2 }{2\sigma^2} }} \]</div>
+<p>If we want to find those maximizing solutions, we need to take the derivative. I didn’t talk about it above, but taking the derivative of a product of functions is kind of a pain, especially if there are a lot of factors like there are in the equation above (remember from the previous tutorial that <span class="math notranslate nohighlight">\(\prod_{i=1}^{n}\)</span> means you multiply that term for every value of <span class="math notranslate nohighlight">\(i\)</span> from 1 to <span class="math notranslate nohighlight">\(n\)</span>). So to make this function easier to derive, we can take the log transformation! As stated above, the minimizing and maximizing values will stay the same after a log transformation, and using rule <strong>2</strong> from the logarithm rules we can make a long product into a long sum. Makes sense to take the natural log since that will also help simplify the exponential term (<span class="math notranslate nohighlight">\(e^{{\frac{ - ( {y_i - (\beta_0 + \beta_1x_i) })^2 }{2\sigma^2} }}\)</span>).</p>
+<p>\begin{eqnarray}
+\ln{L}(\beta_0, \beta_1, \sigma) &amp;=&amp; \ln \prod_{i=1}^{n} p(y_i | x_i; \beta_0, \beta_1, \sigma)  \
+&amp;=&amp; \sum_{i=1}^{n} \ln  p(y_i | x_i; \beta_0, \beta_1, \sigma)  \
+&amp;=&amp; \sum_{i=1}^{n} \ln (\frac{1}  e^) \
+&amp;=&amp; \frac{-n}{2} \ln{2\pi} - n \ln{\sigma} - \frac{1}{2\sigma^2} \sum_{i=1}^{n} (y_i - (\beta_0 + \beta_1x_i))^2
+\end{eqnarray}</p>
+<p>Taking the natural log of the likelihood made this a much nicer function for taking the derivative and finding maximum values. Try getting from the third line to the fourth line by hand using the logarithm rules described above and the tips on working with summations from the previous tutorial.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="tex2jax_ignore mathjax_ignore section" id="expected-values">
+<h1>Expected values<a class="headerlink" href="#expected-values" title="Permalink to this headline">¶</a></h1>
+<p>The expected value <span class="math notranslate nohighlight">\(E(X)\)</span>, sometimes referred to as the expectation, is the most probable value of <span class="math notranslate nohighlight">\(X\)</span> given the probability distribution from which it was drawn. In the case of a normally distributed variable (which is what’s relevant for this class), the expected value of <span class="math notranslate nohighlight">\(X\)</span> is <span class="math notranslate nohighlight">\(\mu\)</span>, the center of the normal distribution, and expected value can be estimated from your data as the average of the observed values, <span class="math notranslate nohighlight">\(\bar{x}\)</span>.</p>
+<p>Here, we’ll review a few tips for working with expected values in equations. This will be helpful for the homework.</p>
+<p><strong>Tip 1:</strong> The expected value of a constant is that constant.</p>
+<div class="math notranslate nohighlight">
+\[E(c) = c\]</div>
+<p><strong>Tip 2:</strong> The expected value of a sum is equal to the added expected values of the terms being added.</p>
+<div class="math notranslate nohighlight">
+\[E(X+Y) = E(X) + E(Y)\]</div>
+<p><strong>Tip 3:</strong> You can pull coefficients out of the expected value.</p>
+<div class="math notranslate nohighlight">
+\[E(cX) = cE(X)\]</div>
+<p><strong>Tip 4:</strong> The expected value of a random variable squared is the same as the squared expected value of that variable, plus its variance.</p>
+<div class="math notranslate nohighlight">
+\[E(X^2) = Var(X) + E(X)^2\]</div>
+<p><strong>Tip 5:</strong> The expected value of the product of two random variables is the covariance of those variables plus the product of their expected values.</p>
+<div class="math notranslate nohighlight">
+\[E(XY) = Cov(X,Y) + E(X)E(Y)\]</div>
+<p>Here’s one worked example to get you comfortable manipulating equations with expected values:</p>
+<p>\begin{eqnarray}
+E((X + cY)^2) &amp;=&amp;  E(X^2 + 2cXY + c^2Y^2) \
+&amp;=&amp; E(X^2) + E(2cXY) + E(c^2Y^2)  \
+&amp;=&amp; E(X^2) + 2cE(XY) + c^2E(Y^2) \
+&amp;=&amp; Var(X) + E(X)^2 + 2c(Cov(X,Y) + E(X)E(Y)) + c^2(Var(Y) + E(Y)^2) \
+&amp;=&amp; Var(X) + E(X)^2 + 2c Cov(X,Y) + 2cE(X)E(Y) + c^2Var(Y) + c^2E(Y)^2
+\end{eqnarray}</p>
+<p>The first line expands the function using the Foil method. The second line separates the terms using <strong>Tip 2</strong>. The third line pulls out coefficients using <strong>Tip 3</strong>, and the fourth line applies <strong>Tips 4 and 5</strong>.</p>
+<p>That’s all the math tools we’ve got for you today, folks! Fear not, the next tutorial will be more practical. We’ll focus on fitting linear models in R.</p>
+<p><em>Notebook authored by Patience Stevens and edited by Amy Sentis.</em></p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../lectures/the-ordinary-least-squares-solution.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">The ordinary least squares solution</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../discussions/the-ordinary-least-squares-solution.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Discussion questions:</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
+        
+            &copy; Copyright 2022.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
