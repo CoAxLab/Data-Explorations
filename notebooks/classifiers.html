@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -686,7 +686,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -726,7 +726,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -775,7 +775,59 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Classifiers</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Classifiers
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goals">
+     Goals:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistic-regression-with-glm">
+   Logistic regression with glm
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#predicting-the-stock-market">
+     Predicting the stock market
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lda">
+   LDA
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#qda">
+   QDA
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="classifiers">
@@ -905,7 +957,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># In order to see the correlation let&#39;s remove the Direction variable</span>
-<span class="n">cxy</span> <span class="o">=</span> <span class="nf">cor</span><span class="p">(</span><span class="n">Smarket</span><span class="p">[,</span><span class="o">-</span><span class="nf">which</span><span class="p">(</span><span class="nf">colnames</span><span class="p">(</span><span class="n">Smarket</span><span class="p">)</span><span class="o">==</span><span class="s">&quot;Direction&quot;</span><span class="p">)])</span> 
+<span class="n">cxy</span> <span class="o">=</span> <span class="nf">cor</span><span class="p">(</span><span class="n">Smarket[</span><span class="p">,</span><span class="o">-</span><span class="nf">which</span><span class="p">(</span><span class="nf">colnames</span><span class="p">(</span><span class="n">Smarket</span><span class="p">)</span><span class="o">==</span><span class="s">&quot;Direction&quot;</span><span class="p">)</span><span class="n">]</span><span class="p">)</span> 
 <span class="n">cxy</span>
 </pre></div>
 </div>
@@ -1041,7 +1093,7 @@ Number of Fisher Scoring iterations: 3
 <span class="n">glm_prob_df</span><span class="o">$</span><span class="n">predicted_binary</span><span class="o">=</span><span class="nf">rep</span><span class="p">(</span><span class="s">&quot;Down&quot;</span><span class="p">,</span><span class="n">num_observations</span><span class="p">)</span>
 
 <span class="c1"># Then use the probability output to label the up days. Let&#39;s use a threshold of 50% probability. </span>
-<span class="n">glm_prob_df</span><span class="o">$</span><span class="n">predicted_binary</span><span class="p">[</span><span class="n">glm_prob_df</span><span class="o">$</span><span class="n">predicted_prob</span><span class="o">&gt;</span><span class="n">threshold</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;Up&quot;</span> <span class="c1">#find the rows that have prob &gt; threshold and cast as &#39;up&#39;</span>
+<span class="n">glm_prob_df</span><span class="o">$</span><span class="n">predicted_binary[glm_prob_df</span><span class="o">$</span><span class="n">predicted_prob</span><span class="o">&gt;</span><span class="n">threshold]</span><span class="o">=</span><span class="s">&quot;Up&quot;</span> <span class="c1">#find the rows that have prob &gt; threshold and cast as &#39;up&#39;</span>
 
 <span class="c1"># Now let&#39;s look at the prediction accuracy</span>
 <span class="n">confusion_df</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">glm_prob_df</span><span class="o">$</span><span class="n">predicted_binary</span><span class="p">,</span> <span class="n">Smarket</span><span class="o">$</span><span class="n">Direction</span><span class="p">)</span>
@@ -1087,7 +1139,7 @@ predicted Down  Up
 
 
 <span class="c1"># Can now make a whole new Smarket dataset just for 2005 (it&#39;s the last year, so anything not train is 2005)</span>
-<span class="n">Smarket.2005_test</span> <span class="o">=</span> <span class="n">Smarket</span><span class="p">[</span><span class="o">!</span><span class="n">train_idx</span><span class="p">,]</span> <span class="c1">#find rows that do not (! = not) occupy the training data indices</span>
+<span class="n">Smarket.2005_test</span> <span class="o">=</span> <span class="n">Smarket[</span><span class="o">!</span><span class="n">train_idx</span><span class="p">,</span><span class="n">]</span> <span class="c1">#find rows that do not (! = not) occupy the training data indices</span>
 
 <span class="nf">dim</span><span class="p">(</span><span class="n">Smarket.2005_test</span><span class="p">)</span> <span class="c1">#get dimensions of the test data </span>
 
@@ -1115,7 +1167,7 @@ $<span class="math notranslate nohighlight">\( y_{direction} = \beta_0 + \beta_1
 <span class="c1"># Predict the 2005 performance from the model trained on the pre-2005 data</span>
 <span class="n">glm.probs</span><span class="o">=</span><span class="nf">predict</span><span class="p">(</span><span class="n">glm.fit</span><span class="p">,</span> <span class="n">Smarket.2005_test</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
 <span class="n">glm.pred</span><span class="o">=</span><span class="nf">rep</span><span class="p">(</span><span class="s">&quot;Down&quot;</span><span class="p">,</span><span class="nf">nrow</span><span class="p">(</span><span class="n">Smarket.2005_test</span><span class="p">))</span> <span class="c1"># There are only 252 observations in the test set.</span>
-<span class="n">glm.pred</span><span class="p">[</span><span class="n">glm.probs</span><span class="o">&gt;</span><span class="m">0.5</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;Up&quot;</span> <span class="c1">#binarize the result</span>
+<span class="n">glm.pred[glm.probs</span><span class="o">&gt;</span><span class="m">0.5</span><span class="n">]</span><span class="o">=</span><span class="s">&quot;Up&quot;</span> <span class="c1">#binarize the result</span>
 
 
 <span class="n">confusion_df</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">glm.pred</span><span class="p">,</span> <span class="n">Direction.2005_test</span><span class="p">)</span> <span class="c1">#create confusion df</span>
@@ -1253,7 +1305,7 @@ lda.class Down  Up
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show the relationship between the Lag 1 variable </span>
 <span class="c1"># and the posterior probability from LDA</span>
 
-<span class="n">lag1_posterior_df</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">Smarket.2005_test</span><span class="o">$</span><span class="n">Lag1</span><span class="p">,</span> <span class="n">lda.pred</span><span class="o">$</span><span class="n">posterior</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span>
+<span class="n">lag1_posterior_df</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">Smarket.2005_test</span><span class="o">$</span><span class="n">Lag1</span><span class="p">,</span> <span class="n">lda.pred</span><span class="o">$</span><span class="n">posterior[</span><span class="p">,</span><span class="m">1</span><span class="n">]</span><span class="p">)</span>
 <span class="nf">colnames</span><span class="p">(</span><span class="n">lag1_posterior_df</span><span class="p">)</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;lag1_return&#39;</span><span class="p">,</span> <span class="s">&#39;down_posterior_prob&#39;</span><span class="p">)</span>
 
 <span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">lag1_posterior_df</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">lag1_return</span><span class="p">,</span> <span class="n">down_posterior_prob</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span> <span class="nf">xlab</span><span class="p">(</span><span class="s">&#39;Return from one day ago&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="nf">ylab</span><span class="p">(</span><span class="s">&#39;Posterior probability of the stock going down&#39;</span><span class="p">)</span>
@@ -1272,12 +1324,12 @@ lda.class Down  Up
 <p>Remember that QDA is a special case of LDA where you do not assume that the underlying distributions have equal variances. So let’s use QDA for the same problem we have been working on so far. First off, let’s check how the distributions of <code class="docutils literal notranslate"><span class="pre">Lag1</span></code> and <code class="docutils literal notranslate"><span class="pre">Lag2</span></code> look in the case of <code class="docutils literal notranslate"><span class="pre">Direction=&quot;Up&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">Direction=&quot;Down&quot;</span></code>. This will help us think about whether QDA might be a better tool than LDA for our question.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">Smarket</span><span class="p">[</span><span class="n">train_idx</span><span class="p">,],</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Lag1</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Lag2</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span> <span class="nf">facet_grid</span><span class="p">(</span><span class="n">.</span><span class="o">~</span><span class="n">Direction</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">Smarket[train_idx</span><span class="p">,</span><span class="n">]</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Lag1</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Lag2</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span> <span class="nf">facet_grid</span><span class="p">(</span><span class="n">.~Direction</span><span class="p">)</span>
 
 <span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Covariance of Lag1, Lag2 for Up observations:&quot;</span><span class="p">,</span>
-  <span class="nf">cov</span><span class="p">(</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Lag1</span><span class="p">[</span><span class="n">train_idx</span><span class="p">][</span><span class="nf">which</span><span class="p">(</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Direction</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span><span class="o">==</span><span class="s">&quot;Up&quot;</span><span class="p">)],</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Lag2</span><span class="p">[</span><span class="n">train_idx</span><span class="p">][</span><span class="nf">which</span><span class="p">(</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Direction</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span><span class="o">==</span><span class="s">&quot;Up&quot;</span><span class="p">)])))</span>
+  <span class="nf">cov</span><span class="p">(</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Lag1[train_idx]</span><span class="nf">[which</span><span class="p">(</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Direction[train_idx]</span><span class="o">==</span><span class="s">&quot;Up&quot;</span><span class="p">)</span><span class="n">]</span><span class="p">,</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Lag2[train_idx]</span><span class="nf">[which</span><span class="p">(</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Direction[train_idx]</span><span class="o">==</span><span class="s">&quot;Up&quot;</span><span class="p">)</span><span class="n">]</span><span class="p">)))</span>
 <span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Covariance of Lag1, Lag2 for Down observations:&quot;</span><span class="p">,</span>
-  <span class="nf">cov</span><span class="p">(</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Lag1</span><span class="p">[</span><span class="n">train_idx</span><span class="p">][</span><span class="nf">which</span><span class="p">(</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Direction</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span><span class="o">==</span><span class="s">&quot;Down&quot;</span><span class="p">)],</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Lag2</span><span class="p">[</span><span class="n">train_idx</span><span class="p">][</span><span class="nf">which</span><span class="p">(</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Direction</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span><span class="o">==</span><span class="s">&quot;Down&quot;</span><span class="p">)])))</span>
+  <span class="nf">cov</span><span class="p">(</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Lag1[train_idx]</span><span class="nf">[which</span><span class="p">(</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Direction[train_idx]</span><span class="o">==</span><span class="s">&quot;Down&quot;</span><span class="p">)</span><span class="n">]</span><span class="p">,</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Lag2[train_idx]</span><span class="nf">[which</span><span class="p">(</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Direction[train_idx]</span><span class="o">==</span><span class="s">&quot;Down&quot;</span><span class="p">)</span><span class="n">]</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -1356,8 +1408,8 @@ qda.class Down  Up
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="../lectures/classifiers.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1374,19 +1426,17 @@ qda.class Down  Up
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
-        
-            &copy; Copyright 2022.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
 </main>
 
 

@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -684,7 +684,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -724,7 +724,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -766,7 +766,52 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Principal component methods</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Principal component methods
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goals">
+     Goals:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#principal-component-analysis-the-big-picture">
+   Principal component analysis: the big picture
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#principal-component-regression">
+   Principal component regression
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#partial-least-squares">
+   Partial least squares
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="principal-component-methods">
@@ -815,7 +860,7 @@
 <p>First, let’s convince ourselves that there is some redundant information in this data set. How correlated are the four quantitative variables?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">cor</span><span class="p">(</span><span class="n">iris</span><span class="p">[,</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">])</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">cor</span><span class="p">(</span><span class="n">iris[</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="n">]</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -853,7 +898,7 @@
 <p>How can we decrease the dimensionality of this data from 4 variables to 2 without losing too much information? We’ll use the <code class="docutils literal notranslate"><span class="pre">prcomp()</span></code> function to do this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">iris.pca</span> <span class="o">&lt;-</span> <span class="nf">prcomp</span><span class="p">(</span><span class="n">iris</span><span class="p">[,</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">],</span><span class="n">scale.</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span> 
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">iris.pca</span> <span class="o">&lt;-</span> <span class="nf">prcomp</span><span class="p">(</span><span class="n">iris[</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="n">]</span><span class="p">,</span><span class="n">scale.</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span> 
 <span class="c1"># ^^ &quot;scale.&quot; just indicates that all variables should be scaled before PCA is applied, so that units don&#39;t matter</span>
 </pre></div>
 </div>
@@ -924,7 +969,7 @@
 <p>Finally, let’s look at how well we can visualize the species clusters using PC1 and PC2, instead of our original variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">PC1</span><span class="o">=</span><span class="n">iris.pca</span><span class="o">$</span><span class="n">x</span><span class="p">[,</span><span class="m">1</span><span class="p">],</span><span class="n">PC2</span><span class="o">=</span><span class="n">iris.pca</span><span class="o">$</span><span class="n">x</span><span class="p">[,</span><span class="m">2</span><span class="p">],</span><span class="n">Species</span><span class="o">=</span><span class="n">iris</span><span class="o">$</span><span class="n">Species</span><span class="p">),</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">PC1</span><span class="o">=</span><span class="n">iris.pca</span><span class="o">$</span><span class="n">x[</span><span class="p">,</span><span class="m">1</span><span class="n">]</span><span class="p">,</span><span class="n">PC2</span><span class="o">=</span><span class="n">iris.pca</span><span class="o">$</span><span class="n">x[</span><span class="p">,</span><span class="m">2</span><span class="n">]</span><span class="p">,</span><span class="n">Species</span><span class="o">=</span><span class="n">iris</span><span class="o">$</span><span class="n">Species</span><span class="p">),</span>
         <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">PC1</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">PC2</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">Species</span><span class="p">))</span> <span class="o">+</span> 
     <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span> 
     <span class="nf">theme_light</span><span class="p">()</span>
@@ -957,7 +1002,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
-<span class="n">pcr.fit</span><span class="o">=</span><span class="nf">pcr</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">hit.dat</span> <span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">validation</span> <span class="o">=</span><span class="s">&quot;CV&quot;</span><span class="p">)</span>
+<span class="n">pcr.fit</span><span class="o">=</span><span class="nf">pcr</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.,</span> <span class="n">data</span><span class="o">=</span><span class="n">hit.dat</span> <span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">validation</span> <span class="o">=</span><span class="s">&quot;CV&quot;</span><span class="p">)</span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">pcr.fit</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1013,15 +1058,15 @@ Salary     53.01     53.85     54.61     54.61
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
 <span class="n">train</span><span class="o">=</span><span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">hit.dat</span><span class="p">),</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">hit.dat</span><span class="p">)</span><span class="o">/</span><span class="m">2</span><span class="p">)</span> <span class="c1"># Identify train observations</span>
 <span class="n">test</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">train</span><span class="p">)</span> <span class="c1"># Identify test observations</span>
-<span class="n">y.test</span><span class="o">=</span><span class="n">hit.dat</span><span class="o">$</span><span class="n">Salary</span><span class="p">[</span><span class="n">test</span><span class="p">]</span> <span class="c1"># Identify test dependent variable values</span>
-<span class="n">x.test</span><span class="o">=</span><span class="nf">select</span><span class="p">(</span><span class="n">hit.dat</span><span class="p">,</span><span class="o">-</span><span class="n">Salary</span><span class="p">)[</span><span class="n">test</span><span class="p">,]</span> <span class="c1"># Identify test independent variable values</span>
+<span class="n">y.test</span><span class="o">=</span><span class="n">hit.dat</span><span class="o">$</span><span class="n">Salary[test]</span> <span class="c1"># Identify test dependent variable values</span>
+<span class="n">x.test</span><span class="o">=</span><span class="nf">select</span><span class="p">(</span><span class="n">hit.dat</span><span class="p">,</span><span class="o">-</span><span class="n">Salary</span><span class="p">)</span><span class="n">[test</span><span class="p">,</span><span class="n">]</span> <span class="c1"># Identify test independent variable values</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pcr.fit</span><span class="o">=</span><span class="nf">pcr</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">hit.dat</span><span class="p">,</span><span class="n">subset</span><span class="o">=</span><span class="n">train</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">validation</span> <span class="o">=</span><span class="s">&quot;CV&quot;</span><span class="p">)</span> <span class="c1"># Run cross-validated PCR fit on training set</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pcr.fit</span><span class="o">=</span><span class="nf">pcr</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.,</span> <span class="n">data</span><span class="o">=</span><span class="n">hit.dat</span><span class="p">,</span><span class="n">subset</span><span class="o">=</span><span class="n">train</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">validation</span> <span class="o">=</span><span class="s">&quot;CV&quot;</span><span class="p">)</span> <span class="c1"># Run cross-validated PCR fit on training set</span>
 <span class="nf">validationplot</span><span class="p">(</span><span class="n">pcr.fit</span><span class="p">,</span><span class="n">val.type</span><span class="o">=</span><span class="s">&quot;MSEP&quot;</span><span class="p">)</span> <span class="c1"># plot CV MSE for num of PCs</span>
 </pre></div>
 </div>
@@ -1035,7 +1080,7 @@ Salary     53.01     53.85     54.61     54.61
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate prediction error on test set </span>
 <span class="n">pcr.pred</span><span class="o">=</span><span class="nf">predict</span><span class="p">(</span><span class="n">pcr.fit</span><span class="p">,</span><span class="n">x.test</span><span class="p">,</span><span class="n">ncomp</span><span class="o">=</span><span class="m">5</span><span class="p">)</span>
-<span class="nf">mean</span><span class="p">((</span><span class="n">pcr.pred</span><span class="o">-</span><span class="n">y.test</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
+<span class="nf">mean</span><span class="p">((</span><span class="n">pcr.pred</span><span class="o">-</span><span class="n">y.test</span><span class="p">)</span><span class="n">^2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1045,7 +1090,7 @@ Salary     53.01     53.85     54.61     54.61
 <p>Now that we’ve got a good model selected (with M = 7 principal components), let’s fit it to the whole dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pcr.fit</span> <span class="o">=</span> <span class="nf">pcr</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">hit.dat</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">ncomp</span><span class="o">=</span><span class="m">5</span><span class="p">)</span> <span class="c1"># fit PCR to the full data set using our selected number of PCs, M = 5</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pcr.fit</span> <span class="o">=</span> <span class="nf">pcr</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.,</span> <span class="n">data</span><span class="o">=</span><span class="n">hit.dat</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">ncomp</span><span class="o">=</span><span class="m">5</span><span class="p">)</span> <span class="c1"># fit PCR to the full data set using our selected number of PCs, M = 5</span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">pcr.fit</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1071,7 +1116,7 @@ Salary    40.63    41.58    42.17    43.22    44.90
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
-<span class="n">pls.fit</span> <span class="o">&lt;-</span> <span class="nf">plsr</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">hit.dat</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">validation</span><span class="o">=</span><span class="s">&quot;CV&quot;</span><span class="p">)</span>
+<span class="n">pls.fit</span> <span class="o">&lt;-</span> <span class="nf">plsr</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.,data</span> <span class="o">=</span> <span class="n">hit.dat</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">validation</span><span class="o">=</span><span class="s">&quot;CV&quot;</span><span class="p">)</span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">pls.fit</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1112,7 +1157,7 @@ Salary     58.17     58.49     58.56     58.62
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pls.pred</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">pls.fit</span><span class="p">,</span><span class="n">x.test</span><span class="p">,</span><span class="n">ncomp</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
-<span class="nf">mean</span><span class="p">((</span><span class="n">pls.pred</span> <span class="o">-</span> <span class="n">y.test</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
+<span class="nf">mean</span><span class="p">((</span><span class="n">pls.pred</span> <span class="o">-</span> <span class="n">y.test</span><span class="p">)</span><span class="n">^2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1122,7 +1167,7 @@ Salary     58.17     58.49     58.56     58.62
 <p>This is higher than the test error we got using 5 principal components in the PCR example above, but still comparable. Now let’s look at PLS for the full data set, using M = 1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pls.fit</span> <span class="o">=</span> <span class="nf">plsr</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">hit.dat</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="n">ncomp</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pls.fit</span> <span class="o">=</span> <span class="nf">plsr</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.,data</span><span class="o">=</span><span class="n">hit.dat</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="n">ncomp</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">pls.fit</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1166,8 +1211,8 @@ Salary    43.05
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="../lectures/principal-component-methods.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1184,19 +1229,17 @@ Salary    43.05
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
-        
-            &copy; Copyright 2022.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
 </main>
 
 
