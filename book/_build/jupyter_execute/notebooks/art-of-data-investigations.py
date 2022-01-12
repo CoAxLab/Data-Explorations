@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Art of data investigations
+# # Tutorial: Getting started
 # 
-# Welcome to you first tutorial for Data Science for Psychology and Neuroscience! This first tutorial will get help you get set up using R and Jupyter notebooks. All coding for this class will be done in R, and you will submit all homeworks as Jupyter notebooks. 
+# Welcome to you first tutorial for Data Science for Psychology and Neuroscience! This tutorial will get help you get set up using R and Jupyter notebooks. All coding for this class will be done in R, and you will submit all homeworks as Jupyter notebooks. 
 # 
 # ## Goals:
 # * Learn how to set up and begin to use R and RStudio

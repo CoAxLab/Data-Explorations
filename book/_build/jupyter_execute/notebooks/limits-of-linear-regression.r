@@ -104,7 +104,8 @@ summary(lm.fit_new)
 rm(list=ls())
 
 # Next load the car package for this
-# install.packages("car") #Uncomment if you haven't already installed the package
+install.packages("car") #Uncomment if you haven't already installed the package
+library(ISLR)
 
 # Look at the Carseats dataset
 # help(Carseats) # Uncomment to view documentation

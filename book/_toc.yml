@@ -4,7 +4,7 @@ root: intro
 parts:
   - caption: Phase 1 - Assessing the scene
     chapters:
-    - file: lectures/art-of-data-investigations
+    - file: lectures/video-test-1.ipynb
       sections:
       - file: notebooks/art-of-data-investigations
     - file: lectures/the-value-of-openness
