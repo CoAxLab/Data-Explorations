@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -686,7 +686,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -726,7 +726,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -790,7 +790,74 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>The beauty of kNN</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   The beauty of kNN
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goals">
+     Goals:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-nearest-neighbors-an-intro">
+   K-Nearest Neighbors: an intro
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classifying-irises">
+     Classifying irises
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#identifying-test-items">
+     Identifying test items
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#predicting-the-species-using-knn">
+     Predicting the species using kNN
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assessing-knn-performance">
+     Assessing kNN performance
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#varying-k">
+     Varying k
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#standardizing-data">
+     Standardizing data
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="the-beauty-of-knn">
@@ -851,7 +918,7 @@
 <span class="n">test.inds</span> <span class="o">&lt;-</span> <span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">dat</span><span class="p">),</span><span class="m">30</span><span class="p">)</span>
 <span class="n">dat</span><span class="o">$</span><span class="n">is.test</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span> <span class="o">%in%</span> <span class="n">test.inds</span> <span class="c1"># TRUE/FALSE indicator for whether each observation is a test item or not. </span>
 <span class="nf">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">Species</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">2</span><span class="p">)</span> <span class="o">+</span> <span class="c1"># plot all the data, colored by species</span>
-  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dat</span><span class="p">[</span><span class="n">test.inds</span><span class="p">,],</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">),</span><span class="n">size</span><span class="o">=</span><span class="m">4</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="n">shape</span><span class="o">=</span><span class="s">&quot;o&quot;</span><span class="p">)</span> <span class="c1"># circle the test items. </span>
+  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dat[test.inds</span><span class="p">,</span><span class="n">]</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">),</span><span class="n">size</span><span class="o">=</span><span class="m">4</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="n">shape</span><span class="o">=</span><span class="s">&quot;o&quot;</span><span class="p">)</span> <span class="c1"># circle the test items. </span>
 </pre></div>
 </div>
 </div>
@@ -867,11 +934,11 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">class</span><span class="p">)</span>
-<span class="n">train.preds</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Petal.Length</span><span class="p">[</span><span class="o">-</span><span class="n">test.inds</span><span class="p">],</span><span class="n">dat</span><span class="o">$</span><span class="n">Sepal.Length</span><span class="p">[</span><span class="o">-</span><span class="n">test.inds</span><span class="p">])</span>
-<span class="n">test.preds</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Petal.Length</span><span class="p">[</span><span class="n">test.inds</span><span class="p">],</span><span class="n">dat</span><span class="o">$</span><span class="n">Sepal.Length</span><span class="p">[</span><span class="n">test.inds</span><span class="p">])</span>
-<span class="n">train.spec</span> <span class="o">&lt;-</span> <span class="n">dat</span><span class="o">$</span><span class="n">Species</span><span class="p">[</span><span class="o">-</span><span class="n">test.inds</span><span class="p">]</span>
+<span class="n">train.preds</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Petal.Length[</span><span class="o">-</span><span class="n">test.inds]</span><span class="p">,</span><span class="n">dat</span><span class="o">$</span><span class="n">Sepal.Length[</span><span class="o">-</span><span class="n">test.inds]</span><span class="p">)</span>
+<span class="n">test.preds</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Petal.Length[test.inds]</span><span class="p">,</span><span class="n">dat</span><span class="o">$</span><span class="n">Sepal.Length[test.inds]</span><span class="p">)</span>
+<span class="n">train.spec</span> <span class="o">&lt;-</span> <span class="n">dat</span><span class="o">$</span><span class="n">Species[</span><span class="o">-</span><span class="n">test.inds]</span>
 <span class="n">test.spec.knn</span> <span class="o">&lt;-</span> <span class="nf">knn</span><span class="p">(</span><span class="n">train.preds</span><span class="p">,</span><span class="n">test.preds</span><span class="p">,</span><span class="n">train.spec</span><span class="p">,</span><span class="m">5</span><span class="p">)</span>
-<span class="n">test.spec.knn</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">]</span>
+<span class="n">test.spec.knn[1</span><span class="o">:</span><span class="m">10</span><span class="n">]</span>
 </pre></div>
 </div>
 </div>
@@ -902,11 +969,11 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span><span class="o">$</span><span class="n">Species_pred</span> <span class="o">&lt;-</span> <span class="n">dat</span><span class="o">$</span><span class="n">Species</span> <span class="c1"># new variable for each observation&#39;s predicted species. </span>
-<span class="n">dat</span><span class="o">$</span><span class="n">Species_pred</span><span class="p">[</span><span class="n">test.inds</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="n">test.spec.knn</span> <span class="c1"># add the KNN predictions for test obs to dataset.</span>
+<span class="n">dat</span><span class="o">$</span><span class="n">Species_pred[test.inds]</span> <span class="o">&lt;-</span> <span class="n">test.spec.knn</span> <span class="c1"># add the KNN predictions for test obs to dataset.</span>
 <span class="n">dat</span><span class="o">$</span><span class="n">KNN_correct</span> <span class="o">&lt;-</span> <span class="n">dat</span><span class="o">$</span><span class="n">Species</span> <span class="o">==</span> <span class="n">dat</span><span class="o">$</span><span class="n">Species_pred</span>
 <span class="nf">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">Species</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">shape</span><span class="o">=</span><span class="s">&quot;o&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="c1"># Base layer to show training points</span>
-  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dat</span><span class="p">[</span><span class="n">test.inds</span><span class="p">,],</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">Species_pred</span><span class="p">))</span> <span class="o">+</span> <span class="c1"># Next layer shows test points&#39; KNN classifications</span>
-  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dat</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="o">!</span><span class="n">dat</span><span class="o">$</span><span class="n">KNN_correct</span><span class="p">),],</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">),</span><span class="n">shape</span><span class="o">=</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">4</span><span class="p">)</span> <span class="o">+</span> <span class="c1"># draw &quot;x&quot; over wrong ones. </span>
+  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dat[test.inds</span><span class="p">,</span><span class="n">]</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">Species_pred</span><span class="p">))</span> <span class="o">+</span> <span class="c1"># Next layer shows test points&#39; KNN classifications</span>
+  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dat</span><span class="nf">[which</span><span class="p">(</span><span class="o">!</span><span class="n">dat</span><span class="o">$</span><span class="n">KNN_correct</span><span class="p">),</span><span class="n">]</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">),</span><span class="n">shape</span><span class="o">=</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">4</span><span class="p">)</span> <span class="o">+</span> <span class="c1"># draw &quot;x&quot; over wrong ones. </span>
   <span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;k=5&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -920,7 +987,7 @@
 <p>We can also visualize our results as a confusion matrix, like we did in the previous tutorial on other classifier methods:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">confusion_df</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">predicted</span> <span class="o">=</span> <span class="n">test.spec.knn</span><span class="p">,</span><span class="n">actual</span> <span class="o">=</span> <span class="n">dat</span><span class="o">$</span><span class="n">Species</span><span class="p">[</span><span class="n">test.inds</span><span class="p">])</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">confusion_df</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">predicted</span> <span class="o">=</span> <span class="n">test.spec.knn</span><span class="p">,</span><span class="n">actual</span> <span class="o">=</span> <span class="n">dat</span><span class="o">$</span><span class="n">Species[test.inds]</span><span class="p">)</span>
 <span class="nf">table</span><span class="p">(</span><span class="n">confusion_df</span><span class="p">)</span>
 <span class="nf">print</span><span class="p">(</span><span class="s">&quot;---&quot;</span><span class="p">)</span>
 <span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Accuracy:&quot;</span><span class="p">,</span><span class="nf">mean</span><span class="p">(</span><span class="n">confusion_df</span><span class="o">$</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">confusion_df</span><span class="o">$</span><span class="n">actual</span><span class="p">)))</span>
@@ -950,8 +1017,8 @@ predicted    setosa versicolor virginica
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span><span class="o">$</span><span class="n">Species_predK1</span> <span class="o">&lt;-</span> <span class="n">dat</span><span class="o">$</span><span class="n">Species</span>
 <span class="n">dat</span><span class="o">$</span><span class="n">Species_predK100</span> <span class="o">&lt;-</span> <span class="n">dat</span><span class="o">$</span><span class="n">Species</span>
-<span class="n">dat</span><span class="o">$</span><span class="n">Species_predK1</span><span class="p">[</span><span class="n">test.inds</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">knn</span><span class="p">(</span><span class="n">train.preds</span><span class="p">,</span><span class="n">test.preds</span><span class="p">,</span><span class="n">train.spec</span><span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
-<span class="n">dat</span><span class="o">$</span><span class="n">Species_predK100</span><span class="p">[</span><span class="n">test.inds</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">knn</span><span class="p">(</span><span class="n">train.preds</span><span class="p">,</span><span class="n">test.preds</span><span class="p">,</span><span class="n">train.spec</span><span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
+<span class="n">dat</span><span class="o">$</span><span class="n">Species_predK1[test.inds]</span> <span class="o">&lt;-</span> <span class="nf">knn</span><span class="p">(</span><span class="n">train.preds</span><span class="p">,</span><span class="n">test.preds</span><span class="p">,</span><span class="n">train.spec</span><span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+<span class="n">dat</span><span class="o">$</span><span class="n">Species_predK100[test.inds]</span> <span class="o">&lt;-</span> <span class="nf">knn</span><span class="p">(</span><span class="n">train.preds</span><span class="p">,</span><span class="n">test.preds</span><span class="p">,</span><span class="n">train.spec</span><span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -961,8 +1028,8 @@ predicted    setosa versicolor virginica
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span><span class="o">$</span><span class="n">KNN_correct</span> <span class="o">&lt;-</span> <span class="n">dat</span><span class="o">$</span><span class="n">Species</span> <span class="o">==</span> <span class="n">dat</span><span class="o">$</span><span class="n">Species_predK1</span>
 <span class="nf">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">Species</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">shape</span><span class="o">=</span><span class="s">&quot;o&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="c1"># Base layer to show training points</span>
-  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dat</span><span class="p">[</span><span class="n">test.inds</span><span class="p">,],</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">Species_predK1</span><span class="p">))</span> <span class="o">+</span> <span class="c1"># Next layer shows test points&#39; KNN classifications</span>
-  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dat</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="o">!</span><span class="n">dat</span><span class="o">$</span><span class="n">KNN_correct</span><span class="p">),],</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">),</span><span class="n">shape</span><span class="o">=</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">4</span><span class="p">)</span> <span class="o">+</span> <span class="c1"># draw &quot;x&quot; over wrong ones. </span>
+  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dat[test.inds</span><span class="p">,</span><span class="n">]</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">Species_predK1</span><span class="p">))</span> <span class="o">+</span> <span class="c1"># Next layer shows test points&#39; KNN classifications</span>
+  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dat</span><span class="nf">[which</span><span class="p">(</span><span class="o">!</span><span class="n">dat</span><span class="o">$</span><span class="n">KNN_correct</span><span class="p">),</span><span class="n">]</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">),</span><span class="n">shape</span><span class="o">=</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">4</span><span class="p">)</span> <span class="o">+</span> <span class="c1"># draw &quot;x&quot; over wrong ones. </span>
   <span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;k=1&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -977,12 +1044,12 @@ predicted    setosa versicolor virginica
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span><span class="o">$</span><span class="n">KNN_correct</span> <span class="o">&lt;-</span> <span class="n">dat</span><span class="o">$</span><span class="n">Species</span> <span class="o">==</span> <span class="n">dat</span><span class="o">$</span><span class="n">Species_predK100</span>
 <span class="nf">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">Species</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">shape</span><span class="o">=</span><span class="s">&quot;o&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="c1"># Base layer to show training points</span>
-  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dat</span><span class="p">[</span><span class="n">test.inds</span><span class="p">,],</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">Species_predK100</span><span class="p">))</span> <span class="o">+</span> <span class="c1"># Next layer shows test points&#39; KNN classifications</span>
-  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dat</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="o">!</span><span class="n">dat</span><span class="o">$</span><span class="n">KNN_correct</span><span class="p">),],</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">),</span><span class="n">shape</span><span class="o">=</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">4</span><span class="p">)</span> <span class="o">+</span> <span class="c1"># draw &quot;x&quot; over wrong ones. </span>
+  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dat[test.inds</span><span class="p">,</span><span class="n">]</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">Species_predK100</span><span class="p">))</span> <span class="o">+</span> <span class="c1"># Next layer shows test points&#39; KNN classifications</span>
+  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dat</span><span class="nf">[which</span><span class="p">(</span><span class="o">!</span><span class="n">dat</span><span class="o">$</span><span class="n">KNN_correct</span><span class="p">),</span><span class="n">]</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">),</span><span class="n">shape</span><span class="o">=</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">4</span><span class="p">)</span> <span class="o">+</span> <span class="c1"># draw &quot;x&quot; over wrong ones. </span>
   <span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;k=100&quot;</span><span class="p">)</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Accuracy:&quot;</span><span class="p">,</span><span class="nf">sum</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">KNN_correct</span><span class="p">[</span><span class="n">test.inds</span><span class="p">])</span><span class="o">/</span><span class="nf">length</span><span class="p">(</span><span class="n">test.inds</span><span class="p">)))</span>
-<span class="nf">print</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Species</span><span class="p">[</span><span class="o">-</span><span class="n">test.inds</span><span class="p">]</span><span class="o">==</span><span class="s">&quot;setosa&quot;</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Accuracy:&quot;</span><span class="p">,</span><span class="nf">sum</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">KNN_correct[test.inds]</span><span class="p">)</span><span class="o">/</span><span class="nf">length</span><span class="p">(</span><span class="n">test.inds</span><span class="p">)))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Species[</span><span class="o">-</span><span class="n">test.inds]</span><span class="o">==</span><span class="s">&quot;setosa&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1003,7 +1070,7 @@ predicted    setosa versicolor virginica
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;ISLR&quot;</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">ISLR</span><span class="p">)</span>
-<span class="nf">head</span><span class="p">(</span><span class="n">Caravan</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span><span class="m">86</span><span class="p">)])</span> <span class="c1"># column 86 is whether or not they purchased Caravan insurance</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">Caravan[</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span><span class="m">86</span><span class="p">)</span><span class="n">]</span><span class="p">)</span> <span class="c1"># column 86 is whether or not they purchased Caravan insurance</span>
 <span class="nf">print</span><span class="p">(</span><span class="nf">unique</span><span class="p">(</span><span class="n">Caravan</span><span class="o">$</span><span class="n">ABYSTAND</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -1036,8 +1103,8 @@ predicted    setosa versicolor virginica
 <p>Here’s the thing: some of these variables describe salary (in thousands of dollars) and others describe age (in years). Because a lot of different units of measurement are used, the variances of these variables are vastly different from each other.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;variance of first variable:&quot;</span><span class="p">,</span><span class="nf">var</span><span class="p">(</span><span class="n">Caravan</span><span class="p">[,</span><span class="m">1</span><span class="p">])))</span>
-<span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;variance of second variable:&quot;</span><span class="p">,</span><span class="nf">var</span><span class="p">(</span><span class="n">Caravan</span><span class="p">[,</span><span class="m">2</span><span class="p">])))</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;variance of first variable:&quot;</span><span class="p">,</span><span class="nf">var</span><span class="p">(</span><span class="n">Caravan[</span><span class="p">,</span><span class="m">1</span><span class="n">]</span><span class="p">)))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;variance of second variable:&quot;</span><span class="p">,</span><span class="nf">var</span><span class="p">(</span><span class="n">Caravan[</span><span class="p">,</span><span class="m">2</span><span class="n">]</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -1051,13 +1118,13 @@ predicted    setosa versicolor virginica
 <p>Since KNN is based on calculations of distance, we need to <strong>standardize</strong> these variables so that KNN doesn’t think, for example, that a difference measured in minutes is more important than a difference measured in years. Now let’s train KNN, using <code class="docutils literal notranslate"><span class="pre">k=100</span></code> since this is a large dataset (Note: we’ll talk about better ways to select proper k-values soon).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">stand.X</span> <span class="o">&lt;-</span> <span class="nf">scale</span><span class="p">(</span><span class="n">Caravan</span><span class="p">[,</span><span class="m">-86</span><span class="p">])</span> <span class="c1"># 86 is the &quot;Purchased&quot; variable we will predict</span>
-<span class="nf">var</span><span class="p">(</span><span class="n">stand.X</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span> <span class="c1"># note that variance of all variables is now 1. </span>
-<span class="n">test.preds</span> <span class="o">&lt;-</span> <span class="n">stand.X</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">1000</span><span class="p">,]</span> <span class="c1"># our test predictor variables</span>
-<span class="n">train.preds</span> <span class="o">&lt;-</span> <span class="n">stand.X</span><span class="p">[</span><span class="m">1001</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">stand.X</span><span class="p">),]</span> <span class="c1"># train predictor variables</span>
-<span class="n">train.purch</span> <span class="o">&lt;-</span> <span class="n">Caravan</span><span class="p">[</span><span class="m">1001</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">Caravan</span><span class="p">),</span><span class="m">86</span><span class="p">]</span> <span class="c1"># classifications for training observations</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">stand.X</span> <span class="o">&lt;-</span> <span class="nf">scale</span><span class="p">(</span><span class="n">Caravan[</span><span class="p">,</span><span class="m">-86</span><span class="n">]</span><span class="p">)</span> <span class="c1"># 86 is the &quot;Purchased&quot; variable we will predict</span>
+<span class="nf">var</span><span class="p">(</span><span class="n">stand.X[</span><span class="p">,</span><span class="m">1</span><span class="n">]</span><span class="p">)</span> <span class="c1"># note that variance of all variables is now 1. </span>
+<span class="n">test.preds</span> <span class="o">&lt;-</span> <span class="n">stand.X[1</span><span class="o">:</span><span class="m">1000</span><span class="p">,</span><span class="n">]</span> <span class="c1"># our test predictor variables</span>
+<span class="n">train.preds</span> <span class="o">&lt;-</span> <span class="n">stand.X[1001</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">stand.X</span><span class="p">),</span><span class="n">]</span> <span class="c1"># train predictor variables</span>
+<span class="n">train.purch</span> <span class="o">&lt;-</span> <span class="n">Caravan[1001</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">Caravan</span><span class="p">),</span><span class="m">86</span><span class="n">]</span> <span class="c1"># classifications for training observations</span>
 <span class="n">test.purch.knn</span> <span class="o">&lt;-</span> <span class="nf">knn</span><span class="p">(</span><span class="n">train.preds</span><span class="p">,</span><span class="n">test.preds</span><span class="p">,</span><span class="n">train.purch</span><span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Accuracy:&quot;</span><span class="p">,</span><span class="nf">mean</span><span class="p">(</span><span class="n">test.purch.knn</span><span class="o">==</span><span class="n">Caravan</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">1000</span><span class="p">,</span><span class="m">86</span><span class="p">])))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Accuracy:&quot;</span><span class="p">,</span><span class="nf">mean</span><span class="p">(</span><span class="n">test.purch.knn</span><span class="o">==</span><span class="n">Caravan[1</span><span class="o">:</span><span class="m">1000</span><span class="p">,</span><span class="m">86</span><span class="n">]</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -1094,8 +1161,8 @@ predicted    setosa versicolor virginica
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="../lectures/the-beauty-of-knn.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1112,19 +1179,17 @@ predicted    setosa versicolor virginica
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
-        
-            &copy; Copyright 2022.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
 </main>
 
 
