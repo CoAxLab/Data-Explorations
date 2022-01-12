@@ -1,0 +1,1067 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mediation and moderation &#8212; Data explorations</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Discussion questions:" href="../discussions/mediation-and-moderation.html" />
+    <link rel="prev" title="Mediation and moderation" href="../lectures/mediation-and-moderation.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/brain.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data explorations</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Data explorations
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Phase 1 - Assessing the scene
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/art-of-data-investigations.html">
+   Art of data investigations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="art-of-data-investigations.html">
+     Tutorial: Getting started
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-value-of-openness.html">
+   The value of openness
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-value-of-openness.html">
+     The value of openness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-value-of-openness.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/what-is-a-theory.html">
+   What is a theory?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/what-is-a-theory.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/constructing-a-testable-hypothesis.html">
+   Constructing a testable hypothesis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/constructing-a-testable-hypothesis.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Phase 2 - Evaluating the evidence
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/data-as-objects-and-architectures.html">
+   Data as objects and architectures
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data-as-objects-and-architectures.html">
+     Data as objects and architectures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/data-as-objects-and-architectures.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/techniques-for-data-cleansing.html">
+   Techniques for data cleansing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="techniques-for-data-cleansing.html">
+     Techniques for data cleansing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/techniques-for-data-cleansing.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/visualization-as-analysis.html">
+   Visualization as analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="visualization-as-analysis.html">
+     Visualization as analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/visualization-as-analysis.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/a-visualization-vocabulary.html">
+   A visualization vocabulary
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/a-visualization-vocabulary.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/what-is-learnable.html">
+   What is learnable?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-bias-variance-tradeoff.html">
+   The bias-variance tradeoff
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-bias-variance-tradeoff.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/linear-models.html">
+   Linear models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="linear-models.html">
+     Linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/linear-models.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-ordinary-least-squares-solution.html">
+   The ordinary least squares solution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-ordinary-least-squares-solution.html">
+     The ordinary least squares solution
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-ordinary-least-squares-solution.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/limits-of-linear-regression.html">
+   Limits of linear regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="limits-of-linear-regression.html">
+     Limits of linear regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/limits-of-linear-regression.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/mixed-effects-models.html">
+   Mixed effects models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mixed-effects-models.html">
+     Mixed-effects models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/mixed-effects-models.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/classifiers.html">
+   Classifiers
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="classifiers.html">
+     Classifiers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/classifiers.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-beauty-of-knn.html">
+   The beauty of kNN
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-beauty-of-knn.html">
+     The beauty of kNN
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/cross-validation.html">
+   Cross validation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cross-validation.html">
+     Cross-validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/cross-validation.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/resampling-methods.html">
+   Resampling methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="resampling-methods.html">
+     Resampling methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/resampling-methods.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/power-analysis-via-simulations.html">
+   Power analysis via simulations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="power-analysis-via-simulations.html">
+     Power analysis via simulations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/power-analysis-via-simulations.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../lectures/mediation-and-moderation.html">
+   Mediation and moderation
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+  <label for="toctree-checkbox-20">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Mediation and moderation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/mediation-and-moderation.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/selecting-the-best-model.html">
+   Selecting the best model
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+  <label for="toctree-checkbox-21">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="selecting-the-best-model.html">
+     Selecting the best model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/selecting-the-best-model.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/regularized-regression.html">
+   Regularized regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="regularized-regression.html">
+     Regularized regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/regularized-regression.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/principal-component-methods.html">
+   The value of openness
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="principal-component-methods.html">
+     Principal component methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/principal-component-methods.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Phase 3 - Solving the mystery
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/reconsidering-the-p-value.html">
+   Reconsidering the p-value
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+  <label for="toctree-checkbox-24">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/reconsidering-the-p-value.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/bayes-factor-accepting-the-null.html">
+   Bayes factor: accepting the null
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+  <label for="toctree-checkbox-25">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bayes-factor-accepting-the-null.html">
+     Bayes factor: accepting the null
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/bayes-factor-accepting-the-null.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/telling-your-data-story.html">
+   Telling your data story
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+  <label for="toctree-checkbox-26">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/telling-your-data-story.html">
+     Discussion questions:
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/mediation-and-moderation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/notebooks/mediation-and-moderation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/notebooks/mediation-and-moderation.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Mediation and moderation
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goals">
+     Goals:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-difference-between-mediation-and-moderation">
+   The difference between mediation and moderation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mediation-in-r">
+   Mediation in R
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#moderation-in-r">
+   Moderation in R
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="mediation-and-moderation">
+<h1>Mediation and moderation<a class="headerlink" href="#mediation-and-moderation" title="Permalink to this headline">¶</a></h1>
+<p>This lab focuses on mediation and moderation and implementing these techniques in R.</p>
+<div class="section" id="goals">
+<h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Understand the difference between moderation and mediation.</p></li>
+<li><p>Learn how to detect mediation effects using the <code class="docutils literal notranslate"><span class="pre">mediate</span></code> function.</p></li>
+<li><p>Learn how to detect moderating effects.</p></li>
+</ul>
+<p>This tutorial draws from <a class="reference external" href="https://ademos.people.uic.edu/Chapter14.html">Chapter 14: Mediation and Moderation</a> in a collection of tutorials by psychology grad students at the University of Illinois at Chicago.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="tex2jax_ignore mathjax_ignore section" id="the-difference-between-mediation-and-moderation">
+<h1>The difference between mediation and moderation<a class="headerlink" href="#the-difference-between-mediation-and-moderation" title="Permalink to this headline">¶</a></h1>
+<p>First, let’s reiterate the difference between mediation and moderation.</p>
+<p>For an independent variable <span class="math notranslate nohighlight">\(X\)</span>, a dependent variable <span class="math notranslate nohighlight">\(Y\)</span> and a third variable <span class="math notranslate nohighlight">\(M_e\)</span>, <strong>mediation</strong> is when the value of <span class="math notranslate nohighlight">\(X\)</span> impacts the value of <span class="math notranslate nohighlight">\(M_e\)</span>, which in turn predicts the value of <span class="math notranslate nohighlight">\(Y\)</span>. Put differently, if <span class="math notranslate nohighlight">\(X\)</span> operates on <span class="math notranslate nohighlight">\(Y\)</span> through <span class="math notranslate nohighlight">\(M_e\)</span>, then <span class="math notranslate nohighlight">\(M_e\)</span> is a mediating variable: <span class="math notranslate nohighlight">\(X \rightarrow M_e \rightarrow Y\)</span></p>
+<p>A couple examples of mediation:</p>
+<ul class="simple">
+<li><p>For Spanish language learners who move from the U.S. to Spain, time since they moved to Spain (<span class="math notranslate nohighlight">\(X\)</span>) predicts ability to speak Spanish (<span class="math notranslate nohighlight">\(Y\)</span>) because they get more <em>practice</em> speaking and comprehending Spanish (<span class="math notranslate nohighlight">\(M_e\)</span>) the more time they spend there. <span class="math notranslate nohighlight">\(M_e\)</span> is an important mediator to note, because if you spend a long time in Spain without speaking or listening to Spanish, your Spanish skills will not improve. In this example, practice <em>mediates</em> the effect of time on ability.</p></li>
+<li><p>Maybe you’ve noticed that there are better discussions during lab meetings when you order pizza. This is probably because of the impact of pizza on both attendance and the mood of the attendees, and so both of these could be mediating variables between pizza and discussion quality.</p></li>
+</ul>
+<p>In contrast, <strong>moderation</strong> describes how a third variable <span class="math notranslate nohighlight">\(M_o\)</span> impacts the relationship between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>. Perhaps the relationship between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> is stronger when <span class="math notranslate nohighlight">\(M_o\)</span> is positive than when <span class="math notranslate nohighlight">\(M_o\)</span> is negative. Moderating variables basically contextualize the <span class="math notranslate nohighlight">\(X \rightarrow Y\)</span> relationship, instead of causing it like mediating variables do. Moderation is basically an interaction effect, where one of the independent variables is regarded as less important to the scientific question and is thus deemed a “moderator” instead of a “predictor”.</p>
+<p>A couple examples of moderation:</p>
+<ul class="simple">
+<li><p>The relationship between importance of a task (<span class="math notranslate nohighlight">\(X\)</span>) and testing anxiety (<span class="math notranslate nohighlight">\(Y\)</span>) is moderated by self-efficacy (<span class="math notranslate nohighlight">\(M_o\)</span>). Most students feel low anxiety for unimportant assignments, but those with low self-efficacy are more stressed during important exams than those with high self-efficacy. What’s key in this example is the interaction between self-efficacy and task importance: the relationship between task importance and anxiety varies for different levels of self efficacy, and the relationship between self efficacy and anxiety varies for different levels of task importance.</p></li>
+<li><p>The relationship between time of year and a person’s Vitamin D deficiency is moderated by location - in Boston, Vitamin D deficiency might peak in February; in Punta Arenas, Chile it might peak in September; and in a place that’s mostly sunny year-round like Florida the relationship between time of year and deficiency might be weak or nonexistent. <em>What would be a mediating variable between time of year and vitamin D deficiency?</em></p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="tex2jax_ignore mathjax_ignore section" id="mediation-in-r">
+<h1>Mediation in R<a class="headerlink" href="#mediation-in-r" title="Permalink to this headline">¶</a></h1>
+<p>Now let’s try finding evidence for mediation using R. We’ll use the <code class="docutils literal notranslate"><span class="pre">Cars93</span></code> dataset we’ve used in previous tutorials.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># install.packages(&quot;mediation&quot;) # uncomment to install the mediation package. </span>
+<span class="nf">library</span><span class="p">(</span><span class="n">mediation</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">MASS</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">Cars93</span><span class="p">)</span>
+<span class="c1"># ?mediate # uncomment to learn about the mediate function</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'Manufacturer'</li><li>'Model'</li><li>'Type'</li><li>'Min.Price'</li><li>'Price'</li><li>'Max.Price'</li><li>'MPG.city'</li><li>'MPG.highway'</li><li>'AirBags'</li><li>'DriveTrain'</li><li>'Cylinders'</li><li>'EngineSize'</li><li>'Horsepower'</li><li>'RPM'</li><li>'Rev.per.mile'</li><li>'Man.trans.avail'</li><li>'Fuel.tank.capacity'</li><li>'Passengers'</li><li>'Length'</li><li>'Wheelbase'</li><li>'Width'</li><li>'Turn.circle'</li><li>'Rear.seat.room'</li><li>'Luggage.room'</li><li>'Weight'</li><li>'Origin'</li><li>'Make'</li></ol>
+</div></div>
+</div>
+<p>The effect we’re interested in for this example is the relationship between <code class="docutils literal notranslate"><span class="pre">Passengers</span></code> (the max number of passengers the car model is designed to carry) and <code class="docutils literal notranslate"><span class="pre">MPG.highway</span></code> (the number of miles per gallon the car gets on the highway. Look at the model and visualization of this relationship below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">fitStart</span> <span class="o">&lt;-</span> <span class="nf">lm</span><span class="p">(</span><span class="n">MPG.highway</span> <span class="o">~</span> <span class="n">Passengers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Cars93</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">fitStart</span><span class="p">)</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">Cars93</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Passengers</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">MPG.highway</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span> <span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;lm&quot;</span><span class="p">,</span><span class="n">se</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
+lm(formula = MPG.highway ~ Passengers, data = Cars93)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-11.4720  -2.2919  -0.5052   1.7081  18.3147 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  41.2587     2.4697   16.71  &lt; 2e-16 ***
+Passengers   -2.3934     0.4759   -5.03 2.46e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 4.742 on 91 degrees of freedom
+Multiple R-squared:  0.2175,	Adjusted R-squared:  0.2089 
+F-statistic:  25.3 on 1 and 91 DF,  p-value: 2.456e-06
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="../_images/mediation-and-moderation_5_2.png" src="../_images/mediation-and-moderation_5_2.png" />
+</div>
+</div>
+<p>While it is not clear what’s going on with that 2-person vehicle in the bottom left, generally we can see that more passengers means worse mileage on the highway. But let’s take a minute to think about <em>why</em> that is. Cars that can hold more passengers tend to be bigger. I’m not a car person, but it makes sense heavier cars and cars with more air resistance would need to use more gas to maintain the same speed as lighter, more compact cars. Let’s just focus on weight in this example: is <code class="docutils literal notranslate"><span class="pre">Weight</span></code> a mediating variable between <code class="docutils literal notranslate"><span class="pre">Passengers</span></code> and <code class="docutils literal notranslate"><span class="pre">MPG.highway</span></code>? In other words, is weight the causal link between these two variables?</p>
+<p>The way we’ll answer this question is using the <code class="docutils literal notranslate"><span class="pre">mediate</span></code> function from the <code class="docutils literal notranslate"><span class="pre">mediation</span></code> package we installed above. The logic behind this analysis is as follows:</p>
+<ol class="simple">
+<li><p>If there’s a relationship between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(M_e\)</span></p></li>
+<li><p>And when you include both <span class="math notranslate nohighlight">\(M_e\)</span> and <span class="math notranslate nohighlight">\(X\)</span> in a model to predict <span class="math notranslate nohighlight">\(Y\)</span>, the effect of <span class="math notranslate nohighlight">\(X\)</span> on <span class="math notranslate nohighlight">\(Y\)</span> goes away</p></li>
+<li><p>Then the original effect of <span class="math notranslate nohighlight">\(X\)</span> on <span class="math notranslate nohighlight">\(Y\)</span> (which we showed above) must be mediated by <span class="math notranslate nohighlight">\(M_e\)</span>.</p></li>
+</ol>
+<p>The <code class="docutils literal notranslate"><span class="pre">mediate</span></code> function takes in models that capture steps 1 and 2 above, and outputs a conclusion regarding 3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">fitM</span> <span class="o">&lt;-</span> <span class="nf">lm</span><span class="p">(</span><span class="n">Weight</span> <span class="o">~</span> <span class="n">Passengers</span><span class="p">,</span>     <span class="n">data</span><span class="o">=</span><span class="n">Cars93</span><span class="p">)</span> <span class="c1">#Step 1: IV on M, Number of passengers predicting weight of car</span>
+<span class="n">fitY</span> <span class="o">&lt;-</span> <span class="nf">lm</span><span class="p">(</span><span class="n">MPG.highway</span> <span class="o">~</span> <span class="n">Weight</span> <span class="o">+</span> <span class="n">Passengers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Cars93</span><span class="p">)</span> <span class="c1">#Step 2: IV and M on DV, Number of passengers and weight predicting highway</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">fitM</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">fitY</span><span class="p">)</span>
+<span class="n">fitMed</span> <span class="o">&lt;-</span> <span class="nf">mediate</span><span class="p">(</span><span class="n">fitM</span><span class="p">,</span> <span class="n">fitY</span><span class="p">,</span> <span class="n">treat</span><span class="o">=</span><span class="s">&quot;Passengers&quot;</span><span class="p">,</span> <span class="n">mediator</span><span class="o">=</span><span class="s">&quot;Weight&quot;</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">fitMed</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
+lm(formula = Weight ~ Passengers, data = Cars93)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1036.75  -381.75    36.73   308.25  1276.51 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  1475.23     257.31   5.733 1.27e-07 ***
+Passengers    314.13      49.58   6.336 8.85e-09 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 494.1 on 91 degrees of freedom
+Multiple R-squared:  0.3061,	Adjusted R-squared:  0.2985 
+F-statistic: 40.14 on 1 and 91 DF,  p-value: 8.85e-09
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
+lm(formula = MPG.highway ~ Weight + Passengers, data = Cars93)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-7.7134 -1.8418 -0.0271  1.8858 11.5668 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 51.8777927  1.9165318  27.069   &lt;2e-16 ***
+Weight      -0.0071983  0.0006692 -10.756   &lt;2e-16 ***
+Passengers  -0.1321634  0.3799662  -0.348    0.729    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 3.154 on 90 degrees of freedom
+Multiple R-squared:  0.6576,	Adjusted R-squared:   0.65 
+F-statistic: 86.44 on 2 and 90 DF,  p-value: &lt; 2.2e-16
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Causal Mediation Analysis 
+
+Quasi-Bayesian Confidence Intervals
+
+               Estimate 95% CI Lower 95% CI Upper p-value    
+ACME             -2.246       -3.058        -1.44  &lt;2e-16 ***
+ADE              -0.135       -0.857         0.65    0.73    
+Total Effect     -2.382       -3.371        -1.43  &lt;2e-16 ***
+Prop. Mediated    0.942        0.688         1.36  &lt;2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Sample Size Used: 93 
+
+
+Simulations: 1000 
+</pre></div>
+</div>
+</div>
+</div>
+<p>The first model established that there was a significant relationship between <code class="docutils literal notranslate"><span class="pre">Weight</span></code> and <code class="docutils literal notranslate"><span class="pre">Passengers</span></code>. The second model established that when you include <code class="docutils literal notranslate"><span class="pre">Weight</span></code> in the model, <code class="docutils literal notranslate"><span class="pre">Passengers</span></code> is no longer a significant predictor of <code class="docutils literal notranslate"><span class="pre">MPG.highway</span></code>. The last one shows us that there is a strong mediating effect. <code class="docutils literal notranslate"><span class="pre">ACME</span></code> represents the mediating or indirect effect, which can be thought of as answering the question “Given this model, would I predict that <span class="math notranslate nohighlight">\(Y\)</span> would change significantly when I vary <span class="math notranslate nohighlight">\(M_e\)</span> but hold <span class="math notranslate nohighlight">\(X\)</span> constant?” <code class="docutils literal notranslate"><span class="pre">ADE</span></code> answers the opposite question, varying <span class="math notranslate nohighlight">\(X\)</span> while holding <span class="math notranslate nohighlight">\(M_e\)</span> constant (“direct effect”). The <code class="docutils literal notranslate"><span class="pre">Total</span> <span class="pre">Effect</span></code> combines the direct and indirect effects, and <code class="docutils literal notranslate"><span class="pre">Prop.</span> <span class="pre">Mediated</span></code> is the proportion of indirect effects relative to direct effects. The results above tell us that the relationship between <code class="docutils literal notranslate"><span class="pre">Passengers</span></code> and <code class="docutils literal notranslate"><span class="pre">MPG.highway</span></code> is entirely mediated by <code class="docutils literal notranslate"><span class="pre">Weight</span></code>.</p>
+<p><em>Note: the ouput above says “Simulations: 1000” at the bottom. There is a bootstrapping feature for the mediate function, and the default settings are <code class="docutils literal notranslate"><span class="pre">boot</span> <span class="pre">=</span> <span class="pre">FALSE</span></code> and <code class="docutils literal notranslate"><span class="pre">sims</span> <span class="pre">=</span> <span class="pre">1000</span></code>. Even though no bootstrapping was done in this example it still outputs the number of simulations it would have run, for some reason. If you’re interested, play around with the bootstrap functionality by setting <code class="docutils literal notranslate"><span class="pre">boot</span> <span class="pre">=</span> <span class="pre">TRUE</span></code> and see whether that impacts your results. Since this is a strong result, it probably won’t.</em></p>
+</div>
+<hr class="docutils" />
+<div class="tex2jax_ignore mathjax_ignore section" id="moderation-in-r">
+<h1>Moderation in R<a class="headerlink" href="#moderation-in-r" title="Permalink to this headline">¶</a></h1>
+<p>As discussed above, looking for moderation is basically the same as looking for an interaction. If the relationship between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> is moderated by <span class="math notranslate nohighlight">\(M_o\)</span>, then the interaction between <span class="math notranslate nohighlight">\(X\)</span> amd <span class="math notranslate nohighlight">\(M_o\)</span> should be significant. We can look at this using the simple <code class="docutils literal notranslate"><span class="pre">lm()</span></code> function.</p>
+<p>We’ll stick with the <code class="docutils literal notranslate"><span class="pre">Cars93</span></code> data set, and see if the relationship between <code class="docutils literal notranslate"><span class="pre">Weight</span></code> and <code class="docutils literal notranslate"><span class="pre">MPG.highway</span></code> is moderated by <code class="docutils literal notranslate"><span class="pre">Horsepower</span></code> - in other words, do cars with more powerful engines show a different relationship between <code class="docutils literal notranslate"><span class="pre">Weight</span></code> and <code class="docutils literal notranslate"><span class="pre">MPG.highway</span></code> than cars with less powerful engines do?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">fitMod</span> <span class="o">&lt;-</span> <span class="nf">lm</span><span class="p">(</span><span class="n">MPG.highway</span> <span class="o">~</span> <span class="n">Horsepower</span><span class="o">*</span><span class="n">Weight</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">Cars93</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">fitMod</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
+lm(formula = MPG.highway ~ Horsepower * Weight, data = Cars93)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-7.6537 -1.9269 -0.2388  1.9899 11.6858 
+
+Coefficients:
+                    Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)        6.551e+01  4.537e+00  14.440  &lt; 2e-16 ***
+Horsepower        -1.347e-01  3.955e-02  -3.406 0.000991 ***
+Weight            -1.132e-02  1.493e-03  -7.585 3.06e-11 ***
+Horsepower:Weight  3.822e-05  1.132e-05   3.377 0.001088 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 2.984 on 89 degrees of freedom
+Multiple R-squared:  0.6969,	Adjusted R-squared:  0.6867 
+F-statistic: 68.21 on 3 and 89 DF,  p-value: &lt; 2.2e-16
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since the <code class="docutils literal notranslate"><span class="pre">Horsepower:Weight</span></code> term is significant, there might be some moderation going on here! To understand the relationship better, let’s do a split-half visualization for cars with lower horsepower and cars with higher horsepower.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">medH</span> <span class="o">&lt;-</span> <span class="nf">median</span><span class="p">(</span><span class="n">Cars93</span><span class="o">$</span><span class="n">Horsepower</span><span class="p">)</span>
+<span class="n">Cars93</span> <span class="o">%&gt;%</span>
+  <span class="c1"># make a new variable for split half vis: is horsepower above or below median?</span>
+  <span class="nf">mutate</span><span class="p">(</span><span class="n">highHorsepower</span> <span class="o">=</span> <span class="nf">factor</span><span class="p">(</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">Horsepower</span> <span class="o">&lt;</span> <span class="n">medH</span><span class="p">,</span><span class="s">&quot;Low&quot;</span><span class="p">,</span><span class="s">&quot;High&quot;</span><span class="p">),</span><span class="n">levels</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Low&quot;</span><span class="p">,</span><span class="s">&quot;High&quot;</span><span class="p">)))</span> <span class="o">%&gt;%</span> <span class="c1"># &quot;levels&quot; just makes &quot;low&quot; appear on left</span>
+  <span class="nf">ggplot</span><span class="p">(</span><span class="n">.</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">Weight</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">MPG.highway</span><span class="p">))</span> <span class="o">+</span> 
+  <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span> <span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;lm&quot;</span><span class="p">,</span><span class="n">se</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span> <span class="o">+</span> <span class="c1"># add points and a fit line</span>
+  <span class="nf">facet_grid</span><span class="p">(</span><span class="n">.</span><span class="o">~</span><span class="n">highHorsepower</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula &#39;y ~ x&#39;
+</pre></div>
+</div>
+<img alt="../_images/mediation-and-moderation_13_1.png" src="../_images/mediation-and-moderation_13_1.png" />
+</div>
+</div>
+<p>This was a useful visualization. Now we know that the different relationship between weight and efficiency for powerful engines versus less powerful engines might be because cars with more horsepower are typically heavier. In other words, <code class="docutils literal notranslate"><span class="pre">Horsepower</span></code> and <code class="docutils literal notranslate"><span class="pre">Weight</span></code> are correlated, and we’ve violated one of the assumptions for using linear models - oops! So we can’t interpret the moderation in this case. Dealing with correlated predictor variables will be discussed later in this class.</p>
+<p><em>Notebook authored by Patience Stevens and edited by Amy Sentis.</em></p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../lectures/mediation-and-moderation.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Mediation and moderation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../discussions/mediation-and-moderation.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Discussion questions:</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
+        
+            &copy; Copyright 2022.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
