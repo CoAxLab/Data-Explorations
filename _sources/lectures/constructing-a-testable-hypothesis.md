@@ -10,4 +10,4 @@
 
 ## Lecture
 
-[Constructing a testable hypothesis](../thumbnails/constructing-a-testable-hypothesis.jpeg)](https://www.youtube.com/watch?v=dAa1Q4K38XE "Constructing a testable hypothesis")
+[![Constructing a testable hypothesis](../thumbnails/constructing-a-testable-hypothesis.jpeg)](https://www.youtube.com/watch?v=dAa1Q4K38XE "Constructing a testable hypothesis")

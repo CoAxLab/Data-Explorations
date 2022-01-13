@@ -7,4 +7,4 @@
 
 ## Lecture
 
-[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
+[![What is learnable?](../thumbnails/what-is-learnable.jpeg)](https://www.youtube.com/watch?v=WbGsYs2PqRM "What is learnable?")
