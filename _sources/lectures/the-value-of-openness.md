@@ -11,4 +11,5 @@
 
 ## Lecture
 
-[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
+<!-- [![The art of data investigations](../thumbnails/bias-variance-tradeoff.jpeg)](https://www.youtube.com/watch?v=_6VmV5NKrR "The art of data investigations") -->
+
