@@ -7,4 +7,4 @@
 
 ## Lecture
 
-[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
+[![Power analysis via simulations](../thumbnails/power-analysis-via-simulations.jpeg)](https://www.youtube.com/watch?v=JSeZN6bdPzA "Power analysis via simulations")
