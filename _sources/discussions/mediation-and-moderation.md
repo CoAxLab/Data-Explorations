@@ -1,4 +1,4 @@
-# Discussion questions: 
+# Discussion questions
 
 1. Consider the following hypothesis: “Performance on a delayed discounting task is negatively impacted by childhood poverty, but only when there is a lack of community resources or evidence of neglect at home, and this effect is influenced by the amount of funding placed in local school districts as well as the age of the primary caregiver at home.” What is the graphical form of this hypothesis?
 

@@ -1,4 +1,4 @@
-# Discussion questions: 
+# Discussion questions
 
 1. Provide two examples of a hypothesis, one stated in a falsifiable manner the other stated in an unfalsifiable manner. Explain why one can be falsified and the other cannot.
 

@@ -1,4 +1,4 @@
-# Discussion questions: 
+# Discussion questions
 
 1. kNN methods are the real first non-parametric models that we have discussed in this class. Provide contrastive examples of cases where kNN would be preferred over linear models, like linear or logistic regression, *before* results are known. (In other words, it is easy to justify kNN when you have non-linearities in your data, but conceptually when would it be ideal to *start* with kNN approaches?)
 

@@ -1,4 +1,4 @@
-# Discussion questions: 
+# Discussion questions
 
 1. The Wasserstein et al. article argues that p-values are useful in a limited manner for understanding relationships in your data. Evaluate their ATOM approach and consider whether the steps they prescribe negate the need for p-values at all. 
 

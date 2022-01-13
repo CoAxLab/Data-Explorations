@@ -1,4 +1,4 @@
-# Discussion questions: 
+# Discussion questions
 
 1. Provide 2 hypothetical examples of how “dirty” (aka- not tidy) data tables could hamper data analysis.
 

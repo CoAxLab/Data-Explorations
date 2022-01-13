@@ -1,4 +1,4 @@
-# Discussion questions: 
+# Discussion questions
 
 1. Describe a hypothetical experiment and how each of the three types of reproducibility can break down in that experiment. How does a breakdown in one type of reproducibility lead to impacts in the others?
 
