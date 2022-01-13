@@ -9,4 +9,4 @@
 
 ## Lecture
 
-[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
+[![Mixed effects models](../thumbnails/mixed-effects-models.jpeg)](https://www.youtube.com/watch?v=ZyeCP5H9K5A "Mixed effects models")
