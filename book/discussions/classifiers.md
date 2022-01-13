@@ -1,4 +1,4 @@
-# Discussion questions: 
+# Discussion questions
 
 1. Other than allowing for classifying cases where Y has more than two groups, what other advantages do LDA & QDA have over standard logistic regression? When would logistic regression be preferred and why?
 

@@ -1,4 +1,4 @@
-# Discussion questions: 
+# Discussion questions
 
 1. Estimating random effects in a mixed effects model involves estimating the variance of the random distribution that generated the random effects (i.e., $\eta \sim N(0, \Sigma_{\theta})$). Why is this step necessary and how does it differentiate random effects from nuisance variables?
 

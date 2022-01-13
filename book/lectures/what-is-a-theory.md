@@ -9,4 +9,4 @@
 
 ## Lecture
 
-[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
+[![What is a theory?](../thumbnails/what-is-a-theory.jpeg)](https://www.youtube.com/watch?v=1H4vTXoZAYI "What is a theory?")

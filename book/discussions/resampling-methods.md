@@ -1,4 +1,4 @@
-# Discussion questions: 
+# Discussion questions
 
 1. A selling point for adopting a permutation test to evaluate the empirical probability of your null hypothesis is that it does not assume a shape (or, more accurately, a particular distribution) of your test statistic under the null hypothesis. But there is an assumption built into the permutation test that may not be valid in some cases. What is this assumption and how might it not be valid in specific contexts?
 

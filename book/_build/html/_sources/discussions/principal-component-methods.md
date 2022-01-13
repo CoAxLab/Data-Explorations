@@ -1,4 +1,4 @@
-# Discussion questions: 
+# Discussion questions
 
 1. Principal component regression (PCR) and partial least squares (PLS) both work by effectively reducing the complexity (i.e., variance) of a model by accounting for correlations across variables. How is this different from ridge regression, which also accounts for correlational structure in the data set to manage model complexity?
 

@@ -7,4 +7,4 @@
 
 ## Lecture
 
-[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
+[![Linear models](../thumbnails/linear-models.jpeg)](https://www.youtube.com/watch?v=DYm5VmwxM2E "Linear models")

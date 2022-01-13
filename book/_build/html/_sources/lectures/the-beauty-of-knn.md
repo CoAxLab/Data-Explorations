@@ -9,4 +9,4 @@
 
 ## Lecture
 
-[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
+[![The beauty of kNN](the-beauty-of-knn.jpeg)](https://www.youtube.com/watch?v=tvZ7MXTH3lk "The beauty of kNN")

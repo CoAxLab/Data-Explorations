@@ -1,4 +1,4 @@
-# Discussion questions: 
+# Discussion questions
 
 1. Does it make sense to calculate the p-value on individual regression coefficients from a ridge or lasso model? Why or why not?
 

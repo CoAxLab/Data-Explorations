@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Regularized regression &#8212; Data explorations</title>
+    <title>Tutorial: Basic ridge and LASSO models &#8212; Data explorations</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -53,7 +53,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Discussion questions:" href="../discussions/regularized-regression.html" />
+    <link rel="next" title="Discussion questions" href="../discussions/regularized-regression.html" />
     <link rel="prev" title="Regularized regression" href="../lectures/regularized-regression.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -133,12 +133,12 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="the-value-of-openness.html">
-     The value of openness
+     Tutorial: Repositories and version control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/the-value-of-openness.html">
-     Discussion questions:
+     Discussion questions
     </a>
    </li>
   </ul>
@@ -155,7 +155,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/what-is-a-theory.html">
-     Discussion questions:
+     Discussion questions
     </a>
    </li>
   </ul>
@@ -172,7 +172,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/constructing-a-testable-hypothesis.html">
-     Discussion questions:
+     Discussion questions
     </a>
    </li>
   </ul>
@@ -196,12 +196,12 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="data-as-objects-and-architectures.html">
-     Data as objects and architectures
+     Tutorial: Tidy data
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/data-as-objects-and-architectures.html">
-     Discussion questions:
+     Discussion questions
     </a>
    </li>
   </ul>
@@ -218,12 +218,12 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="techniques-for-data-cleansing.html">
-     Techniques for data cleansing
+     Tutorial: Data cleansing
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/techniques-for-data-cleansing.html">
-     Discussion questions:
+     Discussion questions
     </a>
    </li>
   </ul>
@@ -240,39 +240,22 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="visualization-as-analysis.html">
-     Visualization as analysis
+     Tutorial: Basics of plotting
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/visualization-as-analysis.html">
-     Discussion questions:
+     Discussion questions
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/a-visualization-vocabulary.html">
-   A visualization vocabulary
+  <a class="reference internal" href="../lectures/visualization-through-human-eyes.html">
+   Visualization through human eyes
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
   <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/a-visualization-vocabulary.html">
-     Discussion questions:
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/what-is-learnable.html">
-   What is learnable?
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -283,15 +266,15 @@
   <a class="reference internal" href="../lectures/the-bias-variance-tradeoff.html">
    The bias-variance tradeoff
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/the-bias-variance-tradeoff.html">
-     Discussion questions:
+     Discussion questions
     </a>
    </li>
   </ul>
@@ -300,20 +283,20 @@
   <a class="reference internal" href="../lectures/linear-models.html">
    Linear models
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="linear-models.html">
-     Linear models
+     Tutorial: Basic linear regression
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/linear-models.html">
-     Discussion questions:
+     Discussion questions
     </a>
    </li>
   </ul>
@@ -322,6 +305,28 @@
   <a class="reference internal" href="../lectures/the-ordinary-least-squares-solution.html">
    The ordinary least squares solution
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-ordinary-least-squares-solution.html">
+     Tutorial: Refresher for solving oridinary least squares
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-ordinary-least-squares-solution.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/limits-of-linear-regression.html">
+   Limits and variations of linear regression
+  </a>
   <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
   <label for="toctree-checkbox-12">
    <i class="fas fa-chevron-down">
@@ -329,35 +334,13 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="the-ordinary-least-squares-solution.html">
-     The ordinary least squares solution
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/the-ordinary-least-squares-solution.html">
-     Discussion questions:
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/limits-of-linear-regression.html">
-   Limits of linear regression
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
     <a class="reference internal" href="limits-of-linear-regression.html">
-     Limits of linear regression
+     Tutorial: Fitting and prediction
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/limits-of-linear-regression.html">
-     Discussion questions:
+     Discussion questions
     </a>
    </li>
   </ul>
@@ -366,20 +349,20 @@
   <a class="reference internal" href="../lectures/mixed-effects-models.html">
    Mixed effects models
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-  <label for="toctree-checkbox-14">
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="mixed-effects-models.html">
-     Mixed-effects models
+     Tutorial: Running linear mixed effects models
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/mixed-effects-models.html">
-     Discussion questions:
+     Discussion questions
     </a>
    </li>
   </ul>
@@ -388,20 +371,20 @@
   <a class="reference internal" href="../lectures/classifiers.html">
    Classifiers
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
-  <label for="toctree-checkbox-15">
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="classifiers.html">
-     Classifiers
+     Tutorial: Basics classifiers
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/classifiers.html">
-     Discussion questions:
+     Discussion questions
     </a>
    </li>
   </ul>
@@ -410,15 +393,15 @@
   <a class="reference internal" href="../lectures/the-beauty-of-knn.html">
    The beauty of kNN
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
-  <label for="toctree-checkbox-16">
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="the-beauty-of-knn.html">
-     The beauty of kNN
+     Tutorial: Running kNN models
     </a>
    </li>
   </ul>
@@ -427,20 +410,20 @@
   <a class="reference internal" href="../lectures/cross-validation.html">
    Cross validation
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
-  <label for="toctree-checkbox-17">
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="cross-validation.html">
-     Cross-validation
+     Tutorial: Implementing cross validation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/cross-validation.html">
-     Discussion questions:
+     Discussion questions
     </a>
    </li>
   </ul>
@@ -449,20 +432,20 @@
   <a class="reference internal" href="../lectures/resampling-methods.html">
    Resampling methods
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
-  <label for="toctree-checkbox-18">
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="resampling-methods.html">
-     Resampling methods
+     Tutorial: Boostrap and permutation tests
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/resampling-methods.html">
-     Discussion questions:
+     Discussion questions
     </a>
    </li>
   </ul>
@@ -471,20 +454,20 @@
   <a class="reference internal" href="../lectures/power-analysis-via-simulations.html">
    Power analysis via simulations
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
-  <label for="toctree-checkbox-19">
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="power-analysis-via-simulations.html">
-     Power analysis via simulations
+     Tutorial: Running basic power analyses
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/power-analysis-via-simulations.html">
-     Discussion questions:
+     Discussion questions
     </a>
    </li>
   </ul>
@@ -493,20 +476,20 @@
   <a class="reference internal" href="../lectures/mediation-and-moderation.html">
    Mediation and moderation
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
-  <label for="toctree-checkbox-20">
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="mediation-and-moderation.html">
-     Mediation and moderation
+     Tutorial: Running mediation and moderation models
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/mediation-and-moderation.html">
-     Discussion questions:
+     Discussion questions
     </a>
    </li>
   </ul>
@@ -515,20 +498,20 @@
   <a class="reference internal" href="../lectures/selecting-the-best-model.html">
    Selecting the best model
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
-  <label for="toctree-checkbox-21">
+  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+  <label for="toctree-checkbox-20">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="selecting-the-best-model.html">
-     Selecting the best model
+     Tutorial: Model selection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/selecting-the-best-model.html">
-     Discussion questions:
+     Discussion questions
     </a>
    </li>
   </ul>
@@ -537,20 +520,20 @@
   <a class="reference internal" href="../lectures/regularized-regression.html">
    Regularized regression
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
-  <label for="toctree-checkbox-22">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+  <label for="toctree-checkbox-21">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Regularized regression
+     Tutorial: Basic ridge and LASSO models
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/regularized-regression.html">
-     Discussion questions:
+     Discussion questions
     </a>
    </li>
   </ul>
@@ -559,20 +542,20 @@
   <a class="reference internal" href="../lectures/principal-component-methods.html">
    The value of openness
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
-  <label for="toctree-checkbox-23">
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="principal-component-methods.html">
-     Principal component methods
+     Tutorial: Basic PCA approaches
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/principal-component-methods.html">
-     Discussion questions:
+     Discussion questions
     </a>
    </li>
   </ul>
@@ -588,15 +571,15 @@
   <a class="reference internal" href="../lectures/reconsidering-the-p-value.html">
    Reconsidering the p-value
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
-  <label for="toctree-checkbox-24">
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/reconsidering-the-p-value.html">
-     Discussion questions:
+     Discussion questions
     </a>
    </li>
   </ul>
@@ -605,20 +588,20 @@
   <a class="reference internal" href="../lectures/bayes-factor-accepting-the-null.html">
    Bayes factor: accepting the null
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
-  <label for="toctree-checkbox-25">
+  <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+  <label for="toctree-checkbox-24">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="bayes-factor-accepting-the-null.html">
-     Bayes factor: accepting the null
+     Tutorial: Bayes factors
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/bayes-factor-accepting-the-null.html">
-     Discussion questions:
+     Discussion questions
     </a>
    </li>
   </ul>
@@ -627,15 +610,15 @@
   <a class="reference internal" href="../lectures/telling-your-data-story.html">
    Telling your data story
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
-  <label for="toctree-checkbox-26">
+  <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+  <label for="toctree-checkbox-25">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/telling-your-data-story.html">
-     Discussion questions:
+     Discussion questions
     </a>
    </li>
   </ul>
@@ -686,7 +669,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -726,7 +709,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+        <div class="d-none d-md-block col-md-2 bd-toc show">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -735,7 +718,7 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Regularized regression
+   Tutorial: Basic ridge and LASSO models
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
@@ -768,56 +751,11 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Regularized regression</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Regularized regression
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#goals">
-     Goals:
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ridge-regression">
-   Ridge Regression
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#an-important-note-about-validation-and-test-sets">
-   An important note about validation and test sets
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lasso">
-   LASSO
-  </a>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="regularized-regression">
-<h1>Regularized regression<a class="headerlink" href="#regularized-regression" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-basic-ridge-and-lasso-models">
+<h1>Tutorial: Basic ridge and LASSO models<a class="headerlink" href="#tutorial-basic-ridge-and-lasso-models" title="Permalink to this headline">¶</a></h1>
 <p>This lab dives deeper into ridge regression and LASSO and how to implement these tehcniques in R.</p>
 <div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
@@ -880,7 +818,7 @@ Loaded glmnet 4.1-1
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use a non-linear search on lambda</span>
-<span class="n">lambda_search_space</span> <span class="o">=</span> <span class="m">10</span><span class="nf">^seq</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">-2</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="m">100</span><span class="p">)</span> <span class="c1">#create a search space from (10^10):(10^-2), 100 samples long</span>
+<span class="n">lambda_search_space</span> <span class="o">=</span> <span class="m">10</span><span class="o">^</span><span class="nf">seq</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">-2</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="m">100</span><span class="p">)</span> <span class="c1">#create a search space from (10^10):(10^-2), 100 samples long</span>
 <span class="nf">plot</span><span class="p">(</span><span class="n">lambda_search_space</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;sample&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;lambda&quot;</span><span class="p">)</span>
 
 <span class="c1">#this will span a range of models, from the null model containing only the intercept (lambda = 10^10, extremely sparse)</span>
@@ -896,11 +834,11 @@ Loaded glmnet 4.1-1
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define x without the first column</span>
-<span class="n">x</span> <span class="o">=</span> <span class="nf">model.matrix</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.,</span> <span class="n">Hitters</span><span class="p">)</span><span class="n">[</span><span class="p">,</span><span class="m">-1</span><span class="n">]</span> <span class="c1">#without first intercept column</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nf">model.matrix</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.</span><span class="p">,</span> <span class="n">Hitters</span><span class="p">)[,</span><span class="m">-1</span><span class="p">]</span> <span class="c1">#without first intercept column</span>
 <span class="c1">#the model.matrix function also automatically transforms qualitative variables</span>
 <span class="c1">#into dummy variables and gets rid of NAs</span>
 
-<span class="n">y</span> <span class="o">=</span> <span class="n">Hitters</span><span class="o">$</span><span class="n">Salary[</span><span class="o">!</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">Hitters</span><span class="o">$</span><span class="n">Salary</span><span class="p">))</span><span class="n">]</span> <span class="c1">#selecting y from the dataframe - get rid of NAs so that rows are matched with those in x</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">Hitters</span><span class="o">$</span><span class="n">Salary</span><span class="p">[</span><span class="o">!</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">Hitters</span><span class="o">$</span><span class="n">Salary</span><span class="p">))]</span> <span class="c1">#selecting y from the dataframe - get rid of NAs so that rows are matched with those in x</span>
 </pre></div>
 </div>
 </div>
@@ -933,8 +871,8 @@ Loaded glmnet 4.1-1
 <p>Let’s look at all 20 coefficients (including the intercept) when <span class="math notranslate nohighlight">\(\lambda = 11497.57\)</span> (i.e., the 50th entry in the <span class="math notranslate nohighlight">\(\lambda\)</span> vector)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">lambda_search_space[50]</span> <span class="c1">#getting particular value of lambda</span>
-<span class="nf">plot</span><span class="p">(</span><span class="nf">coef</span><span class="p">(</span><span class="n">ridge.mod</span><span class="p">)</span><span class="n">[</span><span class="p">,</span><span class="m">50</span><span class="n">]</span><span class="p">)</span> <span class="c1">#getting coeff. for that value of lamba, all coeff.</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">lambda_search_space</span><span class="p">[</span><span class="m">50</span><span class="p">]</span> <span class="c1">#getting particular value of lambda</span>
+<span class="nf">plot</span><span class="p">(</span><span class="nf">coef</span><span class="p">(</span><span class="n">ridge.mod</span><span class="p">)[,</span><span class="m">50</span><span class="p">])</span> <span class="c1">#getting coeff. for that value of lamba, all coeff.</span>
 </pre></div>
 </div>
 </div>
@@ -946,8 +884,8 @@ Loaded glmnet 4.1-1
 <p>Now what happens if we make <span class="math notranslate nohighlight">\(\lambda\)</span> really <em>really</em> large?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">lambda_search_space[3]</span>
-<span class="nf">plot</span><span class="p">(</span><span class="nf">coef</span><span class="p">(</span><span class="n">ridge.mod</span><span class="p">)</span><span class="n">[2</span><span class="o">:</span><span class="m">20</span><span class="p">,</span><span class="m">3</span><span class="n">]</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">lambda_search_space</span><span class="p">[</span><span class="m">3</span><span class="p">]</span>
+<span class="nf">plot</span><span class="p">(</span><span class="nf">coef</span><span class="p">(</span><span class="n">ridge.mod</span><span class="p">)[</span><span class="m">2</span><span class="o">:</span><span class="m">20</span><span class="p">,</span><span class="m">3</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -960,7 +898,7 @@ Loaded glmnet 4.1-1
 <p>You can test any value of <span class="math notranslate nohighlight">\(\lambda\)</span> using the <code class="docutils literal notranslate"><span class="pre">predict()</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="nf">predict</span><span class="p">(</span><span class="n">ridge.mod</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="m">50</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;coefficients&quot;</span><span class="p">)</span><span class="n">[1</span><span class="o">:</span><span class="m">20</span><span class="p">,</span><span class="n">]</span><span class="p">)</span> <span class="c1">#s=lambda=50</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="nf">predict</span><span class="p">(</span><span class="n">ridge.mod</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="m">50</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;coefficients&quot;</span><span class="p">)[</span><span class="m">1</span><span class="o">:</span><span class="m">20</span><span class="p">,])</span> <span class="c1">#s=lambda=50</span>
 </pre></div>
 </div>
 </div>
@@ -976,10 +914,10 @@ Loaded glmnet 4.1-1
 <span class="c1"># Create your validation sets</span>
 <span class="n">train</span><span class="o">=</span><span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="m">2</span><span class="p">)</span> <span class="c1">#50/50 split into training and test sets</span>
 <span class="n">test</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">train</span><span class="p">)</span> <span class="c1">#get test indices (not training indices)</span>
-<span class="n">y.test</span> <span class="o">=</span> <span class="n">y[test]</span>
+<span class="n">y.test</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">test</span><span class="p">]</span>
 
 <span class="c1"># Make a training model using the training set (for all values of lambda)</span>
-<span class="n">ridge.mod</span> <span class="o">=</span> <span class="nf">glmnet</span><span class="p">(</span><span class="n">x[train</span><span class="p">,</span><span class="n">]</span><span class="p">,</span> <span class="n">y[train]</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="m">0</span><span class="p">,</span> <span class="n">lambda</span><span class="o">=</span><span class="n">lambda_search_space</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="m">1e-12</span><span class="p">)</span> <span class="c1">#threshold specifies the convergence criterion</span>
+<span class="n">ridge.mod</span> <span class="o">=</span> <span class="nf">glmnet</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">train</span><span class="p">,],</span> <span class="n">y</span><span class="p">[</span><span class="n">train</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="m">0</span><span class="p">,</span> <span class="n">lambda</span><span class="o">=</span><span class="n">lambda_search_space</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="m">1e-12</span><span class="p">)</span> <span class="c1">#threshold specifies the convergence criterion</span>
 </pre></div>
 </div>
 </div>
@@ -989,16 +927,16 @@ Loaded glmnet 4.1-1
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># With lambda = 1e10 (10^10)</span>
 <span class="c1">#note that this is like a null, intercept-only model</span>
-<span class="n">ridge.pred</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">ridge.mod</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="m">1e10</span><span class="p">,</span> <span class="n">newx</span><span class="o">=</span><span class="n">x[test</span><span class="p">,</span><span class="n">]</span><span class="p">)</span>
-<span class="nf">mean</span><span class="p">((</span><span class="n">ridge.pred</span> <span class="o">-</span> <span class="n">y.test</span><span class="p">)</span><span class="n">^2</span><span class="p">)</span>
+<span class="n">ridge.pred</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">ridge.mod</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="m">1e10</span><span class="p">,</span> <span class="n">newx</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="n">test</span><span class="p">,])</span>
+<span class="nf">mean</span><span class="p">((</span><span class="n">ridge.pred</span> <span class="o">-</span> <span class="n">y.test</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
 
 <span class="c1"># With lambda = 4 (s=lambda)</span>
-<span class="n">ridge.pred</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">ridge.mod</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="m">4</span><span class="p">,</span> <span class="n">newx</span><span class="o">=</span><span class="n">x[test</span><span class="p">,</span><span class="n">]</span><span class="p">)</span>
-<span class="nf">mean</span><span class="p">((</span><span class="n">ridge.pred</span> <span class="o">-</span> <span class="n">y.test</span><span class="p">)</span><span class="n">^2</span><span class="p">)</span>
+<span class="n">ridge.pred</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">ridge.mod</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="m">4</span><span class="p">,</span> <span class="n">newx</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="n">test</span><span class="p">,])</span>
+<span class="nf">mean</span><span class="p">((</span><span class="n">ridge.pred</span> <span class="o">-</span> <span class="n">y.test</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
 
 <span class="c1"># With lambda = 0 (note that this is OLS regression)</span>
-<span class="n">ridge.pred</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">ridge.mod</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="m">0</span><span class="p">,</span> <span class="n">newx</span><span class="o">=</span><span class="n">x[test</span><span class="p">,</span><span class="n">]</span><span class="p">)</span>
-<span class="nf">mean</span><span class="p">((</span><span class="n">ridge.pred</span> <span class="o">-</span> <span class="n">y.test</span><span class="p">)</span><span class="n">^2</span><span class="p">)</span>
+<span class="n">ridge.pred</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">ridge.mod</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="m">0</span><span class="p">,</span> <span class="n">newx</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="n">test</span><span class="p">,])</span>
+<span class="nf">mean</span><span class="p">((</span><span class="n">ridge.pred</span> <span class="o">-</span> <span class="n">y.test</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1045,7 +983,7 @@ So, the determination of which model is best must be made using training and tes
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using 10-fold CV, cross-validate on the training data</span>
 <span class="nf">set.seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
-<span class="n">cv.out</span> <span class="o">=</span> <span class="nf">cv.glmnet</span><span class="p">(</span><span class="n">x[train_hyperparameter</span><span class="p">,</span><span class="n">]</span><span class="p">,</span> <span class="n">y[train_hyperparameter]</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="m">0</span><span class="p">)</span> <span class="c1">#alpha=0=ridge regression</span>
+<span class="n">cv.out</span> <span class="o">=</span> <span class="nf">cv.glmnet</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">train_hyperparameter</span><span class="p">,],</span> <span class="n">y</span><span class="p">[</span><span class="n">train_hyperparameter</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="m">0</span><span class="p">)</span> <span class="c1">#alpha=0=ridge regression</span>
 <span class="nf">plot</span><span class="p">(</span><span class="n">cv.out</span><span class="p">)</span> <span class="c1">#defaults to 10-fold CV</span>
 <span class="n">bestlam</span> <span class="o">=</span> <span class="n">cv.out</span><span class="o">$</span><span class="n">lambda.min</span>
 <span class="n">bestlam</span>
@@ -1060,8 +998,8 @@ So, the determination of which model is best must be made using training and tes
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#passing in the trained model object, the best lambda, and the test data</span>
-<span class="n">ridge.pred</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">ridge.mod</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">bestlam</span><span class="p">,</span> <span class="n">newx</span><span class="o">=</span><span class="n">x[test_hyperparameter</span><span class="p">,</span><span class="n">]</span><span class="p">)</span> 
-<span class="nf">mean</span><span class="p">((</span><span class="n">ridge.pred</span> <span class="o">-</span><span class="n">y[test_hyperparameter]</span><span class="p">)</span><span class="n">^2</span><span class="p">)</span> <span class="c1">#MSE</span>
+<span class="n">ridge.pred</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">ridge.mod</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">bestlam</span><span class="p">,</span> <span class="n">newx</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="n">test_hyperparameter</span><span class="p">,])</span> 
+<span class="nf">mean</span><span class="p">((</span><span class="n">ridge.pred</span> <span class="o">-</span><span class="n">y</span><span class="p">[</span><span class="n">test_hyperparameter</span><span class="p">])</span><span class="o">^</span><span class="m">2</span><span class="p">)</span> <span class="c1">#MSE</span>
 </pre></div>
 </div>
 </div>
@@ -1072,10 +1010,10 @@ So, the determination of which model is best must be made using training and tes
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># First setup the model</span>
-<span class="n">out</span> <span class="o">=</span> <span class="nf">glmnet</span><span class="p">(</span><span class="n">x[train_glm</span><span class="p">,</span><span class="n">]</span><span class="p">,</span><span class="n">y[train_glm]</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="m">0</span><span class="p">)</span>
+<span class="n">out</span> <span class="o">=</span> <span class="nf">glmnet</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">train_glm</span><span class="p">,],</span><span class="n">y</span><span class="p">[</span><span class="n">train_glm</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="m">0</span><span class="p">)</span>
 
 <span class="c1"># # Then predict.</span>
-<span class="nf">print</span><span class="p">(</span><span class="nf">predict</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;coefficients&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">bestlam</span><span class="p">,</span> <span class="n">newx</span><span class="o">=</span><span class="n">x[test_glm</span><span class="p">,</span><span class="n">]</span><span class="p">)</span><span class="n">[1</span><span class="o">:</span><span class="m">20</span><span class="p">,</span><span class="n">]</span><span class="p">)</span> <span class="c1"># &quot;s = bestlam&quot; picks out the winning value and shows those coefs.</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">predict</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;coefficients&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">bestlam</span><span class="p">,</span> <span class="n">newx</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="n">test_glm</span><span class="p">,])[</span><span class="m">1</span><span class="o">:</span><span class="m">20</span><span class="p">,])</span> <span class="c1"># &quot;s = bestlam&quot; picks out the winning value and shows those coefs.</span>
 </pre></div>
 </div>
 </div>
@@ -1122,8 +1060,8 @@ So, the determination of which model is best must be made using training and tes
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
+        
+            <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="../lectures/regularized-regression.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1135,22 +1073,24 @@ So, the determination of which model is best must be made using training and tes
     <a class='right-next' id="next-link" href="../discussions/regularized-regression.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Discussion questions:</p>
+        <p class="prev-next-title">Discussion questions</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+        
         </div>
     </div>
     <footer class="footer">
-  <p>
-    
-      By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
+    <div class="container">
+      <p>
+        
+          By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
+        
+            &copy; Copyright 2022.<br/>
+      </p>
+    </div>
+  </footer>
 </main>
 
 

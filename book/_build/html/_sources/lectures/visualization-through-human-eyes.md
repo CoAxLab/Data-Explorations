@@ -1,4 +1,4 @@
-# A visualization vocabulary
+# Visualization through human eyes
 =======================
 
 ## Required readings
@@ -7,4 +7,4 @@
 
 ## Lecture
 
-[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
+[![Visualization through human eyes](../thumbnails/visualization-through-human-eyes.jpeg)](https://www.youtube.com/watch?v=uop-W5i4Yrs "Visualization through human eyes")

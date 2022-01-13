@@ -7,4 +7,4 @@
 
 ## Lecture
 
-[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
+[![Techniques for data cleansing](../thumbnails/techniques-for-data-cleansing.jpeg)](https://www.youtube.com/watch?v=HaiaQh-pyw0 "Techniques for data cleansing")

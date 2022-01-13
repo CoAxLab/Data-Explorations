@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # The value of openness
+# # Tutorial: Repositories and version control
 # 
 # This lab introduces the concept of version control and goes through the process of setting up a GitHub repository and tracking changes with git.
 # 

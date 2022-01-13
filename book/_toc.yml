@@ -31,12 +31,9 @@ parts:
       sections:
       - file: notebooks/visualization-as-analysis
       - file: discussions/visualization-as-analysis
-    - file: lectures/a-visualization-vocabulary
+    - file: lectures/visualization-through-human-eyes
       sections:
       - file: discussions/a-visualization-vocabulary
-    - file: lectures/what-is-learnable
-      sections:
-      - file: discussions/what-is-learnable
     - file: lectures/the-bias-variance-tradeoff
       sections:
       - file: discussions/the-bias-variance-tradeoff

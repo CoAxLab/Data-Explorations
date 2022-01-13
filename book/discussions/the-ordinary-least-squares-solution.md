@@ -1,4 +1,4 @@
-# Discussion questions: 
+# Discussion questions
 
 1. How is a likelihood function different from a regression model? Provide a verbal description of both.
 

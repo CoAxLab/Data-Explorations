@@ -12,4 +12,4 @@ Gorgolewski, K. J., Auer, T., Calhoun, V. D., Craddock, R. C., Das, S., Duff, E.
 
 ## Lecture
 
-[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
+[![Data as objects and architectures](../thumbnails/data-as-objects-and-architectures.jpeg)](https://www.youtube.com/watch?v=9LPCZhDD-sU "Data as objects and architectures")

@@ -11,4 +11,5 @@
 
 ## Lecture
 
-[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
+[![The value of openness](../thumbnails/the-value-of-openness.jpeg)](https://www.youtube.com/watch?v=jhLQRa4o_M0 "The value of openness")
+

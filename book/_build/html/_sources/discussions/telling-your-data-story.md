@@ -1,4 +1,4 @@
-# Discussion questions: 
+# Discussion questions
 
 1. Provide at least one historical, real world example where a failure of effective communication lead to an important discovery not being recognized (or at least not get recognized in the time that it was made).
 

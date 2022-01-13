@@ -1,4 +1,4 @@
-# Discussion questions: 
+# Discussion questions
 
 1. Stepwise selection methods are preferred over full model subset selection as the number of features (p) in your model increases due to their relative lower computational burden. What are cases where stepwise selection methods would give you dramatically different “best” models than a full model subset method?
 

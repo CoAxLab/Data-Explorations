@@ -1,4 +1,4 @@
-# Discussion questions: 
+# Discussion questions
 
 1. Consider the situation where you have a Uniform prior on your model (i.e., an unknown prior). This effectively nullifies the relevance of the prior distribution in your calculations of the Bayes Factor, turning it into a ratio of likelihoods. Now compare this with the p-value. What is the key difference between a Bayes Factor and p-value in this situation and how does it impact the interpretation of your results?
 

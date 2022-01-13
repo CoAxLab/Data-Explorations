@@ -1,4 +1,4 @@
-# Discussion questions: 
+# Discussion questions
 
 1. What fundamentally determines what is reducible error and irreducible error in a model?
 
