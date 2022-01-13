@@ -11,5 +11,5 @@
 
 ## Lecture
 
-<!-- [![The art of data investigations](../thumbnails/bias-variance-tradeoff.jpeg)](https://www.youtube.com/watch?v=_6VmV5NKrR "The art of data investigations") -->
+[![The value of openness](../thumbnails/the-value-of-openness.jpeg)](https://www.youtube.com/watch?v=jhLQRa4o_M0 "The value of openness")
 
