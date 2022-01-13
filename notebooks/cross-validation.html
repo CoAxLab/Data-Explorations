@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -686,7 +686,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -726,7 +726,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+        <div class="d-none d-md-block col-md-2 bd-toc show">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -773,57 +773,7 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Cross-validation</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Cross-validation
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#goals">
-     Goals:
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-not-use-the-simple-validation-set-approach">
-   Why not use the simple validation set approach?
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#validation-data-sets">
-   Validation data sets
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#leave-one-out-cross-validation-loocv">
-   Leave-one-out cross-validation (LOOCV)
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#k-fold-cross-validation">
-   K-fold cross validation
-  </a>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="cross-validation">
@@ -909,17 +859,17 @@
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate a linear model using the training subset</span>
 <span class="n">lm.fit</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">mpg</span><span class="o">~</span><span class="n">horsepower</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Auto</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">train</span><span class="p">)</span>
-<span class="nf">mean</span><span class="p">((</span><span class="n">Auto</span><span class="o">$</span><span class="n">mpg</span><span class="o">-</span><span class="nf">predict</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">,</span><span class="n">Auto</span><span class="p">))</span><span class="n">[</span><span class="o">-</span><span class="n">train]^2</span><span class="p">)</span> <span class="c1"># Mean Squared Error (MSE) for test set</span>
+<span class="nf">mean</span><span class="p">((</span><span class="n">Auto</span><span class="o">$</span><span class="n">mpg</span><span class="o">-</span><span class="nf">predict</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">,</span><span class="n">Auto</span><span class="p">))[</span><span class="o">-</span><span class="n">train</span><span class="p">]</span><span class="o">^</span><span class="m">2</span><span class="p">)</span> <span class="c1"># Mean Squared Error (MSE) for test set</span>
 
 <span class="c1"># Use the poly() function to estimate test error</span>
 <span class="c1"># for polynomial and cubic regressions</span>
 <span class="c1"># 2nd degree polynomial</span>
 <span class="n">lm.fit2</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">Auto</span><span class="o">$</span><span class="n">mpg</span><span class="o">~</span><span class="nf">poly</span><span class="p">(</span><span class="n">horsepower</span><span class="p">,</span><span class="m">4</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">Auto</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">train</span><span class="p">)</span>
-<span class="nf">mean</span><span class="p">((</span><span class="n">Auto</span><span class="o">$</span><span class="n">mpg</span><span class="o">-</span><span class="nf">predict</span><span class="p">(</span><span class="n">lm.fit2</span><span class="p">,</span><span class="n">Auto</span><span class="p">))</span><span class="n">[</span><span class="o">-</span><span class="n">train]^2</span><span class="p">)</span> <span class="c1"># Mean Squared Error (MSE) for test set</span>
+<span class="nf">mean</span><span class="p">((</span><span class="n">Auto</span><span class="o">$</span><span class="n">mpg</span><span class="o">-</span><span class="nf">predict</span><span class="p">(</span><span class="n">lm.fit2</span><span class="p">,</span><span class="n">Auto</span><span class="p">))[</span><span class="o">-</span><span class="n">train</span><span class="p">]</span><span class="o">^</span><span class="m">2</span><span class="p">)</span> <span class="c1"># Mean Squared Error (MSE) for test set</span>
 
 <span class="c1"># 3rd degree polynomial</span>
 <span class="n">lm.fit3</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">Auto</span><span class="o">$</span><span class="n">mpg</span><span class="o">~</span><span class="nf">poly</span><span class="p">(</span><span class="n">horsepower</span><span class="p">,</span><span class="m">6</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">Auto</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">train</span><span class="p">)</span>
-<span class="nf">mean</span><span class="p">((</span><span class="n">Auto</span><span class="o">$</span><span class="n">mpg</span><span class="o">-</span><span class="nf">predict</span><span class="p">(</span><span class="n">lm.fit3</span><span class="p">,</span><span class="n">Auto</span><span class="p">))</span><span class="n">[</span><span class="o">-</span><span class="n">train]^2</span><span class="p">)</span>
+<span class="nf">mean</span><span class="p">((</span><span class="n">Auto</span><span class="o">$</span><span class="n">mpg</span><span class="o">-</span><span class="nf">predict</span><span class="p">(</span><span class="n">lm.fit3</span><span class="p">,</span><span class="n">Auto</span><span class="p">))[</span><span class="o">-</span><span class="n">train</span><span class="p">]</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -940,15 +890,15 @@
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Linear model</span>
 <span class="n">lm.fit</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">mpg</span><span class="o">~</span><span class="n">horsepower</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Auto</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">train</span><span class="p">)</span>
-<span class="nf">mean</span><span class="p">((</span><span class="n">Auto</span><span class="o">$</span><span class="n">mpg</span><span class="o">-</span><span class="nf">predict</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">,</span><span class="n">Auto</span><span class="p">))</span><span class="n">[</span><span class="o">-</span><span class="n">train]^2</span><span class="p">)</span>
+<span class="nf">mean</span><span class="p">((</span><span class="n">Auto</span><span class="o">$</span><span class="n">mpg</span><span class="o">-</span><span class="nf">predict</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">,</span><span class="n">Auto</span><span class="p">))[</span><span class="o">-</span><span class="n">train</span><span class="p">]</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
 
 <span class="c1"># Polynomial</span>
 <span class="n">lm.fit2</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">mpg</span><span class="o">~</span><span class="nf">poly</span><span class="p">(</span><span class="n">horsepower</span><span class="p">,</span><span class="m">4</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">Auto</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">train</span><span class="p">)</span>
-<span class="nf">mean</span><span class="p">((</span><span class="n">Auto</span><span class="o">$</span><span class="n">mpg</span><span class="o">-</span><span class="nf">predict</span><span class="p">(</span><span class="n">lm.fit2</span><span class="p">,</span><span class="n">Auto</span><span class="p">))</span><span class="n">[</span><span class="o">-</span><span class="n">train]^2</span><span class="p">)</span>
+<span class="nf">mean</span><span class="p">((</span><span class="n">Auto</span><span class="o">$</span><span class="n">mpg</span><span class="o">-</span><span class="nf">predict</span><span class="p">(</span><span class="n">lm.fit2</span><span class="p">,</span><span class="n">Auto</span><span class="p">))[</span><span class="o">-</span><span class="n">train</span><span class="p">]</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
 
 <span class="c1"># Cubic</span>
 <span class="n">lm.fit3</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">mpg</span><span class="o">~</span><span class="nf">poly</span><span class="p">(</span><span class="n">horsepower</span><span class="p">,</span><span class="m">6</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">Auto</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">train</span><span class="p">)</span>
-<span class="nf">mean</span><span class="p">((</span><span class="n">Auto</span><span class="o">$</span><span class="n">mpg</span><span class="o">-</span><span class="nf">predict</span><span class="p">(</span><span class="n">lm.fit3</span><span class="p">,</span><span class="n">Auto</span><span class="p">))</span><span class="n">[</span><span class="o">-</span><span class="n">train]^2</span><span class="p">)</span>
+<span class="nf">mean</span><span class="p">((</span><span class="n">Auto</span><span class="o">$</span><span class="n">mpg</span><span class="o">-</span><span class="nf">predict</span><span class="p">(</span><span class="n">lm.fit3</span><span class="p">,</span><span class="n">Auto</span><span class="p">))[</span><span class="o">-</span><span class="n">train</span><span class="p">]</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1019,7 +969,7 @@
 <span class="n">start.time</span> <span class="o">&lt;-</span> <span class="nf">Sys.time</span><span class="p">()</span>
 <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">glm.fit</span><span class="o">=</span><span class="nf">glm</span><span class="p">(</span><span class="n">mpg</span><span class="o">~</span><span class="nf">poly</span><span class="p">(</span><span class="n">horsepower</span><span class="p">,</span><span class="n">i</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">Auto</span><span class="p">)</span>
-    <span class="n">cv.error[i]</span> <span class="o">=</span> <span class="nf">cv.glm</span><span class="p">(</span><span class="n">Auto</span><span class="p">,</span> <span class="n">glm.fit</span><span class="p">)</span><span class="o">$</span><span class="n">delta[1]</span> <span class="c1"># do LOO crossval for polynomial fits from 1 to 10</span>
+    <span class="n">cv.error</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nf">cv.glm</span><span class="p">(</span><span class="n">Auto</span><span class="p">,</span> <span class="n">glm.fit</span><span class="p">)</span><span class="o">$</span><span class="n">delta</span><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="c1"># do LOO crossval for polynomial fits from 1 to 10</span>
 <span class="p">}</span>
 <span class="n">end.time</span> <span class="o">&lt;-</span> <span class="nf">Sys.time</span><span class="p">()</span>
 <span class="n">LOOtime</span> <span class="o">&lt;-</span> <span class="n">end.time</span><span class="o">-</span><span class="n">start.time</span> <span class="c1"># how long did this for-loop take to run? </span>
@@ -1059,7 +1009,7 @@
 <span class="n">start.time</span> <span class="o">&lt;-</span> <span class="nf">Sys.time</span><span class="p">()</span>
 <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">){</span>
   <span class="n">glm.fit</span><span class="o">=</span><span class="nf">glm</span><span class="p">(</span><span class="n">mpg</span><span class="o">~</span><span class="nf">poly</span><span class="p">(</span><span class="n">horsepower</span><span class="p">,</span><span class="n">i</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">Auto</span><span class="p">)</span> <span class="c1">#get the glm fit for all 10 polynomials</span>
-  <span class="n">cv.error.10[i]</span> <span class="o">=</span> <span class="nf">cv.glm</span><span class="p">(</span><span class="n">Auto</span><span class="p">,</span> <span class="n">glm.fit</span><span class="p">,</span><span class="n">K</span><span class="o">=</span><span class="m">10</span><span class="p">)</span><span class="o">$</span><span class="n">delta[1]</span>
+  <span class="n">cv.error.10</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nf">cv.glm</span><span class="p">(</span><span class="n">Auto</span><span class="p">,</span> <span class="n">glm.fit</span><span class="p">,</span><span class="n">K</span><span class="o">=</span><span class="m">10</span><span class="p">)</span><span class="o">$</span><span class="n">delta</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
 <span class="p">}</span>
 <span class="n">end.time</span> <span class="o">&lt;-</span> <span class="nf">Sys.time</span><span class="p">()</span>
 <span class="n">Kfoldtime</span> <span class="o">&lt;-</span> <span class="n">end.time</span><span class="o">-</span><span class="n">start.time</span> <span class="c1"># how long did this for-loop take to run?</span>
@@ -1114,8 +1064,8 @@
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
+        
+            <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="../lectures/cross-validation.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1132,17 +1082,19 @@
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+        
         </div>
     </div>
     <footer class="footer">
-  <p>
-    
-      By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
+    <div class="container">
+      <p>
+        
+          By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
+        
+            &copy; Copyright 2022.<br/>
+      </p>
+    </div>
+  </footer>
 </main>
 
 
