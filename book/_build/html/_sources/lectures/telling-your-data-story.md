@@ -7,4 +7,4 @@
 
 ## Lecture
 
-[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
+[![Telling your data story](../thumbnails/telling-your-data-story.jpeg)](https://www.youtube.com/watch?v=QKS559pI4KQ "Telling your data story")

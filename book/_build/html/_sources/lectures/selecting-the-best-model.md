@@ -7,4 +7,4 @@
 
 ## Lecture
 
-[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
+[![Selecting the 'best' model](../thumbnails/selecting-the-best-model.jpeg)](https://www.youtube.com/watch?v=Ca9yQmOriEY "Selecting the 'best' model")

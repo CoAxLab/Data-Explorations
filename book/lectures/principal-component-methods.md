@@ -1,4 +1,4 @@
-# The value of openness
+# Principal component methods
 =======================
 
 ## Required readings
@@ -7,4 +7,4 @@
 
 ## Lecture
 
-[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
+[![Principal component methods](../thumbnails/principal-component-methods.jpeg)](https://www.youtube.com/watch?v=Watmz5hdnyM "Principal component methods")

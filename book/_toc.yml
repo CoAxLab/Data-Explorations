@@ -33,7 +33,7 @@ parts:
       - file: discussions/visualization-as-analysis
     - file: lectures/visualization-through-human-eyes
       sections:
-      - file: discussions/a-visualization-vocabulary
+      - file: discussions/visualization-through-human-eyes
     - file: lectures/the-bias-variance-tradeoff
       sections:
       - file: discussions/the-bias-variance-tradeoff
@@ -60,7 +60,7 @@ parts:
     - file: lectures/the-beauty-of-knn
       sections:
       - file: notebooks/the-beauty-of-knn
-      - file: disucssions/the-beauty-of-knn
+      - file: discussions/the-beauty-of-knn
     - file: lectures/cross-validation
       sections: 
       - file: notebooks/cross-validation

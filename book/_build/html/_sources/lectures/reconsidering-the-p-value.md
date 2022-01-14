@@ -7,4 +7,4 @@
 
 ## Lecture
 
-[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
+[![Reconsidering the p-value](../thumbnails/reconsidering-the-p-value.jpeg)](https://www.youtube.com/watch?v=r3oAgXX9lyg "Reconsidering the p-value")
