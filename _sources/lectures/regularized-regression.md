@@ -7,4 +7,4 @@
 
 ## Lecture
 
-[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
+[![Regularized regression](../thumbnails/regularized-regression.jpeg)](https://www.youtube.com/watch?v=Jf8MdQD-yyA "Regularized regression")
