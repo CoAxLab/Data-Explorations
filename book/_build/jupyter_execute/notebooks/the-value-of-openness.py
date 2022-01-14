@@ -241,68 +241,92 @@ drive.mount('/content/drive')
 
 # You are starting a new project. Here's an example workflow with everything we have discussed.
 # 
-# 1. Install git, make a github account
-# 2. Setup git:
+# &nbsp; &nbsp; 1. Install git, make a github account
+# &nbsp; &nbsp; 2. Setup git:
+# 
 # ```bash
 # git config --global user.email "you@andrew.cmu.edu"
 # git config --global user.name "Your Name"
 # ```
-# 3. Create a new project folder, navigate to it, and initialize a new local repository (optional if you clone a repository)
+# 
+# &nbsp; &nbsp; 3. Create a new project folder, navigate to it, and initialize a new local repository (optional if you clone a repository)
+# 
 # ```bash
 # mkdir c:\projects\myproject\
 # cd c:\projects\myproject\
 # git init
 # ```
-# 4. Make a remote repository on GitHub, and copy the repository link (optional if you clone a repository)
-# 5. Connect the local repository to the remote (optional if you clone a repository)
+# 
+# &nbsp; &nbsp; 4. Make a remote repository on GitHub, and copy the repository link (optional if you clone a repository)
+# &nbsp; &nbsp; 5. Connect the local repository to the remote (optional if you clone a repository)
+# 
 # ```bash
 # git remote add origin https://github.com/myusername/myproject.git
 # ```
-# 6. Create a basic project folder structure, a readme file, briefly describing the project and possibly the folder structure
-# 7. Add all current files to git
+# 
+# &nbsp; &nbsp; 6. Create a basic project folder structure, a readme file, briefly describing the project and possibly the folder structure
+# &nbsp; &nbsp; 7. Add all current files to git
+# 
 # ```bash
 # git add *
 # ```
-# 8. Commit your first commit with an initialization message
+# 
+# &nbsp; &nbsp; 8. Commit your first commit with an initialization message
+# 
 # ```bash
 # git commit -m "Initial commit"
 # ```
-# 9. Push your changes to your remote github repository
+# 
+# &nbsp; &nbsp; 9. Push your changes to your remote github repository
+# 
 # ```bash
 # git push
 # ```
-# 10. Create a new branch called **dev** on which to develop your project
+# 
+# &nbsp; &nbsp; 10. Create a new branch called **dev** on which to develop your project
+# 
 # ```bash
 # git checkout -b dev
 # git push --set-upstream origin dev
 # ```
-# 11. Develop your scripts/analyses, files, etc.
-# 12. Whenever you make changes you are happy with, add the files, commit the changes and push them:
+# 
+# &nbsp; &nbsp; 11. Develop your scripts/analyses, files, etc.
+# &nbsp; &nbsp; 12. Whenever you make changes you are happy with, add the files, commit the changes and push them:
+# 
 # ```bash
 # git add * # possibly specify specific files
 # git commit -m "Explain what you have changed briefly"
 # git push --set-upstream origin dev
 # ```
-# 13. When you have reached a stage in which you want to save the version to be the main one, merge your dev branch with master:
+# 
+# &nbsp; &nbsp; 13. When you have reached a stage in which you want to save the version to be the main one, merge your dev branch with master:
+# 
 # ```bash
 # git checkout master
 # git merge dev
 # git push # in order to sync the master branches
 # ```
-# 14. Go back to dev or a new branch, if you want to test an alternative version of the script or add new things:
+# 
+# &nbsp; &nbsp; 14. Go back to dev or a new branch, if you want to test an alternative version of the script or add new things:
+# 
 # ```bash
 # git checkout -b specialbranchfornewfeature
 # git push --set-upstream origin specialbranchfornewfeature
 # ```
-# 15. At any point: check status of added files, commits, branches:
+# 
+# &nbsp; &nbsp; 15. At any point: check status of added files, commits, branches:
+# 
 # ```bash
 # git status
 # ```
-# 16. At any point: pull most recent changes from online repository:
+# 
+# &nbsp; &nbsp; 16. At any point: pull most recent changes from online repository:
+# 
 # ```bash
 # git pull
 # ```
-# 17. Rinse and repeat :)
+# 
+# &nbsp; &nbsp; 17. Rinse and repeat :)
 # 
 
 # *Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.*

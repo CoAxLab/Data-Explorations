@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -679,7 +679,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -719,7 +719,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -751,7 +751,42 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Tutorial: Model selection</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial: Model selection
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goals">
+     Goals:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#best-subset-selection">
+   Best subset selection
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-model-selection">
@@ -842,7 +877,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># regsubsets uses the same model configuration as lm()</span>
 <span class="c1"># so, configure the model in regsubsets as regsubsets(model, data)</span>
-<span class="n">regfit.full</span> <span class="o">=</span> <span class="nf">regsubsets</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.</span><span class="p">,</span> <span class="nf">select</span><span class="p">(</span><span class="n">Hitters</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="n">AtBat</span><span class="p">,</span><span class="n">Hits</span><span class="p">,</span><span class="n">HmRun</span><span class="p">,</span><span class="n">Salary</span><span class="p">,</span><span class="n">Assists</span><span class="p">)))</span> <span class="c1">#use every variable EXCEPT salary as a predictor</span>
+<span class="n">regfit.full</span> <span class="o">=</span> <span class="nf">regsubsets</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.,</span> <span class="nf">select</span><span class="p">(</span><span class="n">Hitters</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="n">AtBat</span><span class="p">,</span><span class="n">Hits</span><span class="p">,</span><span class="n">HmRun</span><span class="p">,</span><span class="n">Salary</span><span class="p">,</span><span class="n">Assists</span><span class="p">)))</span> <span class="c1">#use every variable EXCEPT salary as a predictor</span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">regfit.full</span><span class="p">)</span> <span class="c1"># Asterisks indicate that a field is included in the model</span>
 </pre></div>
 </div>
@@ -874,7 +909,7 @@ Selection Algorithm: exhaustive
 <p>Now let’s run <code class="docutils literal notranslate"><span class="pre">regsubsets()</span></code> again using all 19 variables (other than <code class="docutils literal notranslate"><span class="pre">Salary</span></code>, which is our outcome).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">regfit.full</span> <span class="o">=</span> <span class="nf">regsubsets</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.</span><span class="p">,</span> <span class="n">Hitters</span><span class="p">,</span> <span class="n">nvmax</span><span class="o">=</span><span class="m">19</span><span class="p">)</span> <span class="c1">#&lt; &quot;nvmax&quot; allows the model selection to include up to 19 variables (limited to 8 by default)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">regfit.full</span> <span class="o">=</span> <span class="nf">regsubsets</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.,</span> <span class="n">Hitters</span><span class="p">,</span> <span class="n">nvmax</span><span class="o">=</span><span class="m">19</span><span class="p">)</span> <span class="c1">#&lt; &quot;nvmax&quot; allows the model selection to include up to 19 variables (limited to 8 by default)</span>
 <span class="n">reg.summary</span> <span class="o">=</span> <span class="nf">summary</span><span class="p">(</span><span class="n">regfit.full</span><span class="p">)</span>
 <span class="n">reg.summary</span>
 </pre></div>
@@ -1028,10 +1063,10 @@ Selection Algorithm: exhaustive
 
 <span class="c1">#adjr2</span>
 <span class="n">adjr2.df</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">numvar</span> <span class="o">=</span> <span class="n">numvar</span><span class="p">,</span> <span class="n">adjr2</span> <span class="o">&lt;-</span> <span class="n">reg.summary</span><span class="o">$</span><span class="n">adjr2</span><span class="p">,</span> <span class="n">maxadjr2</span> <span class="o">&lt;-</span> <span class="n">allfalse</span><span class="p">)</span>
-<span class="n">adjr2.df</span><span class="o">$</span><span class="n">maxadjr2</span><span class="p">[</span><span class="nf">which.max</span><span class="p">(</span><span class="n">reg.summary</span><span class="o">$</span><span class="n">adjr2</span><span class="p">)]</span> <span class="o">&lt;-</span> <span class="kc">TRUE</span>
+<span class="n">adjr2.df</span><span class="o">$</span><span class="n">maxadjr2</span><span class="nf">[which.max</span><span class="p">(</span><span class="n">reg.summary</span><span class="o">$</span><span class="n">adjr2</span><span class="p">)</span><span class="n">]</span> <span class="o">&lt;-</span> <span class="kc">TRUE</span>
 <span class="nf">ggplot</span><span class="p">(</span><span class="n">adjr2.df</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">numvar</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">adjr2</span><span class="p">,</span><span class="n">shape</span><span class="o">=</span><span class="n">maxadjr2</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">maxadjr2</span><span class="p">))</span> <span class="o">+</span> 
     <span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">3</span><span class="p">)</span> <span class="o">+</span> <span class="nf">theme_light</span><span class="p">()</span> <span class="o">+</span> 
-    <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&quot;Number of Variables&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">&#39;Adj&#39;</span><span class="o">~</span><span class="n">R</span><span class="o">^</span><span class="m">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;Maximum Adj&#39;</span><span class="o">~</span><span class="n">R</span><span class="o">^</span><span class="m">2</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="s">&#39;Maximum Adj&#39;</span><span class="o">~</span><span class="n">R</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
+    <span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&quot;Number of Variables&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">&#39;Adj&#39;</span><span class="o">~</span><span class="n">R^2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&#39;Maximum Adj&#39;</span><span class="o">~</span><span class="n">R^2</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="s">&#39;Maximum Adj&#39;</span><span class="o">~</span><span class="n">R^2</span><span class="p">)</span>
 
 <span class="c1"># #mallow&#39;s cp</span>
 <span class="c1"># cp.df &lt;- data.frame(numvar = numvar, cp &lt;- reg.summary$cp, mincp &lt;- allfalse)</span>
@@ -1109,8 +1144,8 @@ Hits, Walks, CRBI, DivisionW, and PutOuts.</p>
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="../lectures/selecting-the-best-model.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1127,19 +1162,17 @@ Hits, Walks, CRBI, DivisionW, and PutOuts.</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
-        
-            &copy; Copyright 2022.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
 </main>
 
 
