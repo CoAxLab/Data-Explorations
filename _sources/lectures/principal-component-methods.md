@@ -1,4 +1,4 @@
-# The value of openness
+# Principal component methods
 =======================
 
 ## Required readings
