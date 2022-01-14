@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -679,7 +679,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -719,7 +719,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -792,7 +792,83 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Tutorial: Running basic power analyses</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial: Running basic power analyses
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goals">
+     Goals:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simulating-power">
+   Simulating power
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-algorithm">
+     Basic algorithm
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#determine-the-sources-of-variance">
+       Determine the sources of variance
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#write-a-function-to-simulate-artificial-data">
+       Write a function to simulate artificial data
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#write-a-function-to-conduct-your-intended-analysis">
+       Write a function to conduct your intended analysis
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vary-the-sample-size-and-alpha-levels">
+       Vary the sample size and alpha levels
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extending-to-more-complicated-analyses-example-with-mixed-models">
+   Extending to more complicated analyses: example with mixed-models
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#but-what-is-more-important-number-of-subjects-or-number-of-trials">
+     But what is more important, number of subjects or number of trials?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-running-basic-power-analyses">
@@ -916,7 +992,7 @@
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># a function for running a t-test and extracting p-value</span>
 <span class="n">run_analysis</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">fit</span> <span class="o">&lt;-</span> <span class="nf">t.test</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">group1</span><span class="p">,</span> <span class="n">data</span><span class="o">$</span><span class="n">group2</span><span class="p">)</span>
-    <span class="nf">return</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">fit</span><span class="o">$</span><span class="n">estimate</span><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">fit</span><span class="o">$</span><span class="n">estimate</span><span class="p">[</span><span class="m">2</span><span class="p">],</span><span class="n">fit</span><span class="o">$</span><span class="n">stderr</span><span class="p">,</span><span class="n">fit</span><span class="o">$</span><span class="n">p.value</span><span class="p">))</span> <span class="c1"># this outputs the effect size, standard error, and significance for quality metrics </span>
+    <span class="nf">return</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">fit</span><span class="o">$</span><span class="n">estimate[1]</span> <span class="o">-</span> <span class="n">fit</span><span class="o">$</span><span class="n">estimate[2]</span><span class="p">,</span><span class="n">fit</span><span class="o">$</span><span class="n">stderr</span><span class="p">,</span><span class="n">fit</span><span class="o">$</span><span class="n">p.value</span><span class="p">))</span> <span class="c1"># this outputs the effect size, standard error, and significance for quality metrics </span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -925,7 +1001,7 @@
 <p>With this second function we can run an independent samples <code class="docutils literal notranslate"><span class="pre">t.test</span></code> and extract the <code class="docutils literal notranslate"><span class="pre">p.value</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">run_analysis</span><span class="p">(</span><span class="n">heights</span><span class="p">)[</span><span class="m">3</span><span class="p">]</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">run_analysis</span><span class="p">(</span><span class="n">heights</span><span class="p">)</span><span class="n">[3]</span>
 </pre></div>
 </div>
 </div>
@@ -942,17 +1018,17 @@
     <span class="c1"># loop for repeating the simulation</span>
     <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">n_simulations</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">data</span> <span class="o">&lt;-</span> <span class="nf">simulate_data</span><span class="p">(</span><span class="n">sample_size</span><span class="p">,</span> <span class="n">group1_mu</span><span class="p">,</span> <span class="n">group1_sd</span><span class="p">,</span> <span class="n">group2_mu</span><span class="p">,</span> <span class="n">group2_sd</span><span class="p">)</span> <span class="c1"># simulate the data using the defined function</span>
-        <span class="n">simouts</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span> <span class="o">&lt;-</span> <span class="nf">run_analysis</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1"># run the analysis, and add outputs to the matrix</span>
+        <span class="n">simouts[i</span><span class="p">,</span><span class="n">]</span> <span class="o">&lt;-</span> <span class="nf">run_analysis</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1"># run the analysis, and add outputs to the matrix</span>
     <span class="p">}</span>
     
     <span class="c1"># calculate coverage (AKA power)</span>
-    <span class="n">cvg</span> <span class="o">&lt;-</span> <span class="nf">mean</span><span class="p">(</span><span class="n">simouts</span><span class="p">[,</span><span class="m">3</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">alpha</span><span class="p">)</span> <span class="c1"># this is the same as the number of sims that successfully rejected null divided by total number of sims - probability of correctly rejecting the null!</span>
+    <span class="n">cvg</span> <span class="o">&lt;-</span> <span class="nf">mean</span><span class="p">(</span><span class="n">simouts[</span><span class="p">,</span><span class="m">3</span><span class="n">]</span> <span class="o">&lt;=</span> <span class="n">alpha</span><span class="p">)</span> <span class="c1"># this is the same as the number of sims that successfully rejected null divided by total number of sims - probability of correctly rejecting the null!</span>
     <span class="c1"># calculate relative parameter estimate bias</span>
-    <span class="n">theta_bias</span> <span class="o">&lt;-</span> <span class="p">(</span> <span class="nf">mean</span><span class="p">(</span><span class="n">simouts</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span> <span class="o">-</span> <span class="p">(</span><span class="n">group1_mu</span><span class="o">-</span><span class="n">group2_mu</span><span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">group1_mu</span><span class="o">-</span><span class="n">group2_mu</span><span class="p">)</span>
+    <span class="n">theta_bias</span> <span class="o">&lt;-</span> <span class="p">(</span> <span class="nf">mean</span><span class="p">(</span><span class="n">simouts[</span><span class="p">,</span><span class="m">1</span><span class="n">]</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">group1_mu</span><span class="o">-</span><span class="n">group2_mu</span><span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">group1_mu</span><span class="o">-</span><span class="n">group2_mu</span><span class="p">)</span>
     <span class="c1"># calculate relative standard error bias </span>
-    <span class="n">sigma_bias</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="n">simouts</span><span class="p">[,</span><span class="m">2</span><span class="p">])</span> <span class="o">-</span> <span class="nf">sd</span><span class="p">(</span><span class="n">simouts</span><span class="p">[,</span><span class="m">1</span><span class="p">]))</span> <span class="o">/</span> <span class="nf">sd</span><span class="p">(</span><span class="n">simouts</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span>
+    <span class="n">sigma_bias</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="n">simouts[</span><span class="p">,</span><span class="m">2</span><span class="n">]</span><span class="p">)</span> <span class="o">-</span> <span class="nf">sd</span><span class="p">(</span><span class="n">simouts[</span><span class="p">,</span><span class="m">1</span><span class="n">]</span><span class="p">))</span> <span class="o">/</span> <span class="nf">sd</span><span class="p">(</span><span class="n">simouts[</span><span class="p">,</span><span class="m">1</span><span class="n">]</span><span class="p">)</span>
 
-    <span class="nf">return</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">cvg</span> <span class="o">=</span> <span class="n">cvg</span><span class="p">,</span> <span class="n">theta_bias</span><span class="o">=</span><span class="n">theta_bias</span><span class="p">,</span> <span class="n">sigma_bias</span><span class="o">=</span><span class="n">sigma_bias</span><span class="p">,</span> <span class="n">p.values</span><span class="o">=</span><span class="n">simouts</span><span class="p">[,</span><span class="m">3</span><span class="p">]))</span> <span class="c1">#return a list with the power as the probability of a sig. result and the corresponding p-values</span>
+    <span class="nf">return</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">cvg</span> <span class="o">=</span> <span class="n">cvg</span><span class="p">,</span> <span class="n">theta_bias</span><span class="o">=</span><span class="n">theta_bias</span><span class="p">,</span> <span class="n">sigma_bias</span><span class="o">=</span><span class="n">sigma_bias</span><span class="p">,</span> <span class="n">p.values</span><span class="o">=</span><span class="n">simouts[</span><span class="p">,</span><span class="m">3</span><span class="n">]</span><span class="p">))</span> <span class="c1">#return a list with the power as the probability of a sig. result and the corresponding p-values</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -964,7 +1040,7 @@
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">040819</span><span class="p">)</span>
 <span class="n">results</span> <span class="o">=</span> <span class="nf">repeat_analysis</span><span class="p">(</span><span class="n">n_simulations</span> <span class="o">=</span> <span class="m">1000</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.05</span><span class="p">,</span> <span class="n">sample_size</span> <span class="o">=</span> <span class="m">5</span><span class="p">,</span>
                           <span class="n">group1_mu</span><span class="o">=</span><span class="m">163</span><span class="p">,</span> <span class="n">group1_sd</span> <span class="o">=</span> <span class="m">15</span><span class="p">,</span> <span class="n">group2_mu</span> <span class="o">=</span> <span class="m">135</span><span class="p">,</span> <span class="n">group2_sd</span> <span class="o">=</span> <span class="m">7</span><span class="p">)</span>
-<span class="n">results</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">]</span>
+<span class="n">results[1</span><span class="o">:</span><span class="m">3</span><span class="n">]</span>
 </pre></div>
 </div>
 </div>
@@ -987,7 +1063,7 @@
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">040819</span><span class="p">)</span>
 <span class="n">results</span> <span class="o">=</span> <span class="nf">repeat_analysis</span><span class="p">(</span><span class="n">n_simulations</span> <span class="o">=</span> <span class="m">1000</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.05</span><span class="p">,</span> <span class="n">sample_size</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span>
                           <span class="n">group1_mu</span><span class="o">=</span><span class="m">163</span><span class="p">,</span> <span class="n">group1_sd</span> <span class="o">=</span> <span class="m">15</span><span class="p">,</span> <span class="n">group2_mu</span> <span class="o">=</span> <span class="m">135</span><span class="p">,</span> <span class="n">group2_sd</span> <span class="o">=</span> <span class="m">7</span><span class="p">)</span>
-<span class="n">results</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">]</span>
+<span class="n">results[1</span><span class="o">:</span><span class="m">3</span><span class="n">]</span>
 </pre></div>
 </div>
 </div>
@@ -1009,7 +1085,7 @@
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">18546</span><span class="p">)</span>
 <span class="n">results</span> <span class="o">=</span> <span class="nf">repeat_analysis</span><span class="p">(</span><span class="n">n_simulations</span> <span class="o">=</span> <span class="m">1000</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.001</span><span class="p">,</span> <span class="n">sample_size</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span>
                           <span class="n">group1_mu</span><span class="o">=</span><span class="m">163</span><span class="p">,</span> <span class="n">group1_sd</span> <span class="o">=</span> <span class="m">15</span><span class="p">,</span> <span class="n">group2_mu</span> <span class="o">=</span> <span class="m">135</span><span class="p">,</span> <span class="n">group2_sd</span> <span class="o">=</span> <span class="m">7</span><span class="p">)</span>
-<span class="n">results</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">]</span>
+<span class="n">results[1</span><span class="o">:</span><span class="m">3</span><span class="n">]</span>
 </pre></div>
 </div>
 </div>
@@ -1038,7 +1114,7 @@
             <span class="nf">gather</span><span class="p">(</span><span class="s">&#39;n_samples&#39;</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;n5&#39;</span><span class="p">,</span> <span class="s">&#39;n10&#39;</span><span class="p">),</span> <span class="n">value</span> <span class="o">=</span> <span class="s">&#39;p.values&#39;</span><span class="p">)</span>
 
 
-<span class="nf">ggplot</span><span class="p">(</span><span class="n">power_df</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">p.values</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_histogram</span><span class="p">()</span> <span class="o">+</span> <span class="nf">facet_grid</span><span class="p">(</span><span class="n">.</span><span class="o">~</span><span class="n">n_samples</span><span class="p">)</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">power_df</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">p.values</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_histogram</span><span class="p">()</span> <span class="o">+</span> <span class="nf">facet_grid</span><span class="p">(</span><span class="n">.~n_samples</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1064,7 +1140,7 @@
 <span class="c1"># then use tidyverse functions to run the analysis for each sample size</span>
 <span class="n">results</span> <span class="o">&lt;-</span> <span class="n">dat</span>  <span class="o">%&gt;%</span>  <span class="c1">#using the dataframe defined above</span>
     <span class="nf">nest</span><span class="p">(</span><span class="n">parameters</span> <span class="o">:=</span>  <span class="nf">c</span><span class="p">(</span><span class="n">sample_size</span><span class="p">,</span><span class="n">alpha</span><span class="p">))</span> <span class="o">%&gt;%</span> <span class="c1"># separate the parameters into lists split by parameter combo case and call the new column of lists &#39;parameters&#39; </span>
-    <span class="nf">mutate</span><span class="p">(</span><span class="n">power</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="o">~</span> <span class="nf">repeat_analysis</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span> <span class="n">.</span><span class="o">$</span><span class="n">alpha</span><span class="p">,</span> <span class="n">.</span><span class="o">$</span><span class="n">sample_size</span><span class="p">,</span> <span class="m">163</span><span class="p">,</span> <span class="m">15</span><span class="p">,</span> <span class="m">135</span><span class="p">,</span> <span class="m">7</span><span class="p">)</span><span class="o">$</span><span class="n">cvg</span><span class="p">))</span>  <span class="o">%&gt;%</span>  <span class="c1"># note: &quot;map&quot; is like running a for loop, but more efficiently</span>
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">power</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="o">~</span> <span class="nf">repeat_analysis</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span> <span class="n">.$alpha</span><span class="p">,</span> <span class="n">.$sample_size</span><span class="p">,</span> <span class="m">163</span><span class="p">,</span> <span class="m">15</span><span class="p">,</span> <span class="m">135</span><span class="p">,</span> <span class="m">7</span><span class="p">)</span><span class="o">$</span><span class="n">cvg</span><span class="p">))</span>  <span class="o">%&gt;%</span>  <span class="c1"># note: &quot;map&quot; is like running a for loop, but more efficiently</span>
     <span class="c1">#for each case within parameters, repeat the analysis, varying the alpha and sample size</span>
     <span class="c1">#store the power associated with all cases as a new variable called power </span>
     <span class="nf">unnest</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">power</span><span class="p">))</span> <span class="c1">#return the dataframe to an unnested state, making each element of the list its own row</span>
@@ -1215,7 +1291,7 @@ Warning message in system(&quot;timedatectl&quot;, intern = TRUE):
     <span class="n">dat</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">subject</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="n">n_subjects</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">subject_intercepts</span><span class="p">,</span> <span class="n">slope</span><span class="o">=</span><span class="n">subject_slopes</span><span class="p">)</span>
     <span class="c1"># generate trials for each subject</span>
     <span class="n">dat</span> <span class="o">&lt;-</span> <span class="n">dat</span>  <span class="o">%&gt;%</span> 
-        <span class="nf">nest</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="n">parameters</span> <span class="o">:=</span>  <span class="nf">c</span><span class="p">(</span><span class="n">intercept</span><span class="p">,</span> <span class="n">slope</span><span class="p">))</span>  <span class="o">%&gt;%</span> <span class="c1"># for each subject</span>
+        <span class="nf">nest</span><span class="p">(</span><span class="n">.,</span> <span class="n">parameters</span> <span class="o">:=</span>  <span class="nf">c</span><span class="p">(</span><span class="n">intercept</span><span class="p">,</span> <span class="n">slope</span><span class="p">))</span>  <span class="o">%&gt;%</span> <span class="c1"># for each subject</span>
         <span class="c1"># sample n_trials values for two new vars using &quot;intercept&quot; and &quot;slope&quot; values calculated above, adding trial variability using trial_sd</span>
         <span class="c1"># congruent just uses intercept for mean (the baseline condition, faster RT), </span>
         <span class="c1"># incongruent uses intercept+slope to account for effect of being slower condition</span>
@@ -1234,8 +1310,8 @@ Warning message in system(&quot;timedatectl&quot;, intern = TRUE):
     <span class="n">m0</span> <span class="o">&lt;-</span> <span class="nf">lmer</span><span class="p">(</span><span class="n">rt</span> <span class="o">~</span> <span class="m">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">prime</span><span class="o">||</span><span class="n">subject</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">REML</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> <span class="n">control</span><span class="o">=</span><span class="nf">lmerControl</span><span class="p">(</span><span class="n">calc.derivs</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">))</span> <span class="c1"># null model</span>
     <span class="n">m1</span> <span class="o">&lt;-</span> <span class="nf">lmer</span><span class="p">(</span><span class="n">rt</span> <span class="o">~</span> <span class="n">prime</span> <span class="o">+</span> <span class="p">(</span><span class="n">prime</span><span class="o">||</span><span class="n">subject</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">REML</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> <span class="n">control</span><span class="o">=</span><span class="nf">lmerControl</span><span class="p">(</span><span class="n">calc.derivs</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">))</span> <span class="c1"># alternative model</span>
 
-    <span class="n">est</span> <span class="o">&lt;-</span> <span class="nf">fixef</span><span class="p">(</span><span class="n">m1</span><span class="p">)[</span><span class="m">2</span><span class="p">]</span> <span class="c1"># estimate of Incongruent - Congruent difference in RT </span>
-    <span class="n">se</span> <span class="o">&lt;-</span> <span class="nf">summary</span><span class="p">(</span><span class="n">m1</span><span class="p">)</span><span class="o">$</span><span class="n">coef</span><span class="p">[,</span> <span class="m">2</span><span class="p">,</span> <span class="n">drop</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">][</span><span class="m">2</span><span class="p">]</span> <span class="c1"># stderr of estimate</span>
+    <span class="n">est</span> <span class="o">&lt;-</span> <span class="nf">fixef</span><span class="p">(</span><span class="n">m1</span><span class="p">)</span><span class="n">[2]</span> <span class="c1"># estimate of Incongruent - Congruent difference in RT </span>
+    <span class="n">se</span> <span class="o">&lt;-</span> <span class="nf">summary</span><span class="p">(</span><span class="n">m1</span><span class="p">)</span><span class="o">$</span><span class="n">coef[</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="n">drop</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="n">][2]</span> <span class="c1"># stderr of estimate</span>
     <span class="n">m_bic</span> <span class="o">&lt;-</span> <span class="nf">BIC</span><span class="p">(</span><span class="n">m0</span><span class="p">,</span> <span class="n">m1</span><span class="p">)</span><span class="o">$</span><span class="n">BIC</span><span class="c1">#Outputs Bayesian Information Criterion to assess goodness of model fit</span>
     <span class="n">statistic</span> <span class="o">&lt;-</span> <span class="nf">diff</span><span class="p">(</span><span class="n">m_bic</span><span class="p">)</span><span class="c1">#You can replace with change in AIC or a p-value for a likelihood ratio statistic</span>
     <span class="nf">return</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">est</span><span class="p">,</span><span class="n">se</span><span class="p">,</span><span class="n">statistic</span><span class="p">))</span>
@@ -1318,15 +1394,15 @@ Call `lifecycle::last_warnings()` to see where this warning was generated.”
     <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">n_simulations</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">data</span> <span class="o">&lt;-</span> <span class="nf">simulate_data</span><span class="p">(</span><span class="n">n_subjects</span><span class="p">,</span> <span class="n">n_trials</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span>
                               <span class="n">slope</span><span class="p">,</span> <span class="n">intercept_sd</span><span class="p">,</span> <span class="n">slope_sd</span><span class="p">,</span> <span class="n">trial_sd</span><span class="p">)</span>
-        <span class="n">simouts</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span> <span class="o">&lt;-</span> <span class="nf">run_analysis</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1"># save the analysis outputs for this sim.</span>
+        <span class="n">simouts[i</span><span class="p">,</span><span class="n">]</span> <span class="o">&lt;-</span> <span class="nf">run_analysis</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1"># save the analysis outputs for this sim.</span>
     <span class="p">}</span>
     
     <span class="c1"># calculate how many of the simulations had significant results (coverage)</span>
-    <span class="n">power</span> <span class="o">&lt;-</span> <span class="nf">mean</span><span class="p">(</span><span class="n">simouts</span><span class="p">[,</span><span class="m">3</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="m">-20</span><span class="p">)</span> <span class="c1"># -20 is a good standard threshold for strong evidence, see Raftery &amp; Kass 1995</span>
+    <span class="n">power</span> <span class="o">&lt;-</span> <span class="nf">mean</span><span class="p">(</span><span class="n">simouts[</span><span class="p">,</span><span class="m">3</span><span class="n">]</span> <span class="o">&lt;=</span> <span class="m">-20</span><span class="p">)</span> <span class="c1"># -20 is a good standard threshold for strong evidence, see Raftery &amp; Kass 1995</span>
     <span class="c1"># calculate relative parameter estimate bias</span>
-    <span class="n">theta_bias</span> <span class="o">&lt;-</span> <span class="p">(</span> <span class="nf">mean</span><span class="p">(</span><span class="n">simouts</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span> <span class="o">-</span> <span class="n">slope</span> <span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">slope</span><span class="p">)</span>
+    <span class="n">theta_bias</span> <span class="o">&lt;-</span> <span class="p">(</span> <span class="nf">mean</span><span class="p">(</span><span class="n">simouts[</span><span class="p">,</span><span class="m">1</span><span class="n">]</span><span class="p">)</span> <span class="o">-</span> <span class="n">slope</span> <span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">slope</span><span class="p">)</span>
     <span class="c1"># calculate relative standard error bias </span>
-    <span class="n">sigma_bias</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="n">simouts</span><span class="p">[,</span><span class="m">2</span><span class="p">])</span> <span class="o">-</span> <span class="nf">sd</span><span class="p">(</span><span class="n">simouts</span><span class="p">[,</span><span class="m">1</span><span class="p">]))</span> <span class="o">/</span> <span class="nf">sd</span><span class="p">(</span><span class="n">simouts</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span>
+    <span class="n">sigma_bias</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="n">simouts[</span><span class="p">,</span><span class="m">2</span><span class="n">]</span><span class="p">)</span> <span class="o">-</span> <span class="nf">sd</span><span class="p">(</span><span class="n">simouts[</span><span class="p">,</span><span class="m">1</span><span class="n">]</span><span class="p">))</span> <span class="o">/</span> <span class="nf">sd</span><span class="p">(</span><span class="n">simouts[</span><span class="p">,</span><span class="m">1</span><span class="n">]</span><span class="p">)</span>
     <span class="nf">return</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">power</span> <span class="o">=</span> <span class="n">power</span><span class="p">,</span> <span class="n">theta_bias</span> <span class="o">=</span> <span class="n">theta_bias</span><span class="p">,</span> <span class="n">sigma_bias</span> <span class="o">=</span> <span class="n">sigma_bias</span><span class="p">))</span>
 <span class="p">}</span>
 </pre></div>
@@ -1342,9 +1418,9 @@ Call `lifecycle::last_warnings()` to see where this warning was generated.”
 <span class="n">results</span> <span class="o">&lt;-</span> <span class="n">dat</span>  <span class="o">%&gt;%</span> 
     <span class="nf">nest</span><span class="p">(</span><span class="n">parameters</span> <span class="o">:=</span>  <span class="nf">c</span><span class="p">(</span><span class="n">n_subjects</span><span class="p">,</span> <span class="n">n_trials</span><span class="p">))</span> <span class="o">%&gt;%</span>
     <span class="c1"># nest(-id, .key = &#39;parameters&#39;)  %&gt;% </span>
-    <span class="nf">mutate</span><span class="p">(</span><span class="n">power</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="o">~</span> <span class="nf">repeat_analysis</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span> <span class="m">0.05</span><span class="p">,</span> <span class="n">.</span><span class="o">$</span><span class="n">n_subjects</span><span class="p">,</span> <span class="n">.</span><span class="o">$</span><span class="n">n_trials</span><span class="p">,</span> <span class="m">700</span><span class="p">,</span> <span class="m">50</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span><span class="m">50</span><span class="p">,</span><span class="m">200</span><span class="p">)</span><span class="o">$</span><span class="n">power</span><span class="p">),</span>
-    <span class="n">theta_bias</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="o">~</span> <span class="nf">repeat_analysis</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span> <span class="m">0.05</span><span class="p">,</span> <span class="n">.</span><span class="o">$</span><span class="n">n_subjects</span><span class="p">,</span> <span class="n">.</span><span class="o">$</span><span class="n">n_trials</span><span class="p">,</span> <span class="m">700</span><span class="p">,</span> <span class="m">50</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span><span class="m">50</span><span class="p">,</span><span class="m">200</span><span class="p">)</span><span class="o">$</span><span class="n">theta_bias</span><span class="p">),</span>
-    <span class="n">sigma_bias</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="o">~</span> <span class="nf">repeat_analysis</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span> <span class="m">0.05</span><span class="p">,</span> <span class="n">.</span><span class="o">$</span><span class="n">n_subjects</span><span class="p">,</span> <span class="n">.</span><span class="o">$</span><span class="n">n_trials</span><span class="p">,</span> <span class="m">700</span><span class="p">,</span> <span class="m">50</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span><span class="m">50</span><span class="p">,</span><span class="m">200</span><span class="p">)</span><span class="o">$</span><span class="n">sigma_bias</span><span class="p">))</span>  <span class="o">%&gt;%</span> 
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">power</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="o">~</span> <span class="nf">repeat_analysis</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span> <span class="m">0.05</span><span class="p">,</span> <span class="n">.$n_subjects</span><span class="p">,</span> <span class="n">.$n_trials</span><span class="p">,</span> <span class="m">700</span><span class="p">,</span> <span class="m">50</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span><span class="m">50</span><span class="p">,</span><span class="m">200</span><span class="p">)</span><span class="o">$</span><span class="n">power</span><span class="p">),</span>
+    <span class="n">theta_bias</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="o">~</span> <span class="nf">repeat_analysis</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span> <span class="m">0.05</span><span class="p">,</span> <span class="n">.$n_subjects</span><span class="p">,</span> <span class="n">.$n_trials</span><span class="p">,</span> <span class="m">700</span><span class="p">,</span> <span class="m">50</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span><span class="m">50</span><span class="p">,</span><span class="m">200</span><span class="p">)</span><span class="o">$</span><span class="n">theta_bias</span><span class="p">),</span>
+    <span class="n">sigma_bias</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="o">~</span> <span class="nf">repeat_analysis</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span> <span class="m">0.05</span><span class="p">,</span> <span class="n">.$n_subjects</span><span class="p">,</span> <span class="n">.$n_trials</span><span class="p">,</span> <span class="m">700</span><span class="p">,</span> <span class="m">50</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span><span class="m">50</span><span class="p">,</span><span class="m">200</span><span class="p">)</span><span class="o">$</span><span class="n">sigma_bias</span><span class="p">))</span>  <span class="o">%&gt;%</span> 
     <span class="nf">unnest</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">power</span><span class="p">,</span> <span class="n">theta_bias</span><span class="p">,</span> <span class="n">sigma_bias</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -1453,8 +1529,8 @@ Call `lifecycle::last_warnings()` to see where this warning was generated.”
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="../lectures/power-analysis-via-simulations.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1471,19 +1547,17 @@ Call `lifecycle::last_warnings()` to see where this warning was generated.”
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
-        
-            &copy; Copyright 2022.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
 </main>
 
 

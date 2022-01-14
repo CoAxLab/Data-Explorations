@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -677,7 +677,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -717,7 +717,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -811,7 +811,104 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Tutorial: Repositories and version control</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial: Repositories and version control
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goals">
+     Goals:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-version-control">
+   Why version control?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-are-git-and-github">
+   What are git and GitHub?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#use-git-and-github">
+   Use Git and GitHub
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#configuration">
+     Configuration
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-bash-scripting">
+     Basic Bash scripting
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#set-up-a-new-repository">
+     Set up a new repository
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pulling-changes">
+     Pulling changes
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-files-to-be-tracked">
+     Adding files to be tracked
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#commiting-changes">
+     Commiting changes
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#working-on-a-different-branch">
+     Working on a different branch
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#merging-branches">
+     Merging branches
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#merge-only-a-specific-file-from-a-branch">
+     Merge only a specific file from a branch
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#putting-it-all-together-example-workflow">
+   Putting it all together - example workflow
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-repositories-and-version-control">
@@ -963,7 +1060,7 @@ git init
 <p>There are many different ways to use branches. If you are simultaneously testing several different versions of your analyses, you can create one branch for each, and easily switch back and forth between them, until you decide which version you want to keep.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="k">import</span> <span class="n">drive</span>
 <span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1003,94 +1100,68 @@ git merge dev
 <div class="tex2jax_ignore mathjax_ignore section" id="putting-it-all-together-example-workflow">
 <h1>Putting it all together - example workflow<a class="headerlink" href="#putting-it-all-together-example-workflow" title="Permalink to this headline">¶</a></h1>
 <p>You are starting a new project. Here’s an example workflow with everything we have discussed.</p>
-<ol class="simple">
-<li><p>Install git, make a github account</p></li>
-<li><p>Setup git:</p></li>
-</ol>
+<p>    1. Install git, make a github account
+    2. Setup git:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git config --global user.email <span class="s2">&quot;you@andrew.cmu.edu&quot;</span>
 git config --global user.name <span class="s2">&quot;Your Name&quot;</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>Create a new project folder, navigate to it, and initialize a new local repository (optional if you clone a repository)</p></li>
-</ol>
+<p>    3. Create a new project folder, navigate to it, and initialize a new local repository (optional if you clone a repository)</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir c:<span class="se">\p</span>rojects<span class="se">\m</span>yproject<span class="se">\</span>
 <span class="nb">cd</span> c:<span class="se">\p</span>rojects<span class="se">\m</span>yproject<span class="se">\</span>
 git init
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>Make a remote repository on GitHub, and copy the repository link (optional if you clone a repository)</p></li>
-<li><p>Connect the local repository to the remote (optional if you clone a repository)</p></li>
-</ol>
+<p>    4. Make a remote repository on GitHub, and copy the repository link (optional if you clone a repository)
+    5. Connect the local repository to the remote (optional if you clone a repository)</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git remote add origin https://github.com/myusername/myproject.git
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>Create a basic project folder structure, a readme file, briefly describing the project and possibly the folder structure</p></li>
-<li><p>Add all current files to git</p></li>
-</ol>
+<p>    6. Create a basic project folder structure, a readme file, briefly describing the project and possibly the folder structure
+    7. Add all current files to git</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add *
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>Commit your first commit with an initialization message</p></li>
-</ol>
+<p>    8. Commit your first commit with an initialization message</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git commit -m <span class="s2">&quot;Initial commit&quot;</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>Push your changes to your remote github repository</p></li>
-</ol>
+<p>    9. Push your changes to your remote github repository</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git push
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>Create a new branch called <strong>dev</strong> on which to develop your project</p></li>
-</ol>
+<p>    10. Create a new branch called <strong>dev</strong> on which to develop your project</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout -b dev
 git push --set-upstream origin dev
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>Develop your scripts/analyses, files, etc.</p></li>
-<li><p>Whenever you make changes you are happy with, add the files, commit the changes and push them:</p></li>
-</ol>
+<p>    11. Develop your scripts/analyses, files, etc.
+    12. Whenever you make changes you are happy with, add the files, commit the changes and push them:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add * <span class="c1"># possibly specify specific files</span>
 git commit -m <span class="s2">&quot;Explain what you have changed briefly&quot;</span>
 git push --set-upstream origin dev
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>When you have reached a stage in which you want to save the version to be the main one, merge your dev branch with master:</p></li>
-</ol>
+<p>    13. When you have reached a stage in which you want to save the version to be the main one, merge your dev branch with master:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout master
 git merge dev
 git push <span class="c1"># in order to sync the master branches</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>Go back to dev or a new branch, if you want to test an alternative version of the script or add new things:</p></li>
-</ol>
+<p>    14. Go back to dev or a new branch, if you want to test an alternative version of the script or add new things:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout -b specialbranchfornewfeature
 git push --set-upstream origin specialbranchfornewfeature
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>At any point: check status of added files, commits, branches:</p></li>
-</ol>
+<p>    15. At any point: check status of added files, commits, branches:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git status
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>At any point: pull most recent changes from online repository:</p></li>
-</ol>
+<p>    16. At any point: pull most recent changes from online repository:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git pull
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>Rinse and repeat :)</p></li>
-</ol>
+<p>    17. Rinse and repeat :)</p>
 <p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
 </div>
 
@@ -1116,8 +1187,8 @@ git push --set-upstream origin specialbranchfornewfeature
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="../lectures/the-value-of-openness.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1134,19 +1205,17 @@ git push --set-upstream origin specialbranchfornewfeature
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
-        
-            &copy; Copyright 2022.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
 </main>
 
 
