@@ -1,5 +1,5 @@
 # Install LME4
-#install.packages("lme4") # Uncomment if not installed.
+install.packages("lme4") # Uncomment if not installed.
 library(lme4)
 library(ggplot2)
 

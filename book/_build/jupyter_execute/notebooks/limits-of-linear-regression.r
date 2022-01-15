@@ -77,7 +77,7 @@ suppressWarnings(
 # ( ^ note: I just suppressed a warning about an old version of a command that ggfortify uses - you don't need to worry about it)
 
 # Let's plot some relationships first.
-#install.packages("plot3D") # Uncomment if this is not installed
+install.packages("plot3D") # Uncomment if this is not installed
 
 library(plot3D) # note - this is outside of the ggplot2 package
 # Let's look at the relationship between Length AND Width on car weight
@@ -101,10 +101,12 @@ lm.fit_new=update(lm.fit, ~.-EngineSize -Passengers)
 summary(lm.fit_new)
 
 # First we will want to clear the workspace
-rm(list=ls())
+#rm(list=ls())
 
 # Next load the car package for this
 install.packages("car") #Uncomment if you haven't already installed the package
+
+install.packages("ISLR")
 library(ISLR)
 
 # Look at the Carseats dataset

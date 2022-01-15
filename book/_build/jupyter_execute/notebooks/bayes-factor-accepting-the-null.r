@@ -1,4 +1,4 @@
-# install.packages("BayesFactor") #install 
+install.packages("BayesFactor") #install 
 
 library(BayesFactor)
 library(tidyverse) # also import tidyverse for data manipulation

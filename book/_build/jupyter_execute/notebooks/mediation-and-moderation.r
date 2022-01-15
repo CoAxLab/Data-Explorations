@@ -1,4 +1,4 @@
-# install.packages("mediation") # uncomment to install the mediation package. 
+install.packages("mediation") # uncomment to install the mediation package. 
 library(mediation)
 library(MASS)
 library(tidyverse)

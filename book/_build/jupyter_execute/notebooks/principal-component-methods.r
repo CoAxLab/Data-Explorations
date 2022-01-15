@@ -24,9 +24,9 @@ ggplot(data.frame(PC1=iris.pca$x[,1],PC2=iris.pca$x[,2],Species=iris$Species),
     geom_point() + 
     theme_light()
 
-# install.packages("pls") # Uncomment if not installed
+install.packages("pls") # Uncomment if not installed
 library(pls) # load for the pcr function
-# install.packages("ISLR") # Uncomment if not installed
+install.packages("ISLR") # Uncomment if not installed
 library(ISLR) # For Hitters dataset
 library(tidyverse)
 hit.dat <- Hitters %>% drop_na() # get rid of missing values in Hitters dataset.

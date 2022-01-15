@@ -9,4 +9,4 @@
 
 ## Lecture
 
-[![The beauty of kNN](the-beauty-of-knn.jpeg)](https://www.youtube.com/watch?v=tvZ7MXTH3lk "The beauty of kNN")
+[![The beauty of kNN](../thumbnails/the-beauty-of-knn.jpeg)](https://www.youtube.com/watch?v=tvZ7MXTH3lk "The beauty of kNN")

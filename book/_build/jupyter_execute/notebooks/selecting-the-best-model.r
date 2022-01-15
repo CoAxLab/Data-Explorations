@@ -1,4 +1,4 @@
-# install.packages("ISLR") # uncomment if you don't have ISLR package installed
+install.packages("ISLR") # uncomment if you don't have ISLR package installed
 # Load the Baseball dataset
 library(ISLR)
 library(tidyverse) # for some data frame manipulation
@@ -19,7 +19,7 @@ dim(Hitters) # Notice that the dimensions reduced by 59 rows
 sum(is.na(Hitters)) # And there are no longer any "na" values
 
 # Uncomment the line below if you haven't installed the leaps package yet
-# install.packages("leaps")
+install.packages("leaps")
 library(leaps)
 ?regsubsets # uncomment to learn more about regsubsets function
 

@@ -1,8 +1,8 @@
-# install.packages("ISLR") # uncomment if you haven't installed this library
+install.packages("ISLR") # uncomment if you haven't installed this library
 library(ISLR)
 names(Hitters)
 
-# install.packages("glmnet", dependencies = TRUE) # uncomment if you haven't installed this library
+install.packages("glmnet", dependencies = TRUE) # uncomment if you haven't installed this library
 library(glmnet)
 
 # Use a non-linear search on lambda

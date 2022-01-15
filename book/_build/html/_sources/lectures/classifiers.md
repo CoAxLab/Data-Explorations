@@ -7,4 +7,4 @@
 
 ## Lecture
 
-[![Classifiers](../thumbnails/classifiers)](https://www.youtube.com/watch?v=r78WCl1vSik "Classifiers")
+[![Classifiers](../thumbnails/classifiers.jpeg)](https://www.youtube.com/watch?v=r78WCl1vSik "Classifiers")

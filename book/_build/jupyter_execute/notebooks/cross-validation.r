@@ -1,4 +1,4 @@
-# install.packages("ISLR")
+install.packages("ISLR")
 library(ISLR)
 library(tidyverse)
 set.seed(1) #set the seed for the random number generator. resetting the seed will give different results.
