@@ -7,4 +7,4 @@
 
 ## Lecture
 
-[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
+[![Mediation and moderation](../thumbnails/mediation-and-moderation.jpeg)](https://www.youtube.com/watch?v=hNIzcgaORbQ "Mediation and moderation")

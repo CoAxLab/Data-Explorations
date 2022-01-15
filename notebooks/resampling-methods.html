@@ -848,7 +848,7 @@
 <p>First, let’s load the <code class="docutils literal notranslate"><span class="pre">ISLR</span></code> library to get the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset, and the <code class="docutils literal notranslate"><span class="pre">boot</span></code> library so we can use the <code class="docutils literal notranslate"><span class="pre">boot()</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># install.packages(&quot;ISLR&quot;)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;ISLR&quot;</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">ISLR</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">boot</span><span class="p">)</span>
 </pre></div>
@@ -887,7 +887,7 @@
 </div>
 </div>
 </div>
-<p>Notice this is the same output as when you just run the <em>lm()</em> function with no subset selection (sanity check passed!).</p>
+<p>Notice this is the same output as when you just run the <code class="docutils literal notranslate"><span class="pre">lm()</span></code> function with no subset selection (sanity check passed!).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="nf">coef</span><span class="p">(</span><span class="nf">lm</span><span class="p">(</span><span class="n">mpg</span><span class="o">~</span><span class="n">horsepower</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Auto</span><span class="p">)))</span>

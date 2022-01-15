@@ -1158,7 +1158,7 @@ In the example above we fit a model where p = 1.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s plot some relationships first.</span>
-<span class="c1">#install.packages(&quot;plot3D&quot;) # Uncomment if this is not installed</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;plot3D&quot;</span><span class="p">)</span> <span class="c1"># Uncomment if this is not installed</span>
 
 <span class="nf">library</span><span class="p">(</span><span class="n">plot3D</span><span class="p">)</span> <span class="c1"># note - this is outside of the ggplot2 package</span>
 <span class="c1"># Let&#39;s look at the relationship between Length AND Width on car weight</span>
@@ -1347,10 +1347,12 @@ So far we've been playing mostly with quantitative predictors. Let's now play wi
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># First we will want to clear the workspace</span>
-<span class="nf">rm</span><span class="p">(</span><span class="n">list</span><span class="o">=</span><span class="nf">ls</span><span class="p">())</span>
+<span class="c1">#rm(list=ls())</span>
 
 <span class="c1"># Next load the car package for this</span>
 <span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;car&quot;</span><span class="p">)</span> <span class="c1">#Uncomment if you haven&#39;t already installed the package</span>
+
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;ISLR&quot;</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">ISLR</span><span class="p">)</span>
 
 <span class="c1"># Look at the Carseats dataset</span>
@@ -1359,21 +1361,6 @@ So far we've been playing mostly with quantitative predictors. Let's now play wi
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><ol class=list-inline>
-	<li>'Sales'</li>
-	<li>'CompPrice'</li>
-	<li>'Income'</li>
-	<li>'Advertising'</li>
-	<li>'Population'</li>
-	<li>'Price'</li>
-	<li>'ShelveLoc'</li>
-	<li>'Age'</li>
-	<li>'Education'</li>
-	<li>'Urban'</li>
-	<li>'US'</li>
-</ol>
-</div></div>
 </div>
 <p>This data set consists of a data frame with 400 observations on the following 11 variables.</p>
 <ul class="simple">

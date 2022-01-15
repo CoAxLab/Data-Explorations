@@ -981,9 +981,9 @@
 <p>Now that we’ve got a firmer grasp on what PCA is doing generally, let’s try out principal component regression using the <code class="docutils literal notranslate"><span class="pre">pcr()</span></code> function from the <code class="docutils literal notranslate"><span class="pre">pls</span></code> library. We’ll use the <code class="docutils literal notranslate"><span class="pre">Hitters</span></code> dataset for this example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># install.packages(&quot;pls&quot;) # Uncomment if not installed</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;pls&quot;</span><span class="p">)</span> <span class="c1"># Uncomment if not installed</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">pls</span><span class="p">)</span> <span class="c1"># load for the pcr function</span>
-<span class="c1"># install.packages(&quot;ISLR&quot;) # Uncomment if not installed</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;ISLR&quot;</span><span class="p">)</span> <span class="c1"># Uncomment if not installed</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">ISLR</span><span class="p">)</span> <span class="c1"># For Hitters dataset</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
 <span class="n">hit.dat</span> <span class="o">&lt;-</span> <span class="n">Hitters</span> <span class="o">%&gt;%</span> <span class="nf">drop_na</span><span class="p">()</span> <span class="c1"># get rid of missing values in Hitters dataset.</span>
