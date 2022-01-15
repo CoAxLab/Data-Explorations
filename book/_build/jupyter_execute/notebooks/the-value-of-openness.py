@@ -192,13 +192,6 @@
 # 
 # There are many different ways to use branches. If you are simultaneously testing several different versions of your analyses, you can create one branch for each, and easily switch back and forth between them, until you decide which version you want to keep. 
 
-# In[ ]:
-
-
-from google.colab import drive
-drive.mount('/content/drive')
-
-
 # ## Merging branches
 # 
 # You've finished making your changes on your development  branch (called **dev**), you have tested them, and you want to finalize them. You need to merge your **dev** branch with your **master**. Any time you merge two branches together, git compares their contents, checks for conflicts and combines any changes made in the different branches. In the simplest case, where you've only made changes to one of the branches, it will just replace the files in the other with the newer version. If, you've made changes to the same file under different branches, it will try to merge them. If the changes are about different parts of the file, it will combine them with no problem most of the time. If the changes are to the same lines in a file, it will create a conflict error that you will have to resolve manually before merging can occur. For now, just avoid doing that, and let's assume you've made changes only to one branch. When you merge branches, you implement the changes in whatever branch you are currently in. So, to update our master branch with the contents of **dev**, we first switch to **master**, and then invoke the merge command like this:
