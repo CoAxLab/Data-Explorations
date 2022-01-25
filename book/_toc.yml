@@ -16,6 +16,7 @@ parts:
       - file: discussions/what-is-a-theory
     - file: lectures/constructing-a-testable-hypothesis
       sections:
+      - file: notebooks/constructing-a-testable-hypothesis
       - file: discussions/constructing-a-testable-hypothesis
   - caption: Phase 2 - Evaluating the evidence
     chapters:
@@ -33,6 +34,7 @@ parts:
       - file: discussions/visualization-as-analysis
     - file: lectures/visualization-through-human-eyes
       sections:
+      - file: notebooks/visualization-through-human-eyes
       - file: discussions/visualization-through-human-eyes
     - file: lectures/the-bias-variance-tradeoff
       sections:
