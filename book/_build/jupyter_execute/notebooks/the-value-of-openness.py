@@ -235,6 +235,7 @@
 # You are starting a new project. Here's an example workflow with everything we have discussed.
 # 
 # &nbsp; &nbsp; 1. Install git, make a github account
+# 
 # &nbsp; &nbsp; 2. Setup git:
 # 
 # ```bash
@@ -251,6 +252,7 @@
 # ```
 # 
 # &nbsp; &nbsp; 4. Make a remote repository on GitHub, and copy the repository link (optional if you clone a repository)
+# 
 # &nbsp; &nbsp; 5. Connect the local repository to the remote (optional if you clone a repository)
 # 
 # ```bash
@@ -258,6 +260,7 @@
 # ```
 # 
 # &nbsp; &nbsp; 6. Create a basic project folder structure, a readme file, briefly describing the project and possibly the folder structure
+# 
 # &nbsp; &nbsp; 7. Add all current files to git
 # 
 # ```bash
@@ -284,6 +287,7 @@
 # ```
 # 
 # &nbsp; &nbsp; 11. Develop your scripts/analyses, files, etc.
+# 
 # &nbsp; &nbsp; 12. Whenever you make changes you are happy with, add the files, commit the changes and push them:
 # 
 # ```bash
