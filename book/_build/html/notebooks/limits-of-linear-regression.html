@@ -41,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -689,7 +689,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -729,7 +729,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+        <div class="d-none d-md-block col-md-2 bd-toc show">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -793,74 +793,7 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Tutorial: Fitting and prediction</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Tutorial: Fitting and prediction
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#goals">
-     Goals:
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#simple-linear-regression-with-a-single-predictor">
-   Simple linear regression with a single predictor
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#model-fitting">
-     Model fitting
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inference">
-     Inference
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#prediction">
-     Prediction
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plotting">
-     Plotting
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#regression-with-multiple-predictors">
-   Regression with multiple predictors
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#working-with-categorical-qualitative-predictors">
-   Working with categorical (qualitative) predictors
-  </a>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-fitting-and-prediction">
@@ -1035,9 +968,9 @@ F-statistic: 169.1 on 1 and 91 DF,  p-value: &lt; 2.2e-16
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Just grab the regression coefficients themselves</span>
-<span class="nf">coef</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">)</span><span class="n">[1]</span>
+<span class="nf">coef</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">)[</span><span class="m">1</span><span class="p">]</span>
 
-<span class="nf">coef</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">)</span><span class="n">[2]</span>
+<span class="nf">coef</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">)[</span><span class="m">2</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1117,7 +1050,7 @@ Length         27.59531    37.54727
 
 <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">`Length`</span><span class="p">,</span> <span class="n">`Weight`</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">Cars93</span><span class="p">)</span> <span class="o">+</span> 
   <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span> 
-  <span class="nf">geom_abline</span><span class="p">(</span><span class="n">intercept</span> <span class="o">=</span> <span class="nf">coef</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">)</span><span class="n">[1]</span><span class="p">,</span> <span class="n">slope</span> <span class="o">=</span> <span class="nf">coef</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">)</span><span class="n">[2]</span><span class="p">)</span> <span class="o">+</span> <span class="c1"># adds a line that shows the model&#39;s fit</span>
+  <span class="nf">geom_abline</span><span class="p">(</span><span class="n">intercept</span> <span class="o">=</span> <span class="nf">coef</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">)[</span><span class="m">1</span><span class="p">],</span> <span class="n">slope</span> <span class="o">=</span> <span class="nf">coef</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">)[</span><span class="m">2</span><span class="p">])</span> <span class="o">+</span> <span class="c1"># adds a line that shows the model&#39;s fit</span>
   <span class="nf">xlab</span><span class="p">(</span><span class="s">&#39;Car Length&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="nf">ylab</span><span class="p">(</span><span class="s">&#39;Car Weight&#39;</span><span class="p">)</span> 
 </pre></div>
 </div>
@@ -1223,7 +1156,7 @@ F-statistic: 168.1 on 2 and 90 DF,  p-value: &lt; 2.2e-16
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">num_cols</span> <span class="o">&lt;-</span> <span class="nf">unlist</span><span class="p">(</span><span class="nf">lapply</span><span class="p">(</span><span class="n">Cars93</span><span class="p">,</span> <span class="n">is.numeric</span><span class="p">))</span> <span class="c1"># Find just the numeric columns</span>
-<span class="n">lm.fit</span><span class="o">=</span><span class="nf">lm</span><span class="p">(</span><span class="n">Weight</span><span class="o">~</span><span class="n">.,</span> <span class="n">data</span><span class="o">=</span><span class="n">Cars93[</span><span class="p">,</span><span class="n">num_cols]</span><span class="p">)</span>
+<span class="n">lm.fit</span><span class="o">=</span><span class="nf">lm</span><span class="p">(</span><span class="n">Weight</span><span class="o">~</span><span class="n">.</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Cars93</span><span class="p">[,</span><span class="n">num_cols</span><span class="p">])</span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1271,7 +1204,7 @@ F-statistic: 111.8 on 17 and 64 DF,  p-value: &lt; 2.2e-16
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Excluding a variable from the model: age, indus</span>
-<span class="n">lm.fit_new</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">Weight</span><span class="o">~</span><span class="n">.-EngineSize</span> <span class="o">-</span><span class="n">Passengers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Cars93[</span><span class="p">,</span><span class="n">num_cols]</span><span class="p">)</span> <span class="c1">#you can exclude a variable by placing a &#39;-&#39; sign in front of it</span>
+<span class="n">lm.fit_new</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">Weight</span><span class="o">~</span><span class="n">.</span><span class="o">-</span><span class="n">EngineSize</span> <span class="o">-</span><span class="n">Passengers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Cars93</span><span class="p">[,</span><span class="n">num_cols</span><span class="p">])</span> <span class="c1">#you can exclude a variable by placing a &#39;-&#39; sign in front of it</span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">lm.fit_new</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1318,7 +1251,7 @@ F-statistic: 128.7 on 15 and 66 DF,  p-value: &lt; 2.2e-16
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Or just update the existing model</span>
-<span class="n">lm.fit_new</span><span class="o">=</span><span class="nf">update</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">,</span> <span class="o">~</span><span class="n">.-EngineSize</span> <span class="o">-</span><span class="n">Passengers</span><span class="p">)</span>
+<span class="n">lm.fit_new</span><span class="o">=</span><span class="nf">update</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">,</span> <span class="o">~</span><span class="n">.</span><span class="o">-</span><span class="n">EngineSize</span> <span class="o">-</span><span class="n">Passengers</span><span class="p">)</span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">lm.fit_new</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1390,7 +1323,7 @@ So far we've been playing mostly with quantitative predictors. Let's now play wi
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now let us fit Sales with some interaction terms</span>
-<span class="n">lm.fit</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">Sales</span><span class="o">~</span><span class="n">.+Income</span><span class="o">:</span><span class="n">Advertising</span><span class="o">+</span><span class="n">Price</span><span class="o">:</span><span class="n">Age</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Carseats</span><span class="p">)</span> <span class="c1">#here we are using all individual predictors + interactions between income &amp; advertising and price &amp; age.</span>
+<span class="n">lm.fit</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">Sales</span><span class="o">~</span><span class="n">.</span><span class="o">+</span><span class="n">Income</span><span class="o">:</span><span class="n">Advertising</span><span class="o">+</span><span class="n">Price</span><span class="o">:</span><span class="n">Age</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Carseats</span><span class="p">)</span> <span class="c1">#here we are using all individual predictors + interactions between income &amp; advertising and price &amp; age.</span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1481,8 +1414,8 @@ But remember – things get complicated if you have multiple categorical variabl
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
+        
+            <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="../lectures/limits-of-linear-regression.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1499,17 +1432,19 @@ But remember – things get complicated if you have multiple categorical variabl
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+        
         </div>
     </div>
     <footer class="footer">
-  <p>
-    
-      By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
+    <div class="container">
+      <p>
+        
+          By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis<br/>
+        
+            &copy; Copyright 2022.<br/>
+      </p>
+    </div>
+  </footer>
 </main>
 
 
