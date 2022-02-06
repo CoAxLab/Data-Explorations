@@ -286,6 +286,11 @@
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="the-bias-variance-tradeoff.html">
+     Tutorial: Fitting and prediction
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../discussions/the-bias-variance-tradeoff.html">
      Discussion questions
     </a>
@@ -304,7 +309,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="linear-models.html">
-     Tutorial: Basic linear regression
+     Tutorial: Refresher on working with matrices
     </a>
    </li>
    <li class="toctree-l2">
@@ -1005,8 +1010,8 @@ git merge dev
 <div class="tex2jax_ignore mathjax_ignore section" id="putting-it-all-together-example-workflow">
 <h1>Putting it all together - example workflow<a class="headerlink" href="#putting-it-all-together-example-workflow" title="Permalink to this headline">¶</a></h1>
 <p>You are starting a new project. Here’s an example workflow with everything we have discussed.</p>
-<p>    1. Install git, make a github account
-    2. Setup git:</p>
+<p>    1. Install git, make a github account</p>
+<p>    2. Setup git:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git config --global user.email <span class="s2">&quot;you@andrew.cmu.edu&quot;</span>
 git config --global user.name <span class="s2">&quot;Your Name&quot;</span>
 </pre></div>
@@ -1017,13 +1022,13 @@ git config --global user.name <span class="s2">&quot;Your Name&quot;</span>
 git init
 </pre></div>
 </div>
-<p>    4. Make a remote repository on GitHub, and copy the repository link (optional if you clone a repository)
-    5. Connect the local repository to the remote (optional if you clone a repository)</p>
+<p>    4. Make a remote repository on GitHub, and copy the repository link (optional if you clone a repository)</p>
+<p>    5. Connect the local repository to the remote (optional if you clone a repository)</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git remote add origin https://github.com/myusername/myproject.git
 </pre></div>
 </div>
-<p>    6. Create a basic project folder structure, a readme file, briefly describing the project and possibly the folder structure
-    7. Add all current files to git</p>
+<p>    6. Create a basic project folder structure, a readme file, briefly describing the project and possibly the folder structure</p>
+<p>    7. Add all current files to git</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add *
 </pre></div>
 </div>
@@ -1040,8 +1045,8 @@ git init
 git push --set-upstream origin dev
 </pre></div>
 </div>
-<p>    11. Develop your scripts/analyses, files, etc.
-    12. Whenever you make changes you are happy with, add the files, commit the changes and push them:</p>
+<p>    11. Develop your scripts/analyses, files, etc.</p>
+<p>    12. Whenever you make changes you are happy with, add the files, commit the changes and push them:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add * <span class="c1"># possibly specify specific files</span>
 git commit -m <span class="s2">&quot;Explain what you have changed briefly&quot;</span>
 git push --set-upstream origin dev
