@@ -53,8 +53,6 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Discussion questions" href="../discussions/the-bias-variance-tradeoff.html" />
-    <link rel="prev" title="The bias-variance tradeoff" href="../lectures/the-bias-variance-tradeoff.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -188,7 +186,7 @@
   Phase 2 - Evaluating the evidence
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lectures/data-as-objects-and-architectures.html">
    Data as objects and architectures
@@ -277,21 +275,16 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lectures/the-bias-variance-tradeoff.html">
    The bias-variance tradeoff
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
   <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Tutorial: Fitting and prediction
-    </a>
-   </li>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/the-bias-variance-tradeoff.html">
      Discussion questions
@@ -689,7 +682,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/the-bias-variance-tradeoff.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/notebooks/what-is-learnable.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -714,7 +707,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/notebooks/the-bias-variance-tradeoff.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/notebooks/what-is-learnable.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -722,7 +715,7 @@
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/notebooks/the-bias-variance-tradeoff.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/notebooks/what-is-learnable.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -874,7 +867,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/the-bias-variance-tradeoff_14_0.png" src="../_images/the-bias-variance-tradeoff_14_0.png" />
+<img alt="../_images/what-is-learnable_14_0.png" src="../_images/what-is-learnable_14_0.png" />
 </div>
 </div>
 <p>Since this is a rougly a straight line, we can safely assume that the <code class="docutils literal notranslate"><span class="pre">Weight</span></code> variable is normally distributed.</p>
@@ -889,7 +882,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/the-bias-variance-tradeoff_16_0.png" src="../_images/the-bias-variance-tradeoff_16_0.png" />
+<img alt="../_images/what-is-learnable_16_0.png" src="../_images/what-is-learnable_16_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -904,7 +897,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/the-bias-variance-tradeoff_17_0.png" src="../_images/the-bias-variance-tradeoff_17_0.png" />
+<img alt="../_images/what-is-learnable_17_0.png" src="../_images/what-is-learnable_17_0.png" />
 </div>
 </div>
 <p>Now let’s build a model object using <code class="docutils literal notranslate"><span class="pre">lm</span></code> that captures this simple relationship. Remember that the output from the <code class="docutils literal notranslate"><span class="pre">lm</span></code> function is an object that contains all the information about the model that you trained.</p>
@@ -953,7 +946,7 @@ F-statistic: 169.1 on 1 and 91 DF,  p-value: &lt; 2.2e-16
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula &#39;y ~ x&#39;
 </pre></div>
 </div>
-<img alt="../_images/the-bias-variance-tradeoff_20_1.png" src="../_images/the-bias-variance-tradeoff_20_1.png" />
+<img alt="../_images/what-is-learnable_20_1.png" src="../_images/what-is-learnable_20_1.png" />
 </div>
 </div>
 </div>
@@ -1051,7 +1044,7 @@ Length         27.59531    37.54727
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/the-bias-variance-tradeoff_29_0.png" src="../_images/the-bias-variance-tradeoff_29_0.png" />
+<img alt="../_images/what-is-learnable_29_0.png" src="../_images/what-is-learnable_29_0.png" />
 </div>
 </div>
 <p>If you want a comprehensive visualization of the model, you can apply the base R plot command to the <em>lm.fit</em> model object.</p>
@@ -1072,7 +1065,7 @@ Length         27.59531    37.54727
 (as ‘lib’ is unspecified)
 </pre></div>
 </div>
-<img alt="../_images/the-bias-variance-tradeoff_31_1.png" src="../_images/the-bias-variance-tradeoff_31_1.png" />
+<img alt="../_images/what-is-learnable_31_1.png" src="../_images/what-is-learnable_31_1.png" />
 </div>
 </div>
 <p>Notice we get four plots that reveal different aspects of the model.</p>
@@ -1111,21 +1104,7 @@ Length         27.59531    37.54727
               
         
             <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../lectures/the-bias-variance-tradeoff.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">The bias-variance tradeoff</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="../discussions/the-bias-variance-tradeoff.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Discussion questions</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+<div class='prev-next-area'>
 </div>
         
         </div>

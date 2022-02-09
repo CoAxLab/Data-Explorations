@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -51,8 +53,6 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Bayes factor" href="../lectures/bayes-factor-accepting-the-null.html" />
-    <link rel="prev" title="Reconsidering the p-value" href="../lectures/reconsidering-the-p-value.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -584,19 +584,19 @@
   Phase 3 - Solving the mystery
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lectures/reconsidering-the-p-value.html">
    Reconsidering the p-value
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
   <label for="toctree-checkbox-23">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="reconsidering-the-p-value.html">
      Discussion questions
     </a>
    </li>
@@ -682,7 +682,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/discussions/reconsidering-the-p-value.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/discussions/what-is-learnable.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -718,8 +718,8 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="discussion-questions">
 <h1>Discussion questions<a class="headerlink" href="#discussion-questions" title="Permalink to this headline">¶</a></h1>
 <ol class="simple">
-<li><p>The Wasserstein et al. article argues that p-values are useful in a limited manner for understanding relationships in your data. Evaluate their ATOM approach and consider whether the steps they prescribe negate the need for p-values at all.</p></li>
-<li><p>Consider the four common poor null hypothesis test statistic practices outlined in the reading and the lecture. Each of these problems relate back to a single common misconception of what the p-value is reporting. What is this misconception?</p></li>
+<li><p>The lecture discusses the distinction between the hypothesis (<span class="math notranslate nohighlight">\(h\)</span>) and learner (<span class="math notranslate nohighlight">\(g\)</span>). How does the form of one affect the other?</p></li>
+<li><p>According to PAC learning (Valiant 1984), desribed in the article by Fulop &amp; Chater 2013, a problem is “PAC learnable” if it can be fit with a test error below <span class="math notranslate nohighlight">\(\delta\)</span> and training error below <span class="math notranslate nohighlight">\(\epsilon\)</span>, with <span class="math notranslate nohighlight">\(\delta \neq \epsilon\)</span>. Why is it important to have a different precision criteron for the training and testing evalautions? How does this relate to what we can understand about the relationship between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>?</p></li>
 </ol>
 </div>
 
@@ -747,21 +747,7 @@
               
         
             <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../lectures/reconsidering-the-p-value.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Reconsidering the p-value</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="../lectures/bayes-factor-accepting-the-null.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Bayes factor</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+<div class='prev-next-area'>
 </div>
         
         </div>
