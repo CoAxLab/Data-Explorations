@@ -39,6 +39,10 @@ parts:
     - file: lectures/the-bias-variance-tradeoff
       sections:
       - file: discussions/the-bias-variance-tradeoff
+    - file: lectures/what-is-learnable
+      sections:
+      - file: notebooks/what-is-learnable
+      - file: discussions/what-is-learnable
     - file: lectures/linear-models
       sections:
       - file: notebooks/linear-models
