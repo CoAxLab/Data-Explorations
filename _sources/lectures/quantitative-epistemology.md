@@ -1,4 +1,4 @@
-# Art of data investigations
+# Quantitative Epsitemology
 =======================
 
 ## Lecture 

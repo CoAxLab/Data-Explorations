@@ -1,4 +1,4 @@
-# The bias-variance tradeoff
+# Statistical Learning Theory
 =======================
 
 ## Required readings
