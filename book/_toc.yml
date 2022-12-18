@@ -2,7 +2,7 @@ format: jb-book
 root: intro
 
 parts:
-  - caption: Phase 1 - Assessing the scene
+  - caption: Information and Meaning
     chapters:
     - file: lectures/art-of-data-investigations
       sections:
@@ -18,8 +18,6 @@ parts:
       sections:
       - file: notebooks/constructing-a-testable-hypothesis
       - file: discussions/constructing-a-testable-hypothesis
-  - caption: Phase 2 - Evaluating the evidence
-    chapters:
     - file: lectures/data-as-objects-and-architectures
       sections:
       - file: notebooks/data-as-objects-and-architectures
@@ -36,6 +34,8 @@ parts:
       sections:
       - file: notebooks/visualization-through-human-eyes
       - file: discussions/visualization-through-human-eyes
+  - caption: Knowledge
+    chapters:
     - file: lectures/the-bias-variance-tradeoff
       sections:
       - file: discussions/the-bias-variance-tradeoff
@@ -95,7 +95,7 @@ parts:
       sections:
       - file: notebooks/principal-component-methods
       - file: discussions/principal-component-methods
-  - caption: Phase 3 - Solving the mystery
+  - caption: Understanding
     chapters:
     - file: lectures/reconsidering-the-p-value
       sections:
