@@ -4,9 +4,9 @@ root: intro
 parts:
   - caption: Information and Meaning
     chapters:
-    - file: lectures/art-of-data-investigations
+    - file: lectures/quantitative-epistemology
       sections:
-      - file: notebooks/art-of-data-investigations
+      - file: notebooks/quantitative-epistemology
     - file: lectures/the-value-of-openness
       sections:
       - file: notebooks/the-value-of-openness
@@ -36,13 +36,9 @@ parts:
       - file: discussions/visualization-through-human-eyes
   - caption: Knowledge
     chapters:
-    - file: lectures/the-bias-variance-tradeoff
+    - file: lectures/statistical-learning-theory
       sections:
-      - file: discussions/the-bias-variance-tradeoff
-    - file: lectures/what-is-learnable
-      sections:
-      - file: notebooks/what-is-learnable
-      - file: discussions/what-is-learnable
+      - file: discussions/statistical-learning-theory
     - file: lectures/linear-models
       sections:
       - file: notebooks/linear-models
