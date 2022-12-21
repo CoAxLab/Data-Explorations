@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutorial: Repositories and version control &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -1024,25 +1023,25 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-repositories-and-version-control">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-repositories-and-version-control">
 <h1>Tutorial: Repositories and version control<a class="headerlink" href="#tutorial-repositories-and-version-control" title="Permalink to this headline">#</a></h1>
 <p>This lab introduces the concept of version control and goes through the process of setting up a GitHub repository and tracking changes with git.</p>
-<section id="goals">
+<div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Set up git and GitHub</p></li>
 <li><p>Learn how to use git for version control</p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="why-version-control">
+<div class="tex2jax_ignore mathjax_ignore section" id="why-version-control">
 <h1>Why version control?<a class="headerlink" href="#why-version-control" title="Permalink to this headline">#</a></h1>
 <p>Keeping with the “document everything you do” mentality, it’s useful to have a plan for managing changes to your analysis and modelling projects early on. Imagine the following common situation: you have a working analysis script, but you decide to do additional analyses requested by your colleague (or advisor, or reviewer). You make the required changes, and while your new analysis works fine, suddenly you find that you can’t replicate your previous results - they give you an error, or your results look different than before.</p>
 <p>This type of thing happens surprisingly often. One way to deal with that is to always backup and then copy your script, and make changes to the copy. While this may work for simple cases, it becomes unwieldy quickly and you can end up with 10 versions of your analyses. At this point you are in a similarly confusing situation, because you have to figure out which file is the right one. If you work with other people on the same analyses, this becomes even more problematic.</p>
-</section>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="what-are-git-and-github">
+<div class="tex2jax_ignore mathjax_ignore section" id="what-are-git-and-github">
 <h1>What are git and GitHub?<a class="headerlink" href="#what-are-git-and-github" title="Permalink to this headline">#</a></h1>
 <p>This is where version control with <a class="reference external" href="https://git-scm.com/">git</a> comes in handy! Git is a system that allows you to track the changes you or others make to your files, log the purpose of those changes, and go back and forth between different versions.</p>
 <p>The basic idea is that for each project that you manage, you establish what is called a <em>repository</em> for that project with git. That repository contains the files for your project, and using various commands you can instruct it to do certain things when you make changes to your files.</p>
@@ -1056,20 +1055,20 @@ title="Print to PDF"
 <li><p>Sign up for a GitHub account (use your academic .edu address - that will allow you to create private repositories)</p></li>
 <li><p>Install the GitHub or GitKraken apps (optional)</p></li>
 </ol>
-</section>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="use-git-and-github">
+<div class="tex2jax_ignore mathjax_ignore section" id="use-git-and-github">
 <h1>Use Git and GitHub<a class="headerlink" href="#use-git-and-github" title="Permalink to this headline">#</a></h1>
 <p><em>Note: This section has a lot of commands and concepts to keep track of, but you don’t need to memorize them all. Come back to this tutorial for reference as you need it! Section 4 of this tutorial walks you through an example of how to use the tools discussed in Section 3, and you’ll also get practice with git and GitHub by submitting work for this class.</em></p>
-<section id="configuration">
+<div class="section" id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">#</a></h2>
 <p>You need to configure some settings before you start. Run the following commands in your terminal, replacing them with your email and name. Use the email you used to set up your GitHub account:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git config --global user.email <span class="s2">&quot;you@andrew.cmu.edu&quot;</span>
 git config --global user.name <span class="s2">&quot;Your Name&quot;</span>
 </pre></div>
 </div>
-</section>
-<section id="basic-bash-scripting">
+</div>
+<div class="section" id="basic-bash-scripting">
 <h2>Basic Bash scripting<a class="headerlink" href="#basic-bash-scripting" title="Permalink to this headline">#</a></h2>
 <p>Before we do anything with git, let’s walk through some basic Bash scripting in the terminal. Bash is a command language (sometimes called Unix Shell) to navigate the Unix system. We will mostly use it for navigating between folders in the terminal. For more on how to open and use the terminal (AKA command line, console) - check out <a class="reference external" href="https://www.digitalcitizen.life/command-prompt-how-use-basic-commands">this</a> site for windows and <a class="reference external" href="https://maker.pro/linux/projects/basic-unix-commands-to-work-on-mac-terminal">this</a> site for mac, unix, or linux.</p>
 <p>When you open your terminal, you should see your home directory printed on the screen. To navigate to a
@@ -1099,8 +1098,8 @@ different folder, we simply type</p>
 </pre></div>
 </div>
 <p>You can use bash to perform very complicated processing. If you are interested, read more about bash scripting <a class="reference external" href="https://flaviocopes.com/bash/">here</a>. Knowing bash scripting will save you so much hassle down the line!</p>
-</section>
-<section id="set-up-a-new-repository">
+</div>
+<div class="section" id="set-up-a-new-repository">
 <h2>Set up a new repository<a class="headerlink" href="#set-up-a-new-repository" title="Permalink to this headline">#</a></h2>
 <p>You can clone a repository that exists on GitHub. This will download all files present in that repository to a folder with the name of the repository and will have the repository all set up and ready to go. The folder will be created in whatever folder your terminal is currently in! Then you can navigate to the repository folder by using the <strong><code class="docutils literal notranslate"><span class="pre">cd</span></code></strong> command.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/CoAxLab/DataSciencePsychNeuro_CMU85732.git
@@ -1119,16 +1118,16 @@ git init
 </pre></div>
 </div>
 <p><strong>Note</strong>: On Windows, if the folder is not on your C: drive, first type the letter of the drive on which it is on followed by a colon</p>
-</section>
-<section id="pulling-changes">
+</div>
+<div class="section" id="pulling-changes">
 <h2>Pulling changes<a class="headerlink" href="#pulling-changes" title="Permalink to this headline">#</a></h2>
 <p>Let’s pretend that we are collaborating on this project together. You just cloned the repository. But after your download, I decided to make some changes to the repository by adding a file. How would this change be updated to the local version on your laptop? You “pull” the canges to your laptop by using:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git pull
 </pre></div>
 </div>
 <p>You can also use this command when you switch to another laptop of yours and pull the most recent version of your code to the new laptop.</p>
-</section>
-<section id="adding-files-to-be-tracked">
+</div>
+<div class="section" id="adding-files-to-be-tracked">
 <h2>Adding files to be tracked<a class="headerlink" href="#adding-files-to-be-tracked" title="Permalink to this headline">#</a></h2>
 <p>Now even though you just added the file, you haven’t added them to the repository yet and your laptop doesn’t really know that you added this file yet. You need to explicitly tell git which files in the folder need to be tracked. This allows you to store in the same folder both files that you need to keep a version control on, such as scripts and drafts, but also other files that you do not want to track, such as experimental stimuli, etc. You can add specific files with the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add script1.R script2.R
@@ -1138,8 +1137,8 @@ git init
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add *
 </pre></div>
 </div>
-</section>
-<section id="commiting-changes">
+</div>
+<div class="section" id="commiting-changes">
 <h2>Commiting changes<a class="headerlink" href="#commiting-changes" title="Permalink to this headline">#</a></h2>
 <p>Adding files means telling git that it should track changes in those files. However, in contrast to the “Track changes” options in Word, it does not do it continuously and automatically - you have to tell git when you want the changes you’ve made to be recorded! Git calls this “commiting”. There is a good reason for this - you want to record changes at specific identifiable moments which can allow you to go back to a specific version you need. Let’s say that you have just spent some time revising your analysis script by changing the regression model you are using. You can commit your new changes with the commit command. You also want to briefly describe the changes you’ve made so that you can identify the version later. You do this by adding -m “My description” to the commit command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git commit -m <span class="s2">&quot;Change regression model to logistic&quot;</span>
@@ -1149,8 +1148,8 @@ git init
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git log
 </pre></div>
 </div>
-</section>
-<section id="working-on-a-different-branch">
+</div>
+<div class="section" id="working-on-a-different-branch">
 <h2>Working on a different branch<a class="headerlink" href="#working-on-a-different-branch" title="Permalink to this headline">#</a></h2>
 <p>At this point you might be asking, what is the point of all of this? You have made changes and saved them, but this hasn’t really affected any part of your workflow. Let’s talk about branches.</p>
 <p>If you imagine your project as a tree, you can think of each branch of a tree as an alternative version of your project. You can work on multiple versions/branches of your project at the same time. Your main branch is called <strong>master</strong>. It is automatically created when you initialize a repository and unless you create other branches, it will be the only one. At any point in time, you will always be in a certain branch, and any changes you make to your files at that time will only be made to files in that branch. When you create a new branch, you make a copy of the branch from which you created it. Importantly, this does not actually copy your files, and if you go into your project folder you will not see anything different at that point. Once you’ve made and commit any changes, you can switch between branches. Any time you switch to a branch, the files in your folder will be replaced with the files corresponding to the last changes in the branch. You can also merge branches together, implementing changes from one branch into another.</p>
@@ -1171,8 +1170,8 @@ git init
 </pre></div>
 </div>
 <p>There are many different ways to use branches. If you are simultaneously testing several different versions of your analyses, you can create one branch for each, and easily switch back and forth between them, until you decide which version you want to keep.</p>
-</section>
-<section id="merging-branches">
+</div>
+<div class="section" id="merging-branches">
 <h2>Merging branches<a class="headerlink" href="#merging-branches" title="Permalink to this headline">#</a></h2>
 <p>You’ve finished making your changes on your development  branch (called <strong>dev</strong>), you have tested them, and you want to finalize them. You need to merge your <strong>dev</strong> branch with your <strong>master</strong>. Any time you merge two branches together, git compares their contents, checks for conflicts and combines any changes made in the different branches. In the simplest case, where you’ve only made changes to one of the branches, it will just replace the files in the other with the newer version. If, you’ve made changes to the same file under different branches, it will try to merge them. If the changes are about different parts of the file, it will combine them with no problem most of the time. If the changes are to the same lines in a file, it will create a conflict error that you will have to resolve manually before merging can occur. For now, just avoid doing that, and let’s assume you’ve made changes only to one branch. When you merge branches, you implement the changes in whatever branch you are currently in. So, to update our master branch with the contents of <strong>dev</strong>, we first switch to <strong>master</strong>, and then invoke the merge command like this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout master
@@ -1187,8 +1186,8 @@ git merge dev
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git branch -D weirdtestbranch
 </pre></div>
 </div>
-</section>
-<section id="merge-only-a-specific-file-from-a-branch">
+</div>
+<div class="section" id="merge-only-a-specific-file-from-a-branch">
 <h2>Merge only a specific file from a branch<a class="headerlink" href="#merge-only-a-specific-file-from-a-branch" title="Permalink to this headline">#</a></h2>
 <p>Sometimes you made a lot of changes to your project in a development branch, and you decide that while most of them are to be discarded, you want to keep the changes to a specific file. You can use the <strong><code class="docutils literal notranslate"><span class="pre">checkout</span></code></strong> command while in your target branch like this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout dev -- filetokeep.R
@@ -1199,10 +1198,10 @@ git merge dev
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git status
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="putting-it-all-together-example-workflow">
+<div class="tex2jax_ignore mathjax_ignore section" id="putting-it-all-together-example-workflow">
 <h1>Putting it all together - example workflow<a class="headerlink" href="#putting-it-all-together-example-workflow" title="Permalink to this headline">#</a></h1>
 <p>You are starting a new project. Here’s an example workflow with everything we have discussed.</p>
 <p>    1. Install git, make a github account</p>
@@ -1268,7 +1267,7 @@ git push --set-upstream origin specialbranchfornewfeature
 </div>
 <p>    17. Rinse and repeat :)</p>
 <p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {
