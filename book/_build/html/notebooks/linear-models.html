@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutorial: Refresher on working with matrices &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -134,6 +133,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="quantitative-epistemology.html">
      Tutorial: Getting started
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/Fiona-test.html">
+     Fiona Test MD
     </a>
    </li>
   </ul>
@@ -1118,19 +1122,19 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-refresher-on-working-with-matrices">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-refresher-on-working-with-matrices">
 <h1>Tutorial: Refresher on working with matrices<a class="headerlink" href="#tutorial-refresher-on-working-with-matrices" title="Permalink to this headline">#</a></h1>
 <p>In this tutorial and the next one we’ll walk through some math concepts that will be helpful for understanding the lectures and homeworks. If you’re comfortable with these concepts already, feel free to simply skim and reference as needed to do the homeworks.</p>
-<section id="goals">
+<div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Get everyone on the same place wthe vectors, sums and products, and matrices</p></li>
 </ul>
 <p>Images courtesy of Wikipedia.</p>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="vectors">
+<div class="tex2jax_ignore mathjax_ignore section" id="vectors">
 <h1>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">#</a></h1>
 <p>A vector is a series of numbers, arranged in either a column or a row. The numbers stored in a vector are called <strong>elements</strong>.</p>
 <div class="cell docutils container">
@@ -1162,9 +1166,9 @@ A row vector with elements 7 and 9: <span class="math notranslate nohighlight">\
 <p>When vectors are referred to in equations, they’re often simplified to a single variable even though there are many elements within it. For example, the error formula is written as <span class="math notranslate nohighlight">\(e_i = y_i - \hat{y_i}\)</span>, where <span class="math notranslate nohighlight">\(i\)</span> is used to identify the particular observation <span class="math notranslate nohighlight">\(y_i\)</span> for which you’d like to calculate error. <span class="math notranslate nohighlight">\(\hat{y_i}\)</span> is the model’s predicted value for <span class="math notranslate nohighlight">\(y_i\)</span> (<em>notation note: the <span class="math notranslate nohighlight">\(\hat{}\)</span> symbol over anything will mean that variable’s predicted value in this class</em>). But the formula could also be written as <span class="math notranslate nohighlight">\(\bf{e} = \bf{y} - \bf{\hat{y}}\)</span>, to define the error vector for <em>all</em> observations instead of one particular one. The meaning of this formula, when there are only three observations, can be translated into</p>
 <p><span class="math notranslate nohighlight">\(\begin{bmatrix}e_1\\e_2\\e_3\end{bmatrix} = \begin{bmatrix}y_1\\y_2\\y_3\end{bmatrix} - \begin{bmatrix}\hat{y}_1\\\hat{y}_2\\\hat{y}_3\end{bmatrix}\)</span></p>
 <p>My last note about vectors is more of a notation note: the mean value of all elements in a vector will be expressed with a <span class="math notranslate nohighlight">\(\bar{}\)</span> symbol. So the mean value of the vector <span class="math notranslate nohighlight">\(\bf{x}\)</span> is <span class="math notranslate nohighlight">\(\bar{x}\)</span>.</p>
-</section>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="working-with-sums-and-products-in-equations">
+<div class="tex2jax_ignore mathjax_ignore section" id="working-with-sums-and-products-in-equations">
 <h1>Working with Sums and Products in Equations<a class="headerlink" href="#working-with-sums-and-products-in-equations" title="Permalink to this headline">#</a></h1>
 <p>While we’re talking about vectors and indexing, let’s address a few tricks for dealing with summation (<span class="math notranslate nohighlight">\(\Sigma\)</span>) and product (<span class="math notranslate nohighlight">\(\Pi\)</span>) notation in equations. This will be handy for understanding the math shown in lecture and for completing the homeworks.</p>
 <p>First thing is to understand the structure of summation notation:</p>
@@ -1178,7 +1182,7 @@ A row vector with elements 7 and 9: <span class="math notranslate nohighlight">\
 <p>Product notation is similar, except instead of using a <span class="math notranslate nohighlight">\(\Sigma\)</span> you’re using a <span class="math notranslate nohighlight">\(\Pi\)</span>, and you’re now multiplying the elements together :</p>
 <p><span class="math notranslate nohighlight">\(\prod_{i=1}^{3}x_i = x_1 \times x_2 \times x_3\)</span></p>
 <p>Below I’ll describe three tricks for working with summation notation that may be handy when you’re doing the homework.</p>
-<section id="trick-1-pulling-terms-out-of-a-sum">
+<div class="section" id="trick-1-pulling-terms-out-of-a-sum">
 <h2>Trick 1: Pulling terms out of a sum<a class="headerlink" href="#trick-1-pulling-terms-out-of-a-sum" title="Permalink to this headline">#</a></h2>
 <p>The first trick that I’ll cover is knowing when and how to pull terms out of a sum. If the expression inside of the sum includes terms that don’t involve the variable being iterated over, i.e., terms that don’t include <span class="math notranslate nohighlight">\(x_i\)</span>, you can take those out of the sum expression and just multiply them by the number of times they would’ve been added in. Here’s an example, trying to simplify the expression of the function <span class="math notranslate nohighlight">\(g\)</span> of vector <span class="math notranslate nohighlight">\(x\)</span>:</p>
 <blockquote>
@@ -1193,26 +1197,26 @@ A row vector with elements 7 and 9: <span class="math notranslate nohighlight">\
 <div><p><span class="math notranslate nohighlight">\(g(x) = 27 + \sum_{i=1}^{3}(- 6x_i + {x_i}^2)\)</span></p>
 </div></blockquote>
 <p>Ta-da!</p>
-</section>
-<section id="trick-2-splitting-up-a-sum">
+</div>
+<div class="section" id="trick-2-splitting-up-a-sum">
 <h2>Trick 2: Splitting up a sum<a class="headerlink" href="#trick-2-splitting-up-a-sum" title="Permalink to this headline">#</a></h2>
 <p>Now we can actually simplify the expression above a bit further. Any terms that are separated by a <span class="math notranslate nohighlight">\(+\)</span> or a <span class="math notranslate nohighlight">\(-\)</span> can be split into separate sum terms.</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(g(x) = 27 + \sum_{i=1}^{3}- 6x_i + \sum_{i=1}^{3}{x_i}^2\)</span></p>
 </div></blockquote>
 <p>This makes sense if you think about the commutative property of addition: if you’re adding things together, it doesn’t matter what order you add them in. <span class="math notranslate nohighlight">\(-6x_1 + x_{1}^2 - 6x_2 + x_{2}^2 - 6x_3 + x_{3}^2\)</span> is the same as <span class="math notranslate nohighlight">\( -6x_1-6x_2-6x_3  + x_{1}^2 + x_{2}^2 + x_{3}^2\)</span></p>
-</section>
-<section id="trick-3-pulling-coefficients-out-of-a-sum">
+</div>
+<div class="section" id="trick-3-pulling-coefficients-out-of-a-sum">
 <h2>Trick 3: Pulling coefficients out of a sum<a class="headerlink" href="#trick-3-pulling-coefficients-out-of-a-sum" title="Permalink to this headline">#</a></h2>
 <p>Lastly, since <span class="math notranslate nohighlight">\(-6(x_1 + x_2 + x_3)\)</span> is the same as <span class="math notranslate nohighlight">\(-6x_1 - 6x_2 - 6x_3\)</span>, we can simplify the <span class="math notranslate nohighlight">\(\sum_{i=1}^{3}- 6x_i\)</span> by bringing the <span class="math notranslate nohighlight">\(-6\)</span> outside:</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(g(x) = 27 - 6\sum_{i=1}^{3}x_i + \sum_{i=1}^{3}{x_i}^2\)</span></p>
 </div></blockquote>
 <p>This is easier to work with than what we had above. Ok, now that we’re comfortable thinking about vectors, indices and sums… lets talk about matrices!</p>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="what-is-a-matrix">
+<div class="tex2jax_ignore mathjax_ignore section" id="what-is-a-matrix">
 <h1>What is a matrix?<a class="headerlink" href="#what-is-a-matrix" title="Permalink to this headline">#</a></h1>
 <p>A matrix is a rectangular array of vectors with one or more rows or columns. Matrices are described by the number of rows ( <span class="math notranslate nohighlight">\(m\)</span>) and the number of columns ( <span class="math notranslate nohighlight">\(n\)</span>) they have; a matrix with <span class="math notranslate nohighlight">\(m\)</span> rows and <span class="math notranslate nohighlight">\(n\)</span> columns is an <span class="math notranslate nohighlight">\(m  x  n\)</span> or “<span class="math notranslate nohighlight">\(m\)</span> by <span class="math notranslate nohighlight">\(n\)</span>” matrix. The image below demonstrates such a matrix, and the element labels show you how to index a particular element in the matrix. <span class="math notranslate nohighlight">\(a_{i,j}\)</span> refers to the element in the <span class="math notranslate nohighlight">\(i\)</span>th row and the <span class="math notranslate nohighlight">\(j\)</span>th column.</p>
 <p><img alt="picture" src="https://drive.google.com/uc?id=10CFkJufrLPQLimp2jCOXU01WQLAzeBbh" /></p>
@@ -1253,12 +1257,12 @@ A row vector with elements 7 and 9: <span class="math notranslate nohighlight">\
 <p>Only one dimension (<code class="docutils literal notranslate"><span class="pre">nrow</span></code> or <code class="docutils literal notranslate"><span class="pre">ncol</span></code>) is technically needed when specifiying a matrix in R.
 R can infer <code class="docutils literal notranslate"><span class="pre">nrow</span></code> if <code class="docutils literal notranslate"><span class="pre">ncol</span></code> is specified, for example.
 However, to avoid errors, it’s best to be explicit to the extent that it makes your code easier to read and error-check.</p>
-</section>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="basic-kinds-of-matrices">
+<div class="tex2jax_ignore mathjax_ignore section" id="basic-kinds-of-matrices">
 <h1>Basic kinds of matrices<a class="headerlink" href="#basic-kinds-of-matrices" title="Permalink to this headline">#</a></h1>
 <p>These types of matrices will come up at different points in the class (and in life?). Just trust us that they’ll be useful :)</p>
-<section id="square">
+<div class="section" id="square">
 <h2>Square<a class="headerlink" href="#square" title="Permalink to this headline">#</a></h2>
 <p>A square matrix is a matrix that has an equal number of rows and columns (<span class="math notranslate nohighlight">\(m = n\)</span>). So a matrix with 4 columns and 4 rows is square, a matrix with 10 rows and 10 columns is square, and so on.</p>
 <div class="cell docutils container">
@@ -1298,8 +1302,8 @@ However, to avoid errors, it’s best to be explicit to the extent that it makes
 </table>
 </div></div>
 </div>
-</section>
-<section id="symmetric">
+</div>
+<div class="section" id="symmetric">
 <h2>Symmetric<a class="headerlink" href="#symmetric" title="Permalink to this headline">#</a></h2>
 <p>A square matrix is symmetric if the elements are reflected about the diagonal line of numbers. You can imagine that if you folded a square matrix in half along the diagonal, the reflected elements would touch.</p>
 <img src="imgs/symmetric_matrix.png" alt="drawing" width="300"/>
@@ -1350,8 +1354,8 @@ However, to avoid errors, it’s best to be explicit to the extent that it makes
 </table>
 </div></div>
 </div>
-</section>
-<section id="identity">
+</div>
+<div class="section" id="identity">
 <h2>Identity<a class="headerlink" href="#identity" title="Permalink to this headline">#</a></h2>
 <p>An identity matrix is a special case of a square, symmetric matrix. Specifically, it has ones on the diagonal line and zeros everywhere else.</p>
 <img src="imgs/identity_matrix.png" alt="drawing" width="300"/>
@@ -1378,8 +1382,8 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 </table>
 </div></div>
 </div>
-</section>
-<section id="summary">
+</div>
+<div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>A <strong>square matrix</strong> has an equal number of rows and columns.
@@ -1387,12 +1391,12 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 <li><p>A <strong>symmetric matrix</strong> is a subset of square matrices.</p></li>
 <li><p>The <strong>identity matrix</strong> is subset of square, symmetric matrices, with useful properties that you’ll need later.</p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="matrix-manipulation">
+<div class="tex2jax_ignore mathjax_ignore section" id="matrix-manipulation">
 <h1>Matrix manipulation<a class="headerlink" href="#matrix-manipulation" title="Permalink to this headline">#</a></h1>
-<section id="basic-indexing">
+<div class="section" id="basic-indexing">
 <h2>Basic indexing<a class="headerlink" href="#basic-indexing" title="Permalink to this headline">#</a></h2>
 <p>Review: We talked about indexing a little bit in the tutorial on data frames. The same principle applies to matrices.</p>
 <p><code class="docutils literal notranslate"><span class="pre">matrix[row_index,</span> <span class="pre">column_index]</span></code>
@@ -1428,8 +1432,8 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 </table>
 </div></div>
 </div>
-</section>
-<section id="basic-matrix-operations">
+</div>
+<div class="section" id="basic-matrix-operations">
 <h2>Basic matrix operations<a class="headerlink" href="#basic-matrix-operations" title="Permalink to this headline">#</a></h2>
 <p>Now that we know what a matrix is, how to create one in R, and how to access their elements, let’s review how to manipulate them.</p>
 <div class="cell docutils container">
@@ -1468,7 +1472,7 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 </div>
 </div>
 </div>
-<section id="addition-and-subtraction">
+<div class="section" id="addition-and-subtraction">
 <h3>Addition and subtraction<a class="headerlink" href="#addition-and-subtraction" title="Permalink to this headline">#</a></h3>
 <p>Addition and subtraction is an element-wise operation in the world of matrices. That is, when two matrices are added, each element of the first matrix is added to the corresponding element in the second matrix. Importantly, matrices may only be added or subtracted when they are of the same <strong>dimension</strong>.</p>
 <p><strong>Note</strong>: R will let you perform matrix addition and subtraction when two matrices are NOT of the same dimension, so watch out for this.</p>
@@ -1531,8 +1535,8 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 </div>
 </div>
 </div>
-</section>
-<section id="transposition">
+</div>
+<div class="section" id="transposition">
 <h3>Transposition<a class="headerlink" href="#transposition" title="Permalink to this headline">#</a></h3>
 <p>When a matrix is transposed, the columns become the rows. R uses the <code class="docutils literal notranslate"><span class="pre">t()</span></code> function to transpose matrices. In equations, a transposed matrix is denoted <strong>A’</strong>.</p>
 <p>As an example, look at the original matrix, <code class="docutils literal notranslate"><span class="pre">mat_2</span></code>:</p>
@@ -1583,8 +1587,8 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 </div>
 </div>
 </div>
-</section>
-<section id="multiplication">
+</div>
+<div class="section" id="multiplication">
 <h3>Multiplication<a class="headerlink" href="#multiplication" title="Permalink to this headline">#</a></h3>
 <p>As mentioned before, multiplying a matrix by a constant multiplies each element of a matrix by that number.</p>
 <div class="cell docutils container">
@@ -1635,8 +1639,8 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 </div>
 </div>
 <p>Note that <strong>order matters</strong> in matrix multiplication, and that the number of columns for the first matrix must equal the number of rows for the second matrix. Matrix multiplication in R uses the <code class="docutils literal notranslate"><span class="pre">%*%</span></code> operator.</p>
-</section>
-<section id="division">
+</div>
+<div class="section" id="division">
 <h3>Division<a class="headerlink" href="#division" title="Permalink to this headline">#</a></h3>
 <p>Matrices can be divided element-wise.<br></p>
 <div class="cell docutils container">
@@ -1669,8 +1673,8 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 </div>
 </div>
 </div>
-</section>
-<section id="inversion">
+</div>
+<div class="section" id="inversion">
 <h3>Inversion<a class="headerlink" href="#inversion" title="Permalink to this headline">#</a></h3>
 <p>The inverse of a matrix can be thought of as the matrix version of taking the reciprocal of a real number. In equations, the inverse of the matrix A is denoted <span class="math notranslate nohighlight">\(\bf{A^{-1}}\)</span>. Usually, inversion can only be performed on square matrices. The formula for the inverse of a 2x2 matrix is:</p>
 <div class="math notranslate nohighlight">
@@ -1696,8 +1700,8 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 </div>
 </div>
 </div>
-</section>
-<section id="determinant">
+</div>
+<div class="section" id="determinant">
 <h3>Determinant<a class="headerlink" href="#determinant" title="Permalink to this headline">#</a></h3>
 <p>In the matrix inversion formula shown above, the term</p>
 <div class="math notranslate nohighlight">
@@ -1710,11 +1714,11 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 \[\begin{equation*}det(A) = (ad-bc) \end{equation*}\]</div>
 <p>Things get more complicated when the matrix is bigger, which we won’t discuss here.</p>
 <p>If the determinant of a square matrix is 0, the matrix is a <em>singular matrix</em> and is not invertible. This is the main reason determinants will come up in this class: as a tool to determine whether a matrix is invertible.</p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="use-matrix-manipulation-to-solve-a-linear-regression-problem-by-hand">
+<div class="tex2jax_ignore mathjax_ignore section" id="use-matrix-manipulation-to-solve-a-linear-regression-problem-by-hand">
 <h1>Use matrix manipulation to solve a linear regression problem “by hand”<a class="headerlink" href="#use-matrix-manipulation-to-solve-a-linear-regression-problem-by-hand" title="Permalink to this headline">#</a></h1>
 <p>First, a <em>brief</em> introduction to linear regression.</p>
 <p>Linear regression usually takes the basic form of</p>
@@ -1727,7 +1731,7 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 \[\beta=(X'X)^{-1}X'y \]</div>
 <p><span class="math notranslate nohighlight">\(X'\)</span> is <span class="math notranslate nohighlight">\(X\)</span> transposed, and <span class="math notranslate nohighlight">\(X^{-1}\)</span> is the inverse of <span class="math notranslate nohighlight">\(X\)</span>. That’s why knowing how to transpose, invert, and calculate determinants will be useful!</p>
 <p><em>Notebook by Krista Bond and Patience Stevens and dited by Charles Wu, and Amy Sentis.</em></p>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {

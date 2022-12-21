@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutorial: Fitting and prediction &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -132,6 +131,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="quantitative-epistemology.html">
      Tutorial: Getting started
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/Fiona-test.html">
+     Fiona Test MD
     </a>
    </li>
   </ul>
@@ -944,20 +948,20 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-fitting-and-prediction">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-fitting-and-prediction">
 <h1>Tutorial: Fitting and prediction<a class="headerlink" href="#tutorial-fitting-and-prediction" title="Permalink to this headline">#</a></h1>
 <p>In this tutorial, we will practice implementing linear regression models in R.</p>
-<section id="goals">
+<div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Learn to use the <code class="docutils literal notranslate"><span class="pre">lm</span></code> function</p></li>
 <li><p>Learn to use the <code class="docutils literal notranslate"><span class="pre">predict</span></code> function</p></li>
 </ul>
 <p>This lab draws from the content of Chapter 2 and practice sets at the end of Chapter 3 in James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2013). “An introduction to statistical learning: with applications in r.”</p>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="simple-linear-regression-with-a-single-predictor">
+<div class="tex2jax_ignore mathjax_ignore section" id="simple-linear-regression-with-a-single-predictor">
 <h1>Simple linear regression with a single predictor<a class="headerlink" href="#simple-linear-regression-with-a-single-predictor" title="Permalink to this headline">#</a></h1>
 <p>First, we will look at a simple case, where <span class="math notranslate nohighlight">\(X\)</span> has only one predictor (i.e., p = 1). For these first examples we will be using the <a class="reference external" href="https://cran.r-project.org/web/packages/MASS/MASS.pdf">MASS</a> library.</p>
 <div class="cell docutils container">
@@ -1003,7 +1007,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<section id="model-fitting">
+<div class="section" id="model-fitting">
 <h2>Model fitting<a class="headerlink" href="#model-fitting" title="Permalink to this headline">#</a></h2>
 <p>Now we want to use the built-in <code class="docutils literal notranslate"><span class="pre">lm</span></code> function in r. We already went over this a little bit in the recitation tutorial about model objects. But let’s go a bit more in-depth.</p>
 <p>First, let’s do some basic analysis.</p>
@@ -1109,8 +1113,8 @@ F-statistic: 169.1 on 1 and 91 DF,  p-value: &lt; 2.2e-16
 <img alt="../_images/what-is-learnable_20_1.png" src="../_images/what-is-learnable_20_1.png" />
 </div>
 </div>
-</section>
-<section id="inference">
+</div>
+<div class="section" id="inference">
 <h2>Inference<a class="headerlink" href="#inference" title="Permalink to this headline">#</a></h2>
 <p>The coefficients table tells us that the effect of <code class="docutils literal notranslate"><span class="pre">Width</span></code> on <code class="docutils literal notranslate"><span class="pre">Weight</span></code> is statistically significant (the three stars next to each coefficient row in the output table). We can use the <code class="docutils literal notranslate"><span class="pre">coef</span></code> function to extract the estimated regression coefficients.</p>
 <div class="cell docutils container">
@@ -1144,8 +1148,8 @@ Length         27.59531    37.54727
 </div>
 <p>Does the 95% confidence interval for the <code class="docutils literal notranslate"><span class="pre">Width</span></code> coefficient contain zero?</p>
 <p>Do you accept or reject the null hypothesis that the width of a car associates with its weight?</p>
-</section>
-<section id="prediction">
+</div>
+<div class="section" id="prediction">
 <h2>Prediction<a class="headerlink" href="#prediction" title="Permalink to this headline">#</a></h2>
 <p>Along with inferring the effect of <code class="docutils literal notranslate"><span class="pre">Width</span></code> on <code class="docutils literal notranslate"><span class="pre">Weight</span></code>, we can also use the model that we just trained to <em>predict</em> a car’s weight for specific weight values. For this we will use the <code class="docutils literal notranslate"><span class="pre">predict</span></code> function.</p>
 <div class="cell docutils container">
@@ -1181,8 +1185,8 @@ Length         27.59531    37.54727
 </div></div>
 </div>
 <p>The predicted <code class="docutils literal notranslate"><span class="pre">Weight</span></code> values for each of the three <code class="docutils literal notranslate"><span class="pre">Length</span></code> values are returned, along with the lower and upper bounds of the 95% confidence interval of those predictions (i.e., we are 95% confident that the real value rests between those two bounds). For example, when <code class="docutils literal notranslate"><span class="pre">length</span></code>=180, we are 95% confident that the car’s weight will be between 2894.53 lbs and 3042.54 lbs.</p>
-</section>
-<section id="plotting">
+</div>
+<div class="section" id="plotting">
 <h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">#</a></h2>
 <p>So far in this lab we have:</p>
 <ol class="simple">
@@ -1237,8 +1241,8 @@ Length         27.59531    37.54727
 </ol>
 <p>If you want to explore these values in more detail, we suggest getting comfortable with the <code class="docutils literal notranslate"><span class="pre">residuals</span></code>, <code class="docutils literal notranslate"><span class="pre">rstudent</span></code>, and <code class="docutils literal notranslate"><span class="pre">hatvalues</span></code> functions.</p>
 <p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
