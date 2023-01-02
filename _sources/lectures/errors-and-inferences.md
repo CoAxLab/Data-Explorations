@@ -1,9 +1,9 @@
-# Bayes factor
+# Errors and inferences
 =======================
 
 ## Required readings
--Wagenmakers, E. J. (2007). A practical solution to the pervasive problems of p values. Psychonomic bulletin & review, 14(5), 779-804.
+- Mayo, D. G. (1997). Error statistics and learning from error: making a virtue of necessity. Philosophy of Science, 64(S4), S195-S212.
 
 ## Lecture
 
-[![Bayes factor](../thumbnails/bayes-factor.jpeg)](https://www.youtube.com/watch?v=ojcsalMhe_k "Bayes factor")
+[![Errors and inferences](../thumbnails/bayes-factor.jpeg)](https://www.youtube.com/watch?v=ojcsalMhe_k "Errors and inferences")
