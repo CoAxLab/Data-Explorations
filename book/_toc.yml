@@ -100,7 +100,12 @@ parts:
       sections: 
       - file: notebooks/bayes-factor-accepting-the-null
       - file: discussions/bayes-factor-accepting-the-null
+    - file: lectures/errors-and-inferences
+      sections: 
+      - file: discussions/errors-and-infereces
     - file: lectures/telling-your-data-story
       sections:
       - file: discussions/telling-your-data-story
-
+    - file: lectures/theories-as-social-constructs
+      sections:
+      - file: discussions/theories-as-social-constructs
