@@ -103,7 +103,7 @@ parts:
       - file: discussions/bayes-factor-accepting-the-null
     - file: lectures/errors-and-inferences
       sections: 
-      - file: discussions/errors-and-infereces
+      - file: discussions/errors-and-inferences
     - file: lectures/telling-your-data-story
       sections:
       - file: discussions/telling-your-data-story
