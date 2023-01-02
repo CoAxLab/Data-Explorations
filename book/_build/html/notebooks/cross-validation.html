@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Tutorial: Implementing cross validation &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -649,7 +650,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lectures/errors-and-inferences.html">
-   Bayes factor
+   Errors and inferences
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
   <label for="toctree-checkbox-25">
@@ -678,14 +679,19 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lectures/theories-as-social-constructs.html">
-   Telling your data story
+   Theories as social constructs
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
   <label for="toctree-checkbox-27">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="simple">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/theories-as-social-constructs.html">
+     Discussion questions
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -960,10 +966,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-implementing-cross-validation">
+  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-implementing-cross-validation">
 <h1>Tutorial: Implementing cross validation<a class="headerlink" href="#tutorial-implementing-cross-validation" title="Permalink to this headline">#</a></h1>
 <p>This lab focuses on how to implement cross-validation methods in R.</p>
-<div class="section" id="goals">
+<section id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Understand the limitations of the simple validation set approach, and the benefits of more refined approaches</p></li>
@@ -976,10 +982,10 @@ title="Print to PDF"
 <li><p>Understand the bias-variance trade-off in the context of these resampling methods</p></li>
 </ul>
 <p>This lab draws from the practice sets at the end of Chapter 5 in James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2013). “An introduction to statistical learning: with applications in r.”</p>
-</div>
-</div>
+</section>
+</section>
 <hr class="docutils" />
-<div class="tex2jax_ignore mathjax_ignore section" id="why-not-use-the-simple-validation-set-approach">
+<section class="tex2jax_ignore mathjax_ignore" id="why-not-use-the-simple-validation-set-approach">
 <h1>Why not use the simple validation set approach?<a class="headerlink" href="#why-not-use-the-simple-validation-set-approach" title="Permalink to this headline">#</a></h1>
 <p>Up until now, when we’ve wanted to “train” a model and then “test” it (such as in our demos of KNN in the previous tutorial), we’ve chosen a subset of the dataset to be test observations and then trained on the remainder. Although this is relatively simple and easy to implement, there are significant drawbacks.</p>
 <ul class="simple">
@@ -992,9 +998,9 @@ title="Print to PDF"
 </ul>
 <p>Cross-validation, a reampling method used to partition your data into test and training sets, addresses both of these issues.</p>
 <p>Let’s see how this is true.</p>
-</div>
+</section>
 <hr class="docutils" />
-<div class="tex2jax_ignore mathjax_ignore section" id="validation-data-sets">
+<section class="tex2jax_ignore mathjax_ignore" id="validation-data-sets">
 <h1>Validation data sets<a class="headerlink" href="#validation-data-sets" title="Permalink to this headline">#</a></h1>
 <p>Here we will explore test error rates using cross-validation. We’ll be using the Auto data set again from the ISLR library.</p>
 <p>First, we should acknowledge that you’ll need to reset the seed for your random number generator. For this use the <a class="reference external" href="https://www.rdocumentation.org/packages/simEd/versions/1.0.3/topics/set.seed"><em>set.seed()</em></a> function. We want to use the same seed as the book so that you get the same results.</p>
@@ -1090,9 +1096,9 @@ title="Print to PDF"
 <div class="output text_html">25.7265106448139</div><div class="output text_html">20.3090205440697</div><div class="output text_html">19.616933858347</div></div>
 </div>
 <p>This is a smaller demonstration of what is shown in figure 5.2 of James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2013). “An introduction to statistical learning: with applications in r.”. Depending on the specific training set we use, the test error estimate can vary substantially.</p>
-</div>
+</section>
 <hr class="docutils" />
-<div class="tex2jax_ignore mathjax_ignore section" id="leave-one-out-cross-validation-loocv">
+<section class="tex2jax_ignore mathjax_ignore" id="leave-one-out-cross-validation-loocv">
 <h1>Leave-one-out cross-validation (LOOCV)<a class="headerlink" href="#leave-one-out-cross-validation-loocv" title="Permalink to this headline">#</a></h1>
 <p>Leave-one-out cross-validation (LOOCV) repeatedly splits the set of <span class="math notranslate nohighlight">\(n\)</span> data points into a training set (blue) that has all except one observation, and a validation set that has only a single observation (beige). The test error is estimated by averaging the <span class="math notranslate nohighlight">\(n\)</span> resulting MSEs. Below, the first training set contains everything except observation 1, the second training set contains everything except observation 2, and this continues until <span class="math notranslate nohighlight">\(n\)</span> training sets are created and tested.</p>
 <p>The <a class="reference external" href="https://cran.r-project.org/web/packages/boot/boot.pdf"><em>boot</em></a> library in R has many tools to perform LOOCV using a model fit object. Let’s try performing LOOCV using the <code class="docutils literal notranslate"><span class="pre">glm()</span></code> function and the <code class="docutils literal notranslate"><span class="pre">cv.glm()</span></code> function.</p>
@@ -1176,9 +1182,9 @@ title="Print to PDF"
 <img alt="../_images/cross-validation_22_0.png" src="../_images/cross-validation_22_0.png" />
 </div>
 </div>
-</div>
+</section>
 <hr class="docutils" />
-<div class="tex2jax_ignore mathjax_ignore section" id="k-fold-cross-validation">
+<section class="tex2jax_ignore mathjax_ignore" id="k-fold-cross-validation">
 <h1>K-fold cross validation<a class="headerlink" href="#k-fold-cross-validation" title="Permalink to this headline">#</a></h1>
 <p>In 5-fold cross validation, the set of <span class="math notranslate nohighlight">\(n\)</span> observations is randomly split into five unique groups. Each fifth of the dataset acts as a validation set, and the remainder is the training set. The average of the five resulting MSE estimates is the test error.</p>
 <p>As stated above, the default <em>k</em> for the <code class="docutils literal notranslate"><span class="pre">cv.glm()</span></code> function is <em>k=n</em> (i.e., LOOCV). If you don’t want to do LOOCV (if, for example, you have MANY observations and LOOCV would take too long) you can specify the number of folds as an input to the function.</p>
@@ -1224,7 +1230,7 @@ title="Print to PDF"
 </div>
 <p>As you can see, 10-fold was much quicker to run.</p>
 <p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {

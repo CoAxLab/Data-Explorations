@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>The art of “data poetry” &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -647,7 +648,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lectures/errors-and-inferences.html">
-   Bayes factor
+   Errors and inferences
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
   <label for="toctree-checkbox-25">
@@ -676,14 +677,19 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lectures/theories-as-social-constructs.html">
-   Telling your data story
+   Theories as social constructs
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
   <label for="toctree-checkbox-27">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="simple">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/theories-as-social-constructs.html">
+     Discussion questions
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -968,7 +974,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="the-art-of-data-poetry">
+  <section class="tex2jax_ignore mathjax_ignore" id="the-art-of-data-poetry">
 <h1>The art of “data poetry”<a class="headerlink" href="#the-art-of-data-poetry" title="Permalink to this headline">#</a></h1>
 <p><strong><em>Definition:</em></strong> Data science is the art of being able to discover the story that your data tells. Data science sits at the intersection of several fields, including statistics, machine learning, computer science, and graphic visualization. The aim of data science is to to develop a holistic understanding of the story that your data tells and be able to share that story most efficiently to the rest of the world.</p>
 <p>In order to apply data sciences tools appropriately to psychology and neuroscience research, you’ll want to follow some basic rules. (Note: Some of these rules are borrowed from here: <a class="reference external" href="http://dataconomy.com/2017/07/10-rules-results-data-science/">http://dataconomy.com/2017/07/10-rules-results-data-science/</a>).</p>
@@ -976,8 +982,8 @@ title="Print to PDF"
 <p><strong>Machine Learning is for prediction.</strong> <br></p>
 <p><strong>Artificial Intelligence is for control.”</strong></p>
 <p>– Somewhere on the internet.</p>
-<br></div>
-<div class="tex2jax_ignore mathjax_ignore section" id="rule-1-track-chronicle-preserve">
+<br></section>
+<section class="tex2jax_ignore mathjax_ignore" id="rule-1-track-chronicle-preserve">
 <h1>Rule 1: Track, chronicle, &amp; preserve<a class="headerlink" href="#rule-1-track-chronicle-preserve" title="Permalink to this headline">#</a></h1>
 <p>Data science is fundamentally the process of exploring your data, understanding what it is showing you, and explaining what you see in a clear and effective way. While most people think that this just means clever programming and applying cool machine learning tools to big data sets, the most fundamental part of data science is chronicling your journey. Data exploration is messy and many times requires exploring dead ends. Thus, the single most important thing that you can do is <strong>document everything you do!</strong></p>
 <p>This is the reason you’ll be learning to use markdown documents like Jupyter notebooks. These tools allow for you to integrate text (and equations!) with your analysis code, like this…</p>
@@ -1019,7 +1025,7 @@ title="Print to PDF"
 <p>It is like having your lab notebook hooked up directly to your analysis scripts. You can try different analysis experiments. Record your thoughts and explain why you decide to try something else.</p>
 <p>Think of Jupyter notebooks as an updated version of your lab notebook. You can verbally document your ideas and then show what happens when you test them out. It’s not recommended as your primary method for building analysis pipelines (we will get to that later in the semester), but it does allow for easily communicating what you find to other people.</p>
 <p>As the course goes on you will learn how to balance documentation in text cells like this cell here, with inline comments in your code. Both are useful tools, but serve different purposes.</p>
-<div class="section" id="subrule-1-1-every-detail-matters">
+<section id="subrule-1-1-every-detail-matters">
 <h2>Subrule 1.1: Every detail matters<a class="headerlink" href="#subrule-1-1-every-detail-matters" title="Permalink to this headline">#</a></h2>
 <p>In this class you will be using the statistical package R. But do you know what version of R? (Well yes, it’s in the syllabus. It’s a rhetorical question).</p>
 <p>You will always want to document exactly what versions of everything you do.</p>
@@ -1027,9 +1033,9 @@ title="Print to PDF"
 * R version 3.4.4 (2018-03-15)
 * Jupyter Notebook Server 5.1.0</p>
 <p>You’d want this information at the very beginning of everything you do. It matters.</p>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="rule-2-automate-as-much-as-you-can">
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="rule-2-automate-as-much-as-you-can">
 <h1>Rule 2: Automate as much as you can<a class="headerlink" href="#rule-2-automate-as-much-as-you-can" title="Permalink to this headline">#</a></h1>
 <p>A common rookie mistake every scientist makes is to rely on entering, updating, or fixing their data files by hand.</p>
 <br>
@@ -1046,8 +1052,8 @@ Note that this violates Rule #1. If you manually manipulate your data files, the
 <li><p>An untouched data file that you can always go back to, but reflects the data as you got it.</p></li>
 <li><p>Preprocessing scripts that correct errors and save a new working data file.</p></li>
 </ol>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="rule-3-proactive-reactive">
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="rule-3-proactive-reactive">
 <h1>Rule 3: Proactive &gt; reactive<a class="headerlink" href="#rule-3-proactive-reactive" title="Permalink to this headline">#</a></h1>
 <br>
 <p>Playing with code and data can be a lot of fun. I mean, doing stuff like this is cool right???</p>
@@ -1092,8 +1098,8 @@ Note that this violates Rule #1. If you manually manipulate your data files, the
 So before doing a single line of data analysis, you want to be proactive. Develop a game plan. Use a whiteboard. Use a chalkboard. Draw it with crayons on a wall. Or just write it out in your Jupyter notebook. Whatever works best for you. But always have a plan before you start to explore your data. Being reactive and making decisions "on the fly" can get you into a lot of trouble. That's not to say you never will need to be reactive. Sometimes you can't help it and you need to think about modifyng your plan. But such changes should be used sparingly.
 <br>
 <p>Playing with the logic of your data analysis and spending time planning how to do your analysis will save you time and stress in the long run.</p>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="rule-4-see-your-data">
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="rule-4-see-your-data">
 <h1>Rule 4: See your data<a class="headerlink" href="#rule-4-see-your-data" title="Permalink to this headline">#</a></h1>
 <br>
 Along with statistics and data management, data visualization is at the heart of data science. But visualizing data is a tricky art. You want to balance __simplicity__ and __accuracy__ with __maximizing the amount of information you can convey__.
@@ -1164,8 +1170,8 @@ So consider better ways of visualizing your data that capture the nuance in a si
 <img alt="../_images/01-Introduction-to-data-investigations_13_1.png" src="../_images/01-Introduction-to-data-investigations_13_1.png" />
 </div>
 </div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="rule-5-statistics-is-a-language-not-magic">
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="rule-5-statistics-is-a-language-not-magic">
 <h1>Rule 5: Statistics is a language, not magic<a class="headerlink" href="#rule-5-statistics-is-a-language-not-magic" title="Permalink to this headline">#</a></h1>
 <p>Statistics (including machine learning) is the formal description of the relationship between variables. All statistics boil down to a common form:</p>
 <div class="math notranslate nohighlight">
@@ -1175,7 +1181,7 @@ This translates from statistics to English as "$Y$ can be described as some func
 <br>
 The nuance of using statistics is known how to talk about the relationship (i.e., $f(.)$). This is where a lot of projects can go wrong. The nature of $X$ and $Y$ determines how you should look at their relationship. Using the wrong test can often give you the wrong impression of $f(X)=Y$. Just because a statistical test gives you a $p<0.05$ does it mean that your test is telling you something meaningful.
 <br>
-This course is designed to give you the core content knowledge to know how to use the right "data language" for telling the tale of your data.</div>
+This course is designed to give you the core content knowledge to know how to use the right "data language" for telling the tale of your data.</section>
 
     <script type="text/x-thebe-config">
     {

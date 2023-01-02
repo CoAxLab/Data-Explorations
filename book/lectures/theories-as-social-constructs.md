@@ -1,4 +1,4 @@
-# Telling your data story
+# Theories as social constructs
 =======================
 
 ## Required readings
@@ -7,4 +7,4 @@
 
 ## Lecture
 
-[![Telling your data story](../thumbnails/telling-your-data-story.jpeg)](https://www.youtube.com/watch?v=QKS559pI4KQ "Telling your data story")
+[![Theories as social constructs](../thumbnails/telling-your-data-story.jpeg)](https://www.youtube.com/watch?v=QKS559pI4KQ "Theories as social constructs")
