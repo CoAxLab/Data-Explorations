@@ -1,4 +1,4 @@
-# Quantitative Epsitemology
+# Quantitative epsitemology
 =======================
 
 ## Lecture 
