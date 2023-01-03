@@ -12,6 +12,7 @@ parts:
       sections:
       - file: notebooks/the-value-of-openness
       - file: discussions/the-value-of-openness
+      - file: exercises/the-value-of-openness
     - file: lectures/what-is-a-theory
       sections: 
       - file: discussions/what-is-a-theory
