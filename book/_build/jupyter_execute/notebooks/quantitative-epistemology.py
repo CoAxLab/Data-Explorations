@@ -12,7 +12,7 @@
 # ---
 # # Installing R and RStudio
 
-# R is an excellent tool for statistical computing, and it's free! To download **the latest version of R (currently, 4.1.2)** on your computer, go to http://lib.stat.cmu.edu/R/CRAN/ and get the correct one for your operating system (Mac, Windows, etc). If you run into problems, you can check out [this tutorial](https://www.datacamp.com/community/tutorials/installing-R-windows-mac-ubuntu) and [this FAQ page](http://lib.stat.cmu.edu/R/CRAN/faqs.html). If that doesn't help, you can email one of the instructors. 
+# R is an excellent tool for statistical computing, and it's free! To download **the latest version of R (currently, 4.2.2)** on your computer, go to http://lib.stat.cmu.edu/R/CRAN/ and get the correct one for your operating system (Mac, Windows, etc). If you run into problems, you can check out [this tutorial](https://www.datacamp.com/community/tutorials/installing-R-windows-mac-ubuntu) and [this FAQ page](http://lib.stat.cmu.edu/R/CRAN/faqs.html). If that doesn't help, you can email one of the instructors. 
 # R is great on its own, but RStudio is software that will make it a little nicer to view your code, see documentation about functions, and look at plots. Go [here](https://rstudio.com/products/rstudio/download/) to download RStudio.
 # The tutorial linked above also has instructions for installing RStudio, if you need them. 
 # 

@@ -31,9 +31,9 @@
 # 
 # For this tutorial, you will need to:
 # 
-# 1. Type ```git --version``` into your terminal to check whether you already have git installed. If not, install git.
+# 1. Type ```git --version``` into your terminal to check whether you already have git installed. If it returns a version number, you're all set. If not...
 # 
-# 2. Go to https://git-scm.com/ and download the appropriate git version for your system
+# 2. Install git. Go to https://git-scm.com/ and download the appropriate git version for your system
 # 
 # 3. Run the file and follow the steps to install. 
 # 
@@ -76,8 +76,15 @@
 # In Mac/linux, you can directly go back to the home directory by simply typing 
 # 
 # ```bash
-# cd 
+# cd
 # ```
+# 
+# If you ever get confused about where you are, you can type
+# 
+# ```bash
+# pwd
+# ```
+# to print the current working directory.
 # 
 # Once you are inside a folder, you can use 
 # ```bash
@@ -106,24 +113,44 @@
 # ```
 # 
 # Alternatively, you can also initialize a repository for that project. Make a new empty folder for your project. You can do that either manually, or by typing **`mkdir pathname`** in the terminal, where pathname is the full path of your new folder. 
-# Copy the path of your new folder. Open a terminal window and navigate to the folder you just created with the **`cd`** command followed by your folder path. Then just type 'git init' and you're done! 
+# 
+# Copy the path of your new folder. Open a terminal window and navigate to the folder you just created with the **`cd`** command followed by your folder path. Then just type `git init` to initialize your local repository 
+# 
+# Windows:
 # 
 # ```bash
 # mkdir "C:\data_science\my_awesome_project\"
 # cd "C:\data_science\my_awesome_project\"
 # git init
 # ```
+# (If the folder is not on your C: drive, first type the letter of the drive on which it is on followed by a colon)
 # 
-# Once you created your local repository using the init command above and/or have added and commited files to it, you can connect the repository with the remote one on GitHub using:
+# Mac:
+# 
+# ```bash
+# mkdir /Users/YourName/Documents/classes/data_science/my_awesome_project
+# cd my_awesome_project
+# git init
+# ```
+# 
+# Equivalently, you can navigate to the desired directory before making the new folder:
+# ```bash
+# cd Documents/classes/data_science
+# mkdir my_awesome_project
+# cd my_awesome_project
+# git init
+# ```
+# 
+# Once you created your local repository using the `init` command above and/or have added and commited files to it, you can connect the repository with the remote one on GitHub using:
 # 
 # ```bash
 # git remote add origin https://github.com/myusername/nameofrepository.git
 # ```
 # 
-#    **Note**: On Windows, if the folder is not on your C: drive, first type the letter of the drive on which it is on followed by a colon
+# You will need to create this remote repository on GitHub before doing so. Note: **don't** check the box that says "Add a README file" when making your remote repo on GitHub-- this will confuse git when you try to connect your local repo.
 
 # ## Pulling changes
-# Let's pretend that we are collaborating on this project together. You just cloned the repository. But after your download, I decided to make some changes to the repository by adding a file. How would this change be updated to the local version on your laptop? You "pull" the canges to your laptop by using:
+# Let's pretend that we are collaborating on this project together. You just cloned the repository. But after your download, I decided to make some changes to the repository by adding a file. How would this change be updated to the local version on your laptop? You "pull" the changes to your laptop by using:
 # 
 # ```bash
 # git pull
@@ -133,30 +160,44 @@
 
 # ## Adding files to be tracked
 # 
-# Now even though you just added the file, you haven't added them to the repository yet and your laptop doesn't really know that you added this file yet. You need to explicitly tell git which files in the folder need to be tracked. This allows you to store in the same folder both files that you need to keep a version control on, such as scripts and drafts, but also other files that you do not want to track, such as experimental stimuli, etc. You can add specific files with the following command:
+# So now you have the most recent version of everything on your local computer, and you can start working. Let's say you create a new file in your local directory. Even if you save that file to your computer, at this point git doesn't know that, because it is not yet tracking that change. You need to explicitly tell git which files in the folder need to be tracked. 
+# 
+# To do so, you need to `git add` or "stage" your changes.
+# 
+# You can add all files in your folder by using a period `.` rather than a specific filename:
+# 
+# ```bash
+# git add .
+# ```
+# 
+# Or, you can add specific files with the following command:
 # 
 # ```bash
 # git add script1.R script2.R
 # ```
 # 
-# Or you can also add all files in your folder by using an `*` rather than a specific filename:
+# This allows you to store in the same folder both files that you need to keep a version control on, such as scripts and drafts, but also other files that you do not want to track, such as experimental stimuli, etc. You can also create a `.gitignore` file to make this easier ([more on this here](https://www.atlassian.com/git/tutorials/saving-changes/gitignore)).
+# 
+# If you want to double check which files were staged, you can run
 # ```bash
-# git add *
+# git status
 # ```
 
-# ## Commiting changes
+# ## Committing changes
 # 
-# Adding files means telling git that it should track changes in those files. However, in contrast to the "Track changes" options in Word, it does not do it continuously and automatically - you have to tell git when you want the changes you've made to be recorded! Git calls this "commiting". There is a good reason for this - you want to record changes at specific identifiable moments which can allow you to go back to a specific version you need. Let's say that you have just spent some time revising your analysis script by changing the regression model you are using. You can commit your new changes with the commit command. You also want to briefly describe the changes you've made so that you can identify the version later. You do this by adding -m "My description" to the commit command:
+# Adding files means telling git which files it should keep track of. However, in contrast to the "Track changes" options in Word, it does not do it continuously and automatically - you have to tell git when you want the changes you've made to be recorded! Git calls this "committing". There is a good reason for this - you want to record changes at specific identifiable moments which can allow you to go back to a specific version you need. Let's say that you have just spent some time revising your analysis script by changing the regression model you are using. You can commit your new changes with the `commit` command. You also want to briefly describe the changes you've made so that you can identify the version later. You do this by adding `-m "My description"` to the commit command:
 # 
 # ```bash
 # git commit -m "Change regression model to logistic"
 # ```
 # 
-# At this point, all of your changes are recorded in a single commit session. If you do this multiple times after each change, you will end up with multiple commits. You can see a log of your commits, when they happend and your messages by typing:
+# At this point, all of your changes are recorded in a single commit session. If you do this multiple times after each change, you will end up with multiple commits. You can see a log of your commits, when they happened, and your messages by typing:
 # 
 # ```bash
 # git log
 # ```
+# 
+# An important thing to keep in mind is that committing changes only updates your **local** repository. To merge these changes into a remote repository (e.g., GitHub), you need to `git push` the changes. More on that below.
 
 # ## Working on a different branch
 # 
@@ -234,16 +275,26 @@
 
 # You are starting a new project. Here's an example workflow with everything we have discussed.
 # 
-# &nbsp; &nbsp; 1. Install git, make a github account
+# 1. Install git, make a github account
 # 
-# &nbsp; &nbsp; 2. Setup git:
+# 2. Setup git:
 # 
 # ```bash
 # git config --global user.email "you@andrew.cmu.edu"
 # git config --global user.name "Your Name"
 # ```
 # 
-# &nbsp; &nbsp; 3. Create a new project folder, navigate to it, and initialize a new local repository (optional if you clone a repository)
+# &nbsp; &nbsp; 3A: Clone an existing repository
+# ```bash
+# git clone https://github.com/username/myproject.git
+# cd myproject
+# ```
+# 
+# **Or**
+# 
+# &nbsp; &nbsp; 3B. Start from scratch
+# 
+# &nbsp; &nbsp; Create a new project folder, navigate to it, and initialize a new local repository
 # 
 # ```bash
 # mkdir c:\projects\myproject\
@@ -251,52 +302,52 @@
 # git init
 # ```
 # 
-# &nbsp; &nbsp; 4. Make a remote repository on GitHub, and copy the repository link (optional if you clone a repository)
+# &nbsp; &nbsp; Make a remote repository on GitHub, and copy the repository link. (Remember, **don't** create the readme file at this stage via GitHub, it will confuse git when you try to connect your local repo)
 # 
-# &nbsp; &nbsp; 5. Connect the local repository to the remote (optional if you clone a repository)
-# 
-# ```bash
-# git remote add origin https://github.com/myusername/myproject.git
-# ```
-# 
-# &nbsp; &nbsp; 6. Create a basic project folder structure, a readme file, briefly describing the project and possibly the folder structure
-# 
-# &nbsp; &nbsp; 7. Add all current files to git
+# &nbsp; &nbsp; Connect the local repository to the remote
 # 
 # ```bash
-# git add *
+# git remote add origin https://github.com/username/myproject.git
 # ```
 # 
-# &nbsp; &nbsp; 8. Commit your first commit with an initialization message
+# &nbsp; &nbsp; Create a basic project folder structure, a readme file, briefly describing the project and possibly the folder structure
+# 
+# &nbsp; &nbsp; Add all current files to git
+# 
+# ```bash
+# git add .
+# ```
+# 
+# &nbsp; &nbsp; Commit your first commit with an initialization message
 # 
 # ```bash
 # git commit -m "Initial commit"
 # ```
 # 
-# &nbsp; &nbsp; 9. Push your changes to your remote github repository
+# &nbsp; &nbsp; Push your changes to your remote github repository
 # 
 # ```bash
 # git push
 # ```
 # 
-# &nbsp; &nbsp; 10. Create a new branch called **dev** on which to develop your project
+# 4. Create a new branch called **dev** on which to develop your project
 # 
 # ```bash
 # git checkout -b dev
 # git push --set-upstream origin dev
 # ```
 # 
-# &nbsp; &nbsp; 11. Develop your scripts/analyses, files, etc.
+# 5. Develop your scripts/analyses, files, etc.
 # 
-# &nbsp; &nbsp; 12. Whenever you make changes you are happy with, add the files, commit the changes and push them:
+# 6. Whenever you make changes you are happy with, add the files, commit the changes and push them:
 # 
 # ```bash
-# git add * # possibly specify specific files
+# git add . # possibly specify specific files
 # git commit -m "Explain what you have changed briefly"
 # git push --set-upstream origin dev
 # ```
 # 
-# &nbsp; &nbsp; 13. When you have reached a stage in which you want to save the version to be the main one, merge your dev branch with master:
+# 7. When you have reached a stage in which you want to save the version to be the main one, merge your dev branch with master:
 # 
 # ```bash
 # git checkout master
@@ -304,26 +355,28 @@
 # git push # in order to sync the master branches
 # ```
 # 
-# &nbsp; &nbsp; 14. Go back to dev or a new branch, if you want to test an alternative version of the script or add new things:
+# 8. Go back to dev or a new branch, if you want to test an alternative version of the script or add new things:
 # 
 # ```bash
 # git checkout -b specialbranchfornewfeature
 # git push --set-upstream origin specialbranchfornewfeature
 # ```
 # 
-# &nbsp; &nbsp; 15. At any point: check status of added files, commits, branches:
+# 9. At any point: check status of added files, commits, branches:
 # 
 # ```bash
 # git status
 # ```
 # 
-# &nbsp; &nbsp; 16. At any point: pull most recent changes from online repository:
+# 10. At any point: pull most recent changes from online repository:
 # 
 # ```bash
 # git pull
 # ```
 # 
-# &nbsp; &nbsp; 17. Rinse and repeat :)
+# 11. Rinse and repeat :)
 # 
 
-# *Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.*
+# Git can be pretty confusing at first, but fortunately there are tons of resources available online. If you want a more comprehensive introduction, I recommend Jenny Bryan's [Happy Git](https://happygitwithr.com/) bookdown, which is specifically designed for people familiar with R. You can also keep an eye out for Carpentries workshops on git and the command line, which are offered regularly through the [CMU library](https://www.library.cmu.edu/services/carpentries).
+
+# *Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, Amy Sentis, and Fiona Horner.*
