@@ -3,7 +3,7 @@
 
 ## Lecture 
 
-[![Quantitative epistemology](../thumbnails/the-art-of-data-investigations.jpeg)](https://www.youtube.com/watch?v=_6VmV5NKrRQ "Quantitative Epistemology")
+[![Quantitative epistemology](../thumbnails/quantitative-epsitemology.jpeg)](https://youtu.be/b2SlzPDqwgk "Quantitative Epistemology")
 
 
 
