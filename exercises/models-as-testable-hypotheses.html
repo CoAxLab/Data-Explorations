@@ -250,6 +250,11 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="techniques-for-data-cleansing.html">
+     Homework 2: Data tables
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -883,30 +888,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#write-a-function-that-takes-a-vector-of-numbers-x-and-returns-the-length-mean-and-standard-deviation-of-x-as-a-new-vector-4-pts">
-   1. Write a function that takes a vector of numbers
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     x
-    </span>
-   </code>
-   and returns the length, mean, and standard deviation of
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     x
-    </span>
-   </code>
-   as a new vector. (4 pts)
+  <a class="reference internal nav-link" href="#summary-statistics-4-pts">
+   1. Summary statistics (4 pts)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#write-a-t-test-function-4-pts">
-   2. Write a t-test function (4 pts)
+  <a class="reference internal nav-link" href="#t-test-function-4-pts">
+   2. T-test function (4 pts)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#set-the-default-value-of-mu-to-0-2-pts">
-   3. Set the default value of mu to 0 (2 pts)
+  <a class="reference internal nav-link" href="#set-the-default-values-2-pts">
+   3. Set the default values (2 pts)
   </a>
  </li>
 </ul>
@@ -929,30 +922,18 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#write-a-function-that-takes-a-vector-of-numbers-x-and-returns-the-length-mean-and-standard-deviation-of-x-as-a-new-vector-4-pts">
-   1. Write a function that takes a vector of numbers
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     x
-    </span>
-   </code>
-   and returns the length, mean, and standard deviation of
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     x
-    </span>
-   </code>
-   as a new vector. (4 pts)
+  <a class="reference internal nav-link" href="#summary-statistics-4-pts">
+   1. Summary statistics (4 pts)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#write-a-t-test-function-4-pts">
-   2. Write a t-test function (4 pts)
+  <a class="reference internal nav-link" href="#t-test-function-4-pts">
+   2. T-test function (4 pts)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#set-the-default-value-of-mu-to-0-2-pts">
-   3. Set the default value of mu to 0 (2 pts)
+  <a class="reference internal nav-link" href="#set-the-default-values-2-pts">
+   3. Set the default values (2 pts)
   </a>
  </li>
 </ul>
@@ -969,8 +950,9 @@ title="Print to PDF"
 <h1>Exercises: Coding Habits &amp; Functions<a class="headerlink" href="#exercises-coding-habits-functions" title="Permalink to this headline">#</a></h1>
 <p>This assignment will give you some practice writing your own functions and using the coding best practices discussed in the tutorial.</p>
 <hr class="docutils" />
-<div class="section" id="write-a-function-that-takes-a-vector-of-numbers-x-and-returns-the-length-mean-and-standard-deviation-of-x-as-a-new-vector-4-pts">
-<h2>1. Write a function that takes a vector of numbers <code class="docutils literal notranslate"><span class="pre">x</span></code> and returns the length, mean, and standard deviation of <code class="docutils literal notranslate"><span class="pre">x</span></code> as a new vector. (4 pts)<a class="headerlink" href="#write-a-function-that-takes-a-vector-of-numbers-x-and-returns-the-length-mean-and-standard-deviation-of-x-as-a-new-vector-4-pts" title="Permalink to this headline">#</a></h2>
+<div class="section" id="summary-statistics-4-pts">
+<h2>1. Summary statistics (4 pts)<a class="headerlink" href="#summary-statistics-4-pts" title="Permalink to this headline">#</a></h2>
+<p>Write a function that takes a vector of numbers <code class="docutils literal notranslate"><span class="pre">x</span></code> and returns the length, mean, and standard deviation of <code class="docutils literal notranslate"><span class="pre">x</span></code> as a new vector.</p>
 <p>In keeping with our best practices, give the function a short but descriptive name, and use snake case if it involves multiple words.</p>
 <p>Hint: Vectors are defined in R using the <code class="docutils literal notranslate"><span class="pre">c()</span></code> command.</p>
 <div class="cell docutils container">
@@ -991,13 +973,13 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<div class="section" id="write-a-t-test-function-4-pts">
-<h2>2. Write a t-test function (4 pts)<a class="headerlink" href="#write-a-t-test-function-4-pts" title="Permalink to this headline">#</a></h2>
+<div class="section" id="t-test-function-4-pts">
+<h2>2. T-test function (4 pts)<a class="headerlink" href="#t-test-function-4-pts" title="Permalink to this headline">#</a></h2>
 <p>The formula for a t-test is:</p>
 <div class="math notranslate nohighlight">
 \[ \frac{m- \mu}{ \frac{s}{\sqrt{n}}} \]</div>
 <p>Where m is the sample mean, <span class="math notranslate nohighlight">\(\mu\)</span> (mu) is the population mean, s is the standard deviation, and n is the sample size.</p>
-<p>Using your function above as a starting point, write a new function <code class="docutils literal notranslate"><span class="pre">ttest_fun</span></code> that compares a vector <code class="docutils literal notranslate"><span class="pre">x</span></code> to a given population mean mu and calculates the t-statistic. Keep the coding best practices in mind.</p>
+<p>Using your function above as a starting point, write a new function <code class="docutils literal notranslate"><span class="pre">ttest_fun</span></code> that compares a vector <code class="docutils literal notranslate"><span class="pre">x</span></code> to a given population mean <code class="docutils literal notranslate"><span class="pre">mu</span></code> and calculates the t-statistic. Keep the coding best practices in mind.</p>
 <p>Hint: You will need to add another argument for mu.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1015,9 +997,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<div class="section" id="set-the-default-value-of-mu-to-0-2-pts">
-<h2>3. Set the default value of mu to 0 (2 pts)<a class="headerlink" href="#set-the-default-value-of-mu-to-0-2-pts" title="Permalink to this headline">#</a></h2>
-<p>Test your modified function below by supplying only <code class="docutils literal notranslate"><span class="pre">v2</span></code> as an argument.</p>
+<div class="section" id="set-the-default-values-2-pts">
+<h2>3. Set the default values (2 pts)<a class="headerlink" href="#set-the-default-values-2-pts" title="Permalink to this headline">#</a></h2>
+<p>Set the default value of mu to 0. Test your modified function below by supplying only <code class="docutils literal notranslate"><span class="pre">v2</span></code> as an argument.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your modified ttest_fun here</span>
