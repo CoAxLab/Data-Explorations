@@ -201,6 +201,11 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/models-as-testable-hypotheses.html">
+     Exercises: Coding Habits &amp; Functions
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -215,7 +220,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="data-as-objects-and-architectures.html">
-     Tutorial: Tidy data
+     Tutorial: Data as Objects
     </a>
    </li>
    <li class="toctree-l2">
@@ -237,12 +242,17 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="techniques-for-data-cleansing.html">
-     Tutorial: Data cleansing
+     Tutorial: Data Cleansing and Tidy data
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/techniques-for-data-cleansing.html">
      Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/techniques-for-data-cleansing.html">
+     Homework 2: Data tables
     </a>
    </li>
   </ul>
@@ -1036,7 +1046,7 @@ title="Print to PDF"
 <ul class="simple">
 <li><p>function name</p></li>
 <li><p>input parameters</p></li>
-<li><p>funcion operation</p></li>
+<li><p>function operation</p></li>
 <li><p>return statement</p></li>
 <li><p>return parameters</p></li>
 </ul>
@@ -1047,7 +1057,7 @@ title="Print to PDF"
 <li><p>the last line contains the return statement and the return parameter, <code class="docutils literal notranslate"><span class="pre">temp_C</span></code></p></li>
 </ul>
 <p><em>Aside: R does not require a formal return statement. The variable in the last line of the function body will be return automatically. However, especially while in the learning phase, it is best to explicitly define the return statement.</em></p>
-<p>The functional form of the converstion from <span class="math notranslate nohighlight">\(temp_F\)</span> to <span class="math notranslate nohighlight">\(temp_C\)</span> is: <span class="math notranslate nohighlight">\(temp_C = \frac{(temp_F-32)*5}{9}\)</span>. Here we will just translate that into R form.</p>
+<p>The functional form of the conversion from <span class="math notranslate nohighlight">\(temp_F\)</span> to <span class="math notranslate nohighlight">\(temp_C\)</span> is: <span class="math notranslate nohighlight">\(temp_C = \frac{(temp_F-32)*5}{9}\)</span>. Here we will just translate that into R form.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">fahrenheit_to_celsius</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">temp_F</span><span class="p">)</span> <span class="p">{</span>
@@ -1058,8 +1068,8 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>(Note: you have to execute the cell above for R to build the function <strong>fahrenheit_to_celsius</strong>)</p>
-<p>To call a function, simply invoke the function name with the required input parameters. For example:</p>
+<p>When you execute the cell above, R will build the function <strong>fahrenheit_to_celsius</strong> and it will be available in your global environment.</p>
+<p>To then call the function, simply invoke the function name with the required input parameters, just like you would any pre-defined function. For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># freezing point of water</span>
@@ -1155,16 +1165,17 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>It is also often helpful to use a numerical prefix if a set of files are designed to be run in a specific order.</p>
-<p>Similarly, <strong>object names</strong> (variables and functions) should be limited to lowercase letters and numbers, with underscores used to separate words. This style is also known as snake case. For example:</p>
+<p>Similarly, <strong>object names</strong> (variables and functions) should be meaningful and limited to lowercase letters and numbers, with underscores used to separate words. This style is also known as snake case. For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># good</span>
 <span class="n">day_one</span>
 <span class="n">day_1</span>
 
 <span class="c1"># bad</span>
-<span class="n">dayOne</span>
+<span class="n">dayOne</span>    <span class="c1">#camel case</span>
 <span class="n">dayone</span>
 </pre></div>
 </div>
+<p>(Note: some people use camel case (<code class="docutils literal notranslate"><span class="pre">dayOne</span></code>) because it is easier to write, but snake case is generally preferred because it’s easier to read.)</p>
 <p>Note that certain object names should be avoided, such those that overlap with common operation, e.g., <code class="docutils literal notranslate"><span class="pre">mean</span></code>.</p>
 <p><strong>Long lines</strong>: code should be limited to 80 characters per line. There are specific ways to handle longer lines that call or define functions.</p>
 <p>If a function call doesn’t fit on a single line, separate the input parameters on the subsequent lines. For example:</p>
@@ -1189,13 +1200,63 @@ title="Print to PDF"
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><strong>Assignment</strong> should use the left arrow convention, <code class="docutils literal notranslate"><span class="pre">&lt;-</span></code>, instead of the equal sign.</p>
+<p><strong>Assignment</strong> should use the left arrow convention, <code class="docutils literal notranslate"><span class="pre">&lt;-</span></code>, instead of <code class="docutils literal notranslate"><span class="pre">=</span></code>. On the surface, it may seem that these two symbols operate the same way, but they actually don’t and are not interchangeable. Run the code blocks below to see if you can figure out how they differ.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">mean</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">5.5</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="ow">in</span> <span class="nb">eval</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">envir</span><span class="p">,</span> <span class="n">enclos</span><span class="p">):</span> <span class="nb">object</span> <span class="s1">&#39;x&#39;</span> <span class="ow">not</span> <span class="n">found</span>
+<span class="ne">Traceback</span>:
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">mean</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">5.5</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li></ol>
+</div></div>
+</div>
+<p>There are also instances where the assignment arrow cannot be used, like when defining arguments in function. Using <code class="docutils literal notranslate"><span class="pre">&lt;-</span></code> can therefore help with code readability. Fun fact, you can also assign objects the other direction, e.g., <code class="docutils literal notranslate"><span class="pre">value</span> <span class="pre">-&gt;</span> <span class="pre">name</span></code>, but this is rarely used.</p>
+<p>Since the arrow is somewhat annoying to type, handy shortcuts exist:</p>
+<p>Mac: <code class="docutils literal notranslate"><span class="pre">Option</span></code> + <code class="docutils literal notranslate"><span class="pre">-</span></code></p>
+<p>PC: <code class="docutils literal notranslate"><span class="pre">Alt</span></code> + <code class="docutils literal notranslate"><span class="pre">-</span></code></p>
 <p><strong>Logical variables and vectors</strong> should be dfined using <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> and <code class="docutils literal notranslate"><span class="pre">FALSE</span></code> instead of the shortened <code class="docutils literal notranslate"><span class="pre">T</span></code> and <code class="docutils literal notranslate"><span class="pre">F</span></code> forms.</p>
 </div>
 <div class="section" id="keep-jupyter-notebooks-tidy">
 <h2>Keep jupyter notebooks tidy<a class="headerlink" href="#keep-jupyter-notebooks-tidy" title="Permalink to this headline">#</a></h2>
 <p>There are additional considerations to keep in mind when working with jupyter notebooks. Since they are particularly useful for literate programming (combining code, graphics and text), they provide lots of flexibility and don’t necessitate a rigid, linear flow through the notebook cells. It therefore requires even more discipline to maintain notebooks and the code within them.</p>
-<p>One of the most helpful tips for keeping notebook tidy is to ensure that your notebook runs from top to bottom. Restarting the notebook kernel and running through all the cells before commiting to git is a good habit to get into and can save time in the future.</p>
+<p>One of the most helpful tips for keeping a notebook tidy is to ensure that your notebook runs from top to bottom. Restarting the notebook kernel and running through all the cells before commiting to git is a good habit to get into and can save time in the future.</p>
 <p>Thinking more broadly, using jupyter notebook for everything is not best practice. Developing code and analysis pipeline inside an integrated development environment (<a class="reference external" href="https://en.wikipedia.org/wiki/Integrated_development_environment">IDE</a>), such as RStudio for R, is helpful for efficiency and developing good coding habits.</p>
 </div>
 <div class="section" id="delete-dead-code">
@@ -1208,7 +1269,7 @@ title="Print to PDF"
 </div>
 <div class="section" id="use-pure-functions">
 <h2>Use pure functions<a class="headerlink" href="#use-pure-functions" title="Permalink to this headline">#</a></h2>
-<p>Pure functions follow particular structure, with inputs coming from the input parameters and outputs returning in the return statement. For instance, using our sum function from earlier in the tutorial:</p>
+<p>Pure functions follow a particular structure, with inputs coming from the input parameters and outputs returning in the return statement. For instance, using our sum function from earlier in the tutorial:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_sum</span> <span class="o">&lt;-</span> <span class="n">function</span><span class="p">(</span><span class="n">input_1</span><span class="p">,</span> <span class="n">input_2</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">output</span> <span class="o">&lt;-</span> <span class="n">input_1</span> <span class="o">+</span> <span class="n">input_2</span>
   <span class="k">return</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
@@ -1216,12 +1277,29 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>A pure function can also be thought of as static black box. Something goes into the box, operations occur, a result is output. In this case, both the inputs and the black box itself remains unchanged.</p>
+<p>If you are building a very complex function, it is best practice to break it into smaller functions that each do a clearly defined step in the larger function. This will greatly help with debugging and troubleshooting. These can then be combined into a “master” function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">small_fun1</span>  <span class="o">&lt;-</span> <span class="n">function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">){</span>
+    <span class="c1">#does step 1</span>
+    <span class="c1">#returns step 1</span>
+<span class="p">}</span>
+
+<span class="n">small_fun2</span>  <span class="o">&lt;-</span> <span class="n">function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">){</span>
+    <span class="c1">#does step 2</span>
+    <span class="c1">#returns step 2</span>
+<span class="p">}</span>
+
+<span class="n">big_fun</span>  <span class="o">&lt;-</span> <span class="n">function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">){</span>
+    <span class="n">small_fun1</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">small_fun2</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="bad-code-things-not-to-do">
 <h2>Bad code: things not to do<a class="headerlink" href="#bad-code-things-not-to-do" title="Permalink to this headline">#</a></h2>
 <p>Sometimes it can be equally helpful to know what not to do. Here’s a brief list of some common pitfalls to avoid in your code:</p>
 <ul class="simple">
-<li><p>mysterious object names that don’t provide hlepful info about function</p></li>
+<li><p>mysterious object names that don’t provide helpful info about function</p></li>
 <li><p>magic numbers, or hard-coded values without explanation</p></li>
 <li><p>redundant or duplicated code</p></li>
 <li><p>large functions that do too much and become unwieldy (e.g., mixing IO and computation)</p></li>
@@ -1238,7 +1316,7 @@ title="Print to PDF"
 <li><p>usage documentation</p></li>
 <li><p>jupyter notebooks as tutorials for using code/pipelines</p></li>
 </ul>
-<p><em>Notebook authored by Amy Sentis.</em></p>
+<p><em>Notebook authored by Amy Sentis and Fiona Horner.</em></p>
 </div>
 </div>
 

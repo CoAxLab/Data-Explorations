@@ -22,3 +22,11 @@ my_sum(3, 4)
 my_sum(input_1 = 1, 3)
 
 my_sum(input_2 = 3)
+
+mean(x = 1:10)
+
+x
+
+mean(x <- 1:10)
+
+x

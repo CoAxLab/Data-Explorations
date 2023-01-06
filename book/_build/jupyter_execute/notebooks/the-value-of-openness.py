@@ -275,16 +275,16 @@
 
 # You are starting a new project. Here's an example workflow with everything we have discussed.
 # 
-# 1. Install git, make a github account
+# &nbsp; 1. Install git, make a github account
 # 
-# 2. Setup git:
+# &nbsp; 2. Setup git:
 # 
 # ```bash
 # git config --global user.email "you@andrew.cmu.edu"
 # git config --global user.name "Your Name"
 # ```
 # 
-# &nbsp; &nbsp; 3A: Clone an existing repository
+# &nbsp; 3A: Clone an existing repository
 # ```bash
 # git clone https://github.com/username/myproject.git
 # cd myproject
@@ -292,7 +292,7 @@
 # 
 # **Or**
 # 
-# &nbsp; &nbsp; 3B. Start from scratch
+# &nbsp; 3B. Start from scratch
 # 
 # &nbsp; &nbsp; Create a new project folder, navigate to it, and initialize a new local repository
 # 
@@ -330,16 +330,16 @@
 # git push
 # ```
 # 
-# 4. Create a new branch called **dev** on which to develop your project
+# &nbsp; 4. Create a new branch called **dev** on which to develop your project
 # 
 # ```bash
 # git checkout -b dev
 # git push --set-upstream origin dev
 # ```
 # 
-# 5. Develop your scripts/analyses, files, etc.
+# &nbsp; 5. Develop your scripts/analyses, files, etc.
 # 
-# 6. Whenever you make changes you are happy with, add the files, commit the changes and push them:
+# &nbsp; 6. Whenever you make changes you are happy with, add the files, commit the changes and push them:
 # 
 # ```bash
 # git add . # possibly specify specific files
@@ -347,7 +347,7 @@
 # git push --set-upstream origin dev
 # ```
 # 
-# 7. When you have reached a stage in which you want to save the version to be the main one, merge your dev branch with master:
+# &nbsp; 7. When you have reached a stage in which you want to save the version to be the main one, merge your dev branch with master:
 # 
 # ```bash
 # git checkout master
@@ -355,26 +355,26 @@
 # git push # in order to sync the master branches
 # ```
 # 
-# 8. Go back to dev or a new branch, if you want to test an alternative version of the script or add new things:
+# &nbsp; 8. Go back to dev or a new branch, if you want to test an alternative version of the script or add new things:
 # 
 # ```bash
 # git checkout -b specialbranchfornewfeature
 # git push --set-upstream origin specialbranchfornewfeature
 # ```
 # 
-# 9. At any point: check status of added files, commits, branches:
+# &nbsp; 9. At any point: check status of added files, commits, branches:
 # 
 # ```bash
 # git status
 # ```
 # 
-# 10. At any point: pull most recent changes from online repository:
+# &nbsp; 10. At any point: pull most recent changes from online repository:
 # 
 # ```bash
 # git pull
 # ```
 # 
-# 11. Rinse and repeat :)
+# &nbsp; 11. Rinse and repeat :)
 # 
 
 # Git can be pretty confusing at first, but fortunately there are tons of resources available online. If you want a more comprehensive introduction, I recommend Jenny Bryan's [Happy Git](https://happygitwithr.com/) bookdown, which is specifically designed for people familiar with R. You can also keep an eye out for Carpentries workshops on git and the command line, which are offered regularly through the [CMU library](https://www.library.cmu.edu/services/carpentries).

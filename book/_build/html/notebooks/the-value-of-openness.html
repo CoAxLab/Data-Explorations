@@ -199,6 +199,11 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/models-as-testable-hypotheses.html">
+     Exercises: Coding Habits &amp; Functions
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -213,7 +218,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="data-as-objects-and-architectures.html">
-     Tutorial: Tidy data
+     Tutorial: Data as Objects
     </a>
    </li>
    <li class="toctree-l2">
@@ -235,12 +240,17 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="techniques-for-data-cleansing.html">
-     Tutorial: Data cleansing
+     Tutorial: Data Cleansing and Tidy data
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/techniques-for-data-cleansing.html">
      Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/techniques-for-data-cleansing.html">
+     Homework 2: Data tables
     </a>
    </li>
   </ul>
@@ -1271,21 +1281,19 @@ git merge dev
 <div class="tex2jax_ignore mathjax_ignore section" id="putting-it-all-together-example-workflow">
 <h1>Putting it all together - example workflow<a class="headerlink" href="#putting-it-all-together-example-workflow" title="Permalink to this headline">#</a></h1>
 <p>You are starting a new project. Here’s an example workflow with everything we have discussed.</p>
-<ol class="simple">
-<li><p>Install git, make a github account</p></li>
-<li><p>Setup git:</p></li>
-</ol>
+<p>  1. Install git, make a github account</p>
+<p>  2. Setup git:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git config --global user.email <span class="s2">&quot;you@andrew.cmu.edu&quot;</span>
 git config --global user.name <span class="s2">&quot;Your Name&quot;</span>
 </pre></div>
 </div>
-<p>    3A: Clone an existing repository</p>
+<p>  3A: Clone an existing repository</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/username/myproject.git
 <span class="nb">cd</span> myproject
 </pre></div>
 </div>
 <p><strong>Or</strong></p>
-<p>    3B. Start from scratch</p>
+<p>  3B. Start from scratch</p>
 <p>    Create a new project folder, navigate to it, and initialize a new local repository</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir c:<span class="se">\p</span>rojects<span class="se">\m</span>yproject<span class="se">\</span>
 <span class="nb">cd</span> c:<span class="se">\p</span>rojects<span class="se">\m</span>yproject<span class="se">\</span>
@@ -1310,52 +1318,38 @@ git init
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git push
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>Create a new branch called <strong>dev</strong> on which to develop your project</p></li>
-</ol>
+<p>  4. Create a new branch called <strong>dev</strong> on which to develop your project</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout -b dev
 git push --set-upstream origin dev
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>Develop your scripts/analyses, files, etc.</p></li>
-<li><p>Whenever you make changes you are happy with, add the files, commit the changes and push them:</p></li>
-</ol>
+<p>  5. Develop your scripts/analyses, files, etc.</p>
+<p>  6. Whenever you make changes you are happy with, add the files, commit the changes and push them:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add . <span class="c1"># possibly specify specific files</span>
 git commit -m <span class="s2">&quot;Explain what you have changed briefly&quot;</span>
 git push --set-upstream origin dev
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>When you have reached a stage in which you want to save the version to be the main one, merge your dev branch with master:</p></li>
-</ol>
+<p>  7. When you have reached a stage in which you want to save the version to be the main one, merge your dev branch with master:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout master
 git merge dev
 git push <span class="c1"># in order to sync the master branches</span>
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>Go back to dev or a new branch, if you want to test an alternative version of the script or add new things:</p></li>
-</ol>
+<p>  8. Go back to dev or a new branch, if you want to test an alternative version of the script or add new things:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout -b specialbranchfornewfeature
 git push --set-upstream origin specialbranchfornewfeature
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>At any point: check status of added files, commits, branches:</p></li>
-</ol>
+<p>  9. At any point: check status of added files, commits, branches:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git status
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>At any point: pull most recent changes from online repository:</p></li>
-</ol>
+<p>  10. At any point: pull most recent changes from online repository:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git pull
 </pre></div>
 </div>
-<ol class="simple">
-<li><p>Rinse and repeat :)</p></li>
-</ol>
+<p>  11. Rinse and repeat :)</p>
 <p>Git can be pretty confusing at first, but fortunately there are tons of resources available online. If you want a more comprehensive introduction, I recommend Jenny Bryan’s <a class="reference external" href="https://happygitwithr.com/">Happy Git</a> bookdown, which is specifically designed for people familiar with R. You can also keep an eye out for Carpentries workshops on git and the command line, which are offered regularly through the <a class="reference external" href="https://www.library.cmu.edu/services/carpentries">CMU library</a>.</p>
 <p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, Amy Sentis, and Fiona Horner.</em></p>
 </div>
