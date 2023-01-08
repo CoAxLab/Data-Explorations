@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exercises: Coding Habits &amp; Functions &#8212; Data explorations</title>
+    <title>Exercises: Using ggplot &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -49,12 +49,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Data as objects and architectures" href="../lectures/data-as-objects-and-architectures.html" />
-    <link rel="prev" title="Discussion questions" href="../discussions/models-as-testable-hypotheses.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -119,7 +115,7 @@ const thebe_selector_output = ".output, .cell_output"
   Information and Meaning
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lectures/quantitative-epistemology.html">
    Quantitative epsitemology
@@ -181,16 +177,16 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lectures/models-as-testable-hypotheses.html">
    Models as testable hypotheses
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/models-as-testable-hypotheses.html">
      Tutorial: Introduction to functions and good coding habits
@@ -201,8 +197,8 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="models-as-testable-hypotheses.html">
      Exercises: Coding Habits &amp; Functions
     </a>
    </li>
@@ -767,7 +763,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/exercises/models-as-testable-hypotheses.ipynb"
+        <a href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/exercises/visualization-as-analysis.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -785,7 +781,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/exercises/models-as-testable-hypotheses.ipynb"
+        <a href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/exercises/visualization-as-analysis.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -828,7 +824,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/exercises/models-as-testable-hypotheses.ipynb"
+        <a href="../_sources/exercises/visualization-as-analysis.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -887,25 +883,19 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary-statistics-4-pts">
-   1. Summary statistics (4 pts)
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Exercises: Using ggplot
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#t-test-function-4-pts">
-   2.
-   <strong>
-    T-test function (4 pts)
-   </strong>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#color-plot-type-and-layers-5-points">
+   1. Color, plot type and layers (5 points)
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setting-default-values-2-pts">
-   3.
-   <strong>
-    Setting default values (2 pts)
-   </strong>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-statistics-5-points">
+   2. Adding statistics (5 points)
   </a>
  </li>
 </ul>
@@ -917,7 +907,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Exercises: Coding Habits & Functions</h1>
+                <h1>Exercises: Using ggplot</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -927,25 +917,19 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary-statistics-4-pts">
-   1. Summary statistics (4 pts)
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Exercises: Using ggplot
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#t-test-function-4-pts">
-   2.
-   <strong>
-    T-test function (4 pts)
-   </strong>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#color-plot-type-and-layers-5-points">
+   1. Color, plot type and layers (5 points)
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setting-default-values-2-pts">
-   3.
-   <strong>
-    Setting default values (2 pts)
-   </strong>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-statistics-5-points">
+   2. Adding statistics (5 points)
   </a>
  </li>
 </ul>
@@ -958,91 +942,147 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="exercises-coding-habits-functions">
-<h1>Exercises: Coding Habits &amp; Functions<a class="headerlink" href="#exercises-coding-habits-functions" title="Permalink to this headline">#</a></h1>
-<p>This assignment will give you some practice writing your own functions and using the coding best practices discussed in the tutorial.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="exercises-using-ggplot">
+<h1>Exercises: Using ggplot<a class="headerlink" href="#exercises-using-ggplot" title="Permalink to this headline">#</a></h1>
+<p>This homework assignment is designed to get you comfortable working with <code class="docutils literal notranslate"><span class="pre">ggplot</span></code> for generating data visualizations.</p>
+<p>We will be using the <a class="reference external" href="https://cran.r-project.org/web/packages/gapminder/index.html">gapminder</a> dataset. It contains  information about population, life expectancy and per capita GDP by country over time.</p>
+</div>
 <hr class="docutils" />
-<div class="section" id="summary-statistics-4-pts">
-<h2>1. Summary statistics (4 pts)<a class="headerlink" href="#summary-statistics-4-pts" title="Permalink to this headline">#</a></h2>
-<p>Write a function that takes a vector of numbers <code class="docutils literal notranslate"><span class="pre">x</span></code> and returns the length, mean, and standard deviation of <code class="docutils literal notranslate"><span class="pre">x</span></code> as a new vector.</p>
-<p>In keeping with our best practices, give the function a short but descriptive name, and use snake case if it involves multiple words.</p>
-<p>Hint: Vectors are defined in R using the <code class="docutils literal notranslate"><span class="pre">c()</span></code> command.</p>
+<div class="tex2jax_ignore mathjax_ignore section" id="color-plot-type-and-layers-5-points">
+<h1>1. Color, plot type and layers (5 points)<a class="headerlink" href="#color-plot-type-and-layers-5-points" title="Permalink to this headline">#</a></h1>
+<p>Install and load the <code class="docutils literal notranslate"><span class="pre">gapminder</span></code> dataset. Look at the first few rows of the data frame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Write your function here</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Calculate the summary statistics of vector <code class="docutils literal notranslate"><span class="pre">v1</span></code>.</p>
+<p>Now, let’s create a basic scatterplot using <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> that shows how life expectancy has changed over time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span>  <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">11</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="kc">NA</span><span class="p">,</span> <span class="m">9</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can add another layer of detail by using color to indicate continent. Modify the code from the previous question to to do so.</p>
+<p>What trends can you identify in the data?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p><em>Write your response here.</em></p>
+<ul class="simple">
+<li><p>The general trend seems to indicate an increased life expectancy over the years. Continents with stronger economies tend to have longer life expectancies.</p></li>
+</ul>
+</div></blockquote>
+<p>Using a scatterplot probably isn’t the best type of plot for effectively visualizing change over time. Instead, modify the code from the previous question to create a line plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hmm, this plot looks a bit weird and unexpected, making it difficult for us to easily interpret the data trends. What is causing this?</p>
+<blockquote>
+<div><p><em>Write your response here.</em></p>
+<ul class="simple">
+<li><p>The line seems to be jumping around a lot in each continent.</p></li>
+</ul>
+</div></blockquote>
+<p>Now, let’s try to separate the data by country, plotting one line for each country. Modify the code from the previous plot to do so.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>But what if we want to visualize both lines and points on our graph? There are two primary ways to do this - taking advantage of what we know about using layers for ggplot (each layer is drawn on top of the previous layer).</p>
+<ul class="simple">
+<li><p>Method 1: Plot black points on top of the colorful lines</p></li>
+<li><p>Method 2: Plot black points underneath the colorful lines</p></li>
+</ul>
+<p>Modify the code from the previous question to create two plots, one for each method.</p>
+<p><em>Hint: to control the color of the points, think about where the aesthetic color attribute should be located e.g., in the global plot options or in a specific layer.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 
-<span class="c1">#your_function_name(v1)</span>
+<span class="c1"># method 1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+
+<span class="c1"># method 2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Aside: colorful points</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="t-test-function-4-pts">
-<h2>2. <strong>T-test function (4 pts)</strong><a class="headerlink" href="#t-test-function-4-pts" title="Permalink to this headline">#</a></h2>
-<p>The formula for a t-test is:</p>
-<div class="math notranslate nohighlight">
-\[ \frac{m- \mu}{ \frac{s}{\sqrt{n}}} \]</div>
-<p>Where m is the sample mean, <span class="math notranslate nohighlight">\(\mu\)</span> (mu) is the population mean, s is the standard deviation, and n is the sample size.</p>
-<p>Using your function above as a starting point, write a new function <code class="docutils literal notranslate"><span class="pre">ttest_fun</span></code> that compares a vector <code class="docutils literal notranslate"><span class="pre">x</span></code> to a given population mean <code class="docutils literal notranslate"><span class="pre">mu</span></code> and calculates the t-statistic. Keep the coding best practices in mind.</p>
-<p>Hint: You will need to add another argument for mu.</p>
+<div class="tex2jax_ignore mathjax_ignore section" id="adding-statistics-5-points">
+<h1>2. Adding statistics (5 points)<a class="headerlink" href="#adding-statistics-5-points" title="Permalink to this headline">#</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> allows easy overlay of statistical models on top of the data.</p>
+<p>The graph below shows the relationship between life expectency and GDP per capita:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write ttest_fun here</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Use your function to compare the mean of v1 to 10.</p>
+<p>However, the data points are squished close together on the left side of the graph, so it’s hard to see the actual relationship we’re interested in.</p>
+<p>To fix this, we can change the scale of x-axis units using the scale functions. We can also make the data points transparent using the alpha function. This is helpful when there is a large amount of clustered data.</p>
+<p>Modify the code above to incorporate these two changes (scale and transparency).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ttest_fun</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="m">10</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<hr class="docutils" />
-<div class="section" id="setting-default-values-2-pts">
-<h2>3. <strong>Setting default values (2 pts)</strong><a class="headerlink" href="#setting-default-values-2-pts" title="Permalink to this headline">#</a></h2>
-<p>Set the default value of mu to 0. Test your modified function below by supplying only <code class="docutils literal notranslate"><span class="pre">v2</span></code> as an argument.</p>
+<p>Already we can more easily visualize the trend in the data.</p>
+<p>Next, let’s overlay statistics by fiting a simple relationship to the data. Modify the code from the previous question by adding a <code class="docutils literal notranslate"><span class="pre">geom_smooth</span></code> layer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your modified ttest_fun here</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Again, we can add a layer of detail by introducing separate colors for each continent. We can also create individual trendlines for each continent, instead of only one trendline.</p>
+<p>Modify the code from the previous question to add these elements.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ttest_fun</span><span class="p">(</span><span class="n">v2</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>How does your result compare to R’s built-in <code class="docutils literal notranslate"><span class="pre">t.test()</span></code> function?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">t.test</span><span class="p">(</span><span class="n">v2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>When you are finished, save the notebook as models-as-testable-hypotheses.ipynb, push it to your class GitHub repository (the one you made for Homework 1) and send the instructors a link to your notebook via Canvas. You can send messages via Canvas by clicking “Inbox” on the left and then pressing the icon with a pencil inside a square.</p>
-<p><strong>DUE:</strong> 5pm EST, Feb 6, 2023</p>
+<p>That’s all for this homework! When you are finished, save the notebook as Homework3.ipynb, push it to your class GitHub repository and send the instructors a link to your notebook via Canvas.</p>
+<p><strong>DUE:</strong> 5pm EST, Feb 24, 2022</p>
 <p><strong>IMPORTANT</strong> Did you collaborate with anyone on this assignment? If so, list their names here.</p>
 <blockquote>
 <div><p><em>Someone’s Name</em></p>
 </div></blockquote>
-</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -1072,20 +1112,6 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../discussions/models-as-testable-hypotheses.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Discussion questions</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="../lectures/data-as-objects-and-architectures.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Data as objects and architectures</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>

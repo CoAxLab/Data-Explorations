@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exercises: Coding Habits &amp; Functions &#8212; Data explorations</title>
+    <title>Exercises: More plotting options &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -49,12 +49,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Data as objects and architectures" href="../lectures/data-as-objects-and-architectures.html" />
-    <link rel="prev" title="Discussion questions" href="../discussions/models-as-testable-hypotheses.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -119,7 +115,7 @@ const thebe_selector_output = ".output, .cell_output"
   Information and Meaning
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lectures/quantitative-epistemology.html">
    Quantitative epsitemology
@@ -181,16 +177,16 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lectures/models-as-testable-hypotheses.html">
    Models as testable hypotheses
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/models-as-testable-hypotheses.html">
      Tutorial: Introduction to functions and good coding habits
@@ -201,8 +197,8 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="models-as-testable-hypotheses.html">
      Exercises: Coding Habits &amp; Functions
     </a>
    </li>
@@ -767,7 +763,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/exercises/models-as-testable-hypotheses.ipynb"
+        <a href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/exercises/visualization-through-human-eyes.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -785,7 +781,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/exercises/models-as-testable-hypotheses.ipynb"
+        <a href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/exercises/visualization-through-human-eyes.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -828,7 +824,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/exercises/models-as-testable-hypotheses.ipynb"
+        <a href="../_sources/exercises/visualization-through-human-eyes.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -887,25 +883,19 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary-statistics-4-pts">
-   1. Summary statistics (4 pts)
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Exercises: More plotting options
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#t-test-function-4-pts">
-   2.
-   <strong>
-    T-test function (4 pts)
-   </strong>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multipanel-figures-4-points">
+   1. Multipanel figures (4 points)
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setting-default-values-2-pts">
-   3.
-   <strong>
-    Setting default values (2 pts)
-   </strong>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#increasing-data-density-2-pts">
+   2. Increasing data density (2 pts)
   </a>
  </li>
 </ul>
@@ -917,7 +907,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Exercises: Coding Habits & Functions</h1>
+                <h1>Exercises: More plotting options</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -927,25 +917,19 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary-statistics-4-pts">
-   1. Summary statistics (4 pts)
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Exercises: More plotting options
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#t-test-function-4-pts">
-   2.
-   <strong>
-    T-test function (4 pts)
-   </strong>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multipanel-figures-4-points">
+   1. Multipanel figures (4 points)
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setting-default-values-2-pts">
-   3.
-   <strong>
-    Setting default values (2 pts)
-   </strong>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#increasing-data-density-2-pts">
+   2. Increasing data density (2 pts)
   </a>
  </li>
 </ul>
@@ -958,91 +942,73 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="exercises-coding-habits-functions">
-<h1>Exercises: Coding Habits &amp; Functions<a class="headerlink" href="#exercises-coding-habits-functions" title="Permalink to this headline">#</a></h1>
-<p>This assignment will give you some practice writing your own functions and using the coding best practices discussed in the tutorial.</p>
-<hr class="docutils" />
-<div class="section" id="summary-statistics-4-pts">
-<h2>1. Summary statistics (4 pts)<a class="headerlink" href="#summary-statistics-4-pts" title="Permalink to this headline">#</a></h2>
-<p>Write a function that takes a vector of numbers <code class="docutils literal notranslate"><span class="pre">x</span></code> and returns the length, mean, and standard deviation of <code class="docutils literal notranslate"><span class="pre">x</span></code> as a new vector.</p>
-<p>In keeping with our best practices, give the function a short but descriptive name, and use snake case if it involves multiple words.</p>
-<p>Hint: Vectors are defined in R using the <code class="docutils literal notranslate"><span class="pre">c()</span></code> command.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Write your function here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Calculate the summary statistics of vector <code class="docutils literal notranslate"><span class="pre">v1</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span>  <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">11</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="kc">NA</span><span class="p">,</span> <span class="m">9</span><span class="p">)</span>
-
-<span class="c1">#your_function_name(v1)</span>
-</pre></div>
-</div>
-</div>
-</div>
+  <div class="tex2jax_ignore mathjax_ignore section" id="exercises-more-plotting-options">
+<h1>Exercises: More plotting options<a class="headerlink" href="#exercises-more-plotting-options" title="Permalink to this headline">#</a></h1>
+<p>In this homework, you’ll practice more advanced plotting options from <code class="docutils literal notranslate"><span class="pre">ggplot</span></code> and <code class="docutils literal notranslate"><span class="pre">GGally</span></code>.</p>
+<p>Just like the prior homework, we will be using the <a class="reference external" href="https://cran.r-project.org/web/packages/gapminder/index.html">gapminder</a> dataset. It contains  information about population, life expectancy and per capita GDP by country over time.</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="t-test-function-4-pts">
-<h2>2. <strong>T-test function (4 pts)</strong><a class="headerlink" href="#t-test-function-4-pts" title="Permalink to this headline">#</a></h2>
-<p>The formula for a t-test is:</p>
-<div class="math notranslate nohighlight">
-\[ \frac{m- \mu}{ \frac{s}{\sqrt{n}}} \]</div>
-<p>Where m is the sample mean, <span class="math notranslate nohighlight">\(\mu\)</span> (mu) is the population mean, s is the standard deviation, and n is the sample size.</p>
-<p>Using your function above as a starting point, write a new function <code class="docutils literal notranslate"><span class="pre">ttest_fun</span></code> that compares a vector <code class="docutils literal notranslate"><span class="pre">x</span></code> to a given population mean <code class="docutils literal notranslate"><span class="pre">mu</span></code> and calculates the t-statistic. Keep the coding best practices in mind.</p>
-<p>Hint: You will need to add another argument for mu.</p>
+<div class="tex2jax_ignore mathjax_ignore section" id="multipanel-figures-4-points">
+<h1>1. Multipanel figures (4 points)<a class="headerlink" href="#multipanel-figures-4-points" title="Permalink to this headline">#</a></h1>
+<p>Last week, we visualized the change in life expectancy over time for every country in one plot. An alternative method is to use facet panels to split each country into its own plot.</p>
+<p>To start, load the <code class="docutils literal notranslate"><span class="pre">gapminder</span></code> dataset from the last set of exercises, as well as the <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write ttest_fun here</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Use your function to compare the mean of v1 to 10.</p>
+<p>Next, create a subset of data that only includes the 25 countries from the <code class="docutils literal notranslate"><span class="pre">Americas</span></code> continent. Now we can add a <code class="docutils literal notranslate"><span class="pre">facet_wrap</span></code> layer to our line plot to create the panels by country. Additionally, to make the x-axis values easier to read, add a <code class="docutils literal notranslate"><span class="pre">theme</span></code> layer to rotate the text by 45 degrees.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ttest_fun</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="m">10</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Imagine that we wanted to publish this figure in a manuscript. Make the following changes to the code from the previous question to create a cleaner figure:</p>
+<ul class="simple">
+<li><p>Change the y-axis label (using <code class="docutils literal notranslate"><span class="pre">labs</span></code> layer)</p></li>
+<li><p>Add a figure title (using <code class="docutils literal notranslate"><span class="pre">labs</span></code> layer)</p></li>
+<li><p>Add a legend (using <code class="docutils literal notranslate"><span class="pre">labs</span></code> layer)</p></li>
+<li><p>Rotate x-axis value text to 90 degrees</p></li>
+</ul>
+<p><em>Hint: legend titles are set using the same names used in the aes specification. So, we need to add a <code class="docutils literal notranslate"><span class="pre">color</span></code> aes mapping to the global plot definition and reference this in the <code class="docutils literal notranslate"><span class="pre">labs</span></code> layer to specify the legend name.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s look at how life expectancy varies by continent over time. Create a multipanel figure where each panel contains five boxplots (one for each continent) and each panel represents one year of data. Include a legend instead of x-axis title and labels.</p>
+<p><em>Hint: the <code class="docutils literal notranslate"><span class="pre">theme</span></code> layer allows you to set attributes as <code class="docutils literal notranslate"><span class="pre">element_blank()</span></code>.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="setting-default-values-2-pts">
-<h2>3. <strong>Setting default values (2 pts)</strong><a class="headerlink" href="#setting-default-values-2-pts" title="Permalink to this headline">#</a></h2>
-<p>Set the default value of mu to 0. Test your modified function below by supplying only <code class="docutils literal notranslate"><span class="pre">v2</span></code> as an argument.</p>
+<div class="tex2jax_ignore mathjax_ignore section" id="increasing-data-density-2-pts">
+<h1>2. Increasing data density (2 pts)<a class="headerlink" href="#increasing-data-density-2-pts" title="Permalink to this headline">#</a></h1>
+<p>The above plots have nice readability, but they probably use more ink than is necessary. Take your boxplots from the last question and edit them to improve the data-to-ink ratio.</p>
+<p>Hint: Double check your axis labels!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your modified ttest_fun here</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ttest_fun</span><span class="p">(</span><span class="n">v2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>How does your result compare to R’s built-in <code class="docutils literal notranslate"><span class="pre">t.test()</span></code> function?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">t.test</span><span class="p">(</span><span class="n">v2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>When you are finished, save the notebook as models-as-testable-hypotheses.ipynb, push it to your class GitHub repository (the one you made for Homework 1) and send the instructors a link to your notebook via Canvas. You can send messages via Canvas by clicking “Inbox” on the left and then pressing the icon with a pencil inside a square.</p>
-<p><strong>DUE:</strong> 5pm EST, Feb 6, 2023</p>
+<p><strong>DUE:</strong> 5pm EST, Feb 24, 2022</p>
 <p><strong>IMPORTANT</strong> Did you collaborate with anyone on this assignment? If so, list their names here.</p>
 <blockquote>
 <div><p><em>Someone’s Name</em></p>
 </div></blockquote>
-</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -1072,20 +1038,6 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../discussions/models-as-testable-hypotheses.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Discussion questions</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="../lectures/data-as-objects-and-architectures.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Data as objects and architectures</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>
