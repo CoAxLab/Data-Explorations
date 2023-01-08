@@ -353,6 +353,11 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/linear-models.html">
+     Homework 4:  Linear models
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -373,6 +378,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/the-ordinary-least-squares-solution.html">
      Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/the-ordinary-least-squares-solution.html">
+     Homework 5:  Linear models, continued
     </a>
    </li>
   </ul>
@@ -981,32 +991,42 @@ title="Print to PDF"
 <span class="c1"># generate data where y is a function of two variables, x1 and x2</span>
 <span class="n">x1</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">-4</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">0.5</span><span class="p">)</span> <span class="c1">#generate data ranging from -4 to 4 in steps of 0.5</span>
 <span class="n">x2</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">-4</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">0.5</span><span class="p">)</span>
-<span class="c1">#specify a sigmoidal relationship between x1 and y and a linear relationship between x2 and y</span>
-<span class="n">dat</span> <span class="o">&lt;-</span> <span class="nf">expand.grid</span><span class="p">(</span><span class="n">x1</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="o">=</span><span class="n">x2</span><span class="p">)</span>  <span class="o">%&gt;%</span> <span class="nf">mutate</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="m">1</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x1</span><span class="p">))</span> <span class="o">+</span> <span class="m">0.1</span><span class="o">*</span><span class="n">x2</span><span class="p">)</span>
+<span class="c1">#specify a sigmoidal relationship between x1 and y </span>
+<span class="c1">#and a linear relationship between x2 and y</span>
+<span class="n">dat</span> <span class="o">&lt;-</span> <span class="nf">expand.grid</span><span class="p">(</span><span class="n">x1</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="o">=</span><span class="n">x2</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="m">1</span><span class="o">/</span><span class="p">(</span><span class="m">1</span><span class="o">+</span><span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x1</span><span class="p">))</span> <span class="o">+</span> <span class="m">0.1</span><span class="o">*</span><span class="n">x2</span><span class="p">)</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>── <span class=" -Color -Color-Bold">Attaching packages</span> ─────────────────────────────────────── tidyverse 1.3.0 ──
-
-<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">ggplot2</span> 3.3.3     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">purrr  </span> 0.3.4
-<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">tibble </span> 3.0.4     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">dplyr  </span> 1.0.2
-<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">tidyr  </span> 1.1.2     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">stringr</span> 1.4.0
-<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">readr  </span> 1.4.0     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">forcats</span> 0.5.0
-
-── <span class=" -Color -Color-Bold">Conflicts</span> ────────────────────────────────────────── tidyverse_conflicts() ──
-<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">filter()</span> masks <span class=" -Color -Color-Blue">stats</span>::filter()
-<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">lag()</span>    masks <span class=" -Color -Color-Blue">stats</span>::lag()
-</pre></div>
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 3</caption>
+<thead>
+	<tr><th></th><th scope=col>x1</th><th scope=col>x2</th><th scope=col>y</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>-4.0</td><td>-4</td><td>-0.3820138</td></tr>
+	<tr><th scope=row>2</th><td>-3.5</td><td>-4</td><td>-0.3706878</td></tr>
+	<tr><th scope=row>3</th><td>-3.0</td><td>-4</td><td>-0.3525741</td></tr>
+	<tr><th scope=row>4</th><td>-2.5</td><td>-4</td><td>-0.3241418</td></tr>
+	<tr><th scope=row>5</th><td>-2.0</td><td>-4</td><td>-0.2807971</td></tr>
+	<tr><th scope=row>6</th><td>-1.5</td><td>-4</td><td>-0.2175745</td></tr>
+</tbody>
+</table>
+</div></div>
 </div>
-</div>
-</div>
+<p>(Note that <code class="docutils literal notranslate"><span class="pre">expand.grid</span></code> just creates a data frame with all possible pairs of the input variables. So here, each value of <code class="docutils literal notranslate"><span class="pre">x1</span></code> was paired with an <code class="docutils literal notranslate"><span class="pre">x2</span></code> value of -4, then with an <code class="docutils literal notranslate"><span class="pre">x2</span></code> value of -3.5, etc…)</p>
 <p>Here is how y depends on x1 and x2:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">6</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">4</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># setting figure size</span>
+<span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">6</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">4</span><span class="p">)</span>
+
 <span class="n">dat</span>  <span class="o">%&gt;%</span>
-    <span class="nf">gather</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span>  <span class="o">%&gt;%</span> <span class="c1"># make it long format - only x1 or x2 in each row</span>
+    <span class="nf">gather</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># make it long format - only x1 or x2 in each row</span>
     <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span> <span class="o">+</span>
     <span class="nf">stat_summary</span><span class="p">(</span><span class="n">geom</span><span class="o">=</span><span class="s">&#39;point&#39;</span><span class="p">,</span><span class="n">fun</span><span class="o">=</span><span class="n">mean</span><span class="p">)</span> <span class="o">+</span>
     <span class="nf">stat_summary</span><span class="p">(</span><span class="n">geom</span><span class="o">=</span><span class="s">&#39;line&#39;</span><span class="p">,</span><span class="n">fun</span><span class="o">=</span><span class="n">mean</span><span class="p">)</span> <span class="o">+</span>
@@ -1015,19 +1035,22 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/data-as-objects-and-architectures_5_0.png" src="../_images/data-as-objects-and-architectures_5_0.png" />
+<img alt="../_images/data-as-objects-and-architectures_6_0.png" src="../_images/data-as-objects-and-architectures_6_0.png" />
 </div>
 </div>
 <p>Now, let’s add some noise and try to fit a regression model</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="o">&lt;-</span> <span class="nf">mutate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">y_obs</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="nf">rnorm</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">mean</span><span class="o">=</span><span class="m">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="m">0.1</span><span class="p">))</span> <span class="c1">#add normally distributed noise</span>
-<span class="n">model_fit</span> <span class="o">&lt;-</span> <span class="nf">lm</span><span class="p">(</span><span class="n">y_obs</span> <span class="o">~</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dat</span><span class="p">)</span> <span class="c1">#fit a linear model to find the regression coeff.</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#create new y_obs variable with normally distributed noise</span>
+<span class="n">dat</span> <span class="o">&lt;-</span> <span class="nf">mutate</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">y_obs</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="nf">rnorm</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">mean</span><span class="o">=</span><span class="m">0</span><span class="p">,</span> <span class="n">sd</span><span class="o">=</span><span class="m">0.1</span><span class="p">))</span> 
+
+<span class="c1">#fit a linear model to find the regression coefficients</span>
+<span class="n">model_fit</span> <span class="o">&lt;-</span> <span class="nf">lm</span><span class="p">(</span><span class="n">y_obs</span> <span class="o">~</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dat</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
 </div>
-<p>The resulting model is save in the <code class="docutils literal notranslate"><span class="pre">model_fit</span></code> variable. This is the “model object”, and you can do a number of things with it. First, the <code class="docutils literal notranslate"><span class="pre">str</span></code> command, which is a general function for printing the structure of r objects, will tell you what you can find in the model object. As you can see below, it is a list of different variables, which you can access by typing the name of the model, followed by <code class="docutils literal notranslate"><span class="pre">$variable</span></code>.</p>
+<p>The resulting model is saved in the <code class="docutils literal notranslate"><span class="pre">model_fit</span></code> variable. This is the “model object”, and you can do a number of things with it. First, the <code class="docutils literal notranslate"><span class="pre">str</span></code> command, which is a general function for printing the structure of r objects, will tell you what you can find in the model object. As you can see below, it is a list of different variables, which you can access by typing the name of the model, followed by <code class="docutils literal notranslate"><span class="pre">$variable</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">str</span><span class="p">(</span><span class="n">model_fit</span><span class="p">)</span> <span class="c1">#print the structure of the model object</span>
@@ -1116,22 +1139,25 @@ title="Print to PDF"
 <p>If we run multiple models, we might want to store these values in a data.frame, rather than a named vector like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">coef</span> <span class="o">&lt;-</span> <span class="n">model_fit</span><span class="o">$</span><span class="n">coefficients</span> <span class="c1">#store the coefficients in a variable</span>
-<span class="nf">data.frame</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="nf">names</span><span class="p">(</span><span class="n">coef</span><span class="p">),</span> <span class="n">value</span> <span class="o">=</span> <span class="n">coef</span><span class="p">)</span> <span class="c1">#save the name/value of the coefficients in a dataframe</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#store the coefficients in a variable</span>
+<span class="n">coef</span> <span class="o">&lt;-</span> <span class="n">model_fit</span><span class="o">$</span><span class="n">coefficients</span> 
+
+<span class="c1">#save the name/value of the coefficients in a dataframe</span>
+<span class="nf">data.frame</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="nf">names</span><span class="p">(</span><span class="n">coef</span><span class="p">),</span> <span class="n">value</span> <span class="o">=</span> <span class="n">coef</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><table>
+<div class="output text_html"><table class="dataframe">
 <caption>A data.frame: 3 × 2</caption>
 <thead>
 	<tr><th></th><th scope=col>name</th><th scope=col>value</th></tr>
 	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><th scope=row>(Intercept)</th><td>(Intercept)</td><td>0.50322978</td></tr>
-	<tr><th scope=row>x1</th><td>x1         </td><td>0.14768216</td></tr>
-	<tr><th scope=row>x2</th><td>x2         </td><td>0.09798459</td></tr>
+	<tr><th scope=row>(Intercept)</th><td>(Intercept)</td><td>0.50808129</td></tr>
+	<tr><th scope=row>x1</th><td>x1         </td><td>0.14541006</td></tr>
+	<tr><th scope=row>x2</th><td>x2         </td><td>0.09802597</td></tr>
 </tbody>
 </table>
 </div></div>
@@ -1139,14 +1165,17 @@ title="Print to PDF"
 <p>You can extract the prediction of the model. They are stored under <code class="docutils literal notranslate"><span class="pre">$fitted.values</span></code>, or you can also get them by typing <code class="docutils literal notranslate"><span class="pre">fitted(model_fit)</span></code>, which returns the same values. Then, we can plot the observed values against the predicted values:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span><span class="o">$</span><span class="n">fitted</span> <span class="o">&lt;-</span> <span class="n">model_fit</span><span class="o">$</span><span class="n">fitted.values</span> <span class="c1">#extract model estimate of y for each x and store in df as fitted</span>
-<span class="nf">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">fitted</span><span class="p">,</span> <span class="n">y_obs</span><span class="p">))</span> <span class="o">+</span> <span class="c1">#plot against the observed data </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#extract model estimate of y for each x and store in df as fitted</span>
+<span class="n">dat</span><span class="o">$</span><span class="n">fitted</span> <span class="o">&lt;-</span> <span class="n">model_fit</span><span class="o">$</span><span class="n">fitted.values</span> 
+
+<span class="c1">#plot against the observed data </span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">fitted</span><span class="p">,</span> <span class="n">y_obs</span><span class="p">))</span> <span class="o">+</span> 
     <span class="nf">stat_summary</span><span class="p">(</span><span class="n">geom</span><span class="o">=</span><span class="s">&#39;point&#39;</span><span class="p">,</span><span class="n">fun</span><span class="o">=</span><span class="n">mean</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/data-as-objects-and-architectures_15_0.png" src="../_images/data-as-objects-and-architectures_15_0.png" />
+<img alt="../_images/data-as-objects-and-architectures_16_0.png" src="../_images/data-as-objects-and-architectures_16_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1188,15 +1217,16 @@ title="Print to PDF"
 <p>First, nest creates a nested data.frame, in which the data.frame for each group is stored in a different cell</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span>  <span class="o">%&gt;%</span>
-    <span class="nf">group_by</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span> <span class="o">%&gt;%</span> 
-    <span class="nf">nest</span><span class="p">()</span> <span class="o">%&gt;%</span>
-    <span class="nf">print</span><span class="p">()</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span>  <span class="o">&lt;-</span> <span class="n">dat</span>  <span class="o">%&gt;%</span>
+        <span class="nf">group_by</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span> <span class="o">%&gt;%</span>
+        <span class="nf">nest</span><span class="p">()</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 17 x 2
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 17 × 2
 # Groups:   x1 [17]
       x1 data             
    &lt;dbl&gt; &lt;list&gt;           
@@ -1221,19 +1251,20 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<p>What we see here is that each “participant” has their own 17 x 3 tibble. Why these dimensions? We simulated <code class="docutils literal notranslate"><span class="pre">x1</span></code> and <code class="docutils literal notranslate"><span class="pre">x2</span></code> to be identical, both 17 observations long. The 3 columns are for <code class="docutils literal notranslate"><span class="pre">x2</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, and <code class="docutils literal notranslate"><span class="pre">y_obs</span></code>. They are just now grouped by <code class="docutils literal notranslate"><span class="pre">x1</span></code>.</p>
 <p>Remember, we want to fit models to each subgroup. The <code class="docutils literal notranslate"><span class="pre">map</span></code> function applies a given function to a set of data in an iterative way – so this would be a convenient approach. Some of the benefits of using <code class="docutils literal notranslate"><span class="pre">map</span></code> are that you do not have to write a series of for-loops (it’s efficient/vectorized) and it makes your code easier to read (and thus error check). Now you can use <code class="docutils literal notranslate"><span class="pre">map</span></code> to fit a model to each subgroup like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span>  <span class="o">%&gt;%</span> 
-    <span class="nf">group_by</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>  <span class="o">%&gt;%</span> 
-    <span class="nf">nest</span><span class="p">()</span>  <span class="o">%&gt;%</span> 
-    <span class="nf">mutate</span><span class="p">(</span><span class="n">model_fit</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="nf">lm</span><span class="p">(</span><span class="n">y_obs</span> <span class="o">~</span> <span class="n">x2</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)))</span>  <span class="o">%&gt;%</span> 
-    <span class="nf">print</span><span class="p">()</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span>  <span class="o">&lt;-</span> <span class="n">dat</span>  <span class="o">%&gt;%</span> 
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">model_fit</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">data</span><span class="p">,</span>
+                           <span class="nf">function</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="nf">lm</span><span class="p">(</span><span class="n">y_obs</span> <span class="o">~</span> <span class="n">x2</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)))</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 17 x 3
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 17 × 3
 # Groups:   x1 [17]
       x1 data              model_fit
    &lt;dbl&gt; &lt;list&gt;            &lt;list&gt;   
@@ -1258,79 +1289,105 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>The resulting models are stored in each cell of the model_fit column. You can then extract the coefficients for each model:</p>
+<p>Let’s break down what is going on in the <code class="docutils literal notranslate"><span class="pre">mutate</span></code> line above:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">model_fit</span></code> is the name of our new column</p></li>
+<li><p>The first argument of <code class="docutils literal notranslate"><span class="pre">map</span></code> is what we want our function to iterate over. In this case, <code class="docutils literal notranslate"><span class="pre">data</span></code> is the name of the column of our nested tibbles.</p></li>
+<li><p>The second argument of <code class="docutils literal notranslate"><span class="pre">map</span></code> is whatever function you want performed. Here, we specified our own function (a linear model), but you could also use built-in functions.</p></li>
+</ul>
+<p>So basically, for each observation of <code class="docutils literal notranslate"><span class="pre">data</span></code>, <code class="docutils literal notranslate"><span class="pre">map</span></code> will perform the function. It’s just that in this case, a single observation of <code class="docutils literal notranslate"><span class="pre">data</span></code> is an entire tibble.</p>
+<p>(Note that <code class="docutils literal notranslate"><span class="pre">map</span></code> operates basically the same as the <code class="docutils literal notranslate"><span class="pre">*apply</span></code> family of functions (e.g., <code class="docutils literal notranslate"><span class="pre">lapply()</span></code>, <code class="docutils literal notranslate"><span class="pre">sapply</span></code>, etc.) but since <code class="docutils literal notranslate"><span class="pre">map</span></code> is part of the tidyverse, it plays better with tidyverse grammar and is more standardized.)</p>
+<p>Our resulting models are stored in each cell of the model_fit column. Let’s see what’s included in a single cell in this column:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span>  <span class="o">%&gt;%</span> 
-    <span class="nf">group_by</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>  <span class="o">%&gt;%</span> 
-    <span class="nf">nest</span><span class="p">()</span>  <span class="o">%&gt;%</span> 
-    <span class="nf">mutate</span><span class="p">(</span><span class="n">model_fit</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="nf">lm</span><span class="p">(</span><span class="n">y_obs</span> <span class="o">~</span> <span class="n">x2</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)),</span>
-           <span class="n">coef</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">model_fit</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="nf">names</span><span class="p">(</span><span class="n">fit</span><span class="o">$</span><span class="n">coefficients</span><span class="p">),</span> <span class="n">beta</span><span class="o">=</span><span class="n">fit</span><span class="o">$</span><span class="n">coefficients</span><span class="p">)))</span>  <span class="o">%&gt;%</span> 
-    <span class="nf">print</span><span class="p">()</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span><span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="s">&quot;model_fit&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 17 x 4
-# Groups:   x1 [17]
-      x1 data              model_fit coef            
-   &lt;dbl&gt; &lt;list&gt;            &lt;list&gt;    &lt;list&gt;          
- 1  -<span class=" -Color -Color-Red">4</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df[,2] [2 × 2]&gt;
- 2  -<span class=" -Color -Color-Red">3.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df[,2] [2 × 2]&gt;
- 3  -<span class=" -Color -Color-Red">3</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df[,2] [2 × 2]&gt;
- 4  -<span class=" -Color -Color-Red">2.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df[,2] [2 × 2]&gt;
- 5  -<span class=" -Color -Color-Red">2</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df[,2] [2 × 2]&gt;
- 6  -<span class=" -Color -Color-Red">1.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df[,2] [2 × 2]&gt;
- 7  -<span class=" -Color -Color-Red">1</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df[,2] [2 × 2]&gt;
- 8  -<span class=" -Color -Color-Red">0.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df[,2] [2 × 2]&gt;
- 9   0   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df[,2] [2 × 2]&gt;
-10   0.5 &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df[,2] [2 × 2]&gt;
-11   1   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df[,2] [2 × 2]&gt;
-12   1.5 &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df[,2] [2 × 2]&gt;
-13   2   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df[,2] [2 × 2]&gt;
-14   2.5 &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df[,2] [2 × 2]&gt;
-15   3   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df[,2] [2 × 2]&gt;
-16   3.5 &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df[,2] [2 × 2]&gt;
-17   4   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df[,2] [2 × 2]&gt;
-</pre></div>
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 1 × 1</caption>
+<thead>
+	<tr><th scope=col>model_fit</th></tr>
+	<tr><th scope=col>&lt;list&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>-0.02660423, 0.103168, -0.1372348, 0.03059727, -0.02660468, 0.08687411, 0.1791387, -0.2292829, 0.06875712, -0.1114032, 0.09896134, -0.01441061, 0.1396485, 0.1815616, -0.1479196, -0.07825647, 0.02050686, 0.01632427, -0.07725744, 0.1096921, 1.041945, -0.009751889, 0.1059652, 0.2004681, -0.2057152, 0.09456317, -0.08335881, 0.129244, 0.01811038, 0.1744078, 0.2185592, -0.1086836, -0.03678222, 0.06421942, 0.06227515, -0.02906825, 2, -0.4392761, -0.3876921, -0.3361081, -0.2845241, -0.2329402, -0.1813562, -0.1297722, -0.07818821, -0.02660423, 0.02497975, 0.07656373, 0.1281477, 0.1797317, 0.2313157, 0.2828997, 0.3344836, 0.3860676, 0, 1, -4.123106, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 1.776357e-15, 10.0995, 0.2197359, 0.1702285, 0.1207211, 0.07121375, 0.02170637, -0.02780101, -0.07730838, -0.1268158, -0.1763231, -0.2258305, -0.2753379, -0.3248453, -0.3743526, -0.42386, -0.4733674, 1.242536, 1.269243, 1, 2, 1e-07, 2, 15, lm(formula = y_obs ~ x2, data = data), y_obs ~ x2, -0.5765109, -0.3570948, -0.3627128, -0.19765, -0.05380143, -0.4106391, -0.06101507, -0.1895914, 0.07235711, 0.01056914, 0.2162122, 0.3097093, 0.03181212, 0.1530592, 0.3034065, 0.3508079, 0.3088102, -4, -3.5, -3, -2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4</td></tr>
+</tbody>
+</table>
+</div></div>
 </div>
-</div>
-</div>
-<p>They are again stored in a column called coef. If you want to then finally just get a data.frame with coefficients, you can unnest the results:</p>
+<p>Super ugly, but this is the actual model fit information for our first row.</p>
+<p>It’s much easier to extract the information you need from each model. Let’s extract the coefficients:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span>  <span class="o">%&gt;%</span> 
-    <span class="nf">group_by</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>  <span class="o">%&gt;%</span> 
-    <span class="nf">nest</span><span class="p">()</span>  <span class="o">%&gt;%</span> 
-    <span class="nf">mutate</span><span class="p">(</span><span class="n">model_fit</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="nf">lm</span><span class="p">(</span><span class="n">y_obs</span> <span class="o">~</span> <span class="n">x2</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)),</span>
-           <span class="n">coef</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">model_fit</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="nf">names</span><span class="p">(</span><span class="n">fit</span><span class="o">$</span><span class="n">coefficients</span><span class="p">),</span> <span class="n">beta</span><span class="o">=</span><span class="n">fit</span><span class="o">$</span><span class="n">coefficients</span><span class="p">)))</span> <span class="o">%&gt;%</span>
-    <span class="nf">unnest</span><span class="p">(</span><span class="n">coef</span><span class="p">)</span> <span class="o">%&gt;%</span>
-    <span class="nf">print</span><span class="p">()</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="o">&lt;-</span> <span class="n">dat</span>  <span class="o">%&gt;%</span> 
+        <span class="nf">mutate</span><span class="p">(</span><span class="n">coef</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">model_fit</span><span class="p">,</span> <span class="c1">#now iterating over &quot;model_fit&quot; instead of &quot;data&quot;</span>
+                      <span class="c1">#a function to create data frame of coef names/values:</span>
+                      <span class="nf">function</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="nf">names</span><span class="p">(</span><span class="n">fit</span><span class="o">$</span><span class="n">coefficients</span><span class="p">),</span> 
+                                               <span class="n">beta</span> <span class="o">=</span> <span class="n">fit</span><span class="o">$</span><span class="n">coefficients</span><span class="p">)))</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 34 x 5
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 17 × 4
 # Groups:   x1 [17]
-      x1 data              model_fit name          beta
-   &lt;dbl&gt; &lt;list&gt;            &lt;list&gt;    &lt;chr&gt;        &lt;dbl&gt;
- 1  -<span class=" -Color -Color-Red">4</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      (Intercept) 0.0333
- 2  -<span class=" -Color -Color-Red">4</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      x2          0.0868
- 3  -<span class=" -Color -Color-Red">3.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;      (Intercept) 0.0219
- 4  -<span class=" -Color -Color-Red">3.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;      x2          0.0974
- 5  -<span class=" -Color -Color-Red">3</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      (Intercept) 0.0599
- 6  -<span class=" -Color -Color-Red">3</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      x2          0.0887
- 7  -<span class=" -Color -Color-Red">2.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;      (Intercept) 0.0332
- 8  -<span class=" -Color -Color-Red">2.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;      x2          0.103 
- 9  -<span class=" -Color -Color-Red">2</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      (Intercept) 0.121 
-10  -<span class=" -Color -Color-Red">2</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      x2          0.109 
+      x1 data              model_fit coef        
+   &lt;dbl&gt; &lt;list&gt;            &lt;list&gt;    &lt;list&gt;      
+ 1  -<span class=" -Color -Color-Red">4</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
+ 2  -<span class=" -Color -Color-Red">3.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
+ 3  -<span class=" -Color -Color-Red">3</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
+ 4  -<span class=" -Color -Color-Red">2.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
+ 5  -<span class=" -Color -Color-Red">2</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
+ 6  -<span class=" -Color -Color-Red">1.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
+ 7  -<span class=" -Color -Color-Red">1</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
+ 8  -<span class=" -Color -Color-Red">0.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
+ 9   0   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
+10   0.5 &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
+11   1   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
+12   1.5 &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
+13   2   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
+14   2.5 &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
+15   3   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
+16   3.5 &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
+17   4   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>They are again stored in a column called coef that holds a data frame in each cell. If you want to then finally just get a data.frame with coefficients, you can unnest the results:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span>  <span class="o">&lt;-</span> <span class="n">dat</span>  <span class="o">%&gt;%</span> 
+        <span class="nf">unnest</span><span class="p">(</span><span class="n">coef</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 34 × 5
+# Groups:   x1 [17]
+      x1 data              model_fit name           beta
+   &lt;dbl&gt; &lt;list&gt;            &lt;list&gt;    &lt;chr&gt;         &lt;dbl&gt;
+ 1  -<span class=" -Color -Color-Red">4</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      (Intercept) -<span class=" -Color -Color-Red">0.0266</span>
+ 2  -<span class=" -Color -Color-Red">4</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      x2           0.103 
+ 3  -<span class=" -Color -Color-Red">3.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;      (Intercept)  0.0336
+ 4  -<span class=" -Color -Color-Red">3.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;      x2           0.0900
+ 5  -<span class=" -Color -Color-Red">3</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      (Intercept)  0.103 
+ 6  -<span class=" -Color -Color-Red">3</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      x2           0.104 
+ 7  -<span class=" -Color -Color-Red">2.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;      (Intercept)  0.0975
+ 8  -<span class=" -Color -Color-Red">2.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;      x2           0.0883
+ 9  -<span class=" -Color -Color-Red">2</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      (Intercept)  0.0941
+10  -<span class=" -Color -Color-Red">2</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      x2           0.0944
 # … with 24 more rows
 </pre></div>
 </div>
 </div>
 </div>
 <p>You can find additional information on this approach here: <a class="reference external" href="http://omaymas.github.io/Climate_Change_ExpAnalysis/">http://omaymas.github.io/Climate_Change_ExpAnalysis/</a></p>
-<p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
+<p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, Amy Sentis, and Fiona Horner.</em></p>
 </div>
 
     <script type="text/x-thebe-config">
