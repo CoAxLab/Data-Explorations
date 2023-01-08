@@ -33,10 +33,12 @@ parts:
       sections:
       - file: notebooks/visualization-as-analysis
       - file: discussions/visualization-as-analysis
+      - file: exercises/visualization-as-analysis
     - file: lectures/visualization-through-human-eyes
       sections:
       - file: notebooks/visualization-through-human-eyes
       - file: discussions/visualization-through-human-eyes
+      - file: exercises/visualization-through-human-eyes
   - caption: Knowledge
     chapters:
     - file: lectures/statistical-learning-theory
@@ -46,10 +48,12 @@ parts:
       sections:
       - file: notebooks/linear-models
       - file: discussions/linear-models
+      - file: exercises/linear-models
     - file: lectures/the-ordinary-least-squares-solution
       sections: 
       - file: notebooks/the-ordinary-least-squares-solution
       - file: discussions/the-ordinary-least-squares-solution
+      - file: exercises/the-ordinary-least-squares-solution
     - file: lectures/limits-of-linear-regression
       sections: 
       - file: notebooks/limits-of-linear-regression
