@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Limits and variations of linear regression &#8212; Data explorations</title>
+    <title>Homework 10: Model selection &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -49,10 +49,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Tutorial: More on linear models" href="../notebooks/limits-of-linear-regression.html" />
-    <link rel="prev" title="Homework 5: Linear models, continued" href="../exercises/the-ordinary-least-squares-solution.html" />
+    <link rel="next" title="Regularized regression" href="../lectures/regularized-regression.html" />
+    <link rel="prev" title="Discussion questions" href="../discussions/selecting-the-best-model.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -119,7 +121,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="quantitative-epistemology.html">
+  <a class="reference internal" href="../lectures/quantitative-epistemology.html">
    Quantitative epsitemology
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -136,7 +138,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="the-value-of-openness.html">
+  <a class="reference internal" href="../lectures/the-value-of-openness.html">
    The value of openness
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -156,14 +158,14 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/the-value-of-openness.html">
+    <a class="reference internal" href="the-value-of-openness.html">
      Exercises: Github &amp; Jupyter
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="what-is-a-theory.html">
+  <a class="reference internal" href="../lectures/what-is-a-theory.html">
    What is a theory?
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -180,7 +182,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="models-as-testable-hypotheses.html">
+  <a class="reference internal" href="../lectures/models-as-testable-hypotheses.html">
    Models as testable hypotheses
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
@@ -200,14 +202,14 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/models-as-testable-hypotheses.html">
+    <a class="reference internal" href="models-as-testable-hypotheses.html">
      Exercises: Coding Habits &amp; Functions
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="data-as-objects-and-architectures.html">
+  <a class="reference internal" href="../lectures/data-as-objects-and-architectures.html">
    Data as objects and architectures
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -229,7 +231,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="techniques-for-data-cleansing.html">
+  <a class="reference internal" href="../lectures/techniques-for-data-cleansing.html">
    Techniques for data cleansing
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -249,14 +251,14 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/techniques-for-data-cleansing.html">
+    <a class="reference internal" href="techniques-for-data-cleansing.html">
      Homework 2: Data tables
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="visualization-as-analysis.html">
+  <a class="reference internal" href="../lectures/visualization-as-analysis.html">
    Visualization as analysis
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
@@ -276,14 +278,14 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/visualization-as-analysis.html">
+    <a class="reference internal" href="visualization-as-analysis.html">
      Exercises: Using ggplot
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="visualization-through-human-eyes.html">
+  <a class="reference internal" href="../lectures/visualization-through-human-eyes.html">
    Visualization through human eyes
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
@@ -303,7 +305,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/visualization-through-human-eyes.html">
+    <a class="reference internal" href="visualization-through-human-eyes.html">
      Exercises: More plotting options
     </a>
    </li>
@@ -317,7 +319,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="statistical-learning-theory.html">
+  <a class="reference internal" href="../lectures/statistical-learning-theory.html">
    Statistical Learning Theory
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
@@ -334,7 +336,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="linear-models.html">
+  <a class="reference internal" href="../lectures/linear-models.html">
    Linear models
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
@@ -354,14 +356,14 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/linear-models.html">
+    <a class="reference internal" href="linear-models.html">
      Homework 4:  Linear models
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="the-ordinary-least-squares-solution.html">
+  <a class="reference internal" href="../lectures/the-ordinary-least-squares-solution.html">
    The ordinary least squares solution
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
@@ -381,17 +383,17 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/the-ordinary-least-squares-solution.html">
+    <a class="reference internal" href="the-ordinary-least-squares-solution.html">
      Homework 5:  Linear models, continued
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/limits-of-linear-regression.html">
    Limits and variations of linear regression
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
   <label for="toctree-checkbox-12">
    <i class="fas fa-chevron-down">
    </i>
@@ -410,7 +412,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="mixed-effects-models.html">
+  <a class="reference internal" href="../lectures/mixed-effects-models.html">
    Mixed effects models
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
@@ -430,14 +432,14 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/mixed-effects-models.html">
+    <a class="reference internal" href="mixed-effects-models.html">
      Homework 6: Mixed effects
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="classifiers.html">
+  <a class="reference internal" href="../lectures/classifiers.html">
    Classifiers
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
@@ -457,14 +459,14 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/classifiers.html">
+    <a class="reference internal" href="classifiers.html">
      Homework 7: Classification
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="the-beauty-of-knn.html">
+  <a class="reference internal" href="../lectures/the-beauty-of-knn.html">
    The beauty of kNN
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
@@ -486,7 +488,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="cross-validation.html">
+  <a class="reference internal" href="../lectures/cross-validation.html">
    Cross validation
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
@@ -508,7 +510,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="resampling-methods.html">
+  <a class="reference internal" href="../lectures/resampling-methods.html">
    Resampling methods
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
@@ -528,14 +530,14 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/resampling-methods.html">
+    <a class="reference internal" href="resampling-methods.html">
      Homework 8:  Resampling methods
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="power-analysis-via-simulations.html">
+  <a class="reference internal" href="../lectures/power-analysis-via-simulations.html">
    Power analysis via simulations
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
@@ -557,7 +559,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="mediation-and-moderation.html">
+  <a class="reference internal" href="../lectures/mediation-and-moderation.html">
    Mediation and moderation
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
@@ -578,16 +580,16 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="selecting-the-best-model.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../lectures/selecting-the-best-model.html">
    Selecting the best model
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
   <label for="toctree-checkbox-20">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/selecting-the-best-model.html">
      Tutorial: Model selection
@@ -598,15 +600,15 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/selecting-the-best-model.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Homework 10: Model selection
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="regularized-regression.html">
+  <a class="reference internal" href="../lectures/regularized-regression.html">
    Regularized regression
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
@@ -626,14 +628,14 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/regularized-regression.html">
+    <a class="reference internal" href="regularized-regression.html">
      Homework 11: Regularized regression
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="principal-component-methods.html">
+  <a class="reference internal" href="../lectures/principal-component-methods.html">
    Principal component methods
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
@@ -662,7 +664,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="reconsidering-the-p-value.html">
+  <a class="reference internal" href="../lectures/reconsidering-the-p-value.html">
    Reconsidering the p-value
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
@@ -679,7 +681,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="bayes-factor-accepting-the-null.html">
+  <a class="reference internal" href="../lectures/bayes-factor-accepting-the-null.html">
    Bayes factor
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
@@ -701,7 +703,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="errors-and-inferences.html">
+  <a class="reference internal" href="../lectures/errors-and-inferences.html">
    Errors and inferences
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
@@ -718,7 +720,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="telling-your-data-story.html">
+  <a class="reference internal" href="../lectures/telling-your-data-story.html">
    Telling your data story
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
@@ -735,7 +737,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="theories-as-social-constructs.html">
+  <a class="reference internal" href="../lectures/theories-as-social-constructs.html">
    Theories as social constructs
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
@@ -802,6 +804,53 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/exercises/selecting-the-best-model.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/exercises/selecting-the-best-model.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -824,7 +873,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/lectures/limits-of-linear-regression.md"
+        <a href="../_sources/exercises/selecting-the-best-model.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -835,7 +884,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -884,13 +933,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#required-readings">
-   Required readings
+  <a class="reference internal nav-link" href="#best-subset-selection-4-points">
+   1. Best subset selection (4 points)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lecture">
-   Lecture
+  <a class="reference internal nav-link" href="#forward-and-backwards-stepwise-selection-3-points">
+   2. Forward and backwards stepwise selection (3 points)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training-and-test-error-3-points">
+   3. Training and test error (3 points)
   </a>
  </li>
 </ul>
@@ -902,7 +956,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Limits and variations of linear regression</h1>
+                <h1>Homework 10: Model selection</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -913,13 +967,18 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#required-readings">
-   Required readings
+  <a class="reference internal nav-link" href="#best-subset-selection-4-points">
+   1. Best subset selection (4 points)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lecture">
-   Lecture
+  <a class="reference internal nav-link" href="#forward-and-backwards-stepwise-selection-3-points">
+   2. Forward and backwards stepwise selection (3 points)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training-and-test-error-3-points">
+   3. Training and test error (3 points)
   </a>
  </li>
 </ul>
@@ -932,20 +991,148 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="limits-and-variations-of-linear-regression">
-<h1>Limits and variations of linear regression<a class="headerlink" href="#limits-and-variations-of-linear-regression" title="Permalink to this headline">#</a></h1>
-<p>=======================</p>
-<div class="section" id="required-readings">
-<h2>Required readings<a class="headerlink" href="#required-readings" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>Chapter 3: Linear regression. James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2013). An introduction to statistical learning: with applications in R (Vol. 6). New York: Springer.</p></li>
-</ul>
+  <div class="tex2jax_ignore mathjax_ignore section" id="homework-10-model-selection">
+<h1>Homework 10: Model selection<a class="headerlink" href="#homework-10-model-selection" title="Permalink to this headline">#</a></h1>
+<p>This homework is designed to give you practice implementing model selection techniques, including best subset selection and forward/backward stepwise selection.</p>
+<p>You won’t need to load in any data for this homework, we will be simulating our own.</p>
+<hr class="docutils" />
+<div class="section" id="best-subset-selection-4-points">
+<h2>1. Best subset selection (4 points)<a class="headerlink" href="#best-subset-selection-4-points" title="Permalink to this headline">#</a></h2>
+<p>In this question, we will first generate simulated data, and then use it to perform best subset selection.</p>
+<p>a) Use <code class="docutils literal notranslate"><span class="pre">rnorm()</span></code> to generate a dataset including a predictor <span class="math notranslate nohighlight">\(X\)</span> of length <span class="math notranslate nohighlight">\(n = 100\)</span> and a noise vector <span class="math notranslate nohighlight">\(\epsilon\)</span> of length <span class="math notranslate nohighlight">\(n = 100\)</span>. Generate data for a response variable <span class="math notranslate nohighlight">\(Y\)</span> of length <span class="math notranslate nohighlight">\(n = 100\)</span> according to the model</p>
+<p><span class="math notranslate nohighlight">\(Y = \beta_0 + \beta_1X + \beta_2X^2 + \beta_3X^3 + \epsilon\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(\beta_0\)</span>, <span class="math notranslate nohighlight">\(\beta_1\)</span>, <span class="math notranslate nohighlight">\(\beta_2\)</span>, and <span class="math notranslate nohighlight">\(\beta_3\)</span> are constants of your choice.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
+</pre></div>
 </div>
-<div class="section" id="lecture">
-<h2>Lecture<a class="headerlink" href="#lecture" title="Permalink to this headline">#</a></h2>
-<p><a class="reference external" href="https://www.youtube.com/watch?v=mk0P-39k-r4"><img alt="Limits and variations of linear regression" src="../_images/limits-and-variations-of-linear-regression.jpeg" /></a></p>
 </div>
-<div class="toctree-wrapper compound">
+</div>
+<p>b) Use <code class="docutils literal notranslate"><span class="pre">regsubsets()</span></code> to perform best subset selection to determine the best model that contains the predictor variables <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(X^2\)</span>, … , <span class="math notranslate nohighlight">\(X^{10}\)</span>. Print the model summary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Note: if your model summary doesn&#39;t show up when viewing your notebook on github, copy and paste the output below.</span>
+<span class="c1"># Otherwise you can either delete this cell or leave it blank.</span>
+
+<span class="n">```</span>
+<span class="n"># paste here</span>
+
+<span class="n">```</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>c) Plot the Mallows’ Cp, Bayesian Information Criteria (BIC) and the adjusted coefficient of determination, <span class="math notranslate nohighlight">\(R^2\)</span>, for each model tested. Which is the best model? Report the coefficients of the best model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p><em>Write your response here</em></p>
+</div></blockquote>
+</div>
+<hr class="docutils" />
+<div class="section" id="forward-and-backwards-stepwise-selection-3-points">
+<h2>2. Forward and backwards stepwise selection (3 points)<a class="headerlink" href="#forward-and-backwards-stepwise-selection-3-points" title="Permalink to this headline">#</a></h2>
+<p>Using the same simulated data from question 1, use forward stepwise selection, and backwards stepwise selections to determine the best model. Again, for both model selection methods, plot the Mallows’ Cp, Bayesian Information Criteria (BIC) and the adjusted coefficient of determination, <span class="math notranslate nohighlight">\(R^2\)</span>, for each model tested. Report the coefficients of the best model.</p>
+<p>a) Forward stepwise selection:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Note: if your model summary doesn&#39;t show up when viewing your notebook on github, copy and paste the output below.</span>
+<span class="c1"># Otherwise you can either delete this cell or leave it blank.</span>
+
+<span class="n">```</span>
+<span class="n"># paste here</span>
+
+<span class="n">```</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>b) Backwards stepwise selection:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Note: if your model summary doesn&#39;t show up when viewing your notebook on github, copy and paste the output below.</span>
+<span class="c1"># Otherwise you can either delete this cell or leave it blank.</span>
+
+<span class="n">```</span>
+<span class="n"># paste here</span>
+
+<span class="n">```</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>c) Compare your results from parts a and b with those of question 1.</p>
+<blockquote>
+<div><p><em>Write your response here</em></p>
+</div></blockquote>
+</div>
+<hr class="docutils" />
+<div class="section" id="training-and-test-error-3-points">
+<h2>3. Training and test error (3 points)<a class="headerlink" href="#training-and-test-error-3-points" title="Permalink to this headline">#</a></h2>
+<p>This question will explore the relationship between training and test error and the number of features included in a model. We will again use a simulated dataset.</p>
+<p>a) Simulate dataset with features <span class="math notranslate nohighlight">\(p = 20\)</span> and observations <span class="math notranslate nohighlight">\(n = 1,000\)</span>. Generate data for a response variable <span class="math notranslate nohighlight">\(Y\)</span> according to the model</p>
+<p><span class="math notranslate nohighlight">\(Y = X\beta + \epsilon\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(\beta\)</span> is random with some elements that are exactly zero.</p>
+<p>Split your simulated dataset into a training set containing <span class="math notranslate nohighlight">\(n=100\)</span> observations and a test set containing <span class="math notranslate nohighlight">\(n=900\)</span> observations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>b) Perform best subset selection on the training set, and plot the associated training and test set MSE for the best model of each size.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>c) Identify the best model according the test MSE. How does this model compare to the actual model used to simulate the dataset?</p>
+<p><em>Note: If the model identified contains only an intercept or all of the features, then generate a new dataset (i.e. repeat part a with a different random seed) until the test set MSE is minimized for an intermediate model size.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p><em>Write your response here</em></p>
+</div></blockquote>
+<p><strong>DUE:</strong> 5pm EST, April 10, 2023</p>
+<p><strong>IMPORTANT</strong> Did you collaborate with anyone on this assignment? If so, list their names here.</p>
+<blockquote>
+<div><p><em>Someone’s Name</em></p>
+</div></blockquote>
 </div>
 </div>
 
@@ -958,16 +1145,16 @@ title="Print to PDF"
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "r"
         },
         kernelOptions: {
-            kernelName: "python3",
-            path: "./lectures"
+            kernelName: "ir",
+            path: "./exercises"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'ir'</script>
 
               </div>
               
@@ -976,17 +1163,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../exercises/the-ordinary-least-squares-solution.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../discussions/selecting-the-best-model.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Homework 5:  Linear models, continued</p>
+            <p class="prev-next-title">Discussion questions</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../notebooks/limits-of-linear-regression.html" title="next page">
+    <a class='right-next' id="next-link" href="../lectures/regularized-regression.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tutorial: More on linear models</p>
+        <p class="prev-next-title">Regularized regression</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
