@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Homework 2: Data tables &#8212; Data explorations</title>
+    <title>Exercises: Data tables and manipulation &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -251,7 +251,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Homework 2: Data tables
+     Exercises: Data tables and manipulation
     </a>
    </li>
   </ul>
@@ -356,7 +356,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="linear-models.html">
-     Homework 4:  Linear models
+     Exercises:  Linear models
     </a>
    </li>
   </ul>
@@ -383,7 +383,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="the-ordinary-least-squares-solution.html">
-     Homework 5:  Linear models, continued
+     Exercises:  Linear models, continued
     </a>
    </li>
   </ul>
@@ -430,6 +430,11 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mixed-effects-models.html">
+     Exercises: Mixed effects
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -450,6 +455,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/classifiers.html">
      Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="classifiers.html">
+     Exercises: Classification
     </a>
    </li>
   </ul>
@@ -518,6 +528,11 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="resampling-methods.html">
+     Exercises:  Resampling methods
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -584,6 +599,11 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="selecting-the-best-model.html">
+     Exercises: Model selection
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -604,6 +624,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/regularized-regression.html">
      Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="regularized-regression.html">
+     Exercises: Regularized regression
     </a>
    </li>
   </ul>
@@ -908,34 +933,22 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loading-the-data-1-point">
-   1.
-   <strong>
-    Loading the Data (1 point)
-   </strong>
+   1. Loading the Data (1 point)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-cleansing-4-points">
-   2.
-   <strong>
-    Data Cleansing (4 points)
-   </strong>
+   2. Data Cleansing (4 points)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-manipulation-with-tidyverse-4-points">
-   3.
-   <strong>
-    Data Manipulation with Tidyverse (4 points)
-   </strong>
+   3. Data Manipulation with Tidyverse (4 points)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#plotting-data-1-point">
-   4.
-   <strong>
-    Plotting Data (1 point)
-   </strong>
+   4. Plotting Data (1 point)
   </a>
  </li>
 </ul>
@@ -947,7 +960,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Homework 2: Data tables</h1>
+                <h1>Exercises: Data tables and manipulation</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -959,34 +972,22 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loading-the-data-1-point">
-   1.
-   <strong>
-    Loading the Data (1 point)
-   </strong>
+   1. Loading the Data (1 point)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-cleansing-4-points">
-   2.
-   <strong>
-    Data Cleansing (4 points)
-   </strong>
+   2. Data Cleansing (4 points)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-manipulation-with-tidyverse-4-points">
-   3.
-   <strong>
-    Data Manipulation with Tidyverse (4 points)
-   </strong>
+   3. Data Manipulation with Tidyverse (4 points)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#plotting-data-1-point">
-   4.
-   <strong>
-    Plotting Data (1 point)
-   </strong>
+   4. Plotting Data (1 point)
   </a>
  </li>
 </ul>
@@ -999,15 +1000,15 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="homework-2-data-tables">
-<h1>Homework 2: Data tables<a class="headerlink" href="#homework-2-data-tables" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="exercises-data-tables-and-manipulation">
+<h1>Exercises: Data tables and manipulation<a class="headerlink" href="#exercises-data-tables-and-manipulation" title="Permalink to this headline">#</a></h1>
 <p>This homework assignment is designed to get you comfortable loading and working with data tables.</p>
 <p>You will need to download the <strong>LexicalData_toclean.csv</strong> file from the <em>Homework/lexDat</em> folder in the class GitHub repository.</p>
 <p>This data is a subset of the <a class="reference external" href="https://elexicon.wustl.edu/">English Lexicon Project database</a>. It provides the reaction times (in milliseconds) of many subjects as they are presented with letter strings and asked to decide, as quickly and as accurately as possible, whether the letter string is a word or not.</p>
 <p><em>Data courtesy of Balota, D.A., Yap, M.J., Cortese, M.J., Hutchison, K.A., Kessler, B., Loftis, B., Neely, J.H., Nelson, D.L., Simpson, G.B., &amp; Treiman, R. (2007). The English Lexicon Project. Behavior Research Methods, 39, 445-459.</em></p>
 <hr class="docutils" />
 <section id="loading-the-data-1-point">
-<h2>1. <strong>Loading the Data (1 point)</strong><a class="headerlink" href="#loading-the-data-1-point" title="Permalink to this headline">#</a></h2>
+<h2>1. Loading the Data (1 point)<a class="headerlink" href="#loading-the-data-1-point" title="Permalink to this headline">#</a></h2>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">setwd</span></code> and <code class="docutils literal notranslate"><span class="pre">read.csv</span></code> functions to load the data table from the <strong>LexicalData_toclean.csv</strong> file. Use the <code class="docutils literal notranslate"><span class="pre">head</span></code> function to look at the first few rows of the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1027,7 +1028,7 @@ title="Print to PDF"
 </section>
 <hr class="docutils" />
 <section id="data-cleansing-4-points">
-<h2>2. <strong>Data Cleansing (4 points)</strong><a class="headerlink" href="#data-cleansing-4-points" title="Permalink to this headline">#</a></h2>
+<h2>2. Data Cleansing (4 points)<a class="headerlink" href="#data-cleansing-4-points" title="Permalink to this headline">#</a></h2>
 <p>There are three things we want to do to make this data more useable:</p>
 <ul class="simple">
 <li><p>Get rid of the commas in the reaction time values, and make this variable numeric (hint: check out the functions <code class="docutils literal notranslate"><span class="pre">gsub</span></code> and <code class="docutils literal notranslate"><span class="pre">as.numeric</span></code>).</p></li>
@@ -1054,7 +1055,7 @@ title="Print to PDF"
 </section>
 <hr class="docutils" />
 <section id="data-manipulation-with-tidyverse-4-points">
-<h2>3. <strong>Data Manipulation with Tidyverse (4 points)</strong><a class="headerlink" href="#data-manipulation-with-tidyverse-4-points" title="Permalink to this headline">#</a></h2>
+<h2>3. Data Manipulation with Tidyverse (4 points)<a class="headerlink" href="#data-manipulation-with-tidyverse-4-points" title="Permalink to this headline">#</a></h2>
 <p>Now let’s use <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code> functions to play around with this data a bit. Use the piping operator (<code class="docutils literal notranslate"><span class="pre">%&gt;%</span></code>) in both of these code cells.</p>
 <p>First, let’s get some useful summary <strong>statistics</strong> using <code class="docutils literal notranslate"><span class="pre">summarise</span></code>. Output a table that tells us how many observations there are in the data set, as well as the mean and standard deviation of the reaction times.</p>
 <div class="cell docutils container">
@@ -1075,7 +1076,7 @@ title="Print to PDF"
 </section>
 <hr class="docutils" />
 <section id="plotting-data-1-point">
-<h2>4. <strong>Plotting Data (1 point)</strong><a class="headerlink" href="#plotting-data-1-point" title="Permalink to this headline">#</a></h2>
+<h2>4. Plotting Data (1 point)<a class="headerlink" href="#plotting-data-1-point" title="Permalink to this headline">#</a></h2>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> function to visualize the data, in a way that helps you see if there’s a relationship between <code class="docutils literal notranslate"><span class="pre">D_RT</span></code> and your new trial variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

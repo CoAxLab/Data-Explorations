@@ -251,7 +251,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="techniques-for-data-cleansing.html">
-     Homework 2: Data tables
+     Exercises: Data tables and manipulation
     </a>
    </li>
   </ul>
@@ -356,7 +356,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="linear-models.html">
-     Homework 4:  Linear models
+     Exercises:  Linear models
     </a>
    </li>
   </ul>
@@ -383,7 +383,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="the-ordinary-least-squares-solution.html">
-     Homework 5:  Linear models, continued
+     Exercises:  Linear models, continued
     </a>
    </li>
   </ul>
@@ -430,6 +430,11 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mixed-effects-models.html">
+     Exercises: Mixed effects
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -450,6 +455,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/classifiers.html">
      Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="classifiers.html">
+     Exercises: Classification
     </a>
    </li>
   </ul>
@@ -518,6 +528,11 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="resampling-methods.html">
+     Exercises:  Resampling methods
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -584,6 +599,11 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="selecting-the-best-model.html">
+     Exercises: Model selection
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -604,6 +624,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/regularized-regression.html">
      Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="regularized-regression.html">
+     Exercises: Regularized regression
     </a>
    </li>
   </ul>
@@ -912,13 +937,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#multipanel-figures-4-points">
-   1. Multipanel figures (4 points)
+  <a class="reference internal nav-link" href="#multipanel-figures-7-points">
+   1. Multipanel figures (7 points)
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#increasing-data-density-2-pts">
-   2. Increasing data density (2 pts)
+  <a class="reference internal nav-link" href="#increasing-data-density-3-pts">
+   2. Increasing data density (3 pts)
   </a>
  </li>
 </ul>
@@ -946,13 +971,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#multipanel-figures-4-points">
-   1. Multipanel figures (4 points)
+  <a class="reference internal nav-link" href="#multipanel-figures-7-points">
+   1. Multipanel figures (7 points)
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#increasing-data-density-2-pts">
-   2. Increasing data density (2 pts)
+  <a class="reference internal nav-link" href="#increasing-data-density-3-pts">
+   2. Increasing data density (3 pts)
   </a>
  </li>
 </ul>
@@ -971,8 +996,8 @@ title="Print to PDF"
 <p>Just like the prior homework, we will be using the <a class="reference external" href="https://cran.r-project.org/web/packages/gapminder/index.html">gapminder</a> dataset. It contains  information about population, life expectancy and per capita GDP by country over time.</p>
 </section>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="multipanel-figures-4-points">
-<h1>1. Multipanel figures (4 points)<a class="headerlink" href="#multipanel-figures-4-points" title="Permalink to this headline">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="multipanel-figures-7-points">
+<h1>1. Multipanel figures (7 points)<a class="headerlink" href="#multipanel-figures-7-points" title="Permalink to this headline">#</a></h1>
 <p>Last week, we visualized the change in life expectancy over time for every country in one plot. An alternative method is to use facet panels to split each country into its own plot.</p>
 <p>To start, load the <code class="docutils literal notranslate"><span class="pre">gapminder</span></code> dataset from the last set of exercises, as well as the <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code>.</p>
 <div class="cell docutils container">
@@ -1016,8 +1041,8 @@ title="Print to PDF"
 </div>
 </section>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="increasing-data-density-2-pts">
-<h1>2. Increasing data density (2 pts)<a class="headerlink" href="#increasing-data-density-2-pts" title="Permalink to this headline">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="increasing-data-density-3-pts">
+<h1>2. Increasing data density (3 pts)<a class="headerlink" href="#increasing-data-density-3-pts" title="Permalink to this headline">#</a></h1>
 <p>The above plots have nice readability, but they probably use more ink than is necessary. Take your boxplots from the last question and edit them to improve the data-to-ink ratio.</p>
 <p>Hint: Double check your axis labels!</p>
 <div class="cell docutils container">
