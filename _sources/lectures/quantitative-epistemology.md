@@ -8,5 +8,4 @@
 
 ## Slides
 
-<object data="../slides/quantitative-epistemology.pdf" type="application/pdf" wideth="100%">
-</object>
+<embed src ="../slides/quantitative-epistemology.pdf"  type="application/pdf">
