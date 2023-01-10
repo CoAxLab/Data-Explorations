@@ -932,34 +932,22 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loading-the-data-1-point">
-   1.
-   <strong>
-    Loading the Data (1 point)
-   </strong>
+   1. Loading the Data (1 point)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-cleansing-4-points">
-   2.
-   <strong>
-    Data Cleansing (4 points)
-   </strong>
+   2. Data Cleansing (4 points)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-manipulation-with-tidyverse-4-points">
-   3.
-   <strong>
-    Data Manipulation with Tidyverse (4 points)
-   </strong>
+   3. Data Manipulation with Tidyverse (4 points)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#plotting-data-1-point">
-   4.
-   <strong>
-    Plotting Data (1 point)
-   </strong>
+   4. Plotting Data (1 point)
   </a>
  </li>
 </ul>
@@ -983,34 +971,22 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loading-the-data-1-point">
-   1.
-   <strong>
-    Loading the Data (1 point)
-   </strong>
+   1. Loading the Data (1 point)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-cleansing-4-points">
-   2.
-   <strong>
-    Data Cleansing (4 points)
-   </strong>
+   2. Data Cleansing (4 points)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-manipulation-with-tidyverse-4-points">
-   3.
-   <strong>
-    Data Manipulation with Tidyverse (4 points)
-   </strong>
+   3. Data Manipulation with Tidyverse (4 points)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#plotting-data-1-point">
-   4.
-   <strong>
-    Plotting Data (1 point)
-   </strong>
+   4. Plotting Data (1 point)
   </a>
  </li>
 </ul>
@@ -1031,7 +1007,7 @@ title="Print to PDF"
 <p><em>Data courtesy of Balota, D.A., Yap, M.J., Cortese, M.J., Hutchison, K.A., Kessler, B., Loftis, B., Neely, J.H., Nelson, D.L., Simpson, G.B., &amp; Treiman, R. (2007). The English Lexicon Project. Behavior Research Methods, 39, 445-459.</em></p>
 <hr class="docutils" />
 <div class="section" id="loading-the-data-1-point">
-<h2>1. <strong>Loading the Data (1 point)</strong><a class="headerlink" href="#loading-the-data-1-point" title="Permalink to this headline">#</a></h2>
+<h2>1. Loading the Data (1 point)<a class="headerlink" href="#loading-the-data-1-point" title="Permalink to this headline">#</a></h2>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">setwd</span></code> and <code class="docutils literal notranslate"><span class="pre">read.csv</span></code> functions to load the data table from the <strong>LexicalData_toclean.csv</strong> file. Use the <code class="docutils literal notranslate"><span class="pre">head</span></code> function to look at the first few rows of the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1051,7 +1027,7 @@ title="Print to PDF"
 </div>
 <hr class="docutils" />
 <div class="section" id="data-cleansing-4-points">
-<h2>2. <strong>Data Cleansing (4 points)</strong><a class="headerlink" href="#data-cleansing-4-points" title="Permalink to this headline">#</a></h2>
+<h2>2. Data Cleansing (4 points)<a class="headerlink" href="#data-cleansing-4-points" title="Permalink to this headline">#</a></h2>
 <p>There are three things we want to do to make this data more useable:</p>
 <ul class="simple">
 <li><p>Get rid of the commas in the reaction time values, and make this variable numeric (hint: check out the functions <code class="docutils literal notranslate"><span class="pre">gsub</span></code> and <code class="docutils literal notranslate"><span class="pre">as.numeric</span></code>).</p></li>
@@ -1078,7 +1054,7 @@ title="Print to PDF"
 </div>
 <hr class="docutils" />
 <div class="section" id="data-manipulation-with-tidyverse-4-points">
-<h2>3. <strong>Data Manipulation with Tidyverse (4 points)</strong><a class="headerlink" href="#data-manipulation-with-tidyverse-4-points" title="Permalink to this headline">#</a></h2>
+<h2>3. Data Manipulation with Tidyverse (4 points)<a class="headerlink" href="#data-manipulation-with-tidyverse-4-points" title="Permalink to this headline">#</a></h2>
 <p>Now let’s use <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code> functions to play around with this data a bit. Use the piping operator (<code class="docutils literal notranslate"><span class="pre">%&gt;%</span></code>) in both of these code cells.</p>
 <p>First, let’s get some useful summary <strong>statistics</strong> using <code class="docutils literal notranslate"><span class="pre">summarise</span></code>. Output a table that tells us how many observations there are in the data set, as well as the mean and standard deviation of the reaction times.</p>
 <div class="cell docutils container">
@@ -1099,7 +1075,7 @@ title="Print to PDF"
 </div>
 <hr class="docutils" />
 <div class="section" id="plotting-data-1-point">
-<h2>4. <strong>Plotting Data (1 point)</strong><a class="headerlink" href="#plotting-data-1-point" title="Permalink to this headline">#</a></h2>
+<h2>4. Plotting Data (1 point)<a class="headerlink" href="#plotting-data-1-point" title="Permalink to this headline">#</a></h2>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> function to visualize the data, in a way that helps you see if there’s a relationship between <code class="docutils literal notranslate"><span class="pre">D_RT</span></code> and your new trial variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
