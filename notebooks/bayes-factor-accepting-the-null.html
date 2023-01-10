@@ -1,0 +1,1486 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Tutorial: Estimating Bayes factors &#8212; Data explorations</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Discussion questions" href="../discussions/bayes-factor-accepting-the-null.html" />
+    <link rel="prev" title="Bayes factor" href="../lectures/bayes-factor-accepting-the-null.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/information.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data explorations</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Data explorations
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Information and Meaning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/quantitative-epistemology.html">
+   Quantitative epsitemology
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quantitative-epistemology.html">
+     Tutorial: Getting started
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-value-of-openness.html">
+   The value of openness
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-value-of-openness.html">
+     Tutorial: Repositories and version control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-value-of-openness.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/the-value-of-openness.html">
+     Exercises: Github &amp; Jupyter
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/what-is-a-theory.html">
+   What is a theory?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/what-is-a-theory.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/models-as-testable-hypotheses.html">
+   Models as testable hypotheses
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="models-as-testable-hypotheses.html">
+     Tutorial: Introduction to functions and good coding habits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/models-as-testable-hypotheses.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/models-as-testable-hypotheses.html">
+     Exercises: Coding Habits &amp; Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/data-as-objects-and-architectures.html">
+   Data as objects and architectures
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data-as-objects-and-architectures.html">
+     Tutorial: Data as Objects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/data-as-objects-and-architectures.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/techniques-for-data-cleansing.html">
+   Techniques for data cleansing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="techniques-for-data-cleansing.html">
+     Tutorial: Data Cleansing and Tidy data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/techniques-for-data-cleansing.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/techniques-for-data-cleansing.html">
+     Homework 2: Data tables
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/visualization-as-analysis.html">
+   Visualization as analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="visualization-as-analysis.html">
+     Tutorial: Basics of plotting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/visualization-as-analysis.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/visualization-as-analysis.html">
+     Exercises: Using ggplot
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/visualization-through-human-eyes.html">
+   Visualization through human eyes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="visualization-through-human-eyes.html">
+     Tutorial: More advanced plotting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/visualization-through-human-eyes.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/visualization-through-human-eyes.html">
+     Exercises: More plotting options
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Knowledge
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/statistical-learning-theory.html">
+   Statistical Learning Theory
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/statistical-learning-theory.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/linear-models.html">
+   Linear models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="linear-models.html">
+     Tutorial: Refresher on working with matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/linear-models.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/linear-models.html">
+     Homework 4:  Linear models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-ordinary-least-squares-solution.html">
+   The ordinary least squares solution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-ordinary-least-squares-solution.html">
+     Tutorial: Refresher for solving oridinary least squares
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-ordinary-least-squares-solution.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/the-ordinary-least-squares-solution.html">
+     Homework 5:  Linear models, continued
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/limits-of-linear-regression.html">
+   Limits and variations of linear regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="limits-of-linear-regression.html">
+     Tutorial: More on linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/limits-of-linear-regression.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/mixed-effects-models.html">
+   Mixed effects models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mixed-effects-models.html">
+     Tutorial: Running linear mixed effects models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/mixed-effects-models.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/classifiers.html">
+   Classifiers
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="classifiers.html">
+     Tutorial: Basics classifiers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/classifiers.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-beauty-of-knn.html">
+   The beauty of kNN
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-beauty-of-knn.html">
+     Tutorial: Running kNN models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-beauty-of-knn.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/cross-validation.html">
+   Cross validation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cross-validation.html">
+     Tutorial: Implementing cross validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/cross-validation.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/resampling-methods.html">
+   Resampling methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="resampling-methods.html">
+     Tutorial: Boostrap and permutation tests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/resampling-methods.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/power-analysis-via-simulations.html">
+   Power analysis via simulations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="power-analysis-via-simulations.html">
+     Tutorial: Running basic power analyses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/power-analysis-via-simulations.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/mediation-and-moderation.html">
+   Mediation and moderation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mediation-and-moderation.html">
+     Tutorial: Running mediation and moderation models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/mediation-and-moderation.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/selecting-the-best-model.html">
+   Selecting the best model
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+  <label for="toctree-checkbox-20">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="selecting-the-best-model.html">
+     Tutorial: Model selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/selecting-the-best-model.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/regularized-regression.html">
+   Regularized regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+  <label for="toctree-checkbox-21">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="regularized-regression.html">
+     Tutorial: Basic ridge and LASSO models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/regularized-regression.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/principal-component-methods.html">
+   Principal component methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="principal-component-methods.html">
+     Tutorial: Basic PCA approaches
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/principal-component-methods.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Understanding
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/reconsidering-the-p-value.html">
+   Reconsidering the p-value
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/reconsidering-the-p-value.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../lectures/bayes-factor-accepting-the-null.html">
+   Bayes factor
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+  <label for="toctree-checkbox-24">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Tutorial: Estimating Bayes factors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/bayes-factor-accepting-the-null.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/errors-and-inferences.html">
+   Errors and inferences
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+  <label for="toctree-checkbox-25">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/errors-and-inferences.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/telling-your-data-story.html">
+   Telling your data story
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+  <label for="toctree-checkbox-26">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/telling-your-data-story.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/theories-as-social-constructs.html">
+   Theories as social constructs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+  <label for="toctree-checkbox-27">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/theories-as-social-constructs.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/notebooks/bayes-factor-accepting-the-null.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/notebooks/bayes-factor-accepting-the-null.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notebooks/bayes-factor-accepting-the-null.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial: Estimating Bayes factors
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goals">
+     Goals:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-a-bayes-factor">
+   What is a Bayes factor?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementing-the-bayes-factor-with-a-simple-example">
+   Implementing the Bayes factor with a simple example
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculating-the-bayes-factor-for-comparison-of-candidate-mixed-effect-models">
+   Calculating the Bayes Factor for comparison of candidate mixed effect models
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Tutorial: Estimating Bayes factors</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial: Estimating Bayes factors
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goals">
+     Goals:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-a-bayes-factor">
+   What is a Bayes factor?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementing-the-bayes-factor-with-a-simple-example">
+   Implementing the Bayes factor with a simple example
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculating-the-bayes-factor-for-comparison-of-candidate-mixed-effect-models">
+   Calculating the Bayes Factor for comparison of candidate mixed effect models
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-estimating-bayes-factors">
+<h1>Tutorial: Estimating Bayes factors<a class="headerlink" href="#tutorial-estimating-bayes-factors" title="Permalink to this headline">#</a></h1>
+<blockquote>
+<div><p>“I have approximate answers and possible beliefs and different degrees of uncertainty about different things, but I am not absolutely sure of anything […]” - Richard Feynman</p>
+</div></blockquote>
+<p>This lab introduces the Bayes factor and its implementation in R.</p>
+<section id="goals">
+<h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Learn how to use the <a class="reference external" href="https://cran.r-project.org/web/packages/BayesFactor/BayesFactor.pdf">BayesFactor</a> library</p></li>
+<li><p>Learn how to quantify the amount of evidence for alternative hypotheses (instead of fully supporting or fully rejecting them altogether)</p></li>
+</ul>
+<p>This lab draws on <a class="reference external" href="https://richarddmorey.github.io/BayesFactor/#help">Richard Morey’s introduction</a> to the BayesFactor library.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="what-is-a-bayes-factor">
+<h1>What is a Bayes factor?<a class="headerlink" href="#what-is-a-bayes-factor" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p>The Bayes factor is the analytical response to the question: What is the strength of the evidence for my model, given a competing hypothesis? If you’re interested in the <em>relative</em> weight of evidence for competing hypotheses, then the Bayes Factor is for you.</p></li>
+<li><p>The Bayes factor is a ratio of the evidence for one model over another. It can be expressed as the relative likelihood of the data given a set of hypotheses:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[BF = \frac{P(D|H_1)}{P(D|H_0)}\]</div>
+<ul class="simple">
+<li><p>Similar to the Bayesian Information Criterion (BIC), the Bayes factor penalizes model complexity.</p></li>
+</ul>
+<p>Look <a class="reference external" href="http://statmath.wu.ac.at/research/talks/resources/talkheld.pdf">here</a> and <a class="reference external" href="https://link.springer.com/article/10.3758/s13423-017-1262-3">here</a> for a more in-depth treatment.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="implementing-the-bayes-factor-with-a-simple-example">
+<h1>Implementing the Bayes factor with a simple example<a class="headerlink" href="#implementing-the-bayes-factor-with-a-simple-example" title="Permalink to this headline">#</a></h1>
+<p>First, install and load the <code class="docutils literal notranslate"><span class="pre">BayesFactor</span></code> library. Also load <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code> for some data manipulation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;BayesFactor&quot;</span><span class="p">)</span> <span class="c1">#install </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+
+also installing the dependencies ‘elliptic’, ‘contfrac’, ‘deSolve’, ‘coda’, ‘pbapply’, ‘mvtnorm’, ‘gtools’, ‘MatrixModels’, ‘hypergeo’, ‘RcppEigen’
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">BayesFactor</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span> <span class="c1"># also import tidyverse for data manipulation</span>
+<span class="c1"># there are functions to calculate BF for many different tests, including correlations, linear regresssion, and t-tests - uncomment below to see them all</span>
+<span class="c1"># lsf.str(&quot;package:BayesFactor&quot;) # outputs a list of all of the functions in the package</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: coda
+
+Loading required package: Matrix
+
+************
+Welcome to BayesFactor 0.9.12-4.2. If you have questions, please contact Richard Morey (richarddmorey@gmail.com).
+
+Type BFManual() to open the manual.
+************
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s start with a simple example. We’ll use the <code class="docutils literal notranslate"><span class="pre">sleep</span></code> dataset included in R to calculate the evidence for the null hypothesis that there is no effect of sleep deprivation on reaction time. As a reminder, here’s what the <code class="docutils literal notranslate"><span class="pre">sleep</span></code> dataset looks like.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sleep</span>
+<span class="o">?</span><span class="n">sleep</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 20 × 3</caption>
+<thead>
+	<tr><th scope=col>extra</th><th scope=col>group</th><th scope=col>ID</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td> 0.7</td><td>1</td><td>1 </td></tr>
+	<tr><td>-1.6</td><td>1</td><td>2 </td></tr>
+	<tr><td>-0.2</td><td>1</td><td>3 </td></tr>
+	<tr><td>-1.2</td><td>1</td><td>4 </td></tr>
+	<tr><td>-0.1</td><td>1</td><td>5 </td></tr>
+	<tr><td> 3.4</td><td>1</td><td>6 </td></tr>
+	<tr><td> 3.7</td><td>1</td><td>7 </td></tr>
+	<tr><td> 0.8</td><td>1</td><td>8 </td></tr>
+	<tr><td> 0.0</td><td>1</td><td>9 </td></tr>
+	<tr><td> 2.0</td><td>1</td><td>10</td></tr>
+	<tr><td> 1.9</td><td>2</td><td>1 </td></tr>
+	<tr><td> 0.8</td><td>2</td><td>2 </td></tr>
+	<tr><td> 1.1</td><td>2</td><td>3 </td></tr>
+	<tr><td> 0.1</td><td>2</td><td>4 </td></tr>
+	<tr><td>-0.1</td><td>2</td><td>5 </td></tr>
+	<tr><td> 4.4</td><td>2</td><td>6 </td></tr>
+	<tr><td> 5.5</td><td>2</td><td>7 </td></tr>
+	<tr><td> 1.6</td><td>2</td><td>8 </td></tr>
+	<tr><td> 4.6</td><td>2</td><td>9 </td></tr>
+	<tr><td> 3.4</td><td>2</td><td>10</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>This is a within-subjects dataset measuring the impact of acertain drug on sleep. <code class="docutils literal notranslate"><span class="pre">extra</span></code> is the change in amount of sleep (in hours), <code class="docutils literal notranslate"><span class="pre">group</span></code> is whether they received the treatment, and <code class="docutils literal notranslate"><span class="pre">ID</span></code> is the participant identifier.</p>
+<p>Let’s try running a traditional t-test on this, before we get into Bayes Factors.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">## Compute difference scores</span>
+<span class="c1"># ?spread</span>
+<span class="n">sleep</span><span class="o">$</span><span class="n">group</span> <span class="o">&lt;-</span> <span class="nf">as.factor</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="s">&quot;group1&quot;</span><span class="p">,</span><span class="m">10</span><span class="p">),</span><span class="nf">rep</span><span class="p">(</span><span class="s">&quot;group2&quot;</span><span class="p">,</span><span class="m">10</span><span class="p">)))</span> <span class="c1"># resetting the group values to avoid having integers as column names</span>
+<span class="n">sleep_wd</span> <span class="o">&lt;-</span> <span class="n">sleep</span> <span class="o">%&gt;%</span>
+  <span class="nf">spread</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">group</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="n">extra</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># wide format - all measurements for one participant are in same row</span>
+  <span class="nf">mutate</span><span class="p">(</span><span class="n">diffScores</span><span class="o">=</span> <span class="n">group1</span> <span class="o">-</span> <span class="n">group2</span><span class="p">)</span> <span class="c1"># in case you want to look at the differences. </span>
+<span class="nf">head</span><span class="p">(</span><span class="n">sleep_wd</span><span class="p">)</span>
+
+<span class="c1">## Traditional paired t-test</span>
+<span class="nf">t.test</span><span class="p">(</span><span class="n">sleep_wd</span><span class="o">$</span><span class="n">group1</span><span class="p">,</span><span class="n">sleep_wd</span><span class="o">$</span><span class="n">group2</span><span class="p">,</span><span class="n">paired</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 4</caption>
+<thead>
+	<tr><th></th><th scope=col>ID</th><th scope=col>group1</th><th scope=col>group2</th><th scope=col>diffScores</th></tr>
+	<tr><th></th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>1</td><td> 0.7</td><td> 1.9</td><td>-1.2</td></tr>
+	<tr><th scope=row>2</th><td>2</td><td>-1.6</td><td> 0.8</td><td>-2.4</td></tr>
+	<tr><th scope=row>3</th><td>3</td><td>-0.2</td><td> 1.1</td><td>-1.3</td></tr>
+	<tr><th scope=row>4</th><td>4</td><td>-1.2</td><td> 0.1</td><td>-1.3</td></tr>
+	<tr><th scope=row>5</th><td>5</td><td>-0.1</td><td>-0.1</td><td> 0.0</td></tr>
+	<tr><th scope=row>6</th><td>6</td><td> 3.4</td><td> 4.4</td><td>-1.0</td></tr>
+</tbody>
+</table>
+</div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	Paired t-test
+
+data:  sleep_wd$group1 and sleep_wd$group2
+t = -4.0621, df = 9, p-value = 0.002833
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -2.4598858 -0.7001142
+sample estimates:
+mean of the differences 
+                  -1.58 
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the test above, the difference scores are found to be significantly different from 0 (<span class="math notranslate nohighlight">\(t=-4.06\)</span>, <span class="math notranslate nohighlight">\(p&lt;0.005\)</span> ), with group 1 values being smaller than group 2 values. Now let’s look at Bayes factors for this same example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># ?ttestBF</span>
+<span class="n">bf</span> <span class="o">=</span> <span class="nf">ttestBF</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">sleep_wd</span><span class="o">$</span><span class="n">group1</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">sleep_wd</span><span class="o">$</span><span class="n">group2</span><span class="p">,</span> <span class="n">paired</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span> <span class="c1"># this is the BF object</span>
+<span class="n">bf</span> <span class="c1"># the relative evidence for the alternative hypothesis (nonzero difference between conditions)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 17.25888 ±0%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note the denominator specification in the output! Make sure to interpret these correctly. Here, the denominator is the null hypothesis, so this is the relative evidence for the alternative hypothesis, that the difference in sleep gotten between conditions is non-zero.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">1</span><span class="o">/</span><span class="n">bf</span> <span class="c1">#the relative evidence for the null hypothesis (no difference between conditions)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bayes factor analysis
+--------------
+[1] Null, mu=0 : 0.05794119 ±0%
+
+Against denominator:
+  Alternative, r = 0.707106781186548, mu =/= 0 
+---
+Bayes factor type: BFoneSample, JZS
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you can see, the evidence for the alternative (17.25) is much higher than for the null (0.06).</p>
+<p>Now let’s test a directional hypothesis: Instead of determining <em>Is <span class="math notranslate nohighlight">\(x\)</span> different from <span class="math notranslate nohighlight">\(y\)</span>?</em>, we’ll ask more specifically <em>Is <span class="math notranslate nohighlight">\(x\)</span> <strong>less than</strong> <span class="math notranslate nohighlight">\(y\)</span>?</em>. To do this, set the <code class="docutils literal notranslate"><span class="pre">nullInterval</span></code> argument to the range of interest. Here, we will compute the weight of evidence for the alternative hypothesis that the difference in the amount of sleep gotten between conditions will be negative, so the range is from <code class="docutils literal notranslate"><span class="pre">-Inf</span></code> to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#we can also test a directional hypothesis  </span>
+<span class="n">bfInterval</span> <span class="o">=</span> <span class="nf">ttestBF</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">sleep_wd</span><span class="o">$</span><span class="n">diffScores</span><span class="p">,</span> <span class="n">nullInterval</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="o">-</span><span class="kc">Inf</span><span class="p">,</span><span class="m">0</span><span class="p">))</span> <span class="c1">#here we test the hypothesis that the difference is less than 0</span>
+<span class="n">bfInterval</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bayes factor analysis
+--------------
+[1] Alt., r=0.707 -Inf&lt;d&lt;0    : 34.41694  ±0%
+[2] Alt., r=0.707 !(-Inf&lt;d&lt;0) : 0.1008246 ±0.06%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here you can see the evidence for both possible situations evalauated against the null as the denominator. Line 1 shows the evidence that the difference between conditions is negative, and line 2 shows the evidence tha the difference between conditions is  non-negative (positive). You can see that the evidence is more strongly in favor of a negative difference (34.42) than a positive difference (0.10).</p>
+<p>Now, what if you were interested in directly comparing the evidence for a negative difference with the evidence for a positive difference? You can directly manipulate the Bayes Factor object to achieve this. Since both of these evidence ratios have the same denominator, we can directly compare these results like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">bfNegative</span> <span class="o">=</span> <span class="n">bfInterval</span><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">bfInterval</span><span class="p">[</span><span class="m">2</span><span class="p">]</span> <span class="c1">#here we compare the evidence for a negative difference against the evidence for a positive one</span>
+
+<span class="n">bfNegative</span>
+<span class="c1">#note the denominator specification</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bayes factor analysis
+--------------
+[1] Alt., r=0.707 -Inf&lt;d&lt;0 : 341.3547 ±0.06%
+
+Against denominator:
+  Alternative, r = 0.707106781186548, mu =/= 0 !(-Inf&lt;d&lt;0) 
+---
+Bayes factor type: BFoneSample, JZS
+</pre></div>
+</div>
+</div>
+</div>
+<p>And like before, we can take the inverse of this ratio to find the evidence for a positive difference against the evidence for a negative one:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">bfPositive</span> <span class="o">=</span> <span class="m">1</span> <span class="o">/</span> <span class="n">bfNegative</span> <span class="c1">#as you might expect, the evidence for a positive difference is miniscule </span>
+<span class="n">bfPositive</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bayes factor analysis
+--------------
+[1] Alt., r=0.707 !(-Inf&lt;d&lt;0) : 0.002929504 ±0.06%
+
+Against denominator:
+  Alternative, r = 0.707106781186548, mu =/= 0 -Inf&lt;d&lt;0 
+---
+Bayes factor type: BFoneSample, JZS
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we’ve conducted Bayes factor analyses for three different alternative hypotheses: that the difference scores are non-zero, that the difference scores are negative, and that the difference scores are positive. You can use the <code class="docutils literal notranslate"><span class="pre">plot</span></code> function in the <code class="docutils literal notranslate"><span class="pre">BayesFactor</span></code> package to visually evaluate the difference in the relative evidence for each of these hypotheses.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">allbf</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">bf</span><span class="p">,</span> <span class="n">bfInterval</span><span class="p">)</span>
+
+<span class="n">allbf</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bayes factor analysis
+--------------
+[1] Alt., r=0.707             : 17.25888  ±0%
+[2] Alt., r=0.707 -Inf&lt;d&lt;0    : 34.41694  ±0%
+[3] Alt., r=0.707 !(-Inf&lt;d&lt;0) : 0.1008246 ±0.06%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">allbf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bayes-factor-accepting-the-null_23_0.png" src="../_images/bayes-factor-accepting-the-null_23_0.png" />
+</div>
+</div>
+<p>Ahhhh… so lovely :)</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="calculating-the-bayes-factor-for-comparison-of-candidate-mixed-effect-models">
+<h1>Calculating the Bayes Factor for comparison of candidate mixed effect models<a class="headerlink" href="#calculating-the-bayes-factor-for-comparison-of-candidate-mixed-effect-models" title="Permalink to this headline">#</a></h1>
+<p>Now let’s see how to apply this to hierarchical linear regression, using the <code class="docutils literal notranslate"><span class="pre">ToothGrowth</span></code> data set. The dependent variable is <code class="docutils literal notranslate"><span class="pre">len</span></code>, the length of the tooth, and the independent variables are <code class="docutils literal notranslate"><span class="pre">supp</span></code>, the type of supplement they took (Vitamin C or Orange Juice), and <code class="docutils literal notranslate"><span class="pre">dose</span></code>, the amount of supplement they took.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">data</span><span class="p">(</span><span class="n">ToothGrowth</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">ToothGrowth</span><span class="p">)</span>
+<span class="c1"># ?ToothGrowth</span>
+
+<span class="c1"># model log10 of dose instead of dose directly</span>
+<span class="n">ToothGrowth</span><span class="o">$</span><span class="n">dose</span> <span class="o">=</span> <span class="nf">log10</span><span class="p">(</span><span class="n">ToothGrowth</span><span class="o">$</span><span class="n">dose</span><span class="p">)</span>
+
+<span class="c1"># Classic analysis for comparison</span>
+<span class="n">lmToothGrowth</span> <span class="o">&lt;-</span> <span class="nf">lm</span><span class="p">(</span><span class="n">len</span> <span class="o">~</span> <span class="n">supp</span> <span class="o">+</span> <span class="n">dose</span> <span class="o">+</span> <span class="n">supp</span><span class="o">:</span><span class="n">dose</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">ToothGrowth</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">lmToothGrowth</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 3</caption>
+<thead>
+	<tr><th></th><th scope=col>len</th><th scope=col>supp</th><th scope=col>dose</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td> 4.2</td><td>VC</td><td>0.5</td></tr>
+	<tr><th scope=row>2</th><td>11.5</td><td>VC</td><td>0.5</td></tr>
+	<tr><th scope=row>3</th><td> 7.3</td><td>VC</td><td>0.5</td></tr>
+	<tr><th scope=row>4</th><td> 5.8</td><td>VC</td><td>0.5</td></tr>
+	<tr><th scope=row>5</th><td> 6.4</td><td>VC</td><td>0.5</td></tr>
+	<tr><th scope=row>6</th><td>10.0</td><td>VC</td><td>0.5</td></tr>
+</tbody>
+</table>
+</div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
+lm(formula = len ~ supp + dose + supp:dose, data = ToothGrowth)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-7.5433 -2.4921 -0.5033  2.7117  7.8567 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  20.6633     0.6791  30.425  &lt; 2e-16 ***
+suppVC       -3.7000     0.9605  -3.852 0.000303 ***
+dose         21.3102     2.7631   7.712  2.3e-10 ***
+suppVC:dose   8.8529     3.9076   2.266 0.027366 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 3.72 on 56 degrees of freedom
+Multiple R-squared:  0.7755,	Adjusted R-squared:  0.7635 
+F-statistic:  64.5 on 3 and 56 DF,  p-value: &lt; 2.2e-16
+</pre></div>
+</div>
+</div>
+</div>
+<p>The classic analysis shows low p-values for the effects of supplement type and dose on tooth growth with an interaction effect. We can use the <code class="docutils literal notranslate"><span class="pre">lmBF</span></code> function to calculate the Bayes factors for all potential models of interest against a null intercept-only model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">full</span> <span class="o">&lt;-</span> <span class="nf">lmBF</span><span class="p">(</span><span class="n">len</span> <span class="o">~</span> <span class="n">supp</span> <span class="o">+</span> <span class="n">dose</span> <span class="o">+</span> <span class="n">supp</span><span class="o">:</span><span class="n">dose</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">ToothGrowth</span><span class="p">)</span> <span class="c1">#all predictors + interaction</span>
+<span class="n">noInteraction</span> <span class="o">&lt;-</span> <span class="nf">lmBF</span><span class="p">(</span><span class="n">len</span> <span class="o">~</span> <span class="n">supp</span> <span class="o">+</span> <span class="n">dose</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">ToothGrowth</span><span class="p">)</span> <span class="c1">#no interaction</span>
+<span class="n">onlyDose</span> <span class="o">&lt;-</span> <span class="nf">lmBF</span><span class="p">(</span><span class="n">len</span> <span class="o">~</span> <span class="n">dose</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">ToothGrowth</span><span class="p">)</span> <span class="c1">#only dose</span>
+<span class="n">onlySupp</span> <span class="o">&lt;-</span> <span class="nf">lmBF</span><span class="p">(</span><span class="n">len</span> <span class="o">~</span> <span class="n">supp</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">ToothGrowth</span><span class="p">)</span> <span class="c1">#only supplementation</span>
+
+<span class="n">allBFs</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="n">full</span><span class="p">,</span> <span class="n">noInteraction</span><span class="p">,</span> <span class="n">onlyDose</span><span class="p">,</span> <span class="n">onlySupp</span><span class="p">)</span>
+<span class="n">allBFs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bayes factor analysis
+--------------
+[1] supp + dose + supp:dose : 1.651389e+15 ±3.73%
+[2] supp + dose             : 1.54362e+15  ±1.42%
+[3] dose                    : 2.769593e+13 ±0.01%
+[4] supp                    : 1.198757     ±0.01%
+
+Against denominator:
+  Intercept only 
+---
+Bayes factor type: BFlinearModel, JZS
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">allBFs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bayes-factor-accepting-the-null_30_0.png" src="../_images/bayes-factor-accepting-the-null_30_0.png" />
+</div>
+</div>
+<p>The results from the interaction model and the no-interaction model are close. Let’s directly evaluate these two hypotheses against one another.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">full</span> <span class="o">/</span> <span class="n">noInteraction</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bayes factor analysis
+--------------
+[1] supp + dose + supp:dose : 1.02911 ±1.56%
+
+Against denominator:
+  len ~ supp + dose 
+---
+Bayes factor type: BFlinearModel, JZS
+</pre></div>
+</div>
+</div>
+</div>
+<p>Even after direct comparison, there’s no clear difference between the two models. It would probably depend on the context what you decide to do with this information - if there’s prior literature to suggest that the interaction should play a role, you might lean toward using the more complex model even though the difference between the two isn’t dramatic in this case. Otherwise, it would make sense to stick with the simpler model.</p>
+<p><em>Notebook authored by Krista Bond and edited by Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../lectures/bayes-factor-accepting-the-null.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Bayes factor</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../discussions/bayes-factor-accepting-the-null.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Discussion questions</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis, Fiona Horner<br/>
+  
+      &copy; Copyright 2023.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

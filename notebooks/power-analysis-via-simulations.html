@@ -1,0 +1,1758 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Tutorial: Running basic power analyses &#8212; Data explorations</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Discussion questions" href="../discussions/power-analysis-via-simulations.html" />
+    <link rel="prev" title="Power analysis via simulations" href="../lectures/power-analysis-via-simulations.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/information.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data explorations</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Data explorations
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Information and Meaning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/quantitative-epistemology.html">
+   Quantitative epsitemology
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quantitative-epistemology.html">
+     Tutorial: Getting started
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-value-of-openness.html">
+   The value of openness
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-value-of-openness.html">
+     Tutorial: Repositories and version control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-value-of-openness.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/the-value-of-openness.html">
+     Exercises: Github &amp; Jupyter
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/what-is-a-theory.html">
+   What is a theory?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/what-is-a-theory.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/models-as-testable-hypotheses.html">
+   Models as testable hypotheses
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="models-as-testable-hypotheses.html">
+     Tutorial: Introduction to functions and good coding habits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/models-as-testable-hypotheses.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/models-as-testable-hypotheses.html">
+     Exercises: Coding Habits &amp; Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/data-as-objects-and-architectures.html">
+   Data as objects and architectures
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data-as-objects-and-architectures.html">
+     Tutorial: Data as Objects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/data-as-objects-and-architectures.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/techniques-for-data-cleansing.html">
+   Techniques for data cleansing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="techniques-for-data-cleansing.html">
+     Tutorial: Data Cleansing and Tidy data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/techniques-for-data-cleansing.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/techniques-for-data-cleansing.html">
+     Homework 2: Data tables
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/visualization-as-analysis.html">
+   Visualization as analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="visualization-as-analysis.html">
+     Tutorial: Basics of plotting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/visualization-as-analysis.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/visualization-as-analysis.html">
+     Exercises: Using ggplot
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/visualization-through-human-eyes.html">
+   Visualization through human eyes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="visualization-through-human-eyes.html">
+     Tutorial: More advanced plotting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/visualization-through-human-eyes.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/visualization-through-human-eyes.html">
+     Exercises: More plotting options
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Knowledge
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/statistical-learning-theory.html">
+   Statistical Learning Theory
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/statistical-learning-theory.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/linear-models.html">
+   Linear models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="linear-models.html">
+     Tutorial: Refresher on working with matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/linear-models.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/linear-models.html">
+     Homework 4:  Linear models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-ordinary-least-squares-solution.html">
+   The ordinary least squares solution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-ordinary-least-squares-solution.html">
+     Tutorial: Refresher for solving oridinary least squares
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-ordinary-least-squares-solution.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/the-ordinary-least-squares-solution.html">
+     Homework 5:  Linear models, continued
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/limits-of-linear-regression.html">
+   Limits and variations of linear regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="limits-of-linear-regression.html">
+     Tutorial: More on linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/limits-of-linear-regression.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/mixed-effects-models.html">
+   Mixed effects models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mixed-effects-models.html">
+     Tutorial: Running linear mixed effects models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/mixed-effects-models.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/classifiers.html">
+   Classifiers
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="classifiers.html">
+     Tutorial: Basics classifiers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/classifiers.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-beauty-of-knn.html">
+   The beauty of kNN
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-beauty-of-knn.html">
+     Tutorial: Running kNN models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-beauty-of-knn.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/cross-validation.html">
+   Cross validation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cross-validation.html">
+     Tutorial: Implementing cross validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/cross-validation.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/resampling-methods.html">
+   Resampling methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="resampling-methods.html">
+     Tutorial: Boostrap and permutation tests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/resampling-methods.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../lectures/power-analysis-via-simulations.html">
+   Power analysis via simulations
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Tutorial: Running basic power analyses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/power-analysis-via-simulations.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/mediation-and-moderation.html">
+   Mediation and moderation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mediation-and-moderation.html">
+     Tutorial: Running mediation and moderation models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/mediation-and-moderation.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/selecting-the-best-model.html">
+   Selecting the best model
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+  <label for="toctree-checkbox-20">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="selecting-the-best-model.html">
+     Tutorial: Model selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/selecting-the-best-model.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/regularized-regression.html">
+   Regularized regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+  <label for="toctree-checkbox-21">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="regularized-regression.html">
+     Tutorial: Basic ridge and LASSO models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/regularized-regression.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/principal-component-methods.html">
+   Principal component methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="principal-component-methods.html">
+     Tutorial: Basic PCA approaches
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/principal-component-methods.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Understanding
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/reconsidering-the-p-value.html">
+   Reconsidering the p-value
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/reconsidering-the-p-value.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/bayes-factor-accepting-the-null.html">
+   Bayes factor
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+  <label for="toctree-checkbox-24">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bayes-factor-accepting-the-null.html">
+     Tutorial: Estimating Bayes factors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/bayes-factor-accepting-the-null.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/errors-and-inferences.html">
+   Errors and inferences
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+  <label for="toctree-checkbox-25">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/errors-and-inferences.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/telling-your-data-story.html">
+   Telling your data story
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+  <label for="toctree-checkbox-26">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/telling-your-data-story.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/theories-as-social-constructs.html">
+   Theories as social constructs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+  <label for="toctree-checkbox-27">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/theories-as-social-constructs.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/notebooks/power-analysis-via-simulations.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/notebooks/power-analysis-via-simulations.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notebooks/power-analysis-via-simulations.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial: Running basic power analyses
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goals">
+     Goals:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simulating-power">
+   Simulating power
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-algorithm">
+     Basic algorithm
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#determine-the-sources-of-variance">
+       Determine the sources of variance
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#write-a-function-to-simulate-artificial-data">
+       Write a function to simulate artificial data
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#write-a-function-to-conduct-your-intended-analysis">
+       Write a function to conduct your intended analysis
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vary-the-sample-size-and-alpha-levels">
+       Vary the sample size and alpha levels
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extending-to-more-complicated-analyses-example-with-mixed-models">
+   Extending to more complicated analyses: example with mixed-models
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#but-what-is-more-important-number-of-subjects-or-number-of-trials">
+     But what is more important, number of subjects or number of trials?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Tutorial: Running basic power analyses</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial: Running basic power analyses
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goals">
+     Goals:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simulating-power">
+   Simulating power
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-algorithm">
+     Basic algorithm
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#determine-the-sources-of-variance">
+       Determine the sources of variance
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#write-a-function-to-simulate-artificial-data">
+       Write a function to simulate artificial data
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#write-a-function-to-conduct-your-intended-analysis">
+       Write a function to conduct your intended analysis
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vary-the-sample-size-and-alpha-levels">
+       Vary the sample size and alpha levels
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extending-to-more-complicated-analyses-example-with-mixed-models">
+   Extending to more complicated analyses: example with mixed-models
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#but-what-is-more-important-number-of-subjects-or-number-of-trials">
+     But what is more important, number of subjects or number of trials?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-running-basic-power-analyses">
+<h1>Tutorial: Running basic power analyses<a class="headerlink" href="#tutorial-running-basic-power-analyses" title="Permalink to this headline">#</a></h1>
+<p>This lab focuses on power analyses and introduces how to simulate power in R.</p>
+<section id="goals">
+<h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Learn the algorithm for simulating power analyses</p></li>
+<li><p>Learn how to write a function to simulate data</p></li>
+<li><p>Learn how to write a function to run power analyses</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="simulating-power">
+<h1>Simulating power<a class="headerlink" href="#simulating-power" title="Permalink to this headline">#</a></h1>
+<p>How do you determine the sample size necessary to obtain a real effect (with a desired probability)? The typical approach to this is to run a power analysis for known distributions, which analytically calculates how many participants you need to have in order to have an 80% chance, for example, to detect an effect. One tool to accomplish this is called <a class="reference external" href="http://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower.html">G-power</a>.</p>
+<p>The problems with using G-power and similar analytical tools are that:</p>
+<ul class="simple">
+<li><p>you can only use them for analyses they have implemented that have a simple analytical solution (e.g., t-tests, ANOVA). They do not offer power analyses for mixed-effects regressions and many other tools that you have learned in the class.</p></li>
+<li><p>they calculate power only as a function of “number of participants” - they do not take into account the fact that increasing the number of observations per participant can also increase power, by decreasing variability in individual estimates</p></li>
+</ul>
+<p>One solution to these problems is to analyze the power to detect an effect by simulation. The idea is quite simple - you generate artificial data by choosing plausible parameters based on the existing literature (this will be described in more detail below), then you run the analysis of your choice on the simulated data. The proportion of simulations in which you find a statistically significant result is the power of your study, or the probability with which you can expect to find a real effect of that size in your sample.</p>
+<section id="basic-algorithm">
+<h2>Basic algorithm<a class="headerlink" href="#basic-algorithm" title="Permalink to this headline">#</a></h2>
+<p>Simulation power analyses follow these steps, on which we’ll expand in the subsequent sections:</p>
+<ol class="simple">
+<li><p>Determine the sources of variance - between subject variability, trial-by-trial variability, etc.</p></li>
+<li><p>Write a <strong>data simulation</strong> function with the following form:</p>
+<ul class="simple">
+<li><p>input: parameters that control sample size, number of trials, means and variances of conditions</p></li>
+<li><p>procedure: simulate observations given these parameters</p></li>
+<li><p>output: simulated dataset</p></li>
+</ul>
+</li>
+<li><p>Write an <strong>analysis</strong> function:</p>
+<ul class="simple">
+<li><p>input: simulated dataset</p></li>
+<li><p>procedure: run analysis and extract statistical significance</p></li>
+<li><p>output: statistical significance value (p-value, change in AIC or  change in BIC, whether confidence intervals for coefficients overlap with zero, etc.)</p></li>
+</ul>
+</li>
+<li><p>Write a <strong>for-loop</strong> that:</p>
+<ul class="simple">
+<li><p>repeatedly runs the prior two functions for different sample sizes and numbers of trials, and extracts parameter estimates and whether the analysis is significant</p></li>
+</ul>
+</li>
+<li><p>Assess the simulation in terms of three <strong>quality metrics</strong> (see lecture and/or Beaujean reading):</p>
+<ul class="simple">
+<li><p>Coverage</p></li>
+<li><p>Relative parameter estimate bias</p></li>
+<li><p>Relative standard error bias</p></li>
+</ul>
+</li>
+</ol>
+<section id="determine-the-sources-of-variance">
+<h3>Determine the sources of variance<a class="headerlink" href="#determine-the-sources-of-variance" title="Permalink to this headline">#</a></h3>
+<p>The outcome of any statistical analysis depends on how much your observations vary as you sample them. Variance comes from many sources – there are individual differences, noisy sampling, trial-by-trial variability, etc. Which of these variance sources you need to specify depends on the analysis you want to run.</p>
+<p>Let’s start with a simple example. Say you want to determine whether horses are on average taller than zebras using a t-test. There is a “true” underlying difference in the population (fun fact: horses are taller than zebras). So let’s that if you measure the heights of all horses and all zebras you would get the following population parameters:</p>
+<div class="math notranslate nohighlight">
+\[\mu_h = 163 cm\]</div>
+<div class="math notranslate nohighlight">
+\[\mu_z = 135 cm\]</div>
+<p>However, because there is variability present within horse and zebra height, if you collect 5 measurements from each group, you would get sample statistics that are similar but not identical to the population parameters. It is even possible that you would, by chance (with such a small sample) get a group of zebras that are on average taller than the group of horses.</p>
+<p>Therefore, in order to run a power analysis for a t-test comparing the height of zebras and horses, you need to specify the expected variability of height for each group.</p>
+<p>Let’s say that height is <em>normally distributed</em> with the above means (<span class="math notranslate nohighlight">\(\mu_h\)</span> and <span class="math notranslate nohighlight">\(\mu_z\)</span>) and standard deviations of:</p>
+<div class="math notranslate nohighlight">
+\[\sigma_h = 15cm\]</div>
+<div class="math notranslate nohighlight">
+\[\sigma_z = 7cm\]</div>
+<p>Or, written more compactly:</p>
+<div class="math notranslate nohighlight">
+\[Height_h \sim \mathcal{N}(\mu_h,\,\sigma_h^{2})\]</div>
+<div class="math notranslate nohighlight">
+\[Height_z \sim \mathcal{N}(\mu_z,\,\sigma_z^{2})\]</div>
+</section>
+<section id="write-a-function-to-simulate-artificial-data">
+<h3>Write a function to simulate artificial data<a class="headerlink" href="#write-a-function-to-simulate-artificial-data" title="Permalink to this headline">#</a></h3>
+<p>Now let’s write a function to simulate some data consistent with the above parameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># a function for simulating data for two groups. Sample size is the number of people in each group</span>
+<span class="n">simulate_data</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">sample_size</span><span class="p">,</span> <span class="n">group1_mu</span><span class="p">,</span> <span class="n">group1_sd</span><span class="p">,</span> <span class="n">group2_mu</span><span class="p">,</span> <span class="n">group2_sd</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1"># draw observation from a normal distribution</span>
+    <span class="n">obs_group1</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span><span class="n">sample_size</span><span class="p">,</span> <span class="n">group1_mu</span><span class="p">,</span> <span class="n">group1_sd</span><span class="p">)</span>
+    <span class="n">obs_group2</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span><span class="n">sample_size</span><span class="p">,</span> <span class="n">group2_mu</span><span class="p">,</span> <span class="n">group2_sd</span><span class="p">)</span>
+    <span class="nf">return</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">group1</span><span class="o">=</span><span class="n">obs_group1</span><span class="p">,</span> <span class="n">group2</span><span class="o">=</span><span class="n">obs_group2</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>With the first function we can simulate the heights for 5 zebras and 5 horses:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">040819</span><span class="p">)</span> <span class="c1"># this just helps us get the same &quot;random&quot; result every time we run it - for demo purposes</span>
+<span class="n">heights</span> <span class="o">=</span> <span class="nf">simulate_data</span><span class="p">(</span><span class="n">sample_size</span> <span class="o">=</span> <span class="m">5</span><span class="p">,</span> <span class="n">group1_mu</span> <span class="o">=</span> <span class="m">163</span><span class="p">,</span> <span class="n">group1_sd</span> <span class="o">=</span> <span class="m">15</span><span class="p">,</span> 
+                        <span class="n">group2_mu</span> <span class="o">=</span> <span class="m">135</span><span class="p">,</span> <span class="n">group2_sd</span> <span class="o">=</span> <span class="m">7</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">heights</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    group1   group2
+1 161.4690 149.8151
+2 147.4244 146.1182
+3 178.3596 125.8281
+4 141.2860 143.7526
+5 154.0626 136.3627
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="write-a-function-to-conduct-your-intended-analysis">
+<h3>Write a function to conduct your intended analysis<a class="headerlink" href="#write-a-function-to-conduct-your-intended-analysis" title="Permalink to this headline">#</a></h3>
+<p>Now we can write a function to perform the t-test for the two groups.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># a function for running a t-test and extracting p-value</span>
+<span class="n">run_analysis</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">fit</span> <span class="o">&lt;-</span> <span class="nf">t.test</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">group1</span><span class="p">,</span> <span class="n">data</span><span class="o">$</span><span class="n">group2</span><span class="p">)</span>
+    <span class="nf">return</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">fit</span><span class="o">$</span><span class="n">estimate</span><span class="p">[</span><span class="m">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">fit</span><span class="o">$</span><span class="n">estimate</span><span class="p">[</span><span class="m">2</span><span class="p">],</span><span class="n">fit</span><span class="o">$</span><span class="n">stderr</span><span class="p">,</span><span class="n">fit</span><span class="o">$</span><span class="n">p.value</span><span class="p">))</span> <span class="c1"># this outputs the effect size, standard error, and significance for quality metrics </span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>With this second function we can run an independent samples <code class="docutils literal notranslate"><span class="pre">t.test</span></code> and extract the <code class="docutils literal notranslate"><span class="pre">p.value</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">run_analysis</span><span class="p">(</span><span class="n">heights</span><span class="p">)[</span><span class="m">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><strong>:</strong> 0.0743144889811368</div></div>
+</div>
+<p>Now, this particular sample did not have significantly different heights (<span class="math notranslate nohighlight">\(p &gt; 0.05\)</span>). However, this may have just been chance - selecting only 5 of each group might actually give us a significant difference <em>most</em> of the time, but not this time. If we repeat this process many times for this particular sample size, in what proportion of cases will we find a significant difference? Let’s put both previous functions together to simulate the data and calculate the statistical result 1000 times. Note that we can also control our definition of “significant” by specifying an alpha-level for the p-value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># a function for repeatedly running the t-test on multiple samples drawn with the same parameters</span>
+<span class="n">repeat_analysis</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">sample_size</span><span class="p">,</span> <span class="n">group1_mu</span><span class="p">,</span> <span class="n">group1_sd</span><span class="p">,</span> <span class="n">group2_mu</span><span class="p">,</span> <span class="n">group2_sd</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">simouts</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="n">n_simulations</span><span class="o">*</span><span class="m">3</span><span class="p">),</span><span class="n">nrow</span><span class="o">=</span><span class="n">n_simulations</span><span class="p">,</span><span class="n">ncol</span><span class="o">=</span><span class="m">3</span><span class="p">)</span> <span class="c1"># empty vector to store ests, stderr, p-values from each simulation</span>
+    
+    <span class="c1"># loop for repeating the simulation</span>
+    <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">n_simulations</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">data</span> <span class="o">&lt;-</span> <span class="nf">simulate_data</span><span class="p">(</span><span class="n">sample_size</span><span class="p">,</span> <span class="n">group1_mu</span><span class="p">,</span> <span class="n">group1_sd</span><span class="p">,</span> <span class="n">group2_mu</span><span class="p">,</span> <span class="n">group2_sd</span><span class="p">)</span> <span class="c1"># simulate the data using the defined function</span>
+        <span class="n">simouts</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span> <span class="o">&lt;-</span> <span class="nf">run_analysis</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1"># run the analysis, and add outputs to the matrix</span>
+    <span class="p">}</span>
+    
+    <span class="c1"># calculate coverage (AKA power)</span>
+    <span class="n">cvg</span> <span class="o">&lt;-</span> <span class="nf">mean</span><span class="p">(</span><span class="n">simouts</span><span class="p">[,</span><span class="m">3</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">alpha</span><span class="p">)</span> <span class="c1"># this is the same as the number of sims that successfully rejected null divided by total number of sims - probability of correctly rejecting the null!</span>
+    <span class="c1"># calculate relative parameter estimate bias</span>
+    <span class="n">theta_bias</span> <span class="o">&lt;-</span> <span class="p">(</span> <span class="nf">mean</span><span class="p">(</span><span class="n">simouts</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span> <span class="o">-</span> <span class="p">(</span><span class="n">group1_mu</span><span class="o">-</span><span class="n">group2_mu</span><span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">group1_mu</span><span class="o">-</span><span class="n">group2_mu</span><span class="p">)</span>
+    <span class="c1"># calculate relative standard error bias </span>
+    <span class="n">sigma_bias</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="n">simouts</span><span class="p">[,</span><span class="m">2</span><span class="p">])</span> <span class="o">-</span> <span class="nf">sd</span><span class="p">(</span><span class="n">simouts</span><span class="p">[,</span><span class="m">1</span><span class="p">]))</span> <span class="o">/</span> <span class="nf">sd</span><span class="p">(</span><span class="n">simouts</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span>
+
+    <span class="nf">return</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">cvg</span> <span class="o">=</span> <span class="n">cvg</span><span class="p">,</span> <span class="n">theta_bias</span><span class="o">=</span><span class="n">theta_bias</span><span class="p">,</span> <span class="n">sigma_bias</span><span class="o">=</span><span class="n">sigma_bias</span><span class="p">,</span> <span class="n">p.values</span><span class="o">=</span><span class="n">simouts</span><span class="p">[,</span><span class="m">3</span><span class="p">]))</span> <span class="c1">#return a list with the power as the probability of a sig. result and the corresponding p-values</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For 1000 simulations of 5 participants per group and an alpha significance level of 0.05, we have a power of:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">040819</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="nf">repeat_analysis</span><span class="p">(</span><span class="n">n_simulations</span> <span class="o">=</span> <span class="m">1000</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.05</span><span class="p">,</span> <span class="n">sample_size</span> <span class="o">=</span> <span class="m">5</span><span class="p">,</span>
+                          <span class="n">group1_mu</span><span class="o">=</span><span class="m">163</span><span class="p">,</span> <span class="n">group1_sd</span> <span class="o">=</span> <span class="m">15</span><span class="p">,</span> <span class="n">group2_mu</span> <span class="o">=</span> <span class="m">135</span><span class="p">,</span> <span class="n">group2_sd</span> <span class="o">=</span> <span class="m">7</span><span class="p">)</span>
+<span class="n">results</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><dl>
+	<dt>$cvg</dt>
+		<dd>0.86</dd>
+	<dt>$theta_bias</dt>
+		<dd>-0.0208046123467318</dd>
+	<dt>$sigma_bias</dt>
+		<dd>-0.0451000217137926</dd>
+</dl>
+</div></div>
+</div>
+<p>This means that there is a 86% probability that we correctly reject the null (no difference in heights between horses and zebras) at p &lt; 0.05 if we measure the heights of 5 animals per group. Additionally, we see there’s a 2% difference between the original, generative effect size and the mean effect sizes of the simulated fits, and 4.5% difference between the simulated fits’ standard errors and the standard deviation of estimates across the fits.</p>
+<p>Try varying the number of simulations in the code above (from 1000 to 10000, for example) and see how that impacts each of the bias terms. You’ll notice that <code class="docutils literal notranslate"><span class="pre">theta_bias</span></code> gets smaller, while <code class="docutils literal notranslate"><span class="pre">sigma_bias</span></code> stays about the same. This is because with more simulations the effect size estimate is getting more accurate (Law of Large Numbers), but because there are still very few animals in each sample the effect size estimate still varies a lot from one simulation to the next. Thus, most of the model fits are under-estimating the parameter estimate variance.</p>
+<p>If we measure 10 animals per group instead, we have much greater power to detect an effect:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">040819</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="nf">repeat_analysis</span><span class="p">(</span><span class="n">n_simulations</span> <span class="o">=</span> <span class="m">1000</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.05</span><span class="p">,</span> <span class="n">sample_size</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span>
+                          <span class="n">group1_mu</span><span class="o">=</span><span class="m">163</span><span class="p">,</span> <span class="n">group1_sd</span> <span class="o">=</span> <span class="m">15</span><span class="p">,</span> <span class="n">group2_mu</span> <span class="o">=</span> <span class="m">135</span><span class="p">,</span> <span class="n">group2_sd</span> <span class="o">=</span> <span class="m">7</span><span class="p">)</span>
+<span class="n">results</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><dl>
+	<dt>$cvg</dt>
+		<dd>0.999</dd>
+	<dt>$theta_bias</dt>
+		<dd>0.00173086593671076</dd>
+	<dt>$sigma_bias</dt>
+		<dd>-0.0370144165042127</dd>
+</dl>
+</div></div>
+</div>
+<p>Now we have 99% chance of correctly rejecting the null, and both of our biases have gotten smaller as well. <em>Comprehension check: why did <code class="docutils literal notranslate"><span class="pre">sigma_bias</span></code> decrease when we increased the number of animals?</em></p>
+<p>If we become more conservative with our statistical threshold (by decreasing the alpha value), power decreases, while the biases don’t change much:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">18546</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="nf">repeat_analysis</span><span class="p">(</span><span class="n">n_simulations</span> <span class="o">=</span> <span class="m">1000</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="m">0.001</span><span class="p">,</span> <span class="n">sample_size</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span>
+                          <span class="n">group1_mu</span><span class="o">=</span><span class="m">163</span><span class="p">,</span> <span class="n">group1_sd</span> <span class="o">=</span> <span class="m">15</span><span class="p">,</span> <span class="n">group2_mu</span> <span class="o">=</span> <span class="m">135</span><span class="p">,</span> <span class="n">group2_sd</span> <span class="o">=</span> <span class="m">7</span><span class="p">)</span>
+<span class="n">results</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><dl>
+	<dt>$cvg</dt>
+		<dd>0.811</dd>
+	<dt>$theta_bias</dt>
+		<dd>0.00493198128999189</dd>
+	<dt>$sigma_bias</dt>
+		<dd>-0.0319896690283605</dd>
+</dl>
+</div></div>
+</div>
+<p>To make it clearer, we can visualize the distribution of p.values obtained from each simulation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">require</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">9</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">5</span><span class="p">)</span>
+
+<span class="n">results_n5</span> <span class="o">=</span> <span class="nf">repeat_analysis</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span> <span class="m">0.05</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">163</span><span class="p">,</span> <span class="m">15</span><span class="p">,</span> <span class="m">135</span><span class="p">,</span> <span class="m">7</span><span class="p">)</span>
+<span class="n">results_n10</span> <span class="o">=</span> <span class="nf">repeat_analysis</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span> <span class="m">0.05</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">163</span><span class="p">,</span> <span class="m">15</span><span class="p">,</span> <span class="m">135</span><span class="p">,</span> <span class="m">7</span><span class="p">)</span>
+
+
+<span class="n">power_df</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="nf">cbind</span><span class="p">(</span><span class="n">n5</span> <span class="o">=</span> <span class="n">results_n5</span><span class="o">$</span><span class="n">p.values</span><span class="p">,</span> <span class="n">n10</span> <span class="o">=</span> <span class="n">results_n10</span><span class="o">$</span><span class="n">p.values</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+            <span class="nf">gather</span><span class="p">(</span><span class="s">&#39;n_samples&#39;</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;n5&#39;</span><span class="p">,</span> <span class="s">&#39;n10&#39;</span><span class="p">),</span> <span class="n">value</span> <span class="o">=</span> <span class="s">&#39;p.values&#39;</span><span class="p">)</span>
+
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">power_df</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">p.values</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_histogram</span><span class="p">()</span> <span class="o">+</span> <span class="nf">facet_grid</span><span class="p">(</span><span class="n">.</span><span class="o">~</span><span class="n">n_samples</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+</pre></div>
+</div>
+<img alt="../_images/power-analysis-via-simulations_27_1.png" src="../_images/power-analysis-via-simulations_27_1.png" />
+</div>
+</div>
+<p>When <span class="math notranslate nohighlight">\(n = 10\)</span>, nearly all the samples yielded <span class="math notranslate nohighlight">\(p\)</span>-values below 0.05. The distribution of <span class="math notranslate nohighlight">\(p\)</span>-values for <span class="math notranslate nohighlight">\(n=5\)</span> is wider, with more non-significant values.</p>
+</section>
+<section id="vary-the-sample-size-and-alpha-levels">
+<h3>Vary the sample size and alpha levels<a class="headerlink" href="#vary-the-sample-size-and-alpha-levels" title="Permalink to this headline">#</a></h3>
+<p>Before, we asked what the power was when we varied the number of samples, or the number of people that we collected data from. Now, for the inverse question. How many <strong>animals</strong> do we need to be 95% certain that we will detect the true significant difference in heights between horses and zebras? Yes, you could manually vary the above function’s parameters until you obtain a desired level of power, but we can instead simulate data for different sample sizes in an automated way and choose the sample size that gives us the desired power.</p>
+<p>To do this, we can use the <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code> package to create a dataframe with parameters, then simulate data for each row of the dataframe, store the results in a column, then run the analysis on that column and store the resulting p.value. If you need a reminder of the details of <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code>, revisit the tutorial for “05 - Data as objects and architectures”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># first, create a data.frame to store the results</span>
+<span class="n">dat</span> <span class="o">&lt;-</span> <span class="nf">expand.grid</span><span class="p">(</span><span class="n">sample_size</span> <span class="o">=</span> <span class="m">2</span><span class="o">:</span><span class="m">20</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0.05</span><span class="p">,</span><span class="m">0.01</span><span class="p">,</span><span class="m">0.001</span><span class="p">))</span> <span class="c1">#vary the criterion for sig. and the sample size</span>
+<span class="n">dat</span><span class="o">$</span><span class="n">id</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span> <span class="c1">#identify each combination of parameters as a separate parameter case for below (otherwise, &quot;unnesting&quot; will be impossible)</span>
+
+<span class="c1"># then use tidyverse functions to run the analysis for each sample size</span>
+<span class="n">results</span> <span class="o">&lt;-</span> <span class="n">dat</span>  <span class="o">%&gt;%</span>  <span class="c1">#using the dataframe defined above</span>
+    <span class="nf">nest</span><span class="p">(</span><span class="n">parameters</span> <span class="o">:=</span>  <span class="nf">c</span><span class="p">(</span><span class="n">sample_size</span><span class="p">,</span><span class="n">alpha</span><span class="p">))</span> <span class="o">%&gt;%</span> <span class="c1"># separate the parameters into lists split by parameter combo case and call the new column of lists &#39;parameters&#39; </span>
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">power</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="o">~</span> <span class="nf">repeat_analysis</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span> <span class="n">.</span><span class="o">$</span><span class="n">alpha</span><span class="p">,</span> <span class="n">.</span><span class="o">$</span><span class="n">sample_size</span><span class="p">,</span> <span class="m">163</span><span class="p">,</span> <span class="m">15</span><span class="p">,</span> <span class="m">135</span><span class="p">,</span> <span class="m">7</span><span class="p">)</span><span class="o">$</span><span class="n">cvg</span><span class="p">))</span>  <span class="o">%&gt;%</span>  <span class="c1"># note: &quot;map&quot; is like running a for loop, but more efficiently</span>
+    <span class="c1">#for each case within parameters, repeat the analysis, varying the alpha and sample size</span>
+    <span class="c1">#store the power associated with all cases as a new variable called power </span>
+    <span class="nf">unnest</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">power</span><span class="p">))</span> <span class="c1">#return the dataframe to an unnested state, making each element of the list its own row</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="c1">#now for each combination of sample size and alpha we have a power estimate, neatly arranged </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 4</caption>
+<thead>
+	<tr><th scope=col>id</th><th scope=col>sample_size</th><th scope=col>alpha</th><th scope=col>power</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>1</td><td>2</td><td>0.05</td><td>0.178</td></tr>
+	<tr><td>2</td><td>3</td><td>0.05</td><td>0.451</td></tr>
+	<tr><td>3</td><td>4</td><td>0.05</td><td>0.704</td></tr>
+	<tr><td>4</td><td>5</td><td>0.05</td><td>0.847</td></tr>
+	<tr><td>5</td><td>6</td><td>0.05</td><td>0.942</td></tr>
+	<tr><td>6</td><td>7</td><td>0.05</td><td>0.982</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Now we can plot the power level for the different sample sizes and alpha levels:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">8</span><span class="p">)</span> <span class="c1"># resetting size of plot</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">sample_size</span><span class="p">,</span> <span class="n">power</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="nf">as.factor</span><span class="p">(</span><span class="n">alpha</span><span class="p">),</span> <span class="n">group</span><span class="o">=</span><span class="n">alpha</span><span class="p">))</span> <span class="o">+</span>
+    <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_hline</span><span class="p">(</span><span class="n">yintercept</span> <span class="o">=</span> <span class="m">0.8</span><span class="p">)</span> <span class="o">+</span> <span class="c1"># Drew lines at these values because they are</span>
+    <span class="nf">geom_hline</span><span class="p">(</span><span class="n">yintercept</span> <span class="o">=</span> <span class="m">0.95</span><span class="p">)</span> <span class="o">+</span> <span class="c1"># both traditionally used power thresholds</span>
+    <span class="nf">scale_color_discrete</span><span class="p">(</span><span class="s">&#39;Alpha level&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="s">&#39;Sample size&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">theme_classic</span><span class="p">()</span> <span class="c1"># this just makes it pretty</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/power-analysis-via-simulations_34_0.png" src="../_images/power-analysis-via-simulations_34_0.png" />
+</div>
+</div>
+<p>You can see that for a power of 95%, you need 13 animals per group to detect a difference in height at the 0.001 threshold for significance.  Progressively fewer animals are needed to reach the same power at less strict alpha thresholds. Now you can see the beauty of using data simulation as a tool for power analyses!</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="extending-to-more-complicated-analyses-example-with-mixed-models">
+<h1>Extending to more complicated analyses: example with mixed-models<a class="headerlink" href="#extending-to-more-complicated-analyses-example-with-mixed-models" title="Permalink to this headline">#</a></h1>
+<p>The basic procedure outlined above and the functions presented can be extended to any type of analysis in which there is a significance threshold (e.g., alpha). The only thing that has to be changed is the generation of the data and the analysis function. In generating the data, the most complicated thing is specifying the variance structure.</p>
+<p>Let’s take for example a mixed-effects regression of reaction times in a priming lexical decision experiment. We are interested in whether people make a lexical decision (“Is this string a word or not?”) faster after semantically congruent prime (seeing “red” before “orange”) rather than semantically incongruent prime (seeing “rod” before “orange”).</p>
+<p>How do we generate data for this? Typical psycholinguistic experiments use repeated measures designs where each participant performs many trials in each condition. The reaction time to any trial is determined by:</p>
+<ul class="simple">
+<li><p>mean of each condition (expected population priming effect)</p></li>
+<li><p>individual differences in overall speed ( <span class="math notranslate nohighlight">\(\beta_{subject\_intercept}\)</span> ; different intercepts for each subject)</p></li>
+<li><p>individual differences in effect of priming condition (<span class="math notranslate nohighlight">\(\beta_{subject\_slope}\)</span> ; some people might show stronger differences between the two conditions than others)</p></li>
+<li><p>trial-by-trial variation</p></li>
+</ul>
+<p>So our mixed effects model and data structure would be as follows:</p>
+<div class="math notranslate nohighlight">
+\[RTs = \beta_{subject\_intercept} + \beta_{subject\_slope} * condition + \epsilon_{trial}\]</div>
+<p>In the formula above, <span class="math notranslate nohighlight">\(\beta_{subject\_intercept}\)</span> and <span class="math notranslate nohighlight">\(\beta_{subject\_slope}\)</span> are both vectors, with each value corresponding to an individual subject’s average reaction time speed or mean reaction time difference between conditions, respectively. We can reframe each of these terms as the mean value across subjects, plus a noise vector <span class="math notranslate nohighlight">\(\epsilon\)</span>, centered at 0, which accounts for each individual’s deviation from the mean:</p>
+<div class="math notranslate nohighlight">
+\[\beta_{subject\_intercept} = \beta_{overall\_intercept} + \epsilon_{intercept}\]</div>
+<div class="math notranslate nohighlight">
+\[\beta_{subject\_slope} = \beta_{mean\_difference} + \epsilon_{slope}\]</div>
+<p>Now, the <span class="math notranslate nohighlight">\(\epsilon\)</span> terms are sampled from normal distributions centered at 0:</p>
+<div class="math notranslate nohighlight">
+\[\epsilon_{trial} \sim \mathcal{N}(0, \sigma_{trial}^2)\]</div>
+<div class="math notranslate nohighlight">
+\[\epsilon_{intercept} \sim \mathcal{N}(0, \sigma_{intercept}^2)\]</div>
+<div class="math notranslate nohighlight">
+\[\epsilon_{slope} \sim \mathcal{N}(0, \sigma_{slope}^2)\]</div>
+<p>So in our simulation we need to specify 5 parameters for the data generation:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\beta_{overall\_intercept}\)</span> (Average RTs for congruent primes)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_{mean\_difference}\)</span> (Average RT difference between congruent and incongruent primes)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma_{trial}\)</span> (The standard deviation of RTs on each trial, if each participant responds to the same item)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma_{intercept}\)</span> (How much individual subjects vary in their overall speed)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma_{mean\_difference}\)</span> (How much individual subjects vary in how strongly they are affected by priming)</p></li>
+</ul>
+<p>Let’s pick some plausible parameters based on prior literature and educated guessing:</p>
+<div class="math notranslate nohighlight">
+\[\beta_{overall\_intercept} = 700 ms.\]</div>
+<div class="math notranslate nohighlight">
+\[\beta_{mean\_difference} = 50 ms.\]</div>
+<div class="math notranslate nohighlight">
+\[\sigma_{trial} = 200 ms.\]</div>
+<div class="math notranslate nohighlight">
+\[\sigma_{intercept} = 100 ms.\]</div>
+<div class="math notranslate nohighlight">
+\[\sigma_{mean\_difference} = 50 ms.\]</div>
+<p><em>Note: when doing a real power analysis simulation, you may want to identify a plausible range and test a few values within it to make sure these “guesses” don’t drastically impact your power analysis.</em></p>
+<p>How many subjects and trials per subject do we need to achieve 80% power? Let’s adapt the functions we wrote above so we can answer these questions.</p>
+<p><em>Check out the documentation for <a class="reference external" href="https://purrr.tidyverse.org/reference/index.html">map</a> and <a class="reference external" href="https://tidyr.tidyverse.org/reference/nest.html">nest</a> to help understand the code below.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;lme4&quot;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">lme4</span><span class="p">)</span> <span class="c1"># we need lme4 so we can do test-runs of mixed effects analyses. </span>
+<span class="nf">require</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span> <span class="c1"># in case tidyverse needs to be re-loaded</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+
+also installing the dependencies ‘minqa’, ‘nloptr’, ‘statmod’, ‘RcppEigen’
+
+
+Loading required package: Matrix
+
+Warning message in system(&quot;timedatectl&quot;, intern = TRUE):
+“running command &#39;timedatectl&#39; had status 1”
+── <span class=" -Color -Color-Bold">Attaching packages</span> ─────────────────────────────────────── tidyverse 1.3.0 ──
+
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">ggplot2</span> 3.3.3     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">purrr  </span> 0.3.4
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">tibble </span> 3.1.0     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">dplyr  </span> 1.0.5
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">tidyr  </span> 1.1.3     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">stringr</span> 1.4.0
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">readr  </span> 1.4.0     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">forcats</span> 0.5.1
+
+── <span class=" -Color -Color-Bold">Conflicts</span> ────────────────────────────────────────── tidyverse_conflicts() ──
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">tidyr</span>::<span class=" -Color -Color-Green">expand()</span> masks <span class=" -Color -Color-Blue">Matrix</span>::expand()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">filter()</span> masks <span class=" -Color -Color-Blue">stats</span>::filter()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">lag()</span>    masks <span class=" -Color -Color-Blue">stats</span>::lag()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">tidyr</span>::<span class=" -Color -Color-Green">pack()</span>   masks <span class=" -Color -Color-Blue">Matrix</span>::pack()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">tidyr</span>::<span class=" -Color -Color-Green">unpack()</span> masks <span class=" -Color -Color-Blue">Matrix</span>::unpack()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># a function for simulating data for mixed-model.</span>
+<span class="n">simulate_data</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">n_subjects</span><span class="p">,</span> <span class="n">n_trials</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> 
+                          <span class="n">slope</span><span class="p">,</span> <span class="n">intercept_sd</span><span class="p">,</span> <span class="n">slope_sd</span><span class="p">,</span> <span class="n">trial_sd</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1"># draw observation from a normal distribution</span>
+    <span class="n">subject_intercepts</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span><span class="n">n_subjects</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">intercept_sd</span><span class="p">)</span> <span class="c1"># sample from a distribution centered at mean subject RT, varying with sd of subject RT</span>
+    <span class="n">subject_slopes</span> <span class="o">&lt;-</span> <span class="nf">rnorm</span><span class="p">(</span><span class="n">n_subjects</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">slope_sd</span><span class="p">)</span> <span class="c1"># sample from distribution centered at mean effect size, varying with sd of effect size</span>
+    <span class="n">dat</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">subject</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="n">n_subjects</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">subject_intercepts</span><span class="p">,</span> <span class="n">slope</span><span class="o">=</span><span class="n">subject_slopes</span><span class="p">)</span>
+    <span class="c1"># generate trials for each subject</span>
+    <span class="n">dat</span> <span class="o">&lt;-</span> <span class="n">dat</span>  <span class="o">%&gt;%</span> 
+        <span class="nf">nest</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="n">parameters</span> <span class="o">:=</span>  <span class="nf">c</span><span class="p">(</span><span class="n">intercept</span><span class="p">,</span> <span class="n">slope</span><span class="p">))</span>  <span class="o">%&gt;%</span> <span class="c1"># for each subject</span>
+        <span class="c1"># sample n_trials values for two new vars using &quot;intercept&quot; and &quot;slope&quot; values calculated above, adding trial variability using trial_sd</span>
+        <span class="c1"># congruent just uses intercept for mean (the baseline condition, faster RT), </span>
+        <span class="c1"># incongruent uses intercept+slope to account for effect of being slower condition</span>
+        <span class="nf">mutate</span><span class="p">(</span><span class="n">congruent</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="o">~</span><span class="nf">rnorm</span><span class="p">(</span><span class="n">n_trials</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">trial_sd</span><span class="p">)),</span>
+               <span class="n">incongruent</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="o">~</span><span class="nf">rnorm</span><span class="p">(</span><span class="n">n_trials</span><span class="p">,</span> <span class="n">intercept</span><span class="o">+</span><span class="n">slope</span><span class="p">,</span> <span class="n">trial_sd</span><span class="p">)))</span>  <span class="o">%&gt;%</span>  <span class="c1"># </span>
+        <span class="nf">unnest</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">congruent</span><span class="p">,</span><span class="n">incongruent</span><span class="p">),</span> <span class="n">.drop</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>  <span class="o">%&gt;%</span>
+        <span class="nf">unnest</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>  <span class="o">%&gt;%</span> <span class="c1"># ungroup the data so it&#39;s a normal data frame again</span>
+        <span class="nf">gather</span><span class="p">(</span><span class="n">prime</span><span class="p">,</span> <span class="n">rt</span><span class="p">,</span> <span class="n">congruent</span><span class="p">,</span> <span class="n">incongruent</span><span class="p">)</span> <span class="c1"># puts it in long form - tidy data! </span>
+    <span class="nf">return</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+<span class="p">}</span>
+
+
+<span class="c1"># a function for running a mixed-model and extracting coverage, theta_bias, sigma_bias, and p-values. </span>
+<span class="n">run_analysis</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1"># fit null and alternative model</span>
+    <span class="n">m0</span> <span class="o">&lt;-</span> <span class="nf">lmer</span><span class="p">(</span><span class="n">rt</span> <span class="o">~</span> <span class="m">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">prime</span><span class="o">||</span><span class="n">subject</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">REML</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> <span class="n">control</span><span class="o">=</span><span class="nf">lmerControl</span><span class="p">(</span><span class="n">calc.derivs</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">))</span> <span class="c1"># null model</span>
+    <span class="n">m1</span> <span class="o">&lt;-</span> <span class="nf">lmer</span><span class="p">(</span><span class="n">rt</span> <span class="o">~</span> <span class="n">prime</span> <span class="o">+</span> <span class="p">(</span><span class="n">prime</span><span class="o">||</span><span class="n">subject</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">REML</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> <span class="n">control</span><span class="o">=</span><span class="nf">lmerControl</span><span class="p">(</span><span class="n">calc.derivs</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">))</span> <span class="c1"># alternative model</span>
+
+    <span class="n">est</span> <span class="o">&lt;-</span> <span class="nf">fixef</span><span class="p">(</span><span class="n">m1</span><span class="p">)[</span><span class="m">2</span><span class="p">]</span> <span class="c1"># estimate of Incongruent - Congruent difference in RT </span>
+    <span class="n">se</span> <span class="o">&lt;-</span> <span class="nf">summary</span><span class="p">(</span><span class="n">m1</span><span class="p">)</span><span class="o">$</span><span class="n">coef</span><span class="p">[,</span> <span class="m">2</span><span class="p">,</span> <span class="n">drop</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">][</span><span class="m">2</span><span class="p">]</span> <span class="c1"># stderr of estimate</span>
+    <span class="n">m_bic</span> <span class="o">&lt;-</span> <span class="nf">BIC</span><span class="p">(</span><span class="n">m0</span><span class="p">,</span> <span class="n">m1</span><span class="p">)</span><span class="o">$</span><span class="n">BIC</span><span class="c1">#Outputs Bayesian Information Criterion to assess goodness of model fit</span>
+    <span class="n">statistic</span> <span class="o">&lt;-</span> <span class="nf">diff</span><span class="p">(</span><span class="n">m_bic</span><span class="p">)</span><span class="c1">#You can replace with change in AIC or a p-value for a likelihood ratio statistic</span>
+    <span class="nf">return</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">est</span><span class="p">,</span><span class="n">se</span><span class="p">,</span><span class="n">statistic</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before we run the full analysis, just for demonstration, here is simulated data for some subjects:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">04082020</span><span class="p">)</span>
+<span class="n">dat</span> <span class="o">&lt;-</span> <span class="nf">simulate_data</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="m">700</span><span class="p">,</span> <span class="m">50</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span><span class="m">50</span><span class="p">,</span><span class="m">200</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="m">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
+“The `.drop` argument of `unnest()` is deprecated as of tidyr 1.0.0.
+All list-columns are now preserved.
+This warning is displayed once every 8 hours.
+Call `lifecycle::last_warnings()` to see where this warning was generated.”
+</pre></div>
+</div>
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 20 × 5</caption>
+<thead>
+	<tr><th scope=col>subject</th><th scope=col>intercept</th><th scope=col>slope</th><th scope=col>prime</th><th scope=col>rt</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>1</td><td>658.1670</td><td>116.9944</td><td>congruent</td><td> 637.7850</td></tr>
+	<tr><td>1</td><td>658.1670</td><td>116.9944</td><td>congruent</td><td> 355.5954</td></tr>
+	<tr><td>1</td><td>658.1670</td><td>116.9944</td><td>congruent</td><td> 312.3804</td></tr>
+	<tr><td>1</td><td>658.1670</td><td>116.9944</td><td>congruent</td><td> 683.2322</td></tr>
+	<tr><td>1</td><td>658.1670</td><td>116.9944</td><td>congruent</td><td> 641.0751</td></tr>
+	<tr><td>1</td><td>658.1670</td><td>116.9944</td><td>congruent</td><td> 851.6410</td></tr>
+	<tr><td>1</td><td>658.1670</td><td>116.9944</td><td>congruent</td><td> 541.0341</td></tr>
+	<tr><td>1</td><td>658.1670</td><td>116.9944</td><td>congruent</td><td> 597.7813</td></tr>
+	<tr><td>1</td><td>658.1670</td><td>116.9944</td><td>congruent</td><td>1001.2272</td></tr>
+	<tr><td>1</td><td>658.1670</td><td>116.9944</td><td>congruent</td><td>1019.9264</td></tr>
+	<tr><td>2</td><td>807.1596</td><td> 74.3634</td><td>congruent</td><td> 630.8723</td></tr>
+	<tr><td>2</td><td>807.1596</td><td> 74.3634</td><td>congruent</td><td> 666.1075</td></tr>
+	<tr><td>2</td><td>807.1596</td><td> 74.3634</td><td>congruent</td><td> 765.4990</td></tr>
+	<tr><td>2</td><td>807.1596</td><td> 74.3634</td><td>congruent</td><td> 715.1133</td></tr>
+	<tr><td>2</td><td>807.1596</td><td> 74.3634</td><td>congruent</td><td> 515.6113</td></tr>
+	<tr><td>2</td><td>807.1596</td><td> 74.3634</td><td>congruent</td><td> 663.6446</td></tr>
+	<tr><td>2</td><td>807.1596</td><td> 74.3634</td><td>congruent</td><td> 676.5442</td></tr>
+	<tr><td>2</td><td>807.1596</td><td> 74.3634</td><td>congruent</td><td> 850.1468</td></tr>
+	<tr><td>2</td><td>807.1596</td><td> 74.3634</td><td>congruent</td><td> 564.6080</td></tr>
+	<tr><td>2</td><td>807.1596</td><td> 74.3634</td><td>congruent</td><td> 603.1024</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>And here’s the output of the mixed effects model concerning the effect of priming:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">run_analysis</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>primeincongruent</dt><dd>32.8173297042845</dd><dt>2</dt><dd>26.4064196916696</dd><dt>3</dt><dd>3.75975221724593</dd></dl>
+</div></div>
+</div>
+<p>Let’s run the simulation for various number of subjects and trials. First define the function…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># a function for repeatedly running the analysis on multiple samples drawn with the same parameters</span>
+<span class="n">repeat_analysis</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">n_subjects</span><span class="p">,</span> <span class="n">n_trials</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">intercept_sd</span><span class="p">,</span> <span class="n">slope_sd</span><span class="p">,</span> <span class="n">trial_sd</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">simouts</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="m">3</span><span class="o">*</span><span class="n">n_simulations</span><span class="p">),</span><span class="n">nrow</span><span class="o">=</span><span class="n">n_simulations</span><span class="p">)</span> <span class="c1"># empty vector to store outputs from each simulation</span>
+    <span class="c1"># loop for repeating the simulation</span>
+    <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">n_simulations</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">data</span> <span class="o">&lt;-</span> <span class="nf">simulate_data</span><span class="p">(</span><span class="n">n_subjects</span><span class="p">,</span> <span class="n">n_trials</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span>
+                              <span class="n">slope</span><span class="p">,</span> <span class="n">intercept_sd</span><span class="p">,</span> <span class="n">slope_sd</span><span class="p">,</span> <span class="n">trial_sd</span><span class="p">)</span>
+        <span class="n">simouts</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span> <span class="o">&lt;-</span> <span class="nf">run_analysis</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1"># save the analysis outputs for this sim.</span>
+    <span class="p">}</span>
+    
+    <span class="c1"># calculate how many of the simulations had significant results (coverage)</span>
+    <span class="n">power</span> <span class="o">&lt;-</span> <span class="nf">mean</span><span class="p">(</span><span class="n">simouts</span><span class="p">[,</span><span class="m">3</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="m">-20</span><span class="p">)</span> <span class="c1"># -20 is a good standard threshold for strong evidence, see Raftery &amp; Kass 1995</span>
+    <span class="c1"># calculate relative parameter estimate bias</span>
+    <span class="n">theta_bias</span> <span class="o">&lt;-</span> <span class="p">(</span> <span class="nf">mean</span><span class="p">(</span><span class="n">simouts</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span> <span class="o">-</span> <span class="n">slope</span> <span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">slope</span><span class="p">)</span>
+    <span class="c1"># calculate relative standard error bias </span>
+    <span class="n">sigma_bias</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="n">simouts</span><span class="p">[,</span><span class="m">2</span><span class="p">])</span> <span class="o">-</span> <span class="nf">sd</span><span class="p">(</span><span class="n">simouts</span><span class="p">[,</span><span class="m">1</span><span class="p">]))</span> <span class="o">/</span> <span class="nf">sd</span><span class="p">(</span><span class="n">simouts</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span>
+    <span class="nf">return</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">power</span> <span class="o">=</span> <span class="n">power</span><span class="p">,</span> <span class="n">theta_bias</span> <span class="o">=</span> <span class="n">theta_bias</span><span class="p">,</span> <span class="n">sigma_bias</span> <span class="o">=</span> <span class="n">sigma_bias</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then run it. <em>(Note: this takes a LONG time to run! About an hour.)</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="o">&lt;-</span> <span class="nf">expand.grid</span><span class="p">(</span><span class="n">n_subjects</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">20</span><span class="p">,</span><span class="m">30</span><span class="p">,</span><span class="m">40</span><span class="p">),</span> <span class="n">n_trials</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">20</span><span class="p">,</span><span class="m">40</span><span class="p">,</span><span class="m">60</span><span class="p">))</span>
+<span class="n">dat</span><span class="o">$</span><span class="n">id</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+<span class="c1"># then use tidyverse functions to run the analysis for each sample size (takes ~30-60 minutes)</span>
+<span class="n">results</span> <span class="o">&lt;-</span> <span class="n">dat</span>  <span class="o">%&gt;%</span> 
+    <span class="nf">nest</span><span class="p">(</span><span class="n">parameters</span> <span class="o">:=</span>  <span class="nf">c</span><span class="p">(</span><span class="n">n_subjects</span><span class="p">,</span> <span class="n">n_trials</span><span class="p">))</span> <span class="o">%&gt;%</span>
+    <span class="c1"># nest(-id, .key = &#39;parameters&#39;)  %&gt;% </span>
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">power</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="o">~</span> <span class="nf">repeat_analysis</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span> <span class="m">0.05</span><span class="p">,</span> <span class="n">.</span><span class="o">$</span><span class="n">n_subjects</span><span class="p">,</span> <span class="n">.</span><span class="o">$</span><span class="n">n_trials</span><span class="p">,</span> <span class="m">700</span><span class="p">,</span> <span class="m">50</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span><span class="m">50</span><span class="p">,</span><span class="m">200</span><span class="p">)</span><span class="o">$</span><span class="n">power</span><span class="p">),</span>
+    <span class="n">theta_bias</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="o">~</span> <span class="nf">repeat_analysis</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span> <span class="m">0.05</span><span class="p">,</span> <span class="n">.</span><span class="o">$</span><span class="n">n_subjects</span><span class="p">,</span> <span class="n">.</span><span class="o">$</span><span class="n">n_trials</span><span class="p">,</span> <span class="m">700</span><span class="p">,</span> <span class="m">50</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span><span class="m">50</span><span class="p">,</span><span class="m">200</span><span class="p">)</span><span class="o">$</span><span class="n">theta_bias</span><span class="p">),</span>
+    <span class="n">sigma_bias</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="o">~</span> <span class="nf">repeat_analysis</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span> <span class="m">0.05</span><span class="p">,</span> <span class="n">.</span><span class="o">$</span><span class="n">n_subjects</span><span class="p">,</span> <span class="n">.</span><span class="o">$</span><span class="n">n_trials</span><span class="p">,</span> <span class="m">700</span><span class="p">,</span> <span class="m">50</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span><span class="m">50</span><span class="p">,</span><span class="m">200</span><span class="p">)</span><span class="o">$</span><span class="n">sigma_bias</span><span class="p">))</span>  <span class="o">%&gt;%</span> 
+    <span class="nf">unnest</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">power</span><span class="p">,</span> <span class="n">theta_bias</span><span class="p">,</span> <span class="n">sigma_bias</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in optwrap(optimizer, devfun, opt$par, lower = rho$lower, control = control, :
+“convergence code -4 from nloptwrap: NLOPT_ROUNDOFF_LIMITED: Roundoff errors led to a breakdown of the optimization algorithm. In this case, the returned minimum may still be useful. (e.g. this error occurs in NEWUOA if one tries to achieve a tolerance too close to machine precision.)”
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 9 × 6</caption>
+<thead>
+	<tr><th scope=col>id</th><th scope=col>n_subjects</th><th scope=col>n_trials</th><th scope=col>power</th><th scope=col>theta_bias</th><th scope=col>sigma_bias</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>1</td><td>20</td><td>20</td><td>0.006</td><td> 0.0064193681</td><td>0.07373782</td></tr>
+	<tr><td>2</td><td>30</td><td>20</td><td>0.042</td><td>-0.0005266041</td><td>0.05806434</td></tr>
+	<tr><td>3</td><td>40</td><td>20</td><td>0.144</td><td>-0.0084401088</td><td>0.02913024</td></tr>
+	<tr><td>4</td><td>20</td><td>40</td><td>0.084</td><td>-0.0114760522</td><td>0.03539564</td></tr>
+	<tr><td>5</td><td>30</td><td>40</td><td>0.379</td><td>-0.0018886991</td><td>0.08232914</td></tr>
+	<tr><td>6</td><td>40</td><td>40</td><td>0.747</td><td>-0.0020882135</td><td>0.05321679</td></tr>
+	<tr><td>7</td><td>20</td><td>60</td><td>0.374</td><td>-0.0042098324</td><td>0.05045607</td></tr>
+	<tr><td>8</td><td>30</td><td>60</td><td>0.810</td><td>-0.0067931351</td><td>0.05428755</td></tr>
+	<tr><td>9</td><td>40</td><td>60</td><td>0.974</td><td> 0.0029677427</td><td>0.02187785</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">10</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">8</span><span class="p">)</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">n_subjects</span><span class="p">,</span> <span class="n">power</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="nf">as.factor</span><span class="p">(</span><span class="n">n_trials</span><span class="p">),</span> <span class="n">group</span><span class="o">=</span><span class="n">n_trials</span><span class="p">))</span> <span class="o">+</span>
+    <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_hline</span><span class="p">(</span><span class="n">yintercept</span> <span class="o">=</span> <span class="m">0.8</span><span class="p">)</span> <span class="o">+</span> <span class="c1"># again, thresholds for acceptable power</span>
+    <span class="nf">geom_hline</span><span class="p">(</span><span class="n">yintercept</span> <span class="o">=</span> <span class="m">0.95</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">scale_color_discrete</span><span class="p">(</span><span class="s">&#39;Number of trials per subject&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="s">&#39;Number of subjects&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="s">&#39;Statistical power (for Delta BIC &lt;= -20)&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">theme_classic</span><span class="p">()</span>
+
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">n_subjects</span><span class="p">,</span> <span class="n">sigma_bias</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="nf">as.factor</span><span class="p">(</span><span class="n">n_trials</span><span class="p">),</span> <span class="n">group</span><span class="o">=</span><span class="n">n_trials</span><span class="p">))</span> <span class="o">+</span>
+    <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">scale_color_discrete</span><span class="p">(</span><span class="s">&#39;Number of trials per subject&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="s">&#39;Number of subjects&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="s">&#39;Sigma Bias&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">theme_classic</span><span class="p">()</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">n_subjects</span><span class="p">,</span> <span class="n">theta_bias</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="nf">as.factor</span><span class="p">(</span><span class="n">n_trials</span><span class="p">),</span> <span class="n">group</span><span class="o">=</span><span class="n">n_trials</span><span class="p">))</span> <span class="o">+</span>
+    <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span>
+    <span class="nf">scale_color_discrete</span><span class="p">(</span><span class="s">&#39;Number of trials per subject&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">scale_x_continuous</span><span class="p">(</span><span class="s">&#39;Number of subjects&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="s">&#39;Theta Bias&#39;</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">theme_classic</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/power-analysis-via-simulations_66_0.png" src="../_images/power-analysis-via-simulations_66_0.png" />
+<img alt="../_images/power-analysis-via-simulations_66_1.png" src="../_images/power-analysis-via-simulations_66_1.png" />
+<img alt="../_images/power-analysis-via-simulations_66_2.png" src="../_images/power-analysis-via-simulations_66_2.png" />
+</div>
+</div>
+<p>The first plot above shows the percentage of simulations for each combination of number of subjects and number of trials that passed our criterion for a significant model (using BIC instead of p-value in this case). So, you can see that power is a function of both the number of subjects and the number of trials per subject.</p>
+<p>Neither of the bias estimates show a clear trend with respect to number of subjects. We’d expect this for <code class="docutils literal notranslate"><span class="pre">theta_bias</span></code>, but <code class="docutils literal notranslate"><span class="pre">sigma_bias</span></code> typically does go down with more trials as discussed above. The lack of an effect may be because there were only a thousand of each set of simulations. However, we can see that all of the <code class="docutils literal notranslate"><span class="pre">theta_bias</span></code> terms for sufficiently powered subject-trial combinations are between -0.008 and 0.005, which seems acceptably close to 0. <code class="docutils literal notranslate"><span class="pre">sigma_bias</span></code> is much more positive for 30 subjects, 60 trials than for 40 subjects, 60 trials, meaning that the model estimates of variance are more inflated relative to actual variance in this case. But again, we may need to increase the number of simulations per subject-trial combination to make these bias estimates more interpretable.</p>
+<p>Our main takeaway from this analysis would be that 30 subjects, with 60 trials per subject may be sufficiently powered (&gt;80%), but using closer to 40 subjects may yield a more accurate model.</p>
+<section id="but-what-is-more-important-number-of-subjects-or-number-of-trials">
+<h2>But what is more important, number of subjects or number of trials?<a class="headerlink" href="#but-what-is-more-important-number-of-subjects-or-number-of-trials" title="Permalink to this headline">#</a></h2>
+<p>This depends on the relative sizes of the <span class="math notranslate nohighlight">\(\sigma_{trial}\)</span> and <span class="math notranslate nohighlight">\(\sigma_{slope}\)</span>, i.e., how much observations vary from trial to trial, and how much the true effect varies from subject to subject. If the variability associated wtih the <span class="math notranslate nohighlight">\(\sigma_{slope}\)</span> is relatively large, adding more subjects will be more important for estimating the population level difference, because it will improve its estimation more than adding more trials. If, however, people are more homogeneous, and respond similarly to the manipulation, then adding more trials would be more efficient. To test this out, you can run the above simulation for different values of <span class="math notranslate nohighlight">\(\sigma_{trial}\)</span> and <span class="math notranslate nohighlight">\(\sigma_{slope}\)</span>, and see it for yourself.</p>
+<p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../lectures/power-analysis-via-simulations.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Power analysis via simulations</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../discussions/power-analysis-via-simulations.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Discussion questions</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis, Fiona Horner<br/>
+  
+      &copy; Copyright 2023.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
