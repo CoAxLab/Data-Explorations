@@ -8,7 +8,4 @@
 
 ## Slides
 
-from IPython.display import IFrame
-from ipywidgets import widgets
-IFrame(src="../slides/quantitative-epistemology.pdf", width=854, height=480)
-
+<embed src="../slides/quantitative-epistemology.pdf"  type="application/pdf">
