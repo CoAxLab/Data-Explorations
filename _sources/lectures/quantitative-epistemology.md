@@ -8,4 +8,4 @@
 
 ## Slides
 
-<embed src="../slides/quantitative-epistemology.pdf"  type="application/pdf">
+![Quantitative epistemology](../slides/quantitative-epistemology.pdf "foo")
