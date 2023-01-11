@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutorial: Data Cleansing and Tidy data &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -1162,10 +1161,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-data-cleansing-and-tidy-data">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-data-cleansing-and-tidy-data">
 <h1>Tutorial: Data Cleansing and Tidy data<a class="headerlink" href="#tutorial-data-cleansing-and-tidy-data" title="Permalink to this headline">#</a></h1>
 <p>This lab serves as an introduction to data processing in R and the concept of tidy data.</p>
-<section id="goals">
+<div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Learn basic R commands</p></li>
@@ -1173,10 +1172,10 @@ title="Print to PDF"
 <li><p>Learn about the pipe operator</p></li>
 <li><p>Learn various data transformations in R</p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="getting-started">
+<div class="tex2jax_ignore mathjax_ignore section" id="getting-started">
 <h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">#</a></h1>
 <p>For many people, their first instinct is to open the data with Excel and just manually clean-up the data, by replacing values, creating new columns, etc., entirely by hand. The problem with that approach is that you cannot easily replicate the steps you have taken to transform the raw data into the final format you use for your analyses. This issue has many consequences, but among the two most common are, first, that if you get new or additional data from the same source, you would have to manually perform the same operations again, and second, if you make a mistake it would be difficult to identify where exactly that happened. The best approach is to preprocess your data with a script in the same way you do your analyses. However, doing so in base R can be quite cumbersome. In this tutorial, you will learn how to use tools for the <strong><code class="docutils literal notranslate"><span class="pre">tidyverse</span></code></strong> packages. Tidyverse is a collection of useful packages, which include <strong><code class="docutils literal notranslate"><span class="pre">ggplot2</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">tidyr</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">dplyr</span></code></strong>, etc, combined in a single package.</p>
 <p>Before we begin, you’ll need to install and load the <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code> package:</p>
@@ -1216,11 +1215,11 @@ title="Print to PDF"
 <li><p><strong>separate()</strong> - split one column into multiple columns</p></li>
 <li><p><strong>unite()</strong> - combine two columns into one</p></li>
 </ul>
-</section>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="basic-r-commands">
+<div class="tex2jax_ignore mathjax_ignore section" id="basic-r-commands">
 <h1>Basic R Commands<a class="headerlink" href="#basic-r-commands" title="Permalink to this headline">#</a></h1>
-<section id="arithmetic">
+<div class="section" id="arithmetic">
 <h2>Arithmetic<a class="headerlink" href="#arithmetic" title="Permalink to this headline">#</a></h2>
 <p>In R, you can do basic arithmetic just like any other programming language e.g.,</p>
 <div class="cell docutils container">
@@ -1234,8 +1233,8 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output text_html">8</div><div class="output text_html">-2</div><div class="output text_html">125</div></div>
 </div>
-</section>
-<section id="data-structures">
+</div>
+<div class="section" id="data-structures">
 <h2>Data structures<a class="headerlink" href="#data-structures" title="Permalink to this headline">#</a></h2>
 <p>Vectors: vectors are lists of numbers or strings.</p>
 <div class="cell docutils container">
@@ -1295,8 +1294,8 @@ title="Print to PDF"
 </div></div>
 </div>
 <p>In the data frame printed above, you can see that both variables <strong>avar</strong> and <strong>bvar</strong> are type <strong>&lt;dbl&gt;</strong> (short for “double”, another term for numeric) while variable <strong>cvar</strong> is type <strong>&lt;chr&gt;</strong>, or “character”.</p>
-</section>
-<section id="indexing">
+</div>
+<div class="section" id="indexing">
 <h2>Indexing<a class="headerlink" href="#indexing" title="Permalink to this headline">#</a></h2>
 <p>In a vector, you can index data by its position (starting at index 1):</p>
 <div class="cell docutils container">
@@ -1377,10 +1376,10 @@ title="Print to PDF"
 </table>
 </div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="tidy-data">
+<div class="tex2jax_ignore mathjax_ignore section" id="tidy-data">
 <h1>Tidy data<a class="headerlink" href="#tidy-data" title="Permalink to this headline">#</a></h1>
 <p>The key concept here is called <strong>tidy data</strong>. Tidy data assumes that your data is organized as follows:</p>
 <ul class="simple">
@@ -1446,9 +1445,9 @@ title="Print to PDF"
 </table>
 </div></div>
 </div>
-</section>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="pipes-the-operator">
+<div class="tex2jax_ignore mathjax_ignore section" id="pipes-the-operator">
 <h1>Pipes - the %&gt;% operator<a class="headerlink" href="#pipes-the-operator" title="Permalink to this headline">#</a></h1>
 <p>You might have noticed the weird <strong>%&gt;%</strong> operator in the code in the previous section. This operator is called a <strong>‘pipe’</strong>. Pipes are present in many programming languages, but not in the base R, so you might not be familiar with them. Pipes are an added feature from the Tidyverse package.</p>
 <p>A pipe serves as a link between two objects, whether they be variables or functions. The pipe tells R to take the object on its left side and pass it as the first argument to the object on the right.</p>
@@ -1577,9 +1576,9 @@ title="Print to PDF"
 </table>
 </div></div>
 </div>
-</section>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="transforming-data">
+<div class="tex2jax_ignore mathjax_ignore section" id="transforming-data">
 <h1>Transforming data<a class="headerlink" href="#transforming-data" title="Permalink to this headline">#</a></h1>
 <p>We will use the <code class="docutils literal notranslate"><span class="pre">iris</span></code> dataset for illustrating the tidyverse functions. You can save it to a <code class="docutils literal notranslate"><span class="pre">dat</span></code> variable like this:</p>
 <div class="cell docutils container">
@@ -1640,7 +1639,7 @@ title="Print to PDF"
 </table>
 </div></div>
 </div>
-<section id="transforming-existing-variables-and-creating-new-variables-mutate">
+<div class="section" id="transforming-existing-variables-and-creating-new-variables-mutate">
 <h2>Transforming existing variables and creating new variables -  mutate()<a class="headerlink" href="#transforming-existing-variables-and-creating-new-variables-mutate" title="Permalink to this headline">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">mutate()</span></code> is part of <code class="docutils literal notranslate"><span class="pre">dplyr</span></code>, one of the packages included in <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code> that is handy for data manipulation. The <code class="docutils literal notranslate"><span class="pre">mutate()</span></code> command allows you to create new columns, i.e. new variables.  Let’s say you want to center the sepal lengths in the <code class="docutils literal notranslate"><span class="pre">iris</span></code> dataset by removing the mean:</p>
 <div class="cell docutils container">
@@ -1709,8 +1708,8 @@ title="Print to PDF"
 </div></div>
 </div>
 <p>As you see, you can create multiple variables at the same time within a single mutate command, by separating them with commas. This time, rather than specifying <em>dat</em> as the first argument of mutate explicitely, we directed it with a pipe, as explained before. The first line should be read as <em>‘Pass the dat variable to whatever follows, then save the results in the dat variable.’</em></p>
-</section>
-<section id="summarizing-variables-summarise">
+</div>
+<div class="section" id="summarizing-variables-summarise">
 <h2>Summarizing variables - summarise()<a class="headerlink" href="#summarizing-variables-summarise" title="Permalink to this headline">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Mutate()</span></code> creates new variables within the existing dataset and does not change the number of rows. You might also want to calculate statistics that summarize the whole data set. For example, in the example above I calculated how many flowers were measured total (<code class="docutils literal notranslate"><span class="pre">n_flowers</span></code>) - but it doesn’t really make sense to output this as a variable with entries for every observation. If you want to create a new data.frame in which you store the summary values for one or more variables, you can use the <code class="docutils literal notranslate"><span class="pre">summarise()</span></code> command. Let’s get summaries for a few of the existing variables:</p>
 <div class="cell docutils container">
@@ -1742,8 +1741,8 @@ title="Print to PDF"
 </div></div>
 </div>
 <p>You should note several things. When you get to a new row, you can refer to a variable you have already created on a previous row. For example, when we calculate the standard error for <code class="docutils literal notranslate"><span class="pre">Sepal.Length</span></code>, we have put <code class="docutils literal notranslate"><span class="pre">SepLen_se</span> <span class="pre">=</span> <span class="pre">SepLen_sd</span> <span class="pre">/</span> <span class="pre">sqrt(n_flowers)</span></code>, in which SepLen_sd and n_flowers do not exist in the original data.frame, but are variables that we created on previous rows. We could have written it directly as <code class="docutils literal notranslate"><span class="pre">SepLen_se</span> <span class="pre">=</span> <span class="pre">sd(Sepal.Length)</span> <span class="pre">/</span> <span class="pre">sqrt(length(Species))</span></code>, but doing it in the above way is more efficient and readable.</p>
-</section>
-<section id="filtering-a-data-frame-by-removing-rows-based-on-a-condition-filter">
+</div>
+<div class="section" id="filtering-a-data-frame-by-removing-rows-based-on-a-condition-filter">
 <h2>Filtering a data.frame by removing rows based on a condition - filter()<a class="headerlink" href="#filtering-a-data-frame-by-removing-rows-based-on-a-condition-filter" title="Permalink to this headline">#</a></h2>
 <p>Here are three scenarios:</p>
 <ul class="simple">
@@ -1862,8 +1861,8 @@ title="Print to PDF"
 </div></div>
 </div>
 <p><strong><em>TIP</em></strong>: it is very easy to remove missing values by using the !<a class="reference external" href="http://is.na">is.na</a>(variable) command. E.g. if some flowers are missing petal length measurements, you can exclude them by doing <strong><code class="docutils literal notranslate"><span class="pre">filter(dat,</span> <span class="pre">!is.na(Petal.Length))</span></code></strong></p>
-</section>
-<section id="removing-selecting-columns-to-keep-select">
+</div>
+<div class="section" id="removing-selecting-columns-to-keep-select">
 <h2>Removing/selecting columns to keep - select()<a class="headerlink" href="#removing-selecting-columns-to-keep-select" title="Permalink to this headline">#</a></h2>
 <p>Often the dataset contains many irrelevant columns that make it difficult to display the dataframe all at once. You can easily choose which columns to keep or remove in a data.frame with the <strong><code class="docutils literal notranslate"><span class="pre">select()</span></code></strong> command. It has complex usage, and I suggest checking the help, i.e. type <code class="docutils literal notranslate"><span class="pre">?select</span></code>. However, the basic usage is as follows:</p>
 <div class="cell docutils container">
@@ -1963,8 +1962,8 @@ title="Print to PDF"
 </table>
 </div></div>
 </div>
-</section>
-<section id="sorting-the-data-frame-by-columns-arrange">
+</div>
+<div class="section" id="sorting-the-data-frame-by-columns-arrange">
 <h2>Sorting the data.frame by columns - arrange()<a class="headerlink" href="#sorting-the-data-frame-by-columns-arrange" title="Permalink to this headline">#</a></h2>
 <p>If you want to sort your data.frame by one or more columns you can use the <code class="docutils literal notranslate"><span class="pre">arrange()</span></code> command, where you list the variables in the order in which you want the sorting to occur. The default is to sort by ascending order for each variable. If you want to sort by descending order for one of them, you can surround the variable in the <code class="docutils literal notranslate"><span class="pre">desc()</span></code> command. Let’s sort the flowers by species, and then within each species, by descending petal length:</p>
 <div class="cell docutils container">
@@ -1994,8 +1993,8 @@ title="Print to PDF"
 </div></div>
 </div>
 <p>Note: since the <code class="docutils literal notranslate"><span class="pre">Species</span></code> variable is a factor, not a numeric variable, it will be sorted by the order listed by <code class="docutils literal notranslate"><span class="pre">levels(dat$Species)</span></code>. You can test this out by uncommenting the second line in the code cell above - since the flowers are now sorted in the reverse <code class="docutils literal notranslate"><span class="pre">Species</span></code> order, the first six rows shown by <code class="docutils literal notranslate"><span class="pre">head()</span></code> are now virginica, not setosa.</p>
-</section>
-<section id="combine-concatenate-values-from-two-columns-into-one-unite">
+</div>
+<div class="section" id="combine-concatenate-values-from-two-columns-into-one-unite">
 <h2>Combine/concatenate values from two columns into one - unite()<a class="headerlink" href="#combine-concatenate-values-from-two-columns-into-one-unite" title="Permalink to this headline">#</a></h2>
 <p>Let’s say flowers with short petals are fundamentally different from those with long petals. I’m going to make a new categorical variable, <code class="docutils literal notranslate"><span class="pre">PetalType</span></code>, that can either be “long” or “short”. <em>To learn more about the <code class="docutils literal notranslate"><span class="pre">ifelse()</span></code> function used below, type <code class="docutils literal notranslate"><span class="pre">?ifelse</span></code>.</em></p>
 <div class="cell docutils container">
@@ -2056,8 +2055,8 @@ title="Print to PDF"
 </div></div>
 </div>
 <p>With <code class="docutils literal notranslate"><span class="pre">mutate()</span></code>, you can also specify the separator (by default it is ‘_’) and whether to remove the original variables. Check the help section for more on how to do this (<code class="docutils literal notranslate"><span class="pre">?unite</span></code>). Note that in the commented section of the cell above, I generated the new variable and the combined variable all at once.</p>
-</section>
-<section id="split-variable-into-multiple-variables-separate">
+</div>
+<div class="section" id="split-variable-into-multiple-variables-separate">
 <h2>Split variable into multiple variables - separate()<a class="headerlink" href="#split-variable-into-multiple-variables-separate" title="Permalink to this headline">#</a></h2>
 <p>The reverse of the operation above is called <code class="docutils literal notranslate"><span class="pre">separate()</span></code>. It becomes useful, for example, if you have the name of participants stored in one variable, but you want to separate it into First and Last name. For the illustration, I will just reverse the above example (adding 1 to the new variables, to distinguish them from the existing Species and PetalType variables):</p>
 <div class="cell docutils container">
@@ -2087,10 +2086,10 @@ title="Print to PDF"
 </div></div>
 </div>
 <p>Like with <code class="docutils literal notranslate"><span class="pre">unite()</span></code>, you can specify the character you want <code class="docutils literal notranslate"><span class="pre">separate()</span></code> to split. For example, splitting at ” ” instead of at the default “_” for the First, Last name example. See <code class="docutils literal notranslate"><span class="pre">?separate</span></code> for more info.</p>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="performing-the-same-operation-for-multiple-groups-and-combining-the-results">
+<div class="tex2jax_ignore mathjax_ignore section" id="performing-the-same-operation-for-multiple-groups-and-combining-the-results">
 <h1>Performing the same operation for multiple groups and combining the results<a class="headerlink" href="#performing-the-same-operation-for-multiple-groups-and-combining-the-results" title="Permalink to this headline">#</a></h1>
 <p>In the filtering example in section 4.3, we saw how to subset the data.frame separately for different species, and then to calculate the summaries. This is inefficient and also creates two separate data.frames. While you can join them manually afterwards, there is a much easier way with the <strong><code class="docutils literal notranslate"><span class="pre">group_by</span></code></strong> command.</p>
 <p>When you pass a data.frame to a <strong>group_by</strong> command, you can specify names of variables, by which to split the data.frame. For example, if we specify the <code class="docutils literal notranslate"><span class="pre">Species</span></code> and <code class="docutils literal notranslate"><span class="pre">PetalType</span></code> variables in the group_by command, the data.frame will be <strong><em>implicitly</em></strong> split into 4 data.frames - one for each combination of species and petal type (note that there are only 2 species for <code class="docutils literal notranslate"><span class="pre">cleaned_dat</span></code> now because we got rid of the “setosa” species in section 4.3). E.g.:</p>
@@ -2210,9 +2209,9 @@ title="Print to PDF"
 </div>
 <p>This plot makes sense, because if you’re calculating <code class="docutils literal notranslate"><span class="pre">SepLen_centering_byspecies</span></code> by subtracting the species mean from each <code class="docutils literal notranslate"><span class="pre">Sepal.Length</span></code> value, the mean of the new values should be 0 for every species. Meanwhile, the <code class="docutils literal notranslate"><span class="pre">SepLen_centering_overall</span></code> values were calculated by subtracting the same amount from all <code class="docutils literal notranslate"><span class="pre">Sepal.Length</span></code> values, regardless of species, so we still see variation for these means across species.</p>
 <p>There are a lot of other handy uses for <code class="docutils literal notranslate"><span class="pre">group_by</span></code>, which will be covered in future tutorials.</p>
-</section>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="restructuring-data-frames-long-to-wide-wide-to-long-and-merging-data-frames">
+<div class="tex2jax_ignore mathjax_ignore section" id="restructuring-data-frames-long-to-wide-wide-to-long-and-merging-data-frames">
 <h1>Restructuring data.frames - long to wide, wide to long, and merging data.frames<a class="headerlink" href="#restructuring-data-frames-long-to-wide-wide-to-long-and-merging-data-frames" title="Permalink to this headline">#</a></h1>
 <p>Remember how in section 2 we talked about how it’s better to have a single observation in each row, instead of multiple observations per row? In this section we’ll use the <code class="docutils literal notranslate"><span class="pre">dplyr</span></code> functions <code class="docutils literal notranslate"><span class="pre">gather</span></code> and <code class="docutils literal notranslate"><span class="pre">spread</span></code> to switch between short and long forms of the data. We’ll also try out combining data.frames using <code class="docutils literal notranslate"><span class="pre">join</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">iris</span></code> data set has multiple measurements per row, so it is currently in the “wide” format. To put it in long format, we can make each row only have one measurement, and then variables that specify whether that measurment is for “sepal” or “petal”, “length” or “width”.</p>
@@ -2318,7 +2317,7 @@ title="Print to PDF"
 </div>
 <p>That’s all the tidyverse functions we’ll cover for now!</p>
 <p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {
