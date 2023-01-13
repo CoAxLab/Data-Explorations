@@ -1,90 +1,28 @@
-# function to install the packages if missing, otherwise, just load them
-import_packages <- function(packages) {
-    for (package in packages) {
-        if (!(package %in% row.names(installed.packages()))) { #if the package is not installed
-            install.packages(package, repos = "http://cran.us.r-project.org") #install from archive
-        } 
-        library(package, character.only = TRUE) #load the set of packages that you gave to the function
-    }
-}
-
-import_packages(c('tidyverse')) #call the function with tidyverse as the input
-
-6+2
-10-3*4
-5^3
-
-a <- c(1,2,3)
-b <- c(4,5,6)
-print(paste("mean of vector a:",mean(a)))
-print(paste("sum of vector b:",sum(b)))
-
-a*b
-
-c <- c("one","two","three")
-data <- data.frame(avar=a,bvar=b,cvar=c)
-data
-
-a[2]
-
-data[2,1]
-
-data$bvar
-
-print("Column 3")
-data[,3]
-
-print("Row 1")
-data[1,]
-
-long_data <- data.frame(subject = rep(1:3, each=4),
-                        timepoint = rep(1:4, times=3),
-                        observation = round(rnorm(12), 2))
-long_data
-
-long_data  %>% 
-    mutate(timepoint = paste0('time',timepoint))  %>% 
-    spread(timepoint, observation)
-
-mean(long_data$observation)
-
-long_data$observation  %>% mean()
-
-# nested
-round(mean(long_data$observation), 2)
-
-# tmp variable
-obs_mean = mean(long_data$observation)
-round(obs_mean, 2)
-
-# with pipes
-long_data$observation  %>% mean()  %>% round(2)
-
-# pipes on separate rows:
-long_data$observation  %>% 
-  mean() %>% 
-  round(2)
-
-# with pipes
-long_data  %>% 
-    mutate(timepoint = paste0('time',timepoint))  %>% 
-    spread(timepoint, observation)
-
-# nested functions
-spread(mutate(long_data, timepoint = paste0('time',timepoint)), timepoint, observation)
-
-# temporary variables
-mutated_data <- mutate(long_data, timepoint = paste0('time',timepoint))
-spread(mutated_data, timepoint, observation)
+install.packages('tidyverse')
+library(tidyverse)
 
 dat <- iris
 head(dat)
 
-?iris
+mean(iris$Sepal.Width)
 
-head(dat)
+iris$Sepal.Width %>% mean()
 
-dat <- mutate(dat, centered_SepLen = Sepal.Length - mean(Sepal.Length))
+# nested
+round(mean(iris$Sepal.Width), 2)
+
+# tmp variable
+obs_mean = mean(iris$Sepal.Width)
+round(obs_mean, 2)
+
+# with pipes
+iris$Sepal.Width %>% 
+    mean() %>% 
+    round(2)
+
+dat <- dat  %>%  #need to reassign the dat object with our new changes
+    mutate(centered_SepLen = Sepal.Length - mean(Sepal.Length))
+
 head(dat)
 
 # center sepal length
@@ -98,22 +36,21 @@ dat <- dat  %>%
            n_flowers = length(Species))              # calculate the total number of flowers
 head(dat)
 
-smry <- dat  %>% 
-    summarise(n_flowers = length(Species), # how many observations (flowers) are there total? 
-              shortSepal_prop = mean(centered_SepLen < 0), # what proportion of these flowers have smaller-than-average sepal length?
-              setosa_prop = mean(Species == 'setosa'), # what proportion of measured flowers are species Setosa?
-              SepLen_mean = mean(Sepal.Length), # mean sepal length
-              SepLen_sd = sd(Sepal.Length), # standard deviation of sepal length
+smry <- dat  %>% #creating new smry object
+    summarise(n_flowers = length(Species), #how many observations (flowers) are there total? 
+              shortSepal_prop = mean(centered_SepLen < 0), #what prop. have smaller-than-average sepal length?
+              setosa_prop = mean(Species == 'setosa'), #what prop. of measured flowers are species Setosa?
+              SepLen_mean = mean(Sepal.Length), #mean sepal length
+              SepLen_sd = sd(Sepal.Length), #standard deviation of sepal length
               SepLen_se = SepLen_sd / sqrt(n_flowers)
               )
 smry
-              
 
 print(paste('species options:',paste(levels(dat$Species),collapse=", ")))
 
 # get rid of all setosa flowers and any flowers with negative sepal lengths
 cleaned_dat <- dat  %>% 
-    filter(Species != 'setosa',
+    filter(Species != 'setosa', #!= is read "not equal to"
            Sepal.Length >= 0)
 
 # make new data.frames for the remaining two species
@@ -135,83 +72,163 @@ dat  %>%
  summarise(SepLen_mean = mean(Sepal.Length),
            SepLen_sd = sd(Sepal.Length))
 
-select(dat, Species, Petal.Length, Petal.Width)  %>% head() 
-#to keep only specific variables, list them one after another like above
+dat  %>% 
+    select(Species, Petal.Length, Petal.Width) %>%
+    head() 
 
-select(dat, -Sepal.Length, -Sepal.Width)  %>% head() #remove original sepal length & width variables
+#remove original petal length & width variables
+dat  %>% 
+    select(-Petal.Length, -Petal.Width) %>%
+    head()  
 
-# look at full data set
+# look at full data set to see order
 head(dat)
+
 # look at just a certain range of variables
-select(dat, Sepal.Length:Species)  %>% head()  #note: this is an inclusive range (first and last variables included)
+dat  %>% 
+    select(Sepal.Length:Species) %>%
+    head()
 
-arrange(dat, Species, desc(Petal.Length))  %>% head()
+dat  %>% 
+    select(starts_with("Petal")) %>% 
+    head()
 
-# arrange(dat, desc(Species), desc(Petal.Length)) %>% head()
+dat %>% 
+    arrange(Species, desc(Petal.Length)) %>%
+    head()
+
+#levels(dat$Species)
+#dat  %>% 
+#    arrange(desc(Species), desc(Petal.Length)) %>%
+#    head()
 
 dat <- dat  %>%  
-    mutate(PetalType = ifelse(Petal.Length > mean(Petal.Length),"long","short"))
-
-barplot(table(dat$PetalType),main="Number of flowers for each PetalType")
+    mutate(PetalType = if_else(Petal.Length > mean(Petal.Length),"long","short"))
 
 head(dat)
-
 
 dat <- dat %>% 
       unite(Combined_var, Species, PetalType, remove=FALSE)
 head(dat)
 
+ggplot(dat, aes(Sepal.Length, Petal.Length, color = Combined_var))+ geom_point(size = 1.5)
+
 dat <- dat  %>% 
-    separate(Combined_var, into=c('Species1', 'PetalType1')) #separate combined variable into the two original variables 
+    separate(Combined_var, into=c('Species1', 'PetalType1'))
 head(dat)
 
-cleaned_dat <- cleaned_dat  %>%  
-    mutate(PetalType = ifelse(Petal.Length > mean(Petal.Length),"long","short")) # this creates the PetalType variable for cleaned_dat
-
-cleaned_dat %>% 
-    group_by(Species, PetalType)  %>% # group them by the
+dat %>% 
+    group_by(Species, PetalType) %>%
     print()
 
-cleaned_dat  %>% 
+dat  %>% 
     group_by(Species, PetalType)  %>% 
     summarise(SepLen_mean = mean(Sepal.Length),
               SepLen_sd = sd(Sepal.Length),
               SepWid_mean = mean(Sepal.Width),
               SepWid_sd = sd(Sepal.Length))
 
-dat  %>% 
- mutate(SepLen_centered_overall = Sepal.Length - mean(Sepal.Length))  %>% #center values by mean for all data
- group_by(Species)  %>% 
- mutate(SepLen_centered_byspecies = Sepal.Length - mean(Sepal.Length))  %>% #center values by mean for each species
- # select(SepLen_centered_overall:SepLen_centered_byspecies) %>% # just show the relevant variables (there are a lot of variables in this data.frame now!)
- head()
 
-dat  %>% 
- mutate(SepLen_centered_overall = Sepal.Length - mean(Sepal.Length))  %>% #center values by mean for all data
+dat_centered  <- dat  %>% 
+ #center values by mean for all data:
+ mutate(SepLen_centered_overall = Sepal.Length - mean(Sepal.Length)) %>% 
  group_by(Species)  %>% 
- mutate(SepLen_centered_byspecies = Sepal.Length - mean(Sepal.Length))  %>% 
- gather(key = centering_type, value = SepLen_centered, SepLen_centered_overall, SepLen_centered_byspecies)  %>% 
- ggplot(aes(Species, SepLen_centered, color=centering_type)) +
-    stat_summary(geom='point',fun=mean) +
+ #center values by mean for each species:
+ mutate(SepLen_centered_byspecies = Sepal.Length - mean(Sepal.Length)) %>% 
+ #just show the relevant variables (there are a lot of variables in this data.frame now!):
+ select(Species, SepLen_centered_overall:SepLen_centered_byspecies)
+
+head(dat_centered)
+
+dat_centered %>% 
+    pivot_longer(c(SepLen_centered_overall, SepLen_centered_byspecies)) %>% 
+    ggplot(aes(Species, value, color=name)) +
+    stat_summary(geom='point',fun=mean, size = 2.5) +
     theme_classic()
 
-newdat <- iris # new duplicate of iris dataset so we don't have to deal with all the messy variables we created
-newdat$flower.num <- 1:nrow(newdat) # like a participant ID, so we can put these back where they came from using "spread"
-newdat <- newdat %>%
-      gather(key="flower_att",value="measurement",
-      Sepal.Length, Sepal.Width, Petal.Length, Petal.Width)
+#Initial dataframe
+nested  <- dat  %>% 
+    select(c(Sepal.Length:Petal.Width, Species, PetalType))
+head(nested)
+
+#nesting
+nested %>% 
+    nest(data = c(Sepal.Length:Petal.Width, PetalType)) %>% 
+    print
+
+nested %>% 
+    nest(data = c(Sepal.Length:Petal.Width, PetalType)) %>% 
+    pull(data) %>% #tidyverse version of $ -- selecting data column
+    first()  %>%  #pulling first row
+    head() #just top 6 lines
+
+nested %>% 
+    nest(data = c(Sepal.Length:Petal.Width)) %>% #re-nesting with different variables
+    print()
+
+nested  %>% 
+    group_by(Species) %>% 
+    nest() %>% 
+    print()
+
+nested  <- nested %>% 
+    group_by(Species, PetalType) %>% 
+    nest() %>% 
+    print()
+
+nested_lm  <- nested  %>% 
+    mutate(model_fit = map(data, #column name in nested df
+                           function(nest_df) lm(Sepal.Length ~ Petal.Length, data=nest_df))) 
+
+print(nested_lm)
+
+nested_lm %>%  
+    pull(model_fit) %>% #tidyverse version of $ -- selecting model_fit column
+    first()  %>%  #pulling first row
+    head(2) #just top 2 lines of nested df
+
+nested_lm <- nested_lm  %>% 
+        mutate(coef = map(model_fit, #now iterating over "model_fit" instead of "data"
+                      #a function to create data frame of coef names/values:
+                      function(fit) data.frame(name = names(fit$coefficients), 
+                                               beta = fit$coefficients)))
+print(nested_lm)
+
+nested_lm  <- nested_lm  %>% 
+        unnest(coef)
+
+print(nested_lm)
+
+newdat <- iris # new duplicate
+newdat$flower.num <- 1:nrow(newdat) # add ID
 head(newdat)
 
-
-
-
 newdat <- newdat %>%
-      spread(flower_att,measurement)
+      pivot_longer(cols = c(Sepal.Length, Sepal.Width, #concatenate to select multiple
+                            Petal.Length, Petal.Width),
+                   names_to = "iris_attribute",
+                   values_to = "value")
 head(newdat)
 
-personal <- data.frame(name = c("p01","p02"), age = c(18,21), firstlang = c("English", "Chinese")) # participant info
-response <- data.frame(name= c("p01","p01","p02","p02"),response=c(0,1,1,0)) # response database
+newdat <- newdat %>%
+      pivot_wider(names_from = "iris_attribute", values_from = "value")
+head(newdat)
+
+# participant info
+personal <- data.frame(name = c("p01", "p02", "p03"),
+                       age = c(18, 21, 23), 
+                       firstlang = c("English", "Chinese", "English"))
+
+# response database
+response <- data.frame(name= c("p01","p01","p02","p02"),
+                       response=c(0,1,1,0))
+head(personal)
 head(response)
 
-response <- response %>% left_join(select(personal,name:age)) # don't need to use "select", but it avoids adding info not needed 
-head(response)
+personal %>% 
+    left_join(response, by = "name") %>% #piped "personal" in, so only one df here
+    head()
+
+personal %>% 
+    right_join(response, by = "name") %>% #piped "personal" in, so only one df here
+    head()

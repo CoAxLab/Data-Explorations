@@ -4,9 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>Tutorial: Data as Objects &#8212; Data explorations</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial: Basic R, Data as Objects, and Tidy Data &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -219,7 +218,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Tutorial: Data as Objects
+     Tutorial: Basic R, Data as Objects, and Tidy Data
     </a>
    </li>
    <li class="toctree-l2">
@@ -241,7 +240,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="techniques-for-data-cleansing.html">
-     Tutorial: Data Cleansing and Tidy data
+     Tutorial: Data Cleansing and the Tidyverse
     </a>
    </li>
    <li class="toctree-l2">
@@ -536,33 +535,11 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/power-analysis-via-simulations.html">
-   Power analysis via simulations
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
-  <label for="toctree-checkbox-18">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="power-analysis-via-simulations.html">
-     Tutorial: Running basic power analyses
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/power-analysis-via-simulations.html">
-     Discussion questions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lectures/mediation-and-moderation.html">
    Mediation and moderation
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
-  <label for="toctree-checkbox-19">
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -574,6 +551,28 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/mediation-and-moderation.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/power-analysis-via-simulations.html">
+   Power analysis via simulations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="power-analysis-via-simulations.html">
+     Tutorial: Running basic power analyses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/power-analysis-via-simulations.html">
      Discussion questions
     </a>
    </li>
@@ -933,7 +932,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Tutorial: Data as Objects
+   Tutorial: Basic R, Data as Objects, and Tidy Data
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
@@ -942,6 +941,45 @@ title="Print to PDF"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-r-commands">
+   Basic R Commands
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arithmetic">
+     Arithmetic
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-structures">
+     Data structures
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vectors">
+       Vectors
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-frames">
+       Data frames
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing">
+     Indexing
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tidy-data">
+   Tidy Data
+  </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#interacting-with-model-objects-in-r">
@@ -957,7 +995,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Tutorial: Data as Objects</h1>
+                <h1>Tutorial: Basic R, Data as Objects, and Tidy Data</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -969,7 +1007,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Tutorial: Data as Objects
+   Tutorial: Basic R, Data as Objects, and Tidy Data
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
@@ -978,6 +1016,45 @@ title="Print to PDF"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-r-commands">
+   Basic R Commands
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arithmetic">
+     Arithmetic
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-structures">
+     Data structures
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vectors">
+       Vectors
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-frames">
+       Data frames
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing">
+     Indexing
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tidy-data">
+   Tidy Data
+  </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#interacting-with-model-objects-in-r">
@@ -994,29 +1071,282 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-data-as-objects">
-<h1>Tutorial: Data as Objects<a class="headerlink" href="#tutorial-data-as-objects" title="Permalink to this headline">#</a></h1>
-<p>In this tutorial, we’ll talk about how to use “model objects” in R.</p>
-<section id="goals">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-basic-r-data-as-objects-and-tidy-data">
+<h1>Tutorial: Basic R, Data as Objects, and Tidy Data<a class="headerlink" href="#tutorial-basic-r-data-as-objects-and-tidy-data" title="Permalink to this headline">#</a></h1>
+<p>In this tutorial, we’ll talk through some basic functions in R, learn how to interact with and extract information from “model objects”, and get a brief introduction to tidy data.</p>
+<div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>Learn how to interact with model objects in R including extracting coefficients</p></li>
-<li><p>Learn how to use the <code class="docutils literal notranslate"><span class="pre">nest()</span></code> function</p></li>
-<li><p>Learn how to use the <code class="docutils literal notranslate"><span class="pre">map()</span></code> function</p></li>
+<li><p>Learn basic R commands</p></li>
+<li><p>Learn about Tidy Data, long data, and wide data</p></li>
+<li><p>Learn how to interact with model objects in R, including extracting coefficients</p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="interacting-with-model-objects-in-r">
-<h1>Interacting with model objects in R<a class="headerlink" href="#interacting-with-model-objects-in-r" title="Permalink to this headline">#</a></h1>
-<p>Whenever you run a regression or any other type of model, the resulting model is saved in an object with properties you can access. This is handy for fitting a model once, and then referencing different aspects of that model’s performance and fit. Let’s see an example:</p>
+<div class="tex2jax_ignore mathjax_ignore section" id="basic-r-commands">
+<h1>Basic R Commands<a class="headerlink" href="#basic-r-commands" title="Permalink to this headline">#</a></h1>
+<div class="section" id="arithmetic">
+<h2>Arithmetic<a class="headerlink" href="#arithmetic" title="Permalink to this headline">#</a></h2>
+<p>In R, you can do basic arithmetic just like any other programming language e.g.,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">6</span> <span class="o">+</span> <span class="m">2</span>
+<span class="m">10</span> <span class="o">-</span> <span class="m">3</span> <span class="o">*</span> <span class="m">4</span>
+<span class="m">5</span><span class="o">^</span><span class="m">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">8</div><div class="output text_html">-2</div><div class="output text_html">125</div></div>
+</div>
+</div>
+<div class="section" id="data-structures">
+<h2>Data structures<a class="headerlink" href="#data-structures" title="Permalink to this headline">#</a></h2>
+<div class="section" id="vectors">
+<h3>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">#</a></h3>
+<p>Vectors are lists of numbers or strings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;mean of vector a:&quot;</span><span class="p">,</span><span class="nf">mean</span><span class="p">(</span><span class="n">a</span><span class="p">)))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;sum of vector b:&quot;</span><span class="p">,</span><span class="nf">sum</span><span class="p">(</span><span class="n">b</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;mean of vector a: 2&quot;
+[1] &quot;sum of vector b: 15&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can do element-wise operations on two vectors easily:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">*</span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>4</li><li>10</li><li>18</li></ol>
+</div></div>
+</div>
+</div>
+<div class="section" id="data-frames">
+<h3>Data frames<a class="headerlink" href="#data-frames" title="Permalink to this headline">#</a></h3>
+<p>Data frames can contain data of mixed types such as numbers and strings. Usually, each column is a different variable (e.g., Age, Test Score), and items within each column are of the same type.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;one&quot;</span><span class="p">,</span> <span class="s">&quot;two&quot;</span><span class="p">,</span> <span class="s">&quot;three&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">avar</span> <span class="o">=</span> <span class="n">a</span><span class="p">,</span><span class="n">bvar</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span><span class="n">cvar</span> <span class="o">=</span> <span class="n">c</span><span class="p">)</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 3 × 3</caption>
+<thead>
+	<tr><th scope=col>avar</th><th scope=col>bvar</th><th scope=col>cvar</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>1</td><td>4</td><td>one  </td></tr>
+	<tr><td>2</td><td>5</td><td>two  </td></tr>
+	<tr><td>3</td><td>6</td><td>three</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>In the data frame printed above, you can see that both variables <strong>avar</strong> and <strong>bvar</strong> are type <strong>&lt;dbl&gt;</strong> (short for “double”, another term for numeric) while variable <strong>cvar</strong> is type <strong>&lt;chr&gt;</strong>, or “character”.</p>
+</div>
+</div>
+<div class="section" id="indexing">
+<h2>Indexing<a class="headerlink" href="#indexing" title="Permalink to this headline">#</a></h2>
+<p>In a vector, you can index data by its position (starting at index 1):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="m">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">2</div></div>
+</div>
+<p>In a data frame, you can index data by its column and row number using <code class="docutils literal notranslate"><span class="pre">data[row,</span> <span class="pre">col]</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">2</div></div>
+</div>
+<p>You can index a particular column in a data frame by its variable name using <code class="docutils literal notranslate"><span class="pre">$</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">$</span><span class="n">bvar</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>4</li><li>5</li><li>6</li></ol>
+</div></div>
+</div>
+<p>Or, you can access a particular column or row by its position in the data frame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;Column 3&quot;</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[,</span><span class="m">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Column 3&quot;
+</pre></div>
+</div>
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'one'</li><li>'two'</li><li>'three'</li></ol>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;Row 1&quot;</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="m">1</span><span class="p">,]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Row 1&quot;
+</pre></div>
+</div>
+<div class="output text_html"><table>
+<caption>A data.frame: 1 × 3</caption>
+<thead>
+	<tr><th></th><th scope=col>avar</th><th scope=col>bvar</th><th scope=col>cvar</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>1</td><td>4</td><td>one</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Or with square brackets and the row or column name:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[,</span><span class="s">&quot;cvar&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'one'</li><li>'two'</li><li>'three'</li></ol>
+</div></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="tex2jax_ignore mathjax_ignore section" id="tidy-data">
+<h1>Tidy Data<a class="headerlink" href="#tidy-data" title="Permalink to this headline">#</a></h1>
+<p>When you are working with data frames, it is best practice to keep your data <strong>tidy</strong>. <strong>Tidy data</strong> is a very specific term in which the following are true:</p>
+<ul class="simple">
+<li><p>Columns are variables</p></li>
+<li><p>Rows are individual observations</p></li>
+<li><p>Observation for each variable is stored in the corresponding cell</p></li>
+</ul>
+<p>There are two versions of the tidy data format - long and wide. To illustrate the difference, imagine a repeated measures dataset, where you gather four observations for each subject at four different time points. In the <strong>long data</strong> format, each row represents an <strong>observation</strong> at a specific timepoint for a specific subject. Each subject has multiple rows of observations. The columns will be <em>subject</em>, <em>timepoint</em>, and <em>observation</em>. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">long_data</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">subject</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">,</span> <span class="n">each</span><span class="o">=</span><span class="m">4</span><span class="p">),</span>
+                        <span class="n">timepoint</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span> <span class="n">times</span><span class="o">=</span><span class="m">3</span><span class="p">),</span>
+                        <span class="n">observation</span> <span class="o">=</span> <span class="nf">round</span><span class="p">(</span><span class="nf">rnorm</span><span class="p">(</span><span class="m">12</span><span class="p">),</span> <span class="m">2</span><span class="p">))</span>
+<span class="n">long_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<caption>A data.frame: 12 × 3</caption>
+<thead>
+	<tr><th scope=col>subject</th><th scope=col>timepoint</th><th scope=col>observation</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>1</td><td>1</td><td> 0.56</td></tr>
+	<tr><td>1</td><td>2</td><td>-0.48</td></tr>
+	<tr><td>1</td><td>3</td><td> 0.64</td></tr>
+	<tr><td>1</td><td>4</td><td>-0.18</td></tr>
+	<tr><td>2</td><td>1</td><td> 0.38</td></tr>
+	<tr><td>2</td><td>2</td><td> 0.56</td></tr>
+	<tr><td>2</td><td>3</td><td>-1.83</td></tr>
+	<tr><td>2</td><td>4</td><td>-0.43</td></tr>
+	<tr><td>3</td><td>1</td><td>-0.94</td></tr>
+	<tr><td>3</td><td>2</td><td>-1.57</td></tr>
+	<tr><td>3</td><td>3</td><td> 1.32</td></tr>
+	<tr><td>3</td><td>4</td><td>-0.31</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Alternatively, the data can be organized in a <strong>wide format</strong>, in which each row is a single <strong>subject</strong>, the four different timepoints are represented as different columns, and the observation for each timepoint is stored at a cell within that column. Like this (don’t worry about the code for now, it is explained in the next tutorial):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">long_data</span>  <span class="o">%&gt;%</span> 
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">timepoint</span> <span class="o">=</span> <span class="nf">paste0</span><span class="p">(</span><span class="s">&#39;time&#39;</span><span class="p">,</span><span class="n">timepoint</span><span class="p">))</span>  <span class="o">%&gt;%</span> 
+    <span class="nf">spread</span><span class="p">(</span><span class="n">timepoint</span><span class="p">,</span> <span class="n">observation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<caption>A data.frame: 3 × 5</caption>
+<thead>
+	<tr><th scope=col>subject</th><th scope=col>time1</th><th scope=col>time2</th><th scope=col>time3</th><th scope=col>time4</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>1</td><td> 0.56</td><td>-0.48</td><td> 0.64</td><td>-0.18</td></tr>
+	<tr><td>2</td><td> 0.38</td><td> 0.56</td><td>-1.83</td><td>-0.43</td></tr>
+	<tr><td>3</td><td>-0.94</td><td>-1.57</td><td> 1.32</td><td>-0.31</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="tex2jax_ignore mathjax_ignore section" id="interacting-with-model-objects-in-r">
+<h1>Interacting with model objects in R<a class="headerlink" href="#interacting-with-model-objects-in-r" title="Permalink to this headline">#</a></h1>
+<p>Whenever you run a regression or any other type of model, the resulting model is saved in an <strong>object</strong> with properties you can access. This is handy for fitting a model once, and then referencing different aspects of that model’s performance and fit. Let’s see an example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span> <span class="c1">#We&#39;ll learn about this package in the next tutorial!</span>
 
 <span class="c1"># generate data where y is a function of two variables, x1 and x2</span>
 <span class="n">x1</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">-4</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">0.5</span><span class="p">)</span> <span class="c1">#generate data ranging from -4 to 4 in steps of 0.5</span>
 <span class="n">x2</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">-4</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">0.5</span><span class="p">)</span>
+
 <span class="c1">#specify a sigmoidal relationship between x1 and y </span>
 <span class="c1">#and a linear relationship between x2 and y</span>
 <span class="n">dat</span> <span class="o">&lt;-</span> <span class="nf">expand.grid</span><span class="p">(</span><span class="n">x1</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="o">=</span><span class="n">x2</span><span class="p">)</span> <span class="o">%&gt;%</span> 
@@ -1027,6 +1357,16 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>── <span class=" -Color -Color-Bold">Attaching packages</span> ─────────────────────────────────────── tidyverse 1.3.2 ──
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">ggplot2</span> 3.3.6      <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">purrr  </span> 0.3.5 
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">tibble </span> 3.1.8      <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">dplyr  </span> 1.0.10
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">tidyr  </span> 1.2.1      <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">stringr</span> 1.4.1 
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">readr  </span> 2.1.3      <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">forcats</span> 0.5.2 
+── <span class=" -Color -Color-Bold">Conflicts</span> ────────────────────────────────────────── tidyverse_conflicts() ──
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">filter()</span> masks <span class=" -Color -Color-Blue">stats</span>::filter()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">lag()</span>    masks <span class=" -Color -Color-Blue">stats</span>::lag()
+</pre></div>
+</div>
 <div class="output text_html"><table class="dataframe">
 <caption>A data.frame: 6 × 3</caption>
 <thead>
@@ -1044,7 +1384,8 @@ title="Print to PDF"
 </table>
 </div></div>
 </div>
-<p>(Note that <code class="docutils literal notranslate"><span class="pre">expand.grid</span></code> just creates a data frame with all possible pairs of the input variables. So here, each value of <code class="docutils literal notranslate"><span class="pre">x1</span></code> was paired with an <code class="docutils literal notranslate"><span class="pre">x2</span></code> value of -4, then with an <code class="docutils literal notranslate"><span class="pre">x2</span></code> value of -3.5, etc…)</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">expand.grid</span></code> just creates a data frame with all possible pairs of the input variables. So here, each value of <code class="docutils literal notranslate"><span class="pre">x1</span></code> was paired with an <code class="docutils literal notranslate"><span class="pre">x2</span></code> value of -4, then with an <code class="docutils literal notranslate"><span class="pre">x2</span></code> value of -3.5, etc…</p>
+<p>We’ll learn more about the pipe (%&gt;%) and <code class="docutils literal notranslate"><span class="pre">mutate</span></code> in the next tutorial!</p>
 <p>Here is how y depends on x1 and x2:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1061,7 +1402,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/data-as-objects-and-architectures_6_0.png" src="../_images/data-as-objects-and-architectures_6_0.png" />
+<img alt="../_images/data-as-objects-and-architectures_32_0.png" src="../_images/data-as-objects-and-architectures_32_0.png" />
 </div>
 </div>
 <p>Now, let’s add some noise and try to fit a regression model</p>
@@ -1076,7 +1417,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>The resulting model is saved in the <code class="docutils literal notranslate"><span class="pre">model_fit</span></code> variable. This is the “model object”, and you can do a number of things with it. First, the <code class="docutils literal notranslate"><span class="pre">str</span></code> command, which is a general function for printing the structure of r objects, will tell you what you can find in the model object. As you can see below, it is a list of different variables, which you can access by typing the name of the model, followed by <code class="docutils literal notranslate"><span class="pre">$variable</span></code>.</p>
+<p>The resulting model is saved in the <code class="docutils literal notranslate"><span class="pre">model_fit</span></code> variable. This is the “model object”, and you can do a number of things with it. First, the <code class="docutils literal notranslate"><span class="pre">str()</span></code> command, which is a general function for printing the structure of r objects, will tell you what you can find in the model object. As you can see below, it is a list of different variables, which you can access by typing the name of the model, followed by <code class="docutils literal notranslate"><span class="pre">$variable</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">str</span><span class="p">(</span><span class="n">model_fit</span><span class="p">)</span> <span class="c1">#print the structure of the model object</span>
@@ -1159,7 +1500,7 @@ title="Print to PDF"
 .dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
 .dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
 .dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
-</style><dl class=dl-inline><dt>(Intercept)</dt><dd>0.503229779527678</dd><dt>x1</dt><dd>0.147682156091528</dd><dt>x2</dt><dd>0.0979845880466721</dd></dl>
+</style><dl class=dl-inline><dt>(Intercept)</dt><dd>0.503054186787634</dd><dt>x1</dt><dd>0.145736690427283</dd><dt>x2</dt><dd>0.101914512975517</dd></dl>
 </div></div>
 </div>
 <p>If we run multiple models, we might want to store these values in a data.frame, rather than a named vector like this:</p>
@@ -1181,52 +1522,52 @@ title="Print to PDF"
 	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><th scope=row>(Intercept)</th><td>(Intercept)</td><td>0.50808129</td></tr>
-	<tr><th scope=row>x1</th><td>x1         </td><td>0.14541006</td></tr>
-	<tr><th scope=row>x2</th><td>x2         </td><td>0.09802597</td></tr>
+	<tr><th scope=row>(Intercept)</th><td>(Intercept)</td><td>0.5030542</td></tr>
+	<tr><th scope=row>x1</th><td>x1         </td><td>0.1457367</td></tr>
+	<tr><th scope=row>x2</th><td>x2         </td><td>0.1019145</td></tr>
 </tbody>
 </table>
 </div></div>
 </div>
-<p>You can extract the prediction of the model. They are stored under <code class="docutils literal notranslate"><span class="pre">$fitted.values</span></code>, or you can also get them by typing <code class="docutils literal notranslate"><span class="pre">fitted(model_fit)</span></code>, which returns the same values. Then, we can plot the observed values against the predicted values:</p>
+<p>You can also extract the prediction of the model. They are stored under <code class="docutils literal notranslate"><span class="pre">$fitted.values</span></code>, or you can get them by typing <code class="docutils literal notranslate"><span class="pre">fitted(model_fit)</span></code>, which returns the same values. Then, we can plot the observed values against the predicted values:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#extract model estimate of y for each x and store in df as fitted</span>
 <span class="n">dat</span><span class="o">$</span><span class="n">fitted</span> <span class="o">&lt;-</span> <span class="n">model_fit</span><span class="o">$</span><span class="n">fitted.values</span> 
 
-<span class="c1">#plot against the observed data </span>
-<span class="nf">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">fitted</span><span class="p">,</span> <span class="n">y_obs</span><span class="p">))</span> <span class="o">+</span> 
-    <span class="nf">stat_summary</span><span class="p">(</span><span class="n">geom</span><span class="o">=</span><span class="s">&#39;point&#39;</span><span class="p">,</span><span class="n">fun</span><span class="o">=</span><span class="n">mean</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span> <span class="c1">#we see &quot;fitted&quot; column added</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/data-as-objects-and-architectures_16_0.png" src="../_images/data-as-objects-and-architectures_16_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span> <span class="c1">#dataframe for fitted and obs. values. </span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table>
+<div class="output text_html"><table class="dataframe">
 <caption>A data.frame: 6 × 5</caption>
 <thead>
 	<tr><th></th><th scope=col>x1</th><th scope=col>x2</th><th scope=col>y</th><th scope=col>y_obs</th><th scope=col>fitted</th></tr>
 	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-	<tr><th scope=row>1</th><td>-4.0</td><td>-4</td><td>-0.3820138</td><td>-0.2334409</td><td>-0.4794372</td></tr>
-	<tr><th scope=row>2</th><td>-3.5</td><td>-4</td><td>-0.3706878</td><td>-0.3947202</td><td>-0.4055961</td></tr>
-	<tr><th scope=row>3</th><td>-3.0</td><td>-4</td><td>-0.3525741</td><td>-0.4338976</td><td>-0.3317550</td></tr>
-	<tr><th scope=row>4</th><td>-2.5</td><td>-4</td><td>-0.3241418</td><td>-0.1831898</td><td>-0.2579140</td></tr>
-	<tr><th scope=row>5</th><td>-2.0</td><td>-4</td><td>-0.2807971</td><td>-0.4672971</td><td>-0.1840729</td></tr>
-	<tr><th scope=row>6</th><td>-1.5</td><td>-4</td><td>-0.2175745</td><td>-0.1628049</td><td>-0.1102318</td></tr>
+	<tr><th scope=row>1</th><td>-4.0</td><td>-4</td><td>-0.3820138</td><td>-0.39720021</td><td>-0.4875506</td></tr>
+	<tr><th scope=row>2</th><td>-3.5</td><td>-4</td><td>-0.3706878</td><td>-0.40502036</td><td>-0.4146823</td></tr>
+	<tr><th scope=row>3</th><td>-3.0</td><td>-4</td><td>-0.3525741</td><td>-0.37797924</td><td>-0.3418139</td></tr>
+	<tr><th scope=row>4</th><td>-2.5</td><td>-4</td><td>-0.3241418</td><td>-0.41380740</td><td>-0.2689456</td></tr>
+	<tr><th scope=row>5</th><td>-2.0</td><td>-4</td><td>-0.2807971</td><td>-0.20525168</td><td>-0.1960772</td></tr>
+	<tr><th scope=row>6</th><td>-1.5</td><td>-4</td><td>-0.2175745</td><td>-0.09077483</td><td>-0.1232089</td></tr>
 </tbody>
 </table>
 </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#plot fitted against the observed data </span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">fitted</span><span class="p">,</span> <span class="n">y_obs</span><span class="p">))</span> <span class="o">+</span> 
+    <span class="nf">stat_summary</span><span class="p">(</span><span class="n">geom</span><span class="o">=</span><span class="s">&#39;point&#39;</span><span class="p">,</span><span class="n">fun</span><span class="o">=</span><span class="n">mean</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/data-as-objects-and-architectures_43_0.png" src="../_images/data-as-objects-and-architectures_43_0.png" />
+</div>
 </div>
 <p>Given your fitted model, you can also easily generate predictions of y given new values of x using the <code class="docutils literal notranslate"><span class="pre">predict</span></code> function:</p>
 <div class="cell docutils container">
@@ -1239,182 +1580,9 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output text_html"><strong>1:</strong> 0.744664879536758</div></div>
 </div>
-<p>This is where the fun part comes in. You can use the <code class="docutils literal notranslate"><span class="pre">nest</span></code> and <code class="docutils literal notranslate"><span class="pre">map</span></code> commands from <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code> to fit a model for different subgroups, then extract the results of all models. Let’s pretend that x1 is the participant number and we have different subjects, for which we have y and x2 values.</p>
-<p>First, nest creates a nested data.frame, in which the data.frame for each group is stored in a different cell</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span>  <span class="o">&lt;-</span> <span class="n">dat</span>  <span class="o">%&gt;%</span>
-        <span class="nf">group_by</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span> <span class="o">%&gt;%</span>
-        <span class="nf">nest</span><span class="p">()</span>
-
-<span class="nf">print</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 17 × 2
-# Groups:   x1 [17]
-      x1 data             
-   &lt;dbl&gt; &lt;list&gt;           
- 1  -<span class=" -Color -Color-Red">4</span>   &lt;tibble [17 × 3]&gt;
- 2  -<span class=" -Color -Color-Red">3.5</span> &lt;tibble [17 × 3]&gt;
- 3  -<span class=" -Color -Color-Red">3</span>   &lt;tibble [17 × 3]&gt;
- 4  -<span class=" -Color -Color-Red">2.5</span> &lt;tibble [17 × 3]&gt;
- 5  -<span class=" -Color -Color-Red">2</span>   &lt;tibble [17 × 3]&gt;
- 6  -<span class=" -Color -Color-Red">1.5</span> &lt;tibble [17 × 3]&gt;
- 7  -<span class=" -Color -Color-Red">1</span>   &lt;tibble [17 × 3]&gt;
- 8  -<span class=" -Color -Color-Red">0.5</span> &lt;tibble [17 × 3]&gt;
- 9   0   &lt;tibble [17 × 3]&gt;
-10   0.5 &lt;tibble [17 × 3]&gt;
-11   1   &lt;tibble [17 × 3]&gt;
-12   1.5 &lt;tibble [17 × 3]&gt;
-13   2   &lt;tibble [17 × 3]&gt;
-14   2.5 &lt;tibble [17 × 3]&gt;
-15   3   &lt;tibble [17 × 3]&gt;
-16   3.5 &lt;tibble [17 × 3]&gt;
-17   4   &lt;tibble [17 × 3]&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<p>What we see here is that each “participant” has their own 17 x 3 tibble. Why these dimensions? We simulated <code class="docutils literal notranslate"><span class="pre">x1</span></code> and <code class="docutils literal notranslate"><span class="pre">x2</span></code> to be identical, both 17 observations long. The 3 columns are for <code class="docutils literal notranslate"><span class="pre">x2</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, and <code class="docutils literal notranslate"><span class="pre">y_obs</span></code>. They are just now grouped by <code class="docutils literal notranslate"><span class="pre">x1</span></code>.</p>
-<p>Remember, we want to fit models to each subgroup. The <code class="docutils literal notranslate"><span class="pre">map</span></code> function applies a given function to a set of data in an iterative way – so this would be a convenient approach. Some of the benefits of using <code class="docutils literal notranslate"><span class="pre">map</span></code> are that you do not have to write a series of for-loops (it’s efficient/vectorized) and it makes your code easier to read (and thus error check). Now you can use <code class="docutils literal notranslate"><span class="pre">map</span></code> to fit a model to each subgroup like this:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span>  <span class="o">&lt;-</span> <span class="n">dat</span>  <span class="o">%&gt;%</span> 
-    <span class="nf">mutate</span><span class="p">(</span><span class="n">model_fit</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">data</span><span class="p">,</span>
-                           <span class="nf">function</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="nf">lm</span><span class="p">(</span><span class="n">y_obs</span> <span class="o">~</span> <span class="n">x2</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)))</span>
-
-<span class="nf">print</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 17 × 3
-# Groups:   x1 [17]
-      x1 data              model_fit
-   &lt;dbl&gt; &lt;list&gt;            &lt;list&gt;   
- 1  -<span class=" -Color -Color-Red">4</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;     
- 2  -<span class=" -Color -Color-Red">3.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;     
- 3  -<span class=" -Color -Color-Red">3</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;     
- 4  -<span class=" -Color -Color-Red">2.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;     
- 5  -<span class=" -Color -Color-Red">2</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;     
- 6  -<span class=" -Color -Color-Red">1.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;     
- 7  -<span class=" -Color -Color-Red">1</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;     
- 8  -<span class=" -Color -Color-Red">0.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;     
- 9   0   &lt;tibble [17 × 3]&gt; &lt;lm&gt;     
-10   0.5 &lt;tibble [17 × 3]&gt; &lt;lm&gt;     
-11   1   &lt;tibble [17 × 3]&gt; &lt;lm&gt;     
-12   1.5 &lt;tibble [17 × 3]&gt; &lt;lm&gt;     
-13   2   &lt;tibble [17 × 3]&gt; &lt;lm&gt;     
-14   2.5 &lt;tibble [17 × 3]&gt; &lt;lm&gt;     
-15   3   &lt;tibble [17 × 3]&gt; &lt;lm&gt;     
-16   3.5 &lt;tibble [17 × 3]&gt; &lt;lm&gt;     
-17   4   &lt;tibble [17 × 3]&gt; &lt;lm&gt;     
-</pre></div>
-</div>
-</div>
-</div>
-<p>Let’s break down what is going on in the <code class="docutils literal notranslate"><span class="pre">mutate</span></code> line above:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">model_fit</span></code> is the name of our new column</p></li>
-<li><p>The first argument of <code class="docutils literal notranslate"><span class="pre">map</span></code> is what we want our function to iterate over. In this case, <code class="docutils literal notranslate"><span class="pre">data</span></code> is the name of the column of our nested tibbles.</p></li>
-<li><p>The second argument of <code class="docutils literal notranslate"><span class="pre">map</span></code> is whatever function you want performed. Here, we specified our own function (a linear model), but you could also use built-in functions.</p></li>
-</ul>
-<p>So basically, for each observation of <code class="docutils literal notranslate"><span class="pre">data</span></code>, <code class="docutils literal notranslate"><span class="pre">map</span></code> will perform the function. It’s just that in this case, a single observation of <code class="docutils literal notranslate"><span class="pre">data</span></code> is an entire tibble.</p>
-<p>(Note that <code class="docutils literal notranslate"><span class="pre">map</span></code> operates basically the same as the <code class="docutils literal notranslate"><span class="pre">*apply</span></code> family of functions (e.g., <code class="docutils literal notranslate"><span class="pre">lapply()</span></code>, <code class="docutils literal notranslate"><span class="pre">sapply</span></code>, etc.) but since <code class="docutils literal notranslate"><span class="pre">map</span></code> is part of the tidyverse, it plays better with tidyverse grammar and is more standardized.)</p>
-<p>Our resulting models are stored in each cell of the model_fit column. Let’s see what’s included in a single cell in this column:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span><span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="s">&quot;model_fit&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table class="dataframe">
-<caption>A tibble: 1 × 1</caption>
-<thead>
-	<tr><th scope=col>model_fit</th></tr>
-	<tr><th scope=col>&lt;list&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><td>-0.02660423, 0.103168, -0.1372348, 0.03059727, -0.02660468, 0.08687411, 0.1791387, -0.2292829, 0.06875712, -0.1114032, 0.09896134, -0.01441061, 0.1396485, 0.1815616, -0.1479196, -0.07825647, 0.02050686, 0.01632427, -0.07725744, 0.1096921, 1.041945, -0.009751889, 0.1059652, 0.2004681, -0.2057152, 0.09456317, -0.08335881, 0.129244, 0.01811038, 0.1744078, 0.2185592, -0.1086836, -0.03678222, 0.06421942, 0.06227515, -0.02906825, 2, -0.4392761, -0.3876921, -0.3361081, -0.2845241, -0.2329402, -0.1813562, -0.1297722, -0.07818821, -0.02660423, 0.02497975, 0.07656373, 0.1281477, 0.1797317, 0.2313157, 0.2828997, 0.3344836, 0.3860676, 0, 1, -4.123106, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 0.2425356, 1.776357e-15, 10.0995, 0.2197359, 0.1702285, 0.1207211, 0.07121375, 0.02170637, -0.02780101, -0.07730838, -0.1268158, -0.1763231, -0.2258305, -0.2753379, -0.3248453, -0.3743526, -0.42386, -0.4733674, 1.242536, 1.269243, 1, 2, 1e-07, 2, 15, lm(formula = y_obs ~ x2, data = data), y_obs ~ x2, -0.5765109, -0.3570948, -0.3627128, -0.19765, -0.05380143, -0.4106391, -0.06101507, -0.1895914, 0.07235711, 0.01056914, 0.2162122, 0.3097093, 0.03181212, 0.1530592, 0.3034065, 0.3508079, 0.3088102, -4, -3.5, -3, -2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4</td></tr>
-</tbody>
-</table>
-</div></div>
-</div>
-<p>Super ugly, but this is the actual model fit information for our first row.</p>
-<p>It’s much easier to extract the information you need from each model. Let’s extract the coefficients:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="o">&lt;-</span> <span class="n">dat</span>  <span class="o">%&gt;%</span> 
-        <span class="nf">mutate</span><span class="p">(</span><span class="n">coef</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">model_fit</span><span class="p">,</span> <span class="c1">#now iterating over &quot;model_fit&quot; instead of &quot;data&quot;</span>
-                      <span class="c1">#a function to create data frame of coef names/values:</span>
-                      <span class="nf">function</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="nf">names</span><span class="p">(</span><span class="n">fit</span><span class="o">$</span><span class="n">coefficients</span><span class="p">),</span> 
-                                               <span class="n">beta</span> <span class="o">=</span> <span class="n">fit</span><span class="o">$</span><span class="n">coefficients</span><span class="p">)))</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 17 × 4
-# Groups:   x1 [17]
-      x1 data              model_fit coef        
-   &lt;dbl&gt; &lt;list&gt;            &lt;list&gt;    &lt;list&gt;      
- 1  -<span class=" -Color -Color-Red">4</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
- 2  -<span class=" -Color -Color-Red">3.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
- 3  -<span class=" -Color -Color-Red">3</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
- 4  -<span class=" -Color -Color-Red">2.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
- 5  -<span class=" -Color -Color-Red">2</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
- 6  -<span class=" -Color -Color-Red">1.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
- 7  -<span class=" -Color -Color-Red">1</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
- 8  -<span class=" -Color -Color-Red">0.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
- 9   0   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
-10   0.5 &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
-11   1   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
-12   1.5 &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
-13   2   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
-14   2.5 &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
-15   3   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
-16   3.5 &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
-17   4   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<p>They are again stored in a column called coef that holds a data frame in each cell. If you want to then finally just get a data.frame with coefficients, you can unnest the results:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span>  <span class="o">&lt;-</span> <span class="n">dat</span>  <span class="o">%&gt;%</span> 
-        <span class="nf">unnest</span><span class="p">(</span><span class="n">coef</span><span class="p">)</span>
-
-<span class="nf">print</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 34 × 5
-# Groups:   x1 [17]
-      x1 data              model_fit name           beta
-   &lt;dbl&gt; &lt;list&gt;            &lt;list&gt;    &lt;chr&gt;         &lt;dbl&gt;
- 1  -<span class=" -Color -Color-Red">4</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      (Intercept) -<span class=" -Color -Color-Red">0.0266</span>
- 2  -<span class=" -Color -Color-Red">4</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      x2           0.103 
- 3  -<span class=" -Color -Color-Red">3.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;      (Intercept)  0.0336
- 4  -<span class=" -Color -Color-Red">3.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;      x2           0.0900
- 5  -<span class=" -Color -Color-Red">3</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      (Intercept)  0.103 
- 6  -<span class=" -Color -Color-Red">3</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      x2           0.104 
- 7  -<span class=" -Color -Color-Red">2.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;      (Intercept)  0.0975
- 8  -<span class=" -Color -Color-Red">2.5</span> &lt;tibble [17 × 3]&gt; &lt;lm&gt;      x2           0.0883
- 9  -<span class=" -Color -Color-Red">2</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      (Intercept)  0.0941
-10  -<span class=" -Color -Color-Red">2</span>   &lt;tibble [17 × 3]&gt; &lt;lm&gt;      x2           0.0944
-# … with 24 more rows
-</pre></div>
-</div>
-</div>
-</div>
-<p>You can find additional information on this approach here: <a class="reference external" href="http://omaymas.github.io/Climate_Change_ExpAnalysis/">http://omaymas.github.io/Climate_Change_ExpAnalysis/</a></p>
+<p>That’s all for now! We’ll dive into some more advanced functions for data manipulation in R in the next tutorial.</p>
 <p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, Amy Sentis, and Fiona Horner.</em></p>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {

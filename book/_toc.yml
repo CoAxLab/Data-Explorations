@@ -81,15 +81,15 @@ parts:
       - file: notebooks/resampling-methods
       - file: discussions/resampling-methods
       - file: exercises/resampling-methods
-    - file: lectures/power-analysis-via-simulations
-      sections:
-      - file: notebooks/power-analysis-via-simulations
-      - file: discussions/power-analysis-via-simulations
     - file: lectures/mediation-and-moderation
       sections:
       - file: notebooks/mediation-and-moderation
       - file: discussions/mediation-and-moderation
       - file: exercises/mediation-and-moderation
+    - file: lectures/power-analysis-via-simulations
+      sections:
+      - file: notebooks/power-analysis-via-simulations
+      - file: discussions/power-analysis-via-simulations
     - file: lectures/selecting-the-best-model
       sections: 
       - file: notebooks/selecting-the-best-model

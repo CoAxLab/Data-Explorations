@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutorial: Getting started &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -217,7 +216,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="data-as-objects-and-architectures.html">
-     Tutorial: Data as Objects
+     Tutorial: Basic R, Data as Objects, and Tidy Data
     </a>
    </li>
    <li class="toctree-l2">
@@ -239,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="techniques-for-data-cleansing.html">
-     Tutorial: Data Cleansing and Tidy data
+     Tutorial: Data Cleansing and the Tidyverse
     </a>
    </li>
    <li class="toctree-l2">
@@ -534,33 +533,11 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/power-analysis-via-simulations.html">
-   Power analysis via simulations
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
-  <label for="toctree-checkbox-18">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="power-analysis-via-simulations.html">
-     Tutorial: Running basic power analyses
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/power-analysis-via-simulations.html">
-     Discussion questions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lectures/mediation-and-moderation.html">
    Mediation and moderation
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
-  <label for="toctree-checkbox-19">
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -572,6 +549,28 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/mediation-and-moderation.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/power-analysis-via-simulations.html">
+   Power analysis via simulations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="power-analysis-via-simulations.html">
+     Tutorial: Running basic power analyses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/power-analysis-via-simulations.html">
      Discussion questions
     </a>
    </li>
@@ -1050,24 +1049,24 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-getting-started">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-getting-started">
 <h1>Tutorial: Getting started<a class="headerlink" href="#tutorial-getting-started" title="Permalink to this headline">#</a></h1>
 <p>Welcome to you first tutorial for Data Science for Psychology and Neuroscience! This tutorial will get help you get set up using R and Jupyter notebooks. All coding for this class will be done in R, and you will submit all homeworks as Jupyter notebooks.</p>
-<section id="goals">
+<div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Learn how to set up and begin to use R and RStudio</p></li>
 <li><p>Learn how to set up and use Jupyter notebooks</p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="installing-r-and-rstudio">
+<div class="tex2jax_ignore mathjax_ignore section" id="installing-r-and-rstudio">
 <h1>Installing R and RStudio<a class="headerlink" href="#installing-r-and-rstudio" title="Permalink to this headline">#</a></h1>
 <p>R is an excellent tool for statistical computing, and it’s free! To download <strong>the latest version of R (currently, 4.1.2)</strong> on your computer, go to <a class="reference external" href="http://lib.stat.cmu.edu/R/CRAN/">http://lib.stat.cmu.edu/R/CRAN/</a> and get the correct one for your operating system (Mac, Windows, etc). If you run into problems, you can check out <a class="reference external" href="https://www.datacamp.com/community/tutorials/installing-R-windows-mac-ubuntu">this tutorial</a> and <a class="reference external" href="http://lib.stat.cmu.edu/R/CRAN/faqs.html">this FAQ page</a>. If that doesn’t help, you can email one of the instructors.
 R is great on its own, but RStudio is software that will make it a little nicer to view your code, see documentation about functions, and look at plots. Go <a class="reference external" href="https://rstudio.com/products/rstudio/download/">here</a> to download RStudio.
 The tutorial linked above also has instructions for installing RStudio, if you need them.</p>
-<section id="trying-it-out">
+<div class="section" id="trying-it-out">
 <h2>Trying it out<a class="headerlink" href="#trying-it-out" title="Permalink to this headline">#</a></h2>
 <p>Once you’ve got both of these set up, test it out! Open RStudio and type the following:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>?hist
@@ -1084,12 +1083,12 @@ The tutorial linked above also has instructions for installing RStudio, if you n
 </div>
 <p>A window to the right will display your histogram.</p>
 <p>To learn more about things you can do with RStudio, you can check out <a class="reference external" href="https://www.youtube.com/watch?v=lVKMsaWju8w">this video</a>.</p>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="jupyter-julia-python-and-r-notebooks">
+<div class="tex2jax_ignore mathjax_ignore section" id="jupyter-julia-python-and-r-notebooks">
 <h1>Jupyter [Julia, Python, and R] Notebooks<a class="headerlink" href="#jupyter-julia-python-and-r-notebooks" title="Permalink to this headline">#</a></h1>
-<section id="why-use-jupyter-notebooks">
+<div class="section" id="why-use-jupyter-notebooks">
 <h2>Why use Jupyter notebooks?<a class="headerlink" href="#why-use-jupyter-notebooks" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>They are an effective form of scientific communication for a variety of audiences</p>
@@ -1114,8 +1113,8 @@ The tutorial linked above also has instructions for installing RStudio, if you n
 </ul>
 </li>
 </ul>
-</section>
-<section id="installation">
+</div>
+<div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h2>
 <p>First, download and install <a class="reference external" href="https://www.anaconda.com/download/#macosx">anaconda</a>, choosing the version associated with the latest version of Python. Anaconda is a distribution of scientific computing packages that makes it easy to install jupyter along with all of its prerequisites in a single step.</p>
 <p>Note that if you’re using Windows, you should check the option presented during installation to “add Anaconda to your PATH environment variable”. This will allow you to launch notebooks from the terminal (heads up: the terminal is also referred to as the console or the command line - we’ll try to stick with “terminal” in these tutorials, though).</p>
@@ -1129,10 +1128,10 @@ The tutorial linked above also has instructions for installing RStudio, if you n
 <p><img alt="picture" src="https://drive.google.com/uc?id=1yUh0c3RHkoBMwL4uPJSWjZlUwB_A5IEf" /></p>
 <p>If you’re having installation issues, look <a class="reference external" href="https://jupyter.org/install">here</a> for help.
 For more about jupyter notebooks, including lots of ways to customize them, see the <a class="reference external" href="https://jupyter.org/documentation">documentation</a>.</p>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="installing-the-r-kernel-for-jupyter-notebooks">
+<div class="tex2jax_ignore mathjax_ignore section" id="installing-the-r-kernel-for-jupyter-notebooks">
 <h1>Installing the R kernel for Jupyter notebooks<a class="headerlink" href="#installing-the-r-kernel-for-jupyter-notebooks" title="Permalink to this headline">#</a></h1>
 <p>First, you must have Jupyter notebooks and a native R installation installed. Then you can install the R kernel for jupyter notebooks.</p>
 <p><strong>If you are using OS X</strong>, you must execute these lines from the terminal. First, invoke R:</p>
@@ -1158,7 +1157,7 @@ IRkernel::installspec<span class="o">()</span>  <span class="c1"># to register t
 <p>You should now be able to select the R kernel when you create a new notebook:<br />
 <img alt="picture" src="https://drive.google.com/uc?id=1_XX0Gaa5ESMPhsl5M8IuqCTh70zMxV5w" /></p>
 <p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {

@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Exercises: Mixed effects &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -219,7 +218,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/data-as-objects-and-architectures.html">
-     Tutorial: Data as Objects
+     Tutorial: Basic R, Data as Objects, and Tidy Data
     </a>
    </li>
    <li class="toctree-l2">
@@ -241,7 +240,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/techniques-for-data-cleansing.html">
-     Tutorial: Data Cleansing and Tidy data
+     Tutorial: Data Cleansing and the Tidyverse
     </a>
    </li>
    <li class="toctree-l2">
@@ -536,33 +535,11 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/power-analysis-via-simulations.html">
-   Power analysis via simulations
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
-  <label for="toctree-checkbox-18">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/power-analysis-via-simulations.html">
-     Tutorial: Running basic power analyses
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/power-analysis-via-simulations.html">
-     Discussion questions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lectures/mediation-and-moderation.html">
    Mediation and moderation
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
-  <label for="toctree-checkbox-19">
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -574,6 +551,28 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/mediation-and-moderation.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/power-analysis-via-simulations.html">
+   Power analysis via simulations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/power-analysis-via-simulations.html">
+     Tutorial: Running basic power analyses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/power-analysis-via-simulations.html">
      Discussion questions
     </a>
    </li>
@@ -1000,14 +999,14 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="exercises-mixed-effects">
+  <div class="tex2jax_ignore mathjax_ignore section" id="exercises-mixed-effects">
 <h1>Exercises: Mixed effects<a class="headerlink" href="#exercises-mixed-effects" title="Permalink to this headline">#</a></h1>
 <p>This homework assignment is designed to give you practice fitting and interpreting mixed effects models.</p>
 <p>We will be using the <strong>LexicalData.csv</strong> and <strong>Items.csv</strong> files from the <em>Homework/lexDat</em> folder in the class GitHub repository again.</p>
 <p>This data is a subset of the <a class="reference external" href="https://elexicon.wustl.edu/">English Lexicon Project database</a>. It provides the reaction times (in milliseconds) of many subjects as they are presented with letter strings and asked to decide, as quickly and as accurately as possible, whether the letter string is a word or not. The <strong>Items.csv</strong> provides characteristics of the words used, namely frequency (how common is this word?) and length (how many letters?). Unlike in the previous homework, there isn’t any missing data in the <strong>LexicalData.csv</strong> file.</p>
 <p><em>Data courtesy of Balota, D.A., Yap, M.J., Cortese, M.J., Hutchison, K.A., Kessler, B., Loftis, B., Neely, J.H., Nelson, D.L., Simpson, G.B., &amp; Treiman, R. (2007). The English Lexicon Project. Behavior Research Methods, 39, 445-459.</em></p>
 <hr class="docutils" />
-<section id="loading-and-formatting-the-data-1-point">
+<div class="section" id="loading-and-formatting-the-data-1-point">
 <h2>1. Loading and formatting the data (1 point)<a class="headerlink" href="#loading-and-formatting-the-data-1-point" title="Permalink to this headline">#</a></h2>
 <p>Load in data from the <strong>LexicalData.csv</strong> and <strong>Items.csv</strong> files. As in the previous homeworks, remove the commas from the reaction times and convert them from strings to numbers. Use <code class="docutils literal notranslate"><span class="pre">left_join</span></code> to add word characteristics <code class="docutils literal notranslate"><span class="pre">Length</span></code> and <code class="docutils literal notranslate"><span class="pre">Log_Freq_Hal</span></code> from <strong>Items</strong> to <strong>LexicalData</strong>.</p>
 <p><em>Note: the <code class="docutils literal notranslate"><span class="pre">Freq_HAL</span></code> variable in <strong>Items.csv</strong> has a similar formatting issue, using string values with commas. We’re not going to worry about fixing this since we’re only using <code class="docutils literal notranslate"><span class="pre">Log_Freq_HAL</span></code>, which is the natural log transformation of <code class="docutils literal notranslate"><span class="pre">Freq_HAL</span></code>, in this homework.</em></p>
@@ -1018,9 +1017,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</section>
+</div>
 <hr class="docutils" />
-<section id="model-fitting-4-points">
+<div class="section" id="model-fitting-4-points">
 <h2>2. Model fitting (4 points)<a class="headerlink" href="#model-fitting-4-points" title="Permalink to this headline">#</a></h2>
 <p>First, fit a linear model with <code class="docutils literal notranslate"><span class="pre">Log_Freq_HAL</span></code> and <code class="docutils literal notranslate"><span class="pre">Length</span></code> as predictors, and <code class="docutils literal notranslate"><span class="pre">D_RT</span></code> as the output. Include an interaction term. Use <code class="docutils literal notranslate"><span class="pre">summary()</span></code> to look at the model output.</p>
 <div class="cell docutils container">
@@ -1046,9 +1045,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</section>
+</div>
 <hr class="docutils" />
-<section id="model-assessment-4-points">
+<div class="section" id="model-assessment-4-points">
 <h2>3. Model assessment (4 points)<a class="headerlink" href="#model-assessment-4-points" title="Permalink to this headline">#</a></h2>
 <p>Compare the three t-values for the fixed effects and the mixed effects models. How do they differ, and why?</p>
 <blockquote>
@@ -1065,9 +1064,9 @@ title="Print to PDF"
 <blockquote>
 <div><p><em>Write your response here</em></p>
 </div></blockquote>
-</section>
+</div>
 <hr class="docutils" />
-<section id="reflection-1-point">
+<div class="section" id="reflection-1-point">
 <h2>4. Reflection (1 point)<a class="headerlink" href="#reflection-1-point" title="Permalink to this headline">#</a></h2>
 <p>What other random effects could be controlled for in this data set?</p>
 <blockquote>
@@ -1078,8 +1077,8 @@ title="Print to PDF"
 <blockquote>
 <div><p><em>Someone’s Name</em></p>
 </div></blockquote>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
