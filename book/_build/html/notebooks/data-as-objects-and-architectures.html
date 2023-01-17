@@ -4,9 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>Tutorial: Basic R, Data as Objects, and Tidy Data &#8212; Data explorations</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial: Data as Objects and Tidy Data &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -192,7 +191,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="models-as-testable-hypotheses.html">
-     Tutorial: Introduction to functions and good coding habits
+     Tutorial: Introduction to R, functions, and good coding habits
     </a>
    </li>
    <li class="toctree-l2">
@@ -219,7 +218,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Tutorial: Basic R, Data as Objects, and Tidy Data
+     Tutorial: Data as Objects and Tidy Data
     </a>
    </li>
    <li class="toctree-l2">
@@ -933,46 +932,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Tutorial: Basic R, Data as Objects, and Tidy Data
+   Tutorial: Data as Objects and Tidy Data
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#goals">
      Goals:
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#basic-r-commands">
-   Basic R Commands
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#arithmetic">
-     Arithmetic
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-structures">
-     Data structures
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#vectors">
-       Vectors
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#data-frames">
-       Data frames
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#indexing">
-     Indexing
     </a>
    </li>
   </ul>
@@ -996,7 +961,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Tutorial: Basic R, Data as Objects, and Tidy Data</h1>
+                <h1>Tutorial: Data as Objects and Tidy Data</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1008,46 +973,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Tutorial: Basic R, Data as Objects, and Tidy Data
+   Tutorial: Data as Objects and Tidy Data
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#goals">
      Goals:
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#basic-r-commands">
-   Basic R Commands
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#arithmetic">
-     Arithmetic
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-structures">
-     Data structures
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#vectors">
-       Vectors
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#data-frames">
-       Data frames
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#indexing">
-     Indexing
     </a>
    </li>
   </ul>
@@ -1072,204 +1003,18 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-basic-r-data-as-objects-and-tidy-data">
-<h1>Tutorial: Basic R, Data as Objects, and Tidy Data<a class="headerlink" href="#tutorial-basic-r-data-as-objects-and-tidy-data" title="Permalink to this headline">#</a></h1>
-<p>In this tutorial, we’ll talk through some basic functions in R, learn how to interact with and extract information from “model objects”, and get a brief introduction to tidy data.</p>
-<section id="goals">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-data-as-objects-and-tidy-data">
+<h1>Tutorial: Data as Objects and Tidy Data<a class="headerlink" href="#tutorial-data-as-objects-and-tidy-data" title="Permalink to this headline">#</a></h1>
+<div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>Learn basic R commands</p></li>
 <li><p>Learn about Tidy Data, long data, and wide data</p></li>
 <li><p>Learn how to interact with model objects in R, including extracting coefficients</p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="basic-r-commands">
-<h1>Basic R Commands<a class="headerlink" href="#basic-r-commands" title="Permalink to this headline">#</a></h1>
-<section id="arithmetic">
-<h2>Arithmetic<a class="headerlink" href="#arithmetic" title="Permalink to this headline">#</a></h2>
-<p>In R, you can do basic arithmetic just like any other programming language e.g.,</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">6</span> <span class="o">+</span> <span class="m">2</span>
-<span class="m">10</span> <span class="o">-</span> <span class="m">3</span> <span class="o">*</span> <span class="m">4</span>
-<span class="m">5</span><span class="o">^</span><span class="m">3</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">8</div><div class="output text_html">-2</div><div class="output text_html">125</div></div>
-</div>
-</section>
-<section id="data-structures">
-<h2>Data structures<a class="headerlink" href="#data-structures" title="Permalink to this headline">#</a></h2>
-<section id="vectors">
-<h3>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">#</a></h3>
-<p>Vectors are lists of numbers or strings.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;mean of vector a:&quot;</span><span class="p">,</span><span class="nf">mean</span><span class="p">(</span><span class="n">a</span><span class="p">)))</span>
-<span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;sum of vector b:&quot;</span><span class="p">,</span><span class="nf">sum</span><span class="p">(</span><span class="n">b</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;mean of vector a: 2&quot;
-[1] &quot;sum of vector b: 15&quot;
-</pre></div>
-</div>
-</div>
-</div>
-<p>You can do element-wise operations on two vectors easily:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">*</span><span class="n">b</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class=list-inline><li>4</li><li>10</li><li>18</li></ol>
-</div></div>
-</div>
-</section>
-<section id="data-frames">
-<h3>Data frames<a class="headerlink" href="#data-frames" title="Permalink to this headline">#</a></h3>
-<p>Data frames can contain data of mixed types such as numbers and strings. Usually, each column is a different variable (e.g., Age, Test Score), and items within each column are of the same type.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;one&quot;</span><span class="p">,</span> <span class="s">&quot;two&quot;</span><span class="p">,</span> <span class="s">&quot;three&quot;</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">avar</span> <span class="o">=</span> <span class="n">a</span><span class="p">,</span><span class="n">bvar</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span><span class="n">cvar</span> <span class="o">=</span> <span class="n">c</span><span class="p">)</span>
-<span class="n">data</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table class="dataframe">
-<caption>A data.frame: 3 × 3</caption>
-<thead>
-	<tr><th scope=col>avar</th><th scope=col>bvar</th><th scope=col>cvar</th></tr>
-	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><td>1</td><td>4</td><td>one  </td></tr>
-	<tr><td>2</td><td>5</td><td>two  </td></tr>
-	<tr><td>3</td><td>6</td><td>three</td></tr>
-</tbody>
-</table>
-</div></div>
-</div>
-<p>In the data frame printed above, you can see that both variables <strong>avar</strong> and <strong>bvar</strong> are type <strong>&lt;dbl&gt;</strong> (short for “double”, another term for numeric) while variable <strong>cvar</strong> is type <strong>&lt;chr&gt;</strong>, or “character”.</p>
-</section>
-</section>
-<section id="indexing">
-<h2>Indexing<a class="headerlink" href="#indexing" title="Permalink to this headline">#</a></h2>
-<p>In a vector, you can index data by its position (starting at index 1):</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="m">2</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">2</div></div>
-</div>
-<p>In a data frame, you can index data by its column and row number using <code class="docutils literal notranslate"><span class="pre">data[row,</span> <span class="pre">col]</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">2</div></div>
-</div>
-<p>You can index a particular column in a data frame by its variable name using <code class="docutils literal notranslate"><span class="pre">$</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">$</span><span class="n">bvar</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class=list-inline><li>4</li><li>5</li><li>6</li></ol>
-</div></div>
-</div>
-<p>Or, you can access a particular column or row by its position in the data frame:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;Column 3&quot;</span><span class="p">)</span>
-<span class="n">data</span><span class="p">[,</span><span class="m">3</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Column 3&quot;
-</pre></div>
-</div>
-<div class="output text_html"><style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class=list-inline><li>'one'</li><li>'two'</li><li>'three'</li></ol>
-</div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;Row 1&quot;</span><span class="p">)</span>
-<span class="n">data</span><span class="p">[</span><span class="m">1</span><span class="p">,]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Row 1&quot;
-</pre></div>
-</div>
-<div class="output text_html"><table>
-<caption>A data.frame: 1 × 3</caption>
-<thead>
-	<tr><th></th><th scope=col>avar</th><th scope=col>bvar</th><th scope=col>cvar</th></tr>
-	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
-</thead>
-<tbody>
-	<tr><th scope=row>1</th><td>1</td><td>4</td><td>one</td></tr>
-</tbody>
-</table>
-</div></div>
-</div>
-<p>Or with square brackets and the row or column name:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[,</span><span class="s">&quot;cvar&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class=list-inline><li>'one'</li><li>'two'</li><li>'three'</li></ol>
-</div></div>
-</div>
-</section>
-</section>
-<hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="tidy-data">
+<div class="tex2jax_ignore mathjax_ignore section" id="tidy-data">
 <h1>Tidy Data<a class="headerlink" href="#tidy-data" title="Permalink to this headline">#</a></h1>
 <p>When you are working with data frames, it is best practice to keep your data <strong>tidy</strong>. <strong>Tidy data</strong> is a very specific term in which the following are true:</p>
 <ul class="simple">
@@ -1335,9 +1080,9 @@ title="Print to PDF"
 </table>
 </div></div>
 </div>
-</section>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="interacting-with-model-objects-in-r">
+<div class="tex2jax_ignore mathjax_ignore section" id="interacting-with-model-objects-in-r">
 <h1>Interacting with model objects in R<a class="headerlink" href="#interacting-with-model-objects-in-r" title="Permalink to this headline">#</a></h1>
 <p>Whenever you run a regression or any other type of model, the resulting model is saved in an <strong>object</strong> with properties you can access. This is handy for fitting a model once, and then referencing different aspects of that model’s performance and fit. Let’s see an example:</p>
 <div class="cell docutils container">
@@ -1403,7 +1148,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/data-as-objects-and-architectures_32_0.png" src="../_images/data-as-objects-and-architectures_32_0.png" />
+<img alt="../_images/data-as-objects-and-architectures_11_0.png" src="../_images/data-as-objects-and-architectures_11_0.png" />
 </div>
 </div>
 <p>Now, let’s add some noise and try to fit a regression model</p>
@@ -1567,7 +1312,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/data-as-objects-and-architectures_43_0.png" src="../_images/data-as-objects-and-architectures_43_0.png" />
+<img alt="../_images/data-as-objects-and-architectures_22_0.png" src="../_images/data-as-objects-and-architectures_22_0.png" />
 </div>
 </div>
 <p>Given your fitted model, you can also easily generate predictions of y given new values of x using the <code class="docutils literal notranslate"><span class="pre">predict</span></code> function:</p>
@@ -1583,7 +1328,7 @@ title="Print to PDF"
 </div>
 <p>That’s all for now! We’ll dive into some more advanced functions for data manipulation in R in the next tutorial.</p>
 <p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, Amy Sentis, and Fiona Horner.</em></p>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {

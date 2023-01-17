@@ -1,3 +1,34 @@
+6 + 2
+10 - 3 * 4
+5^3
+
+a <- c(1,2,3)
+b <- c(4,5,6)
+print(paste("mean of vector a:",mean(a)))
+print(paste("sum of vector b:",sum(b)))
+
+a*b
+
+c <- c("one", "two", "three")
+data <- data.frame(avar = a,bvar = b,cvar = c)
+data
+
+a[2]
+
+data[2,1]
+
+data$bvar
+
+print("Column 3")
+data[,3]
+
+print("Row 1")
+data[1,]
+
+data[,"cvar"]
+
+
+
 fahrenheit_to_celsius <- function(temp_F) {
   temp_C <- (temp_F - 32) * 5 / 9
   return(temp_C)

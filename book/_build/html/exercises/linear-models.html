@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Exercises: Linear models &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -194,7 +193,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/models-as-testable-hypotheses.html">
-     Tutorial: Introduction to functions and good coding habits
+     Tutorial: Introduction to R, functions, and good coding habits
     </a>
    </li>
    <li class="toctree-l2">
@@ -221,7 +220,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/data-as-objects-and-architectures.html">
-     Tutorial: Basic R, Data as Objects, and Tidy Data
+     Tutorial: Data as Objects and Tidy Data
     </a>
    </li>
    <li class="toctree-l2">
@@ -1012,13 +1011,13 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="exercises-linear-models">
+  <div class="tex2jax_ignore mathjax_ignore section" id="exercises-linear-models">
 <h1>Exercises:  Linear models<a class="headerlink" href="#exercises-linear-models" title="Permalink to this headline">#</a></h1>
 <p>This homework assignment is designed to give you practice with linear models and the bias-variance tradeoff.</p>
 <p>You will need to download the <strong>unrestricted_trimmed_1_7_2020_10_50_44.csv</strong> file from the <em>Homework/hcp_data</em> folder in the class GitHub repository.</p>
 <p>This data is a portion of the <a class="reference external" href="http://www.humanconnectomeproject.org/">Human Connectome Project database</a>. It provides measures of cognitive tasks and brain morphology measuresments from 1206 participants. The full description of each variable is provided in the <strong>HCP_S1200_DataDictionary_April_20_2018.csv</strong> file in the <em>Homework/hcp_data</em> folder in the class GitHub repository.</p>
 <hr class="docutils" />
-<section id="loading-the-data-1-point">
+<div class="section" id="loading-the-data-1-point">
 <h2>1. Loading the Data (1 point)<a class="headerlink" href="#loading-the-data-1-point" title="Permalink to this headline">#</a></h2>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">setwd</span></code> and <code class="docutils literal notranslate"><span class="pre">read.csv</span></code> functions to load data from the <strong>unrestricted_trimmed_1_7_2020_10_50_44.csv</strong> file.</p>
 <p>Using the tidyverse tools, make a new dataframe <code class="docutils literal notranslate"><span class="pre">d1</span></code> that only inclues the subject ID (<code class="docutils literal notranslate"><span class="pre">Subject</span></code>), gender (<code class="docutils literal notranslate"><span class="pre">Gender</span></code>), Flanker Task performance (<code class="docutils literal notranslate"><span class="pre">Flanker_Unadj</span></code>), total white matter volume (<code class="docutils literal notranslate"><span class="pre">FS_Tot_WM_Vol</span></code>), and total grey matter volume (<code class="docutils literal notranslate"><span class="pre">FS_Total_GM_Vol</span></code>) variables and remove all <em>na</em> values.</p>
@@ -1030,9 +1029,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</section>
+</div>
 <hr class="docutils" />
-<section id="initial-data-visualization-2-point">
+<div class="section" id="initial-data-visualization-2-point">
 <h2>2. Initial data visualization (2 point)<a class="headerlink" href="#initial-data-visualization-2-point" title="Permalink to this headline">#</a></h2>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">pairs</span></code> function to look at all the pairwise scatterplots of the variables in <code class="docutils literal notranslate"><span class="pre">d1</span></code>. Describe which variables seem positively correlated, negatively correlated, or not correlated at all.</p>
 <div class="cell docutils container">
@@ -1045,9 +1044,9 @@ title="Print to PDF"
 <blockquote>
 <div><p><em>Write your response here.</em></p>
 </div></blockquote>
-</section>
+</div>
 <hr class="docutils" />
-<section id="linear-regression-4-points">
+<div class="section" id="linear-regression-4-points">
 <h2>3. Linear regression (4 points)<a class="headerlink" href="#linear-regression-4-points" title="Permalink to this headline">#</a></h2>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">lm</span></code> (linear model) function to determine the association between Flanker Task performance and total grey matter volume from the <code class="docutils literal notranslate"><span class="pre">d1</span></code> data frame.</p>
 <div class="math notranslate nohighlight">
@@ -1065,9 +1064,9 @@ Y_{flanker} = \beta_0 + \beta_1 X_{GM volume}
 <blockquote>
 <div><p><em>Write your response here.</em></p>
 </div></blockquote>
-</section>
+</div>
 <hr class="docutils" />
-<section id="plotting-2-points">
+<div class="section" id="plotting-2-points">
 <h2>4. Plotting (2 points)<a class="headerlink" href="#plotting-2-points" title="Permalink to this headline">#</a></h2>
 <p>Use <code class="docutils literal notranslate"><span class="pre">ggplot</span></code> to plot the <code class="docutils literal notranslate"><span class="pre">FS_Total_GM_Vol</span></code> variable (x axis) against the <code class="docutils literal notranslate"><span class="pre">Flanker_Unadj</span></code> variable (y axis), as well as the regression line with confidence intervals on the regrssion line. Qualitatively describe what you see.</p>
 <div class="cell docutils container">
@@ -1080,9 +1079,9 @@ Y_{flanker} = \beta_0 + \beta_1 X_{GM volume}
 <blockquote>
 <div><p><em>Write your response here.</em></p>
 </div></blockquote>
-</section>
+</div>
 <hr class="docutils" />
-<section id="reflection-1-point">
+<div class="section" id="reflection-1-point">
 <h2>5. Reflection (1 point)<a class="headerlink" href="#reflection-1-point" title="Permalink to this headline">#</a></h2>
 <p>What do you conclude based on the analyses above?</p>
 <blockquote>
@@ -1093,8 +1092,8 @@ Y_{flanker} = \beta_0 + \beta_1 X_{GM volume}
 <blockquote>
 <div><p><em>Someone’s Name</em></p>
 </div></blockquote>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
