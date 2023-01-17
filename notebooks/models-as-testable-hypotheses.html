@@ -945,6 +945,40 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-r-commands">
+   Basic R Commands
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arithmetic">
+     Arithmetic
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-structures">
+     Data structures
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vectors">
+       Vectors
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-frames">
+       Data frames
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing">
+     Indexing
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#how-to-write-a-function-in-r">
    How to write a function in R
   </a>
@@ -1018,6 +1052,40 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-r-commands">
+   Basic R Commands
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arithmetic">
+     Arithmetic
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-structures">
+     Data structures
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vectors">
+       Vectors
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-frames">
+       Data frames
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing">
+     Indexing
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#how-to-write-a-function-in-r">
    How to write a function in R
   </a>
@@ -1071,14 +1139,198 @@ title="Print to PDF"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-introduction-to-functions-and-good-coding-habits">
 <h1>Tutorial: Introduction to functions and good coding habits<a class="headerlink" href="#tutorial-introduction-to-functions-and-good-coding-habits" title="Permalink to this headline">#</a></h1>
-<p>This lab walks through the basics of how to write your own function in R and provides some best practices for coding in a research environment in particular.</p>
 <div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
+<li><p>Learn basic R commands</p></li>
 <li><p>Learn how to write a function in R</p></li>
 <li><p>Learn best practices for writing and maintaining code</p></li>
 </ul>
 <p>This tutorial draws from <a class="reference external" href="https://swcarpentry.github.io/r-novice-inflammation/">Software Carpentry: Programming with R</a> section 2, the R <a class="reference external" href="https://style.tidyverse.org">tidyverse style guide</a>, and the <a class="reference external" href="https://goodresearch.dev">Good Research Code Handbook</a>.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="tex2jax_ignore mathjax_ignore section" id="basic-r-commands">
+<h1>Basic R Commands<a class="headerlink" href="#basic-r-commands" title="Permalink to this headline">#</a></h1>
+<div class="section" id="arithmetic">
+<h2>Arithmetic<a class="headerlink" href="#arithmetic" title="Permalink to this headline">#</a></h2>
+<p>In R, you can do basic arithmetic just like any other programming language e.g.,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="m">6</span> <span class="o">+</span> <span class="m">2</span>
+<span class="m">10</span> <span class="o">-</span> <span class="m">3</span> <span class="o">*</span> <span class="m">4</span>
+<span class="m">5</span><span class="o">^</span><span class="m">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">8</div><div class="output text_html">-2</div><div class="output text_html">125</div></div>
+</div>
+</div>
+<div class="section" id="data-structures">
+<h2>Data structures<a class="headerlink" href="#data-structures" title="Permalink to this headline">#</a></h2>
+<div class="section" id="vectors">
+<h3>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">#</a></h3>
+<p>Vectors are lists of numbers or strings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;mean of vector a:&quot;</span><span class="p">,</span><span class="nf">mean</span><span class="p">(</span><span class="n">a</span><span class="p">)))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;sum of vector b:&quot;</span><span class="p">,</span><span class="nf">sum</span><span class="p">(</span><span class="n">b</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;mean of vector a: 2&quot;
+[1] &quot;sum of vector b: 15&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can do element-wise operations on two vectors easily:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">*</span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>4</li><li>10</li><li>18</li></ol>
+</div></div>
+</div>
+</div>
+<div class="section" id="data-frames">
+<h3>Data frames<a class="headerlink" href="#data-frames" title="Permalink to this headline">#</a></h3>
+<p>Data frames can contain data of mixed types such as numbers and strings. Usually, each column is a different variable (e.g., Age, Test Score), and items within each column are of the same type.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;one&quot;</span><span class="p">,</span> <span class="s">&quot;two&quot;</span><span class="p">,</span> <span class="s">&quot;three&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">avar</span> <span class="o">=</span> <span class="n">a</span><span class="p">,</span><span class="n">bvar</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span><span class="n">cvar</span> <span class="o">=</span> <span class="n">c</span><span class="p">)</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 3 × 3</caption>
+<thead>
+	<tr><th scope=col>avar</th><th scope=col>bvar</th><th scope=col>cvar</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>1</td><td>4</td><td>one  </td></tr>
+	<tr><td>2</td><td>5</td><td>two  </td></tr>
+	<tr><td>3</td><td>6</td><td>three</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>In the data frame printed above, you can see that both variables <strong>avar</strong> and <strong>bvar</strong> are type <strong>&lt;dbl&gt;</strong> (short for “double”, another term for numeric) while variable <strong>cvar</strong> is type <strong>&lt;chr&gt;</strong>, or “character”.</p>
+</div>
+</div>
+<div class="section" id="indexing">
+<h2>Indexing<a class="headerlink" href="#indexing" title="Permalink to this headline">#</a></h2>
+<p>In a vector, you can index data by its position (starting at index 1):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">[</span><span class="m">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">2</div></div>
+</div>
+<p>In a data frame, you can index data by its column and row number using <code class="docutils literal notranslate"><span class="pre">data[row,</span> <span class="pre">col]</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="m">2</span><span class="p">,</span><span class="m">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">2</div></div>
+</div>
+<p>You can index a particular column in a data frame by its variable name using <code class="docutils literal notranslate"><span class="pre">$</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">$</span><span class="n">bvar</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>4</li><li>5</li><li>6</li></ol>
+</div></div>
+</div>
+<p>Or, you can access a particular column or row by its position in the data frame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;Column 3&quot;</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[,</span><span class="m">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Column 3&quot;
+</pre></div>
+</div>
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'one'</li><li>'two'</li><li>'three'</li></ol>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;Row 1&quot;</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="m">1</span><span class="p">,]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Row 1&quot;
+</pre></div>
+</div>
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 1 × 3</caption>
+<thead>
+	<tr><th></th><th scope=col>avar</th><th scope=col>bvar</th><th scope=col>cvar</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>1</td><td>4</td><td>one</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Or with square brackets and the row or column name:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[,</span><span class="s">&quot;cvar&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'one'</li><li>'two'</li><li>'three'</li></ol>
+</div></div>
+</div>
 </div>
 </div>
 <hr class="docutils" />
