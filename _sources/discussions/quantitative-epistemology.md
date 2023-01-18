@@ -1,5 +1,5 @@
 # Discussion questions
 
-1. Describe a hypothetical experiment and how each of the three types of reproducibility can break down in that experiment. How does a breakdown in one type of reproducibility lead to impacts in the others?
+1. In what ways is data science a science and in what ways is it not?
 
-2. Open science practices are proposed as panacea for problems in reproducibility. Provide an example of how open science practices (as proposed by Sandve et al. 2013) could hurt one or more of the types of reproducibility.
+2. If the lecture is correct, and statistical learning theory forms an epistemological basis for what can be known in science, then what does this imply for we can and cannot know as scientists?
