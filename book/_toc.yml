@@ -7,6 +7,7 @@ parts:
     - file: lectures/quantitative-epistemology
       sections:
       - file: notebooks/quantitative-epistemology
+      - file: discussions/quantitative-epistemology
     - file: lectures/the-value-of-openness
       sections:
       - file: notebooks/the-value-of-openness
