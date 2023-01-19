@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutorial: Model selection &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -165,7 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/the-value-of-openness.html">
-     Exercises: Github &amp; Jupyter
+     Exercise 1: Github &amp; Jupyter
     </a>
    </li>
   </ul>
@@ -209,7 +208,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/models-as-testable-hypotheses.html">
-     Exercises: Coding Habits &amp; Functions
+     Exercise 2: Coding Habits &amp; Functions
     </a>
    </li>
   </ul>
@@ -258,7 +257,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/techniques-for-data-cleansing.html">
-     Exercises: Data tables and manipulation
+     Exercise 4: Data tables and manipulation
     </a>
    </li>
   </ul>
@@ -285,7 +284,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/visualization-as-analysis.html">
-     Exercises: Using ggplot
+     Exercise 5: Using ggplot
     </a>
    </li>
   </ul>
@@ -312,7 +311,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/visualization-through-human-eyes.html">
-     Exercises: More plotting options
+     Exercise 6: More plotting options
     </a>
    </li>
   </ul>
@@ -363,7 +362,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/linear-models.html">
-     Exercises:  Linear models
+     Exercise 7:  Linear models
     </a>
    </li>
   </ul>
@@ -390,7 +389,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/the-ordinary-least-squares-solution.html">
-     Exercises:  Linear models, continued
+     Exercise 8:  Linear models, continued
     </a>
    </li>
   </ul>
@@ -439,7 +438,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/mixed-effects-models.html">
-     Exercises: Mixed effects
+     Exercise 10: Mixed effects
     </a>
    </li>
   </ul>
@@ -466,7 +465,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/classifiers.html">
-     Exercises: Classification
+     Exercise 11: Classification
     </a>
    </li>
   </ul>
@@ -537,7 +536,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/resampling-methods.html">
-     Exercises:  Resampling methods
+     Exercise 14:  Resampling methods
     </a>
    </li>
   </ul>
@@ -608,7 +607,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/selecting-the-best-model.html">
-     Exercises: Model selection
+     Exercise 17: Model selection
     </a>
    </li>
   </ul>
@@ -635,7 +634,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/regularized-regression.html">
-     Exercises: Regularized regression
+     Exercise 18: Regularized regression
     </a>
    </li>
   </ul>
@@ -1001,19 +1000,19 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-model-selection">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-model-selection">
 <h1>Tutorial: Model selection<a class="headerlink" href="#tutorial-model-selection" title="Permalink to this headline">#</a></h1>
 <p>This lab focuses on how to select the best model and implementing subset selection in R.</p>
-<section id="goals">
+<div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Learn to use the <code class="docutils literal notranslate"><span class="pre">regsubsets</span></code> function</p></li>
 </ul>
 <p>This lab draws from the practice sets at the end of Chapter 6 in James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2013). “An introduction to statistical learning: with applications in r.”</p>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="best-subset-selection">
+<div class="tex2jax_ignore mathjax_ignore section" id="best-subset-selection">
 <h1>Best subset selection<a class="headerlink" href="#best-subset-selection" title="Permalink to this headline">#</a></h1>
 <p>First we start with a tour of using the built-in functions for best subset selection. For this we will load the <a class="reference external" href="https://vincentarelbundock.github.io/Rdatasets/doc/ISLR/Hitters.html">Hitters (baseball) dataset</a> included in ISLR.</p>
 <div class="cell docutils container">
@@ -1332,7 +1331,7 @@ Hits, Walks, CRBI, DivisionW, and PutOuts.</p>
 </div>
 <p>Right now, there’s a clear discrepancy in fit among the bias-adjusted model evaluations. How could we use cross-validation to help determine which model is best? (<em>Note: if you’d like to predict outputs from models in <code class="docutils literal notranslate"><span class="pre">regsubsets</span></code>, see pg 248-250 of the James textbook.</em>)</p>
 <p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {
