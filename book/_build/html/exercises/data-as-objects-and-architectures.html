@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exercise 11: Classification &#8212; Data explorations</title>
+    <title>Exercise 3: Data objects &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -49,10 +49,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="The beauty of kNN" href="../lectures/the-beauty-of-knn.html" />
-    <link rel="prev" title="Discussion questions" href="../discussions/classifiers.html" />
+    <link rel="next" title="Techniques for data cleansing" href="../lectures/techniques-for-data-cleansing.html" />
+    <link rel="prev" title="Discussion questions" href="../discussions/data-as-objects-and-architectures.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -117,7 +119,7 @@ const thebe_selector_output = ".output, .cell_output"
   Information and Meaning
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lectures/quantitative-epistemology.html">
    Quantitative epsitemology
@@ -211,16 +213,16 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../lectures/data-as-objects-and-architectures.html">
    Data as objects and architectures
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/data-as-objects-and-architectures.html">
      Tutorial: Data as Objects and Tidy Data
@@ -231,8 +233,8 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="data-as-objects-and-architectures.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Exercise 3: Data objects
     </a>
    </li>
@@ -325,7 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
   Knowledge
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lectures/statistical-learning-theory.html">
    The bias-variance tradeoff
@@ -446,16 +448,16 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lectures/classifiers.html">
    Classifiers
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
   <label for="toctree-checkbox-14">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/classifiers.html">
      Tutorial: Basics classifiers
@@ -466,8 +468,8 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="classifiers.html">
      Exercise 11: Classification
     </a>
    </li>
@@ -820,7 +822,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/exercises/classifiers.ipynb"
+        <a href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/exercises/data-as-objects-and-architectures.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -838,7 +840,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/exercises/classifiers.ipynb"
+        <a href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/exercises/data-as-objects-and-architectures.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -881,7 +883,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/exercises/classifiers.ipynb"
+        <a href="../_sources/exercises/data-as-objects-and-architectures.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -941,28 +943,24 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#loading-and-formatting-the-data-1-point">
-   1. Loading and formatting the data (1 point)
+  <a class="reference internal nav-link" href="#load-packages-data-model-1-point">
+   1. Load packages, data, model (1 point)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-the-data-1-point">
-   2. Visualizing the data (1 point)
+  <a class="reference internal nav-link" href="#replicating-summary-outputs-5-pts">
+   2. Replicating
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     summary
+    </span>
+   </code>
+   outputs (5 pts)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#logistic-regression-fitting-the-model-2-points">
-   3. Logistic Regression: Fitting the model (2 points)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interpreting-predictions-from-the-model-3-points">
-   4. Interpreting predictions from the model (3 points)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#qda-3-points">
-   5. QDA (3 points)
+  <a class="reference internal nav-link" href="#summary-table-and-indexing-4-pts">
+   2. Summary table and indexing (4 pts)
   </a>
  </li>
 </ul>
@@ -974,7 +972,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Exercise 11: Classification</h1>
+                <h1>Exercise 3: Data objects</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -985,28 +983,24 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#loading-and-formatting-the-data-1-point">
-   1. Loading and formatting the data (1 point)
+  <a class="reference internal nav-link" href="#load-packages-data-model-1-point">
+   1. Load packages, data, model (1 point)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-the-data-1-point">
-   2. Visualizing the data (1 point)
+  <a class="reference internal nav-link" href="#replicating-summary-outputs-5-pts">
+   2. Replicating
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     summary
+    </span>
+   </code>
+   outputs (5 pts)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#logistic-regression-fitting-the-model-2-points">
-   3. Logistic Regression: Fitting the model (2 points)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interpreting-predictions-from-the-model-3-points">
-   4. Interpreting predictions from the model (3 points)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#qda-3-points">
-   5. QDA (3 points)
+  <a class="reference internal nav-link" href="#summary-table-and-indexing-4-pts">
+   2. Summary table and indexing (4 pts)
   </a>
  </li>
 </ul>
@@ -1019,102 +1013,137 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="exercise-11-classification">
-<h1>Exercise 11: Classification<a class="headerlink" href="#exercise-11-classification" title="Permalink to this headline">#</a></h1>
-<p>This homework assignment is designed to give you practice with classification models. We’ll try to predict which words are more likely to be responded to correctly during a lexical decision task, based on their length and frequency.</p>
-<p>We will be using data from the English Lexicon Project again. However, this time we will use response correctness as our dependent variable. Load <strong>LexicalData_withIncorrect.csv</strong>, which includes incorrect trials as well as correct ones, and also <strong>Items.csv</strong>. Both can be found in the <em>Homework/lexDat</em> folder in the class GitHub repository.</p>
-<p>This data is a subset of the <a class="reference external" href="https://elexicon.wustl.edu/">English Lexicon Project database</a>. It provides response correctness and reaction times (in milliseconds) of many subjects as they are presented with letter strings and asked to decide, as quickly and as accurately as possible, whether the letter string is a word or not. The <strong>Items.csv</strong> provides characteristics of the words used, namely frequency (how common is this word?) and length (how many letters?).</p>
-<p><em>Data courtesy of Balota, D.A., Yap, M.J., Cortese, M.J., Hutchison, K.A., Kessler, B., Loftis, B., Neely, J.H., Nelson, D.L., Simpson, G.B., &amp; Treiman, R. (2007). The English Lexicon Project. Behavior Research Methods, 39, 445-459.</em></p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="exercise-3-data-objects">
+<h1>Exercise 3: Data objects<a class="headerlink" href="#exercise-3-data-objects" title="Permalink to this headline">#</a></h1>
+<p>These exercises are designed to get you comfortable extracting information from data objects.</p>
+<p>We’ll work with the <code class="docutils literal notranslate"><span class="pre">Credit</span></code> dataset which comes in the <code class="docutils literal notranslate"><span class="pre">ISLR</span></code> package in R. This is a simulated dataset that provides credit and demographic information on 10,000 hypothetical customers.</p>
 <hr class="docutils" />
-<div class="section" id="loading-and-formatting-the-data-1-point">
-<h2>1. Loading and formatting the data (1 point)<a class="headerlink" href="#loading-and-formatting-the-data-1-point" title="Permalink to this headline">#</a></h2>
-<p>Load in data from the <strong>LexicalData_withIncorrect.csv</strong> and <strong>Items.csv</strong> files. Use <code class="docutils literal notranslate"><span class="pre">left_join</span></code> to add word characteristics <code class="docutils literal notranslate"><span class="pre">Length</span></code> and <code class="docutils literal notranslate"><span class="pre">Log_Freq_Hal</span></code> from <strong>Items</strong> to the <strong>LexicalData</strong>, and use <code class="docutils literal notranslate"><span class="pre">drop_na()</span></code> to get rid of any observations with missing values. Then use <code class="docutils literal notranslate"><span class="pre">head()</span></code> to look at the first few rows of the data.</p>
-<p><em>Note: We’re just working with <code class="docutils literal notranslate"><span class="pre">Correct</span></code> in this homework, so no need to worry about reformatting reaction times.</em></p>
+<div class="section" id="load-packages-data-model-1-point">
+<h2>1. Load packages, data, model (1 point)<a class="headerlink" href="#load-packages-data-model-1-point" title="Permalink to this headline">#</a></h2>
+<p>Install and load <code class="docutils literal notranslate"><span class="pre">ISLR</span></code> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#install.packages(&quot;ISLR&quot;)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ISLR</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Take a look at the first few rows of the <code class="docutils literal notranslate"><span class="pre">Credit</span></code> dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see that we have a nice <strong>tidy</strong> data frame here. Each column is a separate variable and each row is a different observation (in this case, simulated customers).</p>
+<p>The code below fits a linear model to predict credit card balance from the card limit and the card owner’s credit rating, age, gender, and student status. This model is saved as the <code class="docutils literal notranslate"><span class="pre">cred_lm</span></code> model object. The <code class="docutils literal notranslate"><span class="pre">summary()</span></code> function extracts important summary information from the model object so we can interpret the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">cred_lm</span>  <span class="o">&lt;-</span> <span class="nf">lm</span><span class="p">(</span><span class="n">Balance</span> <span class="o">~</span> <span class="n">Limit</span> <span class="o">+</span> <span class="n">Rating</span> <span class="o">+</span> <span class="n">Age</span> <span class="o">+</span> <span class="n">Gender</span> <span class="o">+</span> <span class="n">Student</span><span class="p">,</span> <span class="n">Credit</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">cred_lm</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<hr class="docutils" />
-<div class="section" id="visualizing-the-data-1-point">
-<h2>2. Visualizing the data (1 point)<a class="headerlink" href="#visualizing-the-data-1-point" title="Permalink to this headline">#</a></h2>
-<p>First, we’ll try to visualize whether trials that are responded to correctly versus incorrectly differ from each other in terms of word length and log frequency. The code is included below, so that this homework doesn’t get too cumbersome. All you have to do is <strong>change the name of the data set</strong>, <strong>run the code</strong>, and <strong>write some observations about the output</strong>.</p>
+<div class="section" id="replicating-summary-outputs-5-pts">
+<h2>2. Replicating <code class="docutils literal notranslate"><span class="pre">summary</span></code> outputs (5 pts)<a class="headerlink" href="#replicating-summary-outputs-5-pts" title="Permalink to this headline">#</a></h2>
+<p>Let’s see if we can replicate some of the values included in the <code class="docutils literal notranslate"><span class="pre">summary()</span></code> output.</p>
+<p>Let’s start with the residual standard error, aka sigma. We can see above that this is 195.9 for this model. You can directly extract sigma as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">vrequire</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span> <span class="c1"># Load the tidyverse package, if you haven&#39;t yet</span>
-<span class="n">fdata</span><span class="o">$</span><span class="n">Correct</span> <span class="o">&lt;-</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">fdata</span><span class="o">$</span><span class="n">Correct</span><span class="p">)</span> <span class="c1"># so that R knows that Correct is categorical, not numeric. </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sigma</span><span class="p">(</span><span class="n">cred_lm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In <code class="docutils literal notranslate"><span class="pre">lm</span></code>, sigma is calculated as</p>
+<div class="math notranslate nohighlight">
+\[ \sqrt{\frac{SSE}{n-p}} \]</div>
+<p>Where SSE is the sum of squared errors, <code class="docutils literal notranslate"><span class="pre">n</span></code> is the number of observations, and <code class="docutils literal notranslate"><span class="pre">p</span></code> is the number of parameters estimated (hint: this includes the intercept). So the denominator boils down to the degrees of freedom.</p>
+<p>Below, use what you’ve learned about extracting information from model objects to calculate the SSE and extract <code class="docutils literal notranslate"><span class="pre">n</span></code> and <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p>
+<p>Hint: remember that R is really good at <em>vectorized operations</em>, meaning it easily applies the same operation individually to each element of a given vector.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+<span class="c1"># Calculate SSE</span>
 
-<span class="c1"># plot the Correct / Incorrect clusters</span>
-<span class="nf">ggplot</span><span class="p">(</span><span class="n">fdata</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">Log_Freq_HAL</span><span class="p">,</span><span class="m">1</span><span class="p">),</span><span class="n">y</span><span class="o">=</span><span class="n">Length</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">Correct</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="s">&quot;jitter&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span> <span class="o">+</span> <span class="nf">theme_light</span><span class="p">()</span> 
+
+<span class="c1"># Extract n</span>
+
+
+<span class="c1"># Extract p</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>What do you observe about the “Correct” and “Incorrect” clusters?</p>
-<blockquote>
-<div><p><em>Write your reponse here</em></p>
-</div></blockquote>
+<p>Now, combine your work above to write a function that takes any fitted linear model and returns the residual standard error. Then test your function on the <code class="docutils literal notranslate"><span class="pre">cred_lm</span></code> model object. Compare your answer to sigma extracted directly from the model object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test and compare results. </span>
+
+<span class="nf">your_function</span><span class="p">(</span><span class="n">cred_lm</span><span class="p">)</span> <span class="c1">#Replace with your own function name</span>
+<span class="nf">sigma</span><span class="p">(</span><span class="n">cred_lm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <hr class="docutils" />
-<div class="section" id="logistic-regression-fitting-the-model-2-points">
-<h2>3. Logistic Regression: Fitting the model (2 points)<a class="headerlink" href="#logistic-regression-fitting-the-model-2-points" title="Permalink to this headline">#</a></h2>
-<p>Fit a logistic regression model to the data using <code class="docutils literal notranslate"><span class="pre">Length</span></code>, <code class="docutils literal notranslate"><span class="pre">Log_Freq_HAL</span></code>, and their interaction to predict <code class="docutils literal notranslate"><span class="pre">Correct</span></code>. Use <code class="docutils literal notranslate"><span class="pre">glm()</span></code> to fit the model, and look at its output using <code class="docutils literal notranslate"><span class="pre">summary()</span></code>.</p>
+<div class="section" id="summary-table-and-indexing-4-pts">
+<h2>2. Summary table and indexing (4 pts)<a class="headerlink" href="#summary-table-and-indexing-4-pts" title="Permalink to this headline">#</a></h2>
+<p>Let’s say we wanted to extract the entire coefficient table provided to us by the <code class="docutils literal notranslate"><span class="pre">summary()</span></code> function above, maybe for use in a publication. You might expect this to be pulled by:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">cred_lm</span><span class="o">$</span><span class="n">coefficients</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>What can you conclude from this output? (a brief gist is fine)</p>
-<blockquote>
-<div><p><em>Write your response here</em></p>
-</div></blockquote>
-</div>
-<hr class="docutils" />
-<div class="section" id="interpreting-predictions-from-the-model-3-points">
-<h2>4. Interpreting predictions from the model (3 points)<a class="headerlink" href="#interpreting-predictions-from-the-model-3-points" title="Permalink to this headline">#</a></h2>
-<p>Finally, look at how well this logistic regression model does at predicting correctness. Use <code class="docutils literal notranslate"><span class="pre">predict()</span></code> and a threshold of 0.5 to generate predicted <code class="docutils literal notranslate"><span class="pre">Correct</span></code> values for each trial, then output a confusion matrix and overall accuracy for these predictions.</p>
-<p><em>Hint: see the Classifiers tutorial.</em></p>
+<p>But as we saw in the tutorial, this pulls just the variable name and estimate, and not the standard error, t-statistic, or p-value. You could try to find where all this information is stored in the <code class="docutils literal notranslate"><span class="pre">cred_lm</span></code> object using the <code class="docutils literal notranslate"><span class="pre">str()</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">str</span><span class="p">(</span><span class="n">cred_lm</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Did the model do well at predicting lexical decision correctness? Why or why not?</p>
-<blockquote>
-<div><p><em>Write your response here</em></p>
-</div></blockquote>
-</div>
-<div class="section" id="qda-3-points">
-<h2>5. QDA (3 points)<a class="headerlink" href="#qda-3-points" title="Permalink to this headline">#</a></h2>
-<p>Load in the <code class="docutils literal notranslate"><span class="pre">MASS</span></code> library and fit a QDA model to the data set. The predictors are still <code class="docutils literal notranslate"><span class="pre">Length</span></code>, <code class="docutils literal notranslate"><span class="pre">Log_Freq_HAL</span></code>, and their interaction, just like the logistic regression model you just ran, and the dependent variable is still <code class="docutils literal notranslate"><span class="pre">Correct</span></code>.</p>
-<p><em>Hint: see the Classifiers tutorial.</em></p>
+<p>But you actually won’t find it in there! That’s because the information in the coefficient table is a component of <code class="docutils literal notranslate"><span class="pre">summary()</span></code>, not a component of the model object itself. That’s right, <code class="docutils literal notranslate"><span class="pre">summary()</span></code> creates it’s own object that you can further pull information from.</p>
+<p>Knowing this, pull the coefficient table from the <code class="docutils literal notranslate"><span class="pre">summary()</span></code> object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Now look at how well the predicted <code class="docutils literal notranslate"><span class="pre">Correct</span></code> values compare with actual <code class="docutils literal notranslate"><span class="pre">Correct</span></code> values for the whole data set. Output a confusion matrix and overall prediction accuracy.</p>
+<p>Maybe we are not interested in including the t-statistic in our final table. Pull <strong>just</strong> the estimate, SE, and p-value from the <code class="docutils literal notranslate"><span class="pre">summary()</span></code> object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>How does QDA prediction performance differ from that of logistic regression?</p>
-<blockquote>
-<div><p><em>Write your response here</em></p>
-</div></blockquote>
-<p><strong>DUE:</strong> 5pm EST, March 20, 2023</p>
+<p>Now, pull the table again but drop the <code class="docutils literal notranslate"><span class="pre">(Intercept)</span></code> term. (Don’t save and alter your table above – practice pulling the same table, minus the intercept term, directly from the summary.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>That’s all for Exercise 3! When you are finished, save the notebook as Exercise3.ipynb, push it to your class GitHub repository and send the instructors a link to your notebook via Canvas. You can send messages via Canvas by clicking “Inbox” on the left and then pressing the icon with a pencil inside a square.</p>
+<p><strong>DUE:</strong> 5pm EST, Feb 8, 2023</p>
 <p><strong>IMPORTANT</strong> Did you collaborate with anyone on this assignment? If so, list their names here.</p>
 <blockquote>
 <div><p><em>Someone’s Name</em></p>
@@ -1149,17 +1178,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../discussions/classifiers.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../discussions/data-as-objects-and-architectures.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Discussion questions</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../lectures/the-beauty-of-knn.html" title="next page">
+    <a class='right-next' id="next-link" href="../lectures/techniques-for-data-cleansing.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">The beauty of kNN</p>
+        <p class="prev-next-title">Techniques for data cleansing</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

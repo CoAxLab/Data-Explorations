@@ -231,6 +231,11 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/data-as-objects-and-architectures.html">
+     Exercise 3: Data objects
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -968,6 +973,11 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#updated-authentication-process">
+     Updated Authentication Process
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#basic-bash-scripting">
      Basic Bash scripting
     </a>
@@ -1063,6 +1073,11 @@ title="Print to PDF"
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#configuration">
      Configuration
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#updated-authentication-process">
+     Updated Authentication Process
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
@@ -1166,6 +1181,11 @@ title="Print to PDF"
 git config --global user.name <span class="s2">&quot;Your Name&quot;</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="updated-authentication-process">
+<h2>Updated Authentication Process<a class="headerlink" href="#updated-authentication-process" title="Permalink to this headline">#</a></h2>
+<p>In 2021, Github changed the way they authenticate users trying to push from the command line. Instead of using your GitHub username and password, you now have to use what is called a <strong>personal access token</strong>. If you are new to git and github, you’ll need to set this up before proceeding.</p>
+<p>Log into your GitHub account and go to <strong>Settings</strong> –&gt; <strong>Developer Settings</strong> (bottom left) –&gt; <strong>Personal access tokens</strong> –&gt; <strong>Tokens (classic)</strong>. Then click <strong>“Generate new token”</strong> in the upper right corner (again choose “classic” if there are options). This will give you a long string of letters and numbers – your personal access token. Copy this, and use it in lieu of your GitHub password when prompted for your login information. (You should get this prompt when you clone your first repo, or when running other commands that communicate with your GitHub account.) You can learn more about this process, including how to select permissions, <a class="reference external" href="https://docs.github.com/en/enterprise-server&#64;3.4/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">here</a></p>
 </div>
 <div class="section" id="basic-bash-scripting">
 <h2>Basic Bash scripting<a class="headerlink" href="#basic-bash-scripting" title="Permalink to this headline">#</a></h2>

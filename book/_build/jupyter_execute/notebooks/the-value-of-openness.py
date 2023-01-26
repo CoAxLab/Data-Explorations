@@ -56,6 +56,12 @@
 # git config --global user.name "Your Name"
 # ```
 
+# ## Updated Authentication Process
+# 
+# In 2021, Github changed the way they authenticate users trying to push from the command line. Instead of using your GitHub username and password, you now have to use what is called a **personal access token**. If you are new to git and github, you'll need to set this up before proceeding.
+# 
+# Log into your GitHub account and go to **Settings** --> **Developer Settings** (bottom left) --> **Personal access tokens** --> **Tokens (classic)**. Then click **"Generate new token"** in the upper right corner (again choose "classic" if there are options). This will give you a long string of letters and numbers -- your personal access token. Copy this, and use it in lieu of your GitHub password when prompted for your login information. (You should get this prompt when you clone your first repo, or when running other commands that communicate with your GitHub account.) You can learn more about this process, including how to select permissions, [here](https://docs.github.com/en/enterprise-server@3.4/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+
 # ## Basic Bash scripting
 # 
 # Before we do anything with git, let's walk through some basic Bash scripting in the terminal. Bash is a command language (sometimes called Unix Shell) to navigate the Unix system. We will mostly use it for navigating between folders in the terminal. For more on how to open and use the terminal (AKA command line, console) - check out [this](https://www.digitalcitizen.life/command-prompt-how-use-basic-commands) site for windows and [this](https://maker.pro/linux/projects/basic-unix-commands-to-work-on-mac-terminal) site for mac, unix, or linux.
