@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutorial: Data as Objects and Tidy Data &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -163,7 +162,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/the-value-of-openness.html">
-     Exercises: Github &amp; Jupyter
+     Exercise 1: Github &amp; Jupyter
     </a>
    </li>
   </ul>
@@ -207,7 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/models-as-testable-hypotheses.html">
-     Exercises: Coding Habits &amp; Functions
+     Exercise 2: Coding Habits &amp; Functions
     </a>
    </li>
   </ul>
@@ -230,6 +229,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/data-as-objects-and-architectures.html">
      Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/data-as-objects-and-architectures.html">
+     Exercise 3: Data objects
     </a>
    </li>
   </ul>
@@ -256,7 +260,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/techniques-for-data-cleansing.html">
-     Exercises: Data tables and manipulation
+     Exercise 4: Data tables and manipulation
     </a>
    </li>
   </ul>
@@ -283,7 +287,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/visualization-as-analysis.html">
-     Exercises: Using ggplot
+     Exercise 5: Using ggplot
     </a>
    </li>
   </ul>
@@ -310,7 +314,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/visualization-through-human-eyes.html">
-     Exercises: More plotting options
+     Exercise 6: More plotting options
     </a>
    </li>
   </ul>
@@ -361,7 +365,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/linear-models.html">
-     Exercises:  Linear models
+     Exercise 7:  Linear models
     </a>
    </li>
   </ul>
@@ -388,7 +392,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/the-ordinary-least-squares-solution.html">
-     Exercises:  Linear models, continued
+     Exercise 8:  Linear models, continued
     </a>
    </li>
   </ul>
@@ -437,7 +441,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/mixed-effects-models.html">
-     Exercises: Mixed effects
+     Exercise 10: Mixed effects
     </a>
    </li>
   </ul>
@@ -464,7 +468,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/classifiers.html">
-     Exercises: Classification
+     Exercise 11: Classification
     </a>
    </li>
   </ul>
@@ -535,7 +539,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/resampling-methods.html">
-     Exercises:  Resampling methods
+     Exercise 14:  Resampling methods
     </a>
    </li>
   </ul>
@@ -606,7 +610,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/selecting-the-best-model.html">
-     Exercises: Model selection
+     Exercise 17: Model selection
     </a>
    </li>
   </ul>
@@ -633,7 +637,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/regularized-regression.html">
-     Exercises: Regularized regression
+     Exercise 18: Regularized regression
     </a>
    </li>
   </ul>
@@ -1009,18 +1013,18 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-data-as-objects-and-tidy-data">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-data-as-objects-and-tidy-data">
 <h1>Tutorial: Data as Objects and Tidy Data<a class="headerlink" href="#tutorial-data-as-objects-and-tidy-data" title="Permalink to this headline">#</a></h1>
-<section id="goals">
+<div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Learn about Tidy Data, long data, and wide data</p></li>
 <li><p>Learn how to interact with model objects in R, including extracting coefficients</p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="tidy-data">
+<div class="tex2jax_ignore mathjax_ignore section" id="tidy-data">
 <h1>Tidy Data<a class="headerlink" href="#tidy-data" title="Permalink to this headline">#</a></h1>
 <p>When you are working with data frames, it is best practice to keep your data <strong>tidy</strong>. <strong>Tidy data</strong> is a very specific term in which the following are true:</p>
 <ul class="simple">
@@ -1086,9 +1090,9 @@ title="Print to PDF"
 </table>
 </div></div>
 </div>
-</section>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="interacting-with-model-objects-in-r">
+<div class="tex2jax_ignore mathjax_ignore section" id="interacting-with-model-objects-in-r">
 <h1>Interacting with model objects in R<a class="headerlink" href="#interacting-with-model-objects-in-r" title="Permalink to this headline">#</a></h1>
 <p>Whenever you run a regression or any other type of model, the resulting model is saved in an <strong>object</strong> with properties you can access. This is handy for fitting a model once, and then referencing different aspects of that model’s performance and fit. Let’s see an example:</p>
 <div class="cell docutils container">
@@ -1334,7 +1338,7 @@ title="Print to PDF"
 </div>
 <p>That’s all for now! We’ll dive into some more advanced functions for data manipulation in R in the next tutorial.</p>
 <p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, Amy Sentis, and Fiona Horner.</em></p>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {

@@ -25,6 +25,7 @@ parts:
       sections:
       - file: notebooks/data-as-objects-and-architectures
       - file: discussions/data-as-objects-and-architectures
+      - file: exercises/data-as-objects-and-architectures
     - file: lectures/techniques-for-data-cleansing
       sections:
       - file: notebooks/techniques-for-data-cleansing
