@@ -4,8 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exercise 7: Linear models &#8212; Data explorations</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Exercises: Linear models &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -164,7 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="the-value-of-openness.html">
-     Exercise 1: Github &amp; Jupyter
+     Exercises: Github &amp; Jupyter
     </a>
    </li>
   </ul>
@@ -208,7 +209,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="models-as-testable-hypotheses.html">
-     Exercise 2: Coding Habits &amp; Functions
+     Exercises: Coding Habits &amp; Functions
     </a>
    </li>
   </ul>
@@ -257,7 +258,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="techniques-for-data-cleansing.html">
-     Exercise 4: Data tables and manipulation
+     Exercises: Data tables and manipulation
     </a>
    </li>
   </ul>
@@ -284,7 +285,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="visualization-as-analysis.html">
-     Exercise 5: Using ggplot
+     Exercises: Using ggplot
     </a>
    </li>
   </ul>
@@ -311,7 +312,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="visualization-through-human-eyes.html">
-     Exercise 6: More plotting options
+     Exercises: More plotting options
     </a>
    </li>
   </ul>
@@ -362,7 +363,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Exercise 7:  Linear models
+     Exercises:  Linear models
     </a>
    </li>
   </ul>
@@ -389,7 +390,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="the-ordinary-least-squares-solution.html">
-     Exercise 8:  Linear models, continued
+     Exercises:  Linear models, continued
     </a>
    </li>
   </ul>
@@ -438,7 +439,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="mixed-effects-models.html">
-     Exercise 10: Mixed effects
+     Exercises: Mixed effects
     </a>
    </li>
   </ul>
@@ -465,7 +466,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="classifiers.html">
-     Exercise 11: Classification
+     Exercises: Classification
     </a>
    </li>
   </ul>
@@ -536,7 +537,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="resampling-methods.html">
-     Exercise 14:  Resampling methods
+     Exercises:  Resampling methods
     </a>
    </li>
   </ul>
@@ -607,7 +608,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="selecting-the-best-model.html">
-     Exercise 17: Model selection
+     Exercises: Model selection
     </a>
    </li>
   </ul>
@@ -634,7 +635,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="regularized-regression.html">
-     Exercise 18: Regularized regression
+     Exercises: Regularized regression
     </a>
    </li>
   </ul>
@@ -971,7 +972,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Exercise 7:  Linear models</h1>
+                <h1>Exercises:  Linear models</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1016,13 +1017,13 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="exercise-7-linear-models">
-<h1>Exercise 7:  Linear models<a class="headerlink" href="#exercise-7-linear-models" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="exercises-linear-models">
+<h1>Exercises:  Linear models<a class="headerlink" href="#exercises-linear-models" title="Permalink to this headline">#</a></h1>
 <p>This homework assignment is designed to give you practice with linear models and the bias-variance tradeoff.</p>
 <p>You will need to download the <strong>unrestricted_trimmed_1_7_2020_10_50_44.csv</strong> file from the <em>Homework/hcp_data</em> folder in the class GitHub repository.</p>
 <p>This data is a portion of the <a class="reference external" href="http://www.humanconnectomeproject.org/">Human Connectome Project database</a>. It provides measures of cognitive tasks and brain morphology measuresments from 1206 participants. The full description of each variable is provided in the <strong>HCP_S1200_DataDictionary_April_20_2018.csv</strong> file in the <em>Homework/hcp_data</em> folder in the class GitHub repository.</p>
 <hr class="docutils" />
-<div class="section" id="loading-the-data-1-point">
+<section id="loading-the-data-1-point">
 <h2>1. Loading the Data (1 point)<a class="headerlink" href="#loading-the-data-1-point" title="Permalink to this headline">#</a></h2>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">setwd</span></code> and <code class="docutils literal notranslate"><span class="pre">read.csv</span></code> functions to load data from the <strong>unrestricted_trimmed_1_7_2020_10_50_44.csv</strong> file.</p>
 <p>Using the tidyverse tools, make a new dataframe <code class="docutils literal notranslate"><span class="pre">d1</span></code> that only inclues the subject ID (<code class="docutils literal notranslate"><span class="pre">Subject</span></code>), gender (<code class="docutils literal notranslate"><span class="pre">Gender</span></code>), Flanker Task performance (<code class="docutils literal notranslate"><span class="pre">Flanker_Unadj</span></code>), total white matter volume (<code class="docutils literal notranslate"><span class="pre">FS_Tot_WM_Vol</span></code>), and total grey matter volume (<code class="docutils literal notranslate"><span class="pre">FS_Total_GM_Vol</span></code>) variables and remove all <em>na</em> values.</p>
@@ -1034,9 +1035,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="initial-data-visualization-2-point">
+<section id="initial-data-visualization-2-point">
 <h2>2. Initial data visualization (2 point)<a class="headerlink" href="#initial-data-visualization-2-point" title="Permalink to this headline">#</a></h2>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">pairs</span></code> function to look at all the pairwise scatterplots of the variables in <code class="docutils literal notranslate"><span class="pre">d1</span></code>. Describe which variables seem positively correlated, negatively correlated, or not correlated at all.</p>
 <div class="cell docutils container">
@@ -1049,9 +1050,9 @@ title="Print to PDF"
 <blockquote>
 <div><p><em>Write your response here.</em></p>
 </div></blockquote>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="linear-regression-4-points">
+<section id="linear-regression-4-points">
 <h2>3. Linear regression (4 points)<a class="headerlink" href="#linear-regression-4-points" title="Permalink to this headline">#</a></h2>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">lm</span></code> (linear model) function to determine the association between Flanker Task performance and total grey matter volume from the <code class="docutils literal notranslate"><span class="pre">d1</span></code> data frame.</p>
 <div class="math notranslate nohighlight">
@@ -1069,9 +1070,9 @@ Y_{flanker} = \beta_0 + \beta_1 X_{GM volume}
 <blockquote>
 <div><p><em>Write your response here.</em></p>
 </div></blockquote>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="plotting-2-points">
+<section id="plotting-2-points">
 <h2>4. Plotting (2 points)<a class="headerlink" href="#plotting-2-points" title="Permalink to this headline">#</a></h2>
 <p>Use <code class="docutils literal notranslate"><span class="pre">ggplot</span></code> to plot the <code class="docutils literal notranslate"><span class="pre">FS_Total_GM_Vol</span></code> variable (x axis) against the <code class="docutils literal notranslate"><span class="pre">Flanker_Unadj</span></code> variable (y axis), as well as the regression line with confidence intervals on the regrssion line. Qualitatively describe what you see.</p>
 <div class="cell docutils container">
@@ -1084,9 +1085,9 @@ Y_{flanker} = \beta_0 + \beta_1 X_{GM volume}
 <blockquote>
 <div><p><em>Write your response here.</em></p>
 </div></blockquote>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="reflection-1-point">
+<section id="reflection-1-point">
 <h2>5. Reflection (1 point)<a class="headerlink" href="#reflection-1-point" title="Permalink to this headline">#</a></h2>
 <p>What do you conclude based on the analyses above?</p>
 <blockquote>
@@ -1097,8 +1098,8 @@ Y_{flanker} = \beta_0 + \beta_1 X_{GM volume}
 <blockquote>
 <div><p><em>Someone’s Name</em></p>
 </div></blockquote>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
