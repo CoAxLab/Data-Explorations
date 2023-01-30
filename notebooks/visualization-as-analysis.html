@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutorial: Basics of plotting &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -163,7 +162,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/the-value-of-openness.html">
-     Exercises: Github &amp; Jupyter
+     Exercise 1: Github &amp; Jupyter
     </a>
    </li>
   </ul>
@@ -207,7 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/models-as-testable-hypotheses.html">
-     Exercises: Coding Habits &amp; Functions
+     Exercise 2: Coding Habits &amp; Functions
     </a>
    </li>
   </ul>
@@ -230,6 +229,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/data-as-objects-and-architectures.html">
      Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/data-as-objects-and-architectures.html">
+     Exercise 3: Data objects
     </a>
    </li>
   </ul>
@@ -256,7 +260,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/techniques-for-data-cleansing.html">
-     Exercises: Data tables and manipulation
+     Exercise 4: Data tables and manipulation
     </a>
    </li>
   </ul>
@@ -283,7 +287,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/visualization-as-analysis.html">
-     Exercises: Using ggplot
+     Exercise 5: Using ggplot
     </a>
    </li>
   </ul>
@@ -310,7 +314,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/visualization-through-human-eyes.html">
-     Exercises: More plotting options
+     Exercise 6: More plotting options
     </a>
    </li>
   </ul>
@@ -361,7 +365,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/linear-models.html">
-     Exercises:  Linear models
+     Exercise 7:  Linear models
     </a>
    </li>
   </ul>
@@ -388,7 +392,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/the-ordinary-least-squares-solution.html">
-     Exercises:  Linear models, continued
+     Exercise 8:  Linear models, continued
     </a>
    </li>
   </ul>
@@ -437,7 +441,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/mixed-effects-models.html">
-     Exercises: Mixed effects
+     Exercise 10: Mixed effects
     </a>
    </li>
   </ul>
@@ -464,7 +468,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/classifiers.html">
-     Exercises: Classification
+     Exercise 11: Classification
     </a>
    </li>
   </ul>
@@ -535,7 +539,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/resampling-methods.html">
-     Exercises:  Resampling methods
+     Exercise 14:  Resampling methods
     </a>
    </li>
   </ul>
@@ -606,7 +610,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/selecting-the-best-model.html">
-     Exercises: Model selection
+     Exercise 17: Model selection
     </a>
    </li>
   </ul>
@@ -633,7 +637,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/regularized-regression.html">
-     Exercises: Regularized regression
+     Exercise 18: Regularized regression
     </a>
    </li>
   </ul>
@@ -1057,18 +1061,18 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-basics-of-plotting">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-basics-of-plotting">
 <h1>Tutorial: Basics of plotting<a class="headerlink" href="#tutorial-basics-of-plotting" title="Permalink to this headline">#</a></h1>
 <p>This lab serves as an introduction to data visualization in R.</p>
-<section id="goals">
+<div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Learn the basics of using <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code></p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="plotting-distributions">
+<div class="tex2jax_ignore mathjax_ignore section" id="plotting-distributions">
 <h1>Plotting &amp; distributions<a class="headerlink" href="#plotting-distributions" title="Permalink to this headline">#</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> is an R package for creating figures. It has many strengths over the base R graphics, including being easier to use. Since you could write a whole book on ggplot2 <a class="reference external" href="https://www.amazon.com/dp/0387981403/ref=cm_sw_su_dp?tag=ggplot2-20">(and, in fact, there is one)</a>, the goal of this tutorial isn’t to present everything in detail, but to walk you through the basic use and structure of ggplot2 commands and to give you some examples. This will give you the basic tools needed to use ggplot2 and from there you can find additional information as to how to do things in various places. Before we get to the basics, here are two very useful references if you ever feel lost or need more information:</p>
 <ol class="simple">
@@ -1076,7 +1080,7 @@ title="Print to PDF"
 <li><p><a class="reference external" href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf">ggplot2 cheat sheet</a></p></li>
 </ol>
 <p>In the tutorial below we’ll be using the <code class="docutils literal notranslate"><span class="pre">diamonds</span></code> dataset from the ggplot2 package. It contains “the prices and other attributes of almost 54,000 diamonds”. You can get information about the variables by typing <code class="docutils literal notranslate"><span class="pre">?diamonds'</span></code> or at this <a class="reference external" href="http://ggplot2.tidyverse.org/reference/diamonds.html">link</a>.</p>
-<section id="basics-first">
+<div class="section" id="basics-first">
 <h2>Basics first<a class="headerlink" href="#basics-first" title="Permalink to this headline">#</a></h2>
 <p>The two basic ideas behind <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> are that:</p>
 <ol class="simple">
@@ -1115,8 +1119,8 @@ title="Print to PDF"
 <p><strong><em>Note</em></strong>: as you may have noticed, different functions in ggplot are linked by a <strong><code class="docutils literal notranslate"><span class="pre">+</span></code></strong> sign. You can insert a new line after each plus sign, in order to help readibility. In ggplot, + signs between functions should be interpreted as “add layer” or “add formatting instructions”, not as algebraic addition.</p>
 <p>Here are the components labeled on the function:</p>
 <p><img alt="picture" src="https://drive.google.com/uc?export=view&amp;id=1cFOvatsCpFjf-zHX5Ydtf-n-Twm3W8_p" /></p>
-</section>
-<section id="aesthetics">
+</div>
+<div class="section" id="aesthetics">
 <h2>Aesthetics<a class="headerlink" href="#aesthetics" title="Permalink to this headline">#</a></h2>
 <p>Aside from formatting the x and y axes, you can change the following aspects of the plot according to variables in your dataframe:</p>
 <ul class="simple">
@@ -1188,8 +1192,8 @@ Warning message:
 <img alt="../_images/visualization-as-analysis_11_0.png" src="../_images/visualization-as-analysis_11_0.png" />
 </div>
 </div>
-</section>
-<section id="geoms">
+</div>
+<div class="section" id="geoms">
 <h2>Geoms<a class="headerlink" href="#geoms" title="Permalink to this headline">#</a></h2>
 <p>There are four broad types of geoms, depending on whether you are plotting raw data (e.g., every data point should be displayed), data distributions (e.g. density plots, histograms), summary data (e.g., only the mean of variable y for each level of x), and model_fits (e.g. fitting a regression line to the data).</p>
 <p><strong>Raw data is plotted with</strong>:</p>
@@ -1218,7 +1222,7 @@ Warning message:
 <li><p>geom_smooth()</p></li>
 </ul>
 <p><strong>Remember that the type of plot you should use depends on your <a class="reference external" href="https://github.com/ft-interactive/chart-doctor/blob/master/visual-vocabulary/Visual-vocabulary.pdf">purpose</a>.</strong></p>
-<section id="correlation">
+<div class="section" id="correlation">
 <h3>Correlation<a class="headerlink" href="#correlation" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1365,8 +1369,8 @@ Warning message:
 <img alt="../_images/visualization-as-analysis_31_1.png" src="../_images/visualization-as-analysis_31_1.png" />
 </div>
 </div>
-</section>
-<section id="distribution">
+</div>
+<div class="section" id="distribution">
 <h3>Distribution<a class="headerlink" href="#distribution" title="Permalink to this headline">#</a></h3>
 <p>We already saw how to create histograms and density plots. What if we want to show the distribution separately for multiple groups? There are many ways we can do that. One option is boxplots:</p>
 <div class="cell docutils container">
@@ -1408,9 +1412,9 @@ Warning message:
 </div>
 <p>Visualizations like these are useful for helping you see what your data really look like before you start analyzing it and are often a bit of a reality check.</p>
 <p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {

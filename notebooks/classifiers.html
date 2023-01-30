@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutorial: Basics classifiers &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -165,7 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/the-value-of-openness.html">
-     Exercises: Github &amp; Jupyter
+     Exercise 1: Github &amp; Jupyter
     </a>
    </li>
   </ul>
@@ -209,7 +208,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/models-as-testable-hypotheses.html">
-     Exercises: Coding Habits &amp; Functions
+     Exercise 2: Coding Habits &amp; Functions
     </a>
    </li>
   </ul>
@@ -232,6 +231,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/data-as-objects-and-architectures.html">
      Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/data-as-objects-and-architectures.html">
+     Exercise 3: Data objects
     </a>
    </li>
   </ul>
@@ -258,7 +262,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/techniques-for-data-cleansing.html">
-     Exercises: Data tables and manipulation
+     Exercise 4: Data tables and manipulation
     </a>
    </li>
   </ul>
@@ -285,7 +289,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/visualization-as-analysis.html">
-     Exercises: Using ggplot
+     Exercise 5: Using ggplot
     </a>
    </li>
   </ul>
@@ -312,7 +316,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/visualization-through-human-eyes.html">
-     Exercises: More plotting options
+     Exercise 6: More plotting options
     </a>
    </li>
   </ul>
@@ -363,7 +367,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/linear-models.html">
-     Exercises:  Linear models
+     Exercise 7:  Linear models
     </a>
    </li>
   </ul>
@@ -390,7 +394,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/the-ordinary-least-squares-solution.html">
-     Exercises:  Linear models, continued
+     Exercise 8:  Linear models, continued
     </a>
    </li>
   </ul>
@@ -439,7 +443,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/mixed-effects-models.html">
-     Exercises: Mixed effects
+     Exercise 10: Mixed effects
     </a>
    </li>
   </ul>
@@ -466,7 +470,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/classifiers.html">
-     Exercises: Classification
+     Exercise 11: Classification
     </a>
    </li>
   </ul>
@@ -537,7 +541,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/resampling-methods.html">
-     Exercises:  Resampling methods
+     Exercise 14:  Resampling methods
     </a>
    </li>
   </ul>
@@ -608,7 +612,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/selecting-the-best-model.html">
-     Exercises: Model selection
+     Exercise 17: Model selection
     </a>
    </li>
   </ul>
@@ -635,7 +639,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/regularized-regression.html">
-     Exercises: Regularized regression
+     Exercise 18: Regularized regression
     </a>
    </li>
   </ul>
@@ -1035,23 +1039,23 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-basics-classifiers">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-basics-classifiers">
 <h1>Tutorial: Basics classifiers<a class="headerlink" href="#tutorial-basics-classifiers" title="Permalink to this headline">#</a></h1>
 <p>In this lab we will get more comfortable configuring various classifiers in R.</p>
-<section id="goals">
+<div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Learn to use the <code class="docutils literal notranslate"><span class="pre">glm</span></code> function for logistic regression</p></li>
 <li><p>Learn to use the <code class="docutils literal notranslate"><span class="pre">lda</span></code> and <code class="docutils literal notranslate"><span class="pre">qda</span></code> functions for doing discriminant analysis</p></li>
 </ul>
 <p>This tutorial draws from the practice sets at the end of Chapter 4 in James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2013). “An introduction to statistical learning: with applications in r.”</p>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="logistic-regression-with-glm">
+<div class="tex2jax_ignore mathjax_ignore section" id="logistic-regression-with-glm">
 <h1>Logistic regression with glm<a class="headerlink" href="#logistic-regression-with-glm" title="Permalink to this headline">#</a></h1>
 <p>For the first part of the lab we will use the generalized linear model (<code class="docutils literal notranslate"><span class="pre">glm</span></code>) function to perform logistic regression. <a class="reference external" href="https://en.wikipedia.org/wiki/Generalized_linear_model">GLM</a> is a way of formalizing all forms of linear models when the underlying statistical distribution is part of the <a class="reference external" href="https://en.wikipedia.org/wiki/Exponential_family">exponential family</a>. The linear regression models we have discussed so far in this class are a type of <em>GLM</em>, and logistic regression also falls under the <em>GLM</em> umbrella.</p>
-<section id="predicting-the-stock-market">
+<div class="section" id="predicting-the-stock-market">
 <h2>Predicting the stock market<a class="headerlink" href="#predicting-the-stock-market" title="Permalink to this headline">#</a></h2>
 <p>For the logistic regression exercises, we will use the S&amp;P stock market data included with the ISLR library.</p>
 <p>This dataset contains daily observations (n=1250) for the S&amp;P 500 index between 2001 &amp; 2005. The variables in this data set include:</p>
@@ -1406,10 +1410,10 @@ predicted Down  Up
 </div>
 </div>
 <p>So this isn’t too bad. We can predict slightly above chance the 2005 performance from a model trained on the previous years.</p>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="lda">
+<div class="tex2jax_ignore mathjax_ignore section" id="lda">
 <h1>LDA<a class="headerlink" href="#lda" title="Permalink to this headline">#</a></h1>
 <p>Let’s now move on to using LDA. The <code class="docutils literal notranslate"><span class="pre">lda</span></code> function is built into the MASS library that we have used previously. We’ll use that one here (although there are other LDA libraries that you can install if you’d like).</p>
 <p>First let’s replicate our prediction problem using the stock market data.</p>
@@ -1522,9 +1526,9 @@ lda.class Down  Up
 <img alt="../_images/classifiers_34_0.png" src="../_images/classifiers_34_0.png" />
 </div>
 </div>
-</section>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="qda">
+<div class="tex2jax_ignore mathjax_ignore section" id="qda">
 <h1>QDA<a class="headerlink" href="#qda" title="Permalink to this headline">#</a></h1>
 <p>Remember that QDA is a special case of LDA where you do not assume that the underlying distributions have equal variances. So let’s use QDA for the same problem we have been working on so far. First off, let’s check how the distributions of <code class="docutils literal notranslate"><span class="pre">Lag1</span></code> and <code class="docutils literal notranslate"><span class="pre">Lag2</span></code> look in the case of <code class="docutils literal notranslate"><span class="pre">Direction=&quot;Up&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">Direction=&quot;Down&quot;</span></code>. This will help us think about whether QDA might be a better tool than LDA for our question.</p>
 <div class="cell docutils container">
@@ -1589,7 +1593,7 @@ qda.class Down  Up
 </div>
 <p>Notice that QDA is doing slightly better than LDA, with a test accuracy of 60%.</p>
 <p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {
