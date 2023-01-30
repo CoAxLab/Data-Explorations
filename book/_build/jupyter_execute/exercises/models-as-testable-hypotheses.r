@@ -13,6 +13,7 @@ ttest_fun(v1, 10)
 # Write your modified ttest_fun here
 
 
+v2 <- c(3, 7, 1, NA, 8, 12)
 ttest_fun(v2)
 
 t.test(v2)
