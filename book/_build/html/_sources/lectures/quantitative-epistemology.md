@@ -11,3 +11,7 @@
 
 [![Quantitative epistemology](../thumbnails/quantitative-epistemology.jpeg)](https://youtu.be/VVlgSMTH1dQ "Quantitative Epistemology")
 
+
+## Slides
+
+[![Quantitative epistemology](../thumbnails/quantitative-epistemology.jpeg)](https://github.com/CoAxLab/Data-Explorations/blob/main/book/slides/quantitative-epistemology.pdf "Quantitative Epistemology")
