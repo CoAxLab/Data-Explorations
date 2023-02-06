@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Tutorial: Basic ridge and LASSO models &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -566,6 +567,11 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/mediation-and-moderation.html">
+     Exercise 15: Mediation
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -1025,20 +1031,20 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-basic-ridge-and-lasso-models">
+  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-basic-ridge-and-lasso-models">
 <h1>Tutorial: Basic ridge and LASSO models<a class="headerlink" href="#tutorial-basic-ridge-and-lasso-models" title="Permalink to this headline">#</a></h1>
 <p>This lab dives deeper into ridge regression and LASSO and how to implement these tehcniques in R.</p>
-<div class="section" id="goals">
+<section id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Learn to use the <code class="docutils literal notranslate"><span class="pre">glmnet</span></code> function.</p></li>
 <li><p>Understand that hyperparameter selection should also be validated.</p></li>
 </ul>
 <p>This lab draws from the practice sets at the end of Chapter 6 in James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2013). “An introduction to statistical learning: with applications in r.”</p>
-</div>
-</div>
+</section>
+</section>
 <hr class="docutils" />
-<div class="tex2jax_ignore mathjax_ignore section" id="ridge-regression">
+<section class="tex2jax_ignore mathjax_ignore" id="ridge-regression">
 <h1>Ridge Regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">#</a></h1>
 <p>For this tutorial we will load the <a class="reference external" href="https://vincentarelbundock.github.io/Rdatasets/doc/ISLR/Hitters.html">Hitters (baseball) dataset</a> included in ISLR.</p>
 <p>Ridge regression is made easy with the <a class="reference external" href="https://cran.r-project.org/web/packages/glmnet/glmnet.pdf"><code class="docutils literal notranslate"><span class="pre">glmnet</span></code> package</a>, so we’ll install that to start.</p>
@@ -1215,9 +1221,9 @@ Loaded glmnet 4.1-1
 <div class="output text_html">224669.833069663</div><div class="output text_html">142199.150722761</div><div class="output text_html">167789.778381119</div></div>
 </div>
 <p>When <span class="math notranslate nohighlight">\(\lambda\)</span> was large, the MSE was worse than OLS. When it’s smaller (but not 0), it improves upon the OLS MSE. Hence we need to maximize the bias-variance tradeoff.</p>
-</div>
+</section>
 <hr class="docutils" />
-<div class="tex2jax_ignore mathjax_ignore section" id="an-important-note-about-validation-and-test-sets">
+<section class="tex2jax_ignore mathjax_ignore" id="an-important-note-about-validation-and-test-sets">
 <h1>An important note about validation and test sets<a class="headerlink" href="#an-important-note-about-validation-and-test-sets" title="Permalink to this headline">#</a></h1>
 <p>Remember, if we want to test the predictive utility of a model, it’s important to separate estimates from training and test data. We did this above at a basic level, for the glm regression variables. But this separation should also include the model and variable selection step (i.e., in this context, <span class="math notranslate nohighlight">\(\lambda\)</span>).
 So, the determination of which model is best must be made using training and test observations separate from the estimation of the general linear model. If we use the same data to perform best subset selection as we do to estimate and/or test our final model, then the estimate of test error will be contaminated.</p>
@@ -1301,13 +1307,13 @@ So, the determination of which model is best must be made using training and tes
 </div>
 </div>
 </div>
-</div>
+</section>
 <hr class="docutils" />
-<div class="tex2jax_ignore mathjax_ignore section" id="lasso">
+<section class="tex2jax_ignore mathjax_ignore" id="lasso">
 <h1>LASSO<a class="headerlink" href="#lasso" title="Permalink to this headline">#</a></h1>
 <p>In order to run LASSO, you repeat the same steps as shown in the example above but replace alpha=0 with alpha=1. Try re-running the cells above with LASSO instead of ridge regression and see how it changes!</p>
 <p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {

@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Exercise 18: Regularized regression &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -566,6 +567,11 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mediation-and-moderation.html">
+     Exercise 15: Mediation
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -1021,12 +1027,12 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="exercise-18-regularized-regression">
+  <section class="tex2jax_ignore mathjax_ignore" id="exercise-18-regularized-regression">
 <h1>Exercise 18: Regularized regression<a class="headerlink" href="#exercise-18-regularized-regression" title="Permalink to this headline">#</a></h1>
 <p>This homework assignment is designed to give you an intuition as an interesting property of regularization in the context of ultra-high dimensional statistical problems.</p>
 <p>You won’t need to load in any data for this homework.</p>
 <hr class="docutils" />
-<div class="section" id="simulating-visualizing-data-2-points">
+<section id="simulating-visualizing-data-2-points">
 <h2>1. Simulating &amp; visualizing data (2 points)<a class="headerlink" href="#simulating-visualizing-data-2-points" title="Permalink to this headline">#</a></h2>
 <p>We are going to be looking at what happens in the context where <span class="math notranslate nohighlight">\(p&gt;n\)</span>. In order to have total control over our data, we will use simulations for this homework. First, we will need to load the <code class="docutils literal notranslate"><span class="pre">glmnet</span></code>, <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code>, and <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> libraries for this assignment.</p>
 <div class="cell docutils container">
@@ -1071,9 +1077,9 @@ title="Print to PDF"
 <blockquote>
 <div><p><em>Write your response here</em></p>
 </div></blockquote>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="bias-variance-tradeoff-polynomial-regression-4-points">
+<section id="bias-variance-tradeoff-polynomial-regression-4-points">
 <h2>2. Bias-variance tradeoff: polynomial regression (4 points)<a class="headerlink" href="#bias-variance-tradeoff-polynomial-regression-4-points" title="Permalink to this headline">#</a></h2>
 <p>Recall that in polynomial regression we increase model complexity by expanding <span class="math notranslate nohighlight">\(x\)</span> out to the power <span class="math notranslate nohighlight">\(k\)</span> (which we call degree).</p>
 <div class="math notranslate nohighlight">
@@ -1144,9 +1150,9 @@ title="Print to PDF"
 <blockquote>
 <div><p><em>Write your response here</em></p>
 </div></blockquote>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="applying-regularization-to-the-model-fits-2-points">
+<section id="applying-regularization-to-the-model-fits-2-points">
 <h2>3. Applying regularization to the model fits (2 points)<a class="headerlink" href="#applying-regularization-to-the-model-fits-2-points" title="Permalink to this headline">#</a></h2>
 <p>Repeat the previous bias-variance tradeoff test, going up to <span class="math notranslate nohighlight">\(k=150\)</span>, but now use ridge regression with a sparsity parameter of <span class="math notranslate nohighlight">\(\lambda=0.00005\)</span>. Plot your results the same way as last time.</p>
 <div class="cell docutils container">
@@ -1174,17 +1180,17 @@ title="Print to PDF"
 <blockquote>
 <div><p><em>Write your response here</em></p>
 </div></blockquote>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="reflection-2-points">
+<section id="reflection-2-points">
 <h2>4. Reflection (2 points)<a class="headerlink" href="#reflection-2-points" title="Permalink to this headline">#</a></h2>
 <p>The simulations above should have shown that, when applying a regularization (i.e., a sparsity constraint), the behavior of the bias-variance tradeoff changes. Explain why this happens.</p>
 <blockquote>
 <div><p><em>Write your response here</em></p>
 </div></blockquote>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="bonus-1-extra-credit-point">
+<section id="bonus-1-extra-credit-point">
 <h2>Bonus (1 extra credit point)<a class="headerlink" href="#bonus-1-extra-credit-point" title="Permalink to this headline">#</a></h2>
 <p>Recall that the <span class="math notranslate nohighlight">\(p=n\)</span> threshold defines the limit for finding a <em>unique</em> solution to <span class="math notranslate nohighlight">\(Y=F(X)\)</span> (i.e., there is only one combination of regression coefficients that is <em>best</em> at explaining variance in <span class="math notranslate nohighlight">\(Y\)</span>). With this in mind, what is regularization doing that works around this upper limit?</p>
 <blockquote>
@@ -1195,8 +1201,8 @@ title="Print to PDF"
 <blockquote>
 <div><p><em>Someone’s Name</em></p>
 </div></blockquote>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

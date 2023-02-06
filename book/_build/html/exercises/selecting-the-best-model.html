@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Exercise 17: Model selection &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -566,6 +567,11 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mediation-and-moderation.html">
+     Exercise 15: Mediation
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -1001,12 +1007,12 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="exercise-17-model-selection">
+  <section class="tex2jax_ignore mathjax_ignore" id="exercise-17-model-selection">
 <h1>Exercise 17: Model selection<a class="headerlink" href="#exercise-17-model-selection" title="Permalink to this headline">#</a></h1>
 <p>This homework is designed to give you practice implementing model selection techniques, including best subset selection and forward/backward stepwise selection.</p>
 <p>You won’t need to load in any data for this homework, we will be simulating our own.</p>
 <hr class="docutils" />
-<div class="section" id="best-subset-selection-4-points">
+<section id="best-subset-selection-4-points">
 <h2>1. Best subset selection (4 points)<a class="headerlink" href="#best-subset-selection-4-points" title="Permalink to this headline">#</a></h2>
 <p>In this question, we will first generate simulated data, and then use it to perform best subset selection.</p>
 <p>a) Use <code class="docutils literal notranslate"><span class="pre">rnorm()</span></code> to generate a dataset including a predictor <span class="math notranslate nohighlight">\(X\)</span> of length <span class="math notranslate nohighlight">\(n = 100\)</span> and a noise vector <span class="math notranslate nohighlight">\(\epsilon\)</span> of length <span class="math notranslate nohighlight">\(n = 100\)</span>. Generate data for a response variable <span class="math notranslate nohighlight">\(Y\)</span> of length <span class="math notranslate nohighlight">\(n = 100\)</span> according to the model</p>
@@ -1051,9 +1057,9 @@ title="Print to PDF"
 <blockquote>
 <div><p><em>Write your response here</em></p>
 </div></blockquote>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="forward-and-backwards-stepwise-selection-3-points">
+<section id="forward-and-backwards-stepwise-selection-3-points">
 <h2>2. Forward and backwards stepwise selection (3 points)<a class="headerlink" href="#forward-and-backwards-stepwise-selection-3-points" title="Permalink to this headline">#</a></h2>
 <p>Using the same simulated data from question 1, use forward stepwise selection, and backwards stepwise selections to determine the best model. Again, for both model selection methods, plot the Mallows’ Cp, Bayesian Information Criteria (BIC) and the adjusted coefficient of determination, <span class="math notranslate nohighlight">\(R^2\)</span>, for each model tested. Report the coefficients of the best model.</p>
 <p>a) Forward stepwise selection:</p>
@@ -1102,9 +1108,9 @@ title="Print to PDF"
 <blockquote>
 <div><p><em>Write your response here</em></p>
 </div></blockquote>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="training-and-test-error-3-points">
+<section id="training-and-test-error-3-points">
 <h2>3. Training and test error (3 points)<a class="headerlink" href="#training-and-test-error-3-points" title="Permalink to this headline">#</a></h2>
 <p>This question will explore the relationship between training and test error and the number of features included in a model. We will again use a simulated dataset.</p>
 <p>a) Simulate dataset with features <span class="math notranslate nohighlight">\(p = 20\)</span> and observations <span class="math notranslate nohighlight">\(n = 1,000\)</span>. Generate data for a response variable <span class="math notranslate nohighlight">\(Y\)</span> according to the model</p>
@@ -1143,8 +1149,8 @@ title="Print to PDF"
 <blockquote>
 <div><p><em>Someone’s Name</em></p>
 </div></blockquote>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
