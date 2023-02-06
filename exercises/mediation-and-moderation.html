@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; Data explorations</title>
+    <title>Exercise 15: Mediation &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Power analysis via simulations" href="../lectures/power-analysis-via-simulations.html" />
@@ -326,7 +328,7 @@ const thebe_selector_output = ".output, .cell_output"
   Knowledge
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lectures/statistical-learning-theory.html">
    The bias-variance tradeoff
@@ -545,16 +547,16 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../lectures/mediation-and-moderation.html">
    Mediation and moderation
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
   <label for="toctree-checkbox-18">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/mediation-and-moderation.html">
      Tutorial: Running mediation and moderation models
@@ -563,6 +565,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../discussions/mediation-and-moderation.html">
      Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Exercise 15: Mediation
     </a>
    </li>
   </ul>
@@ -940,7 +947,22 @@ title="Print to PDF"
         <i class="fas fa-list"></i> Contents
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="simple visible nav section-nav flex-column">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simulating-data-3-points">
+   1. Simulating data (3 points)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-data-2-point">
+   2. Visualizing Data (2 point)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mediation-analysis-5-points">
+   3. Mediation Analysis (5 points)
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -950,7 +972,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1><no title></h1>
+                <h1>Exercise 15: Mediation</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -959,7 +981,22 @@ title="Print to PDF"
                             <h2> Contents </h2>
                         </div>
                         <nav aria-label="Page">
-                            <ul class="simple visible nav section-nav flex-column">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simulating-data-3-points">
+   1. Simulating data (3 points)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-data-2-point">
+   2. Visualizing Data (2 point)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mediation-analysis-5-points">
+   3. Mediation Analysis (5 points)
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -970,11 +1007,101 @@ title="Print to PDF"
                 
               <div>
                 
-  <p><strong>DUE:</strong> 5pm EST, April 3, 2023</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="exercise-15-mediation">
+<h1>Exercise 15: Mediation<a class="headerlink" href="#exercise-15-mediation" title="Permalink to this headline">#</a></h1>
+<p>This homework assignment is designed to give you practice with mediation. You won’t need to load in any data for this homework – we’ll simulate data instead.</p>
+<hr class="docutils" />
+<section id="simulating-data-3-points">
+<h2>1. Simulating data (3 points)<a class="headerlink" href="#simulating-data-3-points" title="Permalink to this headline">#</a></h2>
+<p>In this homework, we’re going to simulate the relationship between age, word reading experience, and reading comprehension skill. Older children tend to be better at reading comprehension tasks, but this isn’t just an inherent part of getting older. It’s a combination of gaining more experience with reading, oral language skills, and executive functions development. In this homework, though, we’re going to simplify this relationship down to a direct effect of age on reading comprehension (since improvements in oral language skills and executive functions are more guaranteed as children age than reading practice is), and a mediation of word reading experience.</p>
+<p>In graphical form:
+<img alt="picture" src="https://drive.google.com/uc?id=1wdm9xuiJhBJor99-9GnicO2_rzkGWtfN" /></p>
+<p>Writing the relationship out formally:</p>
+<div class="math notranslate nohighlight">
+\[x = \beta_{xa} a + \beta_{x0} + \epsilon_{x}\]</div>
+<div class="math notranslate nohighlight">
+\[c = \beta_{ca} a + \beta_{cx} x + \beta_{c0} + \epsilon_c\]</div>
+<p><span class="math notranslate nohighlight">\(c\)</span> is reading comprehension, <span class="math notranslate nohighlight">\(x\)</span> is word reading experience, and <span class="math notranslate nohighlight">\(a\)</span> is age. <span class="math notranslate nohighlight">\(\beta_{c0}\)</span> and <span class="math notranslate nohighlight">\(\beta_{x0}\)</span> are intercept terms for their respective formulas, and <span class="math notranslate nohighlight">\(\epsilon_{c}\)</span> and <span class="math notranslate nohighlight">\(\epsilon_{x}\)</span> are gaussian noise terms. We’ll start by writing a function, <code class="docutils literal notranslate"><span class="pre">simulate_data</span></code>, that can simulate this relationship. The input values are set and the function structure is provided below. Complete the function such that it takes in those input variables and generates <span class="math notranslate nohighlight">\(age\)</span>, <span class="math notranslate nohighlight">\(x\)</span>, and <span class="math notranslate nohighlight">\(c\)</span> values. Use <code class="docutils literal notranslate"><span class="pre">runif()</span></code> to generate ages. Use <code class="docutils literal notranslate"><span class="pre">rnorm()</span></code> to generate the noise terms.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sample_size</span> <span class="o">=</span> <span class="m">100</span> <span class="c1"># How many children in data set? </span>
+<span class="n">age_lo</span> <span class="o">=</span> <span class="m">80</span>     <span class="c1"># minimum age, in months</span>
+<span class="n">age_hi</span> <span class="o">=</span> <span class="m">200</span>    <span class="c1"># maximum age, in months</span>
+<span class="n">beta_xa</span> <span class="o">=</span> <span class="m">0.5</span>   <span class="c1"># amount by which experience changes for increase of one month in age</span>
+<span class="n">beta_x0</span> <span class="o">=</span> <span class="m">-5</span>    <span class="c1"># amount of experience when age = 0 (not interpretable, since minimum age for this data is 80 months)</span>
+<span class="n">sd_x</span> <span class="o">=</span> <span class="m">50</span>       <span class="c1"># standard dev of gaussian noise term, epsilon_x</span>
+<span class="n">beta_ca</span> <span class="o">=</span> <span class="m">0.8</span>   <span class="c1"># amount that comprehension score improves for every increase of one unit in age</span>
+<span class="n">beta_cx</span> <span class="o">=</span> <span class="m">3</span>     <span class="c1"># amount that comprehension score improves for every increase of one unit in reading experience</span>
+<span class="n">beta_c0</span> <span class="o">=</span> <span class="m">10</span>    <span class="c1"># comprehension score when reading experience is 0. </span>
+<span class="n">sd_c</span> <span class="o">=</span> <span class="m">85</span>      <span class="c1"># standard dev of gaussian noise term, epsilon_c</span>
+
+<span class="n">simulate_data</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">sample_size</span><span class="p">,</span> <span class="n">age_lo</span><span class="p">,</span> <span class="n">age_hi</span><span class="p">,</span> <span class="n">beta_xa</span><span class="p">,</span> 
+                          <span class="n">beta_x0</span><span class="p">,</span> <span class="n">sd_x</span><span class="p">,</span> <span class="n">beta_ca</span><span class="p">,</span> <span class="n">beta_cx</span><span class="p">,</span> <span class="n">beta_c0</span><span class="p">,</span> <span class="n">sd_c</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1"># WRITE YOUR CODE HERE</span>
+      
+<span class="p">}</span>
+
+<span class="c1">#dat &lt;- simulate_data(sample_size, age_lo, age_hi, beta_xa, beta_x0, sd_x, beta_ca, beta_cx, beta_c0, sd_c)</span>
+<span class="c1">#head(dat)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="visualizing-data-2-point">
+<h2>2. Visualizing Data (2 point)<a class="headerlink" href="#visualizing-data-2-point" title="Permalink to this headline">#</a></h2>
+<p>Load the <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code> library.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>a) Plot the relationship between age and reading comprehension.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>b) Plot the relationship between reading experience, age, and reading comprehension.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="mediation-analysis-5-points">
+<h2>3. Mediation Analysis (5 points)<a class="headerlink" href="#mediation-analysis-5-points" title="Permalink to this headline">#</a></h2>
+<p>Load the <code class="docutils literal notranslate"><span class="pre">mediation</span></code> library.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">mediate</span></code> function to determine whether <code class="docutils literal notranslate"><span class="pre">x</span></code> mediates the relationship between <code class="docutils literal notranslate"><span class="pre">age</span></code> and <code class="docutils literal notranslate"><span class="pre">c</span></code>. Use <code class="docutils literal notranslate"><span class="pre">summary()</span></code> to print the model results. <em>Hint: see the mediation and moderation tutorial.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>DUE:</strong> 5pm EST, April 3, 2023</p>
 <p><strong>IMPORTANT</strong> Did you collaborate with anyone on this assignment? If so, list their names here.</p>
 <blockquote>
 <div><p><em>Someone’s Name</em></p>
 </div></blockquote>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
