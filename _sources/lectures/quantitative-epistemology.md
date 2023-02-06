@@ -10,8 +10,3 @@
 ## Lecture 
 
 [![Quantitative epistemology](../thumbnails/quantitative-epistemology.jpeg)](https://youtu.be/VVlgSMTH1dQ "Quantitative Epistemology")
-
-## Slides
-
-[![Quantitative epistemology](../thumbnails/quantitative-epistemology.jpeg)](../slide/quantitative-epistemology.pdf "Quantitative Epistemology")
-
