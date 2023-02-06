@@ -1,0 +1,1728 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Tutorial: More on linear models &#8212; Data explorations</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Discussion questions" href="../discussions/limits-of-linear-regression.html" />
+    <link rel="prev" title="Limits and variations of linear regression" href="../lectures/limits-of-linear-regression.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/information.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data explorations</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Data explorations
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Information and Meaning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/quantitative-epistemology.html">
+   Quantitative epsitemology
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quantitative-epistemology.html">
+     Tutorial: Getting started
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/quantitative-epistemology.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-value-of-openness.html">
+   The value of openness
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-value-of-openness.html">
+     Tutorial: Repositories and version control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-value-of-openness.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/the-value-of-openness.html">
+     Exercise 1: Github &amp; Jupyter
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/what-is-a-theory.html">
+   What is a theory?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/what-is-a-theory.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/models-as-testable-hypotheses.html">
+   Models as testable hypotheses
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="models-as-testable-hypotheses.html">
+     Tutorial: Introduction to R, functions, and good coding habits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/models-as-testable-hypotheses.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/models-as-testable-hypotheses.html">
+     Exercise 2: Coding Habits &amp; Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/data-as-objects-and-architectures.html">
+   Data as objects and architectures
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data-as-objects-and-architectures.html">
+     Tutorial: Data as Objects and Tidy Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/data-as-objects-and-architectures.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/data-as-objects-and-architectures.html">
+     Exercise 3: Data objects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/techniques-for-data-cleansing.html">
+   Techniques for data cleansing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="techniques-for-data-cleansing.html">
+     Tutorial: Data Cleansing and the Tidyverse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/techniques-for-data-cleansing.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/techniques-for-data-cleansing.html">
+     Exercise 4: Data tables and manipulation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/visualization-as-analysis.html">
+   Visualization as analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="visualization-as-analysis.html">
+     Tutorial: Basics of plotting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/visualization-as-analysis.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/visualization-as-analysis.html">
+     Exercise 5: Using ggplot
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/visualization-through-human-eyes.html">
+   Visualization through human eyes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="visualization-through-human-eyes.html">
+     Tutorial: More advanced plotting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/visualization-through-human-eyes.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/visualization-through-human-eyes.html">
+     Exercise 6: More plotting options
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Knowledge
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/statistical-learning-theory.html">
+   The bias-variance tradeoff
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/statistical-learning-theory.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/linear-models.html">
+   Linear models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="linear-models.html">
+     Tutorial: Refresher on working with matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/linear-models.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/linear-models.html">
+     Exercise 7:  Linear models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-ordinary-least-squares-solution.html">
+   The ordinary least squares solution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-ordinary-least-squares-solution.html">
+     Tutorial: Refresher for solving oridinary least squares
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-ordinary-least-squares-solution.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/the-ordinary-least-squares-solution.html">
+     Exercise 8:  Linear models, continued
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../lectures/limits-of-linear-regression.html">
+   Limits and variations of linear regression
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Tutorial: More on linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/limits-of-linear-regression.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/mixed-effects-models.html">
+   Mixed effects models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mixed-effects-models.html">
+     Tutorial: Running linear mixed effects models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/mixed-effects-models.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/mixed-effects-models.html">
+     Exercise 10: Mixed effects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/classifiers.html">
+   Classifiers
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="classifiers.html">
+     Tutorial: Basics classifiers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/classifiers.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/classifiers.html">
+     Exercise 11: Classification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-beauty-of-knn.html">
+   The beauty of kNN
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-beauty-of-knn.html">
+     Tutorial: Running kNN models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-beauty-of-knn.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/cross-validation.html">
+   Cross validation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cross-validation.html">
+     Tutorial: Implementing cross validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/cross-validation.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/resampling-methods.html">
+   Resampling methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="resampling-methods.html">
+     Tutorial: Boostrap and permutation tests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/resampling-methods.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/resampling-methods.html">
+     Exercise 14:  Resampling methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/mediation-and-moderation.html">
+   Mediation and moderation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mediation-and-moderation.html">
+     Tutorial: Running mediation and moderation models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/mediation-and-moderation.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/power-analysis-via-simulations.html">
+   Power analysis via simulations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="power-analysis-via-simulations.html">
+     Tutorial: Running basic power analyses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/power-analysis-via-simulations.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/selecting-the-best-model.html">
+   Selecting the best model
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+  <label for="toctree-checkbox-20">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="selecting-the-best-model.html">
+     Tutorial: Model selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/selecting-the-best-model.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/selecting-the-best-model.html">
+     Exercise 17: Model selection
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/regularized-regression.html">
+   Regularized regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+  <label for="toctree-checkbox-21">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="regularized-regression.html">
+     Tutorial: Basic ridge and LASSO models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/regularized-regression.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/regularized-regression.html">
+     Exercise 18: Regularized regression
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/principal-component-methods.html">
+   Principal component methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="principal-component-methods.html">
+     Tutorial: Basic PCA approaches
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/principal-component-methods.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Understanding
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/reconsidering-the-p-value.html">
+   Reconsidering the p-value
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/reconsidering-the-p-value.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/bayes-factor-accepting-the-null.html">
+   Bayes factor
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+  <label for="toctree-checkbox-24">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bayes-factor-accepting-the-null.html">
+     Tutorial: Estimating Bayes factors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/bayes-factor-accepting-the-null.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/errors-and-inferences.html">
+   Errors and inferences
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+  <label for="toctree-checkbox-25">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/errors-and-inferences.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/telling-your-data-story.html">
+   Telling your data story
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+  <label for="toctree-checkbox-26">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/telling-your-data-story.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/theories-as-social-constructs.html">
+   Theories as social constructs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+  <label for="toctree-checkbox-27">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/theories-as-social-constructs.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/notebooks/limits-of-linear-regression.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/notebooks/limits-of-linear-regression.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notebooks/limits-of-linear-regression.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial: More on linear models
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goals">
+     Goals:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-started">
+   Getting started
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regression-with-multiple-predictors">
+   Regression with multiple predictors
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-categorical-qualitative-predictors">
+   Working with categorical (qualitative) predictors
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simulating-the-bias-variance-tradeoff">
+   Simulating the bias-variance tradeoff
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Tutorial: More on linear models</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial: More on linear models
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goals">
+     Goals:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-started">
+   Getting started
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regression-with-multiple-predictors">
+   Regression with multiple predictors
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-categorical-qualitative-predictors">
+   Working with categorical (qualitative) predictors
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simulating-the-bias-variance-tradeoff">
+   Simulating the bias-variance tradeoff
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-more-on-linear-models">
+<h1>Tutorial: More on linear models<a class="headerlink" href="#tutorial-more-on-linear-models" title="Permalink to this headline">#</a></h1>
+<p>In this tutorial, we will play more with linear regression models, including an illustration of the bias-variance tradeoff at the end.</p>
+<section id="goals">
+<h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Regression with multiple predictors</p></li>
+<li><p>Using categorical predictors</p></li>
+<li><p>Simulating the bias-variance tradeoff</p></li>
+</ul>
+<p>This lab draws from the content in Chapters 2 &amp; 3 of James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2013). “An introduction to statistical learning: with applications in r.”</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="getting-started">
+<h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">#</a></h1>
+<p>Before we start, let’s just get all the libraries loaded up front. This tutorial requires some new libraries we haven’t worked with before. Uncomment the <em>install.packages</em> lines if you do not already have all the packages already installed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Libaries to install</span>
+<span class="c1">#install.packages(&quot;glmnet&quot;)</span>
+<span class="c1">#install.packages(&quot;matrixStats&quot;)</span>
+<span class="c1">#install.packages(&quot;denoiseR&quot;)</span>
+<span class="c1">#install.packages(&quot;gplots&quot;)</span>
+<span class="c1">#install.packages(&quot;RColorBrewer&quot;)</span>
+<span class="c1">#install.packages(&quot;plot3D&quot;) </span>
+<span class="c1"># install.packages(&quot;car&quot;) </span>
+<span class="c1">#install.packages(&quot;ISLR&quot;)</span>
+
+<span class="c1"># Load the libraries</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">MASS</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">glmnet</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">matrixStats</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">denoiseR</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">gplots</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">RColorBrewer</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">plot3D</span><span class="p">)</span> 
+<span class="nf">library</span><span class="p">(</span><span class="n">ISLR</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because we will be generating random data here, let’s set the random number generator seed. This will allow us to get the same results everytime we run the entire notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set the random number generator seed</span>
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">2022</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="regression-with-multiple-predictors">
+<h1>Regression with multiple predictors<a class="headerlink" href="#regression-with-multiple-predictors" title="Permalink to this headline">#</a></h1>
+<br>
+In the examples we have done so far, we have only looked at models where p = 1. 
+<div class="math notranslate nohighlight">
+\[ Y_{medv} = \hat{\beta_0} + \hat{\beta_1}X_{lstat} + \epsilon \]</div>
+<p>Now let us explore the case where p &gt; 1. For this we will return to the CARS data set again.</p>
+<p>Let’s just look at the data again along the dimensions of width, length, and weight.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">scatter3D</span><span class="p">(</span><span class="n">Cars93</span><span class="o">$</span><span class="n">Width</span><span class="p">,</span> <span class="n">Cars93</span><span class="o">$</span><span class="n">Length</span><span class="p">,</span> <span class="n">Cars93</span><span class="o">$</span><span class="n">Weight</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="m">20</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="m">20</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Width&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Length&quot;</span><span class="p">,</span><span class="n">zlab</span><span class="o">=</span><span class="s">&quot;Weight&quot;</span><span class="p">)</span>
+<span class="c1">#phi controls tilt and theta controls angle</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/limits-of-linear-regression_6_0.png" src="../_images/limits-of-linear-regression_6_0.png" />
+</div>
+</div>
+<p>Interpeting the 3 dimensional scatterplot is the same as interpreting the 2 dimensional plot we showed above. You want a “football” shaped clustering where changes in <code class="docutils literal notranslate"><span class="pre">Weight</span></code> follow changes in the other two variables. So here, as the width and length of the car increase, the weight of the car increases too.</p>
+<p>So it looks like adding <code class="docutils literal notranslate"><span class="pre">Width</span></code> seems to also explain <code class="docutils literal notranslate"><span class="pre">Weight</span></code>. We can confirm this by adding <code class="docutils literal notranslate"><span class="pre">Width</span></code> as a predictor in our model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">lm.fit</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">Weight</span><span class="o">~</span><span class="n">Width</span><span class="o">+</span><span class="n">Length</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Cars93</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
+lm(formula = Weight ~ Width + Length, data = Cars93)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-546.05 -194.89  -45.85  189.58  579.58 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -5999.519    540.622 -11.097  &lt; 2e-16 ***
+Width         102.156     13.281   7.692 1.75e-11 ***
+Length         10.836      3.437   3.153   0.0022 ** 
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 274 on 90 degrees of freedom
+Multiple R-squared:  0.7889,	Adjusted R-squared:  0.7842 
+F-statistic: 168.1 on 2 and 90 DF,  p-value: &lt; 2.2e-16
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that <span class="math notranslate nohighlight">\(r^2\)</span> and <span class="math notranslate nohighlight">\(RSE\)</span>  improve a bit when we add <code class="docutils literal notranslate"><span class="pre">Width</span></code>, compared with the previous 1-parameter model.</p>
+<p>Let’s say we wanted to estimate the <em>full model</em> (i.e., use all the numeric variables in the <code class="docutils literal notranslate"><span class="pre">Cars93</span></code> data set to predict <code class="docutils literal notranslate"><span class="pre">Weight</span></code>). If you use the “.” symbol in the <code class="docutils literal notranslate"><span class="pre">lm()</span></code> function call, it tells R to use all variables <em>but</em> the one being predicted.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">num_cols</span> <span class="o">&lt;-</span> <span class="nf">unlist</span><span class="p">(</span><span class="nf">lapply</span><span class="p">(</span><span class="n">Cars93</span><span class="p">,</span> <span class="n">is.numeric</span><span class="p">))</span> <span class="c1"># Find just the numeric columns</span>
+<span class="n">lm.fit</span><span class="o">=</span><span class="nf">lm</span><span class="p">(</span><span class="n">Weight</span><span class="o">~</span><span class="n">.</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Cars93</span><span class="p">[,</span><span class="n">num_cols</span><span class="p">])</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
+lm(formula = Weight ~ ., data = Cars93[, num_cols])
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-220.402  -70.076   -4.002   69.825  222.764 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)         140.05133  658.01561   0.213  0.83213    
+Min.Price           165.31369  266.93918   0.619  0.53792    
+Price              -324.39700  532.71044  -0.609  0.54471    
+Max.Price           161.71716  266.15830   0.608  0.54560    
+MPG.city              8.59419    9.31530   0.923  0.35969    
+MPG.highway         -20.22139    9.05965  -2.232  0.02912 *  
+EngineSize          -54.32469   59.99456  -0.905  0.36860    
+Horsepower            4.32739    0.90113   4.802 9.82e-06 ***
+RPM                  -0.11785    0.05006  -2.354  0.02165 *  
+Rev.per.mile         -0.11059    0.05473  -2.021  0.04751 *  
+Fuel.tank.capacity   31.58016   11.17775   2.825  0.00629 ** 
+Passengers          -12.18737   33.37579  -0.365  0.71620    
+Length                5.60418    2.67397   2.096  0.04006 *  
+Wheelbase            15.97271    6.32881   2.524  0.01410 *  
+Width                 1.81074   10.88571   0.166  0.86841    
+Turn.circle           8.29436    8.03511   1.032  0.30583    
+Rear.seat.room       -0.53080    9.04313  -0.059  0.95338    
+Luggage.room          6.06806    7.94515   0.764  0.44783    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 114.9 on 64 degrees of freedom
+  (11 observations deleted due to missingness)
+Multiple R-squared:  0.9674,	Adjusted R-squared:  0.9588 
+F-statistic: 111.8 on 17 and 64 DF,  p-value: &lt; 2.2e-16
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s just keep playing with the ways that you can run and query the model object. First, let’s say you want to exclude some of the non-significant variables from the model. According to the coefficients table above, <code class="docutils literal notranslate"><span class="pre">EngineSize</span></code> and <code class="docutils literal notranslate"><span class="pre">Passengers</span></code> are not significant predictors when we run the full model. So we can remove them in two ways. First we can just train a new model with these variables excluded.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Excluding a variable from the model: age, indus</span>
+<span class="n">lm.fit_new</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">Weight</span><span class="o">~</span><span class="n">.</span><span class="o">-</span><span class="n">EngineSize</span> <span class="o">-</span><span class="n">Passengers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Cars93</span><span class="p">[,</span><span class="n">num_cols</span><span class="p">])</span> <span class="c1">#you can exclude a variable by placing a &#39;-&#39; sign in front of it</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">lm.fit_new</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
+lm(formula = Weight ~ . - EngineSize - Passengers, data = Cars93[, 
+    num_cols])
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-237.809  -68.733   -1.621   68.685  227.473 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)         147.72555  651.85150   0.227  0.82142    
+Min.Price            75.96356  249.11030   0.305  0.76137    
+Price              -147.95766  497.76892  -0.297  0.76722    
+Max.Price            74.20151  248.91613   0.298  0.76656    
+MPG.city              7.03821    9.10838   0.773  0.44245    
+MPG.highway         -19.32891    8.75157  -2.209  0.03068 *  
+Horsepower            3.86820    0.69431   5.571 5.02e-07 ***
+RPM                  -0.08711    0.03597  -2.422  0.01819 *  
+Rev.per.mile         -0.09151    0.05010  -1.826  0.07232 .  
+Fuel.tank.capacity   29.29317   10.63264   2.755  0.00758 ** 
+Length                5.43428    2.61187   2.081  0.04135 *  
+Wheelbase            15.52055    6.25976   2.479  0.01572 *  
+Width                -0.16370   10.61106  -0.015  0.98774    
+Turn.circle           8.52630    7.96200   1.071  0.28813    
+Rear.seat.room       -3.78306    7.61133  -0.497  0.62082    
+Luggage.room          5.43697    7.79114   0.698  0.48773    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 114 on 66 degrees of freedom
+  (11 observations deleted due to missingness)
+Multiple R-squared:  0.9669,	Adjusted R-squared:  0.9594 
+F-statistic: 128.7 on 15 and 66 DF,  p-value: &lt; 2.2e-16
+</pre></div>
+</div>
+</div>
+</div>
+<p>Alternatively we can just update the <em>lm.fit</em> model that we estimated above by extracting those variables using the <em>update</em> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Or just update the existing model</span>
+<span class="n">lm.fit_new</span><span class="o">=</span><span class="nf">update</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">,</span> <span class="o">~</span><span class="n">.</span><span class="o">-</span><span class="n">EngineSize</span> <span class="o">-</span><span class="n">Passengers</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">lm.fit_new</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
+lm(formula = Weight ~ Min.Price + Price + Max.Price + MPG.city + 
+    MPG.highway + Horsepower + RPM + Rev.per.mile + Fuel.tank.capacity + 
+    Length + Wheelbase + Width + Turn.circle + Rear.seat.room + 
+    Luggage.room, data = Cars93[, num_cols])
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-237.809  -68.733   -1.621   68.685  227.473 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)         147.72555  651.85150   0.227  0.82142    
+Min.Price            75.96356  249.11030   0.305  0.76137    
+Price              -147.95766  497.76892  -0.297  0.76722    
+Max.Price            74.20151  248.91613   0.298  0.76656    
+MPG.city              7.03821    9.10838   0.773  0.44245    
+MPG.highway         -19.32891    8.75157  -2.209  0.03068 *  
+Horsepower            3.86820    0.69431   5.571 5.02e-07 ***
+RPM                  -0.08711    0.03597  -2.422  0.01819 *  
+Rev.per.mile         -0.09151    0.05010  -1.826  0.07232 .  
+Fuel.tank.capacity   29.29317   10.63264   2.755  0.00758 ** 
+Length                5.43428    2.61187   2.081  0.04135 *  
+Wheelbase            15.52055    6.25976   2.479  0.01572 *  
+Width                -0.16370   10.61106  -0.015  0.98774    
+Turn.circle           8.52630    7.96200   1.071  0.28813    
+Rear.seat.room       -3.78306    7.61133  -0.497  0.62082    
+Luggage.room          5.43697    7.79114   0.698  0.48773    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 114 on 66 degrees of freedom
+  (11 observations deleted due to missingness)
+Multiple R-squared:  0.9669,	Adjusted R-squared:  0.9594 
+F-statistic: 128.7 on 15 and 66 DF,  p-value: &lt; 2.2e-16
+</pre></div>
+</div>
+</div>
+</div>
+<p>Either way it’s pretty easy to swap terms in and out of the model in R.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="working-with-categorical-qualitative-predictors">
+<h1>Working with categorical (qualitative) predictors<a class="headerlink" href="#working-with-categorical-qualitative-predictors" title="Permalink to this headline">#</a></h1>
+<p>So far we’ve been playing mostly with quantitative predictors. Let’s now play with some qualitative predictors.</p>
+<p>For this we will use a different data set (the <a class="reference external" href="https://cran.r-project.org/web/packages/car/car.pdf">CAR</a> package).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># First we will want to clear the workspace</span>
+<span class="c1">#rm(list=ls())</span>
+
+
+
+<span class="c1"># Look at the Carseats dataset</span>
+<span class="c1"># help(Carseats) # Uncomment to view documentation</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">Carseats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'Sales'</li><li>'CompPrice'</li><li>'Income'</li><li>'Advertising'</li><li>'Population'</li><li>'Price'</li><li>'ShelveLoc'</li><li>'Age'</li><li>'Education'</li><li>'Urban'</li><li>'US'</li></ol>
+</div></div>
+</div>
+<p>This data set consists of a data frame with 400 observations on the following 11 variables.</p>
+<ul class="simple">
+<li><p><strong>Sales:</strong>  Unit sales (in thousands) at each location</p></li>
+<li><p><strong>CompPrice:</strong> Price charged by competitor at each location</p></li>
+<li><p><strong>Income:</strong>  Community income level (in thousands of dollars)</p></li>
+<li><p><strong>Advertising:</strong> Local advertising budget for company at each location (in thousands of dollars)</p></li>
+<li><p><strong>Population:</strong> Population size in region (in thousands)</p></li>
+<li><p><strong>Price:</strong>  Price company charges for car seats at each site</p></li>
+<li><p><strong>ShelveLoc:</strong> A factor with levels Bad, Good and Medium indicating the quality of the shelving location for the car seats at each site</p></li>
+<li><p><strong>Age:</strong> Average age of the local population</p></li>
+<li><p><strong>Education:</strong> Education level at each location</p></li>
+<li><p><strong>Urban:</strong>  A factor with levels No and Yes to indicate whether the store is in an urban or rural location</p></li>
+<li><p><strong>US:</strong> A factor with levels No and Yes to indicate whether the store is in the US or not</p></li>
+</ul>
+<p>Let’s model this first, but we will want to pay special attention to the <em>ShelveLoc</em> variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now let us fit Sales with some interaction terms</span>
+<span class="n">lm.fit</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">Sales</span><span class="o">~</span><span class="n">.</span><span class="o">+</span><span class="n">Income</span><span class="o">:</span><span class="n">Advertising</span><span class="o">+</span><span class="n">Price</span><span class="o">:</span><span class="n">Age</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Carseats</span><span class="p">)</span> <span class="c1">#here we are using all individual predictors + interactions between income &amp; advertising and price &amp; age.</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
+lm(formula = Sales ~ . + Income:Advertising + Price:Age, data = Carseats)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.9208 -0.7503  0.0177  0.6754  3.3413 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)         6.5755654  1.0087470   6.519 2.22e-10 ***
+CompPrice           0.0929371  0.0041183  22.567  &lt; 2e-16 ***
+Income              0.0108940  0.0026044   4.183 3.57e-05 ***
+Advertising         0.0702462  0.0226091   3.107 0.002030 ** 
+Population          0.0001592  0.0003679   0.433 0.665330    
+Price              -0.1008064  0.0074399 -13.549  &lt; 2e-16 ***
+ShelveLocGood       4.8486762  0.1528378  31.724  &lt; 2e-16 ***
+ShelveLocMedium     1.9532620  0.1257682  15.531  &lt; 2e-16 ***
+Age                -0.0579466  0.0159506  -3.633 0.000318 ***
+Education          -0.0208525  0.0196131  -1.063 0.288361    
+UrbanYes            0.1401597  0.1124019   1.247 0.213171    
+USYes              -0.1575571  0.1489234  -1.058 0.290729    
+Income:Advertising  0.0007510  0.0002784   2.698 0.007290 ** 
+Price:Age           0.0001068  0.0001333   0.801 0.423812    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 1.011 on 386 degrees of freedom
+Multiple R-squared:  0.8761,	Adjusted R-squared:  0.8719 
+F-statistic:   210 on 13 and 386 DF,  p-value: &lt; 2.2e-16
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s look closer at the <em>ShelveLoc</em> variable. Notice that the original variable had 3 levels. But R automatically recoded this into 2 binary variables: <em>ShelveLocGood</em> and <em>ShelveLocMedium</em>.</p>
+<p>You can see how r sets up this binarization using the <em>contrasts</em> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># attach(Carseats)</span>
+<span class="nf">contrasts</span><span class="p">(</span><span class="n">Carseats</span><span class="o">$</span><span class="n">ShelveLoc</span><span class="p">)</span>
+<span class="c1">#here, bad is when good and medium are 0 </span>
+<span class="c1">#good is when good = 1 and medium = 0 </span>
+<span class="c1">#medium is when good = 0 and medium = 1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A matrix: 3 × 2 of type dbl</caption>
+<thead>
+	<tr><th></th><th scope=col>Good</th><th scope=col>Medium</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>Bad</th><td>0</td><td>0</td></tr>
+	<tr><th scope=row>Good</th><td>1</td><td>0</td></tr>
+	<tr><th scope=row>Medium</th><td>0</td><td>1</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Thus the effect for Bad shelving locations is included in the intercept term of the model. In this model, <em>ShelveLoc</em> is the only categorical variable that has more than 2 levels.
+<br><br>
+But remember – things get complicated if you have multiple categorical variables that have more than two terms. As we discussed in lecture, in those cases the intercept no longer corresponds to a single level of a categorical variable. So watch carefully how R redefines categorical variables.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="simulating-the-bias-variance-tradeoff">
+<h1>Simulating the bias-variance tradeoff<a class="headerlink" href="#simulating-the-bias-variance-tradeoff" title="Permalink to this headline">#</a></h1>
+<p>For the last part of this tutorial, let us return to the bias-variance tradeoff. Our goal will be to simulate data in order to show the tradeoff in action.</p>
+<p>To do this we need to generate a data set that has a natural low-dimensional structure to it. Which means that if you have <span class="math notranslate nohighlight">\(p\)</span> variables in <span class="math notranslate nohighlight">\(X\)</span>, because of correlations across variables, the true dimensionality of <span class="math notranslate nohighlight">\(X\)</span> is <span class="math notranslate nohighlight">\(&lt;p\)</span>.</p>
+<p>You don’t need to know the details of <em>how</em> the data that we generate is low-dimensional (we will return to this issue when we talk about principal componenet models). For right now all you’ll need to know is the concept of a matrix “rank”.</p>
+<p>When we talk about a matrix’s “rank” we mean essentially the number of independent columns in the matrix. If each column is linearly independent of every other column in <span class="math notranslate nohighlight">\(X\)</span>, then the rank of <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(k\)</span>, is <span class="math notranslate nohighlight">\(k=p\)</span>. We call this situation being “full rank”. As <span class="math notranslate nohighlight">\(X\)</span> gets greater correlational structure across variables (columns), the rank decreases. We say it is “low rank”.</p>
+<p>For doing this we will use the <em>LRsim</em> function in the <em>denoiseR</em> libary that you loaded above. Let us write a simple function that will generate data by taking 4 inputs.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n\)</span> = number of observations (rows)</p></li>
+<li><p><span class="math notranslate nohighlight">\(p\)</span> = number of features (columns)</p></li>
+<li><p><span class="math notranslate nohighlight">\(k\)</span> = rank of data</p></li>
+<li><p><span class="math notranslate nohighlight">\(s\)</span> = signal-to-noise ratio</p></li>
+</ul>
+<p>We will rely on something called singular value decomposition (SVD) to create a low rank data set. You don’t need to know what SVD does at the moment. We will come back to this in later classes. For now, just trust us that it generates low rank data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">make_data</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">s</span><span class="p">){</span>
+  
+  <span class="nf">if </span><span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">){</span>
+    <span class="c1"># If number of features is greater </span>
+    <span class="c1"># than number of observations, increase</span>
+    <span class="c1"># observations for the PCA to work</span>
+    <span class="n">m</span><span class="o">=</span><span class="n">p</span>
+  <span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
+    <span class="c1"># Otheriwse use the input n</span>
+    <span class="n">m</span><span class="o">=</span><span class="n">n</span>
+  <span class="p">}</span>
+  
+  <span class="nf">if </span><span class="p">(</span><span class="n">p</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1"># Make full rank until p=k</span>
+    <span class="c1"># degree_diff = k-p</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nf">LRsim</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">s</span><span class="p">)</span><span class="o">$</span><span class="n">X</span>
+  <span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nf">LRsim</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">s</span><span class="p">)</span><span class="o">$</span><span class="n">X</span>
+  <span class="p">}</span>
+
+  <span class="c1"># Recover low-d components</span>
+  <span class="n">z</span> <span class="o">=</span> <span class="nf">princomp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  
+  <span class="c1"># Set the first k components to 1, otherwise 0</span>
+  <span class="nf">if </span><span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="n">k</span> <span class="o">&lt;</span> <span class="m">0</span><span class="p">){</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="n">p</span><span class="p">)</span> <span class="c1">#rnorm(p,mean=1,sd=0.5)</span>
+  <span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="n">k</span><span class="p">),</span><span class="nf">matrix</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">nrow</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="n">ncol</span><span class="o">=</span><span class="n">p</span><span class="o">-</span><span class="n">k</span><span class="p">))</span>
+  <span class="p">}</span>
+  
+  <span class="c1"># Calculate the weights in the data space</span>
+  <span class="n">b</span> <span class="o">=</span> <span class="nf">t</span><span class="p">(</span><span class="n">u</span> <span class="o">%*%</span> <span class="nf">t</span><span class="p">(</span><span class="n">z</span><span class="o">$</span><span class="n">loadings</span><span class="p">))</span>
+  
+  <span class="c1"># In case we needed to set m=p for the </span>
+  <span class="c1"># PCA to work, take the first n observations</span>
+  <span class="c1"># of x</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="n">n</span><span class="p">,]</span>
+  
+  <span class="c1"># Generate your output</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">%*%</span> <span class="n">b</span> <span class="o">+</span> <span class="nf">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+  
+  <span class="nf">return</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">Y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="n">b</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pay attention to how we set up the relationship with <span class="math notranslate nohighlight">\(Y\)</span>. The vector <span class="math notranslate nohighlight">\(u\)</span> only assigns strongest weights to the first <span class="math notranslate nohighlight">\(k\)</span> components in <span class="math notranslate nohighlight">\(X\)</span> in order to influence <span class="math notranslate nohighlight">\(Y\)</span>. So the dimensionality of our problem is approximately <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>Okay, now that we have our function for making data, let’s take a look at what it returns for a 100 observations (<span class="math notranslate nohighlight">\(n\)</span>), 20 variables (<span class="math notranslate nohighlight">\(p\)</span>), a rank (<span class="math notranslate nohighlight">\(k\)</span>) of 5, and signal-to-noise (<span class="math notranslate nohighlight">\(s\)</span>) of 10.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="m">500</span>
+<span class="n">p</span> <span class="o">=</span> <span class="m">20</span>
+<span class="n">k</span> <span class="o">=</span> <span class="m">10</span>
+<span class="n">s</span> <span class="o">=</span> <span class="m">20</span>
+<span class="n">data</span> <span class="o">=</span> <span class="nf">make_data</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="nf">lm</span><span class="p">(</span><span class="n">Y</span><span class="o">~</span><span class="n">X</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
+lm(formula = Y ~ X, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.1632 -0.6669 -0.0134  0.7137  2.5237 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)   -0.01885    0.04635  -0.407   0.6844  
+X1           -62.49300   67.96818  -0.919   0.3583  
+X2           -61.44681   73.61360  -0.835   0.4043  
+X3           -59.27320   80.06719  -0.740   0.4595  
+X4            75.58075   72.70933   1.039   0.2991  
+X5             1.81605   70.67565   0.026   0.9795  
+X6            25.06277   66.36246   0.378   0.7058  
+X7          -122.09670   77.23973  -1.581   0.1146  
+X8           -86.36221   62.08797  -1.391   0.1649  
+X9           -19.65037   70.52672  -0.279   0.7807  
+X10           14.31125   71.55387   0.200   0.8416  
+X11           -4.43152   52.85600  -0.084   0.9332  
+X12          -25.60041   53.90212  -0.475   0.6350  
+X13          174.36787   75.65878   2.305   0.0216 *
+X14           -3.96485   47.65894  -0.083   0.9337  
+X15           82.07110   64.10358   1.280   0.2011  
+X16          -29.96543   62.64256  -0.478   0.6326  
+X17           19.96792   57.26188   0.349   0.7275  
+X18          118.66984   65.19763   1.820   0.0694 .
+X19          -62.36781   70.45165  -0.885   0.3765  
+X20         -132.66258   67.74813  -1.958   0.0508 .
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 1.029 on 479 degrees of freedom
+Multiple R-squared:  0.2157,	Adjusted R-squared:  0.183 
+F-statistic: 6.588 on 20 and 479 DF,  p-value: 5.342e-16
+</pre></div>
+</div>
+</div>
+</div>
+<p>You will notice that only few of the <span class="math notranslate nohighlight">\(p\)</span> variables are “statistically significant” because <span class="math notranslate nohighlight">\(X\)</span> really has a lower dimensionality of 10 (<span class="math notranslate nohighlight">\(k=10\)</span>) and we only set these few components to have an effect on <span class="math notranslate nohighlight">\(Y\)</span>. This is sort of what we would expect.</p>
+<p>Now we can visualize the correlational structure of our data set. Here we’ll use single-linkage clustering for illustrative purposes. For this we will rely on the <em>heatmap.2</em> function from the <em>gplots</em> package that you loaded above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">heatmap.2</span><span class="p">(</span><span class="nf">cor</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">X</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="nf">brewer.pal</span><span class="p">(</span><span class="m">11</span><span class="p">,</span><span class="s">&quot;RdBu&quot;</span><span class="p">),</span> <span class="n">trace</span><span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">,</span> 
+          <span class="n">key.title</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">,</span> <span class="n">key.ylab</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">,</span> <span class="n">key.xlab</span> <span class="o">=</span> <span class="s">&quot;Correlation&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/limits-of-linear-regression_29_0.png" src="../_images/limits-of-linear-regression_29_0.png" />
+</div>
+</div>
+<p>Notice that there are a lot of non-zero off diagonal values in this correlation matrix. This means that there is rich correlational structure in <span class="math notranslate nohighlight">\(X\)</span> as expected.</p>
+<p>For comparison, take a look at what a full rank version of <span class="math notranslate nohighlight">\(X\)</span> looks like.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="n">p</span> 
+<span class="n">data</span> <span class="o">=</span> <span class="nf">make_data</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
+<span class="nf">heatmap.2</span><span class="p">(</span><span class="nf">cor</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">X</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="nf">brewer.pal</span><span class="p">(</span><span class="m">11</span><span class="p">,</span><span class="s">&quot;RdBu&quot;</span><span class="p">),</span> <span class="n">trace</span><span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">,</span> 
+          <span class="n">key.title</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">,</span> <span class="n">key.ylab</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">,</span> <span class="n">key.xlab</span> <span class="o">=</span> <span class="s">&quot;Correlation&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/limits-of-linear-regression_31_0.png" src="../_images/limits-of-linear-regression_31_0.png" />
+</div>
+</div>
+<p>Notice the difference? There is very little correlational structure here because each column in <span class="math notranslate nohighlight">\(X\)</span> is independent of the other.</p>
+<p>Now we want to write a simple loop that uses the built-in <code class="docutils literal notranslate"><span class="pre">lm</span></code> function in R to fit the data that we generate. We already went over this a little bit in previous tutorials. Here we want to focus on how to write a simple loop that generates a training and test data set for different values of <span class="math notranslate nohighlight">\(p\)</span>.</p>
+<p>This function will be simple. We will generate one large data set (<span class="math notranslate nohighlight">\(n*2\)</span> observations) and do a split half test for evaluating both training and test accuracy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">## ------------------------------</span>
+<span class="c1"># LM split validation function</span>
+<span class="c1">## ------------------------------</span>
+<span class="n">bv_lm</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">degree</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1"># Set up the arrays for storing the results</span>
+    <span class="n">train_rss</span> <span class="o">=</span> <span class="nf">matrix</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">NA</span><span class="p">,</span><span class="n">nrow</span><span class="o">=</span><span class="n">degree</span><span class="p">,</span><span class="n">ncol</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+    <span class="n">test_rss</span> <span class="o">=</span> <span class="nf">matrix</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">NA</span><span class="p">,</span><span class="n">nrow</span><span class="o">=</span><span class="n">degree</span><span class="p">,</span><span class="n">ncol</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+    <span class="n">p_max</span> <span class="o">=</span> <span class="n">degree</span><span class="p">[</span><span class="nf">length</span><span class="p">(</span><span class="n">degree</span><span class="p">)]</span>
+
+    <span class="c1"># Loop through for each set of p-features</span>
+    <span class="nf">for </span><span class="p">(</span><span class="n">p</span> <span class="n">in</span> <span class="n">degree</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1"># Set up the data, split into training and test</span>
+        <span class="c1"># sets of size n</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="nf">make_data</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="m">2</span><span class="p">,</span><span class="n">p_max</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
+
+        <span class="n">train</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">data</span><span class="o">$</span><span class="n">X</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="n">n</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="n">p</span><span class="p">],</span><span class="n">Y</span> <span class="o">=</span> <span class="n">data</span><span class="o">$</span><span class="n">Y</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="n">n</span><span class="p">])</span>
+        <span class="n">test</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">data</span><span class="o">$</span><span class="n">X</span><span class="p">[(</span><span class="n">n</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">X</span><span class="p">),</span><span class="m">1</span><span class="o">:</span><span class="n">p</span><span class="p">],</span><span class="n">Y</span> <span class="o">=</span> <span class="n">data</span><span class="o">$</span><span class="n">Y</span><span class="p">[(</span><span class="n">n</span><span class="m">+1</span><span class="p">)</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">X</span><span class="p">)])</span>
+
+        <span class="c1"># Use simple GLM</span>
+        <span class="n">lm.fit</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">Y</span> <span class="o">~</span> <span class="n">X</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">)</span> <span class="c1">#, subset=set_id)</span>
+    
+        <span class="c1"># Get your model prediction on both the training</span>
+        <span class="c1"># and test sets</span>
+        <span class="n">yhat_train</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">)</span>
+        <span class="n">yhat_test</span>  <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">,</span> <span class="n">newdata</span><span class="o">=</span><span class="n">test</span><span class="p">)</span>
+
+        <span class="c1"># Because we get weird outlier predictions plot median sum square error</span>
+        <span class="n">train_rss</span><span class="p">[</span><span class="n">p</span><span class="o">-</span><span class="n">degree</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="m">+1</span><span class="p">]</span> <span class="o">=</span> <span class="nf">median</span><span class="p">((</span><span class="n">train</span><span class="o">$</span><span class="n">Y</span> <span class="o">-</span> <span class="n">yhat_train</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
+        <span class="n">test_rss</span><span class="p">[</span><span class="n">p</span><span class="o">-</span><span class="n">degree</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="m">+1</span><span class="p">]</span> <span class="o">=</span> <span class="nf">median</span><span class="p">((</span><span class="n">test</span><span class="o">$</span><span class="n">Y</span> <span class="o">-</span> <span class="n">yhat_test</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
+    <span class="p">}</span>
+  
+    <span class="c1"># Store the RSS in a data frame</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">degree</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="n">train_rss</span><span class="p">,</span> <span class="n">test</span><span class="o">=</span><span class="n">test_rss</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice what this function does. It loops through list called <em>degrees</em> that samples a range of <span class="math notranslate nohighlight">\(p\)</span> from that list. Even though the underlying dimensionality is the same.</p>
+<p>Okay now we can do one run of this new function to see how it works and plot the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="m">500</span>
+<span class="n">k</span> <span class="o">=</span> <span class="m">10</span> 
+<span class="n">s</span> <span class="o">=</span> <span class="m">20</span>
+<span class="n">degree</span> <span class="o">=</span> <span class="nf">seq</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">20</span><span class="p">)</span>
+
+<span class="n">bv_df</span> <span class="o">=</span> <span class="nf">bv_lm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">degree</span><span class="p">,</span><span class="n">k</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">bv_df</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">p</span><span class="p">))</span> <span class="o">+</span>
+  <span class="nf">geom_line</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="n">test</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;darkred&quot;</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;Median sum squared error&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;p&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/limits-of-linear-regression_36_0.png" src="../_images/limits-of-linear-regression_36_0.png" />
+</div>
+</div>
+<p>It is noisy, but you should notice that the test error skyrockets as <span class="math notranslate nohighlight">\(p\)</span> gets larger. If you squint, somewhere around <span class="math notranslate nohighlight">\(p=10\)</span> the test error is minimized.</p>
+<p>But to get a clearer look, let’s run a large number of sims and average together.</p>
+<p>(This step takes about 10 minutes or so to run if you execute it on your own)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">warn</span><span class="o">=</span><span class="m">-1</span><span class="p">)</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">n_iter</span> <span class="o">=</span> <span class="m">2000</span>
+<span class="n">n</span> <span class="o">=</span> <span class="m">500</span>
+<span class="n">k</span> <span class="o">=</span> <span class="m">10</span> 
+<span class="n">s</span> <span class="o">=</span> <span class="m">20</span>
+<span class="n">degree</span> <span class="o">=</span> <span class="nf">seq</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">20</span><span class="p">)</span>
+
+<span class="c1"># Aggregated output</span>
+<span class="n">train_rss</span> <span class="o">=</span> <span class="nf">matrix</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">NA</span><span class="p">,</span><span class="n">nrow</span><span class="o">=</span><span class="nf">length</span><span class="p">(</span><span class="n">degree</span><span class="p">),</span><span class="n">ncol</span><span class="o">=</span><span class="n">n_iter</span><span class="p">)</span>
+<span class="n">test_rss</span> <span class="o">=</span> <span class="nf">matrix</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">NA</span><span class="p">,</span><span class="n">nrow</span><span class="o">=</span><span class="nf">length</span><span class="p">(</span><span class="n">degree</span><span class="p">),</span><span class="n">ncol</span><span class="o">=</span><span class="n">n_iter</span><span class="p">)</span>
+
+<span class="c1"># Loop through n_iter times</span>
+<span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">n_iter</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">bv_df</span> <span class="o">=</span> <span class="nf">bv_lm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">degree</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
+  <span class="n">train_rss</span><span class="p">[,</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">bv_df</span><span class="o">$</span><span class="n">train</span>
+  <span class="n">test_rss</span><span class="p">[,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span><span class="n">bv_df</span><span class="o">$</span><span class="n">test</span>
+<span class="p">}</span>
+
+<span class="c1"># Make a new data frame for plotting</span>
+<span class="n">run_df</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">degree</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="nf">rowMeans</span><span class="p">(</span><span class="n">train_rss</span><span class="p">),</span> <span class="n">test</span><span class="o">=</span><span class="nf">rowMeans</span><span class="p">(</span><span class="n">test_rss</span><span class="p">),</span>
+                    <span class="n">strain</span><span class="o">=</span><span class="nf">rowSds</span><span class="p">(</span><span class="n">train_rss</span><span class="p">),</span> <span class="n">stest</span><span class="o">=</span><span class="nf">rowSds</span><span class="p">(</span><span class="n">test_rss</span><span class="p">))</span>
+
+<span class="c1"># Plot</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">run_df</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">p</span><span class="p">))</span> <span class="o">+</span>
+  <span class="nf">geom_line</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="n">test</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;darkred&quot;</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">geom_line</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="n">train</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s">&quot;steelblue&quot;</span><span class="p">,</span> <span class="n">linetype</span><span class="o">=</span><span class="s">&quot;twodash&quot;</span><span class="p">)</span> <span class="o">+</span>
+   <span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;Median sum squared error&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;p&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/limits-of-linear-regression_38_0.png" src="../_images/limits-of-linear-regression_38_0.png" />
+</div>
+</div>
+<p>In the plot above, the red line shows the test error and the blue dashed line shows the training error. Notice the classic bias-variance tradeoff where training error continues to decrease as <span class="math notranslate nohighlight">\(p\)</span> increases, but test error has a “U” shape that bottoms out close to <span class="math notranslate nohighlight">\(p=k\)</span>. Classic bias-variance tradeoff.</p>
+<p>If you want to have fun with this effect, try changing the value of <span class="math notranslate nohighlight">\(k\)</span> in the code cells above and re-running the simulation. What happens?</p>
+<p><em>Notebook authored by Tim Verstynen and Ven Popov, edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../lectures/limits-of-linear-regression.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Limits and variations of linear regression</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../discussions/limits-of-linear-regression.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Discussion questions</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis, Fiona Horner<br/>
+  
+      &copy; Copyright 2023.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

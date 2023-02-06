@@ -1,0 +1,2692 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Tutorial: Data Cleansing and the Tidyverse &#8212; Data explorations</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Discussion questions" href="../discussions/techniques-for-data-cleansing.html" />
+    <link rel="prev" title="Techniques for data cleansing" href="../lectures/techniques-for-data-cleansing.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/information.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data explorations</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Data explorations
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Information and Meaning
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/quantitative-epistemology.html">
+   Quantitative epsitemology
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quantitative-epistemology.html">
+     Tutorial: Getting started
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/quantitative-epistemology.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-value-of-openness.html">
+   The value of openness
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-value-of-openness.html">
+     Tutorial: Repositories and version control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-value-of-openness.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/the-value-of-openness.html">
+     Exercise 1: Github &amp; Jupyter
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/what-is-a-theory.html">
+   What is a theory?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/what-is-a-theory.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/models-as-testable-hypotheses.html">
+   Models as testable hypotheses
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="models-as-testable-hypotheses.html">
+     Tutorial: Introduction to R, functions, and good coding habits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/models-as-testable-hypotheses.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/models-as-testable-hypotheses.html">
+     Exercise 2: Coding Habits &amp; Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/data-as-objects-and-architectures.html">
+   Data as objects and architectures
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data-as-objects-and-architectures.html">
+     Tutorial: Data as Objects and Tidy Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/data-as-objects-and-architectures.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/data-as-objects-and-architectures.html">
+     Exercise 3: Data objects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../lectures/techniques-for-data-cleansing.html">
+   Techniques for data cleansing
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Tutorial: Data Cleansing and the Tidyverse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/techniques-for-data-cleansing.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/techniques-for-data-cleansing.html">
+     Exercise 4: Data tables and manipulation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/visualization-as-analysis.html">
+   Visualization as analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="visualization-as-analysis.html">
+     Tutorial: Basics of plotting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/visualization-as-analysis.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/visualization-as-analysis.html">
+     Exercise 5: Using ggplot
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/visualization-through-human-eyes.html">
+   Visualization through human eyes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="visualization-through-human-eyes.html">
+     Tutorial: More advanced plotting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/visualization-through-human-eyes.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/visualization-through-human-eyes.html">
+     Exercise 6: More plotting options
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Knowledge
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/statistical-learning-theory.html">
+   The bias-variance tradeoff
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/statistical-learning-theory.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/linear-models.html">
+   Linear models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="linear-models.html">
+     Tutorial: Refresher on working with matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/linear-models.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/linear-models.html">
+     Exercise 7:  Linear models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-ordinary-least-squares-solution.html">
+   The ordinary least squares solution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-ordinary-least-squares-solution.html">
+     Tutorial: Refresher for solving oridinary least squares
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-ordinary-least-squares-solution.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/the-ordinary-least-squares-solution.html">
+     Exercise 8:  Linear models, continued
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/limits-of-linear-regression.html">
+   Limits and variations of linear regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="limits-of-linear-regression.html">
+     Tutorial: More on linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/limits-of-linear-regression.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/mixed-effects-models.html">
+   Mixed effects models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mixed-effects-models.html">
+     Tutorial: Running linear mixed effects models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/mixed-effects-models.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/mixed-effects-models.html">
+     Exercise 10: Mixed effects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/classifiers.html">
+   Classifiers
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="classifiers.html">
+     Tutorial: Basics classifiers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/classifiers.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/classifiers.html">
+     Exercise 11: Classification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-beauty-of-knn.html">
+   The beauty of kNN
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-beauty-of-knn.html">
+     Tutorial: Running kNN models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-beauty-of-knn.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/cross-validation.html">
+   Cross validation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cross-validation.html">
+     Tutorial: Implementing cross validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/cross-validation.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/resampling-methods.html">
+   Resampling methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="resampling-methods.html">
+     Tutorial: Boostrap and permutation tests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/resampling-methods.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/resampling-methods.html">
+     Exercise 14:  Resampling methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/mediation-and-moderation.html">
+   Mediation and moderation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mediation-and-moderation.html">
+     Tutorial: Running mediation and moderation models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/mediation-and-moderation.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/power-analysis-via-simulations.html">
+   Power analysis via simulations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="power-analysis-via-simulations.html">
+     Tutorial: Running basic power analyses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/power-analysis-via-simulations.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/selecting-the-best-model.html">
+   Selecting the best model
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+  <label for="toctree-checkbox-20">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="selecting-the-best-model.html">
+     Tutorial: Model selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/selecting-the-best-model.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/selecting-the-best-model.html">
+     Exercise 17: Model selection
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/regularized-regression.html">
+   Regularized regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+  <label for="toctree-checkbox-21">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="regularized-regression.html">
+     Tutorial: Basic ridge and LASSO models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/regularized-regression.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/regularized-regression.html">
+     Exercise 18: Regularized regression
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/principal-component-methods.html">
+   Principal component methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="principal-component-methods.html">
+     Tutorial: Basic PCA approaches
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/principal-component-methods.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Understanding
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/reconsidering-the-p-value.html">
+   Reconsidering the p-value
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/reconsidering-the-p-value.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/bayes-factor-accepting-the-null.html">
+   Bayes factor
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+  <label for="toctree-checkbox-24">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bayes-factor-accepting-the-null.html">
+     Tutorial: Estimating Bayes factors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/bayes-factor-accepting-the-null.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/errors-and-inferences.html">
+   Errors and inferences
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+  <label for="toctree-checkbox-25">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/errors-and-inferences.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/telling-your-data-story.html">
+   Telling your data story
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+  <label for="toctree-checkbox-26">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/telling-your-data-story.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/theories-as-social-constructs.html">
+   Theories as social constructs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+  <label for="toctree-checkbox-27">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/theories-as-social-constructs.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/notebooks/techniques-for-data-cleansing.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/notebooks/techniques-for-data-cleansing.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notebooks/techniques-for-data-cleansing.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial: Data Cleansing and the Tidyverse
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goals">
+     Goals:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-started">
+   Getting started
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data">
+     Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-standardized-grammar">
+   A standardized grammar
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pipes-the-operator">
+     Pipes: the %&gt;% operator
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transforming-data-with-tidyverse-functions">
+   Transforming data with tidyverse functions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mutate-transform-existing-variables-and-create-new-variables">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       mutate()
+      </span>
+     </code>
+     : Transform existing variables and create new variables
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summarise-summarize-variables">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       summarise()
+      </span>
+     </code>
+     : Summarize variables
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filter-filter-rows-based-on-a-condition">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       filter()
+      </span>
+     </code>
+     : Filter rows based on a condition
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#select-select-columns-to-keep-remove">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       select()
+      </span>
+     </code>
+     : Select columns to keep/remove
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arrange-sort-by-columns">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       arrange()
+      </span>
+     </code>
+     : Sort by columns
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#unite-combine-two-columns-into-one">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       unite()
+      </span>
+     </code>
+     : Combine two columns into one
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#separate-split-one-column-into-multiple-columns">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       separate()
+      </span>
+     </code>
+     : Split one column into multiple columns
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#group-by-implicitly-group-data">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       group_by()
+      </span>
+     </code>
+     : Implicitly group data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nest-explicitly-group-data">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       nest()
+      </span>
+     </code>
+     : Explicitly group data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#map-perform-same-function-on-each-element-of-list-or-vector">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       map()
+      </span>
+     </code>
+     : Perform same function on each element of list or vector
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#restructuring-data-frames-long-to-wide-wide-to-long-and-merging">
+   Restructuring data.frames: long to wide, wide to long, and merging
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pivot-longer">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pivot_longer()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pivot-wider">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pivot_wider()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#join">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       *_join()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Tutorial: Data Cleansing and the Tidyverse</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial: Data Cleansing and the Tidyverse
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goals">
+     Goals:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-started">
+   Getting started
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data">
+     Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-standardized-grammar">
+   A standardized grammar
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pipes-the-operator">
+     Pipes: the %&gt;% operator
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transforming-data-with-tidyverse-functions">
+   Transforming data with tidyverse functions
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mutate-transform-existing-variables-and-create-new-variables">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       mutate()
+      </span>
+     </code>
+     : Transform existing variables and create new variables
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summarise-summarize-variables">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       summarise()
+      </span>
+     </code>
+     : Summarize variables
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filter-filter-rows-based-on-a-condition">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       filter()
+      </span>
+     </code>
+     : Filter rows based on a condition
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#select-select-columns-to-keep-remove">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       select()
+      </span>
+     </code>
+     : Select columns to keep/remove
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arrange-sort-by-columns">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       arrange()
+      </span>
+     </code>
+     : Sort by columns
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#unite-combine-two-columns-into-one">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       unite()
+      </span>
+     </code>
+     : Combine two columns into one
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#separate-split-one-column-into-multiple-columns">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       separate()
+      </span>
+     </code>
+     : Split one column into multiple columns
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#group-by-implicitly-group-data">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       group_by()
+      </span>
+     </code>
+     : Implicitly group data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nest-explicitly-group-data">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       nest()
+      </span>
+     </code>
+     : Explicitly group data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#map-perform-same-function-on-each-element-of-list-or-vector">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       map()
+      </span>
+     </code>
+     : Perform same function on each element of list or vector
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#restructuring-data-frames-long-to-wide-wide-to-long-and-merging">
+   Restructuring data.frames: long to wide, wide to long, and merging
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pivot-longer">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pivot_longer()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pivot-wider">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pivot_wider()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#join">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       *_join()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-data-cleansing-and-the-tidyverse">
+<h1>Tutorial: Data Cleansing and the Tidyverse<a class="headerlink" href="#tutorial-data-cleansing-and-the-tidyverse" title="Permalink to this headline">#</a></h1>
+<p>This lab serves as an introduction to data processing in R using the <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code> family of packages. We cover a lot of material in this tutorial, and recommend coming back to use this as a reference while you learn the <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code> ropes.</p>
+<section id="goals">
+<h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Learn how to use <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code></p></li>
+<li><p>Learn about the pipe operator</p></li>
+<li><p>Learn various data transformations in R</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="getting-started">
+<h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">#</a></h1>
+<p>For many people, their first instinct when it comes to data cleansing is to open their data with Excel and just start manually cleaning it up by replacing values, creating new columns, etc. The problem with that approach is that you cannot easily replicate the steps you have taken to transform the raw data into the final format you use for your analyses. This issue has many consequences, but among the two most common are, first, that if you get new or additional data from the same source, you would have to manually perform the same operations again, and second, if you make a mistake it would be difficult to identify where exactly that happened. The best approach is to preprocess your data with a script in the same way you do your analyses. However, doing so in base R can be quite cumbersome. In this tutorial, you will learn how to use tools for the <strong><code class="docutils literal notranslate"><span class="pre">tidyverse</span></code></strong> packages. Tidyverse is a collection of useful packages, which include <strong><code class="docutils literal notranslate"><span class="pre">ggplot2</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">tidyr</span></code></strong>, <strong><code class="docutils literal notranslate"><span class="pre">dplyr</span></code></strong>, etc, combined in a single package.</p>
+<p>Before we begin, you’ll need to install and load the <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code> package:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&#39;tidyverse&#39;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The downloaded binary packages are in
+	/var/folders/yg/xzc1rwm52nxc0l8mlvk8dkjw0000gp/T//RtmpOtBuZA/downloaded_packages
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>── <span class=" -Color -Color-Bold">Attaching packages</span> ─────────────────────────────────────── tidyverse 1.3.2 ──
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">ggplot2</span> 3.3.6      <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">purrr  </span> 0.3.5 
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">tibble </span> 3.1.8      <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">dplyr  </span> 1.0.10
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">tidyr  </span> 1.2.1      <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">stringr</span> 1.4.1 
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">readr  </span> 2.1.3      <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">forcats</span> 0.5.2 
+── <span class=" -Color -Color-Bold">Conflicts</span> ────────────────────────────────────────── tidyverse_conflicts() ──
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">filter()</span> masks <span class=" -Color -Color-Blue">stats</span>::filter()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">lag()</span>    masks <span class=" -Color -Color-Blue">stats</span>::lag()
+</pre></div>
+</div>
+</div>
+</div>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">#</a></h2>
+<p>We will use the <code class="docutils literal notranslate"><span class="pre">iris</span></code> dataset for illustrating the tidyverse functions. We’ll save it to a <code class="docutils literal notranslate"><span class="pre">dat</span></code> variable like this so we can make changes to it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="o">&lt;-</span> <span class="n">iris</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 5</caption>
+<thead>
+	<tr><th></th><th scope=col>Sepal.Length</th><th scope=col>Sepal.Width</th><th scope=col>Petal.Length</th><th scope=col>Petal.Width</th><th scope=col>Species</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>5.1</td><td>3.5</td><td>1.4</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>2</th><td>4.9</td><td>3.0</td><td>1.4</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>3</th><td>4.7</td><td>3.2</td><td>1.3</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>4</th><td>4.6</td><td>3.1</td><td>1.5</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>5</th><td>5.0</td><td>3.6</td><td>1.4</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>6</th><td>5.4</td><td>3.9</td><td>1.7</td><td>0.4</td><td>setosa</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">iris</span></code> dataset contains <a class="reference external" href="https://eloquentarduino.github.io/2019/12/iris-classification-on-arduino/">measurement data</a> for different species of iris flowers. You can view a detailed description of the dataset by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>?iris
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="a-standardized-grammar">
+<h1>A standardized grammar<a class="headerlink" href="#a-standardized-grammar" title="Permalink to this headline">#</a></h1>
+<p>One of the reasons that the tidyverse is so popular for data manipulation and analysis is that it uses a <strong>standardized grammar</strong> across all of its packages. This means that it’s really easy to make different functions talk to each other, and function options or additional arguments all match the same style so they’re easier to remember.</p>
+<p>In the tidyverse, the first argument of a function is always the <strong>object</strong> that you want to perform the given function on. For example,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mutate</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">var1</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>would take the data frame <code class="docutils literal notranslate"><span class="pre">data</span></code>, and add a new column called <code class="docutils literal notranslate"><span class="pre">var1</span></code> consisting of the given vector.</p>
+<p>This object-as-first-argument style is really helpful when you want to perform a series of functions on the same object.</p>
+<p>Another feature of the tidyverse is that most functions use something called <strong>tidy evaluation</strong>. This means that when you are calling a variable within the function, you typically don’t need to specify which dataframe it is located in. So instead of doing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>select(data, c(data$var1, data$var2))
+</pre></div>
+</div>
+<p>You can just do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">c</span><span class="p">(</span><span class="n">var1</span><span class="p">,</span> <span class="n">var2</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>And it will know to look for <code class="docutils literal notranslate"><span class="pre">var1</span></code> and <code class="docutils literal notranslate"><span class="pre">var2</span></code> in the <code class="docutils literal notranslate"><span class="pre">data</span></code> object. This helps streamline code.</p>
+<section id="pipes-the-operator">
+<h2>Pipes: the %&gt;% operator<a class="headerlink" href="#pipes-the-operator" title="Permalink to this headline">#</a></h2>
+<p>You might have noticed the weird <strong><code class="docutils literal notranslate"><span class="pre">%&gt;%</span></code></strong> operator in the code in prior tutorials. This operator is called a <strong>‘pipe’</strong>. Pipes are present in many programming languages, but not in the base R, so you might not be familiar with them. Pipes are an added feature from the Tidyverse package.</p>
+<p>A pipe serves as a link between two objects, whether they be variables or functions. The pipe tells R to take the object on its left side and pass it as the first argument to the function on the right. This is where the object-as-first-argument style really matters – it’s easy to pipe the output of one tidyverse function straight in as the input of the next, becuase the data object is always the first argument.</p>
+<p>Typically in R, if you want to pass an argument to a function, you specify it as <code class="docutils literal notranslate"><span class="pre">function(argument)</span></code>. For example, if you want to find the mean of the iris <code class="docutils literal notranslate"><span class="pre">Sepal.Width</span></code>, in base R you would do this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">mean</span><span class="p">(</span><span class="n">iris</span><span class="o">$</span><span class="n">Sepal.Width</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">3.05733333333333</div></div>
+</div>
+<p>If you use a pipe, you just put the argument on its left side, and the function on the right, i.e., <code class="docutils literal notranslate"><span class="pre">variable</span>&#160; <span class="pre">%&gt;%</span> <span class="pre">function()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">iris</span><span class="o">$</span><span class="n">Sepal.Width</span> <span class="o">%&gt;%</span> <span class="nf">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">3.05733333333333</div></div>
+</div>
+<p>Now, you might be asking, why would you want to use <strong>x %&gt;% mean()</strong> instead of <strong>mean(x)</strong>? Pipes are most useful when you have to run a series of functions on the same input. For example, let’s say you want to find the mean of the observations, and then round the value to 2 significant digits. In base R, you can do this in two ways:</p>
+<ol class="simple">
+<li><p>nest the functions within one another</p></li>
+<li><p>assign a temporary variable for the mean, and then round that value</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># nested</span>
+<span class="nf">round</span><span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="n">iris</span><span class="o">$</span><span class="n">Sepal.Width</span><span class="p">),</span> <span class="m">2</span><span class="p">)</span>
+
+<span class="c1"># tmp variable</span>
+<span class="n">obs_mean</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">iris</span><span class="o">$</span><span class="n">Sepal.Width</span><span class="p">)</span>
+<span class="nf">round</span><span class="p">(</span><span class="n">obs_mean</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">3.06</div><div class="output text_html">3.06</div></div>
+</div>
+<p>Since pipes take the output of the expression on the left and send it as the first input to the expression on the right, you can do the following with pipes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># with pipes</span>
+<span class="n">iris</span><span class="o">$</span><span class="n">Sepal.Width</span> <span class="o">%&gt;%</span> 
+    <span class="nf">mean</span><span class="p">()</span> <span class="o">%&gt;%</span> 
+    <span class="nf">round</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">3.06</div></div>
+</div>
+<p>This reads smoothly from start to finish as, “Take the observations, find the mean, and then round it to two decimals.”</p>
+<p>Note that it’s best practice to start a new row after each pipe operator, with the following functions indented.</p>
+<p><code class="docutils literal notranslate"><span class="pre">round()</span></code> is not a tidyverse function, but notice that it also takes as first argument the <strong>value</strong> to be rounded, and as a second argument the number of digits to which to round. When you use a pipe, the first argument is implicitly filled in with the value on the left, so the first argument you actually type corresponds to the number of significant digits to which to round.</p>
+<p>This is the magic of the tidyverse pipe. As we’ll see with our tidyverse functions below, you often want to use many of them, all in a row, on the same data object. While the above example might be easy to read in its nested form, it becomes very difficult to track what is going on with this approach as your code gets more complex.</p>
+<p><strong>Thus pipes have two advantages:</strong></p>
+<ol class="simple">
+<li><p><strong>Readability</strong> - it is easier to see what goes on, because you can track the sequence naturally top to bottom. In contrast, with nested functions, you have to identify the inner-most function and then work your way outwards.</p></li>
+<li><p><strong>Efficiency</strong> - you won’t clutter your environment with temporary variables that you needed for only one intermediary observation.</p></li>
+</ol>
+<p>Because the pipe is so annoying to type, there is a handy keyboard shortcut:</p>
+<p><strong>Mac</strong>: shift + command + M</p>
+<p><strong>PC</strong>: shift + control + M</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="transforming-data-with-tidyverse-functions">
+<h1>Transforming data with tidyverse functions<a class="headerlink" href="#transforming-data-with-tidyverse-functions" title="Permalink to this headline">#</a></h1>
+<p>Below is a summary of the functions we will review and their general description. These functions come from the <code class="docutils literal notranslate"><span class="pre">dplyr</span></code> package, the <code class="docutils literal notranslate"><span class="pre">tidyr</span></code> package, and the <code class="docutils literal notranslate"><span class="pre">purrr</span></code> package:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">mutate()</span></code></strong> - transform existing variables and create new variables</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">summarise()</span></code></strong> - summarize variables</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">filter()</span></code></strong> - filter rows based on a condition</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">select()</span></code></strong> - select columns to keep/remove</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">arrange()</span></code></strong> - sort by column/columns</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">unite()</span></code></strong> - combine two columns into one</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">separate()</span></code></strong> - split one column into multiple columns</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">*_join()</span></code></strong> - merge multiple dataframes</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">group_by()</span></code></strong> - implicitly group data</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">nest()</span></code></strong> - explicitly group data</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">map()</span></code></strong> - perform the same function on each element of list or vector</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">pivot_wider()</span></code></strong> - transform data to wide format (formerly <code class="docutils literal notranslate"><span class="pre">spread()</span></code>)</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">pivot_longer()</span></code></strong> - transform data to long format (formerly <code class="docutils literal notranslate"><span class="pre">gather()</span></code>)</p></li>
+</ul>
+<section id="mutate-transform-existing-variables-and-create-new-variables">
+<h2><code class="docutils literal notranslate"><span class="pre">mutate()</span></code>: Transform existing variables and create new variables<a class="headerlink" href="#mutate-transform-existing-variables-and-create-new-variables" title="Permalink to this headline">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">mutate()</span></code> is part of <code class="docutils literal notranslate"><span class="pre">dplyr</span></code>, one of the packages included in <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code> that is handy for data manipulation. The <code class="docutils literal notranslate"><span class="pre">mutate()</span></code> command allows you to create new columns, i.e. new variables.  Let’s say you want to center the sepal lengths in the <code class="docutils literal notranslate"><span class="pre">iris</span></code> dataset by subtracting the mean:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="o">&lt;-</span> <span class="n">dat</span>  <span class="o">%&gt;%</span>  <span class="c1">#need to reassign the dat object with our new changes</span>
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">centered_SepLen</span> <span class="o">=</span> <span class="n">Sepal.Length</span> <span class="o">-</span> <span class="nf">mean</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">))</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 6</caption>
+<thead>
+	<tr><th></th><th scope=col>Sepal.Length</th><th scope=col>Sepal.Width</th><th scope=col>Petal.Length</th><th scope=col>Petal.Width</th><th scope=col>Species</th><th scope=col>centered_SepLen</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>5.1</td><td>3.5</td><td>1.4</td><td>0.2</td><td>setosa</td><td>-0.7433333</td></tr>
+	<tr><th scope=row>2</th><td>4.9</td><td>3.0</td><td>1.4</td><td>0.2</td><td>setosa</td><td>-0.9433333</td></tr>
+	<tr><th scope=row>3</th><td>4.7</td><td>3.2</td><td>1.3</td><td>0.2</td><td>setosa</td><td>-1.1433333</td></tr>
+	<tr><th scope=row>4</th><td>4.6</td><td>3.1</td><td>1.5</td><td>0.2</td><td>setosa</td><td>-1.2433333</td></tr>
+	<tr><th scope=row>5</th><td>5.0</td><td>3.6</td><td>1.4</td><td>0.2</td><td>setosa</td><td>-0.8433333</td></tr>
+	<tr><th scope=row>6</th><td>5.4</td><td>3.9</td><td>1.7</td><td>0.4</td><td>setosa</td><td>-0.4433333</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Notice the tidy evaluation here – we only need to indicate the dataset on the very first line. Within <code class="docutils literal notranslate"><span class="pre">mutate</span></code>, it knows to look for those variables in <code class="docutils literal notranslate"><span class="pre">dat</span></code>.</p>
+<p>If you want to create several variables in base R (that is, without using <code class="docutils literal notranslate"><span class="pre">dplyr</span></code> functions), you would have to do this everytime:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># center sepal length</span>
+<span class="n">dat</span><span class="o">$</span><span class="n">centered_SepLen</span> <span class="o">=</span> <span class="n">dat</span><span class="o">$</span><span class="n">Sepal.Length</span> <span class="o">-</span> <span class="nf">mean</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Sepal.Length</span><span class="p">)</span> 
+<span class="c1"># transforms petal length into zscores</span>
+<span class="n">dat</span><span class="o">$</span><span class="n">PetLen_zscores</span> <span class="o">=</span> <span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Petal.Length</span> <span class="o">-</span> <span class="nf">mean</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Petal.Length</span><span class="p">))</span><span class="o">/</span><span class="nf">sd</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Petal.Length</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">dplyr</span></code>, you don’t have to write <code class="docutils literal notranslate"><span class="pre">dat$</span></code> every time you refer to a variable:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="o">&lt;-</span> <span class="n">dat</span>  <span class="o">%&gt;%</span>  
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">centered_SepLen</span> <span class="o">=</span> <span class="n">Sepal.Length</span> <span class="o">-</span> <span class="nf">mean</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">),</span>  <span class="c1"># center Sepal Lengths</span>
+           <span class="n">PetLen_zscores</span> <span class="o">=</span> <span class="p">(</span><span class="n">Petal.Length</span> <span class="o">-</span> <span class="nf">mean</span><span class="p">(</span><span class="n">Petal.Length</span><span class="p">))</span><span class="o">/</span><span class="nf">sd</span><span class="p">(</span><span class="n">Petal.Length</span><span class="p">),</span>  <span class="c1"># zscore the Petal Lengths</span>
+           <span class="n">n_flowers</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">Species</span><span class="p">))</span>              <span class="c1"># calculate the total number of flowers</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 8</caption>
+<thead>
+	<tr><th></th><th scope=col>Sepal.Length</th><th scope=col>Sepal.Width</th><th scope=col>Petal.Length</th><th scope=col>Petal.Width</th><th scope=col>Species</th><th scope=col>centered_SepLen</th><th scope=col>PetLen_zscores</th><th scope=col>n_flowers</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>5.1</td><td>3.5</td><td>1.4</td><td>0.2</td><td>setosa</td><td>-0.7433333</td><td>-1.335752</td><td>150</td></tr>
+	<tr><th scope=row>2</th><td>4.9</td><td>3.0</td><td>1.4</td><td>0.2</td><td>setosa</td><td>-0.9433333</td><td>-1.335752</td><td>150</td></tr>
+	<tr><th scope=row>3</th><td>4.7</td><td>3.2</td><td>1.3</td><td>0.2</td><td>setosa</td><td>-1.1433333</td><td>-1.392399</td><td>150</td></tr>
+	<tr><th scope=row>4</th><td>4.6</td><td>3.1</td><td>1.5</td><td>0.2</td><td>setosa</td><td>-1.2433333</td><td>-1.279104</td><td>150</td></tr>
+	<tr><th scope=row>5</th><td>5.0</td><td>3.6</td><td>1.4</td><td>0.2</td><td>setosa</td><td>-0.8433333</td><td>-1.335752</td><td>150</td></tr>
+	<tr><th scope=row>6</th><td>5.4</td><td>3.9</td><td>1.7</td><td>0.4</td><td>setosa</td><td>-0.4433333</td><td>-1.165809</td><td>150</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>As you see, you can create multiple variables at the same time within a single <code class="docutils literal notranslate"><span class="pre">mutate</span></code> command, by separating them with commas. It’s best practice to start each new variable on a new line to maintain readability.</p>
+</section>
+<section id="summarise-summarize-variables">
+<h2><code class="docutils literal notranslate"><span class="pre">summarise()</span></code>: Summarize variables<a class="headerlink" href="#summarise-summarize-variables" title="Permalink to this headline">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Mutate()</span></code> creates new variables within the existing dataset and does not change the number of rows. You might also want to calculate statistics that summarize the whole data set. In the example above I calculated how many flowers were measured total (<code class="docutils literal notranslate"><span class="pre">n_flowers</span></code>) - but it doesn’t really make sense to output this as a variable with entries for every observation. If you want to create a new data.frame in which you store the summary values for one or more variables, you can use the <code class="docutils literal notranslate"><span class="pre">summarise()</span></code> command.</p>
+<p>Let’s get summaries for a few of the existing variables:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">smry</span> <span class="o">&lt;-</span> <span class="n">dat</span>  <span class="o">%&gt;%</span> <span class="c1">#creating new smry object</span>
+    <span class="nf">summarise</span><span class="p">(</span><span class="n">n_flowers</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">Species</span><span class="p">),</span> <span class="c1">#how many observations (flowers) are there total? </span>
+              <span class="n">shortSepal_prop</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">centered_SepLen</span> <span class="o">&lt;</span> <span class="m">0</span><span class="p">),</span> <span class="c1">#what prop. have smaller-than-average sepal length?</span>
+              <span class="n">setosa_prop</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">Species</span> <span class="o">==</span> <span class="s">&#39;setosa&#39;</span><span class="p">),</span> <span class="c1">#what prop. of measured flowers are species Setosa?</span>
+              <span class="n">SepLen_mean</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">),</span> <span class="c1">#mean sepal length</span>
+              <span class="n">SepLen_sd</span> <span class="o">=</span> <span class="nf">sd</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">),</span> <span class="c1">#standard deviation of sepal length</span>
+              <span class="n">SepLen_se</span> <span class="o">=</span> <span class="n">SepLen_sd</span> <span class="o">/</span> <span class="nf">sqrt</span><span class="p">(</span><span class="n">n_flowers</span><span class="p">)</span>
+              <span class="p">)</span>
+<span class="n">smry</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 1 × 6</caption>
+<thead>
+	<tr><th scope=col>n_flowers</th><th scope=col>shortSepal_prop</th><th scope=col>setosa_prop</th><th scope=col>SepLen_mean</th><th scope=col>SepLen_sd</th><th scope=col>SepLen_se</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>150</td><td>0.5333333</td><td>0.3333333</td><td>5.843333</td><td>0.8280661</td><td>0.06761132</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Notice that when you get to a new row, you can refer to a variable you have already created on a previous row. (The same is true in <code class="docutils literal notranslate"><span class="pre">mutate</span></code>.) For example, when we calculate the standard error for <code class="docutils literal notranslate"><span class="pre">Sepal.Length</span></code>, we have put <code class="docutils literal notranslate"><span class="pre">SepLen_se</span> <span class="pre">=</span> <span class="pre">SepLen_sd</span> <span class="pre">/</span> <span class="pre">sqrt(n_flowers)</span></code>, in which SepLen_sd and n_flowers do not exist in the original data.frame, but are variables that we created on previous rows. We could have written it directly as <code class="docutils literal notranslate"><span class="pre">SepLen_se</span> <span class="pre">=</span> <span class="pre">sd(Sepal.Length)</span> <span class="pre">/</span> <span class="pre">sqrt(length(Species))</span></code>, but doing it in the above way is more efficient and readable.</p>
+</section>
+<section id="filter-filter-rows-based-on-a-condition">
+<h2><code class="docutils literal notranslate"><span class="pre">filter()</span></code>: Filter rows based on a condition<a class="headerlink" href="#filter-filter-rows-based-on-a-condition" title="Permalink to this headline">#</a></h2>
+<p>Here are three scenarios:</p>
+<ul class="simple">
+<li><p>you find that there was an error with data collection for one species of flower (e.g. setosa) and you want to remove it from the data.frame</p></li>
+<li><p>you find out that some flowers have a negative <code class="docutils literal notranslate"><span class="pre">Sepal.Length</span></code> value, which is an error, and you want to remove them</p></li>
+<li><p>you want to separate the data for the remaining two species into separate datasets</p></li>
+</ul>
+<p>You can do all of these things with the <strong><code class="docutils literal notranslate"><span class="pre">filter</span></code></strong> command, which uses a logical argument to identify subsets of rows (observations). Rows for which the logical is TRUE will be retained in the data frame, and all others will be removed:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&#39;species options:&#39;</span><span class="p">,</span><span class="nf">paste</span><span class="p">(</span><span class="nf">levels</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Species</span><span class="p">),</span><span class="n">collapse</span><span class="o">=</span><span class="s">&quot;, &quot;</span><span class="p">)))</span>
+
+<span class="c1"># get rid of all setosa flowers and any flowers with negative sepal lengths</span>
+<span class="n">cleaned_dat</span> <span class="o">&lt;-</span> <span class="n">dat</span>  <span class="o">%&gt;%</span> 
+    <span class="nf">filter</span><span class="p">(</span><span class="n">Species</span> <span class="o">!=</span> <span class="s">&#39;setosa&#39;</span><span class="p">,</span> <span class="c1">#!= is read &quot;not equal to&quot;</span>
+           <span class="n">Sepal.Length</span> <span class="o">&gt;=</span> <span class="m">0</span><span class="p">)</span>
+
+<span class="c1"># make new data.frames for the remaining two species</span>
+<span class="n">versi.dat</span> <span class="o">&lt;-</span> <span class="nf">filter</span><span class="p">(</span><span class="n">cleaned_dat</span><span class="p">,</span> <span class="n">Species</span> <span class="o">==</span> <span class="s">&#39;versicolor&#39;</span><span class="p">)</span>
+<span class="n">virgi.dat</span> <span class="o">&lt;-</span> <span class="nf">filter</span><span class="p">(</span><span class="n">cleaned_dat</span><span class="p">,</span> <span class="n">Species</span> <span class="o">==</span> <span class="s">&#39;virginica&#39;</span><span class="p">)</span>
+
+<span class="c1"># look at first six rows of all three data.frames</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">cleaned_dat</span><span class="p">);</span> <span class="nf">head</span><span class="p">(</span><span class="n">versi.dat</span><span class="p">);</span> <span class="nf">head</span><span class="p">(</span><span class="n">virgi.dat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;species options: setosa, versicolor, virginica&quot;
+</pre></div>
+</div>
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 8</caption>
+<thead>
+	<tr><th></th><th scope=col>Sepal.Length</th><th scope=col>Sepal.Width</th><th scope=col>Petal.Length</th><th scope=col>Petal.Width</th><th scope=col>Species</th><th scope=col>centered_SepLen</th><th scope=col>PetLen_zscores</th><th scope=col>n_flowers</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>7.0</td><td>3.2</td><td>4.7</td><td>1.4</td><td>versicolor</td><td> 1.1566667</td><td>0.5336209</td><td>150</td></tr>
+	<tr><th scope=row>2</th><td>6.4</td><td>3.2</td><td>4.5</td><td>1.5</td><td>versicolor</td><td> 0.5566667</td><td>0.4203256</td><td>150</td></tr>
+	<tr><th scope=row>3</th><td>6.9</td><td>3.1</td><td>4.9</td><td>1.5</td><td>versicolor</td><td> 1.0566667</td><td>0.6469162</td><td>150</td></tr>
+	<tr><th scope=row>4</th><td>5.5</td><td>2.3</td><td>4.0</td><td>1.3</td><td>versicolor</td><td>-0.3433333</td><td>0.1370873</td><td>150</td></tr>
+	<tr><th scope=row>5</th><td>6.5</td><td>2.8</td><td>4.6</td><td>1.5</td><td>versicolor</td><td> 0.6566667</td><td>0.4769732</td><td>150</td></tr>
+	<tr><th scope=row>6</th><td>5.7</td><td>2.8</td><td>4.5</td><td>1.3</td><td>versicolor</td><td>-0.1433333</td><td>0.4203256</td><td>150</td></tr>
+</tbody>
+</table>
+</div><div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 8</caption>
+<thead>
+	<tr><th></th><th scope=col>Sepal.Length</th><th scope=col>Sepal.Width</th><th scope=col>Petal.Length</th><th scope=col>Petal.Width</th><th scope=col>Species</th><th scope=col>centered_SepLen</th><th scope=col>PetLen_zscores</th><th scope=col>n_flowers</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>7.0</td><td>3.2</td><td>4.7</td><td>1.4</td><td>versicolor</td><td> 1.1566667</td><td>0.5336209</td><td>150</td></tr>
+	<tr><th scope=row>2</th><td>6.4</td><td>3.2</td><td>4.5</td><td>1.5</td><td>versicolor</td><td> 0.5566667</td><td>0.4203256</td><td>150</td></tr>
+	<tr><th scope=row>3</th><td>6.9</td><td>3.1</td><td>4.9</td><td>1.5</td><td>versicolor</td><td> 1.0566667</td><td>0.6469162</td><td>150</td></tr>
+	<tr><th scope=row>4</th><td>5.5</td><td>2.3</td><td>4.0</td><td>1.3</td><td>versicolor</td><td>-0.3433333</td><td>0.1370873</td><td>150</td></tr>
+	<tr><th scope=row>5</th><td>6.5</td><td>2.8</td><td>4.6</td><td>1.5</td><td>versicolor</td><td> 0.6566667</td><td>0.4769732</td><td>150</td></tr>
+	<tr><th scope=row>6</th><td>5.7</td><td>2.8</td><td>4.5</td><td>1.3</td><td>versicolor</td><td>-0.1433333</td><td>0.4203256</td><td>150</td></tr>
+</tbody>
+</table>
+</div><div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 8</caption>
+<thead>
+	<tr><th></th><th scope=col>Sepal.Length</th><th scope=col>Sepal.Width</th><th scope=col>Petal.Length</th><th scope=col>Petal.Width</th><th scope=col>Species</th><th scope=col>centered_SepLen</th><th scope=col>PetLen_zscores</th><th scope=col>n_flowers</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>6.3</td><td>3.3</td><td>6.0</td><td>2.5</td><td>virginica</td><td> 0.45666667</td><td>1.2700404</td><td>150</td></tr>
+	<tr><th scope=row>2</th><td>5.8</td><td>2.7</td><td>5.1</td><td>1.9</td><td>virginica</td><td>-0.04333333</td><td>0.7602115</td><td>150</td></tr>
+	<tr><th scope=row>3</th><td>7.1</td><td>3.0</td><td>5.9</td><td>2.1</td><td>virginica</td><td> 1.25666667</td><td>1.2133927</td><td>150</td></tr>
+	<tr><th scope=row>4</th><td>6.3</td><td>2.9</td><td>5.6</td><td>1.8</td><td>virginica</td><td> 0.45666667</td><td>1.0434497</td><td>150</td></tr>
+	<tr><th scope=row>5</th><td>6.5</td><td>3.0</td><td>5.8</td><td>2.2</td><td>virginica</td><td> 0.65666667</td><td>1.1567451</td><td>150</td></tr>
+	<tr><th scope=row>6</th><td>7.6</td><td>3.0</td><td>6.6</td><td>2.1</td><td>virginica</td><td> 1.75666667</td><td>1.6099263</td><td>150</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Here’s where the pipe becomes useful. Let’s say you want to calculate the summaries we described above separately for the versicolor and virginica species. I will show you later how to do it more efficiently, but for the moment we can illustrate how you can chain commands with pipes. Rather than creating the intermediate <code class="docutils literal notranslate"><span class="pre">versi.dat</span></code> and <code class="docutils literal notranslate"><span class="pre">virgi.dat</span></code> dataframes, we can chain the <code class="docutils literal notranslate"><span class="pre">summarise</span></code> function after the <code class="docutils literal notranslate"><span class="pre">filter</span></code> function. In the example below, we pass <code class="docutils literal notranslate"><span class="pre">dat</span></code> as the first argument of <code class="docutils literal notranslate"><span class="pre">filter</span></code>, then specify to keep only versicolor flowers, and then the resulting data.frame is passed on as the first argument to <code class="docutils literal notranslate"><span class="pre">summarise</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate summarise for versicolor species</span>
+<span class="n">dat</span>  <span class="o">%&gt;%</span> 
+ <span class="nf">filter</span><span class="p">(</span><span class="n">Species</span> <span class="o">==</span> <span class="s">&#39;versicolor&#39;</span><span class="p">)</span>  <span class="o">%&gt;%</span> 
+ <span class="nf">summarise</span><span class="p">(</span><span class="n">SepLen_mean</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">),</span>
+           <span class="n">SepLen_sd</span> <span class="o">=</span> <span class="nf">sd</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">))</span>
+
+<span class="c1"># calculate summarise for virginica species</span>
+<span class="n">dat</span>  <span class="o">%&gt;%</span> 
+ <span class="nf">filter</span><span class="p">(</span><span class="n">Species</span> <span class="o">==</span> <span class="s">&#39;virginica&#39;</span><span class="p">)</span>  <span class="o">%&gt;%</span> 
+ <span class="nf">summarise</span><span class="p">(</span><span class="n">SepLen_mean</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">),</span>
+           <span class="n">SepLen_sd</span> <span class="o">=</span> <span class="nf">sd</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 1 × 2</caption>
+<thead>
+	<tr><th scope=col>SepLen_mean</th><th scope=col>SepLen_sd</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>5.936</td><td>0.5161711</td></tr>
+</tbody>
+</table>
+</div><div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 1 × 2</caption>
+<thead>
+	<tr><th scope=col>SepLen_mean</th><th scope=col>SepLen_sd</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>6.588</td><td>0.6358796</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p><strong><em>TIP</em></strong>: it is very easy to remove missing values by using the <code class="docutils literal notranslate"><span class="pre">!is.na(variable)</span></code> command. E.g. if some flowers are missing petal length measurements, you can exclude them by doing <strong><code class="docutils literal notranslate"><span class="pre">filter(dat,</span> <span class="pre">!is.na(Petal.Length))</span></code></strong></p>
+</section>
+<section id="select-select-columns-to-keep-remove">
+<h2><code class="docutils literal notranslate"><span class="pre">select()</span></code>: Select columns to keep/remove<a class="headerlink" href="#select-select-columns-to-keep-remove" title="Permalink to this headline">#</a></h2>
+<p>Often the dataset contains many irrelevant columns that make it difficult to display the dataframe all at once. You can easily choose which columns to keep or remove in a data.frame with the <strong><code class="docutils literal notranslate"><span class="pre">select()</span></code></strong> command. It has complex usage, and I suggest checking the help, i.e. type <code class="docutils literal notranslate"><span class="pre">?select</span></code>. However, the basic usage is as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span>  <span class="o">%&gt;%</span> 
+    <span class="nf">select</span><span class="p">(</span><span class="n">Species</span><span class="p">,</span> <span class="n">Petal.Length</span><span class="p">,</span> <span class="n">Petal.Width</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">head</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 3</caption>
+<thead>
+	<tr><th></th><th scope=col>Species</th><th scope=col>Petal.Length</th><th scope=col>Petal.Width</th></tr>
+	<tr><th></th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>setosa</td><td>1.4</td><td>0.2</td></tr>
+	<tr><th scope=row>2</th><td>setosa</td><td>1.4</td><td>0.2</td></tr>
+	<tr><th scope=row>3</th><td>setosa</td><td>1.3</td><td>0.2</td></tr>
+	<tr><th scope=row>4</th><td>setosa</td><td>1.5</td><td>0.2</td></tr>
+	<tr><th scope=row>5</th><td>setosa</td><td>1.4</td><td>0.2</td></tr>
+	<tr><th scope=row>6</th><td>setosa</td><td>1.7</td><td>0.4</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>If you want to <strong>remove</strong> only specific variables, list each with a <strong>-</strong> sign:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#remove original petal length &amp; width variables</span>
+<span class="n">dat</span>  <span class="o">%&gt;%</span> 
+    <span class="nf">select</span><span class="p">(</span><span class="o">-</span><span class="n">Petal.Length</span><span class="p">,</span> <span class="o">-</span><span class="n">Petal.Width</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">head</span><span class="p">()</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 6</caption>
+<thead>
+	<tr><th></th><th scope=col>Sepal.Length</th><th scope=col>Sepal.Width</th><th scope=col>Species</th><th scope=col>centered_SepLen</th><th scope=col>PetLen_zscores</th><th scope=col>n_flowers</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>5.1</td><td>3.5</td><td>setosa</td><td>-0.7433333</td><td>-1.335752</td><td>150</td></tr>
+	<tr><th scope=row>2</th><td>4.9</td><td>3.0</td><td>setosa</td><td>-0.9433333</td><td>-1.335752</td><td>150</td></tr>
+	<tr><th scope=row>3</th><td>4.7</td><td>3.2</td><td>setosa</td><td>-1.1433333</td><td>-1.392399</td><td>150</td></tr>
+	<tr><th scope=row>4</th><td>4.6</td><td>3.1</td><td>setosa</td><td>-1.2433333</td><td>-1.279104</td><td>150</td></tr>
+	<tr><th scope=row>5</th><td>5.0</td><td>3.6</td><td>setosa</td><td>-0.8433333</td><td>-1.335752</td><td>150</td></tr>
+	<tr><th scope=row>6</th><td>5.4</td><td>3.9</td><td>setosa</td><td>-0.4433333</td><td>-1.165809</td><td>150</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>If you want to keep a sequence of variables, you can specify the first and the last using a range. Note that this will be an inclusive range, so the first and last variables will be included in your selection:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># look at full data set to see order</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+
+<span class="c1"># look at just a certain range of variables</span>
+<span class="n">dat</span>  <span class="o">%&gt;%</span> 
+    <span class="nf">select</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="o">:</span><span class="n">Species</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 8</caption>
+<thead>
+	<tr><th></th><th scope=col>Sepal.Length</th><th scope=col>Sepal.Width</th><th scope=col>Petal.Length</th><th scope=col>Petal.Width</th><th scope=col>Species</th><th scope=col>centered_SepLen</th><th scope=col>PetLen_zscores</th><th scope=col>n_flowers</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>5.1</td><td>3.5</td><td>1.4</td><td>0.2</td><td>setosa</td><td>-0.7433333</td><td>-1.335752</td><td>150</td></tr>
+	<tr><th scope=row>2</th><td>4.9</td><td>3.0</td><td>1.4</td><td>0.2</td><td>setosa</td><td>-0.9433333</td><td>-1.335752</td><td>150</td></tr>
+	<tr><th scope=row>3</th><td>4.7</td><td>3.2</td><td>1.3</td><td>0.2</td><td>setosa</td><td>-1.1433333</td><td>-1.392399</td><td>150</td></tr>
+	<tr><th scope=row>4</th><td>4.6</td><td>3.1</td><td>1.5</td><td>0.2</td><td>setosa</td><td>-1.2433333</td><td>-1.279104</td><td>150</td></tr>
+	<tr><th scope=row>5</th><td>5.0</td><td>3.6</td><td>1.4</td><td>0.2</td><td>setosa</td><td>-0.8433333</td><td>-1.335752</td><td>150</td></tr>
+	<tr><th scope=row>6</th><td>5.4</td><td>3.9</td><td>1.7</td><td>0.4</td><td>setosa</td><td>-0.4433333</td><td>-1.165809</td><td>150</td></tr>
+</tbody>
+</table>
+</div><div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 5</caption>
+<thead>
+	<tr><th></th><th scope=col>Sepal.Length</th><th scope=col>Sepal.Width</th><th scope=col>Petal.Length</th><th scope=col>Petal.Width</th><th scope=col>Species</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>5.1</td><td>3.5</td><td>1.4</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>2</th><td>4.9</td><td>3.0</td><td>1.4</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>3</th><td>4.7</td><td>3.2</td><td>1.3</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>4</th><td>4.6</td><td>3.1</td><td>1.5</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>5</th><td>5.0</td><td>3.6</td><td>1.4</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>6</th><td>5.4</td><td>3.9</td><td>1.7</td><td>0.4</td><td>setosa</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>The tidyverse also has something called <strong>tidy selection</strong> which makes it easy to “batch” select based on patterns in variable names. For example, we can use <code class="docutils literal notranslate"><span class="pre">starts_with()</span></code> to select all columns starting with “Petal”:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span>  <span class="o">%&gt;%</span> 
+    <span class="nf">select</span><span class="p">(</span><span class="nf">starts_with</span><span class="p">(</span><span class="s">&quot;Petal&quot;</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+    <span class="nf">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 2</caption>
+<thead>
+	<tr><th></th><th scope=col>Petal.Length</th><th scope=col>Petal.Width</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>1.4</td><td>0.2</td></tr>
+	<tr><th scope=row>2</th><td>1.4</td><td>0.2</td></tr>
+	<tr><th scope=row>3</th><td>1.3</td><td>0.2</td></tr>
+	<tr><th scope=row>4</th><td>1.5</td><td>0.2</td></tr>
+	<tr><th scope=row>5</th><td>1.4</td><td>0.2</td></tr>
+	<tr><th scope=row>6</th><td>1.7</td><td>0.4</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Other selection helpers include <code class="docutils literal notranslate"><span class="pre">ends_with()</span></code>, <code class="docutils literal notranslate"><span class="pre">contains()</span></code>, <code class="docutils literal notranslate"><span class="pre">matches()</span></code> and <code class="docutils literal notranslate"><span class="pre">num_range()</span></code>. Learn more with <code class="docutils literal notranslate"><span class="pre">?tidyselect::ends_with()</span></code>.</p>
+</section>
+<section id="arrange-sort-by-columns">
+<h2><code class="docutils literal notranslate"><span class="pre">arrange()</span></code>: Sort by columns<a class="headerlink" href="#arrange-sort-by-columns" title="Permalink to this headline">#</a></h2>
+<p>If you want to sort your data.frame by one or more columns you can use the <code class="docutils literal notranslate"><span class="pre">arrange()</span></code> command, where you list the variables in the order in which you want the sorting to occur. The default is to sort by ascending order for each variable. If you want to sort by descending order for one of them, you can surround the variable in the <code class="docutils literal notranslate"><span class="pre">desc()</span></code> command. Let’s sort the flowers by species, and then within each species, by descending petal length:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="o">%&gt;%</span> 
+    <span class="nf">arrange</span><span class="p">(</span><span class="n">Species</span><span class="p">,</span> <span class="nf">desc</span><span class="p">(</span><span class="n">Petal.Length</span><span class="p">))</span> <span class="o">%&gt;%</span>
+    <span class="nf">head</span><span class="p">()</span>
+
+<span class="c1">#levels(dat$Species)</span>
+<span class="c1">#dat  %&gt;% </span>
+<span class="c1">#    arrange(desc(Species), desc(Petal.Length)) %&gt;%</span>
+<span class="c1">#    head()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 8</caption>
+<thead>
+	<tr><th></th><th scope=col>Sepal.Length</th><th scope=col>Sepal.Width</th><th scope=col>Petal.Length</th><th scope=col>Petal.Width</th><th scope=col>Species</th><th scope=col>centered_SepLen</th><th scope=col>PetLen_zscores</th><th scope=col>n_flowers</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>4.8</td><td>3.4</td><td>1.9</td><td>0.2</td><td>setosa</td><td>-1.0433333</td><td>-1.052513</td><td>150</td></tr>
+	<tr><th scope=row>2</th><td>5.1</td><td>3.8</td><td>1.9</td><td>0.4</td><td>setosa</td><td>-0.7433333</td><td>-1.052513</td><td>150</td></tr>
+	<tr><th scope=row>3</th><td>5.4</td><td>3.9</td><td>1.7</td><td>0.4</td><td>setosa</td><td>-0.4433333</td><td>-1.165809</td><td>150</td></tr>
+	<tr><th scope=row>4</th><td>5.7</td><td>3.8</td><td>1.7</td><td>0.3</td><td>setosa</td><td>-0.1433333</td><td>-1.165809</td><td>150</td></tr>
+	<tr><th scope=row>5</th><td>5.4</td><td>3.4</td><td>1.7</td><td>0.2</td><td>setosa</td><td>-0.4433333</td><td>-1.165809</td><td>150</td></tr>
+	<tr><th scope=row>6</th><td>5.1</td><td>3.3</td><td>1.7</td><td>0.5</td><td>setosa</td><td>-0.7433333</td><td>-1.165809</td><td>150</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Note: since the <code class="docutils literal notranslate"><span class="pre">Species</span></code> variable is a factor, not a numeric variable, it will be sorted by the order listed by <code class="docutils literal notranslate"><span class="pre">levels(dat$Species)</span></code>. You can test this out by uncommenting the second line in the code cell above - since the flowers are now sorted in the reverse <code class="docutils literal notranslate"><span class="pre">Species</span></code> order, the first six rows shown by <code class="docutils literal notranslate"><span class="pre">head()</span></code> are now virginica, not setosa.</p>
+</section>
+<section id="unite-combine-two-columns-into-one">
+<h2><code class="docutils literal notranslate"><span class="pre">unite()</span></code>: Combine two columns into one<a class="headerlink" href="#unite-combine-two-columns-into-one" title="Permalink to this headline">#</a></h2>
+<p>Let’s say flowers with short petals are fundamentally different from those with long petals. I’m going to make a new categorical variable, <code class="docutils literal notranslate"><span class="pre">PetalType</span></code>, that can either be “long” or “short”. <em>To learn more about the <code class="docutils literal notranslate"><span class="pre">if_else()</span></code> function used below, type <code class="docutils literal notranslate"><span class="pre">?if_else</span></code>.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="o">&lt;-</span> <span class="n">dat</span>  <span class="o">%&gt;%</span>  
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">PetalType</span> <span class="o">=</span> <span class="nf">if_else</span><span class="p">(</span><span class="n">Petal.Length</span> <span class="o">&gt;</span> <span class="nf">mean</span><span class="p">(</span><span class="n">Petal.Length</span><span class="p">),</span><span class="s">&quot;long&quot;</span><span class="p">,</span><span class="s">&quot;short&quot;</span><span class="p">))</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 9</caption>
+<thead>
+	<tr><th></th><th scope=col>Sepal.Length</th><th scope=col>Sepal.Width</th><th scope=col>Petal.Length</th><th scope=col>Petal.Width</th><th scope=col>Species</th><th scope=col>centered_SepLen</th><th scope=col>PetLen_zscores</th><th scope=col>n_flowers</th><th scope=col>PetalType</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>5.1</td><td>3.5</td><td>1.4</td><td>0.2</td><td>setosa</td><td>-0.7433333</td><td>-1.335752</td><td>150</td><td>short</td></tr>
+	<tr><th scope=row>2</th><td>4.9</td><td>3.0</td><td>1.4</td><td>0.2</td><td>setosa</td><td>-0.9433333</td><td>-1.335752</td><td>150</td><td>short</td></tr>
+	<tr><th scope=row>3</th><td>4.7</td><td>3.2</td><td>1.3</td><td>0.2</td><td>setosa</td><td>-1.1433333</td><td>-1.392399</td><td>150</td><td>short</td></tr>
+	<tr><th scope=row>4</th><td>4.6</td><td>3.1</td><td>1.5</td><td>0.2</td><td>setosa</td><td>-1.2433333</td><td>-1.279104</td><td>150</td><td>short</td></tr>
+	<tr><th scope=row>5</th><td>5.0</td><td>3.6</td><td>1.4</td><td>0.2</td><td>setosa</td><td>-0.8433333</td><td>-1.335752</td><td>150</td><td>short</td></tr>
+	<tr><th scope=row>6</th><td>5.4</td><td>3.9</td><td>1.7</td><td>0.4</td><td>setosa</td><td>-0.4433333</td><td>-1.165809</td><td>150</td><td>short</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Right now <code class="docutils literal notranslate"><span class="pre">Species</span></code> and <code class="docutils literal notranslate"><span class="pre">PetalType</span></code> are two different variables. Let’s say for some reason you want a new variable that specifies both, e.g. ‘short virginica’, ‘long setosa’, etc. This is often useful when you are plotting and you want to use a color to denote each combination of two variables, instead of using a combination of colors and shapes.</p>
+<p>You can combine variables with the <code class="docutils literal notranslate"><span class="pre">unite()</span></code> command, which takes the arguments <code class="docutils literal notranslate"><span class="pre">unite(new_var,</span> <span class="pre">input1,</span> <span class="pre">input2)</span></code>. The <code class="docutils literal notranslate"><span class="pre">remove</span> <span class="pre">=</span> <span class="pre">FALSE</span></code> means it won’t remove the two input variables. This is set to <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> by default.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="o">&lt;-</span> <span class="n">dat</span> <span class="o">%&gt;%</span> 
+      <span class="nf">unite</span><span class="p">(</span><span class="n">Combined_var</span><span class="p">,</span> <span class="n">Species</span><span class="p">,</span> <span class="n">PetalType</span><span class="p">,</span> <span class="n">remove</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span> <span class="n">Petal.Length</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">Combined_var</span><span class="p">))</span><span class="o">+</span> <span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">1.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 10</caption>
+<thead>
+	<tr><th></th><th scope=col>Sepal.Length</th><th scope=col>Sepal.Width</th><th scope=col>Petal.Length</th><th scope=col>Petal.Width</th><th scope=col>Combined_var</th><th scope=col>Species</th><th scope=col>centered_SepLen</th><th scope=col>PetLen_zscores</th><th scope=col>n_flowers</th><th scope=col>PetalType</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>5.1</td><td>3.5</td><td>1.4</td><td>0.2</td><td>setosa_short</td><td>setosa</td><td>-0.7433333</td><td>-1.335752</td><td>150</td><td>short</td></tr>
+	<tr><th scope=row>2</th><td>4.9</td><td>3.0</td><td>1.4</td><td>0.2</td><td>setosa_short</td><td>setosa</td><td>-0.9433333</td><td>-1.335752</td><td>150</td><td>short</td></tr>
+	<tr><th scope=row>3</th><td>4.7</td><td>3.2</td><td>1.3</td><td>0.2</td><td>setosa_short</td><td>setosa</td><td>-1.1433333</td><td>-1.392399</td><td>150</td><td>short</td></tr>
+	<tr><th scope=row>4</th><td>4.6</td><td>3.1</td><td>1.5</td><td>0.2</td><td>setosa_short</td><td>setosa</td><td>-1.2433333</td><td>-1.279104</td><td>150</td><td>short</td></tr>
+	<tr><th scope=row>5</th><td>5.0</td><td>3.6</td><td>1.4</td><td>0.2</td><td>setosa_short</td><td>setosa</td><td>-0.8433333</td><td>-1.335752</td><td>150</td><td>short</td></tr>
+	<tr><th scope=row>6</th><td>5.4</td><td>3.9</td><td>1.7</td><td>0.4</td><td>setosa_short</td><td>setosa</td><td>-0.4433333</td><td>-1.165809</td><td>150</td><td>short</td></tr>
+</tbody>
+</table>
+</div><img alt="../_images/techniques-for-data-cleansing_54_1.png" src="../_images/techniques-for-data-cleansing_54_1.png" />
+</div>
+</div>
+<p>With <code class="docutils literal notranslate"><span class="pre">unite()</span></code>, you can also specify the separator (by default it is ‘_’) and whether to remove the original variables. Check the help section for more on how to do this (<code class="docutils literal notranslate"><span class="pre">?unite</span></code>).</p>
+</section>
+<section id="separate-split-one-column-into-multiple-columns">
+<h2><code class="docutils literal notranslate"><span class="pre">separate()</span></code>: Split one column into multiple columns<a class="headerlink" href="#separate-split-one-column-into-multiple-columns" title="Permalink to this headline">#</a></h2>
+<p>The reverse of the operation above is called <code class="docutils literal notranslate"><span class="pre">separate()</span></code>. It becomes useful, for example, if you have the name of participants stored in one variable, but you want to separate it into First and Last name. For the illustration, I will just reverse the above example (adding 1 to the new variables, to distinguish them from the existing Species and PetalType variables):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="o">&lt;-</span> <span class="n">dat</span>  <span class="o">%&gt;%</span> 
+    <span class="nf">separate</span><span class="p">(</span><span class="n">Combined_var</span><span class="p">,</span> <span class="n">into</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;Species1&#39;</span><span class="p">,</span> <span class="s">&#39;PetalType1&#39;</span><span class="p">))</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 11</caption>
+<thead>
+	<tr><th></th><th scope=col>Sepal.Length</th><th scope=col>Sepal.Width</th><th scope=col>Petal.Length</th><th scope=col>Petal.Width</th><th scope=col>Species1</th><th scope=col>PetalType1</th><th scope=col>Species</th><th scope=col>centered_SepLen</th><th scope=col>PetLen_zscores</th><th scope=col>n_flowers</th><th scope=col>PetalType</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>5.1</td><td>3.5</td><td>1.4</td><td>0.2</td><td>setosa</td><td>short</td><td>setosa</td><td>-0.7433333</td><td>-1.335752</td><td>150</td><td>short</td></tr>
+	<tr><th scope=row>2</th><td>4.9</td><td>3.0</td><td>1.4</td><td>0.2</td><td>setosa</td><td>short</td><td>setosa</td><td>-0.9433333</td><td>-1.335752</td><td>150</td><td>short</td></tr>
+	<tr><th scope=row>3</th><td>4.7</td><td>3.2</td><td>1.3</td><td>0.2</td><td>setosa</td><td>short</td><td>setosa</td><td>-1.1433333</td><td>-1.392399</td><td>150</td><td>short</td></tr>
+	<tr><th scope=row>4</th><td>4.6</td><td>3.1</td><td>1.5</td><td>0.2</td><td>setosa</td><td>short</td><td>setosa</td><td>-1.2433333</td><td>-1.279104</td><td>150</td><td>short</td></tr>
+	<tr><th scope=row>5</th><td>5.0</td><td>3.6</td><td>1.4</td><td>0.2</td><td>setosa</td><td>short</td><td>setosa</td><td>-0.8433333</td><td>-1.335752</td><td>150</td><td>short</td></tr>
+	<tr><th scope=row>6</th><td>5.4</td><td>3.9</td><td>1.7</td><td>0.4</td><td>setosa</td><td>short</td><td>setosa</td><td>-0.4433333</td><td>-1.165809</td><td>150</td><td>short</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Like with <code class="docutils literal notranslate"><span class="pre">unite()</span></code>, you can specify the character you want <code class="docutils literal notranslate"><span class="pre">separate()</span></code> to split. For example, splitting at ” ” instead of at the default “_” for the First, Last name example. See <code class="docutils literal notranslate"><span class="pre">?separate</span></code> for more info.</p>
+</section>
+<section id="group-by-implicitly-group-data">
+<h2><code class="docutils literal notranslate"><span class="pre">group_by()</span></code>: Implicitly group data<a class="headerlink" href="#group-by-implicitly-group-data" title="Permalink to this headline">#</a></h2>
+<p>In the filtering example in section 4.3, we saw how to subset the data.frame separately for different species, and then to calculate the summaries. This is inefficient and also creates two separate data.frames. While you can join them manually afterwards, there is a much easier way with the <strong><code class="docutils literal notranslate"><span class="pre">group_by</span></code></strong> command.</p>
+<p>When you pass a data.frame to a <strong><code class="docutils literal notranslate"><span class="pre">group_by</span></code></strong> command, you can specify names of variables, by which to split the data.frame. For example, if we specify the <code class="docutils literal notranslate"><span class="pre">Species</span></code> and <code class="docutils literal notranslate"><span class="pre">PetalType</span></code> variables in the group_by command, the data.frame will be <strong><em>implicitly</em></strong> split into 4 data.frames - one for each combination of species and petal type.  E.g.:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span> <span class="o">%&gt;%</span> 
+    <span class="nf">group_by</span><span class="p">(</span><span class="n">Species</span><span class="p">,</span> <span class="n">PetalType</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 150 × 11
+# Groups:   Species, PetalType [4]
+   Sepal.Length Sepal.…¹ Petal…² Petal…³ Speci…⁴ Petal…⁵ Species cente…⁶ PetLe…⁷
+          &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;fct&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+ 1          5.1      3.5     1.4     0.2 setosa  short   setosa   -<span class=" -Color -Color-Red">0.743</span>   -<span class=" -Color -Color-Red">1.34</span>
+ 2          4.9      3       1.4     0.2 setosa  short   setosa   -<span class=" -Color -Color-Red">0.943</span>   -<span class=" -Color -Color-Red">1.34</span>
+ 3          4.7      3.2     1.3     0.2 setosa  short   setosa   -<span class=" -Color -Color-Red">1.14</span>    -<span class=" -Color -Color-Red">1.39</span>
+ 4          4.6      3.1     1.5     0.2 setosa  short   setosa   -<span class=" -Color -Color-Red">1.24</span>    -<span class=" -Color -Color-Red">1.28</span>
+ 5          5        3.6     1.4     0.2 setosa  short   setosa   -<span class=" -Color -Color-Red">0.843</span>   -<span class=" -Color -Color-Red">1.34</span>
+ 6          5.4      3.9     1.7     0.4 setosa  short   setosa   -<span class=" -Color -Color-Red">0.443</span>   -<span class=" -Color -Color-Red">1.17</span>
+ 7          4.6      3.4     1.4     0.3 setosa  short   setosa   -<span class=" -Color -Color-Red">1.24</span>    -<span class=" -Color -Color-Red">1.34</span>
+ 8          5        3.4     1.5     0.2 setosa  short   setosa   -<span class=" -Color -Color-Red">0.843</span>   -<span class=" -Color -Color-Red">1.28</span>
+ 9          4.4      2.9     1.4     0.2 setosa  short   setosa   -<span class=" -Color -Color-Red">1.44</span>    -<span class=" -Color -Color-Red">1.34</span>
+10          4.9      3.1     1.5     0.1 setosa  short   setosa   -<span class=" -Color -Color-Red">0.943</span>   -<span class=" -Color -Color-Red">1.28</span>
+# … with 140 more rows, 2 more variables: n_flowers &lt;int&gt;, PetalType &lt;chr&gt;, and
+#   abbreviated variable names ¹​Sepal.Width, ²​Petal.Length, ³​Petal.Width,
+#   ⁴​Species1, ⁵​PetalType1, ⁶​centered_SepLen, ⁷​PetLen_zscores
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, the key is that the split is implicit - as you can see above, we still only have one data.frame, but now it has the specification:</p>
+<p><code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">Groups:</span>&#160;&#160; <span class="pre">Species,</span> <span class="pre">PetalType</span> <span class="pre">[4]</span></code></p>
+<p>Every function that you add after <code class="docutils literal notranslate"><span class="pre">group_by()</span></code> will be evaluated separately for each group, and then the results will be combined. Let’s say you want to calculate the mean and sd for <code class="docutils literal notranslate"><span class="pre">Sepal.Length</span></code> and <code class="docutils literal notranslate"><span class="pre">Sepal.Width</span></code> separately for the four groups:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span>  <span class="o">%&gt;%</span> 
+    <span class="nf">group_by</span><span class="p">(</span><span class="n">Species</span><span class="p">,</span> <span class="n">PetalType</span><span class="p">)</span>  <span class="o">%&gt;%</span> 
+    <span class="nf">summarise</span><span class="p">(</span><span class="n">SepLen_mean</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">),</span>
+              <span class="n">SepLen_sd</span> <span class="o">=</span> <span class="nf">sd</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">),</span>
+              <span class="n">SepWid_mean</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">Sepal.Width</span><span class="p">),</span>
+              <span class="n">SepWid_sd</span> <span class="o">=</span> <span class="nf">sd</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`summarise()` has grouped output by &#39;Species&#39;. You can override using the
+`.groups` argument.
+</pre></div>
+</div>
+<div class="output text_html"><table class="dataframe">
+<caption>A grouped_df: 4 × 6</caption>
+<thead>
+	<tr><th scope=col>Species</th><th scope=col>PetalType</th><th scope=col>SepLen_mean</th><th scope=col>SepLen_sd</th><th scope=col>SepWid_mean</th><th scope=col>SepWid_sd</th></tr>
+	<tr><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>setosa    </td><td>short</td><td>5.006000</td><td>0.3524897</td><td>3.428000</td><td>0.3524897</td></tr>
+	<tr><td>versicolor</td><td>long </td><td>6.046512</td><td>0.4537405</td><td>2.823256</td><td>0.4537405</td></tr>
+	<tr><td>versicolor</td><td>short</td><td>5.257143</td><td>0.3309438</td><td>2.442857</td><td>0.3309438</td></tr>
+	<tr><td>virginica </td><td>long </td><td>6.588000</td><td>0.6358796</td><td>2.974000</td><td>0.6358796</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>And that’s all the code you need. If you have tried to do something like this in base R (i.e., without <code class="docutils literal notranslate"><span class="pre">dplyr</span></code> commands), you know how involved it is! <code class="docutils literal notranslate"><span class="pre">dplyr</span></code> can make your code <strong>much</strong> cleaner. What is going on behind the scenes is that the data.frame is separated into multiple data.frames, one for each combination of variables. Then the <code class="docutils literal notranslate"><span class="pre">summarise</span></code> function is executed on each, and the resulting 4 data.frames are automatically combined into a new resulting data.frame.</p>
+<p>Note that you can ungroup using <code class="docutils literal notranslate"><span class="pre">ungroup()</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">group_by</span></code> command works not only with <code class="docutils literal notranslate"><span class="pre">summarise</span></code>, but also with <code class="docutils literal notranslate"><span class="pre">mutate</span></code>. While with <code class="docutils literal notranslate"><span class="pre">summarise</span></code> it creates a new data.frame with summary results, with <code class="docutils literal notranslate"><span class="pre">mutate</span></code> it creates a new variable that is calculated separately for each group, and then combined into the final data.frame. This is useful, when, for example, we want to standardize variables within groups. Earlier we saw how to subtract the overall mean of <code class="docutils literal notranslate"><span class="pre">Sepal.Length</span></code> to center a variable. Let’s say that we want to subtract the mean <code class="docutils literal notranslate"><span class="pre">Sepal.Length</span></code> of each species only from the flowers in that species. So, for our example we can do:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat_centered</span>  <span class="o">&lt;-</span> <span class="n">dat</span>  <span class="o">%&gt;%</span> 
+ <span class="c1">#center values by mean for all data:</span>
+ <span class="nf">mutate</span><span class="p">(</span><span class="n">SepLen_centered_overall</span> <span class="o">=</span> <span class="n">Sepal.Length</span> <span class="o">-</span> <span class="nf">mean</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+ <span class="nf">group_by</span><span class="p">(</span><span class="n">Species</span><span class="p">)</span>  <span class="o">%&gt;%</span> 
+ <span class="c1">#center values by mean for each species:</span>
+ <span class="nf">mutate</span><span class="p">(</span><span class="n">SepLen_centered_byspecies</span> <span class="o">=</span> <span class="n">Sepal.Length</span> <span class="o">-</span> <span class="nf">mean</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+ <span class="c1">#just show the relevant variables (there are a lot of variables in this data.frame now!):</span>
+ <span class="nf">select</span><span class="p">(</span><span class="n">Species</span><span class="p">,</span> <span class="n">SepLen_centered_overall</span><span class="o">:</span><span class="n">SepLen_centered_byspecies</span><span class="p">)</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">dat_centered</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A grouped_df: 6 × 3</caption>
+<thead>
+	<tr><th scope=col>Species</th><th scope=col>SepLen_centered_overall</th><th scope=col>SepLen_centered_byspecies</th></tr>
+	<tr><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>setosa</td><td>-0.7433333</td><td> 0.094</td></tr>
+	<tr><td>setosa</td><td>-0.9433333</td><td>-0.106</td></tr>
+	<tr><td>setosa</td><td>-1.1433333</td><td>-0.306</td></tr>
+	<tr><td>setosa</td><td>-1.2433333</td><td>-0.406</td></tr>
+	<tr><td>setosa</td><td>-0.8433333</td><td>-0.006</td></tr>
+	<tr><td>setosa</td><td>-0.4433333</td><td> 0.394</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>The second column above gives us the sepal lengths centered over the whole sample, while the third line gives us the sepal lengths centered separately for each species. To illustrate, I will plot the means for each species under the two centerings (don’t worry about the code if you don’t know <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> yet):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat_centered</span> <span class="o">%&gt;%</span> 
+    <span class="nf">pivot_longer</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">SepLen_centered_overall</span><span class="p">,</span> <span class="n">SepLen_centered_byspecies</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+    <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">Species</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">name</span><span class="p">))</span> <span class="o">+</span>
+    <span class="nf">stat_summary</span><span class="p">(</span><span class="n">geom</span><span class="o">=</span><span class="s">&#39;point&#39;</span><span class="p">,</span><span class="n">fun</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="m">2.5</span><span class="p">)</span> <span class="o">+</span>
+    <span class="nf">theme_classic</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/techniques-for-data-cleansing_68_0.png" src="../_images/techniques-for-data-cleansing_68_0.png" />
+</div>
+</div>
+<p>This plot makes sense, because if you’re calculating <code class="docutils literal notranslate"><span class="pre">SepLen_centering_byspecies</span></code> by subtracting the species mean from each <code class="docutils literal notranslate"><span class="pre">Sepal.Length</span></code> value, the mean of the new values should be 0 for every species. Meanwhile, the <code class="docutils literal notranslate"><span class="pre">SepLen_centering_overall</span></code> values were calculated by subtracting the same amount from all <code class="docutils literal notranslate"><span class="pre">Sepal.Length</span></code> values, regardless of species, so we still see variation for these means across species.</p>
+<p>There are a lot of other handy uses for <code class="docutils literal notranslate"><span class="pre">group_by</span></code>, which will be covered in future tutorials.</p>
+</section>
+<section id="nest-explicitly-group-data">
+<h2><code class="docutils literal notranslate"><span class="pre">nest()</span></code>: Explicitly group data<a class="headerlink" href="#nest-explicitly-group-data" title="Permalink to this headline">#</a></h2>
+<p>Whereas <code class="docutils literal notranslate"><span class="pre">group_by()</span></code> implicitly groups data, <code class="docutils literal notranslate"><span class="pre">nest()</span></code> <strong>explicitly</strong> groups data. That is, it takes the subset of data associated with a certain grouping, and <em>nests</em> it within a single cell. That’s right, it puts a whole data frame (ok technically a tibble) in a single cell.</p>
+<p>Replicating our example from above:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Initial dataframe</span>
+<span class="n">nested</span>  <span class="o">&lt;-</span> <span class="n">dat</span>  <span class="o">%&gt;%</span> 
+    <span class="nf">select</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="o">:</span><span class="n">Petal.Width</span><span class="p">,</span> <span class="n">Species</span><span class="p">,</span> <span class="n">PetalType</span><span class="p">))</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">nested</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 6</caption>
+<thead>
+	<tr><th></th><th scope=col>Sepal.Length</th><th scope=col>Sepal.Width</th><th scope=col>Petal.Length</th><th scope=col>Petal.Width</th><th scope=col>Species</th><th scope=col>PetalType</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>5.1</td><td>3.5</td><td>1.4</td><td>0.2</td><td>setosa</td><td>short</td></tr>
+	<tr><th scope=row>2</th><td>4.9</td><td>3.0</td><td>1.4</td><td>0.2</td><td>setosa</td><td>short</td></tr>
+	<tr><th scope=row>3</th><td>4.7</td><td>3.2</td><td>1.3</td><td>0.2</td><td>setosa</td><td>short</td></tr>
+	<tr><th scope=row>4</th><td>4.6</td><td>3.1</td><td>1.5</td><td>0.2</td><td>setosa</td><td>short</td></tr>
+	<tr><th scope=row>5</th><td>5.0</td><td>3.6</td><td>1.4</td><td>0.2</td><td>setosa</td><td>short</td></tr>
+	<tr><th scope=row>6</th><td>5.4</td><td>3.9</td><td>1.7</td><td>0.4</td><td>setosa</td><td>short</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#nesting</span>
+<span class="n">nested</span> <span class="o">%&gt;%</span> 
+    <span class="nf">nest</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="o">:</span><span class="n">Petal.Width</span><span class="p">,</span> <span class="n">PetalType</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+    <span class="n">print</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 3 × 2
+  Species    data             
+  &lt;fct&gt;      &lt;list&gt;           
+1 setosa     &lt;tibble [50 × 5]&gt;
+2 versicolor &lt;tibble [50 × 5]&gt;
+3 virginica  &lt;tibble [50 × 5]&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this example, we had to specify in the <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">=</span></code> argument which columns we wanted to nest. Because we <strong>left out</strong> “Species”, this became our grouping variable, with all other data getting nested under the new <code class="docutils literal notranslate"><span class="pre">data</span></code> column.</p>
+<p>Now in the <code class="docutils literal notranslate"><span class="pre">data</span></code> column we have a 50 x 5 tibble for each species of iris. Let’s see what’s really in cell [1, 2]:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">nested</span> <span class="o">%&gt;%</span> 
+    <span class="nf">nest</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="o">:</span><span class="n">Petal.Width</span><span class="p">,</span> <span class="n">PetalType</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+    <span class="nf">pull</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1">#tidyverse version of $ -- selecting data column</span>
+    <span class="nf">first</span><span class="p">()</span>  <span class="o">%&gt;%</span>  <span class="c1">#pulling first row</span>
+    <span class="nf">head</span><span class="p">()</span> <span class="c1">#just top 6 lines</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 5</caption>
+<thead>
+	<tr><th scope=col>Sepal.Length</th><th scope=col>Sepal.Width</th><th scope=col>Petal.Length</th><th scope=col>Petal.Width</th><th scope=col>PetalType</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>5.1</td><td>3.5</td><td>1.4</td><td>0.2</td><td>short</td></tr>
+	<tr><td>4.9</td><td>3.0</td><td>1.4</td><td>0.2</td><td>short</td></tr>
+	<tr><td>4.7</td><td>3.2</td><td>1.3</td><td>0.2</td><td>short</td></tr>
+	<tr><td>4.6</td><td>3.1</td><td>1.5</td><td>0.2</td><td>short</td></tr>
+	<tr><td>5.0</td><td>3.6</td><td>1.4</td><td>0.2</td><td>short</td></tr>
+	<tr><td>5.4</td><td>3.9</td><td>1.7</td><td>0.4</td><td>short</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>So we can see that a whole other tibble is comfortably waiting for us in a single cell!</p>
+<p>If we leave out both “Species” and “PetalType” from the <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">=</span> </code> argument, we get more nests. This is analogous to grouping by multiple variables:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">nested</span> <span class="o">%&gt;%</span> 
+    <span class="nf">nest</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="o">:</span><span class="n">Petal.Width</span><span class="p">))</span> <span class="o">%&gt;%</span> <span class="c1">#re-nesting with different variables</span>
+    <span class="nf">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 4 × 3
+  Species    PetalType data             
+  &lt;fct&gt;      &lt;chr&gt;     &lt;list&gt;           
+1 setosa     short     &lt;tibble [50 × 4]&gt;
+2 versicolor long      &lt;tibble [43 × 4]&gt;
+3 versicolor short     &lt;tibble [7 × 4]&gt; 
+4 virginica  long      &lt;tibble [50 × 4]&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can even combine <code class="docutils literal notranslate"><span class="pre">group_by()</span></code> with <code class="docutils literal notranslate"><span class="pre">nest()</span></code> to streamline the variable selection. The below will nest all variables <strong>aside from</strong> the <code class="docutils literal notranslate"><span class="pre">group_by()</span></code> variable:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">nested</span>  <span class="o">%&gt;%</span> 
+    <span class="nf">group_by</span><span class="p">(</span><span class="n">Species</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+    <span class="nf">nest</span><span class="p">()</span> <span class="o">%&gt;%</span> 
+    <span class="nf">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 3 × 2
+# Groups:   Species [3]
+  Species    data             
+  &lt;fct&gt;      &lt;list&gt;           
+1 setosa     &lt;tibble [50 × 5]&gt;
+2 versicolor &lt;tibble [50 × 5]&gt;
+3 virginica  &lt;tibble [50 × 5]&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that any variables supplied to the <code class="docutils literal notranslate"><span class="pre">nest()</span></code> function above would override the <code class="docutils literal notranslate"><span class="pre">group_by()</span></code> variables.</p>
+<p>So what is the difference between using <code class="docutils literal notranslate"><span class="pre">group_by()</span></code> versus <code class="docutils literal notranslate"><span class="pre">nest()</span></code>? For most of your operations, <code class="docutils literal notranslate"><span class="pre">group_by()</span></code> will probably be your go-to. However, <code class="docutils literal notranslate"><span class="pre">nest()</span></code> comes into play when the operations you need to perform over each group require a data frame as input (e.g., models). We’ll see some examples of this below with <code class="docutils literal notranslate"><span class="pre">map()</span></code>.</p>
+</section>
+<section id="map-perform-same-function-on-each-element-of-list-or-vector">
+<h2><code class="docutils literal notranslate"><span class="pre">map()</span></code>: Perform same function on each element of list or vector<a class="headerlink" href="#map-perform-same-function-on-each-element-of-list-or-vector" title="Permalink to this headline">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">map()</span></code> works by applying a given function across different elements of a list or vector. If you are familiar with <code class="docutils literal notranslate"><span class="pre">for</span></code> loops, this is conceptually similar to looping a function over, e.g., lines of data. However, <code class="docutils literal notranslate"><span class="pre">map()</span></code> is <em>vectorized</em>. This is a fancy way of saying it’s implemented using a lower-level programming language. This makes it more efficient than loops.</p>
+<p>(Note: <code class="docutils literal notranslate"><span class="pre">map</span></code> operates basically the same as the <code class="docutils literal notranslate"><span class="pre">*apply</span></code> family of functions (e.g., <code class="docutils literal notranslate"><span class="pre">lapply()</span></code>, <code class="docutils literal notranslate"><span class="pre">sapply</span></code>, etc.) but since <code class="docutils literal notranslate"><span class="pre">map</span></code> is part of the tidyverse, it plays better with tidyverse grammar and is more standardized.)</p>
+<p><code class="docutils literal notranslate"><span class="pre">map()</span></code> and <code class="docutils literal notranslate"><span class="pre">nest()</span></code> work really well together. Here, we’ll use them to fit a model for different subgroups and then extract the results of all our models.</p>
+<p>We’ll use our nested data frame from above, with both Species and PetalType as nesting factors:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">nested</span>  <span class="o">&lt;-</span> <span class="n">nested</span> <span class="o">%&gt;%</span> 
+    <span class="nf">group_by</span><span class="p">(</span><span class="n">Species</span><span class="p">,</span> <span class="n">PetalType</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+    <span class="nf">nest</span><span class="p">()</span> <span class="o">%&gt;%</span> 
+    <span class="nf">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 4 × 3
+# Groups:   Species, PetalType [4]
+  Species    PetalType data             
+  &lt;fct&gt;      &lt;chr&gt;     &lt;list&gt;           
+1 setosa     short     &lt;tibble [50 × 4]&gt;
+2 versicolor long      &lt;tibble [43 × 4]&gt;
+3 versicolor short     &lt;tibble [7 × 4]&gt; 
+4 virginica  long      &lt;tibble [50 × 4]&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">map</span></code> takes the form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">function</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">data</span></code> is a list/vector. We want our function to apply to each element of this list/vector.</p>
+<p><code class="docutils literal notranslate"><span class="pre">function</span></code> can be a pre-existing function, or we can create a short custom function right within <code class="docutils literal notranslate"><span class="pre">map</span></code> using what we learned in our tutorial on writing functions.</p>
+<p>Here, we’ll fit a linear model to predict Sepal.Length from Petal.Length:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">nested_lm</span>  <span class="o">&lt;-</span> <span class="n">nested</span>  <span class="o">%&gt;%</span> 
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">model_fit</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="c1">#column name in nested df</span>
+                           <span class="nf">function</span><span class="p">(</span><span class="n">nest_df</span><span class="p">)</span> <span class="nf">lm</span><span class="p">(</span><span class="n">Sepal.Length</span> <span class="o">~</span> <span class="n">Petal.Length</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">nest_df</span><span class="p">)))</span> 
+
+<span class="nf">print</span><span class="p">(</span><span class="n">nested_lm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 4 × 4
+# Groups:   Species, PetalType [4]
+  Species    PetalType data              model_fit
+  &lt;fct&gt;      &lt;chr&gt;     &lt;list&gt;            &lt;list&gt;   
+1 setosa     short     &lt;tibble [50 × 4]&gt; &lt;lm&gt;     
+2 versicolor long      &lt;tibble [43 × 4]&gt; &lt;lm&gt;     
+3 versicolor short     &lt;tibble [7 × 4]&gt;  &lt;lm&gt;     
+4 virginica  long      &lt;tibble [50 × 4]&gt; &lt;lm&gt;     
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that in this case, the first <code class="docutils literal notranslate"><span class="pre">data</span></code> argument of <code class="docutils literal notranslate"><span class="pre">map</span></code> refers to the name of our nested column in our dataset. However within the function, <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">=</span> </code> is a built-in argument for the <code class="docutils literal notranslate"><span class="pre">lm</span></code> function.</p>
+<p>We can see we’ve added another column in which each cell contains the specified linear model. Let’s see what that really looks like! (This code just pulls the top two lines of the lm object):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">nested_lm</span> <span class="o">%&gt;%</span>  
+    <span class="nf">pull</span><span class="p">(</span><span class="n">model_fit</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1">#tidyverse version of $ -- selecting model_fit column</span>
+    <span class="nf">first</span><span class="p">()</span>  <span class="o">%&gt;%</span>  <span class="c1">#pulling first row</span>
+    <span class="nf">head</span><span class="p">(</span><span class="m">2</span><span class="p">)</span> <span class="c1">#just top 2 lines of nested df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><dl>
+	<dt>$coefficients</dt>
+		<dd><style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>(Intercept)</dt><dd>4.21316822303424</dd><dt>Petal.Length</dt><dd>0.542292597103803</dd></dl>
+</dd>
+	<dt>$residuals</dt>
+		<dd><style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>1</dt><dd>0.127622141020428</dd><dt>2</dt><dd>-0.0723778589795636</dd><dt>3</dt><dd>-0.218148599269184</dd><dt>4</dt><dd>-0.426607118689945</dd><dt>5</dt><dd>0.027622141020436</dd><dt>6</dt><dd>0.264934361889295</dd><dt>7</dt><dd>-0.372377858979564</dd><dt>8</dt><dd>-0.0266071186899444</dd><dt>9</dt><dd>-0.572377858979564</dd><dt>10</dt><dd>-0.126607118689944</dd><dt>11</dt><dd>0.373392881310056</dd><dt>12</dt><dd>-0.280836378400325</dd><dt>13</dt><dd>-0.172377858979564</dd><dt>14</dt><dd>-0.509690079848423</dd><dt>15</dt><dd>0.936080660441196</dd><dt>16</dt><dd>0.673392881310056</dd><dt>17</dt><dd>0.481851400730817</dd><dt>18</dt><dd>0.127622141020436</dd><dt>19</dt><dd>0.564934361889295</dd><dt>20</dt><dd>0.0733928813100553</dd><dt>21</dt><dd>0.264934361889295</dd><dt>22</dt><dd>0.0733928813100553</dd><dt>23</dt><dd>-0.155460820138043</dd><dt>24</dt><dd>-0.0350656381107053</dd><dt>25</dt><dd>-0.443524157531466</dd><dt>26</dt><dd>-0.0808363784003247</dd><dt>27</dt><dd>-0.0808363784003247</dd><dt>28</dt><dd>0.173392881310056</dd><dt>29</dt><dd>0.227622141020436</dd><dt>30</dt><dd>-0.380836378400324</dd><dt>31</dt><dd>-0.280836378400325</dd><dt>32</dt><dd>0.373392881310056</dd><dt>33</dt><dd>0.173392881310056</dd><dt>34</dt><dd>0.527622141020436</dd><dt>35</dt><dd>-0.126607118689944</dd><dt>36</dt><dd>0.136080660441197</dd><dt>37</dt><dd>0.581851400730816</dd><dt>38</dt><dd>-0.0723778589795637</dd><dt>39</dt><dd>-0.518148599269183</dd><dt>40</dt><dd>0.0733928813100553</dd><dt>41</dt><dd>0.0818514007308162</dd><dt>42</dt><dd>-0.418148599269184</dd><dt>43</dt><dd>-0.518148599269183</dd><dt>44</dt><dd>-0.0808363784003247</dd><dt>45</dt><dd>-0.143524157531466</dd><dt>46</dt><dd>-0.172377858979564</dd><dt>47</dt><dd>0.0191636215996749</dd><dt>48</dt><dd>-0.372377858979564</dd><dt>49</dt><dd>0.273392881310055</dd><dt>50</dt><dd>0.027622141020436</dd></dl>
+</dd>
+</dl>
+</div></div>
+</div>
+<p>Super ugly, but there’s (part of) our model!</p>
+<p>Now, using what we learned in our tutorial on data objects, we can extract interesting information from each of these nested models. Here we create yet another nested column, where each cell holds the coefficients for the respective model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">nested_lm</span> <span class="o">&lt;-</span> <span class="n">nested_lm</span>  <span class="o">%&gt;%</span> 
+        <span class="nf">mutate</span><span class="p">(</span><span class="n">coef</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">model_fit</span><span class="p">,</span> <span class="c1">#now iterating over &quot;model_fit&quot; instead of &quot;data&quot;</span>
+                      <span class="c1">#a function to create data frame of coef names/values:</span>
+                      <span class="nf">function</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="nf">names</span><span class="p">(</span><span class="n">fit</span><span class="o">$</span><span class="n">coefficients</span><span class="p">),</span> 
+                                               <span class="n">beta</span> <span class="o">=</span> <span class="n">fit</span><span class="o">$</span><span class="n">coefficients</span><span class="p">)))</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">nested_lm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 4 × 5
+# Groups:   Species, PetalType [4]
+  Species    PetalType data              model_fit coef        
+  &lt;fct&gt;      &lt;chr&gt;     &lt;list&gt;            &lt;list&gt;    &lt;list&gt;      
+1 setosa     short     &lt;tibble [50 × 4]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
+2 versicolor long      &lt;tibble [43 × 4]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
+3 versicolor short     &lt;tibble [7 × 4]&gt;  &lt;lm&gt;      &lt;df [2 × 2]&gt;
+4 virginica  long      &lt;tibble [50 × 4]&gt; &lt;lm&gt;      &lt;df [2 × 2]&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, we can unnest the columns we’re interested in.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">nested_lm</span>  <span class="o">&lt;-</span> <span class="n">nested_lm</span>  <span class="o">%&gt;%</span> 
+        <span class="nf">unnest</span><span class="p">(</span><span class="n">coef</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">nested_lm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A tibble: 8 × 6
+# Groups:   Species, PetalType [4]
+  Species    PetalType data              model_fit name          beta
+  &lt;fct&gt;      &lt;chr&gt;     &lt;list&gt;            &lt;list&gt;    &lt;chr&gt;        &lt;dbl&gt;
+1 setosa     short     &lt;tibble [50 × 4]&gt; &lt;lm&gt;      (Intercept)  4.21 
+2 setosa     short     &lt;tibble [50 × 4]&gt; &lt;lm&gt;      Petal.Length 0.542
+3 versicolor long      &lt;tibble [43 × 4]&gt; &lt;lm&gt;      (Intercept)  2.28 
+4 versicolor long      &lt;tibble [43 × 4]&gt; &lt;lm&gt;      Petal.Length 0.858
+5 versicolor short     &lt;tibble [7 × 4]&gt;  &lt;lm&gt;      (Intercept)  2.30 
+6 versicolor short     &lt;tibble [7 × 4]&gt;  &lt;lm&gt;      Petal.Length 0.865
+7 virginica  long      &lt;tibble [50 × 4]&gt; &lt;lm&gt;      (Intercept)  1.06 
+8 virginica  long      &lt;tibble [50 × 4]&gt; &lt;lm&gt;      Petal.Length 0.996
+</pre></div>
+</div>
+</div>
+</div>
+<p>A few things to notice here. First, we went from a 4 x 6 tibble to an 8 x 6 tibble, because each Species/PetalType combination now has two rows instead of just one. Second, our <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">model_fit</span></code> columns are still nested. And we can clearly see that the link between Petal.Length and Sepal.Length differs based on which Species/PetalType combo we’re looking at!</p>
+<p>You can find additional information on this approach here: <a class="reference external" href="http://omaymas.github.io/Climate_Change_ExpAnalysis/">http://omaymas.github.io/Climate_Change_ExpAnalysis/</a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="restructuring-data-frames-long-to-wide-wide-to-long-and-merging">
+<h1>Restructuring data.frames: long to wide, wide to long, and merging<a class="headerlink" href="#restructuring-data-frames-long-to-wide-wide-to-long-and-merging" title="Permalink to this headline">#</a></h1>
+<p>Recall that <strong>long data</strong> means we have one row for each observation, while <strong>wide data</strong> has one row for each subject.</p>
+<p>In this section we’ll use the <code class="docutils literal notranslate"><span class="pre">dplyr</span></code> functions <code class="docutils literal notranslate"><span class="pre">pivot_longer</span></code> (formerly <code class="docutils literal notranslate"><span class="pre">gather</span></code>) and <code class="docutils literal notranslate"><span class="pre">pivot_wider</span></code> (formerly <code class="docutils literal notranslate"><span class="pre">spread</span></code>) to switch between short and long forms of the data. We’ll also try out combining data.frames using the <code class="docutils literal notranslate"><span class="pre">*_join</span></code> family of functions.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">iris</span></code> data set has multiple measurements per row, so it is currently in the “wide” format. To put it in long format, we can make each row only have one measurement, and then add a variable that specifies whether that measurment is for “sepal” or “petal”, “length” or “width”.</p>
+<p>We’ll start by making a new duplicate of the <code class="docutils literal notranslate"><span class="pre">iris</span></code> dataset so we don’t have to deal with all the messy variables we created. We’ll aslo add an ID, <code class="docutils literal notranslate"><span class="pre">flower.num</span></code> so we can keep things in order while we restructure.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">newdat</span> <span class="o">&lt;-</span> <span class="n">iris</span> <span class="c1"># new duplicate</span>
+<span class="n">newdat</span><span class="o">$</span><span class="n">flower.num</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">newdat</span><span class="p">)</span> <span class="c1"># add ID</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">newdat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 6</caption>
+<thead>
+	<tr><th></th><th scope=col>Sepal.Length</th><th scope=col>Sepal.Width</th><th scope=col>Petal.Length</th><th scope=col>Petal.Width</th><th scope=col>Species</th><th scope=col>flower.num</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>5.1</td><td>3.5</td><td>1.4</td><td>0.2</td><td>setosa</td><td>1</td></tr>
+	<tr><th scope=row>2</th><td>4.9</td><td>3.0</td><td>1.4</td><td>0.2</td><td>setosa</td><td>2</td></tr>
+	<tr><th scope=row>3</th><td>4.7</td><td>3.2</td><td>1.3</td><td>0.2</td><td>setosa</td><td>3</td></tr>
+	<tr><th scope=row>4</th><td>4.6</td><td>3.1</td><td>1.5</td><td>0.2</td><td>setosa</td><td>4</td></tr>
+	<tr><th scope=row>5</th><td>5.0</td><td>3.6</td><td>1.4</td><td>0.2</td><td>setosa</td><td>5</td></tr>
+	<tr><th scope=row>6</th><td>5.4</td><td>3.9</td><td>1.7</td><td>0.4</td><td>setosa</td><td>6</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<section id="pivot-longer">
+<h2><code class="docutils literal notranslate"><span class="pre">pivot_longer()</span></code><a class="headerlink" href="#pivot-longer" title="Permalink to this headline">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pivot_longer</span></code> takes the arguments:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pivot_longer</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">names_to</span> <span class="o">=</span> <span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="n">values_to</span> <span class="o">=</span> <span class="s2">&quot;values&quot;</span>
+</pre></div>
+</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> is (always!) your data object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cols</span></code> are the columns you would like to put in long format</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">names_to</span></code> specifies the new name of your column containing the rest of your variable names (formerly “key” in <code class="docutils literal notranslate"><span class="pre">gather</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">values_to</span></code> specifies the name of the column containing the actual values</p></li>
+</ul>
+<p>It’s easier to just see it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">newdat</span> <span class="o">&lt;-</span> <span class="n">newdat</span> <span class="o">%&gt;%</span>
+      <span class="nf">pivot_longer</span><span class="p">(</span><span class="n">cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">Sepal.Length</span><span class="p">,</span> <span class="n">Sepal.Width</span><span class="p">,</span> <span class="c1">#concatenate to select multiple</span>
+                            <span class="n">Petal.Length</span><span class="p">,</span> <span class="n">Petal.Width</span><span class="p">),</span>
+                   <span class="n">names_to</span> <span class="o">=</span> <span class="s">&quot;iris_attribute&quot;</span><span class="p">,</span>
+                   <span class="n">values_to</span> <span class="o">=</span> <span class="s">&quot;value&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">newdat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 4</caption>
+<thead>
+	<tr><th scope=col>Species</th><th scope=col>flower.num</th><th scope=col>iris_attribute</th><th scope=col>value</th></tr>
+	<tr><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>setosa</td><td>1</td><td>Sepal.Length</td><td>5.1</td></tr>
+	<tr><td>setosa</td><td>1</td><td>Sepal.Width </td><td>3.5</td></tr>
+	<tr><td>setosa</td><td>1</td><td>Petal.Length</td><td>1.4</td></tr>
+	<tr><td>setosa</td><td>1</td><td>Petal.Width </td><td>0.2</td></tr>
+	<tr><td>setosa</td><td>2</td><td>Sepal.Length</td><td>4.9</td></tr>
+	<tr><td>setosa</td><td>2</td><td>Sepal.Width </td><td>3.0</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>We can see that <code class="docutils literal notranslate"><span class="pre">iris_attribute</span></code> provides the labels for what <code class="docutils literal notranslate"><span class="pre">value</span></code> actually measures. Also notice that the columns we did not include in <code class="docutils literal notranslate"><span class="pre">pivot_longer</span></code>, i.e., Species and flower.num, just repeat.</p>
+<p>Now this data set is in a long format, which is a tidier format for answering analysis questions (“Are petals longer than they are wide?”) and for visualization.</p>
+</section>
+<section id="pivot-wider">
+<h2><code class="docutils literal notranslate"><span class="pre">pivot_wider()</span></code><a class="headerlink" href="#pivot-wider" title="Permalink to this headline">#</a></h2>
+<p>We can also easily put it back in “wide” format using <code class="docutils literal notranslate"><span class="pre">pivot_wider</span></code>, which uses the structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pivot_wider</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">names_from</span> <span class="o">=</span> <span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="n">values_from</span> <span class="o">=</span> <span class="s2">&quot;values&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As you can see, <code class="docutils literal notranslate"><span class="pre">names_from</span></code> asks which column our variable labels can be found in, and <code class="docutils literal notranslate"><span class="pre">values_from</span></code> asks which column the values are in.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">newdat</span> <span class="o">&lt;-</span> <span class="n">newdat</span> <span class="o">%&gt;%</span>
+      <span class="nf">pivot_wider</span><span class="p">(</span><span class="n">names_from</span> <span class="o">=</span> <span class="s">&quot;iris_attribute&quot;</span><span class="p">,</span> <span class="n">values_from</span> <span class="o">=</span> <span class="s">&quot;value&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">newdat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 6</caption>
+<thead>
+	<tr><th scope=col>Species</th><th scope=col>flower.num</th><th scope=col>Sepal.Length</th><th scope=col>Sepal.Width</th><th scope=col>Petal.Length</th><th scope=col>Petal.Width</th></tr>
+	<tr><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>setosa</td><td>1</td><td>5.1</td><td>3.5</td><td>1.4</td><td>0.2</td></tr>
+	<tr><td>setosa</td><td>2</td><td>4.9</td><td>3.0</td><td>1.4</td><td>0.2</td></tr>
+	<tr><td>setosa</td><td>3</td><td>4.7</td><td>3.2</td><td>1.3</td><td>0.2</td></tr>
+	<tr><td>setosa</td><td>4</td><td>4.6</td><td>3.1</td><td>1.5</td><td>0.2</td></tr>
+	<tr><td>setosa</td><td>5</td><td>5.0</td><td>3.6</td><td>1.4</td><td>0.2</td></tr>
+	<tr><td>setosa</td><td>6</td><td>5.4</td><td>3.9</td><td>1.7</td><td>0.4</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</section>
+<section id="join">
+<h2><code class="docutils literal notranslate"><span class="pre">*_join()</span></code><a class="headerlink" href="#join" title="Permalink to this headline">#</a></h2>
+<p>The last functions we’ll cover in this tutorial are the <code class="docutils literal notranslate"><span class="pre">*_join()</span></code> functions.</p>
+<p>Imagine that you saved your data so that personal information such as age was saved separately from your participants’ response data. However, now you want to see if age impacts your effect size, and you’d like to add age as a variable in your main dataset. As long as both your response dataset and your personal information dataset have the participant ID in them, you should be able to add the participants’ ages to the dataset easily using <code class="docutils literal notranslate"><span class="pre">*_join()</span></code>.</p>
+<p>Here, the * indicates that there are multiple types of join functions. All of these functions take the format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span><span class="n">_join</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s2">&quot;ID&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where x and y are two dataframes to join, and <code class="docutils literal notranslate"><span class="pre">by</span></code> indicates which variable(s) to match on.</p>
+<p>However, the join functions differ based on which rows they try to match:</p>
+<ul class="simple">
+<li><p>inner_join(): includes all rows that are in <em>both</em> x and y</p></li>
+<li><p>left_join(): includes all rows in x</p></li>
+<li><p>right_join(): includes all rows in y</p></li>
+<li><p>full_join(): includes all rows in either x <em>or</em> y</p></li>
+</ul>
+<p>Learn more with <code class="docutils literal notranslate"><span class="pre">?join</span></code></p>
+<p>We can illustrate this by simulating some participant data where ages and responses are stored in separate dfs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># participant info</span>
+<span class="n">personal</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;p01&quot;</span><span class="p">,</span> <span class="s">&quot;p02&quot;</span><span class="p">,</span> <span class="s">&quot;p03&quot;</span><span class="p">),</span>
+                       <span class="n">age</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">18</span><span class="p">,</span> <span class="m">21</span><span class="p">,</span> <span class="m">23</span><span class="p">),</span> 
+                       <span class="n">firstlang</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;English&quot;</span><span class="p">,</span> <span class="s">&quot;Chinese&quot;</span><span class="p">,</span> <span class="s">&quot;English&quot;</span><span class="p">))</span>
+
+<span class="c1"># response database</span>
+<span class="n">response</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">name</span><span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;p01&quot;</span><span class="p">,</span><span class="s">&quot;p01&quot;</span><span class="p">,</span><span class="s">&quot;p02&quot;</span><span class="p">,</span><span class="s">&quot;p02&quot;</span><span class="p">),</span>
+                       <span class="n">response</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">))</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">personal</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 3 × 3</caption>
+<thead>
+	<tr><th></th><th scope=col>name</th><th scope=col>age</th><th scope=col>firstlang</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>p01</td><td>18</td><td>English</td></tr>
+	<tr><th scope=row>2</th><td>p02</td><td>21</td><td>Chinese</td></tr>
+	<tr><th scope=row>3</th><td>p03</td><td>23</td><td>English</td></tr>
+</tbody>
+</table>
+</div><div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 4 × 2</caption>
+<thead>
+	<tr><th></th><th scope=col>name</th><th scope=col>response</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>p01</td><td>0</td></tr>
+	<tr><th scope=row>2</th><td>p01</td><td>1</td></tr>
+	<tr><th scope=row>3</th><td>p02</td><td>1</td></tr>
+	<tr><th scope=row>4</th><td>p02</td><td>0</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Notice that we have personal data for p03, but not their response data.</p>
+<p>Using <code class="docutils literal notranslate"><span class="pre">left_join()</span></code> we retain p03 in the data set:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">personal</span> <span class="o">%&gt;%</span> 
+    <span class="nf">left_join</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s">&quot;name&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1">#piped &quot;personal&quot; in, so only one df here</span>
+    <span class="nf">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 5 × 4</caption>
+<thead>
+	<tr><th></th><th scope=col>name</th><th scope=col>age</th><th scope=col>firstlang</th><th scope=col>response</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>p01</td><td>18</td><td>English</td><td> 0</td></tr>
+	<tr><th scope=row>2</th><td>p01</td><td>18</td><td>English</td><td> 1</td></tr>
+	<tr><th scope=row>3</th><td>p02</td><td>21</td><td>Chinese</td><td> 1</td></tr>
+	<tr><th scope=row>4</th><td>p02</td><td>21</td><td>Chinese</td><td> 0</td></tr>
+	<tr><th scope=row>5</th><td>p03</td><td>23</td><td>English</td><td>NA</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>But using <code class="docutils literal notranslate"><span class="pre">right_join()</span></code> they are dropped:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">personal</span> <span class="o">%&gt;%</span> 
+    <span class="nf">right_join</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s">&quot;name&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1">#piped &quot;personal&quot; in, so only one df here</span>
+    <span class="nf">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 4 × 4</caption>
+<thead>
+	<tr><th></th><th scope=col>name</th><th scope=col>age</th><th scope=col>firstlang</th><th scope=col>response</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>p01</td><td>18</td><td>English</td><td>0</td></tr>
+	<tr><th scope=row>2</th><td>p01</td><td>18</td><td>English</td><td>1</td></tr>
+	<tr><th scope=row>3</th><td>p02</td><td>21</td><td>Chinese</td><td>1</td></tr>
+	<tr><th scope=row>4</th><td>p02</td><td>21</td><td>Chinese</td><td>0</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Try out <code class="docutils literal notranslate"><span class="pre">inner_join</span></code> and <code class="docutils literal notranslate"><span class="pre">full_join</span></code> to see how they differ.</p>
+<p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, Amy Sentis, and Fiona Horner.</em></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../lectures/techniques-for-data-cleansing.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Techniques for data cleansing</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../discussions/techniques-for-data-cleansing.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Discussion questions</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis, Fiona Horner<br/>
+  
+      &copy; Copyright 2023.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
