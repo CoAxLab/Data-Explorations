@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Tutorial: Basics of plotting &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -1061,18 +1062,18 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-basics-of-plotting">
+  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-basics-of-plotting">
 <h1>Tutorial: Basics of plotting<a class="headerlink" href="#tutorial-basics-of-plotting" title="Permalink to this headline">#</a></h1>
 <p>This lab serves as an introduction to data visualization in R.</p>
-<div class="section" id="goals">
+<section id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Learn the basics of using <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 <hr class="docutils" />
-<div class="tex2jax_ignore mathjax_ignore section" id="plotting-distributions">
+<section class="tex2jax_ignore mathjax_ignore" id="plotting-distributions">
 <h1>Plotting &amp; distributions<a class="headerlink" href="#plotting-distributions" title="Permalink to this headline">#</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> is an R package for creating figures. It has many strengths over the base R graphics, including being easier to use. Since you could write a whole book on ggplot2 <a class="reference external" href="https://www.amazon.com/dp/0387981403/ref=cm_sw_su_dp?tag=ggplot2-20">(and, in fact, there is one)</a>, the goal of this tutorial isn’t to present everything in detail, but to walk you through the basic use and structure of ggplot2 commands and to give you some examples. This will give you the basic tools needed to use ggplot2 and from there you can find additional information as to how to do things in various places. Before we get to the basics, here are two very useful references if you ever feel lost or need more information:</p>
 <ol class="simple">
@@ -1080,7 +1081,7 @@ title="Print to PDF"
 <li><p><a class="reference external" href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf">ggplot2 cheat sheet</a></p></li>
 </ol>
 <p>In the tutorial below we’ll be using the <code class="docutils literal notranslate"><span class="pre">diamonds</span></code> dataset from the ggplot2 package. It contains “the prices and other attributes of almost 54,000 diamonds”. You can get information about the variables by typing <code class="docutils literal notranslate"><span class="pre">?diamonds'</span></code> or at this <a class="reference external" href="http://ggplot2.tidyverse.org/reference/diamonds.html">link</a>.</p>
-<div class="section" id="basics-first">
+<section id="basics-first">
 <h2>Basics first<a class="headerlink" href="#basics-first" title="Permalink to this headline">#</a></h2>
 <p>The two basic ideas behind <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> are that:</p>
 <ol class="simple">
@@ -1119,8 +1120,8 @@ title="Print to PDF"
 <p><strong><em>Note</em></strong>: as you may have noticed, different functions in ggplot are linked by a <strong><code class="docutils literal notranslate"><span class="pre">+</span></code></strong> sign. You can insert a new line after each plus sign, in order to help readibility. In ggplot, + signs between functions should be interpreted as “add layer” or “add formatting instructions”, not as algebraic addition.</p>
 <p>Here are the components labeled on the function:</p>
 <p><img alt="picture" src="https://drive.google.com/uc?export=view&amp;id=1cFOvatsCpFjf-zHX5Ydtf-n-Twm3W8_p" /></p>
-</div>
-<div class="section" id="aesthetics">
+</section>
+<section id="aesthetics">
 <h2>Aesthetics<a class="headerlink" href="#aesthetics" title="Permalink to this headline">#</a></h2>
 <p>Aside from formatting the x and y axes, you can change the following aspects of the plot according to variables in your dataframe:</p>
 <ul class="simple">
@@ -1192,8 +1193,8 @@ Warning message:
 <img alt="../_images/visualization-as-analysis_11_0.png" src="../_images/visualization-as-analysis_11_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="geoms">
+</section>
+<section id="geoms">
 <h2>Geoms<a class="headerlink" href="#geoms" title="Permalink to this headline">#</a></h2>
 <p>There are four broad types of geoms, depending on whether you are plotting raw data (e.g., every data point should be displayed), data distributions (e.g. density plots, histograms), summary data (e.g., only the mean of variable y for each level of x), and model_fits (e.g. fitting a regression line to the data).</p>
 <p><strong>Raw data is plotted with</strong>:</p>
@@ -1222,7 +1223,7 @@ Warning message:
 <li><p>geom_smooth()</p></li>
 </ul>
 <p><strong>Remember that the type of plot you should use depends on your <a class="reference external" href="https://github.com/ft-interactive/chart-doctor/blob/master/visual-vocabulary/Visual-vocabulary.pdf">purpose</a>.</strong></p>
-<div class="section" id="correlation">
+<section id="correlation">
 <h3>Correlation<a class="headerlink" href="#correlation" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1369,8 +1370,8 @@ Warning message:
 <img alt="../_images/visualization-as-analysis_31_1.png" src="../_images/visualization-as-analysis_31_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="distribution">
+</section>
+<section id="distribution">
 <h3>Distribution<a class="headerlink" href="#distribution" title="Permalink to this headline">#</a></h3>
 <p>We already saw how to create histograms and density plots. What if we want to show the distribution separately for multiple groups? There are many ways we can do that. One option is boxplots:</p>
 <div class="cell docutils container">
@@ -1412,9 +1413,9 @@ Warning message:
 </div>
 <p>Visualizations like these are useful for helping you see what your data really look like before you start analyzing it and are often a bit of a reality check.</p>
 <p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

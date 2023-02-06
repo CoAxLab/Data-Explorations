@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Exercise 14: Resampling methods &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -1019,13 +1020,13 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="exercise-14-resampling-methods">
+  <section class="tex2jax_ignore mathjax_ignore" id="exercise-14-resampling-methods">
 <h1>Exercise 14:  Resampling methods<a class="headerlink" href="#exercise-14-resampling-methods" title="Permalink to this headline">#</a></h1>
 <p>This homework assignment is designed to give you practice with bootstrapping and permutation tests.</p>
 <p>You will need to download the <strong>unrestricted_trimmed_1_7_2020_10_50_44.csv</strong> file from the <em>Homework/hcp_data</em> folder in the class GitHub repository.</p>
 <p>This data is a portion of the <a class="reference external" href="http://www.humanconnectomeproject.org/">Human Connectome Project database</a>. It provides measures of cognitive tasks and brain morphology measuresments from 1206 participants. The full description of each variable is provided in the <strong>HCP_S1200_DataDictionary_April_20_2018.csv</strong> file in the <em>Homework/hcp_data</em> folder in the class GitHub repository.</p>
 <hr class="docutils" />
-<div class="section" id="loading-visualizing-the-data-1-point">
+<section id="loading-visualizing-the-data-1-point">
 <h2>1. Loading &amp; Visualizing the Data (1 point)<a class="headerlink" href="#loading-visualizing-the-data-1-point" title="Permalink to this headline">#</a></h2>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">setwd</span></code> and <code class="docutils literal notranslate"><span class="pre">read.csv</span></code> functions to load data from the <strong>unrestricted_trimmed_1_7_2020_10_50_44.csv</strong> file.</p>
 <p>(a) Using the tidyverse tools, make a new dataframe <code class="docutils literal notranslate"><span class="pre">d1</span></code> that only inclues the subject ID (<code class="docutils literal notranslate"><span class="pre">Subject</span></code>), gender (<code class="docutils literal notranslate"><span class="pre">Gender</span></code>, self reported at time of data collection), Flanker Task performance (<code class="docutils literal notranslate"><span class="pre">Flanker_Unadj</span></code>), total intracranial volume (<code class="docutils literal notranslate"><span class="pre">FS_IntraCranial_Vol</span></code>), total white matter volume (<code class="docutils literal notranslate"><span class="pre">FS_Tot_WM_Vol</span></code>), and total grey matter volume (<code class="docutils literal notranslate"><span class="pre">FS_Total_GM_Vol</span></code>) variables and remove all <em>na</em> values.</p>
@@ -1049,9 +1050,9 @@ title="Print to PDF"
 <blockquote>
 <div><p><em>Write your response here</em></p>
 </div></blockquote>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="logistic-classifier-2-points">
+<section id="logistic-classifier-2-points">
 <h2>2. Logistic classifier (2 points)<a class="headerlink" href="#logistic-classifier-2-points" title="Permalink to this headline">#</a></h2>
 <p>We want to try predicting gender using the neural data you have loaded.</p>
 <p>(a) Run a logisic regression model to predict gender from total white matter volume, total grey matter volume, and intracranial volume.</p>
@@ -1078,9 +1079,9 @@ title="Print to PDF"
 <blockquote>
 <div><p><em>Write your response here</em></p>
 </div></blockquote>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="bootstrapped-accuracy-3-points">
+<section id="bootstrapped-accuracy-3-points">
 <h2>3. Bootstrapped accuracy (3 points)<a class="headerlink" href="#bootstrapped-accuracy-3-points" title="Permalink to this headline">#</a></h2>
 <p>Use bootstrapping to estimate the confidence intervals of the <em>prediction accuracy</em> of your model. Plot the histogram of the bootstrapped prediction accuracies and estimate the confidence intervals off of the standard deviation from the bootstrap.</p>
 <div class="cell docutils container">
@@ -1094,9 +1095,9 @@ title="Print to PDF"
 <blockquote>
 <div><p><em>Write your response here</em></p>
 </div></blockquote>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="permutation-test-for-grey-matter-effects-3-points">
+<section id="permutation-test-for-grey-matter-effects-3-points">
 <h2>4. Permutation test for grey matter effects (3 points)<a class="headerlink" href="#permutation-test-for-grey-matter-effects-3-points" title="Permalink to this headline">#</a></h2>
 <p>Now run a permutation test, with 1000 iterations, to evaluate how much grey matter volume contributes to the prediction accuracy. Compare the prediction accuracy of the full (unpermuted model) with the distribution of accuracies you get with a randomized grey matter volume term using a histogram (Hint: use the <code class="docutils literal notranslate"><span class="pre">abline</span></code> function to show the original accuracy on the histogram).</p>
 <div class="cell docutils container">
@@ -1110,9 +1111,9 @@ title="Print to PDF"
 <blockquote>
 <div><p><em>Write your response here</em></p>
 </div></blockquote>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="reflection-1-point">
+<section id="reflection-1-point">
 <h2>5. Reflection (1 point)<a class="headerlink" href="#reflection-1-point" title="Permalink to this headline">#</a></h2>
 <p>Differentiate the bootstrap from a permutation test. Describe each and when is it appropriate to each.</p>
 <blockquote>
@@ -1123,8 +1124,8 @@ title="Print to PDF"
 <blockquote>
 <div><p><em>Someone’s Name</em></p>
 </div></blockquote>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
