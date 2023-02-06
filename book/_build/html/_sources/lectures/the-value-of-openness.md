@@ -13,3 +13,9 @@
 
 [![The value of openness](../thumbnails/the-value-of-openness.jpeg)](https://www.youtube.com/watch?v=jhLQRa4o_M0 "The value of openness")
 
+
+## Slides
+
+[![The value of openness](../thumbnails/the-value-of-openness.jpeg)](https://github.com/CoAxLab/Data-Explorations/blob/main/book/slides/the-value-of-openness.pdf "The value of openness")
+
+
