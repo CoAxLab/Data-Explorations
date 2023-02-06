@@ -14,8 +14,8 @@
 
 ## Slides
 
-<object data="../slides/quantitative-epistemology.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="../slides/quantitative-epistemology.pdf">
-        <p> <a href="../slides/quantitative-epistemology.pdf">Download PDF</a>.</p>
+<object data="https://github.com/CoAxLab/Data-Explorations/blob/main/book/slides/quantitative-epistemology.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src="https://github.com/CoAxLab/Data-Explorations/blob/main/book/slides/quantitative-epistemology.pdf">
+        <p> <a href="https://github.com/CoAxLab/Data-Explorations/blob/main/book/slides/quantitative-epistemology.pdf">Download PDF</a>.</p>
     </embed>
 </object>
