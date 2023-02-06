@@ -7,11 +7,11 @@
 
 - Vlastelica M. (2019). Learning Theory: Empirical Risk Minimization. Towards Data Science.
 
-## Lecture 
+## Lecture (Video)
 
 [![Quantitative epistemology](../thumbnails/quantitative-epistemology.jpeg)](https://youtu.be/VVlgSMTH1dQ "Quantitative Epistemology")
 
 
-## Slides
+## Slides (PDF)
 
 [![Quantitative epistemology](../thumbnails/quantitative-epistemology.jpeg)](https://github.com/CoAxLab/Data-Explorations/blob/main/book/slides/quantitative-epistemology.pdf "Quantitative Epistemology")
