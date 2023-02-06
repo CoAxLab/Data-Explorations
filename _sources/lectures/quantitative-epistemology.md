@@ -13,4 +13,5 @@
 
 ## Slides
 
-<object data="../slide/quantitative-epistemology.pdf" type="application/pdf" width="100%"> </object>
+[![Quantitative epistemology](../thumbnails/quantitative-epistemology.jpeg)](../slide/quantitative-epistemology.pdf "Quantitative Epistemology")
+
