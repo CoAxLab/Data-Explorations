@@ -12,4 +12,4 @@
 
 ## Slides (PDF)
 
-[![The ordinary least squares solution](../thumbnails/the-ordinary-least-squares-solution.jpeg)](https://www.youtube.com/watch?v=JgKfPFfGAac "The ordinary least squares solution")
+[![The ordinary least squares solution](../thumbnails/the-ordinary-least-squares-solution.jpeg)](https://github.com/CoAxLab/Data-Explorations/blob/main/book/slides/ordinary-least-squares-solution.pdf "The ordinary least squares solution")
