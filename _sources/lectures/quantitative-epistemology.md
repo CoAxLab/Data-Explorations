@@ -13,4 +13,4 @@
 
 ## Slides
 
-<embed src="../slides/quantitative-epistemology.pdf" type="application/pdf">
+<object data="../slide/quantitative-epistemology.pdf" type="application/pdf" width="100%"> </object>
