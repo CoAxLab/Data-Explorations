@@ -25,24 +25,24 @@ square_matrix_4
 square_matrix_10 <- matrix(1:100, nrow=10)
 square_matrix_10
 
-######CHECK
 symmetric_matrix <- matrix(1:16,nrow = 4)
 
-lower.tri(symmetric_matrix)
-
-lower_tri <- lower.tri(symmetric_matrix)
-symmetric_matrix[lower_tri] <- t(symmetric_matrix)[lower_tri] #replace lower triangular portion with lower triangular portion of transpose 
+#replace lower triangular portion with lower triangular portion of transpose 
+symmetric_matrix[lower_tri] <- t(symmetric_matrix)[lower_tri] 
 
 symmetric_matrix #an example of a symmetric matrix
 
-t(symmetric_matrix) == symmetric_matrix #a transposed symmetric matrix is equal to the original matrix 
+#a transposed symmetric matrix is equal to the original matrix
+t(symmetric_matrix) == symmetric_matrix 
 
 mat <- matrix(0, 5, 5)
 diag(mat) <- 1
 mat
 
-sample_matrix_by_col[1, 5] #this accesses the element in the first row and fifth column of the matrix (note that R uses one-based indexing)
-sample_matrix_by_col[ ,2] #accessing all rows of column 6
+sample_matrix_by_col
+
+sample_matrix_by_col[1, 5] #element in the 1st row and 5th column
+sample_matrix_by_col[ ,2] #accessing all rows of column 2
 sample_matrix_by_col[1, ] #accessing all columns of row 1
 sample_matrix_by_col[,1:3] #getting all rows of columns 1-3
 
