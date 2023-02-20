@@ -7,7 +7,7 @@
 
 ## Lecture (Video)
 
-[![Linear models](../thumbnails/linear-models.jpeg)](https://www.youtube.com/watch?v=DYm5VmwxM2E "Linear models")
+[![Linear models](../thumbnails/linear-models.jpeg)](https://youtu.be/yfKHlNwT4KA "Linear models")
 
 
 ## Slides (PDF)

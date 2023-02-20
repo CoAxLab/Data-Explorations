@@ -7,7 +7,7 @@
 
 ## Lecture (Video)
 
-[![The ordinary least squares solution](../thumbnails/the-ordinary-least-squares-solution.jpeg)](https://www.youtube.com/watch?v=JgKfPFfGAac "The ordinary least squares solution")
+[![The ordinary least squares solution](../thumbnails/the-ordinary-least-squares-solution.jpeg)](https://youtu.be/xNHclbfe41A "The ordinary least squares solution")
 
 
 ## Slides (PDF)

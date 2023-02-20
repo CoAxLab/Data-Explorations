@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Tutorial: Boostrap and permutation tests &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -443,7 +444,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/mixed-effects-models.html">
-     Exercise 9: Mixed effects
+     Exercise 10: Mixed effects
     </a>
    </li>
   </ul>
@@ -470,7 +471,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/classifiers.html">
-     Exercise 10: Classification
+     Exercise 11: Classification
     </a>
    </li>
   </ul>
@@ -541,7 +542,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/resampling-methods.html">
-     Exercise 13:  Resampling methods
+     Exercise 14:  Resampling methods
     </a>
    </li>
   </ul>
@@ -568,7 +569,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/mediation-and-moderation.html">
-     Exercise 14: Mediation
+     Exercise 15: Mediation
     </a>
    </li>
   </ul>
@@ -617,7 +618,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/selecting-the-best-model.html">
-     Exercise 16: Model selection
+     Exercise 17: Model selection
     </a>
    </li>
   </ul>
@@ -644,7 +645,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/regularized-regression.html">
-     Exercise 17: Regularized regression
+     Exercise 18: Regularized regression
     </a>
    </li>
   </ul>
@@ -671,7 +672,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/principal-component-methods.html">
-     Exercise 18: Principal component methods
+     Exercise 19: Principal component methods
     </a>
    </li>
   </ul>
@@ -1035,10 +1036,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-boostrap-and-permutation-tests">
+  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-boostrap-and-permutation-tests">
 <h1>Tutorial: Boostrap and permutation tests<a class="headerlink" href="#tutorial-boostrap-and-permutation-tests" title="Permalink to this headline">#</a></h1>
 <p>In this lab we will go over bootstrapping and permutation resampling methods.</p>
-<div class="section" id="goals">
+<section id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Learn to use the <code class="docutils literal notranslate"><span class="pre">boot()</span></code> function</p></li>
@@ -1047,10 +1048,10 @@ title="Print to PDF"
 <li><p>Quantify the sampling distribution of a statistic via bootstrapping (construct confidence intervals for your results)</p></li>
 </ul>
 <p>This lab draws from the practice sets at the end of Chapter 5 in James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2013). “An introduction to statistical learning: with applications in r.”</p>
-</div>
-</div>
+</section>
+</section>
 <hr class="docutils" />
-<div class="tex2jax_ignore mathjax_ignore section" id="a-reminder-of-the-difference-between-bootstrapping-and-permutation-testing">
+<section class="tex2jax_ignore mathjax_ignore" id="a-reminder-of-the-difference-between-bootstrapping-and-permutation-testing">
 <h1>A reminder of the difference between bootstrapping and permutation testing<a class="headerlink" href="#a-reminder-of-the-difference-between-bootstrapping-and-permutation-testing" title="Permalink to this headline">#</a></h1>
 <p>Both bootstrapping and permutation testing rely on randomization methods. However, their purposes are different, and often confused with each other.</p>
 <p><strong>Bootstrapping:</strong></p>
@@ -1067,9 +1068,9 @@ title="Print to PDF"
 </ul>
 <p>These methods are useful if you need <strong>non-parametric</strong> estimates of uncertainty for a given statistic (bootstrapping) or if you need a non-parametric way of testing your hypotheses (permutation). In other words, if you don’t want to risk making assumptions about the functional form of your data during uncertainty estimation or hypothesis testing, these randomization methods are for you.</p>
 <p>However, keep in mind that there are cons (and assumptions) associated with non-parametric methods. For example, one major limitation of bootstrapping is that you must make the assumption that your data contains variability similar to the kind of variability you might see when you sample new datasets in the wild, given the same statistical model, to make inferential interpretations. See <a class="reference external" href="http://pillowlab.princeton.edu/teaching/mathtools16/slides/lec21_Bootstrap.pdf">here</a> and <a class="reference external" href="http://evolution.gs.washington.edu/gs560/2011/lecture8.pdf">here</a> for more information.</p>
-</div>
+</section>
 <hr class="docutils" />
-<div class="tex2jax_ignore mathjax_ignore section" id="bootstrapping">
+<section class="tex2jax_ignore mathjax_ignore" id="bootstrapping">
 <h1>Bootstrapping<a class="headerlink" href="#bootstrapping" title="Permalink to this headline">#</a></h1>
 <p>First, let’s load the <code class="docutils literal notranslate"><span class="pre">ISLR</span></code> library to get the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset, and the <code class="docutils literal notranslate"><span class="pre">boot</span></code> library so we can use the <code class="docutils literal notranslate"><span class="pre">boot()</span></code> function.</p>
 <div class="cell docutils container">
@@ -1222,9 +1223,9 @@ t2* -0.1578447 -0.0003595084 0.007482048
 </div></div>
 </div>
 <p>Notice that they produce qualitatively similar results in this case: the parametric estimate and the bootstrapped estimate are both about -0.1578. When the data fit the assumptions of the parametric linear regression model, the bootstrapped estimates will converge to the parametric ones.</p>
-</div>
+</section>
 <hr class="docutils" />
-<div class="tex2jax_ignore mathjax_ignore section" id="permutation-tests">
+<section class="tex2jax_ignore mathjax_ignore" id="permutation-tests">
 <h1>Permutation tests<a class="headerlink" href="#permutation-tests" title="Permalink to this headline">#</a></h1>
 <p>Remember, that the goal of permutation tests is to use resampling <em>without replacement</em>. By doing this you define the specific null that you want to test and generate a random relationship with which to calculate <span class="math notranslate nohighlight">\(P(X|H_0)\)</span>. For this we can just use a simple <em>for loop</em>. But first, we need to define what our null is. Here let’s define our null as being that there is no relationship between <code class="docutils literal notranslate"><span class="pre">horsepower</span></code> and <code class="docutils literal notranslate"><span class="pre">mpg</span></code>. In other words
 $<span class="math notranslate nohighlight">\(H_0 : \hat{\beta}_{horsepower} = 0\)</span>$</p>
@@ -1289,7 +1290,7 @@ $<span class="math notranslate nohighlight">\(H_0 : \hat{\beta}_{horsepower} = 0
 </div>
 <p>So we do not see any permuted models that produce results that overlap with the results from the  intact model. We can reject the null hypothesis that the <span class="math notranslate nohighlight">\(\beta\)</span> estimate for the miles per gallon and horsepower is zero.</p>
 <p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
