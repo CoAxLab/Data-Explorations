@@ -34,6 +34,3 @@ simulate_data <- function(sample_size, age_lo, age_hi, beta_xa,
 
 # WRITE YOUR CODE HERE
 
-
-> *Write your response here* 
-> 

@@ -4,9 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>Exercise 11: Classification &#8212; Data explorations</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 10: Classification &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -442,7 +441,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="mixed-effects-models.html">
-     Exercise 10: Mixed effects
+     Exercise 9: Mixed effects
     </a>
    </li>
   </ul>
@@ -469,7 +468,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Exercise 11: Classification
+     Exercise 10: Classification
     </a>
    </li>
   </ul>
@@ -540,7 +539,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="resampling-methods.html">
-     Exercise 14:  Resampling methods
+     Exercise 13:  Resampling methods
     </a>
    </li>
   </ul>
@@ -567,7 +566,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="mediation-and-moderation.html">
-     Exercise 15: Mediation
+     Exercise 14: Mediation
     </a>
    </li>
   </ul>
@@ -616,7 +615,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="selecting-the-best-model.html">
-     Exercise 17: Model selection
+     Exercise 16: Model selection
     </a>
    </li>
   </ul>
@@ -643,7 +642,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="regularized-regression.html">
-     Exercise 18: Regularized regression
+     Exercise 17: Regularized regression
     </a>
    </li>
   </ul>
@@ -670,7 +669,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="principal-component-methods.html">
-     Exercise 19: Principal component methods
+     Exercise 18: Principal component methods
     </a>
    </li>
   </ul>
@@ -985,7 +984,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Exercise 11: Classification</h1>
+                <h1>Exercise 10: Classification</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -1030,14 +1029,14 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="exercise-11-classification">
-<h1>Exercise 11: Classification<a class="headerlink" href="#exercise-11-classification" title="Permalink to this headline">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="exercise-10-classification">
+<h1>Exercise 10: Classification<a class="headerlink" href="#exercise-10-classification" title="Permalink to this headline">#</a></h1>
 <p>This homework assignment is designed to give you practice with classification models. We’ll try to predict which words are more likely to be responded to correctly during a lexical decision task, based on their length and frequency.</p>
 <p>We will be using data from the English Lexicon Project again. However, this time we will use response correctness as our dependent variable. Load <strong>LexicalData_withIncorrect.csv</strong>, which includes incorrect trials as well as correct ones, and also <strong>Items.csv</strong>. Both can be found in the <em>Homework/lexDat</em> folder in the class GitHub repository.</p>
 <p>This data is a subset of the <a class="reference external" href="https://elexicon.wustl.edu/">English Lexicon Project database</a>. It provides response correctness and reaction times (in milliseconds) of many subjects as they are presented with letter strings and asked to decide, as quickly and as accurately as possible, whether the letter string is a word or not. The <strong>Items.csv</strong> provides characteristics of the words used, namely frequency (how common is this word?) and length (how many letters?).</p>
 <p><em>Data courtesy of Balota, D.A., Yap, M.J., Cortese, M.J., Hutchison, K.A., Kessler, B., Loftis, B., Neely, J.H., Nelson, D.L., Simpson, G.B., &amp; Treiman, R. (2007). The English Lexicon Project. Behavior Research Methods, 39, 445-459.</em></p>
 <hr class="docutils" />
-<section id="loading-and-formatting-the-data-1-point">
+<div class="section" id="loading-and-formatting-the-data-1-point">
 <h2>1. Loading and formatting the data (1 point)<a class="headerlink" href="#loading-and-formatting-the-data-1-point" title="Permalink to this headline">#</a></h2>
 <p>Load in data from the <strong>LexicalData_withIncorrect.csv</strong> and <strong>Items.csv</strong> files. Use <code class="docutils literal notranslate"><span class="pre">left_join</span></code> to add word characteristics <code class="docutils literal notranslate"><span class="pre">Length</span></code> and <code class="docutils literal notranslate"><span class="pre">Log_Freq_Hal</span></code> from <strong>Items</strong> to the <strong>LexicalData</strong>, and use <code class="docutils literal notranslate"><span class="pre">drop_na()</span></code> to get rid of any observations with missing values. Then use <code class="docutils literal notranslate"><span class="pre">head()</span></code> to look at the first few rows of the data.</p>
 <p><em>Note: We’re just working with <code class="docutils literal notranslate"><span class="pre">Correct</span></code> in this homework, so no need to worry about reformatting reaction times.</em></p>
@@ -1048,9 +1047,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</section>
+</div>
 <hr class="docutils" />
-<section id="visualizing-the-data-1-point">
+<div class="section" id="visualizing-the-data-1-point">
 <h2>2. Visualizing the data (1 point)<a class="headerlink" href="#visualizing-the-data-1-point" title="Permalink to this headline">#</a></h2>
 <p>First, we’ll try to visualize whether trials that are responded to correctly versus incorrectly differ from each other in terms of word length and log frequency. The code is included below, so that this homework doesn’t get too cumbersome. All you have to do is <strong>change the name of the data set</strong>, <strong>run the code</strong>, and <strong>write some observations about the output</strong>.</p>
 <div class="cell docutils container">
@@ -1068,9 +1067,9 @@ title="Print to PDF"
 <blockquote>
 <div><p><em>Write your reponse here</em></p>
 </div></blockquote>
-</section>
+</div>
 <hr class="docutils" />
-<section id="logistic-regression-fitting-the-model-2-points">
+<div class="section" id="logistic-regression-fitting-the-model-2-points">
 <h2>3. Logistic Regression: Fitting the model (2 points)<a class="headerlink" href="#logistic-regression-fitting-the-model-2-points" title="Permalink to this headline">#</a></h2>
 <p>Fit a logistic regression model to the data using <code class="docutils literal notranslate"><span class="pre">Length</span></code>, <code class="docutils literal notranslate"><span class="pre">Log_Freq_HAL</span></code>, and their interaction to predict <code class="docutils literal notranslate"><span class="pre">Correct</span></code>. Use <code class="docutils literal notranslate"><span class="pre">glm()</span></code> to fit the model, and look at its output using <code class="docutils literal notranslate"><span class="pre">summary()</span></code>.</p>
 <div class="cell docutils container">
@@ -1084,9 +1083,9 @@ title="Print to PDF"
 <blockquote>
 <div><p><em>Write your response here</em></p>
 </div></blockquote>
-</section>
+</div>
 <hr class="docutils" />
-<section id="interpreting-predictions-from-the-model-3-points">
+<div class="section" id="interpreting-predictions-from-the-model-3-points">
 <h2>4. Interpreting predictions from the model (3 points)<a class="headerlink" href="#interpreting-predictions-from-the-model-3-points" title="Permalink to this headline">#</a></h2>
 <p>Finally, look at how well this logistic regression model does at predicting correctness. Use <code class="docutils literal notranslate"><span class="pre">predict()</span></code> and a threshold of 0.5 to generate predicted <code class="docutils literal notranslate"><span class="pre">Correct</span></code> values for each trial, then output a confusion matrix and overall accuracy for these predictions.</p>
 <p><em>Hint: see the Classifiers tutorial.</em></p>
@@ -1101,8 +1100,8 @@ title="Print to PDF"
 <blockquote>
 <div><p><em>Write your response here</em></p>
 </div></blockquote>
-</section>
-<section id="qda-3-points">
+</div>
+<div class="section" id="qda-3-points">
 <h2>5. QDA (3 points)<a class="headerlink" href="#qda-3-points" title="Permalink to this headline">#</a></h2>
 <p>Load in the <code class="docutils literal notranslate"><span class="pre">MASS</span></code> library and fit a QDA model to the data set. The predictors are still <code class="docutils literal notranslate"><span class="pre">Length</span></code>, <code class="docutils literal notranslate"><span class="pre">Log_Freq_HAL</span></code>, and their interaction, just like the logistic regression model you just ran, and the dependent variable is still <code class="docutils literal notranslate"><span class="pre">Correct</span></code>.</p>
 <p><em>Hint: see the Classifiers tutorial.</em></p>
@@ -1130,8 +1129,8 @@ title="Print to PDF"
 <blockquote>
 <div><p><em>Someone’s Name</em></p>
 </div></blockquote>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {

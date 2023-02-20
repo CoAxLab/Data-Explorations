@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutorial: Model selection &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -444,7 +443,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/mixed-effects-models.html">
-     Exercise 10: Mixed effects
+     Exercise 9: Mixed effects
     </a>
    </li>
   </ul>
@@ -471,7 +470,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/classifiers.html">
-     Exercise 11: Classification
+     Exercise 10: Classification
     </a>
    </li>
   </ul>
@@ -542,7 +541,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/resampling-methods.html">
-     Exercise 14:  Resampling methods
+     Exercise 13:  Resampling methods
     </a>
    </li>
   </ul>
@@ -569,7 +568,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/mediation-and-moderation.html">
-     Exercise 15: Mediation
+     Exercise 14: Mediation
     </a>
    </li>
   </ul>
@@ -618,7 +617,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/selecting-the-best-model.html">
-     Exercise 17: Model selection
+     Exercise 16: Model selection
     </a>
    </li>
   </ul>
@@ -645,7 +644,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/regularized-regression.html">
-     Exercise 18: Regularized regression
+     Exercise 17: Regularized regression
     </a>
    </li>
   </ul>
@@ -672,7 +671,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/principal-component-methods.html">
-     Exercise 19: Principal component methods
+     Exercise 18: Principal component methods
     </a>
    </li>
   </ul>
@@ -1016,19 +1015,19 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-model-selection">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-model-selection">
 <h1>Tutorial: Model selection<a class="headerlink" href="#tutorial-model-selection" title="Permalink to this headline">#</a></h1>
 <p>This lab focuses on how to select the best model and implementing subset selection in R.</p>
-<section id="goals">
+<div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Learn to use the <code class="docutils literal notranslate"><span class="pre">regsubsets</span></code> function</p></li>
 </ul>
 <p>This lab draws from the practice sets at the end of Chapter 6 in James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2013). “An introduction to statistical learning: with applications in r.”</p>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="best-subset-selection">
+<div class="tex2jax_ignore mathjax_ignore section" id="best-subset-selection">
 <h1>Best subset selection<a class="headerlink" href="#best-subset-selection" title="Permalink to this headline">#</a></h1>
 <p>First we start with a tour of using the built-in functions for best subset selection. For this we will load the <a class="reference external" href="https://vincentarelbundock.github.io/Rdatasets/doc/ISLR/Hitters.html">Hitters (baseball) dataset</a> included in ISLR.</p>
 <div class="cell docutils container">
@@ -1347,7 +1346,7 @@ Hits, Walks, CRBI, DivisionW, and PutOuts.</p>
 </div>
 <p>Right now, there’s a clear discrepancy in fit among the bias-adjusted model evaluations. How could we use cross-validation to help determine which model is best? (<em>Note: if you’d like to predict outputs from models in <code class="docutils literal notranslate"><span class="pre">regsubsets</span></code>, see pg 248-250 of the James textbook.</em>)</p>
 <p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {
