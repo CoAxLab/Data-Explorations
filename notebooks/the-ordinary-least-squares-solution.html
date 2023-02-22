@@ -444,7 +444,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/mixed-effects-models.html">
-     Exercise 10: Mixed effects
+     Exercise 9: Mixed effects
     </a>
    </li>
   </ul>
@@ -471,7 +471,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/classifiers.html">
-     Exercise 11: Classification
+     Exercise 10: Classification
     </a>
    </li>
   </ul>
@@ -542,7 +542,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/resampling-methods.html">
-     Exercise 14:  Resampling methods
+     Exercise 13:  Resampling methods
     </a>
    </li>
   </ul>
@@ -569,7 +569,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/mediation-and-moderation.html">
-     Exercise 15: Mediation
+     Exercise 14: Mediation
     </a>
    </li>
   </ul>
@@ -618,7 +618,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/selecting-the-best-model.html">
-     Exercise 17: Model selection
+     Exercise 16: Model selection
     </a>
    </li>
   </ul>
@@ -645,7 +645,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/regularized-regression.html">
-     Exercise 18: Regularized regression
+     Exercise 17: Regularized regression
     </a>
    </li>
   </ul>
@@ -672,7 +672,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/principal-component-methods.html">
-     Exercise 19: Principal component methods
+     Exercise 18: Principal component methods
     </a>
    </li>
   </ul>
@@ -1241,8 +1241,8 @@ title="Print to PDF"
 <p>The formal definition of a derivative is:</p>
 <div class="math notranslate nohighlight">
 \[\frac{df}{dx} = \lim_{h \to 0} \frac{f(x + h) - f(x)}{h}\]</div>
-<p>The plain language definition of a derivative is something along the lines of, “How is my function <span class="math notranslate nohighlight">\(f\)</span> changing with respect to the variable <span class="math notranslate nohighlight">\(x\)</span>?” You can also think of a derivative as the slope of a function for given values of the variables.</p>
-<p><em>See these two videos (<a class="reference external" href="https://www.youtube.com/watch?v=tt2DGYOi3hc&amp;list=PLmxWmlga0Kgoe-gvtTW4i32Lc_3JI_bEK&amp;index=6">video 1</a>, <a class="reference external" href="https://www.youtube.com/watch?v=50Bda5VKbqA&amp;list=PLmxWmlga0Kgoe-gvtTW4i32Lc_3JI_bEK&amp;index=7">video 2</a>) for a satisfying explanation of how these two definitions connect.</em></p>
+<p>The plain language definition of a derivative is something along the lines of, “How is my function <span class="math notranslate nohighlight">\(f\)</span> changing with respect to the variable <span class="math notranslate nohighlight">\(x\)</span>?” Put simply, you can think of a derivative as the slope of a function for given values of the variables.</p>
+<p><em>See these two videos (<a class="reference external" href="https://www.youtube.com/watch?v=tt2DGYOi3hc&amp;list=PLmxWmlga0Kgoe-gvtTW4i32Lc_3JI_bEK&amp;index=6">video 1</a>, <a class="reference external" href="https://www.youtube.com/watch?v=50Bda5VKbqA&amp;list=PLmxWmlga0Kgoe-gvtTW4i32Lc_3JI_bEK&amp;index=7">video 2</a>) for a satisfying explanation of how these definitions connect.</em></p>
 </section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h2>
@@ -1250,19 +1250,46 @@ title="Print to PDF"
 <p><strong>1.</strong>   The derivative of <span class="math notranslate nohighlight">\(x^2\)</span> is <span class="math notranslate nohighlight">\(2x\)</span>. Let’s plot both of these functions in R.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">0.1</span><span class="p">)</span> <span class="c1"># x is a vector with numbers from 1 to 10</span>
-<span class="n">f</span> <span class="o">&lt;-</span> <span class="n">x</span><span class="o">^</span><span class="m">2</span> <span class="c1"># f is a vector with the values of the function for x = 1 to x = 10</span>
-<span class="n">df_dx</span> <span class="o">&lt;-</span> <span class="m">2</span><span class="o">*</span><span class="n">x</span> <span class="c1"># df_dx is a vector with the values of the derivative for x = 1 to x = 10</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">0.1</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">f</span> <span class="o">&lt;-</span> <span class="n">x</span><span class="o">^</span><span class="m">2</span> 
+<span class="nf">head</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">df_dx</span> <span class="o">&lt;-</span> <span class="m">2</span><span class="o">*</span><span class="n">x</span> 
+<span class="nf">head</span><span class="p">(</span><span class="n">df_dx</span><span class="p">)</span>
+
 <span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
-<span class="n">x_dat</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">,</span><span class="n">df_dx</span><span class="o">=</span><span class="n">df_dx</span><span class="p">)</span> <span class="c1"># make a data frame so we can plot these nicely</span>
-<span class="n">x_dat</span> <span class="o">&lt;-</span> <span class="nf">gather</span><span class="p">(</span><span class="n">x_dat</span><span class="p">,</span> <span class="s">&quot;func&quot;</span><span class="p">,</span><span class="s">&quot;value&quot;</span><span class="p">,</span><span class="n">f</span><span class="o">:</span><span class="n">df_dx</span><span class="p">)</span> <span class="c1"># put data frame in long form</span>
-<span class="n">x_dat</span><span class="o">$</span><span class="n">func</span> <span class="o">&lt;-</span> <span class="n">x_dat</span><span class="o">$</span><span class="n">func</span> <span class="o">%&gt;%</span> <span class="nf">factor</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="nf">relevel</span><span class="p">(</span><span class="s">&quot;f&quot;</span><span class="p">)</span> <span class="c1"># makes it so &quot;f&quot; is the function plotted on left</span>
+<span class="c1"># make a data frame so we can plot these nicely</span>
+<span class="n">x_dat</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">,</span><span class="n">df_dx</span><span class="o">=</span><span class="n">df_dx</span><span class="p">)</span> 
+<span class="c1"># put data frame in long form</span>
+<span class="n">x_dat</span> <span class="o">&lt;-</span> <span class="nf">gather</span><span class="p">(</span><span class="n">x_dat</span><span class="p">,</span> <span class="s">&quot;func&quot;</span><span class="p">,</span><span class="s">&quot;value&quot;</span><span class="p">,</span><span class="n">f</span><span class="o">:</span><span class="n">df_dx</span><span class="p">)</span> 
+<span class="c1"># makes it so &quot;f&quot; is the function plotted on left</span>
+<span class="n">x_dat</span><span class="o">$</span><span class="n">func</span> <span class="o">&lt;-</span> <span class="n">x_dat</span><span class="o">$</span><span class="n">func</span> <span class="o">%&gt;%</span> <span class="nf">factor</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="nf">relevel</span><span class="p">(</span><span class="s">&quot;f&quot;</span><span class="p">)</span>
 <span class="nf">ggplot</span><span class="p">(</span><span class="n">x_dat</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">value</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span> <span class="nf">facet_grid</span><span class="p">(</span><span class="n">.</span> <span class="o">~</span> <span class="n">func</span><span class="p">)</span> <span class="c1"># plot func</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/the-ordinary-least-squares-solution_5_0.png" src="../_images/the-ordinary-least-squares-solution_5_0.png" />
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>0</li><li>0.1</li><li>0.2</li><li>0.3</li><li>0.4</li><li>0.5</li></ol>
+</div><div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>0</li><li>0.01</li><li>0.04</li><li>0.09</li><li>0.16</li><li>0.25</li></ol>
+</div><div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>0</li><li>0.2</li><li>0.4</li><li>0.6</li><li>0.8</li><li>1</li></ol>
+</div><img alt="../_images/the-ordinary-least-squares-solution_5_3.png" src="../_images/the-ordinary-least-squares-solution_5_3.png" />
 </div>
 </div>
 <p>Notice how, in the “f” plot, the slope of the line increases as the value of <code class="docutils literal notranslate"><span class="pre">x</span></code> increases. This is reflected in the “df_dx” plot: larger values of <code class="docutils literal notranslate"><span class="pre">x</span></code> have a larger derivative, and this increase is linear.</p>
@@ -1273,9 +1300,15 @@ title="Print to PDF"
 <span class="n">f</span> <span class="o">&lt;-</span> <span class="nf">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">x_min</span> <span class="o">&lt;-</span> <span class="n">x</span><span class="p">[</span><span class="nf">which.min</span><span class="p">(</span><span class="n">f</span><span class="p">)]</span> <span class="c1"># find the x value where f is at minimum</span>
 <span class="n">df_dx</span> <span class="o">&lt;-</span> <span class="o">-</span><span class="nf">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">x_dat</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">,</span><span class="n">df_dx</span><span class="o">=</span><span class="n">df_dx</span><span class="p">)</span> <span class="c1"># make a data frame so we can plot these nicely</span>
-<span class="n">x_dat</span> <span class="o">&lt;-</span> <span class="nf">gather</span><span class="p">(</span><span class="n">x_dat</span><span class="p">,</span> <span class="s">&quot;func&quot;</span><span class="p">,</span><span class="s">&quot;value&quot;</span><span class="p">,</span><span class="n">f</span><span class="o">:</span><span class="n">df_dx</span><span class="p">)</span> <span class="c1"># put data frame in long form</span>
-<span class="n">x_dat</span><span class="o">$</span><span class="n">func</span> <span class="o">&lt;-</span> <span class="n">x_dat</span><span class="o">$</span><span class="n">func</span> <span class="o">%&gt;%</span> <span class="nf">factor</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="nf">relevel</span><span class="p">(</span><span class="s">&quot;f&quot;</span><span class="p">)</span> <span class="c1"># makes it so &quot;f&quot; is the function plotted on left</span>
+
+<span class="c1">#plotting</span>
+<span class="c1"># make a data frame so we can plot these nicely:</span>
+<span class="n">x_dat</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">,</span><span class="n">df_dx</span><span class="o">=</span><span class="n">df_dx</span><span class="p">)</span> 
+<span class="c1"># put data frame in long form:</span>
+<span class="n">x_dat</span> <span class="o">&lt;-</span> <span class="nf">gather</span><span class="p">(</span><span class="n">x_dat</span><span class="p">,</span> <span class="s">&quot;func&quot;</span><span class="p">,</span><span class="s">&quot;value&quot;</span><span class="p">,</span><span class="n">f</span><span class="o">:</span><span class="n">df_dx</span><span class="p">)</span> 
+<span class="c1"># makes it so &quot;f&quot; is the function plotted on left</span>
+<span class="n">x_dat</span><span class="o">$</span><span class="n">func</span> <span class="o">&lt;-</span> <span class="n">x_dat</span><span class="o">$</span><span class="n">func</span> <span class="o">%&gt;%</span> <span class="nf">factor</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="nf">relevel</span><span class="p">(</span><span class="s">&quot;f&quot;</span><span class="p">)</span>
+
 <span class="nf">ggplot</span><span class="p">(</span><span class="n">x_dat</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">value</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span> <span class="nf">facet_grid</span><span class="p">(</span><span class="n">.</span> <span class="o">~</span> <span class="n">func</span><span class="p">)</span> <span class="o">+</span>
       <span class="nf">geom_vline</span><span class="p">(</span><span class="n">xintercept</span> <span class="o">=</span> <span class="n">x_min</span><span class="p">,</span><span class="n">linetype</span><span class="o">=</span><span class="s">&quot;dashed&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span><span class="c1"># add line where f is min</span>
 </pre></div>
@@ -1391,7 +1424,7 @@ x  &amp;=&amp; 2
 <section id="what-is-a-logarithm">
 <h2>What is a logarithm?<a class="headerlink" href="#what-is-a-logarithm" title="Permalink to this headline">#</a></h2>
 <p>Using a logarithm is the opposite of using an exponent: You can re-write the function <span class="math notranslate nohighlight">\(4^x = 16\)</span> as <span class="math notranslate nohighlight">\(x = \log_{4}16\)</span>. The small number at the base of <span class="math notranslate nohighlight">\(\log\)</span> (the <em>base</em>) is the number that will be raised to a certain power, and the big number is what we get once it’s been raised to that power. <span class="math notranslate nohighlight">\(\log_{5}25 = 2\)</span> because <span class="math notranslate nohighlight">\(5^2 = 25\)</span>, and <span class="math notranslate nohighlight">\(\log_{2}16 = 4\)</span> because <span class="math notranslate nohighlight">\(2^4=16\)</span>.</p>
-<p>When we use logarithms in this class, we’ll use the <em>natural log</em>: this is a logarithm where the base is always <a class="reference external" href="https://www.youtube.com/watch?v=_-x90wGBD8U"><span class="math notranslate nohighlight">\(e\)</span></a>. We write natural logs as \ln$.</p>
+<p>When we use logarithms in this class, we’ll use the <em>natural log</em>: this is a logarithm where the base is always <a class="reference external" href="https://www.youtube.com/watch?v=_-x90wGBD8U"><span class="math notranslate nohighlight">\(e\)</span></a>. We write natural logs as <span class="math notranslate nohighlight">\(\ln\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\ln{x} = \log_{e}x\]</div>
 </section>
@@ -1427,7 +1460,7 @@ x  &amp;=&amp; 2
 </section>
 <section id="why-are-we-using-logarithms-in-this-class">
 <h2>Why are we using logarithms in this class?<a class="headerlink" href="#why-are-we-using-logarithms-in-this-class" title="Permalink to this headline">#</a></h2>
-<p>The logarithm function is monotonically increasing. For our purposes, that means that when we take the log (natural log or otherwise) of a function, the values of the input variables where that functions reaches a local minimum or maximum are the same before and after the transformation. Here’s a quick demonstration of that idea:</p>
+<p>The logarithm function is monotonically increasing. For our purposes, that means that when we take the log (natural log or otherwise) of a function, the values of the input variables where that function reaches a local minimum or maximum are the same before and after the transformation. Here’s a quick demonstration of that idea:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">0.1</span><span class="p">)</span>
@@ -1436,7 +1469,8 @@ x  &amp;=&amp; 2
 <span class="n">x_dat</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">log_f</span><span class="p">)</span>
 <span class="nf">require</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
 <span class="n">x_dat</span> <span class="o">&lt;-</span> <span class="nf">gather</span><span class="p">(</span><span class="n">x_dat</span><span class="p">,</span><span class="s">&quot;func&quot;</span><span class="p">,</span><span class="s">&quot;value&quot;</span><span class="p">,</span><span class="n">f</span><span class="o">:</span><span class="n">log_f</span><span class="p">)</span> <span class="c1">#put this in long form</span>
-<span class="nf">ggplot</span><span class="p">(</span><span class="n">x_dat</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">value</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span> <span class="nf">facet_grid</span><span class="p">(</span><span class="n">.</span><span class="o">~</span><span class="n">func</span><span class="p">)</span> <span class="c1">#plot function and log transformation of function side by side. </span>
+<span class="c1">#plot function and log transformation of function side by side. </span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">x_dat</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">value</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span> <span class="nf">facet_grid</span><span class="p">(</span><span class="n">.</span><span class="o">~</span><span class="n">func</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
@@ -1488,7 +1522,7 @@ E((X + cY)^2) &amp;=&amp;  E(X^2 + 2cXY + c^2Y^2) \
 \end{eqnarray}</p>
 <p>The first line expands the function using the Foil method. The second line separates the terms using <strong>Tip 2</strong>. The third line pulls out coefficients using <strong>Tip 3</strong>, and the fourth line applies <strong>Tips 4 and 5</strong>.</p>
 <p>That’s all the math tools we’ve got for you today, folks! Fear not, the next tutorial will be more practical. We’ll focus on fitting linear models in R.</p>
-<p><em>Notebook authored by Patience Stevens and edited by Amy Sentis.</em></p>
+<p><em>Notebook authored by Patience Stevens and edited by Amy Sentis and Fiona Horner.</em></p>
 </section>
 
     <script type="text/x-thebe-config">

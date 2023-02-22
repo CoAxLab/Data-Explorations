@@ -444,7 +444,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/mixed-effects-models.html">
-     Exercise 10: Mixed effects
+     Exercise 9: Mixed effects
     </a>
    </li>
   </ul>
@@ -471,7 +471,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/classifiers.html">
-     Exercise 11: Classification
+     Exercise 10: Classification
     </a>
    </li>
   </ul>
@@ -542,7 +542,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/resampling-methods.html">
-     Exercise 14:  Resampling methods
+     Exercise 13:  Resampling methods
     </a>
    </li>
   </ul>
@@ -569,7 +569,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/mediation-and-moderation.html">
-     Exercise 15: Mediation
+     Exercise 14: Mediation
     </a>
    </li>
   </ul>
@@ -618,7 +618,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/selecting-the-best-model.html">
-     Exercise 17: Model selection
+     Exercise 16: Model selection
     </a>
    </li>
   </ul>
@@ -645,7 +645,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/regularized-regression.html">
-     Exercise 18: Regularized regression
+     Exercise 17: Regularized regression
     </a>
    </li>
   </ul>
@@ -672,7 +672,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../exercises/principal-component-methods.html">
-     Exercise 19: Principal component methods
+     Exercise 18: Principal component methods
     </a>
    </li>
   </ul>
@@ -1238,7 +1238,7 @@ title="Print to PDF"
 <section id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>Get everyone on the same place wthe vectors, sums and products, and matrices</p></li>
+<li><p>Get everyone on the same place with vectors, sums and products, and matrices</p></li>
 </ul>
 <p>Images courtesy of Wikipedia.</p>
 </section>
@@ -1273,9 +1273,9 @@ title="Print to PDF"
 A column vector with elements 3 and 5: <span class="math notranslate nohighlight">\(\begin{bmatrix}3\\5\end{bmatrix}\)</span>
 <br>
 A row vector with elements 7 and 9: <span class="math notranslate nohighlight">\(\begin{bmatrix} 7 &amp; 9\end{bmatrix}\)</span></p>
-<p>When vectors are referred to in equations, they’re often simplified to a single variable even though there are many elements within it. For example, the error formula is written as <span class="math notranslate nohighlight">\(e_i = y_i - \hat{y_i}\)</span>, where <span class="math notranslate nohighlight">\(i\)</span> is used to identify the particular observation <span class="math notranslate nohighlight">\(y_i\)</span> for which you’d like to calculate error. <span class="math notranslate nohighlight">\(\hat{y_i}\)</span> is the model’s predicted value for <span class="math notranslate nohighlight">\(y_i\)</span> (<em>notation note: the <span class="math notranslate nohighlight">\(\hat{}\)</span> symbol over anything will mean that variable’s predicted value in this class</em>). But the formula could also be written as <span class="math notranslate nohighlight">\(\bf{e} = \bf{y} - \bf{\hat{y}}\)</span>, to define the error vector for <em>all</em> observations instead of one particular one. The meaning of this formula, when there are only three observations, can be translated into</p>
+<p>When vectors are referred to in equations, they’re often simplified to a single variable even though there are many elements within it. For example, the error formula is written as <span class="math notranslate nohighlight">\(e_i = y_i - \hat{y_i}\)</span>, where <span class="math notranslate nohighlight">\(i\)</span> is used to identify the particular observation <span class="math notranslate nohighlight">\(y_i\)</span> for which you’d like to calculate error. <span class="math notranslate nohighlight">\(\hat{y_i}\)</span> (“y hat i”) is the model’s predicted value for <span class="math notranslate nohighlight">\(y_i\)</span> (<em>notation note: the <span class="math notranslate nohighlight">\(\hat{}\)</span> symbol over anything will mean that variable’s predicted value in this class</em>). But the formula could also be written in bold as <span class="math notranslate nohighlight">\(\bf{e} = \bf{y} - \bf{\hat{y}}\)</span>, to define the error vector for <em>all</em> observations instead of one particular one. The meaning of this formula, when there are only three observations, can be translated into</p>
 <p><span class="math notranslate nohighlight">\(\begin{bmatrix}e_1\\e_2\\e_3\end{bmatrix} = \begin{bmatrix}y_1\\y_2\\y_3\end{bmatrix} - \begin{bmatrix}\hat{y}_1\\\hat{y}_2\\\hat{y}_3\end{bmatrix}\)</span></p>
-<p>My last note about vectors is more of a notation note: the mean value of all elements in a vector will be expressed with a <span class="math notranslate nohighlight">\(\bar{}\)</span> symbol. So the mean value of the vector <span class="math notranslate nohighlight">\(\bf{x}\)</span> is <span class="math notranslate nohighlight">\(\bar{x}\)</span>.</p>
+<p>My last note about vectors is more of a notation note: the mean value of all elements in a vector will be expressed with a  <span class="math notranslate nohighlight">\(\bar{}\)</span>  symbol. So the mean value of the vector <span class="math notranslate nohighlight">\(\bf{x}\)</span> is <span class="math notranslate nohighlight">\(\bar{x}\)</span> (“x bar”).</p>
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="working-with-sums-and-products-in-equations">
@@ -1348,14 +1348,14 @@ A row vector with elements 7 and 9: <span class="math notranslate nohighlight">\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><table>
+<div class="output text_html"><table class="dataframe">
 <caption>A matrix: 2 × 5 of type int</caption>
 <tbody>
 	<tr><td>1</td><td>3</td><td>5</td><td>7</td><td> 9</td></tr>
 	<tr><td>2</td><td>4</td><td>6</td><td>8</td><td>10</td></tr>
 </tbody>
 </table>
-</div><div class="output text_html"><table>
+</div><div class="output text_html"><table class="dataframe">
 <caption>A matrix: 2 × 5 of type int</caption>
 <tbody>
 	<tr><td>1</td><td>2</td><td>3</td><td>4</td><td> 5</td></tr>
@@ -1420,31 +1420,20 @@ However, to avoid errors, it’s best to be explicit to the extent that it makes
 <p><em>You can also think of a symmetric matrix as a matrix equal to its transposed form: <span class="math notranslate nohighlight">\(A = A^T\)</span></em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">######CHECK</span>
-<span class="n">symmetric_matrix</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">16</span><span class="p">,</span><span class="n">nrow</span> <span class="o">=</span> <span class="m">4</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">symmetric_matrix</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">16</span><span class="p">,</span><span class="n">nrow</span> <span class="o">=</span> <span class="m">4</span><span class="p">)</span>
 
-<span class="nf">lower.tri</span><span class="p">(</span><span class="n">symmetric_matrix</span><span class="p">)</span>
-
-<span class="n">lower_tri</span> <span class="o">&lt;-</span> <span class="nf">lower.tri</span><span class="p">(</span><span class="n">symmetric_matrix</span><span class="p">)</span>
-<span class="n">symmetric_matrix</span><span class="p">[</span><span class="n">lower_tri</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">t</span><span class="p">(</span><span class="n">symmetric_matrix</span><span class="p">)[</span><span class="n">lower_tri</span><span class="p">]</span> <span class="c1">#replace lower triangular portion with lower triangular portion of transpose </span>
+<span class="c1">#replace lower triangular portion with lower triangular portion of transpose </span>
+<span class="n">symmetric_matrix</span><span class="p">[</span><span class="n">lower_tri</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">t</span><span class="p">(</span><span class="n">symmetric_matrix</span><span class="p">)[</span><span class="n">lower_tri</span><span class="p">]</span> 
 
 <span class="n">symmetric_matrix</span> <span class="c1">#an example of a symmetric matrix</span>
 
-<span class="nf">t</span><span class="p">(</span><span class="n">symmetric_matrix</span><span class="p">)</span> <span class="o">==</span> <span class="n">symmetric_matrix</span> <span class="c1">#a transposed symmetric matrix is equal to the original matrix </span>
+<span class="c1">#a transposed symmetric matrix is equal to the original matrix</span>
+<span class="nf">t</span><span class="p">(</span><span class="n">symmetric_matrix</span><span class="p">)</span> <span class="o">==</span> <span class="n">symmetric_matrix</span> 
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><table>
-<caption>A matrix: 4 × 4 of type lgl</caption>
-<tbody>
-	<tr><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td></tr>
-	<tr><td> TRUE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td></tr>
-	<tr><td> TRUE</td><td> TRUE</td><td>FALSE</td><td>FALSE</td></tr>
-	<tr><td> TRUE</td><td> TRUE</td><td> TRUE</td><td>FALSE</td></tr>
-</tbody>
-</table>
-</div><div class="output text_html"><table>
+<div class="output text_html"><table class="dataframe">
 <caption>A matrix: 4 × 4 of type int</caption>
 <tbody>
 	<tr><td> 1</td><td> 5</td><td> 9</td><td>13</td></tr>
@@ -1453,7 +1442,7 @@ However, to avoid errors, it’s best to be explicit to the extent that it makes
 	<tr><td>13</td><td>14</td><td>15</td><td>16</td></tr>
 </tbody>
 </table>
-</div><div class="output text_html"><table>
+</div><div class="output text_html"><table class="dataframe">
 <caption>A matrix: 4 × 4 of type lgl</caption>
 <tbody>
 	<tr><td>TRUE</td><td>TRUE</td><td>TRUE</td><td>TRUE</td></tr>
@@ -1508,14 +1497,31 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 <h1>Matrix manipulation<a class="headerlink" href="#matrix-manipulation" title="Permalink to this headline">#</a></h1>
 <section id="basic-indexing">
 <h2>Basic indexing<a class="headerlink" href="#basic-indexing" title="Permalink to this headline">#</a></h2>
-<p>Review: We talked about indexing a little bit in the tutorial on data frames. The same principle applies to matrices.</p>
+<p>Review: We talked about indexing a little bit in the tutorial on basic R. The same principle applies to matrices.</p>
 <p><code class="docutils literal notranslate"><span class="pre">matrix[row_index,</span> <span class="pre">column_index]</span></code>
 <br></p>
 <p><strong>Note</strong> that R uses one-based indexing (some coding languages start indexing at 0 instead of 1 - but this isn’t the case in R). For example, the following command would find the element in the 1st row and the 6th column of a matrix.</p>
+<p>Using our prior matrix as an example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sample_matrix_by_col</span><span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="m">5</span><span class="p">]</span> <span class="c1">#this accesses the element in the first row and fifth column of the matrix (note that R uses one-based indexing)</span>
-<span class="n">sample_matrix_by_col</span><span class="p">[</span> <span class="p">,</span><span class="m">2</span><span class="p">]</span> <span class="c1">#accessing all rows of column 6</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sample_matrix_by_col</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A matrix: 2 × 5 of type int</caption>
+<tbody>
+	<tr><td>1</td><td>3</td><td>5</td><td>7</td><td> 9</td></tr>
+	<tr><td>2</td><td>4</td><td>6</td><td>8</td><td>10</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sample_matrix_by_col</span><span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="m">5</span><span class="p">]</span> <span class="c1">#element in the 1st row and 5th column</span>
+<span class="n">sample_matrix_by_col</span><span class="p">[</span> <span class="p">,</span><span class="m">2</span><span class="p">]</span> <span class="c1">#accessing all rows of column 2</span>
 <span class="n">sample_matrix_by_col</span><span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="p">]</span> <span class="c1">#accessing all columns of row 1</span>
 <span class="n">sample_matrix_by_col</span><span class="p">[,</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">]</span> <span class="c1">#getting all rows of columns 1-3</span>
 </pre></div>
@@ -1840,7 +1846,7 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 <div class="math notranslate nohighlight">
 \[\beta=(X'X)^{-1}X'y \]</div>
 <p><span class="math notranslate nohighlight">\(X'\)</span> is <span class="math notranslate nohighlight">\(X\)</span> transposed, and <span class="math notranslate nohighlight">\(X^{-1}\)</span> is the inverse of <span class="math notranslate nohighlight">\(X\)</span>. That’s why knowing how to transpose, invert, and calculate determinants will be useful!</p>
-<p><em>Notebook by Krista Bond and Patience Stevens and dited by Charles Wu, and Amy Sentis.</em></p>
+<p><em>Notebook by Krista Bond and Patience Stevens and edited by Charles Wu, Amy Sentis, and Fiona Horner.</em></p>
 </section>
 
     <script type="text/x-thebe-config">
