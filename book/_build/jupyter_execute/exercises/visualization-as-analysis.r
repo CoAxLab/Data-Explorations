@@ -27,9 +27,8 @@
 # Aside: colorful points
 
 
-# INSERT CODE HERE
-
-
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
+  geom_point()
 
 # INSERT CODE HERE
 

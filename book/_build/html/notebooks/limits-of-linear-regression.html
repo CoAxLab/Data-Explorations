@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutorial: More on linear models &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -1046,10 +1045,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-more-on-linear-models">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-more-on-linear-models">
 <h1>Tutorial: More on linear models<a class="headerlink" href="#tutorial-more-on-linear-models" title="Permalink to this headline">#</a></h1>
 <p>In this tutorial, we will play more with linear regression models, including an illustration of the bias-variance tradeoff at the end.</p>
-<section id="goals">
+<div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Regression with multiple predictors</p></li>
@@ -1057,10 +1056,10 @@ title="Print to PDF"
 <li><p>Simulating the bias-variance tradeoff</p></li>
 </ul>
 <p>This lab draws from the content in Chapters 2 &amp; 3 of James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2013). “An introduction to statistical learning: with applications in r.”</p>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="getting-started">
+<div class="tex2jax_ignore mathjax_ignore section" id="getting-started">
 <h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">#</a></h1>
 <p>Before we start, let’s just get all the libraries loaded up front. This tutorial requires some new libraries we haven’t worked with before. Uncomment the <em>install.packages</em> lines if you do not already have all the packages already installed.</p>
 <div class="cell docutils container">
@@ -1094,25 +1093,26 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set the random number generator seed</span>
-<span class="nf">set.seed</span><span class="p">(</span><span class="m">2022</span><span class="p">)</span>
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">2023</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-</section>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="regression-with-multiple-predictors">
+<div class="tex2jax_ignore mathjax_ignore section" id="regression-with-multiple-predictors">
 <h1>Regression with multiple predictors<a class="headerlink" href="#regression-with-multiple-predictors" title="Permalink to this headline">#</a></h1>
 <br>
 In the examples we have done so far, we have only looked at models where p = 1. 
 <div class="math notranslate nohighlight">
 \[ Y_{medv} = \hat{\beta_0} + \hat{\beta_1}X_{lstat} + \epsilon \]</div>
-<p>Now let us explore the case where p &gt; 1. For this we will return to the CARS data set again.</p>
-<p>Let’s just look at the data again along the dimensions of width, length, and weight.</p>
+<p>Now let us explore the case where p &gt; 1. For this we will be using the <code class="docutils literal notranslate"><span class="pre">Cars93</span></code> dataset which is part of the <code class="docutils literal notranslate"><span class="pre">MASS</span></code> package. This dataset has information on the dimensions and weight (<a class="reference external" href="https://www.rdocumentation.org/packages/MASS/versions/7.3-58.2/topics/Cars93">among other things</a>) for different types of cars.</p>
+<p>Let’s just look at the data along the dimensions of width, length, and weight.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">scatter3D</span><span class="p">(</span><span class="n">Cars93</span><span class="o">$</span><span class="n">Width</span><span class="p">,</span> <span class="n">Cars93</span><span class="o">$</span><span class="n">Length</span><span class="p">,</span> <span class="n">Cars93</span><span class="o">$</span><span class="n">Weight</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="m">20</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="m">20</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Width&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Length&quot;</span><span class="p">,</span><span class="n">zlab</span><span class="o">=</span><span class="s">&quot;Weight&quot;</span><span class="p">)</span>
-<span class="c1">#phi controls tilt and theta controls angle</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">scatter3D</span><span class="p">(</span><span class="n">Cars93</span><span class="o">$</span><span class="n">Width</span><span class="p">,</span> <span class="n">Cars93</span><span class="o">$</span><span class="n">Length</span><span class="p">,</span> <span class="n">Cars93</span><span class="o">$</span><span class="n">Weight</span><span class="p">,</span> 
+          <span class="n">phi</span><span class="o">=</span><span class="m">20</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="m">20</span><span class="p">,</span> <span class="c1">#phi controls tilt and theta controls angle</span>
+          <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Width&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Length&quot;</span><span class="p">,</span><span class="n">zlab</span><span class="o">=</span><span class="s">&quot;Weight&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1120,8 +1120,8 @@ In the examples we have done so far, we have only looked at models where p = 1.
 <img alt="../_images/limits-of-linear-regression_6_0.png" src="../_images/limits-of-linear-regression_6_0.png" />
 </div>
 </div>
-<p>Interpeting the 3 dimensional scatterplot is the same as interpreting the 2 dimensional plot we showed above. You want a “football” shaped clustering where changes in <code class="docutils literal notranslate"><span class="pre">Weight</span></code> follow changes in the other two variables. So here, as the width and length of the car increase, the weight of the car increases too.</p>
-<p>So it looks like adding <code class="docutils literal notranslate"><span class="pre">Width</span></code> seems to also explain <code class="docutils literal notranslate"><span class="pre">Weight</span></code>. We can confirm this by adding <code class="docutils literal notranslate"><span class="pre">Width</span></code> as a predictor in our model.</p>
+<p>Interpeting the 3 dimensional scatterplot is the same as interpreting a 2 dimensional plot. You want a “football” shaped clustering where changes in <code class="docutils literal notranslate"><span class="pre">Weight</span></code> follow changes in the other two variables. So here, as the width and length of the car increase, the weight of the car increases too.</p>
+<p>So it looks like adding <code class="docutils literal notranslate"><span class="pre">Width</span></code> seems to also explain <code class="docutils literal notranslate"><span class="pre">Weight</span></code>. Let’s confirm by fitting a linear model with <code class="docutils literal notranslate"><span class="pre">Width</span></code> and <code class="docutils literal notranslate"><span class="pre">Length</span></code> predicting <code class="docutils literal notranslate"><span class="pre">Weight</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">lm.fit</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">Weight</span><span class="o">~</span><span class="n">Width</span><span class="o">+</span><span class="n">Length</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Cars93</span><span class="p">)</span>
@@ -1143,7 +1143,7 @@ Coefficients:
 Width         102.156     13.281   7.692 1.75e-11 ***
 Length         10.836      3.437   3.153   0.0022 ** 
 ---
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 274 on 90 degrees of freedom
 Multiple R-squared:  0.7889,	Adjusted R-squared:  0.7842 
@@ -1152,12 +1152,13 @@ F-statistic: 168.1 on 2 and 90 DF,  p-value: &lt; 2.2e-16
 </div>
 </div>
 </div>
-<p>Notice that <span class="math notranslate nohighlight">\(r^2\)</span> and <span class="math notranslate nohighlight">\(RSE\)</span>  improve a bit when we add <code class="docutils literal notranslate"><span class="pre">Width</span></code>, compared with the previous 1-parameter model.</p>
 <p>Let’s say we wanted to estimate the <em>full model</em> (i.e., use all the numeric variables in the <code class="docutils literal notranslate"><span class="pre">Cars93</span></code> data set to predict <code class="docutils literal notranslate"><span class="pre">Weight</span></code>). If you use the “.” symbol in the <code class="docutils literal notranslate"><span class="pre">lm()</span></code> function call, it tells R to use all variables <em>but</em> the one being predicted.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">num_cols</span> <span class="o">&lt;-</span> <span class="nf">unlist</span><span class="p">(</span><span class="nf">lapply</span><span class="p">(</span><span class="n">Cars93</span><span class="p">,</span> <span class="n">is.numeric</span><span class="p">))</span> <span class="c1"># Find just the numeric columns</span>
-<span class="n">lm.fit</span><span class="o">=</span><span class="nf">lm</span><span class="p">(</span><span class="n">Weight</span><span class="o">~</span><span class="n">.</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Cars93</span><span class="p">[,</span><span class="n">num_cols</span><span class="p">])</span>
+
+<span class="n">lm.fit</span><span class="o">=</span><span class="nf">lm</span><span class="p">(</span><span class="n">Weight</span><span class="o">~</span><span class="n">.</span><span class="p">,</span> 
+          <span class="n">data</span><span class="o">=</span><span class="n">Cars93</span><span class="p">[,</span><span class="n">num_cols</span><span class="p">])</span> <span class="c1">#using indexing to select columns</span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1191,7 +1192,7 @@ Turn.circle           8.29436    8.03511   1.032  0.30583
 Rear.seat.room       -0.53080    9.04313  -0.059  0.95338    
 Luggage.room          6.06806    7.94515   0.764  0.44783    
 ---
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 114.9 on 64 degrees of freedom
   (11 observations deleted due to missingness)
@@ -1201,11 +1202,12 @@ F-statistic: 111.8 on 17 and 64 DF,  p-value: &lt; 2.2e-16
 </div>
 </div>
 </div>
-<p>Let’s just keep playing with the ways that you can run and query the model object. First, let’s say you want to exclude some of the non-significant variables from the model. According to the coefficients table above, <code class="docutils literal notranslate"><span class="pre">EngineSize</span></code> and <code class="docutils literal notranslate"><span class="pre">Passengers</span></code> are not significant predictors when we run the full model. So we can remove them in two ways. First we can just train a new model with these variables excluded.</p>
+<p>Let’s just keep playing with the ways that you can run and query the model object. First, let’s say you want to exclude some of the non-significant variables from the model. According to the coefficients table above, <code class="docutils literal notranslate"><span class="pre">EngineSize</span></code> and <code class="docutils literal notranslate"><span class="pre">Passengers</span></code> are not significant predictors when we run the full model. So we can remove them in two ways.</p>
+<p>First we can just train a new model with these variables excluded. You can do this by adding a <code class="docutils literal notranslate"><span class="pre">-</span></code> in front of the variable name after the tilde.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Excluding a variable from the model: age, indus</span>
-<span class="n">lm.fit_new</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">Weight</span><span class="o">~</span><span class="n">.</span><span class="o">-</span><span class="n">EngineSize</span> <span class="o">-</span><span class="n">Passengers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Cars93</span><span class="p">[,</span><span class="n">num_cols</span><span class="p">])</span> <span class="c1">#you can exclude a variable by placing a &#39;-&#39; sign in front of it</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#excluding EngineSize and Passengers using &quot;-&quot;</span>
+<span class="n">lm.fit_new</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">Weight</span><span class="o">~</span><span class="n">.</span><span class="o">-</span><span class="n">EngineSize</span> <span class="o">-</span><span class="n">Passengers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Cars93</span><span class="p">[,</span><span class="n">num_cols</span><span class="p">])</span> 
 <span class="nf">summary</span><span class="p">(</span><span class="n">lm.fit_new</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1238,7 +1240,7 @@ Turn.circle           8.52630    7.96200   1.071  0.28813
 Rear.seat.room       -3.78306    7.61133  -0.497  0.62082    
 Luggage.room          5.43697    7.79114   0.698  0.48773    
 ---
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 114 on 66 degrees of freedom
   (11 observations deleted due to missingness)
@@ -1287,7 +1289,7 @@ Turn.circle           8.52630    7.96200   1.071  0.28813
 Rear.seat.room       -3.78306    7.61133  -0.497  0.62082    
 Luggage.room          5.43697    7.79114   0.698  0.48773    
 ---
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 114 on 66 degrees of freedom
   (11 observations deleted due to missingness)
@@ -1298,18 +1300,16 @@ F-statistic: 128.7 on 15 and 66 DF,  p-value: &lt; 2.2e-16
 </div>
 </div>
 <p>Either way it’s pretty easy to swap terms in and out of the model in R.</p>
-</section>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="working-with-categorical-qualitative-predictors">
+<div class="tex2jax_ignore mathjax_ignore section" id="working-with-categorical-qualitative-predictors">
 <h1>Working with categorical (qualitative) predictors<a class="headerlink" href="#working-with-categorical-qualitative-predictors" title="Permalink to this headline">#</a></h1>
-<p>So far we’ve been playing mostly with quantitative predictors. Let’s now play with some qualitative predictors.</p>
-<p>For this we will use a different data set (the <a class="reference external" href="https://cran.r-project.org/web/packages/car/car.pdf">CAR</a> package).</p>
+<p>So far we’ve been playing mostly with quantitative predictors. Let’s now play with some categorical, i.e., qualitative predictors.</p>
+<p>For this we will use the <code class="docutils literal notranslate"><span class="pre">Carseats</span></code> data set from the <a class="reference external" href="https://cran.r-project.org/web/packages/car/car.pdf">car</a> package.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># First we will want to clear the workspace</span>
-<span class="c1">#rm(list=ls())</span>
-
-
+<span class="nf">rm</span><span class="p">(</span><span class="n">list</span><span class="o">=</span><span class="nf">ls</span><span class="p">())</span>
 
 <span class="c1"># Look at the Carseats dataset</span>
 <span class="c1"># help(Carseats) # Uncomment to view documentation</span>
@@ -1340,11 +1340,11 @@ F-statistic: 128.7 on 15 and 66 DF,  p-value: &lt; 2.2e-16
 <li><p><strong>Urban:</strong>  A factor with levels No and Yes to indicate whether the store is in an urban or rural location</p></li>
 <li><p><strong>US:</strong> A factor with levels No and Yes to indicate whether the store is in the US or not</p></li>
 </ul>
-<p>Let’s model this first, but we will want to pay special attention to the <em>ShelveLoc</em> variable.</p>
+<p>Let’s fit a model that predicts <code class="docutils literal notranslate"><span class="pre">Sales</span></code> from some of these variables. We will want to pay special attention to the <code class="docutils literal notranslate"><span class="pre">ShelveLoc</span></code> variable.</p>
+<p>The below model includes all the individual predictors (using <code class="docutils literal notranslate"><span class="pre">.</span></code>), and also fits some interaction terms using the <code class="docutils literal notranslate"><span class="pre">:</span></code> between two variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now let us fit Sales with some interaction terms</span>
-<span class="n">lm.fit</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">Sales</span><span class="o">~</span><span class="n">.</span><span class="o">+</span><span class="n">Income</span><span class="o">:</span><span class="n">Advertising</span><span class="o">+</span><span class="n">Price</span><span class="o">:</span><span class="n">Age</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Carseats</span><span class="p">)</span> <span class="c1">#here we are using all individual predictors + interactions between income &amp; advertising and price &amp; age.</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">lm.fit</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">Sales</span><span class="o">~</span><span class="n">.</span><span class="o">+</span><span class="n">Income</span><span class="o">:</span><span class="n">Advertising</span><span class="o">+</span><span class="n">Price</span><span class="o">:</span><span class="n">Age</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Carseats</span><span class="p">)</span> 
 <span class="nf">summary</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1387,11 +1387,7 @@ F-statistic:   210 on 13 and 386 DF,  p-value: &lt; 2.2e-16
 <p>You can see how r sets up this binarization using the <em>contrasts</em> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># attach(Carseats)</span>
-<span class="nf">contrasts</span><span class="p">(</span><span class="n">Carseats</span><span class="o">$</span><span class="n">ShelveLoc</span><span class="p">)</span>
-<span class="c1">#here, bad is when good and medium are 0 </span>
-<span class="c1">#good is when good = 1 and medium = 0 </span>
-<span class="c1">#medium is when good = 0 and medium = 1</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">contrasts</span><span class="p">(</span><span class="n">Carseats</span><span class="o">$</span><span class="n">ShelveLoc</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1409,12 +1405,12 @@ F-statistic:   210 on 13 and 386 DF,  p-value: &lt; 2.2e-16
 </table>
 </div></div>
 </div>
-<p>Thus the effect for Bad shelving locations is included in the intercept term of the model. In this model, <em>ShelveLoc</em> is the only categorical variable that has more than 2 levels.
-<br><br>
-But remember – things get complicated if you have multiple categorical variables that have more than two terms. As we discussed in lecture, in those cases the intercept no longer corresponds to a single level of a categorical variable. So watch carefully how R redefines categorical variables.</p>
-</section>
+<p>Here, the <code class="docutils literal notranslate"><span class="pre">Shelveloc</span></code> value is “Bad” when both “Good” and “Medium” are 0. The value is “Good” when <code class="docutils literal notranslate"><span class="pre">Good</span> <span class="pre">=</span> <span class="pre">1</span></code>, and is “Medium” when <code class="docutils literal notranslate"><span class="pre">Medium</span> <span class="pre">=</span> <span class="pre">1</span></code></p>
+<p>Thus the effect for “bad” shelving locations is included in the <strong>intercept term</strong> of the model. The coefficient for <code class="docutils literal notranslate"><span class="pre">ShelveLocGood</span></code> in the above output therefore represents the bump in sales associated with having “good” shelving locations compared to “bad” shelving locations, all other variables held constant. (And same thing for <code class="docutils literal notranslate"><span class="pre">ShelveLocMedium</span></code> – this is the difference between “bad” and “medium” shelving locations.)</p>
+<p>In this model, <code class="docutils literal notranslate"><span class="pre">ShelveLoc</span></code> is the only categorical variable that has more than 2 levels. But remember – things get complicated if you have multiple categorical variables that have more than two terms. As we discussed in lecture, in those cases the intercept no longer corresponds to a single level of a categorical variable. So watch carefully how R redefines categorical variables.</p>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="simulating-the-bias-variance-tradeoff">
+<div class="tex2jax_ignore mathjax_ignore section" id="simulating-the-bias-variance-tradeoff">
 <h1>Simulating the bias-variance tradeoff<a class="headerlink" href="#simulating-the-bias-variance-tradeoff" title="Permalink to this headline">#</a></h1>
 <p>For the last part of this tutorial, let us return to the bias-variance tradeoff. Our goal will be to simulate data in order to show the tradeoff in action.</p>
 <p>To do this we need to generate a data set that has a natural low-dimensional structure to it. Which means that if you have <span class="math notranslate nohighlight">\(p\)</span> variables in <span class="math notranslate nohighlight">\(X\)</span>, because of correlations across variables, the true dimensionality of <span class="math notranslate nohighlight">\(X\)</span> is <span class="math notranslate nohighlight">\(&lt;p\)</span>.</p>
@@ -1427,7 +1423,7 @@ But remember – things get complicated if you have multiple categorical variabl
 <li><p><span class="math notranslate nohighlight">\(k\)</span> = rank of data</p></li>
 <li><p><span class="math notranslate nohighlight">\(s\)</span> = signal-to-noise ratio</p></li>
 </ul>
-<p>We will rely on something called singular value decomposition (SVD) to create a low rank data set. You don’t need to know what SVD does at the moment. We will come back to this in later classes. For now, just trust us that it generates low rank data.</p>
+<p>We will rely on something called singular value decomposition (SVD) to create a low rank data set. You don’t need to know what SVD does at the moment. We will come back to this in later classes. For now, just trust us that it generates low rank, (i.e. intercorrelated) data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">make_data</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">s</span><span class="p">){</span>
@@ -1485,6 +1481,7 @@ But remember – things get complicated if you have multiple categorical variabl
 <span class="n">p</span> <span class="o">=</span> <span class="m">20</span>
 <span class="n">k</span> <span class="o">=</span> <span class="m">10</span>
 <span class="n">s</span> <span class="o">=</span> <span class="m">20</span>
+
 <span class="n">data</span> <span class="o">=</span> <span class="nf">make_data</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
 <span class="nf">summary</span><span class="p">(</span><span class="nf">lm</span><span class="p">(</span><span class="n">Y</span><span class="o">~</span><span class="n">X</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">))</span>
 </pre></div>
@@ -1495,43 +1492,43 @@ But remember – things get complicated if you have multiple categorical variabl
 lm(formula = Y ~ X, data = data)
 
 Residuals:
-    Min      1Q  Median      3Q     Max 
--3.1632 -0.6669 -0.0134  0.7137  2.5237 
+     Min       1Q   Median       3Q      Max 
+-2.78569 -0.62726 -0.07531  0.59695  2.57939 
 
 Coefficients:
               Estimate Std. Error t value Pr(&gt;|t|)  
-(Intercept)   -0.01885    0.04635  -0.407   0.6844  
-X1           -62.49300   67.96818  -0.919   0.3583  
-X2           -61.44681   73.61360  -0.835   0.4043  
-X3           -59.27320   80.06719  -0.740   0.4595  
-X4            75.58075   72.70933   1.039   0.2991  
-X5             1.81605   70.67565   0.026   0.9795  
-X6            25.06277   66.36246   0.378   0.7058  
-X7          -122.09670   77.23973  -1.581   0.1146  
-X8           -86.36221   62.08797  -1.391   0.1649  
-X9           -19.65037   70.52672  -0.279   0.7807  
-X10           14.31125   71.55387   0.200   0.8416  
-X11           -4.43152   52.85600  -0.084   0.9332  
-X12          -25.60041   53.90212  -0.475   0.6350  
-X13          174.36787   75.65878   2.305   0.0216 *
-X14           -3.96485   47.65894  -0.083   0.9337  
-X15           82.07110   64.10358   1.280   0.2011  
-X16          -29.96543   62.64256  -0.478   0.6326  
-X17           19.96792   57.26188   0.349   0.7275  
-X18          118.66984   65.19763   1.820   0.0694 .
-X19          -62.36781   70.45165  -0.885   0.3765  
-X20         -132.66258   67.74813  -1.958   0.0508 .
+(Intercept)    0.03523    0.04533   0.777   0.4375  
+X1            24.41500   61.86812   0.395   0.6933  
+X2            14.17653   44.10736   0.321   0.7480  
+X3            17.62072   67.64961   0.260   0.7946  
+X4          -110.45193   71.72453  -1.540   0.1242  
+X5            32.11625   54.66273   0.588   0.5571  
+X6           133.22155   66.01748   2.018   0.0442 *
+X7           -86.10253   55.68913  -1.546   0.1227  
+X8          -116.70388   67.10784  -1.739   0.0827 .
+X9           108.78295   69.26610   1.571   0.1170  
+X10           42.71434   59.53488   0.717   0.4734  
+X11          -66.51462   62.53258  -1.064   0.2880  
+X12           63.94582   80.68294   0.793   0.4284  
+X13            9.71852   56.98526   0.171   0.8647  
+X14           -3.02868   55.56074  -0.055   0.9566  
+X15          -58.80215   64.89896  -0.906   0.3654  
+X16          106.39623   64.93919   1.638   0.1020  
+X17           45.76793   66.71295   0.686   0.4930  
+X18           36.66511   66.41676   0.552   0.5812  
+X19           17.25835   70.65191   0.244   0.8071  
+X20           65.65573   59.36835   1.106   0.2693  
 ---
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 1.029 on 479 degrees of freedom
-Multiple R-squared:  0.2157,	Adjusted R-squared:  0.183 
-F-statistic: 6.588 on 20 and 479 DF,  p-value: 5.342e-16
+Residual standard error: 1.003 on 479 degrees of freedom
+Multiple R-squared:  0.1889,	Adjusted R-squared:  0.155 
+F-statistic: 5.577 on 20 and 479 DF,  p-value: 5.266e-13
 </pre></div>
 </div>
 </div>
 </div>
-<p>You will notice that only few of the <span class="math notranslate nohighlight">\(p\)</span> variables are “statistically significant” because <span class="math notranslate nohighlight">\(X\)</span> really has a lower dimensionality of 10 (<span class="math notranslate nohighlight">\(k=10\)</span>) and we only set these few components to have an effect on <span class="math notranslate nohighlight">\(Y\)</span>. This is sort of what we would expect.</p>
+<p>You will notice that only few of the <span class="math notranslate nohighlight">\(p\)</span> variables are “statistically significance” because <span class="math notranslate nohighlight">\(X\)</span> really has a lower dimensionality of 10 (<span class="math notranslate nohighlight">\(k=10\)</span>) and we only set these few components to have an effect on <span class="math notranslate nohighlight">\(Y\)</span>. This is sort of what we would expect.</p>
 <p>Now we can visualize the correlational structure of our data set. Here we’ll use single-linkage clustering for illustrative purposes. For this we will rely on the <em>heatmap.2</em> function from the <em>gplots</em> package that you loaded above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1565,12 +1562,12 @@ F-statistic: 6.588 on 20 and 479 DF,  p-value: 5.342e-16
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">## ------------------------------</span>
-<span class="c1"># LM split validation function</span>
+<span class="c1"># LM split validation function </span>
 <span class="c1">## ------------------------------</span>
 <span class="n">bv_lm</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">degree</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1"># Set up the arrays for storing the results</span>
-    <span class="n">train_rss</span> <span class="o">=</span> <span class="nf">matrix</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">NA</span><span class="p">,</span><span class="n">nrow</span><span class="o">=</span><span class="n">degree</span><span class="p">,</span><span class="n">ncol</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
-    <span class="n">test_rss</span> <span class="o">=</span> <span class="nf">matrix</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">NA</span><span class="p">,</span><span class="n">nrow</span><span class="o">=</span><span class="n">degree</span><span class="p">,</span><span class="n">ncol</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+    <span class="n">train_rss</span> <span class="o">=</span> <span class="nf">matrix</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">NA</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="n">degree</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+    <span class="n">test_rss</span> <span class="o">=</span> <span class="nf">matrix</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">NA</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="n">degree</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
     <span class="n">p_max</span> <span class="o">=</span> <span class="n">degree</span><span class="p">[</span><span class="nf">length</span><span class="p">(</span><span class="n">degree</span><span class="p">)]</span>
 
     <span class="c1"># Loop through for each set of p-features</span>
@@ -1623,7 +1620,7 @@ F-statistic: 6.588 on 20 and 479 DF,  p-value: 5.342e-16
 <img alt="../_images/limits-of-linear-regression_36_0.png" src="../_images/limits-of-linear-regression_36_0.png" />
 </div>
 </div>
-<p>It is noisy, but you should notice that the test error skyrockets as <span class="math notranslate nohighlight">\(p\)</span> gets larger. If you squint, somewhere around <span class="math notranslate nohighlight">\(p=10\)</span> the test error is minimized.</p>
+<p>It is noisy, but you should notice that the test error skyrockets as <span class="math notranslate nohighlight">\(p\)</span> gets larger. If you squint, somewhere around <span class="math notranslate nohighlight">\(p=12\)</span> the test error is minimized. If you run this multiple times, you’ll get slightly different plots because the data is getting randomly simulated each time.</p>
 <p>But to get a clearer look, let’s run a large number of sims and average together.</p>
 <p>(This step takes about 10 minutes or so to run if you execute it on your own)</p>
 <div class="cell docutils container">
@@ -1666,8 +1663,8 @@ F-statistic: 6.588 on 20 and 479 DF,  p-value: 5.342e-16
 </div>
 <p>In the plot above, the red line shows the test error and the blue dashed line shows the training error. Notice the classic bias-variance tradeoff where training error continues to decrease as <span class="math notranslate nohighlight">\(p\)</span> increases, but test error has a “U” shape that bottoms out close to <span class="math notranslate nohighlight">\(p=k\)</span>. Classic bias-variance tradeoff.</p>
 <p>If you want to have fun with this effect, try changing the value of <span class="math notranslate nohighlight">\(k\)</span> in the code cells above and re-running the simulation. What happens?</p>
-<p><em>Notebook authored by Tim Verstynen and Ven Popov, edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
-</section>
+<p><em>Notebook authored by Tim Verstynen and Ven Popov, edited by Krista Bond, Charles Wu, Patience Stevens, Amy Sentis, and Fiona Horner.</em></p>
+</div>
 
     <script type="text/x-thebe-config">
     {

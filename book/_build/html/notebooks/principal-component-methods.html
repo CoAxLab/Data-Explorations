@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutorial: Basic PCA approaches &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -1034,10 +1033,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-basic-pca-approaches">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-basic-pca-approaches">
 <h1>Tutorial: Basic PCA approaches<a class="headerlink" href="#tutorial-basic-pca-approaches" title="Permalink to this headline">#</a></h1>
 <p>This lab focuses on principal component analysis and regression as well as partial least squares regression in R.</p>
-<section id="goals">
+<div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Understand principal component analysis, and use it for visualization</p></li>
@@ -1045,10 +1044,10 @@ title="Print to PDF"
 <li><p>Implement partial least squares using <code class="docutils literal notranslate"><span class="pre">plsr()</span></code> in the <code class="docutils literal notranslate"><span class="pre">pls</span></code> library</p></li>
 </ul>
 <p>This lab draws from the practice sets at the end of Chapter 6 in James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2013). “An introduction to statistical learning: with applications in r.”</p>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="principal-component-analysis-the-big-picture">
+<div class="tex2jax_ignore mathjax_ignore section" id="principal-component-analysis-the-big-picture">
 <h1>Principal component analysis: the big picture<a class="headerlink" href="#principal-component-analysis-the-big-picture" title="Permalink to this headline">#</a></h1>
 <p>Principal component analysis (PCA) is a handy way to decrease the dimensionality of your data. PCA helps you identify the dimensions along which your data varies the most, so you can capture the important variance while also simplifying.</p>
 <p>This can be a bit hard to get a physical intuition for, so if you’d like more discussion about how to think about PCA and dimensionality reduction more generally, I’d recommend checking out <a class="reference external" href="https://www.youtube.com/watch?v=_UVHneBUBW0">this video from StatQuest</a>.</p>
@@ -1201,9 +1200,9 @@ title="Print to PDF"
 </div>
 </div>
 <p>We can see that the first two PCs do a pretty good job of capturing the variance across the four original variables. Compare this plot to the two original scatter plots. Reason about why it looks the way it does, given how the first two PCs drew from the original variables.</p>
-</section>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="principal-component-regression">
+<div class="tex2jax_ignore mathjax_ignore section" id="principal-component-regression">
 <h1>Principal component regression<a class="headerlink" href="#principal-component-regression" title="Permalink to this headline">#</a></h1>
 <p>Now that we’ve got a firmer grasp on what PCA is doing generally, let’s try out principal component regression using the <code class="docutils literal notranslate"><span class="pre">pcr()</span></code> function from the <code class="docutils literal notranslate"><span class="pre">pls</span></code> library. We’ll use the <code class="docutils literal notranslate"><span class="pre">Hitters</span></code> dataset for this example.</p>
 <div class="cell docutils container">
@@ -1328,9 +1327,9 @@ Salary    40.63    41.58    42.17    43.22    44.90
 </div>
 </div>
 </div>
-</section>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="partial-least-squares">
+<div class="tex2jax_ignore mathjax_ignore section" id="partial-least-squares">
 <h1>Partial least squares<a class="headerlink" href="#partial-least-squares" title="Permalink to this headline">#</a></h1>
 <p>The function for performing partial least squares is <code class="docutils literal notranslate"><span class="pre">plsr()</span></code>, also in the <code class="docutils literal notranslate"><span class="pre">pls</span></code> package. Let’s apply cross-validated PLS to the <code class="docutils literal notranslate"><span class="pre">Hitters</span></code> training dataset, again trying to predict <code class="docutils literal notranslate"><span class="pre">Salary</span></code>.</p>
 <div class="cell docutils container">
@@ -1407,7 +1406,7 @@ Salary    43.05
 </div>
 <p>Note that the amount of variance in <code class="docutils literal notranslate"><span class="pre">Salary</span></code> explained by the one-component PLS fit, 43.05%, is similar to that explained by four principal components, 43.22%, in the PCR example. This is because, while PCR is only trying to maximize variance explained in the predictor variables, PLS is trying to maximize variance explained in both the predictors and the response.</p>
 <p><em>Notebook authored by Patience Stevens and edited by Amy Sentis.</em></p>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {

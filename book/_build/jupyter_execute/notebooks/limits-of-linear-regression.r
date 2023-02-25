@@ -22,21 +22,25 @@ library(ISLR)
 
 
 # Set the random number generator seed
-set.seed(2022)
+set.seed(2023)
 
 
-scatter3D(Cars93$Width, Cars93$Length, Cars93$Weight, phi=20, theta=20, xlab="Width", ylab="Length",zlab="Weight")
-#phi controls tilt and theta controls angle
+scatter3D(Cars93$Width, Cars93$Length, Cars93$Weight, 
+          phi=20, theta=20, #phi controls tilt and theta controls angle
+          xlab="Width", ylab="Length",zlab="Weight")
+
 
 lm.fit = lm(Weight~Width+Length, data=Cars93)
 summary(lm.fit)
 
 num_cols <- unlist(lapply(Cars93, is.numeric)) # Find just the numeric columns
-lm.fit=lm(Weight~., data=Cars93[,num_cols])
+
+lm.fit=lm(Weight~., 
+          data=Cars93[,num_cols]) #using indexing to select columns
 summary(lm.fit)
 
-# Excluding a variable from the model: age, indus
-lm.fit_new = lm(Weight~.-EngineSize -Passengers, data=Cars93[,num_cols]) #you can exclude a variable by placing a '-' sign in front of it
+#excluding EngineSize and Passengers using "-"
+lm.fit_new = lm(Weight~.-EngineSize -Passengers, data=Cars93[,num_cols]) 
 summary(lm.fit_new)
 
 # Or just update the existing model
@@ -44,23 +48,16 @@ lm.fit_new=update(lm.fit, ~.-EngineSize -Passengers)
 summary(lm.fit_new)
 
 # First we will want to clear the workspace
-#rm(list=ls())
-
-
+rm(list=ls())
 
 # Look at the Carseats dataset
 # help(Carseats) # Uncomment to view documentation
 names(Carseats)
 
-# Now let us fit Sales with some interaction terms
-lm.fit = lm(Sales~.+Income:Advertising+Price:Age, data=Carseats) #here we are using all individual predictors + interactions between income & advertising and price & age.
+lm.fit = lm(Sales~.+Income:Advertising+Price:Age, data=Carseats) 
 summary(lm.fit)
 
-# attach(Carseats)
 contrasts(Carseats$ShelveLoc)
-#here, bad is when good and medium are 0 
-#good is when good = 1 and medium = 0 
-#medium is when good = 0 and medium = 1
 
 make_data <- function(n,p,k,s){
   
@@ -110,6 +107,7 @@ n = 500
 p = 20
 k = 10
 s = 20
+
 data = make_data(n,p,k,s)
 summary(lm(Y~X, data=data))
 
@@ -122,12 +120,12 @@ heatmap.2(cor(data$X),col=brewer.pal(11,"RdBu"), trace="none",
           key.title = NA, key.ylab = NA, key.xlab = "Correlation")
 
 ## ------------------------------
-# LM split validation function
+# LM split validation function 
 ## ------------------------------
 bv_lm <- function(n, degree, k, s) {
     # Set up the arrays for storing the results
-    train_rss = matrix(data=NA,nrow=degree,ncol=1)
-    test_rss = matrix(data=NA,nrow=degree,ncol=1)
+    train_rss = matrix(data=NA, nrow=degree, ncol=1)
+    test_rss = matrix(data=NA, nrow=degree, ncol=1)
     p_max = degree[length(degree)]
 
     # Loop through for each set of p-features
