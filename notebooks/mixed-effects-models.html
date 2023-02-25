@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutorial: Running linear mixed effects models &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -1014,26 +1013,26 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-running-linear-mixed-effects-models">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-running-linear-mixed-effects-models">
 <h1>Tutorial: Running linear mixed effects models<a class="headerlink" href="#tutorial-running-linear-mixed-effects-models" title="Permalink to this headline">#</a></h1>
 <p>This lab delves into mixed-effects models and their implementation in R.</p>
-<section id="goals">
+<div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Learn how to use the <code class="docutils literal notranslate"><span class="pre">lmer()</span></code> function</p></li>
 </ul>
 <p>This tutorial draws from Chapter 1 in Bates, D., Maechler, M., Bolker, B., &amp; Walker, S. (2014). “lme4: Linear mixed-effects models using Eigen and S4”. R package version:, 1(7), 1-23.</p>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="linear-mixed-effects-models">
+<div class="tex2jax_ignore mathjax_ignore section" id="linear-mixed-effects-models">
 <h1>Linear mixed-effects models<a class="headerlink" href="#linear-mixed-effects-models" title="Permalink to this headline">#</a></h1>
 <p>Linear mixed-effects models let you account for correlations among your observations and variation due to variables other than those of interest (like <em>participant</em> or <em>classroom</em>). Let’s see how we can use the linear mixed-effects tools in R.</p>
 <p>To get started, we will need to install the <a class="reference external" href="https://cran.r-project.org/web/packages/lme4/lme4.pdf">lme4</a> library in R.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install LME4</span>
-<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;lme4&quot;</span><span class="p">)</span> <span class="c1"># Uncomment if not installed.</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load LME4</span>
+<span class="c1"># install.packages(&quot;lme4&quot;) # Uncomment if not installed.</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">lme4</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
 </pre></div>
@@ -1049,7 +1048,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><table>
+<div class="output text_html"><table class="dataframe">
 <caption>A data.frame: 6 × 3</caption>
 <thead>
 	<tr><th></th><th scope=col>Reaction</th><th scope=col>Days</th><th scope=col>Subject</th></tr>
@@ -1066,7 +1065,10 @@ title="Print to PDF"
 </table>
 </div></div>
 </div>
-<p>Summary: “The average reaction time per day for subjects in a sleep deprivation study. On day 0 the subjects had their normal amount of sleep. Starting that night they were restricted to 3 hours of sleep per night. The observations represent the average reaction time on a series of tests given each day to each subject.”</p>
+<p>The documentation summarizes these data:</p>
+<blockquote>
+<div><p>“The average reaction time per day for subjects in a sleep deprivation study. On day 0 the subjects had their normal amount of sleep. Starting that night they were restricted to 3 hours of sleep per night. The observations represent the average reaction time on a series of tests given each day to each subject.”</p>
+</div></blockquote>
 <p>So we have a data frame with 180 observations on the following 3 variables.</p>
 <ul class="simple">
 <li><p><strong>Reaction:</strong> Average reaction time (ms)</p></li>
@@ -1074,29 +1076,27 @@ title="Print to PDF"
 <li><p><strong>Subject:</strong>  Subject number on which the observation was made.</p></li>
 </ul>
 <p>The main question we have here is whether days of consecutive sleep deprivation impact reaction times.  This boils down to a repeated measures problem: the same subjects are tested across multiple days, so random effects associated with each individual will also carry over across days, violating the assumption that each observation is independent and identically distributed (i.e., <em>iid</em>).</p>
+<p>Let’s take a look at the fixed effects. Below, we plot the data by days and then grouped by subject/</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s take a look at the fixed effects</span>
-<span class="c1"># we can plot the data by days and then grouped by subjects</span>
-<span class="nf">ggplot</span><span class="p">(</span><span class="n">sleepstudy</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">Days</span><span class="p">,</span> <span class="n">Reaction</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">Subject</span><span class="p">))</span> <span class="o">+</span> 
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">sleepstudy</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">Days</span><span class="p">,</span> <span class="n">Reaction</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">Subject</span><span class="p">))</span> <span class="o">+</span> 
   <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span> <span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;lm&quot;</span><span class="p">,</span><span class="n">se</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
-<span class="c1"># What assumption in a regression model are we violating? </span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula &#39;y ~ x&#39;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`geom_smooth()` using formula = &#39;y ~ x&#39;
 </pre></div>
 </div>
 <img alt="../_images/mixed-effects-models_6_1.png" src="../_images/mixed-effects-models_6_1.png" />
 </div>
 </div>
-<p>Note that not only do individual subjects’ baseline RTs differ, but the rates at which their RTs change with days of little sleep differ. Put another way: subjects have different reaction speeds, and they’re also differently affected by lack of sleep.</p>
+<p>Note that not only do individual subjects’ baseline RTs differ (i.e., their intercepts), but the rates at which their RTs change with days of little sleep differ (i.e., their slopes). Put another way: subjects have different reaction speeds, and they’re also differently affected by lack of sleep.</p>
 <p><em>Tangent: I knew a guy who was like subject 335 once. He seemed to thrive on lack of sleep.</em></p>
+<p>Let’s see what happens if we try to fit a regular linear model to these clustered data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># First let&#39;s try the simple linear fit anyways and see what we get</span>
-<span class="n">fe.fit</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">Reaction</span><span class="o">~</span><span class="n">Days</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">sleepstudy</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">fe.fit</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">Reaction</span><span class="o">~</span><span class="n">Days</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">sleepstudy</span><span class="p">)</span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">fe.fit</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1123,24 +1123,28 @@ F-statistic: 71.46 on 1 and 178 DF,  p-value: 9.894e-15
 </div>
 </div>
 </div>
-<p>Even though we’re ignoring the role of subjects in the example above, we still get a significant effect of days of sleep deprivation on reaction time.</p>
-<p>However, in order to account for those subject effects, let’s treat them as a random effect. In this case we will assume that the effect of sleep deprivation on reaction times varies by subject.</p>
+<p>Even though we’re ignoring the role of subjects in the example above, we still get a significant effect of days of sleep deprivation on reaction time. But because we haven’t accounted for the clustered data, the estimate and standard error here are actually incorrect.</p>
+<p>To account for the subject effects, let’s treat them as a random effect. In this case we will assume that the effect of sleep deprivation on reaction times varies by subject.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">lmer</span></code>, random-effects terms are distinguished by vertical bars (|) separating expressions for design matrices from grouping factors.</p>
 <p>Some notes on usage for the random effects terms:</p>
 <ol class="simple">
-<li><p>If you just want to find the subject intercepts (i.e., you care about subject differences in starting reaction times but not about how each subjects’ RTs change as <code class="docutils literal notranslate"><span class="pre">Days</span></code> increases), then write the random effects term as <code class="docutils literal notranslate"><span class="pre">(1</span> <span class="pre">|</span> <span class="pre">Subject)</span></code>.</p></li>
-<li><p>If you want both the intercept <em>and</em> the slopes, you can write either <code class="docutils literal notranslate"><span class="pre">(1+Days</span> <span class="pre">|</span> <span class="pre">Subject)</span></code>  or <code class="docutils literal notranslate"><span class="pre">(Days</span> <span class="pre">|</span> <span class="pre">Subject)</span></code>. In the second case, the “1+” is inferred since usually if the analyst wants slopes they also want intercepts.</p></li>
-<li><p>If you want <em>just the slopes</em>, you can write <code class="docutils literal notranslate"><span class="pre">(0+Days</span> <span class="pre">|</span> <span class="pre">Subject)</span></code>.</p></li>
+<li><p>If you just want to find the random intercepts (i.e., you care about subject differences in starting reaction times but not about how each subjects’ RTs change as <code class="docutils literal notranslate"><span class="pre">Days</span></code> increases), then write the random effects term as <code class="docutils literal notranslate"><span class="pre">(1</span> <span class="pre">|</span> <span class="pre">Subject)</span></code>.</p></li>
+<li><p>If you want both random intercepts <em>and</em> random slopes, you can write either <code class="docutils literal notranslate"><span class="pre">(1+Days</span> <span class="pre">|</span> <span class="pre">Subject)</span></code>  or <code class="docutils literal notranslate"><span class="pre">(Days</span> <span class="pre">|</span> <span class="pre">Subject)</span></code>. In the second case, the “1+” is inferred since usually if the analyst wants slopes they also want intercepts.</p></li>
+<li><p>If you want <em>just random slopes</em>, you can write <code class="docutils literal notranslate"><span class="pre">(0+Days</span> <span class="pre">|</span> <span class="pre">Subject)</span></code>.</p></li>
 </ol>
 <p>Given the plot above, I think we need to care about both intercepts and slopes. But to be sure, let’s try it both ways.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now let&#39;s account for the random impact of subject variance on the model</span>
-<span class="n">me.fit1</span> <span class="o">=</span> <span class="nf">lmer</span><span class="p">(</span><span class="n">Reaction</span> <span class="o">~</span> <span class="n">Days</span> <span class="o">+</span> <span class="p">(</span><span class="n">Days</span> <span class="o">|</span> <span class="n">Subject</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">sleepstudy</span><span class="p">)</span> <span class="c1"># subject intercepts and slopes</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Random intercepts and slopes across subjects</span>
+<span class="n">me.fit1</span> <span class="o">=</span> <span class="nf">lmer</span><span class="p">(</span><span class="n">Reaction</span> <span class="o">~</span> <span class="n">Days</span> <span class="o">+</span> <span class="p">(</span><span class="n">Days</span> <span class="o">|</span> <span class="n">Subject</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">sleepstudy</span><span class="p">)</span>
 <span class="c1"># ^^ the same as me.fit1 = lmer(Reaction ~ Days +  (1+Days | Subject), data=sleepstudy) </span>
-<span class="n">me.fit2</span> <span class="o">=</span> <span class="nf">lmer</span><span class="p">(</span><span class="n">Reaction</span> <span class="o">~</span> <span class="n">Days</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span> <span class="o">|</span> <span class="n">Subject</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">sleepstudy</span><span class="p">)</span> <span class="c1"># only subject intercepts</span>
+
+<span class="c1"># Random intercepts only</span>
+<span class="n">me.fit2</span> <span class="o">=</span> <span class="nf">lmer</span><span class="p">(</span><span class="n">Reaction</span> <span class="o">~</span> <span class="n">Days</span> <span class="o">+</span> <span class="p">(</span><span class="m">1</span> <span class="o">|</span> <span class="n">Subject</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">sleepstudy</span><span class="p">)</span>
+
 <span class="nf">print</span><span class="p">(</span><span class="s">&quot;*******me.fit1********&quot;</span><span class="p">)</span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">me.fit1</span><span class="p">)</span>
+
 <span class="nf">print</span><span class="p">(</span><span class="s">&quot;*******me.fit2********&quot;</span><span class="p">)</span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">me.fit2</span><span class="p">)</span>
 </pre></div>
@@ -1208,10 +1212,9 @@ Days -0.371
 </div>
 </div>
 </div>
-<p>The random effects: <code class="docutils literal notranslate"><span class="pre">(Days</span> <span class="pre">|</span> <span class="pre">Subject)</span></code>  allows individual subjects to vary randomly in terms of their intercept (starting reaction time) and for each person, the effect of the number of days of sleep lost on reaction time is estimated (reaction time change over days, also called a “random slope”).</p>
-<p>If we look at the t-value for Days on Reaction in the Fixed effects of <code class="docutils literal notranslate"><span class="pre">me.fit1</span></code>, it has dropped to 6.77 (from 8.45 in the simple linear model). Thus we are getting a more conservative model fit on the fixed effects.</p>
-<p>Notice that the report on the random effects doesn’t provide an inferential statistic (i.e., a t-value). That is because interpreting the magnitude of the random effect is meaningless because we defined those effects as tangential (irrelevant) to the fixed effect that we are looking for. We are not looking for how variability in individuals changes the effect of sleep loss over time or at individual differences in the baseline reaction times. Instead, we are trying to estimate the fixed effects, taking into account this random variation.</p>
-<p>Therefore, to interpret the value of including the random effects term in your model, you will want to do a model comparison instead. Specifically, you might want to test whether the mixed-effect model provides a better fit to the data than the simple linear regression model.</p>
+<p>If we look at the t-value for <code class="docutils literal notranslate"><span class="pre">Days</span></code> on <code class="docutils literal notranslate"><span class="pre">Reaction</span></code> in the Fixed effects of <code class="docutils literal notranslate"><span class="pre">me.fit1</span></code>, it has dropped to 6.77 (from 8.45 in the simple linear model). Thus we are getting a more conservative model fit on the fixed effects.</p>
+<p>Notice that the report on the random effects doesn’t provide an inferential statistic (i.e., a t-value). Interpreting the magnitude of a random effect depends on domain-specific information rather than null hypothesis testing (also remember that variance can’t be negative, so the distribution is bounded at 0 – so variance terms will always be “statistically significant”, but may not represent meaningful variance across participants). Here, we are not looking for how variability in individuals changes the effect of sleep loss over time or at individual differences in the baseline reaction times (you need more complex models to include random effects as predictors). Instead, we are trying to estimate the fixed effects, taking into account this random variation. <code class="docutils literal notranslate"><span class="pre">lmer</span></code> provides a t-value for fixed effects, but not a p-value. You don’t need a p-value for interpretation, but if want it (e.g., for publication requirements) you can use the <code class="docutils literal notranslate"><span class="pre">lmerTest</span></code> package.</p>
+<p>To interpret the value of including the random effects term in your model, you will want to do a model comparison. Specifically, you might want to test whether the mixed-effect model provides a better fit to the data than the simple linear regression model.</p>
 <p>Remember the bias-variance tradeoff, and how a more complex model will generally provide a better fit? These three models have different model complexities, so you’ll have to use an evaluation criterion that takes complexity into account (e.g., AIC). For now you can think of the AIC as quanitifying the amount of information lost or the variance unexplained (so a lower score would be better).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1244,8 +1247,8 @@ Days -0.371
 </div></div>
 </div>
 <p>As you might have expected, <code class="docutils literal notranslate"><span class="pre">me.fit1</span></code> has the lowest AIC, and so seems to be the best model choice for the data. The difference in AIC between <code class="docutils literal notranslate"><span class="pre">fe.fit</span></code> and the other two models is quite big, which means that the mixed-effects models account for substantially more variance in reaction time than the simple linear model, even after accounting for increased complexity.</p>
-<p><em>Notebook authored by Ven Popov, and edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
-</section>
+<p><em>Notebook authored by Ven Popov, and edited by Krista Bond, Charles Wu, Patience Stevens, Amy Sentis, and Fiona Horner.</em></p>
+</div>
 
     <script type="text/x-thebe-config">
     {
