@@ -1,0 +1,1437 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial: Running kNN models &#8212; Data explorations</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Discussion questions" href="../discussions/the-beauty-of-knn.html" />
+    <link rel="prev" title="The beauty of kNN" href="../lectures/the-beauty-of-knn.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/information.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data explorations</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Data explorations
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Information and Meaning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/quantitative-epistemology.html">
+   Quantitative epsitemology
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quantitative-epistemology.html">
+     Tutorial: Getting started
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/quantitative-epistemology.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-value-of-openness.html">
+   The value of openness
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-value-of-openness.html">
+     Tutorial: Repositories and version control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-value-of-openness.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/the-value-of-openness.html">
+     Exercise 1: Github &amp; Jupyter
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/what-is-a-theory.html">
+   What is a theory?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/what-is-a-theory.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/models-as-testable-hypotheses.html">
+   Models as testable hypotheses
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="models-as-testable-hypotheses.html">
+     Tutorial: Introduction to R, functions, and good coding habits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/models-as-testable-hypotheses.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/models-as-testable-hypotheses.html">
+     Exercise 2: Coding Habits &amp; Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/data-as-objects-and-architectures.html">
+   Data as objects and architectures
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data-as-objects-and-architectures.html">
+     Tutorial: Data as Objects and Tidy Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/data-as-objects-and-architectures.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/data-as-objects-and-architectures.html">
+     Exercise 3: Data objects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/techniques-for-data-cleansing.html">
+   Techniques for data cleansing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="techniques-for-data-cleansing.html">
+     Tutorial: Data Cleansing and the Tidyverse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/techniques-for-data-cleansing.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/techniques-for-data-cleansing.html">
+     Exercise 4: Data tables and manipulation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/visualization-as-analysis.html">
+   Visualization as analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="visualization-as-analysis.html">
+     Tutorial: Basics of plotting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/visualization-as-analysis.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/visualization-as-analysis.html">
+     Exercise 5: Using ggplot
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/visualization-through-human-eyes.html">
+   Visualization through human eyes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="visualization-through-human-eyes.html">
+     Tutorial: More advanced plotting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/visualization-through-human-eyes.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/visualization-through-human-eyes.html">
+     Exercise 6: More plotting options
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Knowledge
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/statistical-learning-theory.html">
+   The bias-variance tradeoff
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/statistical-learning-theory.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/linear-models.html">
+   Linear models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="linear-models.html">
+     Tutorial: Refresher on working with matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/linear-models.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/linear-models.html">
+     Exercise 7:  Linear models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-ordinary-least-squares-solution.html">
+   The ordinary least squares solution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-ordinary-least-squares-solution.html">
+     Tutorial: Refresher for solving oridinary least squares
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-ordinary-least-squares-solution.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/the-ordinary-least-squares-solution.html">
+     Exercise 8:  Linear models, continued
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/limits-of-linear-regression.html">
+   Limits and variations of linear regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="limits-of-linear-regression.html">
+     Tutorial: More on linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/limits-of-linear-regression.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/mixed-effects-models.html">
+   Mixed effects models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mixed-effects-models.html">
+     Tutorial: Running linear mixed effects models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/mixed-effects-models.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/mixed-effects-models.html">
+     Exercise 9: Mixed effects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/classifiers.html">
+   Classifiers
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="classifiers.html">
+     Tutorial: Basics classifiers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/classifiers.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/classifiers.html">
+     Exercise 10: Classification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../lectures/the-beauty-of-knn.html">
+   The beauty of kNN
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Tutorial: Running kNN models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-beauty-of-knn.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/the-beauty-of-knn.html">
+     Exercise 11: The Beauty of kNN
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/cross-validation.html">
+   Cross validation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cross-validation.html">
+     Tutorial: Implementing cross validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/cross-validation.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/cross-validation.html">
+     Exercise 12: Cross Validation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/resampling-methods.html">
+   Resampling methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="resampling-methods.html">
+     Tutorial: Boostrap and permutation tests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/resampling-methods.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/resampling-methods.html">
+     Exercise 13:  Resampling methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/mediation-and-moderation.html">
+   Mediation and moderation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mediation-and-moderation.html">
+     Tutorial: Running mediation and moderation models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/mediation-and-moderation.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/mediation-and-moderation.html">
+     Exercise 14: Mediation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/power-analysis-via-simulations.html">
+   Power analysis via simulations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="power-analysis-via-simulations.html">
+     Tutorial: Running basic power analyses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/power-analysis-via-simulations.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/selecting-the-best-model.html">
+   Selecting the best model
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+  <label for="toctree-checkbox-20">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="selecting-the-best-model.html">
+     Tutorial: Model selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/selecting-the-best-model.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/selecting-the-best-model.html">
+     Exercise 16: Model selection
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/regularized-regression.html">
+   Regularized regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+  <label for="toctree-checkbox-21">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="regularized-regression.html">
+     Tutorial: Basic ridge and LASSO models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/regularized-regression.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/regularized-regression.html">
+     Exercise 17: Regularized regression
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/principal-component-methods.html">
+   Principal component methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="principal-component-methods.html">
+     Tutorial: Basic PCA approaches
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/principal-component-methods.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/principal-component-methods.html">
+     Exercise 18: Principal component methods
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Understanding
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/reconsidering-the-p-value.html">
+   Reconsidering the p-value
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/reconsidering-the-p-value.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/bayes-factor-accepting-the-null.html">
+   Bayes factor
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+  <label for="toctree-checkbox-24">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bayes-factor-accepting-the-null.html">
+     Tutorial: Estimating Bayes factors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/bayes-factor-accepting-the-null.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/errors-and-inferences.html">
+   Errors and inferences
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+  <label for="toctree-checkbox-25">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/errors-and-inferences.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/telling-your-data-story.html">
+   Telling your data story
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+  <label for="toctree-checkbox-26">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/telling-your-data-story.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/theories-as-social-constructs.html">
+   Theories as social constructs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+  <label for="toctree-checkbox-27">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/theories-as-social-constructs.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/notebooks/the-beauty-of-knn.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/notebooks/the-beauty-of-knn.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notebooks/the-beauty-of-knn.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial: Running kNN models
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goals">
+     Goals:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-nearest-neighbors-an-intro">
+   K-Nearest Neighbors: an intro
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classifying-irises">
+     Classifying irises
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#identifying-test-items">
+     Identifying test items
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#predicting-the-species-using-knn">
+     Predicting the species using kNN
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assessing-knn-performance">
+     Assessing kNN performance
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#varying-k">
+     Varying k
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#standardizing-data">
+     Standardizing data
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Tutorial: Running kNN models</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial: Running kNN models
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goals">
+     Goals:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-nearest-neighbors-an-intro">
+   K-Nearest Neighbors: an intro
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classifying-irises">
+     Classifying irises
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#identifying-test-items">
+     Identifying test items
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#predicting-the-species-using-knn">
+     Predicting the species using kNN
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assessing-knn-performance">
+     Assessing kNN performance
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#varying-k">
+     Varying k
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#standardizing-data">
+     Standardizing data
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-running-knn-models">
+<h1>Tutorial: Running kNN models<a class="headerlink" href="#tutorial-running-knn-models" title="Permalink to this headline">#</a></h1>
+<p>This lab focuses on implementing kNN in R.</p>
+<div class="section" id="goals">
+<h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Learn how to use the <code class="docutils literal notranslate"><span class="pre">knn()</span></code> function</p></li>
+</ul>
+<p>This lab draws from the practice sets at the end of Chapter 4 in James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2013). “An introduction to statistical learning: with applications in r.”</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="tex2jax_ignore mathjax_ignore section" id="k-nearest-neighbors-an-intro">
+<h1>K-Nearest Neighbors: an intro<a class="headerlink" href="#k-nearest-neighbors-an-intro" title="Permalink to this headline">#</a></h1>
+<p>It’s time to talk about our first non-parametric method: <a class="reference external" href="https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm">K-Nearest Neighbors</a>! This is a pretty straightforward way to classify things. Say you have a bunch of pre-classified items <span class="math notranslate nohighlight">\(\bf{x}\)</span>, and a new item that you’d like to classify, <span class="math notranslate nohighlight">\(x_{new}\)</span>. You can look at the K points in <span class="math notranslate nohighlight">\(\bf{x}\)</span> that are closest to <span class="math notranslate nohighlight">\(x_{new}\)</span>, and whichever class is most common among those K points is your predicted classification for the new item, <span class="math notranslate nohighlight">\(x_{new}\)</span>.</p>
+<div class="section" id="classifying-irises">
+<h2>Classifying irises<a class="headerlink" href="#classifying-irises" title="Permalink to this headline">#</a></h2>
+<p>We’ll use the <code class="docutils literal notranslate"><span class="pre">iris</span></code> dataset, which we’ve used in previous tutorials, to demonstrate KNN. As a reminder, the <code class="docutils literal notranslate"><span class="pre">iris</span></code> data set records the length and width of petals and sepals for different species of iris flowers. Let’s look at how the different species cluster based on the lengths of their petals and sepals.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">require</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="n">dat</span> <span class="o">&lt;-</span> <span class="n">iris</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+<span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">10</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">Species</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<caption>A data.frame: 6 × 5</caption>
+<thead>
+	<tr><th></th><th scope=col>Sepal.Length</th><th scope=col>Sepal.Width</th><th scope=col>Petal.Length</th><th scope=col>Petal.Width</th><th scope=col>Species</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>5.1</td><td>3.5</td><td>1.4</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>2</th><td>4.9</td><td>3.0</td><td>1.4</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>3</th><td>4.7</td><td>3.2</td><td>1.3</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>4</th><td>4.6</td><td>3.1</td><td>1.5</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>5</th><td>5.0</td><td>3.6</td><td>1.4</td><td>0.2</td><td>setosa</td></tr>
+	<tr><th scope=row>6</th><td>5.4</td><td>3.9</td><td>1.7</td><td>0.4</td><td>setosa</td></tr>
+</tbody>
+</table>
+</div><img alt="../_images/the-beauty-of-knn_5_1.png" src="../_images/the-beauty-of-knn_5_1.png" />
+</div>
+</div>
+<p>We can implement KNN in R using the <code class="docutils literal notranslate"><span class="pre">knn()</span></code> function from the <code class="docutils literal notranslate"><span class="pre">class</span></code> library. This takes four inputs: the training predictors (<code class="docutils literal notranslate"><span class="pre">Sepal.Length</span></code> and <code class="docutils literal notranslate"><span class="pre">Petal.Length</span></code>), the testing predictors, the training labels (<code class="docutils literal notranslate"><span class="pre">Species</span></code>) and the value for <code class="docutils literal notranslate"><span class="pre">K</span></code>.</p>
+</div>
+<div class="section" id="identifying-test-items">
+<h2>Identifying test items<a class="headerlink" href="#identifying-test-items" title="Permalink to this headline">#</a></h2>
+<p>There are 150 observations - let’s set aside 30 to be test items.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span> <span class="c1"># this is so the colab notebook will give the same random 30 test items every time we run it. </span>
+<span class="n">test.inds</span> <span class="o">&lt;-</span> <span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">dat</span><span class="p">),</span><span class="m">30</span><span class="p">)</span>
+<span class="n">dat</span><span class="o">$</span><span class="n">is.test</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span> <span class="o">%in%</span> <span class="n">test.inds</span> <span class="c1"># TRUE/FALSE indicator for whether each observation is a test item or not. </span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">Species</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">2</span><span class="p">)</span> <span class="o">+</span> <span class="c1"># plot all the data, colored by species</span>
+  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dat</span><span class="p">[</span><span class="n">test.inds</span><span class="p">,],</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">),</span><span class="n">size</span><span class="o">=</span><span class="m">4</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="n">shape</span><span class="o">=</span><span class="s">&quot;o&quot;</span><span class="p">)</span> <span class="c1"># circle the test items. </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/the-beauty-of-knn_8_0.png" src="../_images/the-beauty-of-knn_8_0.png" />
+</div>
+</div>
+<p>See if you can predict which of the test items (circled in black above) will be incorrectly classified using the KNN method.</p>
+</div>
+<div class="section" id="predicting-the-species-using-knn">
+<h2>Predicting the species using kNN<a class="headerlink" href="#predicting-the-species-using-knn" title="Permalink to this headline">#</a></h2>
+<p>Now let’s try out KNN for <code class="docutils literal notranslate"><span class="pre">K</span></code> = 5.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">class</span><span class="p">)</span>
+<span class="n">train.preds</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Petal.Length</span><span class="p">[</span><span class="o">-</span><span class="n">test.inds</span><span class="p">],</span><span class="n">dat</span><span class="o">$</span><span class="n">Sepal.Length</span><span class="p">[</span><span class="o">-</span><span class="n">test.inds</span><span class="p">])</span>
+<span class="n">test.preds</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Petal.Length</span><span class="p">[</span><span class="n">test.inds</span><span class="p">],</span><span class="n">dat</span><span class="o">$</span><span class="n">Sepal.Length</span><span class="p">[</span><span class="n">test.inds</span><span class="p">])</span>
+<span class="n">train.spec</span> <span class="o">&lt;-</span> <span class="n">dat</span><span class="o">$</span><span class="n">Species</span><span class="p">[</span><span class="o">-</span><span class="n">test.inds</span><span class="p">]</span>
+<span class="n">test.spec.knn</span> <span class="o">&lt;-</span> <span class="nf">knn</span><span class="p">(</span><span class="n">train.preds</span><span class="p">,</span><span class="n">test.preds</span><span class="p">,</span><span class="n">train.spec</span><span class="p">,</span><span class="m">5</span><span class="p">)</span>
+<span class="n">test.spec.knn</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>versicolor</li><li>virginica</li><li>setosa</li><li>setosa</li><li>versicolor</li><li>versicolor</li><li>setosa</li><li>virginica</li><li>virginica</li><li>setosa</li></ol>
+
+<details>
+	<summary style=display:list-item;cursor:pointer>
+		<strong>Levels</strong>:
+	</summary>
+	<style>
+	.list-inline {list-style: none; margin:0; padding: 0}
+	.list-inline>li {display: inline-block}
+	.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+	</style>
+	<ol class=list-inline><li>'setosa'</li><li>'versicolor'</li><li>'virginica'</li></ol>
+</details></div></div>
+</div>
+</div>
+<div class="section" id="assessing-knn-performance">
+<h2>Assessing kNN performance<a class="headerlink" href="#assessing-knn-performance" title="Permalink to this headline">#</a></h2>
+<p>Let’s see how it did at classifying these irises.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span><span class="o">$</span><span class="n">Species_pred</span> <span class="o">&lt;-</span> <span class="n">dat</span><span class="o">$</span><span class="n">Species</span> <span class="c1"># new variable for each observation&#39;s predicted species. </span>
+<span class="n">dat</span><span class="o">$</span><span class="n">Species_pred</span><span class="p">[</span><span class="n">test.inds</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="n">test.spec.knn</span> <span class="c1"># add the KNN predictions for test obs to dataset.</span>
+<span class="n">dat</span><span class="o">$</span><span class="n">KNN_correct</span> <span class="o">&lt;-</span> <span class="n">dat</span><span class="o">$</span><span class="n">Species</span> <span class="o">==</span> <span class="n">dat</span><span class="o">$</span><span class="n">Species_pred</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">Species</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">shape</span><span class="o">=</span><span class="s">&quot;o&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="c1"># Base layer to show training points</span>
+  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dat</span><span class="p">[</span><span class="n">test.inds</span><span class="p">,],</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">Species_pred</span><span class="p">))</span> <span class="o">+</span> <span class="c1"># Next layer shows test points&#39; KNN classifications</span>
+  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dat</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="o">!</span><span class="n">dat</span><span class="o">$</span><span class="n">KNN_correct</span><span class="p">),],</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">),</span><span class="n">shape</span><span class="o">=</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">4</span><span class="p">)</span> <span class="o">+</span> <span class="c1"># draw &quot;x&quot; over wrong ones. </span>
+  <span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;k=5&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/the-beauty-of-knn_13_0.png" src="../_images/the-beauty-of-knn_13_0.png" />
+</div>
+</div>
+<p>Since the plotting got a little confusing there, I’ll just summarize: the circles are training data, the solid points are test data, colored by their KNN predicted species, and the ones marked with an “x” are incorrect predictions.</p>
+<p>Impressively, only one point was labeled incorrectly! As you might have predicted, the incorrect one is on the edge between the blue and green clusters and so just happened to have more Virginica irises among its 5 nearest neighbors, although it’s actually Versicolor.</p>
+<p>We can also visualize our results as a confusion matrix, like we did in the previous tutorial on other classifier methods:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">confusion_df</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">predicted</span> <span class="o">=</span> <span class="n">test.spec.knn</span><span class="p">,</span><span class="n">actual</span> <span class="o">=</span> <span class="n">dat</span><span class="o">$</span><span class="n">Species</span><span class="p">[</span><span class="n">test.inds</span><span class="p">])</span>
+<span class="nf">table</span><span class="p">(</span><span class="n">confusion_df</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;---&quot;</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Accuracy:&quot;</span><span class="p">,</span><span class="nf">mean</span><span class="p">(</span><span class="n">confusion_df</span><span class="o">$</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">confusion_df</span><span class="o">$</span><span class="n">actual</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            actual
+predicted    setosa versicolor virginica
+  setosa         12          0         0
+  versicolor      0          7         0
+  virginica       0          1        10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;---&quot;
+[1] &quot;Accuracy: 0.966666666666667&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that only one observation was incorrectly classified. It was mislabeled as Virginica instead of Versicolor as we discovered above.</p>
+</div>
+<div class="section" id="varying-k">
+<h2>Varying k<a class="headerlink" href="#varying-k" title="Permalink to this headline">#</a></h2>
+<p>When we change k, the KNN predictions change. To demonstrate this, let’s look at <code class="docutils literal notranslate"><span class="pre">k=1</span></code> and <code class="docutils literal notranslate"><span class="pre">k=100</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span><span class="o">$</span><span class="n">Species_predK1</span> <span class="o">&lt;-</span> <span class="n">dat</span><span class="o">$</span><span class="n">Species</span>
+<span class="n">dat</span><span class="o">$</span><span class="n">Species_predK100</span> <span class="o">&lt;-</span> <span class="n">dat</span><span class="o">$</span><span class="n">Species</span>
+<span class="n">dat</span><span class="o">$</span><span class="n">Species_predK1</span><span class="p">[</span><span class="n">test.inds</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">knn</span><span class="p">(</span><span class="n">train.preds</span><span class="p">,</span><span class="n">test.preds</span><span class="p">,</span><span class="n">train.spec</span><span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+<span class="n">dat</span><span class="o">$</span><span class="n">Species_predK100</span><span class="p">[</span><span class="n">test.inds</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">knn</span><span class="p">(</span><span class="n">train.preds</span><span class="p">,</span><span class="n">test.preds</span><span class="p">,</span><span class="n">train.spec</span><span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plotting results for <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">1</span></code> first:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span><span class="o">$</span><span class="n">KNN_correct</span> <span class="o">&lt;-</span> <span class="n">dat</span><span class="o">$</span><span class="n">Species</span> <span class="o">==</span> <span class="n">dat</span><span class="o">$</span><span class="n">Species_predK1</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">Species</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">shape</span><span class="o">=</span><span class="s">&quot;o&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="c1"># Base layer to show training points</span>
+  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dat</span><span class="p">[</span><span class="n">test.inds</span><span class="p">,],</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">Species_predK1</span><span class="p">))</span> <span class="o">+</span> <span class="c1"># Next layer shows test points&#39; KNN classifications</span>
+  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dat</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="o">!</span><span class="n">dat</span><span class="o">$</span><span class="n">KNN_correct</span><span class="p">),],</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">),</span><span class="n">shape</span><span class="o">=</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">4</span><span class="p">)</span> <span class="o">+</span> <span class="c1"># draw &quot;x&quot; over wrong ones. </span>
+  <span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;k=1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/the-beauty-of-knn_21_0.png" src="../_images/the-beauty-of-knn_21_0.png" />
+</div>
+</div>
+<p>Impressively, there are no mistakes in these predictions. We can attribute this to the tidiness of the <code class="docutils literal notranslate"><span class="pre">iris</span></code> cluster. If there was a bit more overlap, for example, between the Versicolor and Virginica clusters, then using <code class="docutils literal notranslate"><span class="pre">k=1</span></code> would allow for points well within the Virginica cluster to be classified as Versicolor because of one stray Virginica point that just happened to be the closest item. In other words, typically <code class="docutils literal notranslate"><span class="pre">k=1</span></code> allows for too much <em>variance</em> and not enough <em>bias</em>, as discussed in lecture. <strong>Although sometimes <code class="docutils literal notranslate"><span class="pre">k=1</span></code> can yield better predictions for very tidy clusters, larger <code class="docutils literal notranslate"><span class="pre">k</span></code> values are more robust to noisiness in your data.</strong></p>
+<p>However, <code class="docutils literal notranslate"><span class="pre">k</span></code> can also be too <em>large</em>. Let’s look at our predictions for <code class="docutils literal notranslate"><span class="pre">k=100</span></code>. Remember that this means each point is classified given the most common species of the 100 nearest points, and there are only 150 observations in this entire dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span><span class="o">$</span><span class="n">KNN_correct</span> <span class="o">&lt;-</span> <span class="n">dat</span><span class="o">$</span><span class="n">Species</span> <span class="o">==</span> <span class="n">dat</span><span class="o">$</span><span class="n">Species_predK100</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">Species</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">shape</span><span class="o">=</span><span class="s">&quot;o&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="c1"># Base layer to show training points</span>
+  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dat</span><span class="p">[</span><span class="n">test.inds</span><span class="p">,],</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">Species_predK100</span><span class="p">))</span> <span class="o">+</span> <span class="c1"># Next layer shows test points&#39; KNN classifications</span>
+  <span class="nf">geom_point</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dat</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="o">!</span><span class="n">dat</span><span class="o">$</span><span class="n">KNN_correct</span><span class="p">),],</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Sepal.Length</span><span class="p">),</span><span class="n">shape</span><span class="o">=</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">4</span><span class="p">)</span> <span class="o">+</span> <span class="c1"># draw &quot;x&quot; over wrong ones. </span>
+  <span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;k=100&quot;</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Accuracy:&quot;</span><span class="p">,</span><span class="nf">sum</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">KNN_correct</span><span class="p">[</span><span class="n">test.inds</span><span class="p">])</span><span class="o">/</span><span class="nf">length</span><span class="p">(</span><span class="n">test.inds</span><span class="p">)))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Species</span><span class="p">[</span><span class="o">-</span><span class="n">test.inds</span><span class="p">]</span><span class="o">==</span><span class="s">&quot;setosa&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Accuracy: 0.4&quot;
+[1] 38
+</pre></div>
+</div>
+<img alt="../_images/the-beauty-of-knn_23_1.png" src="../_images/the-beauty-of-knn_23_1.png" />
+</div>
+</div>
+<p>Here there are a lot of errors. Most notably, none of the setosa test observations were classified correctly. This is because there were only 38 setosa in the training set in total, so no matter what 100 points were selected, setosa could never be in the majority. When <code class="docutils literal notranslate"><span class="pre">k=100</span></code> in this case, classification suffers from too much <em>bias</em> and not enough <em>variance</em>.</p>
+</div>
+<div class="section" id="standardizing-data">
+<h2>Standardizing data<a class="headerlink" href="#standardizing-data" title="Permalink to this headline">#</a></h2>
+<p>This section will work with the Caravan dataset, which describes the demographics of thousands of individuals as well as whether or not they bought Caravan insurance (only 6% of them did).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;ISLR&quot;</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ISLR</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">Caravan</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span><span class="m">86</span><span class="p">)])</span> <span class="c1"># column 86 is whether or not they purchased Caravan insurance</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">unique</span><span class="p">(</span><span class="n">Caravan</span><span class="o">$</span><span class="n">ABYSTAND</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+</pre></div>
+</div>
+<div class="output text_html"><table>
+<caption>A data.frame: 6 × 6</caption>
+<thead>
+	<tr><th></th><th scope=col>MOSTYPE</th><th scope=col>MAANTHUI</th><th scope=col>MGEMOMV</th><th scope=col>MGEMLEEF</th><th scope=col>MOSHOOFD</th><th scope=col>Purchase</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>33</td><td>1</td><td>3</td><td>2</td><td> 8</td><td>No</td></tr>
+	<tr><th scope=row>2</th><td>37</td><td>1</td><td>2</td><td>2</td><td> 8</td><td>No</td></tr>
+	<tr><th scope=row>3</th><td>37</td><td>1</td><td>2</td><td>2</td><td> 8</td><td>No</td></tr>
+	<tr><th scope=row>4</th><td> 9</td><td>1</td><td>3</td><td>3</td><td> 3</td><td>No</td></tr>
+	<tr><th scope=row>5</th><td>40</td><td>1</td><td>4</td><td>2</td><td>10</td><td>No</td></tr>
+	<tr><th scope=row>6</th><td>23</td><td>1</td><td>2</td><td>1</td><td> 5</td><td>No</td></tr>
+</tbody>
+</table>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] 0 1 2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s the thing: some of these variables describe salary (in thousands of dollars) and others describe age (in years). Because a lot of different units of measurement are used, the variances of these variables are vastly different from each other.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;variance of first variable:&quot;</span><span class="p">,</span><span class="nf">var</span><span class="p">(</span><span class="n">Caravan</span><span class="p">[,</span><span class="m">1</span><span class="p">])))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;variance of second variable:&quot;</span><span class="p">,</span><span class="nf">var</span><span class="p">(</span><span class="n">Caravan</span><span class="p">[,</span><span class="m">2</span><span class="p">])))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;variance of first variable: 165.037847395189&quot;
+[1] &quot;variance of second variable: 0.164707781931954&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since KNN is based on calculations of distance, we need to <strong>standardize</strong> these variables so that KNN doesn’t think, for example, that a difference measured in minutes is more important than a difference measured in years. Now let’s train KNN, using <code class="docutils literal notranslate"><span class="pre">k=100</span></code> since this is a large dataset (Note: we’ll talk about better ways to select proper k-values soon).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">stand.X</span> <span class="o">&lt;-</span> <span class="nf">scale</span><span class="p">(</span><span class="n">Caravan</span><span class="p">[,</span><span class="m">-86</span><span class="p">])</span> <span class="c1"># 86 is the &quot;Purchased&quot; variable we will predict</span>
+<span class="nf">var</span><span class="p">(</span><span class="n">stand.X</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span> <span class="c1"># note that variance of all variables is now 1. </span>
+<span class="n">test.preds</span> <span class="o">&lt;-</span> <span class="n">stand.X</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">1000</span><span class="p">,]</span> <span class="c1"># our test predictor variables</span>
+<span class="n">train.preds</span> <span class="o">&lt;-</span> <span class="n">stand.X</span><span class="p">[</span><span class="m">1001</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">stand.X</span><span class="p">),]</span> <span class="c1"># train predictor variables</span>
+<span class="n">train.purch</span> <span class="o">&lt;-</span> <span class="n">Caravan</span><span class="p">[</span><span class="m">1001</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">Caravan</span><span class="p">),</span><span class="m">86</span><span class="p">]</span> <span class="c1"># classifications for training observations</span>
+<span class="n">test.purch.knn</span> <span class="o">&lt;-</span> <span class="nf">knn</span><span class="p">(</span><span class="n">train.preds</span><span class="p">,</span><span class="n">test.preds</span><span class="p">,</span><span class="n">train.purch</span><span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Accuracy:&quot;</span><span class="p">,</span><span class="nf">mean</span><span class="p">(</span><span class="n">test.purch.knn</span><span class="o">==</span><span class="n">Caravan</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">1000</span><span class="p">,</span><span class="m">86</span><span class="p">])))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">1</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Accuracy: 0.941&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>This seems pretty good - but then we remember that only 6% of the people in the data set even bought insurance! So you can get 94% accuracy just by guessing “No” for everyone, and that’s exactly what KNN did. With so few people buying insurance, any set of 100 observations you look at will probably have majority “No”. Thus we’re not doing anything impressive with these predictions - make sure to think through the probability of performing “well” by chance or fluke, when you’re working with classifiers!</p>
+<p><em>Notebook authored by Patience Stevens and edited by Amy Sentis.</em></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../lectures/the-beauty-of-knn.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">The beauty of kNN</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../discussions/the-beauty-of-knn.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Discussion questions</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis, Fiona Horner<br/>
+  
+      &copy; Copyright 2023.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

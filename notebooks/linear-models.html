@@ -1,0 +1,1927 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial: Refresher on working with matrices &#8212; Data explorations</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Discussion questions" href="../discussions/linear-models.html" />
+    <link rel="prev" title="Linear models" href="../lectures/linear-models.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/information.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data explorations</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Data explorations
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Information and Meaning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/quantitative-epistemology.html">
+   Quantitative epsitemology
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quantitative-epistemology.html">
+     Tutorial: Getting started
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/quantitative-epistemology.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-value-of-openness.html">
+   The value of openness
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-value-of-openness.html">
+     Tutorial: Repositories and version control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-value-of-openness.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/the-value-of-openness.html">
+     Exercise 1: Github &amp; Jupyter
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/what-is-a-theory.html">
+   What is a theory?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/what-is-a-theory.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/models-as-testable-hypotheses.html">
+   Models as testable hypotheses
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="models-as-testable-hypotheses.html">
+     Tutorial: Introduction to R, functions, and good coding habits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/models-as-testable-hypotheses.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/models-as-testable-hypotheses.html">
+     Exercise 2: Coding Habits &amp; Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/data-as-objects-and-architectures.html">
+   Data as objects and architectures
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data-as-objects-and-architectures.html">
+     Tutorial: Data as Objects and Tidy Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/data-as-objects-and-architectures.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/data-as-objects-and-architectures.html">
+     Exercise 3: Data objects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/techniques-for-data-cleansing.html">
+   Techniques for data cleansing
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="techniques-for-data-cleansing.html">
+     Tutorial: Data Cleansing and the Tidyverse
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/techniques-for-data-cleansing.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/techniques-for-data-cleansing.html">
+     Exercise 4: Data tables and manipulation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/visualization-as-analysis.html">
+   Visualization as analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="visualization-as-analysis.html">
+     Tutorial: Basics of plotting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/visualization-as-analysis.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/visualization-as-analysis.html">
+     Exercise 5: Using ggplot
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/visualization-through-human-eyes.html">
+   Visualization through human eyes
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="visualization-through-human-eyes.html">
+     Tutorial: More advanced plotting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/visualization-through-human-eyes.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/visualization-through-human-eyes.html">
+     Exercise 6: More plotting options
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Knowledge
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/statistical-learning-theory.html">
+   The bias-variance tradeoff
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/statistical-learning-theory.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../lectures/linear-models.html">
+   Linear models
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Tutorial: Refresher on working with matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/linear-models.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/linear-models.html">
+     Exercise 7:  Linear models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-ordinary-least-squares-solution.html">
+   The ordinary least squares solution
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-ordinary-least-squares-solution.html">
+     Tutorial: Refresher for solving oridinary least squares
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-ordinary-least-squares-solution.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/the-ordinary-least-squares-solution.html">
+     Exercise 8:  Linear models, continued
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/limits-of-linear-regression.html">
+   Limits and variations of linear regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="limits-of-linear-regression.html">
+     Tutorial: More on linear models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/limits-of-linear-regression.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/mixed-effects-models.html">
+   Mixed effects models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mixed-effects-models.html">
+     Tutorial: Running linear mixed effects models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/mixed-effects-models.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/mixed-effects-models.html">
+     Exercise 9: Mixed effects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/classifiers.html">
+   Classifiers
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="classifiers.html">
+     Tutorial: Basics classifiers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/classifiers.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/classifiers.html">
+     Exercise 10: Classification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/the-beauty-of-knn.html">
+   The beauty of kNN
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="the-beauty-of-knn.html">
+     Tutorial: Running kNN models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/the-beauty-of-knn.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/the-beauty-of-knn.html">
+     Exercise 11: The Beauty of kNN
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/cross-validation.html">
+   Cross validation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cross-validation.html">
+     Tutorial: Implementing cross validation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/cross-validation.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/cross-validation.html">
+     Exercise 12: Cross Validation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/resampling-methods.html">
+   Resampling methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
+  <label for="toctree-checkbox-17">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="resampling-methods.html">
+     Tutorial: Boostrap and permutation tests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/resampling-methods.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/resampling-methods.html">
+     Exercise 13:  Resampling methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/mediation-and-moderation.html">
+   Mediation and moderation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
+  <label for="toctree-checkbox-18">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mediation-and-moderation.html">
+     Tutorial: Running mediation and moderation models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/mediation-and-moderation.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/mediation-and-moderation.html">
+     Exercise 14: Mediation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/power-analysis-via-simulations.html">
+   Power analysis via simulations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
+  <label for="toctree-checkbox-19">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="power-analysis-via-simulations.html">
+     Tutorial: Running basic power analyses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/power-analysis-via-simulations.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/selecting-the-best-model.html">
+   Selecting the best model
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
+  <label for="toctree-checkbox-20">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="selecting-the-best-model.html">
+     Tutorial: Model selection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/selecting-the-best-model.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/selecting-the-best-model.html">
+     Exercise 16: Model selection
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/regularized-regression.html">
+   Regularized regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
+  <label for="toctree-checkbox-21">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="regularized-regression.html">
+     Tutorial: Basic ridge and LASSO models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/regularized-regression.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/regularized-regression.html">
+     Exercise 17: Regularized regression
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/principal-component-methods.html">
+   Principal component methods
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
+  <label for="toctree-checkbox-22">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="principal-component-methods.html">
+     Tutorial: Basic PCA approaches
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/principal-component-methods.html">
+     Discussion questions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/principal-component-methods.html">
+     Exercise 18: Principal component methods
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Understanding
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/reconsidering-the-p-value.html">
+   Reconsidering the p-value
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
+  <label for="toctree-checkbox-23">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/reconsidering-the-p-value.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/bayes-factor-accepting-the-null.html">
+   Bayes factor
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
+  <label for="toctree-checkbox-24">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bayes-factor-accepting-the-null.html">
+     Tutorial: Estimating Bayes factors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/bayes-factor-accepting-the-null.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/errors-and-inferences.html">
+   Errors and inferences
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
+  <label for="toctree-checkbox-25">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/errors-and-inferences.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/telling-your-data-story.html">
+   Telling your data story
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
+  <label for="toctree-checkbox-26">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/telling-your-data-story.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lectures/theories-as-social-constructs.html">
+   Theories as social constructs
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
+  <label for="toctree-checkbox-27">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../discussions/theories-as-social-constructs.html">
+     Discussion questions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/notebooks/linear-models.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/notebooks/linear-models.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notebooks/linear-models.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial: Refresher on working with matrices
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goals">
+     Goals:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vectors">
+   Vectors
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-sums-and-products-in-equations">
+   Working with Sums and Products in Equations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trick-1-pulling-terms-out-of-a-sum">
+     Trick 1: Pulling terms out of a sum
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trick-2-splitting-up-a-sum">
+     Trick 2: Splitting up a sum
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trick-3-pulling-coefficients-out-of-a-sum">
+     Trick 3: Pulling coefficients out of a sum
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-a-matrix">
+   What is a matrix?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-kinds-of-matrices">
+   Basic kinds of matrices
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#square">
+     Square
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#symmetric">
+     Symmetric
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#identity">
+     Identity
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary">
+     Summary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrix-manipulation">
+   Matrix manipulation
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-indexing">
+     Basic indexing
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-matrix-operations">
+     Basic matrix operations
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#addition-and-subtraction">
+       Addition and subtraction
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#transposition">
+       Transposition
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#multiplication">
+       Multiplication
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#division">
+       Division
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#inversion">
+       Inversion
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#determinant">
+       Determinant
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#use-matrix-manipulation-to-solve-a-linear-regression-problem-by-hand">
+   Use matrix manipulation to solve a linear regression problem “by hand”
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Tutorial: Refresher on working with matrices</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial: Refresher on working with matrices
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#goals">
+     Goals:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vectors">
+   Vectors
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-sums-and-products-in-equations">
+   Working with Sums and Products in Equations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trick-1-pulling-terms-out-of-a-sum">
+     Trick 1: Pulling terms out of a sum
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trick-2-splitting-up-a-sum">
+     Trick 2: Splitting up a sum
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trick-3-pulling-coefficients-out-of-a-sum">
+     Trick 3: Pulling coefficients out of a sum
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-a-matrix">
+   What is a matrix?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-kinds-of-matrices">
+   Basic kinds of matrices
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#square">
+     Square
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#symmetric">
+     Symmetric
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#identity">
+     Identity
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary">
+     Summary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matrix-manipulation">
+   Matrix manipulation
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-indexing">
+     Basic indexing
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-matrix-operations">
+     Basic matrix operations
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#addition-and-subtraction">
+       Addition and subtraction
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#transposition">
+       Transposition
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#multiplication">
+       Multiplication
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#division">
+       Division
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#inversion">
+       Inversion
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#determinant">
+       Determinant
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#use-matrix-manipulation-to-solve-a-linear-regression-problem-by-hand">
+   Use matrix manipulation to solve a linear regression problem “by hand”
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-refresher-on-working-with-matrices">
+<h1>Tutorial: Refresher on working with matrices<a class="headerlink" href="#tutorial-refresher-on-working-with-matrices" title="Permalink to this headline">#</a></h1>
+<p>In this tutorial and the next one we’ll walk through some math concepts that will be helpful for understanding the lectures and homeworks. If you’re comfortable with these concepts already, feel free to simply skim and reference as needed to do the homeworks.</p>
+<div class="section" id="goals">
+<h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Get everyone on the same place with vectors, sums and products, and matrices</p></li>
+</ul>
+<p>Images courtesy of Wikipedia.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="tex2jax_ignore mathjax_ignore section" id="vectors">
+<h1>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">#</a></h1>
+<p>A vector is a series of numbers, arranged in either a column or a row. The numbers stored in a vector are called <strong>elements</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data_point</span> <span class="o">&lt;-</span> <span class="m">3</span> <span class="c1">#this is one element </span>
+<span class="nf">print</span><span class="p">(</span><span class="n">data_point</span><span class="p">)</span>
+
+<span class="n">vector_1</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">data_point</span><span class="p">,</span> <span class="n">data_point</span> <span class="o">+</span> <span class="m">2</span><span class="p">)</span>
+<span class="n">vector_2</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">data_point</span><span class="m">+4</span><span class="p">,</span> <span class="n">data_point</span> <span class="o">+</span> <span class="m">6</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">vector_1</span><span class="p">)</span> 
+<span class="nf">print</span><span class="p">(</span><span class="n">vector_2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] 3
+[1] 3 5
+[1] 7 9
+</pre></div>
+</div>
+</div>
+</div>
+<p>A data point: <span class="math notranslate nohighlight">\(3\)</span>
+<br>
+A column vector with elements 3 and 5: <span class="math notranslate nohighlight">\(\begin{bmatrix}3\\5\end{bmatrix}\)</span>
+<br>
+A row vector with elements 7 and 9: <span class="math notranslate nohighlight">\(\begin{bmatrix} 7 &amp; 9\end{bmatrix}\)</span></p>
+<p>When vectors are referred to in equations, they’re often simplified to a single variable even though there are many elements within it. For example, the error formula is written as <span class="math notranslate nohighlight">\(e_i = y_i - \hat{y_i}\)</span>, where <span class="math notranslate nohighlight">\(i\)</span> is used to identify the particular observation <span class="math notranslate nohighlight">\(y_i\)</span> for which you’d like to calculate error. <span class="math notranslate nohighlight">\(\hat{y_i}\)</span> (“y hat i”) is the model’s predicted value for <span class="math notranslate nohighlight">\(y_i\)</span> (<em>notation note: the <span class="math notranslate nohighlight">\(\hat{}\)</span> symbol over anything will mean that variable’s predicted value in this class</em>). But the formula could also be written in bold as <span class="math notranslate nohighlight">\(\bf{e} = \bf{y} - \bf{\hat{y}}\)</span>, to define the error vector for <em>all</em> observations instead of one particular one. The meaning of this formula, when there are only three observations, can be translated into</p>
+<p><span class="math notranslate nohighlight">\(\begin{bmatrix}e_1\\e_2\\e_3\end{bmatrix} = \begin{bmatrix}y_1\\y_2\\y_3\end{bmatrix} - \begin{bmatrix}\hat{y}_1\\\hat{y}_2\\\hat{y}_3\end{bmatrix}\)</span></p>
+<p>My last note about vectors is more of a notation note: the mean value of all elements in a vector will be expressed with a  <span class="math notranslate nohighlight">\(\bar{}\)</span>  symbol. So the mean value of the vector <span class="math notranslate nohighlight">\(\bf{x}\)</span> is <span class="math notranslate nohighlight">\(\bar{x}\)</span> (“x bar”).</p>
+</div>
+<hr class="docutils" />
+<div class="tex2jax_ignore mathjax_ignore section" id="working-with-sums-and-products-in-equations">
+<h1>Working with Sums and Products in Equations<a class="headerlink" href="#working-with-sums-and-products-in-equations" title="Permalink to this headline">#</a></h1>
+<p>While we’re talking about vectors and indexing, let’s address a few tricks for dealing with summation (<span class="math notranslate nohighlight">\(\Sigma\)</span>) and product (<span class="math notranslate nohighlight">\(\Pi\)</span>) notation in equations. This will be handy for understanding the math shown in lecture and for completing the homeworks.</p>
+<p>First thing is to understand the structure of summation notation:</p>
+<p><span class="math notranslate nohighlight">\(\sum_{i=1}^{n}x_i\)</span></p>
+<p>In plain language, you can read this as: “Take the sum of all values from <span class="math notranslate nohighlight">\(x_1\)</span> to <span class="math notranslate nohighlight">\(x_n\)</span>.”</p>
+<p>So if you have the vector <span class="math notranslate nohighlight">\(x = \begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix}\)</span>, you can express the sum of all the elements in that vector as <span class="math notranslate nohighlight">\(\sum_{i=1}^{3}x_i\)</span>.</p>
+<p>It’s the same as typing <code class="docutils literal notranslate"><span class="pre">sum(x)</span></code> in R.</p>
+<p>You might also see nested sums occasionally:</p>
+<p><span class="math notranslate nohighlight">\(\sum_{i=1}^{n} \sum_{j=1}^{m} x_{i,j}\)</span></p>
+<p>This means taking the sum of <span class="math notranslate nohighlight">\(x_{i,j}\)</span> values for each value of <span class="math notranslate nohighlight">\(i\)</span>, and then summing those sums. It’s the same as typing <code class="docutils literal notranslate"><span class="pre">sum(colSums(x))</span></code> in R, where <code class="docutils literal notranslate"><span class="pre">x</span></code> is an <span class="math notranslate nohighlight">\(n\)</span> by <span class="math notranslate nohighlight">\(m\)</span> matrix (more on matrices later).</p>
+<p>Product notation is similar, except instead of using a <span class="math notranslate nohighlight">\(\Sigma\)</span> you’re using a <span class="math notranslate nohighlight">\(\Pi\)</span>, and you’re now multiplying the elements together :</p>
+<p><span class="math notranslate nohighlight">\(\prod_{i=1}^{3}x_i = x_1 \times x_2 \times x_3\)</span></p>
+<p>Below I’ll describe three tricks for working with summation notation that may be handy when you’re doing the homework.</p>
+<div class="section" id="trick-1-pulling-terms-out-of-a-sum">
+<h2>Trick 1: Pulling terms out of a sum<a class="headerlink" href="#trick-1-pulling-terms-out-of-a-sum" title="Permalink to this headline">#</a></h2>
+<p>The first trick that I’ll cover is knowing when and how to pull terms out of a sum. If the expression inside of the sum includes terms that don’t involve the variable being iterated over, i.e., terms that don’t include <span class="math notranslate nohighlight">\(x_i\)</span>, you can take those out of the sum expression and just multiply them by the number of times they would’ve been added in. Here’s an example, trying to simplify the expression of the function <span class="math notranslate nohighlight">\(g\)</span> of vector <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(g(x) = \sum_{i=1}^{3}(3 - x_i)^2\)</span></p>
+</div></blockquote>
+<p>I can expand this using the <a class="reference external" href="https://en.wikipedia.org/wiki/FOIL_method">“Foil” method</a> :</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(g(x) = \sum_{i=1}^{3}(3 - x_i)(3 - x_i) = \sum_{i=1}^{3}(9 - 6x_i + {x_i}^2)\)</span></p>
+</div></blockquote>
+<p>9 doesn’t have an <span class="math notranslate nohighlight">\(x_i\)</span> in it so I can just take that term out - however be careful! As the expression is written right now, 9 would be added <em>for every iteration of <span class="math notranslate nohighlight">\(x_i\)</span></em>, so when I take it out of the expression I need to multiply it by the number of iterations. In this case, the number of iterations is 3.</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(g(x) = 27 + \sum_{i=1}^{3}(- 6x_i + {x_i}^2)\)</span></p>
+</div></blockquote>
+<p>Ta-da!</p>
+</div>
+<div class="section" id="trick-2-splitting-up-a-sum">
+<h2>Trick 2: Splitting up a sum<a class="headerlink" href="#trick-2-splitting-up-a-sum" title="Permalink to this headline">#</a></h2>
+<p>Now we can actually simplify the expression above a bit further. Any terms that are separated by a <span class="math notranslate nohighlight">\(+\)</span> or a <span class="math notranslate nohighlight">\(-\)</span> can be split into separate sum terms.</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(g(x) = 27 + \sum_{i=1}^{3}- 6x_i + \sum_{i=1}^{3}{x_i}^2\)</span></p>
+</div></blockquote>
+<p>This makes sense if you think about the commutative property of addition: if you’re adding things together, it doesn’t matter what order you add them in. <span class="math notranslate nohighlight">\(-6x_1 + x_{1}^2 - 6x_2 + x_{2}^2 - 6x_3 + x_{3}^2\)</span> is the same as <span class="math notranslate nohighlight">\( -6x_1-6x_2-6x_3  + x_{1}^2 + x_{2}^2 + x_{3}^2\)</span></p>
+</div>
+<div class="section" id="trick-3-pulling-coefficients-out-of-a-sum">
+<h2>Trick 3: Pulling coefficients out of a sum<a class="headerlink" href="#trick-3-pulling-coefficients-out-of-a-sum" title="Permalink to this headline">#</a></h2>
+<p>Lastly, since <span class="math notranslate nohighlight">\(-6(x_1 + x_2 + x_3)\)</span> is the same as <span class="math notranslate nohighlight">\(-6x_1 - 6x_2 - 6x_3\)</span>, we can simplify the <span class="math notranslate nohighlight">\(\sum_{i=1}^{3}- 6x_i\)</span> by bringing the <span class="math notranslate nohighlight">\(-6\)</span> outside:</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(g(x) = 27 - 6\sum_{i=1}^{3}x_i + \sum_{i=1}^{3}{x_i}^2\)</span></p>
+</div></blockquote>
+<p>This is easier to work with than what we had above. Ok, now that we’re comfortable thinking about vectors, indices and sums… lets talk about matrices!</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="tex2jax_ignore mathjax_ignore section" id="what-is-a-matrix">
+<h1>What is a matrix?<a class="headerlink" href="#what-is-a-matrix" title="Permalink to this headline">#</a></h1>
+<p>A matrix is a rectangular array of vectors with one or more rows or columns. Matrices are described by the number of rows ( <span class="math notranslate nohighlight">\(m\)</span>) and the number of columns ( <span class="math notranslate nohighlight">\(n\)</span>) they have; a matrix with <span class="math notranslate nohighlight">\(m\)</span> rows and <span class="math notranslate nohighlight">\(n\)</span> columns is an <span class="math notranslate nohighlight">\(m  x  n\)</span> or “<span class="math notranslate nohighlight">\(m\)</span> by <span class="math notranslate nohighlight">\(n\)</span>” matrix. The image below demonstrates such a matrix, and the element labels show you how to index a particular element in the matrix. <span class="math notranslate nohighlight">\(a_{i,j}\)</span> refers to the element in the <span class="math notranslate nohighlight">\(i\)</span>th row and the <span class="math notranslate nohighlight">\(j\)</span>th column.</p>
+<p><img alt="picture" src="https://drive.google.com/uc?id=10CFkJufrLPQLimp2jCOXU01WQLAzeBbh" /></p>
+<p>You can create a matrix in R by calling the function <code class="docutils literal notranslate"><span class="pre">matrix</span></code> and supplying it with data, the number of rows and/or columns you would like, and a method for filling the matrix (by row or by column).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span> 
+<span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span>
+<span class="n">ncol</span> <span class="o">=</span> <span class="m">5</span>
+
+<span class="c1">##First look at the matrix function by typing ?matrix</span>
+<span class="n">sample_matrix_by_col</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">,</span> <span class="n">byrow</span> <span class="o">=</span> <span class="m">0</span><span class="p">)</span> <span class="c1">#fill matrix by column, not by rows</span>
+<span class="n">sample_matrix_by_row</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">,</span> <span class="n">byrow</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+
+<span class="c1">#note the difference in the structure of the matrix when it&#39;s filled by row vs. by column </span>
+<span class="nf">head</span><span class="p">(</span><span class="n">sample_matrix_by_col</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">sample_matrix_by_row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A matrix: 2 × 5 of type int</caption>
+<tbody>
+	<tr><td>1</td><td>3</td><td>5</td><td>7</td><td> 9</td></tr>
+	<tr><td>2</td><td>4</td><td>6</td><td>8</td><td>10</td></tr>
+</tbody>
+</table>
+</div><div class="output text_html"><table class="dataframe">
+<caption>A matrix: 2 × 5 of type int</caption>
+<tbody>
+	<tr><td>1</td><td>2</td><td>3</td><td>4</td><td> 5</td></tr>
+	<tr><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Only one dimension (<code class="docutils literal notranslate"><span class="pre">nrow</span></code> or <code class="docutils literal notranslate"><span class="pre">ncol</span></code>) is technically needed when specifiying a matrix in R.
+R can infer <code class="docutils literal notranslate"><span class="pre">nrow</span></code> if <code class="docutils literal notranslate"><span class="pre">ncol</span></code> is specified, for example.
+However, to avoid errors, it’s best to be explicit to the extent that it makes your code easier to read and error-check.</p>
+</div>
+<hr class="docutils" />
+<div class="tex2jax_ignore mathjax_ignore section" id="basic-kinds-of-matrices">
+<h1>Basic kinds of matrices<a class="headerlink" href="#basic-kinds-of-matrices" title="Permalink to this headline">#</a></h1>
+<p>These types of matrices will come up at different points in the class (and in life?). Just trust us that they’ll be useful :)</p>
+<div class="section" id="square">
+<h2>Square<a class="headerlink" href="#square" title="Permalink to this headline">#</a></h2>
+<p>A square matrix is a matrix that has an equal number of rows and columns (<span class="math notranslate nohighlight">\(m = n\)</span>). So a matrix with 4 columns and 4 rows is square, a matrix with 10 rows and 10 columns is square, and so on.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">square_matrix_4</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">16</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">4</span><span class="p">)</span>
+<span class="n">square_matrix_4</span>
+
+<span class="n">square_matrix_10</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">,</span> <span class="n">nrow</span><span class="o">=</span><span class="m">10</span><span class="p">)</span>
+<span class="n">square_matrix_10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<caption>A matrix: 4 × 4 of type int</caption>
+<tbody>
+	<tr><td>1</td><td>5</td><td> 9</td><td>13</td></tr>
+	<tr><td>2</td><td>6</td><td>10</td><td>14</td></tr>
+	<tr><td>3</td><td>7</td><td>11</td><td>15</td></tr>
+	<tr><td>4</td><td>8</td><td>12</td><td>16</td></tr>
+</tbody>
+</table>
+</div><div class="output text_html"><table>
+<caption>A matrix: 10 × 10 of type int</caption>
+<tbody>
+	<tr><td> 1</td><td>11</td><td>21</td><td>31</td><td>41</td><td>51</td><td>61</td><td>71</td><td>81</td><td> 91</td></tr>
+	<tr><td> 2</td><td>12</td><td>22</td><td>32</td><td>42</td><td>52</td><td>62</td><td>72</td><td>82</td><td> 92</td></tr>
+	<tr><td> 3</td><td>13</td><td>23</td><td>33</td><td>43</td><td>53</td><td>63</td><td>73</td><td>83</td><td> 93</td></tr>
+	<tr><td> 4</td><td>14</td><td>24</td><td>34</td><td>44</td><td>54</td><td>64</td><td>74</td><td>84</td><td> 94</td></tr>
+	<tr><td> 5</td><td>15</td><td>25</td><td>35</td><td>45</td><td>55</td><td>65</td><td>75</td><td>85</td><td> 95</td></tr>
+	<tr><td> 6</td><td>16</td><td>26</td><td>36</td><td>46</td><td>56</td><td>66</td><td>76</td><td>86</td><td> 96</td></tr>
+	<tr><td> 7</td><td>17</td><td>27</td><td>37</td><td>47</td><td>57</td><td>67</td><td>77</td><td>87</td><td> 97</td></tr>
+	<tr><td> 8</td><td>18</td><td>28</td><td>38</td><td>48</td><td>58</td><td>68</td><td>78</td><td>88</td><td> 98</td></tr>
+	<tr><td> 9</td><td>19</td><td>29</td><td>39</td><td>49</td><td>59</td><td>69</td><td>79</td><td>89</td><td> 99</td></tr>
+	<tr><td>10</td><td>20</td><td>30</td><td>40</td><td>50</td><td>60</td><td>70</td><td>80</td><td>90</td><td>100</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="symmetric">
+<h2>Symmetric<a class="headerlink" href="#symmetric" title="Permalink to this headline">#</a></h2>
+<p>A square matrix is symmetric if the elements are reflected about the diagonal line of numbers. You can imagine that if you folded a square matrix in half along the diagonal, the reflected elements would touch.</p>
+<img src="imgs/symmetric_matrix.png" alt="drawing" width="300"/>
+<p><em>You can also think of a symmetric matrix as a matrix equal to its transposed form: <span class="math notranslate nohighlight">\(A = A^T\)</span></em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">symmetric_matrix</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">16</span><span class="p">,</span><span class="n">nrow</span> <span class="o">=</span> <span class="m">4</span><span class="p">)</span>
+
+<span class="c1">#replace lower triangular portion with lower triangular portion of transpose </span>
+<span class="n">symmetric_matrix</span><span class="p">[</span><span class="n">lower_tri</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">t</span><span class="p">(</span><span class="n">symmetric_matrix</span><span class="p">)[</span><span class="n">lower_tri</span><span class="p">]</span> 
+
+<span class="n">symmetric_matrix</span> <span class="c1">#an example of a symmetric matrix</span>
+
+<span class="c1">#a transposed symmetric matrix is equal to the original matrix</span>
+<span class="nf">t</span><span class="p">(</span><span class="n">symmetric_matrix</span><span class="p">)</span> <span class="o">==</span> <span class="n">symmetric_matrix</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A matrix: 4 × 4 of type int</caption>
+<tbody>
+	<tr><td> 1</td><td> 5</td><td> 9</td><td>13</td></tr>
+	<tr><td> 5</td><td> 6</td><td>10</td><td>14</td></tr>
+	<tr><td> 9</td><td>10</td><td>11</td><td>15</td></tr>
+	<tr><td>13</td><td>14</td><td>15</td><td>16</td></tr>
+</tbody>
+</table>
+</div><div class="output text_html"><table class="dataframe">
+<caption>A matrix: 4 × 4 of type lgl</caption>
+<tbody>
+	<tr><td>TRUE</td><td>TRUE</td><td>TRUE</td><td>TRUE</td></tr>
+	<tr><td>TRUE</td><td>TRUE</td><td>TRUE</td><td>TRUE</td></tr>
+	<tr><td>TRUE</td><td>TRUE</td><td>TRUE</td><td>TRUE</td></tr>
+	<tr><td>TRUE</td><td>TRUE</td><td>TRUE</td><td>TRUE</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="identity">
+<h2>Identity<a class="headerlink" href="#identity" title="Permalink to this headline">#</a></h2>
+<p>An identity matrix is a special case of a square, symmetric matrix. Specifically, it has ones on the diagonal line and zeros everywhere else.</p>
+<img src="imgs/identity_matrix.png" alt="drawing" width="300"/>
+<p>Why is this important?
+As you’ll see later, the identity matrix acts like the number 1 in the real number system, but for matrix operations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mat</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span>
+<span class="nf">diag</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="m">1</span>
+<span class="n">mat</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<caption>A matrix: 5 × 5 of type dbl</caption>
+<tbody>
+	<tr><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+	<tr><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+	<tr><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+	<tr><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+	<tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>A <strong>square matrix</strong> has an equal number of rows and columns.
+<br></p></li>
+<li><p>A <strong>symmetric matrix</strong> is a subset of square matrices.</p></li>
+<li><p>The <strong>identity matrix</strong> is subset of square, symmetric matrices, with useful properties that you’ll need later.</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="tex2jax_ignore mathjax_ignore section" id="matrix-manipulation">
+<h1>Matrix manipulation<a class="headerlink" href="#matrix-manipulation" title="Permalink to this headline">#</a></h1>
+<div class="section" id="basic-indexing">
+<h2>Basic indexing<a class="headerlink" href="#basic-indexing" title="Permalink to this headline">#</a></h2>
+<p>Review: We talked about indexing a little bit in the tutorial on basic R. The same principle applies to matrices.</p>
+<p><code class="docutils literal notranslate"><span class="pre">matrix[row_index,</span> <span class="pre">column_index]</span></code>
+<br></p>
+<p><strong>Note</strong> that R uses one-based indexing (some coding languages start indexing at 0 instead of 1 - but this isn’t the case in R). For example, the following command would find the element in the 1st row and the 6th column of a matrix.</p>
+<p>Using our prior matrix as an example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sample_matrix_by_col</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A matrix: 2 × 5 of type int</caption>
+<tbody>
+	<tr><td>1</td><td>3</td><td>5</td><td>7</td><td> 9</td></tr>
+	<tr><td>2</td><td>4</td><td>6</td><td>8</td><td>10</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sample_matrix_by_col</span><span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="m">5</span><span class="p">]</span> <span class="c1">#element in the 1st row and 5th column</span>
+<span class="n">sample_matrix_by_col</span><span class="p">[</span> <span class="p">,</span><span class="m">2</span><span class="p">]</span> <span class="c1">#accessing all rows of column 2</span>
+<span class="n">sample_matrix_by_col</span><span class="p">[</span><span class="m">1</span><span class="p">,</span> <span class="p">]</span> <span class="c1">#accessing all columns of row 1</span>
+<span class="n">sample_matrix_by_col</span><span class="p">[,</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">]</span> <span class="c1">#getting all rows of columns 1-3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">9</div><div class="output text_html"><ol class=list-inline>
+	<li>3</li>
+	<li>4</li>
+</ol>
+</div><div class="output text_html"><ol class=list-inline>
+	<li>1</li>
+	<li>3</li>
+	<li>5</li>
+	<li>7</li>
+	<li>9</li>
+</ol>
+</div><div class="output text_html"><table>
+<caption>A matrix: 2 × 3 of type int</caption>
+<tbody>
+	<tr><td>1</td><td>3</td><td>5</td></tr>
+	<tr><td>2</td><td>4</td><td>6</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="basic-matrix-operations">
+<h2>Basic matrix operations<a class="headerlink" href="#basic-matrix-operations" title="Permalink to this headline">#</a></h2>
+<p>Now that we know what a matrix is, how to create one in R, and how to access their elements, let’s review how to manipulate them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mat_1</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span> <span class="c1">#initialize two matrices to manipulate</span>
+<span class="n">mat_2</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">7</span><span class="o">:</span><span class="m">12</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="n">mat_1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     [,1] [,2] [,3]
+[1,]    1    3    5
+[2,]    2    4    6
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="n">mat_2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     [,1] [,2] [,3]
+[1,]    7    9   11
+[2,]    8   10   12
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="addition-and-subtraction">
+<h3>Addition and subtraction<a class="headerlink" href="#addition-and-subtraction" title="Permalink to this headline">#</a></h3>
+<p>Addition and subtraction is an element-wise operation in the world of matrices. That is, when two matrices are added, each element of the first matrix is added to the corresponding element in the second matrix. Importantly, matrices may only be added or subtracted when they are of the same <strong>dimension</strong>.</p>
+<p><strong>Note</strong>: R will let you perform matrix addition and subtraction when two matrices are NOT of the same dimension, so watch out for this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#addition </span>
+<span class="nf">print</span><span class="p">(</span><span class="n">mat_1</span> <span class="o">+</span> <span class="n">mat_2</span><span class="p">)</span> <span class="c1">#each element is added to the next in-place </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     [,1] [,2] [,3]
+[1,]    8   12   16
+[2,]   10   14   18
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you add a constant to a matrix, then that constant is added to all elements, and the rules are the same for subtraction, multiplication, and division by a constant.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="n">mat_1</span> <span class="o">+</span> <span class="m">3</span><span class="p">)</span> <span class="c1">#each element increases by 3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     [,1] [,2] [,3]
+[1,]    4    6    8
+[2,]    5    7    9
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#subtraction</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">mat_2</span> <span class="o">-</span> <span class="n">mat_1</span><span class="p">)</span> <span class="c1">#each element is subtracted from the next in-place </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     [,1] [,2] [,3]
+[1,]    6    6    6
+[2,]    6    6    6
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="n">mat_2</span> <span class="o">-</span> <span class="m">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     [,1] [,2] [,3]
+[1,]    4    6    8
+[2,]    5    7    9
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="transposition">
+<h3>Transposition<a class="headerlink" href="#transposition" title="Permalink to this headline">#</a></h3>
+<p>When a matrix is transposed, the columns become the rows. R uses the <code class="docutils literal notranslate"><span class="pre">t()</span></code> function to transpose matrices. In equations, a transposed matrix is denoted <strong>A’</strong>.</p>
+<p>As an example, look at the original matrix, <code class="docutils literal notranslate"><span class="pre">mat_2</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="n">mat_2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     [,1] [,2] [,3]
+[1,]    7    9   11
+[2,]    8   10   12
+</pre></div>
+</div>
+</div>
+</div>
+<p>The transposition switches rows and columns:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#transposition </span>
+<span class="n">transposed_mat_2</span> <span class="o">&lt;-</span> <span class="nf">t</span><span class="p">(</span><span class="n">mat_2</span><span class="p">)</span> 
+<span class="nf">print</span><span class="p">(</span><span class="n">transposed_mat_2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     [,1] [,2]
+[1,]    7    8
+[2,]    9   10
+[3,]   11   12
+</pre></div>
+</div>
+</div>
+</div>
+<p>And if we tranpose the transposed matrix, we return it to its original form:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">transposed_mat_2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     [,1] [,2] [,3]
+[1,]    7    9   11
+[2,]    8   10   12
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="multiplication">
+<h3>Multiplication<a class="headerlink" href="#multiplication" title="Permalink to this headline">#</a></h3>
+<p>As mentioned before, multiplying a matrix by a constant multiplies each element of a matrix by that number.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="n">mat_1</span> <span class="o">*</span> <span class="m">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     [,1] [,2] [,3]
+[1,]    3    9   15
+[2,]    6   12   18
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also do “element-wise” multiplication in R using the typical <code class="docutils literal notranslate"><span class="pre">*</span></code> operator. The product will be a matrix where the corresponding elements of the factor matrices are multiplied together.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#element-wise multiplication</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">mat_1</span><span class="o">*</span><span class="n">mat_2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     [,1] [,2] [,3]
+[1,]    7   27   55
+[2,]   16   40   72
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Matrix multiplication</strong>. Element-wise multiplication isn’t the typical way to multiply matrixes. Normal matrix multiplication, for 2x2 matrixes, is shown below.</p>
+<p><span class="math notranslate nohighlight">\(\begin{bmatrix} a,b \\ c,d\end{bmatrix} * \begin{bmatrix} e, f\\ g, h\end{bmatrix} = \begin{bmatrix} ae + bg,af+bh \\ ce + dg,cf + dh\end{bmatrix}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#matrix multiplication </span>
+<span class="nf">print</span><span class="p">(</span><span class="n">mat_1</span> <span class="o">%*%</span> <span class="nf">t</span><span class="p">(</span><span class="n">mat_2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     [,1] [,2]
+[1,]   89   98
+[2,]  116  128
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that <strong>order matters</strong> in matrix multiplication, and that the number of columns for the first matrix must equal the number of rows for the second matrix. Matrix multiplication in R uses the <code class="docutils literal notranslate"><span class="pre">%*%</span></code> operator.</p>
+</div>
+<div class="section" id="division">
+<h3>Division<a class="headerlink" href="#division" title="Permalink to this headline">#</a></h3>
+<p>Matrices can be divided element-wise.<br></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#division </span>
+<span class="nf">print</span><span class="p">(</span><span class="n">mat_1</span> <span class="o">/</span> <span class="n">mat_2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          [,1]      [,2]      [,3]
+[1,] 0.1428571 0.3333333 0.4545455
+[2,] 0.2500000 0.4000000 0.5000000
+</pre></div>
+</div>
+</div>
+</div>
+<p>And you can divide a matrix by a constant - each element will be divided by that constant.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="n">mat_1</span> <span class="o">/</span> <span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     [,1] [,2] [,3]
+[1,]  0.5  1.5  2.5
+[2,]  1.0  2.0  3.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="inversion">
+<h3>Inversion<a class="headerlink" href="#inversion" title="Permalink to this headline">#</a></h3>
+<p>The inverse of a matrix can be thought of as the matrix version of taking the reciprocal of a real number. In equations, the inverse of the matrix A is denoted <span class="math notranslate nohighlight">\(\bf{A^{-1}}\)</span>. Usually, inversion can only be performed on square matrices. The formula for the inverse of a 2x2 matrix is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix} a&amp;b \\ c&amp;d\end{bmatrix}^{-1}  = \frac{1}{(ad-bc)} * 
+\begin{bmatrix} d&amp;-b \\ -c&amp;a\end{bmatrix}\end{split}\]</div>
+<p>The method of calculating inverses for larger matrices is more complicated and is usually included in most software.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#taking the inverse </span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">solve</span><span class="p">(</span><span class="n">mat_2</span><span class="p">[,</span> <span class="m">2</span><span class="o">:</span><span class="m">3</span><span class="p">]))</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">mat_2</span><span class="p">[,</span> <span class="m">2</span><span class="o">:</span><span class="m">3</span><span class="p">]</span> <span class="o">%*%</span> <span class="nf">solve</span><span class="p">(</span><span class="n">mat_2</span><span class="p">[,</span> <span class="m">2</span><span class="o">:</span><span class="m">3</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     [,1] [,2]
+[1,]   -6  5.5
+[2,]    5 -4.5
+     [,1]         [,2]
+[1,]    1 1.776357e-15
+[2,]    0 1.000000e+00
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="determinant">
+<h3>Determinant<a class="headerlink" href="#determinant" title="Permalink to this headline">#</a></h3>
+<p>In the matrix inversion formula shown above, the term</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation*}\frac{1}{ad-bc}\end{equation*}\]</div>
+<p>is actually the determinant of the matrix, which could also be written as</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation*}\frac{1}{det(A)}\end{equation*}\]</div>
+<p>Because for any 2 * 2 matrix, its determinant is</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation*}det(A) = (ad-bc) \end{equation*}\]</div>
+<p>Things get more complicated when the matrix is bigger, which we won’t discuss here.</p>
+<p>If the determinant of a square matrix is 0, the matrix is a <em>singular matrix</em> and is not invertible. This is the main reason determinants will come up in this class: as a tool to determine whether a matrix is invertible.</p>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="tex2jax_ignore mathjax_ignore section" id="use-matrix-manipulation-to-solve-a-linear-regression-problem-by-hand">
+<h1>Use matrix manipulation to solve a linear regression problem “by hand”<a class="headerlink" href="#use-matrix-manipulation-to-solve-a-linear-regression-problem-by-hand" title="Permalink to this headline">#</a></h1>
+<p>First, a <em>brief</em> introduction to linear regression.</p>
+<p>Linear regression usually takes the basic form of</p>
+<p><span class="math notranslate nohighlight">\(y = \beta X + \epsilon\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(y\)</span> is a vector of the response variable, <span class="math notranslate nohighlight">\(X\)</span> is a vector of predictors, <span class="math notranslate nohighlight">\(\beta\)</span> is a vector of parameters that we want to estimate (the slope and intercept), and <span class="math notranslate nohighlight">\(\epsilon\)</span> is the error term. The error term represents irreducible error, or the variance in <span class="math notranslate nohighlight">\(y\)</span> unassociated with our predictor.</p>
+<p>The shape of these variables will look like this:</p>
+<p><img alt="picture" src="https://drive.google.com/uc?id=14do1DU-rOntu68mKMtW3A-ru5UbWNq6p" /></p>
+<p>We will talk more about this in lecture. But for now, know that we can solve the linear regression equation and obtain the best values for our coefficients <span class="math notranslate nohighlight">\(\beta\)</span> by solving the formula :</p>
+<div class="math notranslate nohighlight">
+\[\beta=(X'X)^{-1}X'y \]</div>
+<p><span class="math notranslate nohighlight">\(X'\)</span> is <span class="math notranslate nohighlight">\(X\)</span> transposed, and <span class="math notranslate nohighlight">\(X^{-1}\)</span> is the inverse of <span class="math notranslate nohighlight">\(X\)</span>. That’s why knowing how to transpose, invert, and calculate determinants will be useful!</p>
+<p><em>Notebook by Krista Bond and Patience Stevens and edited by Charles Wu, Amy Sentis, and Fiona Horner.</em></p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../lectures/linear-models.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Linear models</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../discussions/linear-models.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Discussion questions</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis, Fiona Horner<br/>
+  
+      &copy; Copyright 2023.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
