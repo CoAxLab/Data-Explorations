@@ -74,10 +74,12 @@ parts:
       sections:
       - file: notebooks/the-beauty-of-knn
       - file: discussions/the-beauty-of-knn
+      - file: exercises/the-beauty-of-knn
     - file: lectures/cross-validation
       sections: 
       - file: notebooks/cross-validation
       - file: discussions/cross-validation
+      - file: exercises/cross-validation
     - file: lectures/resampling-methods
       sections:
       - file: notebooks/resampling-methods
