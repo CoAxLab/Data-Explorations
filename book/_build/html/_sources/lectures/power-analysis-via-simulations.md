@@ -7,7 +7,7 @@
 
 ## Lecture (Video)
 
-[![Power analysis via simulations](../thumbnails/power-analysis-via-simulations.jpeg)](https://www.youtube.com/watch?v=JSeZN6bdPzA "Power analysis via simulations")
+[![Power analysis via simulations](../thumbnails/power-analysis-via-simulations.jpeg)](https://youtu.be/F2-EeVglCow "Power analysis via simulations")
 
 ## Slides (PDF)
 

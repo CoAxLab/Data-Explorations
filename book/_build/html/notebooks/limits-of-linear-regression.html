@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Tutorial: More on linear models &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -1055,10 +1056,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-more-on-linear-models">
+  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-more-on-linear-models">
 <h1>Tutorial: More on linear models<a class="headerlink" href="#tutorial-more-on-linear-models" title="Permalink to this headline">#</a></h1>
 <p>In this tutorial, we will play more with linear regression models, including an illustration of the bias-variance tradeoff at the end.</p>
-<div class="section" id="goals">
+<section id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Regression with multiple predictors</p></li>
@@ -1066,10 +1067,10 @@ title="Print to PDF"
 <li><p>Simulating the bias-variance tradeoff</p></li>
 </ul>
 <p>This lab draws from the content in Chapters 2 &amp; 3 of James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2013). “An introduction to statistical learning: with applications in r.”</p>
-</div>
-</div>
+</section>
+</section>
 <hr class="docutils" />
-<div class="tex2jax_ignore mathjax_ignore section" id="getting-started">
+<section class="tex2jax_ignore mathjax_ignore" id="getting-started">
 <h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">#</a></h1>
 <p>Before we start, let’s just get all the libraries loaded up front. This tutorial requires some new libraries we haven’t worked with before. Uncomment the <em>install.packages</em> lines if you do not already have all the packages already installed.</p>
 <div class="cell docutils container">
@@ -1108,9 +1109,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</div>
+</section>
 <hr class="docutils" />
-<div class="tex2jax_ignore mathjax_ignore section" id="regression-with-multiple-predictors">
+<section class="tex2jax_ignore mathjax_ignore" id="regression-with-multiple-predictors">
 <h1>Regression with multiple predictors<a class="headerlink" href="#regression-with-multiple-predictors" title="Permalink to this headline">#</a></h1>
 <br>
 In the examples we have done so far, we have only looked at models where p = 1. 
@@ -1310,9 +1311,9 @@ F-statistic: 128.7 on 15 and 66 DF,  p-value: &lt; 2.2e-16
 </div>
 </div>
 <p>Either way it’s pretty easy to swap terms in and out of the model in R.</p>
-</div>
+</section>
 <hr class="docutils" />
-<div class="tex2jax_ignore mathjax_ignore section" id="working-with-categorical-qualitative-predictors">
+<section class="tex2jax_ignore mathjax_ignore" id="working-with-categorical-qualitative-predictors">
 <h1>Working with categorical (qualitative) predictors<a class="headerlink" href="#working-with-categorical-qualitative-predictors" title="Permalink to this headline">#</a></h1>
 <p>So far we’ve been playing mostly with quantitative predictors. Let’s now play with some categorical, i.e., qualitative predictors.</p>
 <p>For this we will use the <code class="docutils literal notranslate"><span class="pre">Carseats</span></code> data set from the <a class="reference external" href="https://cran.r-project.org/web/packages/car/car.pdf">car</a> package.</p>
@@ -1418,9 +1419,9 @@ F-statistic:   210 on 13 and 386 DF,  p-value: &lt; 2.2e-16
 <p>Here, the <code class="docutils literal notranslate"><span class="pre">Shelveloc</span></code> value is “Bad” when both “Good” and “Medium” are 0. The value is “Good” when <code class="docutils literal notranslate"><span class="pre">Good</span> <span class="pre">=</span> <span class="pre">1</span></code>, and is “Medium” when <code class="docutils literal notranslate"><span class="pre">Medium</span> <span class="pre">=</span> <span class="pre">1</span></code></p>
 <p>Thus the effect for “bad” shelving locations is included in the <strong>intercept term</strong> of the model. The coefficient for <code class="docutils literal notranslate"><span class="pre">ShelveLocGood</span></code> in the above output therefore represents the bump in sales associated with having “good” shelving locations compared to “bad” shelving locations, all other variables held constant. (And same thing for <code class="docutils literal notranslate"><span class="pre">ShelveLocMedium</span></code> – this is the difference between “bad” and “medium” shelving locations.)</p>
 <p>In this model, <code class="docutils literal notranslate"><span class="pre">ShelveLoc</span></code> is the only categorical variable that has more than 2 levels. But remember – things get complicated if you have multiple categorical variables that have more than two terms. As we discussed in lecture, in those cases the intercept no longer corresponds to a single level of a categorical variable. So watch carefully how R redefines categorical variables.</p>
-</div>
+</section>
 <hr class="docutils" />
-<div class="tex2jax_ignore mathjax_ignore section" id="simulating-the-bias-variance-tradeoff">
+<section class="tex2jax_ignore mathjax_ignore" id="simulating-the-bias-variance-tradeoff">
 <h1>Simulating the bias-variance tradeoff<a class="headerlink" href="#simulating-the-bias-variance-tradeoff" title="Permalink to this headline">#</a></h1>
 <p>For the last part of this tutorial, let us return to the bias-variance tradeoff. Our goal will be to simulate data in order to show the tradeoff in action.</p>
 <p>To do this we need to generate a data set that has a natural low-dimensional structure to it. Which means that if you have <span class="math notranslate nohighlight">\(p\)</span> variables in <span class="math notranslate nohighlight">\(X\)</span>, because of correlations across variables, the true dimensionality of <span class="math notranslate nohighlight">\(X\)</span> is <span class="math notranslate nohighlight">\(&lt;p\)</span>.</p>
@@ -1674,7 +1675,7 @@ F-statistic: 5.577 on 20 and 479 DF,  p-value: 5.266e-13
 <p>In the plot above, the red line shows the test error and the blue dashed line shows the training error. Notice the classic bias-variance tradeoff where training error continues to decrease as <span class="math notranslate nohighlight">\(p\)</span> increases, but test error has a “U” shape that bottoms out close to <span class="math notranslate nohighlight">\(p=k\)</span>. Classic bias-variance tradeoff.</p>
 <p>If you want to have fun with this effect, try changing the value of <span class="math notranslate nohighlight">\(k\)</span> in the code cells above and re-running the simulation. What happens?</p>
 <p><em>Notebook authored by Tim Verstynen and Ven Popov, edited by Krista Bond, Charles Wu, Patience Stevens, Amy Sentis, and Fiona Horner.</em></p>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
