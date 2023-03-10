@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Mediation and moderation" href="../lectures/mediation-and-moderation.html" />
@@ -1103,7 +1105,7 @@ title="Print to PDF"
 <hr class="docutils" />
 <section id="bootstrapped-accuracy-3-points">
 <h2>3. Bootstrapped accuracy (3 points)<a class="headerlink" href="#bootstrapped-accuracy-3-points" title="Permalink to this headline">#</a></h2>
-<p>Use bootstrapping to estimate the confidence intervals of the <em>prediction accuracy</em> of your model. Plot the histogram of the bootstrapped prediction accuracies and estimate the confidence intervals off of the standard deviation from the bootstrap.</p>
+<p>Use bootstrapping to estimate the confidence intervals of the <em>prediction accuracy</em> of your model (i.e., the confidence of the correlation between <span class="math notranslate nohighlight">\(\hat{y}\)</span> and <span class="math notranslate nohighlight">\(y\)</span>). Plot the histogram of the bootstrapped prediction accuracies and estimate the confidence intervals off of the standard deviation from the bootstrap.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
