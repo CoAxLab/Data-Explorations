@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Tutorial: Estimating Bayes factors &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -1045,23 +1046,23 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-estimating-bayes-factors">
+  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-estimating-bayes-factors">
 <h1>Tutorial: Estimating Bayes factors<a class="headerlink" href="#tutorial-estimating-bayes-factors" title="Permalink to this headline">#</a></h1>
 <blockquote>
 <div><p>“I have approximate answers and possible beliefs and different degrees of uncertainty about different things, but I am not absolutely sure of anything […]” - Richard Feynman</p>
 </div></blockquote>
 <p>This lab introduces the Bayes factor and its implementation in R.</p>
-<div class="section" id="goals">
+<section id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Learn how to use the <a class="reference external" href="https://cran.r-project.org/web/packages/BayesFactor/BayesFactor.pdf">BayesFactor</a> library</p></li>
 <li><p>Learn how to quantify the amount of evidence for alternative hypotheses (instead of fully supporting or fully rejecting them altogether)</p></li>
 </ul>
 <p>This lab draws on <a class="reference external" href="https://richarddmorey.github.io/BayesFactor/#help">Richard Morey’s introduction</a> to the BayesFactor library.</p>
-</div>
-</div>
+</section>
+</section>
 <hr class="docutils" />
-<div class="tex2jax_ignore mathjax_ignore section" id="what-is-a-bayes-factor">
+<section class="tex2jax_ignore mathjax_ignore" id="what-is-a-bayes-factor">
 <h1>What is a Bayes factor?<a class="headerlink" href="#what-is-a-bayes-factor" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p>The Bayes factor is the analytical response to the question: What is the strength of the evidence for my model, given a competing hypothesis? If you’re interested in the <em>relative</em> weight of evidence for competing hypotheses, then the Bayes Factor is for you.</p></li>
@@ -1073,9 +1074,9 @@ title="Print to PDF"
 <li><p>Similar to the Bayesian Information Criterion (BIC), the Bayes factor penalizes model complexity.</p></li>
 </ul>
 <p>Look <a class="reference external" href="http://statmath.wu.ac.at/research/talks/resources/talkheld.pdf">here</a> and <a class="reference external" href="https://link.springer.com/article/10.3758/s13423-017-1262-3">here</a> for a more in-depth treatment.</p>
-</div>
+</section>
 <hr class="docutils" />
-<div class="tex2jax_ignore mathjax_ignore section" id="implementing-the-bayes-factor-with-a-simple-example">
+<section class="tex2jax_ignore mathjax_ignore" id="implementing-the-bayes-factor-with-a-simple-example">
 <h1>Implementing the Bayes factor with a simple example<a class="headerlink" href="#implementing-the-bayes-factor-with-a-simple-example" title="Permalink to this headline">#</a></h1>
 <p>First, install and load the <code class="docutils literal notranslate"><span class="pre">BayesFactor</span></code> library. Also load <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code> for some data manipulation.</p>
 <div class="cell docutils container">
@@ -1349,9 +1350,9 @@ Bayes factor type: BFoneSample, JZS
 </div>
 </div>
 <p>Ahhhh… so lovely :)</p>
-</div>
+</section>
 <hr class="docutils" />
-<div class="tex2jax_ignore mathjax_ignore section" id="calculating-the-bayes-factor-for-comparison-of-candidate-mixed-effect-models">
+<section class="tex2jax_ignore mathjax_ignore" id="calculating-the-bayes-factor-for-comparison-of-candidate-mixed-effect-models">
 <h1>Calculating the Bayes Factor for comparison of candidate mixed effect models<a class="headerlink" href="#calculating-the-bayes-factor-for-comparison-of-candidate-mixed-effect-models" title="Permalink to this headline">#</a></h1>
 <p>Now let’s see how to apply this to hierarchical linear regression, using the <code class="docutils literal notranslate"><span class="pre">ToothGrowth</span></code> data set. The dependent variable is <code class="docutils literal notranslate"><span class="pre">len</span></code>, the length of the tooth, and the independent variables are <code class="docutils literal notranslate"><span class="pre">supp</span></code>, the type of supplement they took (Vitamin C or Orange Juice), and <code class="docutils literal notranslate"><span class="pre">dose</span></code>, the amount of supplement they took.</p>
 <div class="cell docutils container">
@@ -1469,7 +1470,7 @@ Bayes factor type: BFlinearModel, JZS
 </div>
 <p>Even after direct comparison, there’s no clear difference between the two models. It would probably depend on the context what you decide to do with this information - if there’s prior literature to suggest that the interaction should play a role, you might lean toward using the more complex model even though the difference between the two isn’t dramatic in this case. Otherwise, it would make sense to stick with the simpler model.</p>
 <p><em>Notebook authored by Krista Bond and edited by Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
