@@ -1,9 +1,9 @@
-install.packages("ISLR")
+#install.packages("ISLR")
 library(ISLR)
 library(tidyverse)
 set.seed(1) #set the seed for the random number generator. resetting the seed will give different results.
 
-train=sample(x = 392, size = 196)  # sample 196 indices from the vector 1:392
+train = sample(x = 392, size = 196)  # sample 196 indices from the vector 1:392
 
 ggplot(Auto,aes(mpg,horsepower)) + geom_point()
 
@@ -23,7 +23,7 @@ mean((Auto$mpg-predict(lm.fit3,Auto))[-train]^2)
 
 # Notice that if we use a different subsample we'd get different results
 set.seed(2) #using a different seed 
-train=sample(392,196)
+train = sample(392, 196)
 
 # Linear model
 lm.fit = lm(mpg~horsepower, data=Auto, subset=train)
@@ -42,35 +42,46 @@ glm.fit = glm(mpg~horsepower, data=Auto)
 coef(glm.fit)
 
 library(boot) # Load the bootstrap library
-?cv.glm() #uncomment to get more information about this function
+#?cv.glm() #uncomment to get more information about this function
 
-glm.fit = glm(mpg~horsepower, data=Auto)
-cv.err  = cv.glm(Auto, glm.fit, K=nrow(Auto)) #if you don't define k in the cv.glm() function, the default is LOOCV
+#run LOOCV by setting k to the number of observations
+cv.err  = cv.glm(Auto, glm.fit, K=nrow(Auto))
+
 cv.err$delta 
-# ^^ note: the prediction error function for cv.glm() is MSE by default - but you can change that with "cost" variable
+
+#if you don't define k in the cv.glm() function, the default is LOOCV
+cv.err  = cv.glm(Auto, glm.fit))
 
 # Repeat for polynomial models up to a factor of 10
-cv.error = rep(0,10) # specify your output object - where you'll save the MSE estimates for each poly value
+
+# specify your output object - where you'll save the MSE estimates for each poly value
+cv.error = rep(0,10) 
 start.time <- Sys.time()
 for (i in 1:10) {
     glm.fit=glm(mpg~poly(horsepower,i), data=Auto)
-    cv.error[i] = cv.glm(Auto, glm.fit)$delta[1] # do LOO crossval for polynomial fits from 1 to 10
+    # do LOO crossval for polynomial fits from 1 to 10
+    cv.error[i] = cv.glm(Auto, glm.fit)$delta[1] 
 }
 end.time <- Sys.time()
-LOOtime <- end.time-start.time # how long did this for-loop take to run? 
+# how long did this for-loop take to run?
+LOOtime <- end.time-start.time 
+LOOtime
+
 plot(1:10,cv.error) # plot the error
 
-ggplot(aes(weight, mpg),data=Auto) + geom_point() + stat_smooth(method = "lm", formula = y ~ poly(x,2), se = FALSE)
+ggplot(aes(weight, mpg),data=Auto) + 
+    geom_point() + 
+    stat_smooth(method = "lm", formula = y ~ poly(x,2), se = FALSE)
 
 # Reset the seed
 set.seed(17)
 
-# Repeat our previous loop  but use K-fold CV 
-# where K = 10 and up to a 5th order polynomial
-cv.error.10 = rep(0,10) # Always have to specify your output object
+# Always have to specify your output object
+cv.error.10 = rep(0,10)
 start.time <- Sys.time()
 for (i in 1:10){
-  glm.fit=glm(mpg~poly(horsepower,i), data=Auto) #get the glm fit for all 10 polynomials
+  #get the glm fit for all 10 polynomials
+  glm.fit=glm(mpg~poly(horsepower,i), data=Auto)
   cv.error.10[i] = cv.glm(Auto, glm.fit,K=10)$delta[1]
 }
 end.time <- Sys.time()
@@ -78,7 +89,6 @@ Kfoldtime <- end.time-start.time # how long did this for-loop take to run?
 
 plot(cv.error, cv.error.10, xlab="LOOCV error", ylab="10-fold CV error")
 lines(c(19,25),c(19,25))
-
 
 print(paste("Leave-one-out runtime:",LOOtime))
 print(paste("10-fold runtime:",Kfoldtime))
