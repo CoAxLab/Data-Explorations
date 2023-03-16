@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutorial: Introduction to R, functions, and good coding habits &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -1168,9 +1167,9 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-introduction-to-r-functions-and-good-coding-habits">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-introduction-to-r-functions-and-good-coding-habits">
 <h1>Tutorial: Introduction to R, functions, and good coding habits<a class="headerlink" href="#tutorial-introduction-to-r-functions-and-good-coding-habits" title="Permalink to this headline">#</a></h1>
-<section id="goals">
+<div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Learn some basic R commands</p></li>
@@ -1178,12 +1177,12 @@ title="Print to PDF"
 <li><p>Learn best practices for writing and maintaining code</p></li>
 </ul>
 <p>This tutorial draws from <a class="reference external" href="https://swcarpentry.github.io/r-novice-inflammation/">Software Carpentry: Programming with R</a> section 2, the R <a class="reference external" href="https://style.tidyverse.org">tidyverse style guide</a>, and the <a class="reference external" href="https://goodresearch.dev">Good Research Code Handbook</a>.</p>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="basic-r-commands">
+<div class="tex2jax_ignore mathjax_ignore section" id="basic-r-commands">
 <h1>Basic R Commands<a class="headerlink" href="#basic-r-commands" title="Permalink to this headline">#</a></h1>
-<section id="arithmetic">
+<div class="section" id="arithmetic">
 <h2>Arithmetic<a class="headerlink" href="#arithmetic" title="Permalink to this headline">#</a></h2>
 <p>In R, you can do basic arithmetic just like any other programming language e.g.,</p>
 <div class="cell docutils container">
@@ -1197,10 +1196,10 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output text_html">8</div><div class="output text_html">-2</div><div class="output text_html">125</div></div>
 </div>
-</section>
-<section id="data-structures">
+</div>
+<div class="section" id="data-structures">
 <h2>Data structures<a class="headerlink" href="#data-structures" title="Permalink to this headline">#</a></h2>
-<section id="vectors">
+<div class="section" id="vectors">
 <h3>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">#</a></h3>
 <p>Vectors are lists of numbers or strings.</p>
 <div class="cell docutils container">
@@ -1235,8 +1234,8 @@ title="Print to PDF"
 <ol class=list-inline><li>4</li><li>10</li><li>18</li></ol>
 </div></div>
 </div>
-</section>
-<section id="data-frames">
+</div>
+<div class="section" id="data-frames">
 <h3>Data frames<a class="headerlink" href="#data-frames" title="Permalink to this headline">#</a></h3>
 <p>Data frames can contain data of mixed types such as numbers and strings. Usually, each column is a different variable (e.g., Age, Test Score), and items within each column are of the same type.</p>
 <div class="cell docutils container">
@@ -1263,9 +1262,9 @@ title="Print to PDF"
 </div></div>
 </div>
 <p>In the data frame printed above, you can see that both variables <strong>avar</strong> and <strong>bvar</strong> are type <strong>&lt;dbl&gt;</strong> (short for “double”, another term for numeric) while variable <strong>cvar</strong> is type <strong>&lt;chr&gt;</strong>, or “character”.</p>
-</section>
-</section>
-<section id="indexing">
+</div>
+</div>
+<div class="section" id="indexing">
 <h2>Indexing<a class="headerlink" href="#indexing" title="Permalink to this headline">#</a></h2>
 <p>In a vector, you can index data by its position (starting at index 1):</p>
 <div class="cell docutils container">
@@ -1362,10 +1361,10 @@ title="Print to PDF"
 <ol class=list-inline><li>'one'</li><li>'two'</li><li>'three'</li></ol>
 </div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="how-to-write-a-function-in-r">
+<div class="tex2jax_ignore mathjax_ignore section" id="how-to-write-a-function-in-r">
 <h1>How to write a function in R<a class="headerlink" href="#how-to-write-a-function-in-r" title="Permalink to this headline">#</a></h1>
 <p>In the lecture and readings, you went over how to construct a testable hypothesis of the form:</p>
 <p><span class="math notranslate nohighlight">\(Y=f(X)\)</span></p>
@@ -1468,13 +1467,13 @@ title="Print to PDF"
 </div>
 </div>
 <p>Why do we receive an error on the last function call? Looking at the error message is informative. The function definition doesn’t contain a default value for <code class="docutils literal notranslate"><span class="pre">input_1</span></code>, and since the only input parameter comes in the form of a named variable for <code class="docutils literal notranslate"><span class="pre">input_2</span></code>, the function call doesn’t provide a value to use for <code class="docutils literal notranslate"><span class="pre">input_1</span></code>. Thus, the addition operation in the function body can not be performed.</p>
-</section>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="good-research-code-practices">
+<div class="tex2jax_ignore mathjax_ignore section" id="good-research-code-practices">
 <h1>Good research code practices<a class="headerlink" href="#good-research-code-practices" title="Permalink to this headline">#</a></h1>
 <p>The <a class="reference external" href="https://goodresearch.dev">Good Research Code Handbook</a> is an excellent resource written by Patrick Mineault, a software engineer at Google with a PhD in computational neuroscience. The handbook is particularly useful for grad students and postdocs whose research incorporates lots of programming. It contains helpful information about code organization such that it is clear and easy to understand and work reliably.</p>
 <p>Let’s walk through some gems together:</p>
-<section id="keep-code-consistent">
+<div class="section" id="keep-code-consistent">
 <h2>Keep code consistent<a class="headerlink" href="#keep-code-consistent" title="Permalink to this headline">#</a></h2>
 <blockquote>
 <div><p>“Good coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread.” - The tidyverse style guide</p>
@@ -1580,22 +1579,22 @@ title="Print to PDF"
 <p>Mac: <code class="docutils literal notranslate"><span class="pre">Option</span></code> + <code class="docutils literal notranslate"><span class="pre">-</span></code></p>
 <p>PC: <code class="docutils literal notranslate"><span class="pre">Alt</span></code> + <code class="docutils literal notranslate"><span class="pre">-</span></code></p>
 <p><strong>Logical variables and vectors</strong> should be dfined using <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> and <code class="docutils literal notranslate"><span class="pre">FALSE</span></code> instead of the shortened <code class="docutils literal notranslate"><span class="pre">T</span></code> and <code class="docutils literal notranslate"><span class="pre">F</span></code> forms.</p>
-</section>
-<section id="keep-jupyter-notebooks-tidy">
+</div>
+<div class="section" id="keep-jupyter-notebooks-tidy">
 <h2>Keep jupyter notebooks tidy<a class="headerlink" href="#keep-jupyter-notebooks-tidy" title="Permalink to this headline">#</a></h2>
 <p>There are additional considerations to keep in mind when working with jupyter notebooks. Since they are particularly useful for literate programming (combining code, graphics and text), they provide lots of flexibility and don’t necessitate a rigid, linear flow through the notebook cells. It therefore requires even more discipline to maintain notebooks and the code within them.</p>
 <p>One of the most helpful tips for keeping a notebook tidy is to ensure that your notebook runs from top to bottom. Restarting the notebook kernel and running through all the cells before commiting to git is a good habit to get into and can save time in the future.</p>
 <p>Thinking more broadly, using jupyter notebook for everything is not best practice. Developing code and analysis pipeline inside an integrated development environment (<a class="reference external" href="https://en.wikipedia.org/wiki/Integrated_development_environment">IDE</a>), such as RStudio for R, is helpful for efficiency and developing good coding habits.</p>
-</section>
-<section id="delete-dead-code">
+</div>
+<div class="section" id="delete-dead-code">
 <h2>Delete dead code<a class="headerlink" href="#delete-dead-code" title="Permalink to this headline">#</a></h2>
 <img src="https://goodresearch.dev/_images/final.doc.gif" alt="FINAL.doc" width="400"/><p>Code that gets developed over time, as is often the case in research, can accumulate lots of no-longer-necessary components. This can lead to the phenomenon of dead code, code that never gets called or run.</p>
 <blockquote>
 <div><p>“You know who hates dead code? You, in three months.” - Patrick Mineault.</p>
 </div></blockquote>
 <p>Not only can dead code create problems, it can also be an enormous waste of time to wade through. It is good to develop a habit of cleaning up code projects as you work, but particularly when wrapping up a project or putting it on the back burner. Remember that when using git to version control your projects, it is always possible to go back in time and recover deleted code or old versions if necessary.</p>
-</section>
-<section id="use-pure-functions">
+</div>
+<div class="section" id="use-pure-functions">
 <h2>Use pure functions<a class="headerlink" href="#use-pure-functions" title="Permalink to this headline">#</a></h2>
 <p>Pure functions follow a particular structure, with inputs coming from the input parameters and outputs returning in the return statement. For instance, using our sum function from earlier in the tutorial:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_sum</span> <span class="o">&lt;-</span> <span class="n">function</span><span class="p">(</span><span class="n">input_1</span><span class="p">,</span> <span class="n">input_2</span><span class="p">)</span> <span class="p">{</span>
@@ -1622,8 +1621,8 @@ title="Print to PDF"
 <span class="p">}</span>
 </pre></div>
 </div>
-</section>
-<section id="bad-code-things-not-to-do">
+</div>
+<div class="section" id="bad-code-things-not-to-do">
 <h2>Bad code: things not to do<a class="headerlink" href="#bad-code-things-not-to-do" title="Permalink to this headline">#</a></h2>
 <p>Sometimes it can be equally helpful to know what not to do. Here’s a brief list of some common pitfalls to avoid in your code:</p>
 <ul class="simple">
@@ -1633,8 +1632,8 @@ title="Print to PDF"
 <li><p>large functions that do too much and become unwieldy (e.g., mixing IO and computation)</p></li>
 <li><p>too many nested ifs and for loops</p></li>
 </ul>
-</section>
-<section id="documenting">
+</div>
+<div class="section" id="documenting">
 <h2>Documenting<a class="headerlink" href="#documenting" title="Permalink to this headline">#</a></h2>
 <p>Most of you are probably familiar with comments within code as a way of documenting. However, this is only one type of documentation, albeit a very useful form. Documentation can really be though of as any meta-information that you write about the code. Therefore, all of the following can be considered documentation, and indeed, all are helpful to incorporate into your own practice:</p>
 <ul class="simple">
@@ -1645,8 +1644,8 @@ title="Print to PDF"
 <li><p>jupyter notebooks as tutorials for using code/pipelines</p></li>
 </ul>
 <p><em>Notebook authored by Amy Sentis and Fiona Horner.</em></p>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
