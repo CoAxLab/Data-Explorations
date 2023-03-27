@@ -94,6 +94,7 @@ parts:
       sections:
       - file: notebooks/power-analysis-via-simulations
       - file: discussions/power-analysis-via-simulations
+      - file: exercises/power-analysis-via-simulations
     - file: lectures/selecting-the-best-model
       sections: 
       - file: notebooks/selecting-the-best-model
