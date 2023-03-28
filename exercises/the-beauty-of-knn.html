@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Exercise 11: The Beauty of kNN &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -601,11 +602,6 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="power-analysis-via-simulations.html">
-     Exercise 15: Power Analyses
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -1072,10 +1068,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="exercise-11-the-beauty-of-knn">
+  <section class="tex2jax_ignore mathjax_ignore" id="exercise-11-the-beauty-of-knn">
 <h1>Exercise 11: The Beauty of kNN<a class="headerlink" href="#exercise-11-the-beauty-of-knn" title="Permalink to this headline">#</a></h1>
 <p>In this exercise, you’ll gain practice working with kNN. We’ll use the <a class="reference external" href="https://ggplot2.tidyverse.org/reference/diamonds.html">diamonds</a> dataset, which comes as part of <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code>. This dataset provides information on the quality and price of 50,000 diamonds</p>
-<div class="section" id="data-plotting-and-train-test-sets-2-pts">
+<section id="data-plotting-and-train-test-sets-2-pts">
 <h2>1. Data, Plotting, and Train/Test Sets (2 pts)<a class="headerlink" href="#data-plotting-and-train-test-sets-2-pts" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <ul class="simple">
@@ -1092,7 +1088,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<div class="section" id="plot">
+<section id="plot">
 <h3>Plot<a class="headerlink" href="#plot" title="Permalink to this headline">#</a></h3>
 <p>Create a scatterplot of the link between <code class="docutils literal notranslate"><span class="pre">carat</span></code> and <code class="docutils literal notranslate"><span class="pre">depth</span></code>, and use the <code class="docutils literal notranslate"><span class="pre">color</span></code> aesthetics mapping to differentiate between diamonds that cost above versus below the mean price.</p>
 <div class="cell docutils container">
@@ -1109,8 +1105,8 @@ title="Print to PDF"
 <li></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="test-vs-train">
+</section>
+<section id="test-vs-train">
 <h3>Test vs Train<a class="headerlink" href="#test-vs-train" title="Permalink to this headline">#</a></h3>
 <p>Before we run KNN on these data, we need to set aside a portion of the observations as our test set. Below, randomly divide the data such that 30% are allotted to the <code class="docutils literal notranslate"><span class="pre">test</span></code> set and the rest are allotted to the <code class="docutils literal notranslate"><span class="pre">train</span></code> set. Print the first few lines of each set, and print the dimensions of each set to double check your division of the data.</p>
 <div class="cell docutils container">
@@ -1122,9 +1118,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="knn-3-points">
+</section>
+</section>
+<section id="knn-3-points">
 <h2>2: KNN (3 points)<a class="headerlink" href="#knn-3-points" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p>Now, use the <code class="docutils literal notranslate"><span class="pre">knn()</span></code> function from the <code class="docutils literal notranslate"><span class="pre">class</span></code> library to predict <code class="docutils literal notranslate"><span class="pre">price_bin</span></code> from the <code class="docutils literal notranslate"><span class="pre">carat</span></code> and <code class="docutils literal notranslate"><span class="pre">depth</span></code>. Set <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">3</span></code>.</p>
@@ -1168,9 +1164,9 @@ title="Print to PDF"
 <li></li>
 </ul>
 </div></blockquote>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="for-loop-3-points">
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="for-loop-3-points">
 <h1>3: for loop (3 points)<a class="headerlink" href="#for-loop-3-points" title="Permalink to this headline">#</a></h1>
 <hr class="docutils" />
 <p>So adding additional predictors didn’t shift our error much. Let’s see if adjusting <code class="docutils literal notranslate"><span class="pre">k</span></code> has a larger impact on model accuracy.</p>
@@ -1218,8 +1214,8 @@ title="Print to PDF"
 <li></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="standardizing-predictors-2">
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="standardizing-predictors-2">
 <h1>4: Standardizing predictors (2)<a class="headerlink" href="#standardizing-predictors-2" title="Permalink to this headline">#</a></h1>
 <hr class="docutils" />
 <p>Because knn is based on distances between points, it is very sensitive to the scale of your variables. Looking at our predictor variables, we can see that <code class="docutils literal notranslate"><span class="pre">carat</span></code> and <code class="docutils literal notranslate"><span class="pre">depth</span></code> are orders of magnitude different in terms of scales. Maybe we can improve our fit even more by addressing this!</p>
@@ -1245,7 +1241,7 @@ title="Print to PDF"
 <blockquote>
 <div><p><em>Someone’s Name</em></p>
 </div></blockquote>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
