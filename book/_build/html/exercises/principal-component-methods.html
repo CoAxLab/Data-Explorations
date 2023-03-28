@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Exercise 18: Principal component methods &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -1044,13 +1045,13 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="exercise-18-principal-component-methods">
+  <section class="tex2jax_ignore mathjax_ignore" id="exercise-18-principal-component-methods">
 <h1>Exercise 18: Principal component methods<a class="headerlink" href="#exercise-18-principal-component-methods" title="Permalink to this headline">#</a></h1>
 <p>This homework assignment is designed to give you an intuition on principal component approaches to understanding high dimensional statistical relationships.</p>
 <p>Like earlier homework, you will need to download the <strong>unrestricted_trimmed_1_7_2020_10_50_44.csv</strong> file from the <em>Homework/hcp_data</em> folder in the class GitHub repository.</p>
 <p>This data is a portion of the <a class="reference external" href="http://www.humanconnectomeproject.org/">Human Connectome Project database</a>. It provides measures of cognitive tasks and brain morphology measuresments from 1206 participants. The full description of each variable is provided in the <strong>HCP_S1200_DataDictionary_April_20_2018.csv</strong> file in the <em>Homework/hcp_data</em> folder in the class GitHub repository.</p>
 <hr class="docutils" />
-<div class="section" id="loading-data-1-point">
+<section id="loading-data-1-point">
 <h2>1. Loading data (1 point)<a class="headerlink" href="#loading-data-1-point" title="Permalink to this headline">#</a></h2>
 <p>We are going to look for low dimensional relationships between brain volume measures and working memory capacity.</p>
 <p>First, we will need to load the <code class="docutils literal notranslate"><span class="pre">pls</span></code>, <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code>, and <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> libraries for this assignment.</p>
@@ -1072,9 +1073,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="correlational-structure-4-points">
+<section id="correlational-structure-4-points">
 <h2>2. Correlational structure (4 points)<a class="headerlink" href="#correlational-structure-4-points" title="Permalink to this headline">#</a></h2>
 <p>(a) Take a look at the correlation between all of the freesurfer volume measures (“FS_”) using the <code class="docutils literal notranslate"><span class="pre">cor</span></code> function. Create a new variable called <code class="docutils literal notranslate"><span class="pre">fs_cor</span></code> that is the correlation matrix for only the freesurfer volumes</p>
 <div class="cell docutils container">
@@ -1106,9 +1107,9 @@ title="Print to PDF"
 <div><p><em>Write your response here</em>
 *</p>
 </div></blockquote>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="principal-component-analysis-3-points">
+<section id="principal-component-analysis-3-points">
 <h2>3. Principal component analysis (3 points)<a class="headerlink" href="#principal-component-analysis-3-points" title="Permalink to this headline">#</a></h2>
 <p>Let’s see how many principal components explain at <em>at least</em> 95% of the data.</p>
 <p>(a) Create a new object called <code class="docutils literal notranslate"><span class="pre">fs_d.pca</span></code> using the <code class="docutils literal notranslate"><span class="pre">princomp</span></code> function (do not forget to scale the data).</p>
@@ -1141,9 +1142,9 @@ title="Print to PDF"
 <div><p><em>Write your response here</em>
 *</p>
 </div></blockquote>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="associating-with-flanker-task-peformance-4-points">
+<section id="associating-with-flanker-task-peformance-4-points">
 <h2>4. Associating with Flanker task peformance (4 points)<a class="headerlink" href="#associating-with-flanker-task-peformance-4-points" title="Permalink to this headline">#</a></h2>
 <p>Now apply PCR to the <code class="docutils literal notranslate"><span class="pre">d1</span></code> object you created at the beginning (which includes the Flanker task scores) to find how freesurfer volumes predict Flanker task performance. Set the random seed to “2”. Use cross-validation as the validation type and don’t forget to scale your data. Show the <code class="docutils literal notranslate"><span class="pre">summary</span></code> of the model fit.</p>
 <p>Hint: If you receive an error applying the “scale=TRUE” flag, then you likely still have columns of all zeros somewhere in your data table.</p>
@@ -1175,9 +1176,9 @@ title="Print to PDF"
 <div><p><em>Write your response here</em>
 *</p>
 </div></blockquote>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="reflection-2-points">
+<section id="reflection-2-points">
 <h2>5. Reflection (2 points)<a class="headerlink" href="#reflection-2-points" title="Permalink to this headline">#</a></h2>
 <p>Compare the number of components that explain variance in X alone (the brain volumes) to the number of components that explain performance in the Flanker task. What does the difference in these two numbers tell you about how variation in brain volumes relates to task performance?</p>
 <blockquote>
@@ -1188,8 +1189,8 @@ title="Print to PDF"
 <blockquote>
 <div><p><em>Someone’s Name</em></p>
 </div></blockquote>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

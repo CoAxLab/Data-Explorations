@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Exercise 15: Power Analyses &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -1068,11 +1069,11 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="exercise-15-power-analyses">
+  <section class="tex2jax_ignore mathjax_ignore" id="exercise-15-power-analyses">
 <h1>Exercise 15: Power Analyses<a class="headerlink" href="#exercise-15-power-analyses" title="Permalink to this headline">#</a></h1>
 <p>This  assignment is designed to give you practice with Monte Carlo methods to conduct power analyses via simulation. You won’t need to load in any data for this homework. We will, however, be using parts of the homework from last week.</p>
 <hr class="docutils" />
-<div class="section" id="simulating-data-1-points">
+<section id="simulating-data-1-points">
 <h2>1. Simulating data (1 points)<a class="headerlink" href="#simulating-data-1-points" title="Permalink to this headline">#</a></h2>
 <p>Pull your <code class="docutils literal notranslate"><span class="pre">simulate_data()</span></code> function from your last homework and add it below.</p>
 <p>As a reminder, this function simulates the relationship between age, word reading experience, and reading comprehension skill.</p>
@@ -1102,9 +1103,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="run-analysis-function-2-pts">
+<section id="run-analysis-function-2-pts">
 <h2>2. <code class="docutils literal notranslate"><span class="pre">run_analysis()</span></code> function (2 pts)<a class="headerlink" href="#run-analysis-function-2-pts" title="Permalink to this headline">#</a></h2>
 <p>Last week, we looked at whether word reading experience(<code class="docutils literal notranslate"><span class="pre">x</span></code>) mediated the relation between <code class="docutils literal notranslate"><span class="pre">age</span></code> and reading comprehension (<code class="docutils literal notranslate"><span class="pre">c</span></code>).</p>
 <p>Now we’re going to use our <code class="docutils literal notranslate"><span class="pre">simulate_data()</span></code> function to conduct a power analysis. The goal is to determine how many participants we would need in order to detect both the mediated and the direct effects in this data.</p>
@@ -1118,9 +1119,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="repeat-analysis-function-3-pts">
+<section id="repeat-analysis-function-3-pts">
 <h2>3. <code class="docutils literal notranslate"><span class="pre">repeat_analysis()</span></code> function (3 pts)<a class="headerlink" href="#repeat-analysis-function-3-pts" title="Permalink to this headline">#</a></h2>
 <p>Next fill in the function <code class="docutils literal notranslate"><span class="pre">repeat_analysis()</span></code> below so that it simulates and analyzes data <code class="docutils literal notranslate"><span class="pre">num_simulations</span></code> times. Store the outputs from each simulation in the <code class="docutils literal notranslate"><span class="pre">simouts</span></code> matrix. Calculate and return the coverage across all the simulations run for both ACME and ADE.</p>
 <div class="cell docutils container">
@@ -1154,9 +1155,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="testing-different-sample-sizes-2-pts">
+<section id="testing-different-sample-sizes-2-pts">
 <h2>4. Testing different sample sizes (2 pts)<a class="headerlink" href="#testing-different-sample-sizes-2-pts" title="Permalink to this headline">#</a></h2>
 <p>Finally, do the same thing (10 simulations, alpha criterion of 0.01) but for 5 different sample sizes: 50, 75, 100, 125, 150. You can do this using <code class="docutils literal notranslate"><span class="pre">map</span></code> (as in the tutorial), or a simple <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, or by calculating each individually. Up to you! This should take around 3 minutes to run.</p>
 <div class="cell docutils container">
@@ -1174,8 +1175,8 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="reflection-2-pts">
+</section>
+<section id="reflection-2-pts">
 <h2>5. Reflection (2 pts)<a class="headerlink" href="#reflection-2-pts" title="Permalink to this headline">#</a></h2>
 <p>If this were a real power analysis, we’d want to run more simulations per sample size (to get a more precise estimate of power) and we may also want to test out some other values of the parameters we used to simulate our data. However, what would you conclude just based on the results above?</p>
 <blockquote>
@@ -1190,8 +1191,8 @@ title="Print to PDF"
 <blockquote>
 <div><p><em>Someone’s Name</em></p>
 </div></blockquote>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
