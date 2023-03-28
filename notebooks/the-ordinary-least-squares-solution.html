@@ -604,6 +604,11 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/power-analysis-via-simulations.html">
+     Exercise 15: Power Analyses
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -1384,46 +1389,52 @@ $<span class="math notranslate nohighlight">\(\frac{d}{dx}(f(x) + g(x)) = \frac{
 </div>
 </div>
 <p>Just looking at the plot above, we can tell the minimum of <span class="math notranslate nohighlight">\(f(x)\)</span> is where <span class="math notranslate nohighlight">\(x=2\)</span>. But let’s make sure, using the derivative method!</p>
-<p>\begin{eqnarray}
-\frac{d}{dx}((x-2)^2 + 6) &amp;=&amp; \frac{d}{dx}(x-2)^2 + \frac{d}{dx}6  \
-&amp;=&amp; \frac{d}{dx}(x^2-4x+4) + 0 \
-&amp;=&amp; \frac{d}{dx}(x^2)-4\frac{d}{dx}x+\frac{d}{dx}4 \
-&amp;=&amp; 2x - 4
-\end{eqnarray}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \frac{d}{dx}((x-2)^2 + 6) = \frac{d}{dx}(x-2)^2 + \frac{d}{dx}6 \\
+   = \frac{d}{dx}(x^2-4x+4) + 0\\
+  = \frac{d}{dx}(x^2)-4\frac{d}{dx}x+\frac{d}{dx}4 \\
+  = 2x - 4
+\end{split}\]</div>
 <p>In the first line, I split up the function using rule <strong>4</strong>. Then I expanded the <span class="math notranslate nohighlight">\((x-2)^2\)</span> term using the <a class="reference external" href="https://www.mathsisfun.com/definitions/foil-method.html">Foil method</a>, set <span class="math notranslate nohighlight">\(\frac{d}{dx}6\)</span> to 0 as in rule <strong>1</strong>, and finally took the derivative of <span class="math notranslate nohighlight">\(x^2 - 4x + 4\)</span> by applying rule <strong>2</strong> to the first term, rules <strong>2</strong> and <strong>3</strong> to the second term, and rule <strong>1</strong> to the last term.</p>
 <p>Now let’s set it to 0 and solve for x.</p>
-<p>\begin{eqnarray}
-2x - 4 &amp;=&amp; 0  \
-2x  &amp;=&amp; 4  \
-x  &amp;=&amp; 2
-\end{eqnarray}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ 2x - 4 = 0  \\
+ 2x  = 4  \\
+ x  = 2
+\end{split}\]</div>
 <p>So <span class="math notranslate nohighlight">\(f(x)\)</span> is at a minimal value when <span class="math notranslate nohighlight">\(x=2\)</span>, which matches what we see in the plot above.</p>
 <p><strong>Example 2</strong> <span class="math notranslate nohighlight">\(f(x_1,x_2) = 4x_1x_2 + \frac{1}{x_2} + {x_1}^2\)</span></p>
 <p>This one’s a little trickier to visualize since there’s two input variables, so let’s just jump right into finding the minimizing solutions for <span class="math notranslate nohighlight">\(x_1\)</span>.</p>
-<p>\begin{eqnarray}
-\frac{d}{dx_1}(4x_1x_2 + \frac{1}{x_2} + {x_1}^2) &amp;=&amp; \frac{d}{dx_1}(4x_1x_2) + \frac{d}{dx_1}(\frac{1}{x_2}) +  \frac{d}{dx_1}{x_1}^2 \
-&amp;=&amp; 4x_2  + 2x_1\
-\end{eqnarray}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \frac{d}{dx_1}(4x_1x_2 + \frac{1}{x_2} + {x_1}^2) = \frac{d}{dx_1}(4x_1x_2) + \frac{d}{dx_1}(\frac{1}{x_2}) +  \frac{d}{dx_1}{x_1}^2 \\
+   = 4x_2  + 2x_1\\
+\end{split}\]</div>
 <p>We split up the three terms. The second term becomes 0 because when we’re taking the derivative with respect to <span class="math notranslate nohighlight">\(x_1\)</span>, we can think of terms that only contain <span class="math notranslate nohighlight">\(x_2\)</span> as constant (rule <strong>5</strong>) and then apply rule <strong>1</strong>. The first term, <span class="math notranslate nohighlight">\(4x_1x_2\)</span>, can be expressed as <span class="math notranslate nohighlight">\((4x_2)x_1\)</span>, and the <span class="math notranslate nohighlight">\(4x_2\)</span> term can be moved outside the derivative as a constant (rules <strong>3</strong>,<strong>5</strong>). Then use rule <strong>2</strong> to find <span class="math notranslate nohighlight">\(\frac{d}{dx_1} x_1\)</span> and <span class="math notranslate nohighlight">\(\frac{d}{dx_1} {x_1}^2\)</span>.</p>
 <p>Setting <span class="math notranslate nohighlight">\(\frac{df}{dx_1}\)</span> to 0 and solving for <span class="math notranslate nohighlight">\(x_1\)</span>, we find that the minimizing value of <span class="math notranslate nohighlight">\(x_1\)</span> is <span class="math notranslate nohighlight">\(-2x_2\)</span>.</p>
 <p>Repeat for <span class="math notranslate nohighlight">\(x_2\)</span>:</p>
-<p>\begin{eqnarray}
-\frac{d}{dx_2}(4x_1x_2 + \frac{1}{x_2} + {x_1}^2) &amp;=&amp; \frac{d}{dx_2}(4x_1x_2) + \frac{d}{dx_2}(\frac{1}{x_2}) + \frac{d}{dx_2}({x_1}^2)  \
-&amp;=&amp; 4x_1 - \frac{1}{{x_2}^2}  \
-\end{eqnarray}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \frac{d}{dx_2}(4x_1x_2 + \frac{1}{x_2} + {x_1}^2) = \frac{d}{dx_2}(4x_1x_2) + \frac{d}{dx_2}(\frac{1}{x_2}) + \frac{d}{dx_2}({x_1}^2)  \\
+   = 4x_1 - \frac{1}{{x_2}^2}  \\
+\end{split}\]</div>
 <p>The derivative of the third term is 0 because of rules <strong>1</strong> and <strong>5</strong>. We find the derivative of the second term using rule <strong>2</strong> and of the first term using rules <strong>3</strong> and <strong>5</strong>.</p>
 <p>Setting the derivative to 0 and solving for <span class="math notranslate nohighlight">\(x_2\)</span>:</p>
-<p>\begin{eqnarray}
-4x_1 - \frac{1}{{x_2}^2} &amp;=&amp; 0  \
-{x_2}^2 &amp;=&amp; \frac{1}{4x_1}  \
-\end{eqnarray}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  4x_1 - \frac{1}{{x_2}^2} = 0  \\
+   {x_2}^2 = \frac{1}{4x_1}  \\
+\end{split}\]</div>
 <p>Since we know the minimizing value for <span class="math notranslate nohighlight">\(x_1\)</span> is <span class="math notranslate nohighlight">\(-2x_2\)</span> from our work above, we can try plugging that in here to find the values of <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> that will minimize the whole function:</p>
-<p>\begin{eqnarray}
-{x_2}^2 &amp;=&amp; \frac{1}{4(-2x_2)}  \
--8 {x_2}^3 &amp;=&amp; 1  \
-{x_2}^3 &amp;=&amp; -\frac{1}{8} \
-{x_2} &amp;=&amp; -\frac{1}{2}
-\end{eqnarray}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  {x_2}^2 = \frac{1}{4(-2x_2)}  \\
+   -8 {x_2}^3 = 1  \\
+   {x_2}^3 = -\frac{1}{8} \\
+   {x_2} = -\frac{1}{2}
+\end{split}\]</div>
 <p>Plugging this into our equation for <span class="math notranslate nohighlight">\(x_1\)</span>, we get <span class="math notranslate nohighlight">\(x_1 = -2x_2 = 1\)</span>. So <span class="math notranslate nohighlight">\(f(x_1,x_2)\)</span> is minimized at <span class="math notranslate nohighlight">\(x_1 = 1\)</span>, <span class="math notranslate nohighlight">\(x_2 = -\frac{1}{2}\)</span></p>
 <p>That’s all for derivatives! Let’s move on to logarithms.</p>
 </section>
@@ -1493,12 +1504,13 @@ x  &amp;=&amp; 2
 <div class="math notranslate nohighlight">
 \[ \prod_{i=1}^{n} p(y_i | x_i; \beta_0, \beta_1, \sigma) =  \prod_{i=1}^{n} \frac{1} {{\sigma \sqrt {2\pi } }} e^{{\frac{ - ( {y_i - (\beta_0 + \beta_1x_i) })^2 }{2\sigma^2} }} \]</div>
 <p>If we want to find those maximizing solutions, we need to take the derivative. I didn’t talk about it above, but taking the derivative of a product of functions is kind of a pain, especially if there are a lot of factors like there are in the equation above (remember from the previous tutorial that <span class="math notranslate nohighlight">\(\prod_{i=1}^{n}\)</span> means you multiply that term for every value of <span class="math notranslate nohighlight">\(i\)</span> from 1 to <span class="math notranslate nohighlight">\(n\)</span>). So to make this function easier to derive, we can take the log transformation! As stated above, the minimizing and maximizing values will stay the same after a log transformation, and using rule <strong>2</strong> from the logarithm rules we can make a long product into a long sum. Makes sense to take the natural log since that will also help simplify the exponential term (<span class="math notranslate nohighlight">\(e^{{\frac{ - ( {y_i - (\beta_0 + \beta_1x_i) })^2 }{2\sigma^2} }}\)</span>).</p>
-<p>\begin{eqnarray}
-\ln{L}(\beta_0, \beta_1, \sigma) &amp;=&amp; \ln \prod_{i=1}^{n} p(y_i | x_i; \beta_0, \beta_1, \sigma)  \
-&amp;=&amp; \sum_{i=1}^{n} \ln  p(y_i | x_i; \beta_0, \beta_1, \sigma)  \
-&amp;=&amp; \sum_{i=1}^{n} \ln (\frac{1}  e^) \
-&amp;=&amp; \frac{-n}{2} \ln{2\pi} - n \ln{\sigma} - \frac{1}{2\sigma^2} \sum_{i=1}^{n} (y_i - (\beta_0 + \beta_1x_i))^2
-\end{eqnarray}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ \ln{L}(\beta_0, \beta_1, \sigma) = \ln \prod_{i=1}^{n} p(y_i | x_i; \beta_0, \beta_1, \sigma)  \\
+   = \sum_{i=1}^{n} \ln  p(y_i | x_i; \beta_0, \beta_1, \sigma)  \\
+   = \sum_{i=1}^{n} \ln (\frac{1} {{\sigma \sqrt {2\pi } }} e^{{\frac{ - ( {y_i - (\beta_0 + \beta_1x_i) })^2 }{2\sigma^2} }}) \\
+   = \frac{-n}{2} \ln{2\pi} - n \ln{\sigma} - \frac{1}{2\sigma^2} \sum_{i=1}^{n} (y_i - (\beta_0 + \beta_1x_i))^2
+\end{split}\]</div>
 <p>Taking the natural log of the likelihood made this a much nicer function for taking the derivative and finding maximum values. Try getting from the third line to the fourth line by hand using the logarithm rules described above and the tips on working with summations from the previous tutorial.</p>
 </section>
 </section>
@@ -1523,13 +1535,14 @@ x  &amp;=&amp; 2
 <div class="math notranslate nohighlight">
 \[E(XY) = Cov(X,Y) + E(X)E(Y)\]</div>
 <p>Here’s one worked example to get you comfortable manipulating equations with expected values:</p>
-<p>\begin{eqnarray}
-E((X + cY)^2) &amp;=&amp;  E(X^2 + 2cXY + c^2Y^2) \
-&amp;=&amp; E(X^2) + E(2cXY) + E(c^2Y^2)  \
-&amp;=&amp; E(X^2) + 2cE(XY) + c^2E(Y^2) \
-&amp;=&amp; Var(X) + E(X)^2 + 2c(Cov(X,Y) + E(X)E(Y)) + c^2(Var(Y) + E(Y)^2) \
-&amp;=&amp; Var(X) + E(X)^2 + 2c Cov(X,Y) + 2cE(X)E(Y) + c^2Var(Y) + c^2E(Y)^2
-\end{eqnarray}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ E((X + cY)^2) =  E(X^2 + 2cXY + c^2Y^2) \\
+   = E(X^2) + E(2cXY) + E(c^2Y^2)  \\
+   = E(X^2) + 2cE(XY) + c^2E(Y^2) \\
+   = Var(X) + E(X)^2 + 2c(Cov(X,Y) + E(X)E(Y)) + c^2(Var(Y) + E(Y)^2) \\
+   = Var(X) + E(X)^2 + 2c Cov(X,Y) + 2cE(X)E(Y) + c^2Var(Y) + c^2E(Y)^2
+\end{split}\]</div>
 <p>The first line expands the function using the Foil method. The second line separates the terms using <strong>Tip 2</strong>. The third line pulls out coefficients using <strong>Tip 3</strong>, and the fourth line applies <strong>Tips 4 and 5</strong>.</p>
 <p>That’s all the math tools we’ve got for you today, folks! Fear not, the next tutorial will be more practical. We’ll focus on fitting linear models in R.</p>
 <p><em>Notebook authored by Patience Stevens and edited by Amy Sentis and Fiona Horner.</em></p>

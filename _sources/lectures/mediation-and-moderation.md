@@ -7,7 +7,7 @@
 
 ## Lecture (Video)
 
-[![Mediation and moderation](../thumbnails/mediation-and-moderation.jpeg)](https://www.youtube.com/watch?v=hNIzcgaORbQ "Mediation and moderation")
+[![Mediation and moderation](../thumbnails/mediation-and-moderation.jpeg)](https://youtu.be/4tBi1BArYd8 "Mediation and moderation")
 
 ## Slides (PDF)
 
