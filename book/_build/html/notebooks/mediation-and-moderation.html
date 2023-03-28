@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutorial: Running mediation and moderation models &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -604,6 +603,11 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/power-analysis-via-simulations.html">
+     Exercise 15: Power Analyses
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -1046,10 +1050,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-running-mediation-and-moderation-models">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-running-mediation-and-moderation-models">
 <h1>Tutorial: Running mediation and moderation models<a class="headerlink" href="#tutorial-running-mediation-and-moderation-models" title="Permalink to this headline">#</a></h1>
 <p>This lab focuses on mediation and moderation and implementing these techniques in R.</p>
-<section id="goals">
+<div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Understand the difference between moderation and mediation.</p></li>
@@ -1057,10 +1061,10 @@ title="Print to PDF"
 <li><p>Learn how to detect moderating effects.</p></li>
 </ul>
 <p>This tutorial draws from <a class="reference external" href="https://ademos.people.uic.edu/Chapter14.html">Chapter 14: Mediation and Moderation</a> in a collection of tutorials by psychology grad students at the University of Illinois at Chicago.</p>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="the-difference-between-mediation-and-moderation">
+<div class="tex2jax_ignore mathjax_ignore section" id="the-difference-between-mediation-and-moderation">
 <h1>The difference between mediation and moderation<a class="headerlink" href="#the-difference-between-mediation-and-moderation" title="Permalink to this headline">#</a></h1>
 <p>First, let’s reiterate the difference between mediation and moderation.</p>
 <p>For an independent variable <span class="math notranslate nohighlight">\(X\)</span>, a dependent variable <span class="math notranslate nohighlight">\(Y\)</span> and a third variable <span class="math notranslate nohighlight">\(M_e\)</span>, <strong>mediation</strong> is when the value of <span class="math notranslate nohighlight">\(X\)</span> impacts the value of <span class="math notranslate nohighlight">\(M_e\)</span>, which in turn predicts the value of <span class="math notranslate nohighlight">\(Y\)</span>. Put differently, if <span class="math notranslate nohighlight">\(X\)</span> operates on <span class="math notranslate nohighlight">\(Y\)</span> through <span class="math notranslate nohighlight">\(M_e\)</span>, then <span class="math notranslate nohighlight">\(M_e\)</span> is a mediating variable: <span class="math notranslate nohighlight">\(X \rightarrow M_e \rightarrow Y\)</span></p>
@@ -1075,9 +1079,9 @@ title="Print to PDF"
 <li><p>The relationship between importance of a task (<span class="math notranslate nohighlight">\(X\)</span>) and testing anxiety (<span class="math notranslate nohighlight">\(Y\)</span>) is moderated by self-efficacy (<span class="math notranslate nohighlight">\(M_o\)</span>). Most students feel low anxiety for unimportant assignments, but those with low self-efficacy are more stressed during important exams than those with high self-efficacy. What’s key in this example is the interaction between self-efficacy and task importance: the relationship between task importance and anxiety varies for different levels of self efficacy, and the relationship between self efficacy and anxiety varies for different levels of task importance.</p></li>
 <li><p>The relationship between time of year and a person’s Vitamin D deficiency is moderated by location - in Boston, Vitamin D deficiency might peak in February; in Punta Arenas, Chile it might peak in September; and in a place that’s mostly sunny year-round like Florida the relationship between time of year and deficiency might be weak or nonexistent. <em>What would be a mediating variable between time of year and vitamin D deficiency?</em></p></li>
 </ul>
-</section>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="mediation-in-r">
+<div class="tex2jax_ignore mathjax_ignore section" id="mediation-in-r">
 <h1>Mediation in R<a class="headerlink" href="#mediation-in-r" title="Permalink to this headline">#</a></h1>
 <p>Now let’s try finding evidence for mediation using R. We’ll use the <code class="docutils literal notranslate"><span class="pre">Cars93</span></code> dataset we’ve used in previous tutorials.</p>
 <div class="cell docutils container">
@@ -1216,9 +1220,9 @@ Simulations: 1000
 </div>
 <p>The first model established that there was a significant relationship between <code class="docutils literal notranslate"><span class="pre">Weight</span></code> and <code class="docutils literal notranslate"><span class="pre">Passengers</span></code>. The second model established that when you include <code class="docutils literal notranslate"><span class="pre">Weight</span></code> in the model, <code class="docutils literal notranslate"><span class="pre">Passengers</span></code> is no longer a significant predictor of <code class="docutils literal notranslate"><span class="pre">MPG.highway</span></code>. The last one shows us that there is a strong mediating effect. <code class="docutils literal notranslate"><span class="pre">ACME</span></code> represents the mediating or indirect effect, which can be thought of as answering the question “Given this model, would I predict that <span class="math notranslate nohighlight">\(Y\)</span> would change significantly when I vary <span class="math notranslate nohighlight">\(M_e\)</span> but hold <span class="math notranslate nohighlight">\(X\)</span> constant?” <code class="docutils literal notranslate"><span class="pre">ADE</span></code> answers the opposite question, varying <span class="math notranslate nohighlight">\(X\)</span> while holding <span class="math notranslate nohighlight">\(M_e\)</span> constant (“direct effect”). The <code class="docutils literal notranslate"><span class="pre">Total</span> <span class="pre">Effect</span></code> combines the direct and indirect effects, and <code class="docutils literal notranslate"><span class="pre">Prop.</span> <span class="pre">Mediated</span></code> is the proportion of indirect effects relative to direct effects. The results above tell us that the relationship between <code class="docutils literal notranslate"><span class="pre">Passengers</span></code> and <code class="docutils literal notranslate"><span class="pre">MPG.highway</span></code> is entirely mediated by <code class="docutils literal notranslate"><span class="pre">Weight</span></code>.</p>
 <p><em>Note: the ouput above says “Simulations: 1000” at the bottom. There is a bootstrapping feature for the mediate function, and the default settings are <code class="docutils literal notranslate"><span class="pre">boot</span> <span class="pre">=</span> <span class="pre">FALSE</span></code> and <code class="docutils literal notranslate"><span class="pre">sims</span> <span class="pre">=</span> <span class="pre">1000</span></code>. Even though no bootstrapping was done in this example it still outputs the number of simulations it would have run, for some reason. If you’re interested, play around with the bootstrap functionality by setting <code class="docutils literal notranslate"><span class="pre">boot</span> <span class="pre">=</span> <span class="pre">TRUE</span></code> and see whether that impacts your results. Since this is a strong result, it probably won’t.</em></p>
-</section>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="moderation-in-r">
+<div class="tex2jax_ignore mathjax_ignore section" id="moderation-in-r">
 <h1>Moderation in R<a class="headerlink" href="#moderation-in-r" title="Permalink to this headline">#</a></h1>
 <p>As discussed above, looking for moderation is basically the same as looking for an interaction. If the relationship between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> is moderated by <span class="math notranslate nohighlight">\(M_o\)</span>, then the interaction between <span class="math notranslate nohighlight">\(X\)</span> amd <span class="math notranslate nohighlight">\(M_o\)</span> should be significant. We can look at this using the simple <code class="docutils literal notranslate"><span class="pre">lm()</span></code> function.</p>
 <p>We’ll stick with the <code class="docutils literal notranslate"><span class="pre">Cars93</span></code> data set, and see if the relationship between <code class="docutils literal notranslate"><span class="pre">Weight</span></code> and <code class="docutils literal notranslate"><span class="pre">MPG.highway</span></code> is moderated by <code class="docutils literal notranslate"><span class="pre">Horsepower</span></code> - in other words, do cars with more powerful engines show a different relationship between <code class="docutils literal notranslate"><span class="pre">Weight</span></code> and <code class="docutils literal notranslate"><span class="pre">MPG.highway</span></code> than cars with less powerful engines do?</p>
@@ -1275,7 +1279,7 @@ F-statistic: 68.21 on 3 and 89 DF,  p-value: &lt; 2.2e-16
 </div>
 <p>This was a useful visualization. Now we know that the different relationship between weight and efficiency for powerful engines versus less powerful engines might be because cars with more horsepower are typically heavier. In other words, <code class="docutils literal notranslate"><span class="pre">Horsepower</span></code> and <code class="docutils literal notranslate"><span class="pre">Weight</span></code> are correlated, and we’ve violated one of the assumptions for using linear models - oops! So we can’t interpret the moderation in this case. Dealing with correlated predictor variables will be discussed later in this class.</p>
 <p><em>Notebook authored by Patience Stevens and edited by Amy Sentis.</em></p>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {

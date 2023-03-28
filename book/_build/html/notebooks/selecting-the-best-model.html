@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutorial: Model selection &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -604,6 +603,11 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/power-analysis-via-simulations.html">
+     Exercise 15: Power Analyses
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
@@ -1026,19 +1030,19 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-model-selection">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-model-selection">
 <h1>Tutorial: Model selection<a class="headerlink" href="#tutorial-model-selection" title="Permalink to this headline">#</a></h1>
 <p>This lab focuses on how to select the best model and implementing subset selection in R.</p>
-<section id="goals">
+<div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Learn to use the <code class="docutils literal notranslate"><span class="pre">regsubsets</span></code> function</p></li>
 </ul>
 <p>This lab draws from the practice sets at the end of Chapter 6 in James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2013). “An introduction to statistical learning: with applications in r.”</p>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="best-subset-selection">
+<div class="tex2jax_ignore mathjax_ignore section" id="best-subset-selection">
 <h1>Best subset selection<a class="headerlink" href="#best-subset-selection" title="Permalink to this headline">#</a></h1>
 <p>First we start with a tour of using the built-in functions for best subset selection. For this we will load the <a class="reference external" href="https://vincentarelbundock.github.io/Rdatasets/doc/ISLR/Hitters.html">Hitters (baseball) dataset</a> included in ISLR.</p>
 <div class="cell docutils container">
@@ -1357,7 +1361,7 @@ Hits, Walks, CRBI, DivisionW, and PutOuts.</p>
 </div>
 <p>Right now, there’s a clear discrepancy in fit among the bias-adjusted model evaluations. How could we use cross-validation to help determine which model is best? (<em>Note: if you’d like to predict outputs from models in <code class="docutils literal notranslate"><span class="pre">regsubsets</span></code>, see pg 248-250 of the James textbook.</em>)</p>
 <p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {

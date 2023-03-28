@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Exercise 12: Cross Validation &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -602,6 +601,11 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="power-analysis-via-simulations.html">
+     Exercise 15: Power Analyses
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -1066,12 +1070,12 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="exercise-12-cross-validation">
+  <div class="tex2jax_ignore mathjax_ignore section" id="exercise-12-cross-validation">
 <h1>Exercise 12: Cross Validation<a class="headerlink" href="#exercise-12-cross-validation" title="Permalink to this headline">#</a></h1>
 <hr class="docutils" />
 <p>In this exercise, we’ll practice implementing cross validation techniques, including leave-one-out and k-fold cross validation. We’ll use the <code class="docutils literal notranslate"><span class="pre">PimaIndiansDiabetes2</span></code> practice dataset, which has medical data on a group of Pima Native American women, including whether or not they have diabetes. This dataset is part of the <code class="docutils literal notranslate"><span class="pre">mlbench</span></code> package. We’ll be using each person’s medical history to predict whether or not they have been diagnosed with diabetes.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="data-1-pts">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="data-1-pts">
 <h1>1: Data (1 pts)<a class="headerlink" href="#data-1-pts" title="Permalink to this headline">#</a></h1>
 <hr class="docutils" />
 <p>Load the <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code>, <code class="docutils literal notranslate"><span class="pre">boot</span></code>, and <code class="docutils literal notranslate"><span class="pre">mlbench</span></code> packages (you may need to install <code class="docutils literal notranslate"><span class="pre">boot</span></code> and <code class="docutils literal notranslate"><span class="pre">mlbench</span></code>).</p>
@@ -1084,8 +1088,8 @@ title="Print to PDF"
 </div>
 </div>
 <p>(Note that in medical contexts, <code class="docutils literal notranslate"><span class="pre">pedigree</span></code> refers to a system of measuring family history of a condition. So here, higher numbers mean greater family history of diabetes. You can read more about this dataset <a class="reference external" href="https://rdrr.io/cran/mlbench/man/PimaIndiansDiabetes.html">here</a>.)</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="leave-one-out-cross-validation-4-pts">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="leave-one-out-cross-validation-4-pts">
 <h1>2. Leave-one-out Cross Validation (4 pts)<a class="headerlink" href="#leave-one-out-cross-validation-4-pts" title="Permalink to this headline">#</a></h1>
 <p>In the tutorial, we learned how to fit leave-one-out cross validation using the <code class="docutils literal notranslate"><span class="pre">cv.glm</span></code> function from the <code class="docutils literal notranslate"><span class="pre">boot</span></code> package. But we can also do this manually using <code class="docutils literal notranslate"><span class="pre">predict()</span></code> like we have in the past.</p>
 <p>Let’s predict <code class="docutils literal notranslate"><span class="pre">diabetes</span></code>, a dichotomous outcome, using all the other variables in our modified dataset.</p>
@@ -1138,8 +1142,8 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="compare-to-cv-glm-3-pts">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="compare-to-cv-glm-3-pts">
 <h1>3. Compare to <code class="docutils literal notranslate"><span class="pre">cv.glm</span></code> (3 pts)<a class="headerlink" href="#compare-to-cv-glm-3-pts" title="Permalink to this headline">#</a></h1>
 <p>Now, let’s compare this result to the <code class="docutils literal notranslate"><span class="pre">cv.glm</span></code> function. Using the tutorial as a guide, use <code class="docutils literal notranslate"><span class="pre">cv.glm</span></code> to run LOOCV on the data, using the same model (i.e., still using all of the variables to predict diabetes diagnosis).</p>
 <p>Note that, because this is a <code class="docutils literal notranslate"><span class="pre">classification</span></code> problem and not a regression problem like in the tutorial, we need to adjust the <code class="docutils literal notranslate"><span class="pre">cost</span></code> argument of <code class="docutils literal notranslate"><span class="pre">cv.glm</span></code>. We can read more about this in the docs:</p>
@@ -1171,8 +1175,8 @@ title="Print to PDF"
 <li></li>
 </ul>
 </div></blockquote>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="adjusting-k-and-reflection-2-pts">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="adjusting-k-and-reflection-2-pts">
 <h1>4. Adjusting K and Reflection (2 pts)<a class="headerlink" href="#adjusting-k-and-reflection-2-pts" title="Permalink to this headline">#</a></h1>
 <p>Recall that LOOCV has some drawbacks. In particular, it has quite high <em>variance</em> which can lead to poor performance on new test data. We can reduce this variance by increasing K.</p>
 <p>Below, re-run your cross validation using <code class="docutils literal notranslate"><span class="pre">cv.glm</span></code> with <code class="docutils literal notranslate"><span class="pre">k</span></code> set to 3, 5, 10, and 15.</p>
@@ -1195,7 +1199,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<section id="reflection">
+<div class="section" id="reflection">
 <h2>Reflection<a class="headerlink" href="#reflection" title="Permalink to this headline">#</a></h2>
 <p>How do your errors compare to your LOOCV error above? How do they change as k increases?</p>
 <blockquote>
@@ -1216,8 +1220,8 @@ title="Print to PDF"
 <blockquote>
 <div><p><em>Someone’s Name</em></p>
 </div></blockquote>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {

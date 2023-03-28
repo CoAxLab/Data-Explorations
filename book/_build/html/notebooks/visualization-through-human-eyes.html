@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutorial: More advanced plotting &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -602,6 +601,11 @@ const thebe_selector_output = ".output, .cell_output"
      Discussion questions
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../exercises/power-analysis-via-simulations.html">
+     Exercise 15: Power Analyses
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -1108,10 +1112,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-more-advanced-plotting">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-more-advanced-plotting">
 <h1>Tutorial: More advanced plotting<a class="headerlink" href="#tutorial-more-advanced-plotting" title="Permalink to this headline">#</a></h1>
 <p>This lab serves as an extension to the previous tutorial on the basics of data visualization in R.</p>
-<section id="goals">
+<div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Learn how to extend <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> with <code class="docutils literal notranslate"><span class="pre">GGally</span></code>, <code class="docutils literal notranslate"><span class="pre">ggthemes</span></code> packages</p></li>
@@ -1119,10 +1123,10 @@ title="Print to PDF"
 <li><p>Learn how to customize plots in R using <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> and other packages</p></li>
 </ul>
 <p>This tutorial draws from <a class="reference external" href="https://bookdown.org/rdpeng/RProgDA/">Mastering software development in R</a>, chapters 4.1 and 4.2.</p>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="extending-ggplot2">
+<div class="tex2jax_ignore mathjax_ignore section" id="extending-ggplot2">
 <h1>Extending <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code><a class="headerlink" href="#extending-ggplot2" title="Permalink to this headline">#</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> can be extended in a number of different ways, with different packages. We will focus on one particular package and example in this tutorial.</p>
 <p>The <a class="reference external" href="https://cran.r-project.org/web/packages/GGally/GGally.pdf"><code class="docutils literal notranslate"><span class="pre">GGally</span></code> package</a> has a useful function, called <a class="reference external" href="https://www.rdocumentation.org/packages/GGally/versions/1.5.0/topics/ggpairs"><code class="docutils literal notranslate"><span class="pre">ggpairs</span></code></a> that allows you to visually summarize relationships between variables within a dataset. It is often useful as an initial step in understanding and exploring associations within your data.</p>
@@ -1225,9 +1229,9 @@ title="Print to PDF"
 </div>
 </div>
 <p>As we can see in the above graph, <code class="docutils literal notranslate"><span class="pre">ggpairs</span></code> automatically treats continuous and categorical variables differently. Categorical variables are broken down into bar charts (e.g., the upper left for the <code class="docutils literal notranslate"><span class="pre">sex</span></code> variable). Continuous variables are described using density plots (e.g., the plots along the diagonal for <code class="docutils literal notranslate"><span class="pre">wt</span></code>, <code class="docutils literal notranslate"><span class="pre">ht</span></code>, and <code class="docutils literal notranslate"><span class="pre">age</span></code> variables).</p>
-</section>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="customizing-your-visualizations">
+<div class="tex2jax_ignore mathjax_ignore section" id="customizing-your-visualizations">
 <h1>Customizing your visualizations<a class="headerlink" href="#customizing-your-visualizations" title="Permalink to this headline">#</a></h1>
 <p>There are a lot of resources available about generating visualizations and graphics that communicate data effectively. This section will focus on some simple guidelines for creating <strong>good</strong> plots:</p>
 <ul class="simple">
@@ -1263,7 +1267,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<section id="high-data-density">
+<div class="section" id="high-data-density">
 <h2>High data density<a class="headerlink" href="#high-data-density" title="Permalink to this headline">#</a></h2>
 <p>Guideline 1: Aim for high data density.</p>
 <p>A good rule of thumb is to increase the data-to-ink ratio of your visualizations as much as is appropriate. This can essentially be boiled down to removing redundant plot componenets. Doing so allows the audience to understand the take home message of data the plot showcases more quickly and also provides space to add elements that highlight particular datapoints in the future. We’ll come back to this latter idea in future sections.</p>
@@ -1316,8 +1320,8 @@ title="Print to PDF"
 <img alt="../_images/visualization-through-human-eyes_23_0.png" src="../_images/visualization-through-human-eyes_23_0.png" />
 </div>
 </div>
-</section>
-<section id="meaningful-labels">
+</div>
+<div class="section" id="meaningful-labels">
 <h2>Meaningful labels<a class="headerlink" href="#meaningful-labels" title="Permalink to this headline">#</a></h2>
 <p>Guideline 2: Use clear, meaningful labels.</p>
 <p>By default, <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> uses variable names as axes labels. This is not ideal for most purposes of data visualization outside of initial private data exploration. Instead, converting variable names into meaningful labels (with units if relevant) is a better approach. It is also helpful to rotate labels or indeed the orientation of plots to improve ease of interpretation.</p>
@@ -1378,8 +1382,8 @@ title="Print to PDF"
 </div>
 </div>
 <p>While this advice may seem obvious, this simple guideline can go a long way to not only improving the overall aesthetic visualizations, but also adding to the ease with which the audience can grasp the take home message. This is turn clears up headspace for following the data story or understanding what these data mean within context.</p>
-</section>
-<section id="references">
+</div>
+<div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
 <p>Guideline 3: Provide useful references.</p>
 <p>It can be helpful to add references or points of comparison to visualizations. Doing so can provide useful context for the audience when interpreting the take home message. For example, in the two graphs below, which show daily mortality data from the chicagoNMMAPS dataset for the year 1995, the shaded horizontal bar on the right graph shows the range of datapoints for the other years included in the dataset. Therefore, we can easily see that the mortality rates during the heatwave were unusual.</p>
@@ -1436,8 +1440,8 @@ title="Print to PDF"
 <li><p>Using the <code class="docutils literal notranslate"><span class="pre">alpha</span></code> parameter allows transparency control.</p></li>
 </ul>
 <p>Ultimately, the goal of references is to support and add context to the main data of the visualizations, without overwhelming it.</p>
-</section>
-<section id="small-multiples">
+</div>
+<div class="section" id="small-multiples">
 <h2>Small multiples<a class="headerlink" href="#small-multiples" title="Permalink to this headline">#</a></h2>
 <p>Guideline 4: When possible, use small multiples.</p>
 <p>Often it is useful to compare different subsets of a dataset. This is what is meant by small multiples.</p>
@@ -1507,8 +1511,8 @@ title="Print to PDF"
 <img alt="../_images/visualization-through-human-eyes_51_0.png" src="../_images/visualization-through-human-eyes_51_0.png" />
 </div>
 </div>
-</section>
-<section id="order">
+</div>
+<div class="section" id="order">
 <h2>Order<a class="headerlink" href="#order" title="Permalink to this headline">#</a></h2>
 <p>Guideline 5: Make order meaningful.</p>
 <p>Often, the default order for categorical variables is not particularly useful, e.g., alphabetical order. An example of this can be seen in the graph below that shows the mean time per player for each team in the worldcup dataset:</p>
@@ -1577,10 +1581,10 @@ title="Print to PDF"
 <img alt="../_images/visualization-through-human-eyes_58_0.png" src="../_images/visualization-through-human-eyes_58_0.png" />
 </div>
 </div>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="more-resources">
+<div class="tex2jax_ignore mathjax_ignore section" id="more-resources">
 <h1>More resources<a class="headerlink" href="#more-resources" title="Permalink to this headline">#</a></h1>
 <p>For more practical tips on plotting with ggplot2:</p>
 <ul class="simple">
@@ -1591,7 +1595,7 @@ title="Print to PDF"
 <p>Finally, it is often possible to use google image search to find examples of plots created in R that includes links to the code used to generate them.</p>
 <p>Happy visualizing!</p>
 <p><em>Notebook authored by Amy Sentis.</em></p>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {
