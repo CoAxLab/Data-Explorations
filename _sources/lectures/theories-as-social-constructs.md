@@ -3,8 +3,13 @@
 
 ## Required readings
 
-- Mensh, B., & Kording, K. (2017). Ten simple rules for structuring papers. PLoS Comput Biol, 13(9), e1005619
+- De Regt, H. W., & Dieks, D. (2005). A contextual approach to scientific understanding. Synthese, 144(1), 137-170. 
 
-## Lecture
+## Lecture (Video)
 
-[![Theories as social constructs](../thumbnails/telling-your-data-story.jpeg)](https://www.youtube.com/watch?v=QKS559pI4KQ "Theories as social constructs")
+[![Theories as social constructs](../thumbnails/telling-your-data-story.jpeg)](https://youtu.be/cBF6LIpoaow "Theories as social constructs")
+
+## Slides (PDF)
+
+[![Theories as social constructs](../thumbnails/theories-as-social-constructs.jpeg)](https://github.com/CoAxLab/Data-Explorations/blob/main/book/slides/theories-as-social-constructs.pdf "Theories as social constructs")
+
