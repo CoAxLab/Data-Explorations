@@ -7,7 +7,7 @@
 
 ## Lecture (Video)
 
-[![Theories as social constructs](../thumbnails/telling-your-data-story.jpeg)](https://youtu.be/cBF6LIpoaow "Theories as social constructs")
+[![Theories as social constructs](../thumbnails/theories-as-social-constructs.jpeg)](https://youtu.be/cBF6LIpoaow "Theories as social constructs")
 
 ## Slides (PDF)
 
