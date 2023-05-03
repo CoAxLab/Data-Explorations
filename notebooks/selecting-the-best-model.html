@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutorial: Model selection &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -1031,24 +1030,24 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-model-selection">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-model-selection">
 <h1>Tutorial: Model selection<a class="headerlink" href="#tutorial-model-selection" title="Permalink to this headline">#</a></h1>
 <p>This lab focuses on how to select the best model and implementing subset selection in R.</p>
-<section id="goals">
+<div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Learn to use the <code class="docutils literal notranslate"><span class="pre">regsubsets</span></code> function</p></li>
 </ul>
 <p>This lab draws from the practice sets at the end of Chapter 6 in James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2013). “An introduction to statistical learning: with applications in r.”</p>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="best-subset-selection">
+<div class="tex2jax_ignore mathjax_ignore section" id="best-subset-selection">
 <h1>Best subset selection<a class="headerlink" href="#best-subset-selection" title="Permalink to this headline">#</a></h1>
 <p>First we start with a tour of using the built-in functions for best subset selection. For this we will load the <a class="reference external" href="https://vincentarelbundock.github.io/Rdatasets/doc/ISLR/Hitters.html">Hitters (baseball) dataset</a> included in ISLR.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;ISLR&quot;</span><span class="p">)</span> <span class="c1"># uncomment if you don&#39;t have ISLR package installed</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#install.packages(&quot;ISLR&quot;) # uncomment if you don&#39;t have ISLR package installed</span>
 <span class="c1"># Load the Baseball dataset</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">ISLR</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span> <span class="c1"># for some data frame manipulation</span>
@@ -1072,7 +1071,7 @@ title="Print to PDF"
 .list-inline>li {display: inline-block}
 .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
 </style>
-<ol class=list-inline><li>263</li><li>20</li></ol>
+<ol class=list-inline><li>322</li><li>20</li></ol>
 </div></div>
 </div>
 <p>One thing to notice is that this data set has a lot of missing values that are indicated as <code class="docutils literal notranslate"><span class="pre">na</span></code> in r. R includes a library of functions that are useful for dealing with missing data.</p>
@@ -1083,7 +1082,7 @@ title="Print to PDF"
 
 <span class="c1"># Using na.omit to make a new data set that only includes</span>
 <span class="c1"># those observations where all variables are observed</span>
-<span class="n">Hitters</span><span class="o">=</span><span class="nf">na.omit</span><span class="p">(</span><span class="n">Hitters</span><span class="p">)</span>
+<span class="n">Hitters</span> <span class="o">=</span> <span class="nf">na.omit</span><span class="p">(</span><span class="n">Hitters</span><span class="p">)</span>
 
 <span class="nf">dim</span><span class="p">(</span><span class="n">Hitters</span><span class="p">)</span> <span class="c1"># Notice that the dimensions reduced by 59 rows</span>
 <span class="nf">sum</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">Hitters</span><span class="p">))</span> <span class="c1"># And there are no longer any &quot;na&quot; values</span>
@@ -1106,28 +1105,29 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Uncomment the line below if you haven&#39;t installed the leaps package yet</span>
-<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;leaps&quot;</span><span class="p">)</span>
+<span class="c1">#install.packages(&quot;leaps&quot;)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">leaps</span><span class="p">)</span>
-<span class="o">?</span><span class="n">regsubsets</span> <span class="c1"># uncomment to learn more about regsubsets function</span>
+<span class="c1">#?regsubsets # uncomment to learn more about regsubsets function</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>For this practice we will be using the <a class="reference external" href="https://www.rdocumentation.org/packages/leaps/versions/2.1-1/topics/regsubsets">regsubsets function</a>. The <code class="docutils literal notranslate"><span class="pre">regsubsets</span></code> function identifies the best model as a function of the number of predictors it has. Here, ‘best’ is quantified as adjusted <span class="math notranslate nohighlight">\(R^2\)</span>, Bayesian Information Criterion scores (BIC) or Mallow’s Cp.</p>
-<p>Let’s see which aspects of a hitter’s performance best accounts for annual salary. To start, let’s try just including four predictor variables.</p>
+<p>Let’s see which aspects of a hitter’s performance best accounts for annual salary. To start, let’s try just including four predictor variables. Note that <code class="docutils literal notranslate"><span class="pre">regsubsets()</span></code> uses the same model configuration as <code class="docutils literal notranslate"><span class="pre">lm()</span></code>, so <code class="docutils literal notranslate"><span class="pre">regusubsets(model,</span> <span class="pre">data)</span></code>.</p>
+<p>Below, we use the exhaustive algorithm (full subset selection) because there are so few variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># regsubsets uses the same model configuration as lm()</span>
-<span class="c1"># so, configure the model in regsubsets as regsubsets(model, data)</span>
-<span class="n">regfit.full</span> <span class="o">=</span> <span class="nf">regsubsets</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.</span><span class="p">,</span> <span class="nf">select</span><span class="p">(</span><span class="n">Hitters</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="n">AtBat</span><span class="p">,</span><span class="n">Hits</span><span class="p">,</span><span class="n">HmRun</span><span class="p">,</span><span class="n">Salary</span><span class="p">,</span><span class="n">Assists</span><span class="p">)))</span> <span class="c1">#use every variable EXCEPT salary as a predictor</span>
-<span class="nf">summary</span><span class="p">(</span><span class="n">regfit.full</span><span class="p">)</span> <span class="c1"># Asterisks indicate that a field is included in the model</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#use every variable EXCEPT salary as a predictor</span>
+<span class="n">regfit.full</span> <span class="o">=</span> <span class="nf">regsubsets</span><span class="p">(</span><span class="n">Salary</span> <span class="o">~</span> <span class="n">.</span><span class="p">,</span> 
+                         <span class="n">data</span> <span class="o">=</span> <span class="nf">select</span><span class="p">(</span><span class="n">Hitters</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="n">AtBat</span><span class="p">,</span> <span class="n">Hits</span><span class="p">,</span> <span class="n">HmRun</span><span class="p">,</span> <span class="n">Salary</span><span class="p">,</span> <span class="n">Assists</span><span class="p">)))</span> 
+<span class="nf">summary</span><span class="p">(</span><span class="n">regfit.full</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Subset selection object
-Call: regsubsets.formula(Salary ~ ., select(Hitters, c(AtBat, Hits, 
-    HmRun, Salary, Assists)))
+Call: regsubsets.formula(Salary ~ ., data = select(Hitters, c(AtBat, 
+    Hits, HmRun, Salary, Assists)))
 4 Variables  (and intercept)
         Forced in Forced out
 AtBat       FALSE      FALSE
@@ -1145,8 +1145,7 @@ Selection Algorithm: exhaustive
 </div>
 </div>
 </div>
-<p>Because there were so few variables to worry about, the exhaustive algorithm was used. The table with asterisks and quotes shows the best model for each level of complexity.</p>
-<p>The asterisks indicate when a variable is included in the model. The way to interpret this summary is that each row indicates the variables to include with models of increasing complexity. The first row is a one-dimensional model (i.e., 1 variable, only includes <code class="docutils literal notranslate"><span class="pre">Hits</span></code>). The second row is a two-dimensional model and so on.</p>
+<p>The grid of asterisks indicate when a variable is included in the model. The way to interpret this summary is that each row indicates the variables to include with models of increasing complexity. The first row is a one-dimensional model (i.e., 1 variable, only includes <code class="docutils literal notranslate"><span class="pre">Hits</span></code>). The second row is a two-dimensional model (<code class="docutils literal notranslate"><span class="pre">Hits</span></code> and <code class="docutils literal notranslate"><span class="pre">HmRun</span></code>) and so on.</p>
 <p>You may have also noticed the <code class="docutils literal notranslate"><span class="pre">Forced</span> <span class="pre">in</span></code> and <code class="docutils literal notranslate"><span class="pre">Forced</span> <span class="pre">out</span></code> columns. This reflects whether you have manually included or excluded variables in the subset selection. For example, if I excluded <code class="docutils literal notranslate"><span class="pre">AtBat</span></code>, then the <code class="docutils literal notranslate"><span class="pre">Forced</span> <span class="pre">out</span></code> colum for that variable would read <code class="docutils literal notranslate"><span class="pre">True</span></code>. I technically forced out most of the variables, but since that was done using <code class="docutils literal notranslate"><span class="pre">select()</span></code> instead of the <code class="docutils literal notranslate"><span class="pre">force.out</span></code> functionality of regsubsets, those variables aren’t reported here.</p>
 <p>Now let’s run <code class="docutils literal notranslate"><span class="pre">regsubsets()</span></code> again using all 19 variables (other than <code class="docutils literal notranslate"><span class="pre">Salary</span></code>, which is our outcome).</p>
 <div class="cell docutils container">
@@ -1293,8 +1292,10 @@ Selection Algorithm: exhaustive
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Uncomment the model fit measures you want to look at. </span>
 
-<span class="n">numvar</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">reg.summary</span><span class="o">$</span><span class="n">rss</span><span class="p">)</span><span class="c1"># Make a vector that lists the number of variables in sequence, from 1 to 19. </span>
-<span class="n">allfalse</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="kc">FALSE</span><span class="p">,</span><span class="nf">length</span><span class="p">(</span><span class="n">reg.summary</span><span class="o">$</span><span class="n">rss</span><span class="p">))</span><span class="c1"># Starting point for an indicator that marks the best model choice for each metric.</span>
+<span class="c1"># A vector that lists the number of variables in sequence, from 1 to 19.</span>
+<span class="n">numvar</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">reg.summary</span><span class="o">$</span><span class="n">rss</span><span class="p">)</span> 
+<span class="c1"># Starting point for an indicator that marks best model choice for each metric.</span>
+<span class="n">allfalse</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="kc">FALSE</span><span class="p">,</span><span class="nf">length</span><span class="p">(</span><span class="n">reg.summary</span><span class="o">$</span><span class="n">rss</span><span class="p">))</span>
 
 <span class="c1"># #rss</span>
 <span class="c1"># rss.df &lt;- data.frame(numvar = numvar, rss = reg.summary$rss, minrss = allfalse)</span>
@@ -1361,8 +1362,8 @@ Hits, Walks, CRBI, DivisionW, and PutOuts.</p>
 <div class="output text_html">6</div><div class="output text_html">11</div><div class="output text_html">10</div></div>
 </div>
 <p>Right now, there’s a clear discrepancy in fit among the bias-adjusted model evaluations. How could we use cross-validation to help determine which model is best? (<em>Note: if you’d like to predict outputs from models in <code class="docutils literal notranslate"><span class="pre">regsubsets</span></code>, see pg 248-250 of the James textbook.</em>)</p>
-<p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
-</section>
+<p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, Amy Sentis and Fiona Horner.</em></p>
+</div>
 
     <script type="text/x-thebe-config">
     {

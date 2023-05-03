@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutorial: Basic ridge and LASSO models &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -1051,36 +1050,32 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-basic-ridge-and-lasso-models">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-basic-ridge-and-lasso-models">
 <h1>Tutorial: Basic ridge and LASSO models<a class="headerlink" href="#tutorial-basic-ridge-and-lasso-models" title="Permalink to this headline">#</a></h1>
 <p>This lab dives deeper into ridge regression and LASSO and how to implement these tehcniques in R.</p>
-<section id="goals">
+<div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Learn to use the <code class="docutils literal notranslate"><span class="pre">glmnet</span></code> function.</p></li>
 <li><p>Understand that hyperparameter selection should also be validated.</p></li>
 </ul>
 <p>This lab draws from the practice sets at the end of Chapter 6 in James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2013). “An introduction to statistical learning: with applications in r.”</p>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="ridge-regression">
+<div class="tex2jax_ignore mathjax_ignore section" id="ridge-regression">
 <h1>Ridge Regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">#</a></h1>
 <p>For this tutorial we will load the <a class="reference external" href="https://vincentarelbundock.github.io/Rdatasets/doc/ISLR/Hitters.html">Hitters (baseball) dataset</a> included in ISLR.</p>
 <p>Ridge regression is made easy with the <a class="reference external" href="https://cran.r-project.org/web/packages/glmnet/glmnet.pdf"><code class="docutils literal notranslate"><span class="pre">glmnet</span></code> package</a>, so we’ll install that to start.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;ISLR&quot;</span><span class="p">)</span> <span class="c1"># uncomment if you haven&#39;t installed this library</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#install.packages(&quot;ISLR&quot;) # uncomment if you haven&#39;t installed this library</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">ISLR</span><span class="p">)</span>
 <span class="nf">names</span><span class="p">(</span><span class="n">Hitters</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing package into ‘/usr/local/lib/R/site-library’
-(as ‘lib’ is unspecified)
-</pre></div>
-</div>
 <div class="output text_html"><style>
 .list-inline {list-style: none; margin:0; padding: 0}
 .list-inline>li {display: inline-block}
@@ -1091,21 +1086,8 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;glmnet&quot;</span><span class="p">,</span> <span class="n">dependencies</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span> <span class="c1"># uncomment if you haven&#39;t installed this library</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#install.packages(&quot;glmnet&quot;, dependencies = TRUE)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">glmnet</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing package into ‘/usr/local/lib/R/site-library’
-(as ‘lib’ is unspecified)
-
-also installing the dependencies ‘iterators’, ‘foreach’, ‘shape’, ‘lars’
-
-
-Loading required package: Matrix
-
-Loaded glmnet 4.1-1
 </pre></div>
 </div>
 </div>
@@ -1114,8 +1096,8 @@ Loaded glmnet 4.1-1
 <p>Let’s start by establishing the range of <span class="math notranslate nohighlight">\(\lambda\)</span> values we’ll be considering.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use a non-linear search on lambda</span>
-<span class="n">lambda_search_space</span> <span class="o">=</span> <span class="m">10</span><span class="o">^</span><span class="nf">seq</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">-2</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="m">100</span><span class="p">)</span> <span class="c1">#create a search space from (10^10):(10^-2), 100 samples long</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#create a search space from (10^10):(10^-2), 100 samples long</span>
+<span class="n">lambda_search_space</span> <span class="o">=</span> <span class="m">10</span><span class="o">^</span><span class="nf">seq</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">-2</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="m">100</span><span class="p">)</span> 
 <span class="nf">plot</span><span class="p">(</span><span class="n">lambda_search_space</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;sample&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="s">&quot;lambda&quot;</span><span class="p">)</span>
 
 <span class="c1">#this will span a range of models, from the null model containing only the intercept (lambda = 10^10, extremely sparse)</span>
@@ -1127,15 +1109,15 @@ Loaded glmnet 4.1-1
 <img alt="../_images/regularized-regression_5_0.png" src="../_images/regularized-regression_5_0.png" />
 </div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">glmnet</span></code> package requires that you use matrices instead of dataframes, and that x and y are specified separately. So let’s select x and y.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">glmnet</span></code> package requires that you use matrices instead of dataframes, and that x and y are specified separately. The <code class="docutils literal notranslate"><span class="pre">model_matrix()</span></code> function can help us do this. Below, we tell it to make a matrix <code class="docutils literal notranslate"><span class="pre">x</span></code> from all the predictors (<code class="docutils literal notranslate"><span class="pre">.</span></code>) of our outcome (<code class="docutils literal notranslate"><span class="pre">Salary</span></code>) in the <code class="docutils literal notranslate"><span class="pre">Hitters</span></code> dataset. By default, it will create an intercept column (full of ones) so we deselect that using indexing. The <code class="docutils literal notranslate"><span class="pre">model.matrix</span></code> function also automatically transforms qualitative variables into dummy variables and gets rid of NAs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define x without the first column</span>
 <span class="n">x</span> <span class="o">=</span> <span class="nf">model.matrix</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.</span><span class="p">,</span> <span class="n">Hitters</span><span class="p">)[,</span><span class="m">-1</span><span class="p">]</span> <span class="c1">#without first intercept column</span>
-<span class="c1">#the model.matrix function also automatically transforms qualitative variables</span>
-<span class="c1">#into dummy variables and gets rid of NAs</span>
 
-<span class="n">y</span> <span class="o">=</span> <span class="n">Hitters</span><span class="o">$</span><span class="n">Salary</span><span class="p">[</span><span class="o">!</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">Hitters</span><span class="o">$</span><span class="n">Salary</span><span class="p">))]</span> <span class="c1">#selecting y from the dataframe - get rid of NAs so that rows are matched with those in x</span>
+<span class="c1"># selecting y from the dataframe</span>
+<span class="c1"># get rid of NAs so that rows are matched with those in x</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">Hitters</span><span class="o">$</span><span class="n">Salary</span><span class="p">[</span><span class="o">!</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">Hitters</span><span class="o">$</span><span class="n">Salary</span><span class="p">))]</span> 
 </pre></div>
 </div>
 </div>
@@ -1148,11 +1130,10 @@ Loaded glmnet 4.1-1
 </div>
 </div>
 </div>
-<p>Ridge regression returns all <em>p</em> variables for each value of <span class="math notranslate nohighlight">\(\lambda\)</span>. Thus we get a matrix of regression coefficients instead of a vector.</p>
+<p>Ridge regression returns all <em>p</em> variables for each value of <span class="math notranslate nohighlight">\(\lambda\)</span>. Thus we get a matrix of regression coefficients instead of a vector. The output is really ugly and hard to interpret, but we can get a sense of it by looking at the dimensions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="nf">coef</span><span class="p">(</span><span class="n">ridge.mod</span><span class="p">))</span> <span class="c1">#this gives 20 rows (one for each predictor, plus a new intercept)</span>
-<span class="c1">#and 100 columns, one for each value of lambda in the search space</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="nf">coef</span><span class="p">(</span><span class="n">ridge.mod</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1165,6 +1146,7 @@ Loaded glmnet 4.1-1
 <ol class=list-inline><li>20</li><li>100</li></ol>
 </div></div>
 </div>
+<p>We can see it gives us 20 rows (one for each predictor) and 100 columns (one for each value of lambda in the search space).</p>
 <p>Let’s look at all 20 coefficients (including the intercept) when <span class="math notranslate nohighlight">\(\lambda = 11497.57\)</span> (i.e., the 50th entry in the <span class="math notranslate nohighlight">\(\lambda\)</span> vector)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1214,7 +1196,8 @@ Loaded glmnet 4.1-1
 <span class="n">y.test</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">test</span><span class="p">]</span>
 
 <span class="c1"># Make a training model using the training set (for all values of lambda)</span>
-<span class="n">ridge.mod</span> <span class="o">=</span> <span class="nf">glmnet</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">train</span><span class="p">,],</span> <span class="n">y</span><span class="p">[</span><span class="n">train</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="m">0</span><span class="p">,</span> <span class="n">lambda</span><span class="o">=</span><span class="n">lambda_search_space</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="m">1e-12</span><span class="p">)</span> <span class="c1">#threshold specifies the convergence criterion</span>
+<span class="c1"># Note: threshold specifies the convergence criterion</span>
+<span class="n">ridge.mod</span> <span class="o">=</span> <span class="nf">glmnet</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">train</span><span class="p">,],</span> <span class="n">y</span><span class="p">[</span><span class="n">train</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="m">0</span><span class="p">,</span> <span class="n">lambda</span><span class="o">=</span><span class="n">lambda_search_space</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="m">1e-12</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
@@ -1241,9 +1224,9 @@ Loaded glmnet 4.1-1
 <div class="output text_html">224669.833069663</div><div class="output text_html">142199.150722761</div><div class="output text_html">167789.778381119</div></div>
 </div>
 <p>When <span class="math notranslate nohighlight">\(\lambda\)</span> was large, the MSE was worse than OLS. When it’s smaller (but not 0), it improves upon the OLS MSE. Hence we need to maximize the bias-variance tradeoff.</p>
-</section>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="an-important-note-about-validation-and-test-sets">
+<div class="tex2jax_ignore mathjax_ignore section" id="an-important-note-about-validation-and-test-sets">
 <h1>An important note about validation and test sets<a class="headerlink" href="#an-important-note-about-validation-and-test-sets" title="Permalink to this headline">#</a></h1>
 <p>Remember, if we want to test the predictive utility of a model, it’s important to separate estimates from training and test data. We did this above at a basic level, for the glm regression variables. But this separation should also include the model and variable selection step (i.e., in this context, <span class="math notranslate nohighlight">\(\lambda\)</span>).
 So, the determination of which model is best must be made using training and test observations separate from the estimation of the general linear model. If we use the same data to perform best subset selection as we do to estimate and/or test our final model, then the estimate of test error will be contaminated.</p>
@@ -1327,13 +1310,13 @@ So, the determination of which model is best must be made using training and tes
 </div>
 </div>
 </div>
-</section>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="lasso">
+<div class="tex2jax_ignore mathjax_ignore section" id="lasso">
 <h1>LASSO<a class="headerlink" href="#lasso" title="Permalink to this headline">#</a></h1>
 <p>In order to run LASSO, you repeat the same steps as shown in the example above but replace alpha=0 with alpha=1. Try re-running the cells above with LASSO instead of ridge regression and see how it changes!</p>
-<p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
-</section>
+<p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, Amy Sentis and Fiona Horner.</em></p>
+</div>
 
     <script type="text/x-thebe-config">
     {

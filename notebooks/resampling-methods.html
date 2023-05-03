@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutorial: Boostrap and permutation tests &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -1051,10 +1050,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-boostrap-and-permutation-tests">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-boostrap-and-permutation-tests">
 <h1>Tutorial: Boostrap and permutation tests<a class="headerlink" href="#tutorial-boostrap-and-permutation-tests" title="Permalink to this headline">#</a></h1>
 <p>In this lab we will go over bootstrapping and permutation resampling methods.</p>
-<section id="goals">
+<div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Learn to use the <code class="docutils literal notranslate"><span class="pre">boot()</span></code> function</p></li>
@@ -1063,10 +1062,10 @@ title="Print to PDF"
 <li><p>Quantify the sampling distribution of a statistic via bootstrapping (construct confidence intervals for your results)</p></li>
 </ul>
 <p>This lab draws from the practice sets at the end of Chapter 5 in James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2013). “An introduction to statistical learning: with applications in r.”</p>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="a-reminder-of-the-difference-between-bootstrapping-and-permutation-testing">
+<div class="tex2jax_ignore mathjax_ignore section" id="a-reminder-of-the-difference-between-bootstrapping-and-permutation-testing">
 <h1>A reminder of the difference between bootstrapping and permutation testing<a class="headerlink" href="#a-reminder-of-the-difference-between-bootstrapping-and-permutation-testing" title="Permalink to this headline">#</a></h1>
 <p>Both bootstrapping and permutation testing rely on randomization methods. However, their purposes are different, and often confused with each other.</p>
 <p><strong>Bootstrapping:</strong></p>
@@ -1083,27 +1082,22 @@ title="Print to PDF"
 </ul>
 <p>These methods are useful if you need <strong>non-parametric</strong> estimates of uncertainty for a given statistic (bootstrapping) or if you need a non-parametric way of testing your hypotheses (permutation). In other words, if you don’t want to risk making assumptions about the functional form of your data during uncertainty estimation or hypothesis testing, these randomization methods are for you.</p>
 <p>However, keep in mind that there are cons (and assumptions) associated with non-parametric methods. For example, one major limitation of bootstrapping is that you must make the assumption that your data contains variability similar to the kind of variability you might see when you sample new datasets in the wild, given the same statistical model, to make inferential interpretations. See <a class="reference external" href="http://pillowlab.princeton.edu/teaching/mathtools16/slides/lec21_Bootstrap.pdf">here</a> and <a class="reference external" href="http://evolution.gs.washington.edu/gs560/2011/lecture8.pdf">here</a> for more information.</p>
-</section>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="bootstrapping">
+<div class="tex2jax_ignore mathjax_ignore section" id="bootstrapping">
 <h1>Bootstrapping<a class="headerlink" href="#bootstrapping" title="Permalink to this headline">#</a></h1>
 <p>First, let’s load the <code class="docutils literal notranslate"><span class="pre">ISLR</span></code> library to get the <code class="docutils literal notranslate"><span class="pre">Auto</span></code> dataset, and the <code class="docutils literal notranslate"><span class="pre">boot</span></code> library so we can use the <code class="docutils literal notranslate"><span class="pre">boot()</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;ISLR&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#install.packages(&quot;ISLR&quot;)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">ISLR</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">boot</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing package into ‘/usr/local/lib/R/site-library’
-(as ‘lib’ is unspecified)
-</pre></div>
 </div>
-</div>
-</div>
-<p>When bootstrapping, we can write our own functions for maximum flexibility. <a class="reference external" href="https://swcarpentry.github.io/r-novice-inflammation/02-func-R/">See here for more on writing your own functions in R</a>. We want a function that takes two inputs (a data set and an index of observations) and returns the parameter of interest. In this example, we’ll look at the regression coefficients for the model predicting <code class="docutils literal notranslate"><span class="pre">mpg</span></code> (miles per gallon) from <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>.</p>
+<p>When bootstrapping, we can write our own functions for maximum flexibility. (Review the tutorial from the <a class="reference external" href="https://coaxlab.github.io/Data-Explorations/notebooks/models-as-testable-hypotheses.html">Models as Testable Hypotheses</a> lesson for info on writing functions in R.)</p>
+<p>We want a function that takes two inputs: a <code class="docutils literal notranslate"><span class="pre">data</span></code> set and an <code class="docutils literal notranslate"><span class="pre">index</span></code> of observations, and then returns the parameter of interest. In this example, we’ll look at the regression coefficients for the model predicting <code class="docutils literal notranslate"><span class="pre">mpg</span></code> (miles per gallon) from <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>. But remember, you can bootstrap any statistic of interest!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># The function needs two inputs: Data, Index</span>
@@ -1143,17 +1137,18 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>Now we can use the <code class="docutils literal notranslate"><span class="pre">boot()</span></code> function, included in the <code class="docutils literal notranslate"><span class="pre">boot</span></code> library, to randomly sample <em>with replacement</em> to generate a confidence interval on the regression coefficient. We’ll just test it out with 1000 iterations (set using the <em>R</em> value as an input)</p>
+<p>Now we can use the <code class="docutils literal notranslate"><span class="pre">boot()</span></code> function, included in the <code class="docutils literal notranslate"><span class="pre">boot</span></code> library, to <strong>randomly sample with replacement</strong> to generate a confidence interval on the regression coefficient. We’ll just test it out with 1000 iterations (set using the <em>R</em> value as an input)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#?boot # uncomment to learn more about the boot() function</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># uncomment to learn more about the boot() function</span>
+<span class="c1"># ?boot</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">boot_obj</span> <span class="o">=</span> <span class="nf">boot</span><span class="p">(</span><span class="n">Auto</span> <span class="p">,</span><span class="n">boot.fn</span> <span class="p">,</span><span class="n">R</span><span class="o">=</span><span class="m">1000</span><span class="p">)</span> <span class="c1">#R=repetitions </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">boot_obj</span> <span class="o">=</span> <span class="nf">boot</span><span class="p">(</span><span class="n">Auto</span><span class="p">,</span> <span class="n">boot.fn</span><span class="p">,</span> <span class="n">R</span><span class="o">=</span><span class="m">1000</span><span class="p">)</span> <span class="c1">#R=repetitions </span>
 <span class="nf">print</span><span class="p">(</span><span class="n">boot_obj</span><span class="p">)</span> <span class="c1">#t1 is the intercept and t2 is the horsepower coeff.</span>
 </pre></div>
 </div>
@@ -1168,8 +1163,8 @@ boot(data = Auto, statistic = boot.fn, R = 1000)
 
 Bootstrap Statistics :
       original        bias    std. error
-t1* 39.9358610  0.0337235546 0.869718268
-t2* -0.1578447 -0.0003595084 0.007482048
+t1* 39.9358610 -3.975686e-03 0.832069278
+t2* -0.1578447 -2.689216e-05 0.007297162
 </pre></div>
 </div>
 </div>
@@ -1204,28 +1199,53 @@ t2* -0.1578447 -0.0003595084 0.007482048
 </dl>
 </div></div>
 </div>
-<p>Here the standard error estimate of the two regression coefficients (one for the intercept and one for <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>) are calculated from the 1000 bootstrapped experiments on the data set. We can see the output from each of the 1000 iterations as well (below we’ll plot just for <span class="math notranslate nohighlight">\(\hat{\beta}_{horsepower}\)</span>, since that’s more interesting coefficient).</p>
+<p>Here the standard error estimate of the two regression coefficients (one for the intercept and one for <code class="docutils literal notranslate"><span class="pre">horsepower</span></code>) are calculated from the 1000 bootstrapped experiments on the data set. You can access these 1000 estimates by calling the <code class="docutils literal notranslate"><span class="pre">t</span></code> object – here this has two columns, one for each parameter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">hist</span><span class="p">(</span><span class="nf">boot</span><span class="p">(</span><span class="n">Auto</span> <span class="p">,</span><span class="n">boot.fn</span> <span class="p">,</span><span class="n">R</span><span class="o">=</span><span class="m">1000</span><span class="p">)</span><span class="o">$</span><span class="n">t</span><span class="p">[,</span><span class="m">2</span><span class="p">],</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Horsepower coefficient&quot;</span><span class="p">)</span> <span class="c1">#we get a distribution of all of the estimates</span>
-<span class="c1">#                               ^^ indexing the second &quot;t&quot; value</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># first 6 estimates (out of 1000) for each beta</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">boot_obj</span><span class="o">$</span><span class="n">t</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/resampling-methods_15_0.png" src="../_images/resampling-methods_15_0.png" />
+<div class="output text_html"><table class="dataframe">
+<caption>A matrix: 6 × 2 of type dbl</caption>
+<tbody>
+	<tr><td>40.23281</td><td>-0.1589410</td></tr>
+	<tr><td>42.06411</td><td>-0.1733246</td></tr>
+	<tr><td>39.90458</td><td>-0.1594424</td></tr>
+	<tr><td>40.42686</td><td>-0.1656426</td></tr>
+	<tr><td>39.42925</td><td>-0.1538178</td></tr>
+	<tr><td>37.23158</td><td>-0.1373298</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>And we can plot these estimates to visualize the distribution (below we’ll plot just for <span class="math notranslate nohighlight">\(\hat{\beta}_{horsepower}\)</span>, since that’s more interesting coefficient).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">hist</span><span class="p">(</span><span class="nf">boot</span><span class="p">(</span><span class="n">Auto</span><span class="p">,</span> <span class="n">boot.fn</span> <span class="p">,</span><span class="n">R</span><span class="o">=</span><span class="m">1000</span><span class="p">)</span><span class="o">$</span><span class="n">t</span><span class="p">[,</span><span class="m">2</span><span class="p">],</span> <span class="c1">#indexing 2nd column</span>
+     <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Horsepower coefficient&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/resampling-methods_17_0.png" src="../_images/resampling-methods_17_0.png" />
 </div>
 </div>
 <p>Now let’s compare these results to the original model where we don’t bootstrap.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parametric model</span>
-<span class="nf">summary</span><span class="p">(</span><span class="nf">lm</span><span class="p">(</span><span class="n">mpg</span><span class="o">~</span><span class="n">horsepower</span> <span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">Auto</span><span class="p">))</span><span class="o">$</span><span class="n">coef</span>
+<span class="nf">summary</span><span class="p">(</span><span class="nf">lm</span><span class="p">(</span><span class="n">mpg</span><span class="o">~</span><span class="n">horsepower</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Auto</span><span class="p">))</span><span class="o">$</span><span class="n">coef</span>
+
+<span class="c1"># boot estimate</span>
+<span class="n">boot_obj</span><span class="o">$</span><span class="n">t0</span><span class="p">[</span><span class="m">2</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><table>
+<div class="output text_html"><table class="dataframe">
 <caption>A matrix: 2 × 4 of type dbl</caption>
 <thead>
 	<tr><th></th><th scope=col>Estimate</th><th scope=col>Std. Error</th><th scope=col>t value</th><th scope=col>Pr(&gt;|t|)</th></tr>
@@ -1235,12 +1255,12 @@ t2* -0.1578447 -0.0003595084 0.007482048
 	<tr><th scope=row>horsepower</th><td>-0.1578447</td><td>0.006445501</td><td>-24.48914</td><td> 7.031989e-81</td></tr>
 </tbody>
 </table>
-</div></div>
+</div><div class="output text_html"><strong>horsepower:</strong> -0.157844733353654</div></div>
 </div>
 <p>Notice that they produce qualitatively similar results in this case: the parametric estimate and the bootstrapped estimate are both about -0.1578. When the data fit the assumptions of the parametric linear regression model, the bootstrapped estimates will converge to the parametric ones.</p>
-</section>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="permutation-tests">
+<div class="tex2jax_ignore mathjax_ignore section" id="permutation-tests">
 <h1>Permutation tests<a class="headerlink" href="#permutation-tests" title="Permalink to this headline">#</a></h1>
 <p>Remember, that the goal of permutation tests is to use resampling <em>without replacement</em>. By doing this you define the specific null that you want to test and generate a random relationship with which to calculate <span class="math notranslate nohighlight">\(P(X|H_0)\)</span>. For this we can just use a simple <em>for loop</em>. But first, we need to define what our null is. Here let’s define our null as being that there is no relationship between <code class="docutils literal notranslate"><span class="pre">horsepower</span></code> and <code class="docutils literal notranslate"><span class="pre">mpg</span></code>. In other words
 $<span class="math notranslate nohighlight">\(H_0 : \hat{\beta}_{horsepower} = 0\)</span>$</p>
@@ -1254,14 +1274,16 @@ $<span class="math notranslate nohighlight">\(H_0 : \hat{\beta}_{horsepower} = 0
 <span class="c1"># Set the number of iterations</span>
 <span class="n">R</span><span class="o">=</span><span class="m">1000</span>
 
-<span class="c1"># Next smake an output object to store the results</span>
+<span class="c1"># Next make an output object to store the results</span>
 <span class="n">perm.coefs</span><span class="o">=</span><span class="nf">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="n">nrow</span><span class="o">=</span><span class="n">R</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="m">2</span><span class="p">)</span> <span class="c1">#filling with nas at first</span>
 
 <span class="c1"># Now just write a for loop where we scramble the observations</span>
-<span class="c1"># in X using the sample() function. We&#39;ll scramble the observations in R different ways</span>
+<span class="c1"># in X using the sample() function. </span>
 <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">R</span><span class="p">){</span>
-  <span class="n">permAuto</span><span class="o">$</span><span class="n">horsepower</span><span class="o">=</span><span class="n">Auto</span><span class="o">$</span><span class="n">horsepower</span><span class="p">[</span><span class="nf">sample</span><span class="p">(</span><span class="m">392</span><span class="p">)]</span> <span class="c1"># This is a shuffled version of the Auto$horsepower vector</span>
-  <span class="n">perm.coefs</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span><span class="o">=</span><span class="nf">coef</span><span class="p">(</span><span class="nf">lm</span><span class="p">(</span><span class="n">mpg</span><span class="o">~</span><span class="n">horsepower</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">permAuto</span><span class="p">))</span> <span class="c1"># then we get coefficients for linear model of shuffled horsepower to auto</span>
+  <span class="c1"># This is a shuffled version of the Auto$horsepower vector:</span>
+  <span class="n">permAuto</span><span class="o">$</span><span class="n">horsepower</span><span class="o">=</span><span class="n">Auto</span><span class="o">$</span><span class="n">horsepower</span><span class="p">[</span><span class="nf">sample</span><span class="p">(</span><span class="m">392</span><span class="p">)]</span> 
+  <span class="c1"># then we get coeffs for linear model of shuffled horsepower to auto</span>
+  <span class="n">perm.coefs</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span><span class="o">=</span><span class="nf">coef</span><span class="p">(</span><span class="nf">lm</span><span class="p">(</span><span class="n">mpg</span><span class="o">~</span><span class="n">horsepower</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">permAuto</span><span class="p">))</span> 
 <span class="p">}</span>
 
 <span class="c1"># Take a look at the null distributions</span>
@@ -1270,7 +1292,7 @@ $<span class="math notranslate nohighlight">\(H_0 : \hat{\beta}_{horsepower} = 0
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/resampling-methods_20_0.png" src="../_images/resampling-methods_20_0.png" />
+<img alt="../_images/resampling-methods_22_0.png" src="../_images/resampling-methods_22_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1290,7 +1312,8 @@ $<span class="math notranslate nohighlight">\(H_0 : \hat{\beta}_{horsepower} = 0
 </style><dl class=dl-inline><dt>(Intercept)</dt><dd>39.9358610211705</dd><dt>horsepower</dt><dd>-0.157844733353654</dd></dl>
 </div></div>
 </div>
-<p>Notice that the real effect (-0.16) is <em>much</em> larger than the range of coefficient estimates we see for the permuted datasets - it falls outside the range of values in our empirically derived null distribution. But instead of eyeballing it, we can <strong>empirically calculate</strong> the probability of observing a stronger (i.e., more negative) effect. What is the probability of observing a stronger negative effect than -0.16 due to chance?</p>
+<p>Notice that the real effect (-0.16) is <em>much</em> larger than the range of coefficient estimates we see for the permuted datasets - it falls outside the range of values in our empirically derived null distribution. But instead of eyeballing it, we can <strong>empirically calculate</strong> the probability of observing a stronger (i.e., more negative) effect (this is an empirical p-value!).</p>
+<p>What is the probability of observing a stronger negative effect than -0.16 due to chance?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#sum the coefficients less than the real coefficient estimate </span>
@@ -1304,8 +1327,8 @@ $<span class="math notranslate nohighlight">\(H_0 : \hat{\beta}_{horsepower} = 0
 <div class="output text_html">0</div></div>
 </div>
 <p>So we do not see any permuted models that produce results that overlap with the results from the  intact model. We can reject the null hypothesis that the <span class="math notranslate nohighlight">\(\beta\)</span> estimate for the miles per gallon and horsepower is zero.</p>
-<p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
-</section>
+<p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, Amy Sentis, and Fiona Horner.</em></p>
+</div>
 
     <script type="text/x-thebe-config">
     {

@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutorial: Running linear mixed effects models &#8212; Data explorations</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -1029,19 +1028,19 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-running-linear-mixed-effects-models">
+  <div class="tex2jax_ignore mathjax_ignore section" id="tutorial-running-linear-mixed-effects-models">
 <h1>Tutorial: Running linear mixed effects models<a class="headerlink" href="#tutorial-running-linear-mixed-effects-models" title="Permalink to this headline">#</a></h1>
 <p>This lab delves into mixed-effects models and their implementation in R.</p>
-<section id="goals">
+<div class="section" id="goals">
 <h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Learn how to use the <code class="docutils literal notranslate"><span class="pre">lmer()</span></code> function</p></li>
 </ul>
 <p>This tutorial draws from Chapter 1 in Bates, D., Maechler, M., Bolker, B., &amp; Walker, S. (2014). “lme4: Linear mixed-effects models using Eigen and S4”. R package version:, 1(7), 1-23.</p>
-</section>
-</section>
+</div>
+</div>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="linear-mixed-effects-models">
+<div class="tex2jax_ignore mathjax_ignore section" id="linear-mixed-effects-models">
 <h1>Linear mixed-effects models<a class="headerlink" href="#linear-mixed-effects-models" title="Permalink to this headline">#</a></h1>
 <p>Linear mixed-effects models let you account for correlations among your observations and variation due to variables other than those of interest (like <em>participant</em> or <em>classroom</em>). Let’s see how we can use the linear mixed-effects tools in R.</p>
 <p>To get started, we will need to install the <a class="reference external" href="https://cran.r-project.org/web/packages/lme4/lme4.pdf">lme4</a> library in R.</p>
@@ -1264,7 +1263,7 @@ Days -0.371
 </div>
 <p>As you might have expected, <code class="docutils literal notranslate"><span class="pre">me.fit1</span></code> has the lowest AIC, and so seems to be the best model choice for the data. The difference in AIC between <code class="docutils literal notranslate"><span class="pre">fe.fit</span></code> and the other two models is quite big, which means that the mixed-effects models account for substantially more variance in reaction time than the simple linear model, even after accounting for increased complexity.</p>
 <p><em>Notebook authored by Ven Popov, and edited by Krista Bond, Charles Wu, Patience Stevens, Amy Sentis, and Fiona Horner.</em></p>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {
