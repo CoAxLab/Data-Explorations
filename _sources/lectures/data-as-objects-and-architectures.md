@@ -3,12 +3,11 @@
 
 ## Required readings
 
-- Wickham, H. (2014). Tidy data. Journal of Statistical Software, 59(10), 1-23.
-Gorgolewski, K. J., Auer, T., Calhoun, V. D., Craddock, R. C., Das, S., Duff, E. P., ... & Handwerker,
+[Wickham, H. (2014). Tidy data. Journal of Statistical Software, 59(10), 1-23.](https://www.jstatsoft.org/article/view/v059i10)
 
-- D. A. (2016). The brain imaging data structure, a format for organizing and describing outputs of neuroimaging experiments. Scientific data, 3(1), 1-9.
+[Gorgolewski, K. J., Auer, T., Calhoun, V. D., Craddock, R. C., Das, S., Duff, E. P., ... & Handwerker, D. A. (2016). The brain imaging data structure, a format for organizing and describing outputs of neuroimaging experiments. Scientific data, 3(1), 1-9.](https://www.nature.com/articles/sdata201644)
 
-*Supplemental reading:* Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. " O'Reilly Media, Inc.".
+*Supplemental reading:* [Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. " O'Reilly Media, Inc.".](https://r4ds.had.co.nz/)
 
 ## Lecture (Video)
 

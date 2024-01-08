@@ -3,7 +3,7 @@
 
 ## Required readings
 
-- Preacher, K. J., & Hayes, A. F. (2008). Asymptotic and resampling strategies for assessing and comparing indirect effects in multiple mediator models. Behavior research methods, 40(3), 879-891.
+[Preacher, K. J., & Hayes, A. F. (2008). Asymptotic and resampling strategies for assessing and comparing indirect effects in multiple mediator models. Behavior research methods, 40(3), 879-891.](https://link.springer.com/article/10.3758/BRM.40.3.879)
 
 ## Lecture (Video)
 
