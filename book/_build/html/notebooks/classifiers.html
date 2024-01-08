@@ -1,48 +1,59 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Tutorial: Basics classifiers &#8212; Data explorations</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -52,61 +63,93 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/classifiers';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Discussion questions" href="../discussions/classifiers.html" />
     <link rel="prev" title="Classifiers" href="../lectures/classifiers.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/information.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Data explorations</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/information.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/information.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -115,961 +158,453 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Information and Meaning
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Information and Meaning</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/quantitative-epistemology.html">
-   Quantitative epsitemology
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="quantitative-epistemology.html">
-     Tutorial: Getting started
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/quantitative-epistemology.html">
-     Discussion questions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/the-value-of-openness.html">
-   The value of openness
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="the-value-of-openness.html">
-     Tutorial: Repositories and version control
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/the-value-of-openness.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/the-value-of-openness.html">
-     Exercise 1: Github &amp; Jupyter
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/what-is-a-theory.html">
-   What is a theory?
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/what-is-a-theory.html">
-     Discussion questions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/models-as-testable-hypotheses.html">
-   Models as testable hypotheses
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="models-as-testable-hypotheses.html">
-     Tutorial: Introduction to R, functions, and good coding habits
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/models-as-testable-hypotheses.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/models-as-testable-hypotheses.html">
-     Exercise 2: Coding Habits &amp; Functions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/data-as-objects-and-architectures.html">
-   Data as objects and architectures
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="data-as-objects-and-architectures.html">
-     Tutorial: Data as Objects and Tidy Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/data-as-objects-and-architectures.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/data-as-objects-and-architectures.html">
-     Exercise 3: Data objects
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/techniques-for-data-cleansing.html">
-   Techniques for data cleansing
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="techniques-for-data-cleansing.html">
-     Tutorial: Data Cleansing and the Tidyverse
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/techniques-for-data-cleansing.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/techniques-for-data-cleansing.html">
-     Exercise 4: Data tables and manipulation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/visualization-as-analysis.html">
-   Visualization as analysis
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="visualization-as-analysis.html">
-     Tutorial: Basics of plotting
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/visualization-as-analysis.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/visualization-as-analysis.html">
-     Exercise 5: Using ggplot
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/visualization-through-human-eyes.html">
-   Visualization through human eyes
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="visualization-through-human-eyes.html">
-     Tutorial: More advanced plotting
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/visualization-through-human-eyes.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/visualization-through-human-eyes.html">
-     Exercise 6: More plotting options
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/quantitative-epistemology.html">Quantitative epsitemology</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quantitative-epistemology.html">Tutorial: Getting started</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/quantitative-epistemology.html">Discussion questions</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Knowledge
- </span>
-</p>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/the-value-of-openness.html">The value of openness</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="the-value-of-openness.html">Tutorial: Repositories and version control</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/the-value-of-openness.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/the-value-of-openness.html">Exercise 1: Github &amp; Jupyter</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/what-is-a-theory.html">What is a theory?</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../discussions/what-is-a-theory.html">Discussion questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/models-as-testable-hypotheses.html">Models as testable hypotheses</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="models-as-testable-hypotheses.html">Tutorial: Introduction to R, functions, and good coding habits</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/models-as-testable-hypotheses.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/models-as-testable-hypotheses.html">Exercise 2: Coding Habits &amp; Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/data-as-objects-and-architectures.html">Data as objects and architectures</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="data-as-objects-and-architectures.html">Tutorial: Data as Objects and Tidy Data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/data-as-objects-and-architectures.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/data-as-objects-and-architectures.html">Exercise 3: Data objects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/techniques-for-data-cleansing.html">Techniques for data cleansing</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="techniques-for-data-cleansing.html">Tutorial: Data Cleansing and the Tidyverse</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/techniques-for-data-cleansing.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/techniques-for-data-cleansing.html">Exercise 4: Data tables and manipulation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/visualization-as-analysis.html">Visualization as analysis</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="visualization-as-analysis.html">Tutorial: Basics of plotting</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/visualization-as-analysis.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/visualization-as-analysis.html">Exercise 5: Using ggplot</a></li>
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/visualization-through-human-eyes.html">Visualization through human eyes</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="visualization-through-human-eyes.html">Tutorial: More advanced plotting</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/visualization-through-human-eyes.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/visualization-through-human-eyes.html">Exercise 6: More plotting options</a></li>
+
+
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Knowledge</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/statistical-learning-theory.html">
-   The bias-variance tradeoff
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/statistical-learning-theory.html">
-     Discussion questions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/linear-models.html">
-   Linear models
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="linear-models.html">
-     Tutorial: Refresher on working with matrices
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/linear-models.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/linear-models.html">
-     Exercise 7:  Linear models
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/the-ordinary-least-squares-solution.html">
-   The ordinary least squares solution
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="the-ordinary-least-squares-solution.html">
-     Tutorial: Refresher for solving oridinary least squares
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/the-ordinary-least-squares-solution.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/the-ordinary-least-squares-solution.html">
-     Exercise 8:  Linear models, continued
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/limits-of-linear-regression.html">
-   Limits and variations of linear regression
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-  <label for="toctree-checkbox-12">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="limits-of-linear-regression.html">
-     Tutorial: More on linear models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/limits-of-linear-regression.html">
-     Discussion questions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/mixed-effects-models.html">
-   Mixed effects models
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="mixed-effects-models.html">
-     Tutorial: Running linear mixed effects models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/mixed-effects-models.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/mixed-effects-models.html">
-     Exercise 9: Mixed effects
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../lectures/classifiers.html">
-   Classifiers
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-  <label for="toctree-checkbox-14">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Tutorial: Basics classifiers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/classifiers.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/classifiers.html">
-     Exercise 10: Classification
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/the-beauty-of-knn.html">
-   The beauty of kNN
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
-  <label for="toctree-checkbox-15">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="the-beauty-of-knn.html">
-     Tutorial: Running kNN models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/the-beauty-of-knn.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/the-beauty-of-knn.html">
-     Exercise 11: The Beauty of kNN
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/cross-validation.html">
-   Cross validation
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
-  <label for="toctree-checkbox-16">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="cross-validation.html">
-     Tutorial: Implementing cross validation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/cross-validation.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/cross-validation.html">
-     Exercise 12: Cross Validation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/resampling-methods.html">
-   Resampling methods
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
-  <label for="toctree-checkbox-17">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="resampling-methods.html">
-     Tutorial: Boostrap and permutation tests
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/resampling-methods.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/resampling-methods.html">
-     Exercise 13:  Resampling methods
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/mediation-and-moderation.html">
-   Mediation and moderation
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
-  <label for="toctree-checkbox-18">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="mediation-and-moderation.html">
-     Tutorial: Running mediation and moderation models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/mediation-and-moderation.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/mediation-and-moderation.html">
-     Exercise 14: Mediation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/power-analysis-via-simulations.html">
-   Power analysis via simulations
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
-  <label for="toctree-checkbox-19">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="power-analysis-via-simulations.html">
-     Tutorial: Running basic power analyses
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/power-analysis-via-simulations.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/power-analysis-via-simulations.html">
-     Exercise 15: Power Analyses
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/selecting-the-best-model.html">
-   Selecting the best model
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
-  <label for="toctree-checkbox-20">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="selecting-the-best-model.html">
-     Tutorial: Model selection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/selecting-the-best-model.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/selecting-the-best-model.html">
-     Exercise 16: Model selection
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/regularized-regression.html">
-   Regularized regression
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
-  <label for="toctree-checkbox-21">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="regularized-regression.html">
-     Tutorial: Basic ridge and LASSO models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/regularized-regression.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/regularized-regression.html">
-     Exercise 17: Regularized regression
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/principal-component-methods.html">
-   Principal component methods
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
-  <label for="toctree-checkbox-22">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="principal-component-methods.html">
-     Tutorial: Basic PCA approaches
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/principal-component-methods.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/principal-component-methods.html">
-     Exercise 18: Principal component methods
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/statistical-learning-theory.html">The bias-variance tradeoff</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../discussions/statistical-learning-theory.html">Discussion questions</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Understanding
- </span>
-</p>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/linear-models.html">Linear models</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="linear-models.html">Tutorial: Refresher on working with matrices</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/linear-models.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/linear-models.html">Exercise 7:  Linear models</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/the-ordinary-least-squares-solution.html">The ordinary least squares solution</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="the-ordinary-least-squares-solution.html">Tutorial: Refresher for solving oridinary least squares</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/the-ordinary-least-squares-solution.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/the-ordinary-least-squares-solution.html">Exercise 8:  Linear models, continued</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/limits-of-linear-regression.html">Limits and variations of linear regression</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="limits-of-linear-regression.html">Tutorial: More on linear models</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/limits-of-linear-regression.html">Discussion questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/mixed-effects-models.html">Mixed effects models</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="mixed-effects-models.html">Tutorial: Running linear mixed effects models</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/mixed-effects-models.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/mixed-effects-models.html">Exercise 9: Mixed effects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../lectures/classifiers.html">Classifiers</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Tutorial: Basics classifiers</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/classifiers.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/classifiers.html">Exercise 10: Classification</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/the-beauty-of-knn.html">The beauty of kNN</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="the-beauty-of-knn.html">Tutorial: Running kNN models</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/the-beauty-of-knn.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/the-beauty-of-knn.html">Exercise 11: The Beauty of kNN</a></li>
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/cross-validation.html">Cross validation</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="cross-validation.html">Tutorial: Implementing cross validation</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/cross-validation.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/cross-validation.html">Exercise 12: Cross Validation</a></li>
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/resampling-methods.html">Resampling methods</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="resampling-methods.html">Tutorial: Boostrap and permutation tests</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/resampling-methods.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/resampling-methods.html">Exercise 13:  Resampling methods</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/mediation-and-moderation.html">Mediation and moderation</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="mediation-and-moderation.html">Tutorial: Running mediation and moderation models</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/mediation-and-moderation.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/mediation-and-moderation.html">Exercise 14: Mediation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/power-analysis-via-simulations.html">Power analysis via simulations</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="power-analysis-via-simulations.html">Tutorial: Running basic power analyses</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/power-analysis-via-simulations.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/power-analysis-via-simulations.html">Exercise 15: Power Analyses</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/selecting-the-best-model.html">Selecting the best model</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="selecting-the-best-model.html">Tutorial: Model selection</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/selecting-the-best-model.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/selecting-the-best-model.html">Exercise 16: Model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/regularized-regression.html">Regularized regression</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="regularized-regression.html">Tutorial: Basic ridge and LASSO models</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/regularized-regression.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/regularized-regression.html">Exercise 17: Regularized regression</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/principal-component-methods.html">Principal component methods</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="principal-component-methods.html">Tutorial: Basic PCA approaches</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/principal-component-methods.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/principal-component-methods.html">Exercise 18: Principal component methods</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Understanding</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/reconsidering-the-p-value.html">
-   Reconsidering the p-value
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
-  <label for="toctree-checkbox-23">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/reconsidering-the-p-value.html">
-     Discussion questions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/bayes-factor-accepting-the-null.html">
-   Bayes factor
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
-  <label for="toctree-checkbox-24">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="bayes-factor-accepting-the-null.html">
-     Tutorial: Estimating Bayes factors
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/bayes-factor-accepting-the-null.html">
-     Discussion questions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/errors-and-inferences.html">
-   Errors and inferences
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
-  <label for="toctree-checkbox-25">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/errors-and-inferences.html">
-     Discussion questions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/telling-your-data-story.html">
-   Telling your data story
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
-  <label for="toctree-checkbox-26">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/telling-your-data-story.html">
-     Discussion questions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/theories-as-social-constructs.html">
-   Theories as social constructs
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
-  <label for="toctree-checkbox-27">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/theories-as-social-constructs.html">
-     Discussion questions
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/reconsidering-the-p-value.html">Reconsidering the p-value</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../discussions/reconsidering-the-p-value.html">Discussion questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/bayes-factor-accepting-the-null.html">Bayes factor</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="bayes-factor-accepting-the-null.html">Tutorial: Estimating Bayes factors</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/bayes-factor-accepting-the-null.html">Discussion questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/errors-and-inferences.html">Errors and inferences</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../discussions/errors-and-inferences.html">Discussion questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/telling-your-data-story.html">Telling your data story</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../discussions/telling-your-data-story.html">Discussion questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/theories-as-social-constructs.html">Theories as social constructs</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-27"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../discussions/theories-as-social-constructs.html">Discussion questions</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
-          
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/notebooks/classifiers.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/notebooks/classifiers.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../_static/images/logo_binder.svg">
   </span>
-<span class="headerbtn__text-container">Binder</span>
+<span class="btn__text-container">Binder</span>
 </a>
-
-      </li>
+</li>
       
-      <li>
-        <a href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/notebooks/classifiers.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/notebooks/classifiers.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/classifiers.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/notebooks/classifiers.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Tutorial: Basics classifiers
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#goals">
-     Goals:
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#logistic-regression-with-glm">
-   Logistic regression with glm
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#predicting-the-stock-market">
-     Predicting the stock market
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lda">
-   LDA
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#qda">
-   QDA
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Tutorial: Basics classifiers</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Tutorial: Basics classifiers
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#goals">
-     Goals:
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#logistic-regression-with-glm">
-   Logistic regression with glm
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#predicting-the-stock-market">
-     Predicting the stock market
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lda">
-   LDA
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#qda">
-   QDA
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tutorial: Basics classifiers</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tutorial: Basics classifiers</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-with-glm">Logistic regression with glm</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-the-stock-market">Predicting the stock market</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lda">LDA</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#qda">QDA</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-basics-classifiers">
-<h1>Tutorial: Basics classifiers<a class="headerlink" href="#tutorial-basics-classifiers" title="Permalink to this headline">#</a></h1>
+<h1>Tutorial: Basics classifiers<a class="headerlink" href="#tutorial-basics-classifiers" title="Permalink to this heading">#</a></h1>
 <p>In this lab we will get more comfortable configuring various classifiers in R.</p>
 <section id="goals">
-<h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
+<h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Learn to use the <code class="docutils literal notranslate"><span class="pre">glm</span></code> function for logistic regression</p></li>
 <li><p>Learn to use the <code class="docutils literal notranslate"><span class="pre">lda</span></code> and <code class="docutils literal notranslate"><span class="pre">qda</span></code> functions for doing discriminant analysis</p></li>
@@ -1079,10 +614,10 @@ title="Print to PDF"
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="logistic-regression-with-glm">
-<h1>Logistic regression with glm<a class="headerlink" href="#logistic-regression-with-glm" title="Permalink to this headline">#</a></h1>
+<h1>Logistic regression with glm<a class="headerlink" href="#logistic-regression-with-glm" title="Permalink to this heading">#</a></h1>
 <p>For the first part of the lab we will use the generalized linear model (<code class="docutils literal notranslate"><span class="pre">glm</span></code>) function to perform logistic regression. <a class="reference external" href="https://en.wikipedia.org/wiki/Generalized_linear_model">GLM</a> is a way of formalizing all forms of linear models when the underlying statistical distribution is part of the <a class="reference external" href="https://en.wikipedia.org/wiki/Exponential_family">exponential family</a>. The linear regression models we have discussed so far in this class are a type of <em>GLM</em>, and logistic regression also falls under the <em>GLM</em> umbrella.</p>
 <section id="predicting-the-stock-market">
-<h2>Predicting the stock market<a class="headerlink" href="#predicting-the-stock-market" title="Permalink to this headline">#</a></h2>
+<h2>Predicting the stock market<a class="headerlink" href="#predicting-the-stock-market" title="Permalink to this heading">#</a></h2>
 <p>For the logistic regression exercises, we will use the S&amp;P stock market data included with the ISLR library.</p>
 <p>This dataset contains daily observations (n=1250) for the S&amp;P 500 index between 2001 &amp; 2005. The variables in this data set include:</p>
 <ul class="simple">
@@ -1147,7 +682,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Next let&#39;s quantify all pairwise correlations as a first glimpse at the relationships among the variables </span>
-<span class="n">cxy</span> <span class="o">=</span> <span class="nf">cor</span><span class="p">(</span><span class="n">Smarket</span><span class="p">)</span>
+<span class="n">cxy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cor</span><span class="p">(</span><span class="n">Smarket</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1192,7 +727,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># In order to see the correlation let&#39;s remove the Direction variable</span>
-<span class="n">cxy</span> <span class="o">=</span> <span class="nf">cor</span><span class="p">(</span><span class="n">Smarket</span><span class="p">[,</span><span class="o">-</span><span class="nf">which</span><span class="p">(</span><span class="nf">colnames</span><span class="p">(</span><span class="n">Smarket</span><span class="p">)</span><span class="o">==</span><span class="s">&quot;Direction&quot;</span><span class="p">)])</span> 
+<span class="n">cxy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cor</span><span class="p">(</span><span class="n">Smarket</span><span class="p">[,</span><span class="o">-</span><span class="nf">which</span><span class="p">(</span><span class="nf">colnames</span><span class="p">(</span><span class="n">Smarket</span><span class="p">)</span><span class="o">==</span><span class="s">&quot;Direction&quot;</span><span class="p">)])</span><span class="w"> </span>
 <span class="n">cxy</span>
 </pre></div>
 </div>
@@ -1225,7 +760,7 @@ $<span class="math notranslate nohighlight">\( y_{direction} = \beta_0 + \beta_1
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run the GLM</span>
-<span class="n">glm.fit</span><span class="o">=</span><span class="nf">glm</span><span class="p">(</span><span class="n">Direction</span><span class="o">~</span><span class="n">Lag1</span><span class="o">+</span><span class="n">Lag2</span><span class="o">+</span><span class="n">Lag3</span><span class="o">+</span><span class="n">Lag4</span><span class="o">+</span><span class="n">Lag5</span><span class="o">+</span><span class="n">Volume</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Smarket</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="n">binomial</span><span class="p">)</span> <span class="c1"># logistic regression </span>
+<span class="n">glm.fit</span><span class="o">=</span><span class="nf">glm</span><span class="p">(</span><span class="n">Direction</span><span class="o">~</span><span class="n">Lag1</span><span class="o">+</span><span class="n">Lag2</span><span class="o">+</span><span class="n">Lag3</span><span class="o">+</span><span class="n">Lag4</span><span class="o">+</span><span class="n">Lag5</span><span class="o">+</span><span class="n">Volume</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">Smarket</span><span class="p">,</span><span class="w"> </span><span class="n">family</span><span class="o">=</span><span class="n">binomial</span><span class="p">)</span><span class="w"> </span><span class="c1"># logistic regression </span>
 
 <span class="c1"># Summarize</span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">glm.fit</span><span class="p">)</span>
@@ -1273,7 +808,7 @@ Number of Fisher Scoring iterations: 3
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/classifiers_11_0.png" src="../_images/classifiers_11_0.png" />
+<img alt="../_images/0e078d9680c3b6058f445ddffb3786c6f63a4480eb2607bb492f33f3777c31b3.png" src="../_images/0e078d9680c3b6058f445ddffb3786c6f63a4480eb2607bb492f33f3777c31b3.png" />
 </div>
 </div>
 <p>It appears that there are some high leverage points. But clearly, most of the other model fit evaluations that we used for linear regression don’t work for the logistic family.</p>
@@ -1281,22 +816,22 @@ Number of Fisher Scoring iterations: 3
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># See how well the model captured the training set</span>
-<span class="n">glm_prob_df</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="nf">predict</span><span class="p">(</span><span class="n">glm.fit</span><span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&quot;response&quot;</span><span class="p">))</span>
-<span class="nf">colnames</span><span class="p">(</span><span class="n">glm_prob_df</span><span class="p">)</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;predicted_prob&#39;</span><span class="p">)</span>
+<span class="n">glm_prob_df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="nf">predict</span><span class="p">(</span><span class="n">glm.fit</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;response&quot;</span><span class="p">))</span>
+<span class="nf">colnames</span><span class="p">(</span><span class="n">glm_prob_df</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;predicted_prob&#39;</span><span class="p">)</span>
 
-<span class="n">num_observations</span> <span class="o">=</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">glm_prob_df</span><span class="p">)</span>
-<span class="n">glm_prob_df</span><span class="o">$</span><span class="n">index</span> <span class="o">=</span> <span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">num_observations</span><span class="p">)</span> <span class="c1">#get the observation number for plotting; ggplot does not infer this</span>
+<span class="n">num_observations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">glm_prob_df</span><span class="p">)</span>
+<span class="n">glm_prob_df</span><span class="o">$</span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">num_observations</span><span class="p">)</span><span class="w"> </span><span class="c1">#get the observation number for plotting; ggplot does not infer this</span>
 
 <span class="c1"># Setting type=&quot;response&quot; tells R to output prob. from P(Y=1,X) for all values of X</span>
 <span class="c1"># &quot;If no data set is supplied to the predict() function, then the probabilities </span>
 <span class="c1"># are computed for the training data that was used to fit the logistic regression model.&quot;</span>
 
-<span class="nf">ggplot</span><span class="p">(</span><span class="n">glm_prob_df</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">predicted_prob</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span> <span class="nf">xlab</span><span class="p">(</span><span class="s">&#39;observation number&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="nf">ylab</span><span class="p">(</span><span class="s">&#39;predicted response probability&#39;</span><span class="p">)</span> 
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">glm_prob_df</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">predicted_prob</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&#39;observation number&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&#39;predicted response probability&#39;</span><span class="p">)</span><span class="w"> </span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/classifiers_13_0.png" src="../_images/classifiers_13_0.png" />
+<img alt="../_images/dd316027d48c3fee995e2ca0ea81b2182ea505f39e2516744568c44e5d4ee6c1.png" src="../_images/dd316027d48c3fee995e2ca0ea81b2182ea505f39e2516744568c44e5d4ee6c1.png" />
 </div>
 </div>
 <p>What we are showing here are the predicted Y values for our full model. Notice that they are not binary. Why? Because we are estimating Y as a sigmoid function, as we talked about during the lecture. Thus we aren’t predicting the direction, but the <em>probability</em> of the direction being “Up”. We know that these are the probabilities that the Stock Market will go <strong>up</strong> rather than down because we can check how R categorized the Direction variable using <code class="docutils literal notranslate"><span class="pre">contrasts()</span></code>.</p>
@@ -1322,17 +857,17 @@ Number of Fisher Scoring iterations: 3
 <p>Thus, if you want to make a binary prediction (i.e., did the market go up or down?), you need to set a <em>threshold</em> for the estimated outcome probability and binarize the result according to that threshold. Let’s try that.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">threshold</span> <span class="o">=</span> <span class="m">0.50</span> <span class="c1">#binarizing threshold </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">threshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.50</span><span class="w"> </span><span class="c1">#binarizing threshold </span>
 
 <span class="c1"># First make a list of &quot;Downs&quot;</span>
 <span class="n">glm_prob_df</span><span class="o">$</span><span class="n">predicted_binary</span><span class="o">=</span><span class="nf">rep</span><span class="p">(</span><span class="s">&quot;Down&quot;</span><span class="p">,</span><span class="n">num_observations</span><span class="p">)</span>
 
 <span class="c1"># Then use the probability output to label the up days. Let&#39;s use a threshold of 50% probability. </span>
-<span class="n">glm_prob_df</span><span class="o">$</span><span class="n">predicted_binary</span><span class="p">[</span><span class="n">glm_prob_df</span><span class="o">$</span><span class="n">predicted_prob</span><span class="o">&gt;</span><span class="n">threshold</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;Up&quot;</span> <span class="c1">#find the rows that have prob &gt; threshold and cast as &#39;up&#39;</span>
+<span class="n">glm_prob_df</span><span class="o">$</span><span class="n">predicted_binary</span><span class="p">[</span><span class="n">glm_prob_df</span><span class="o">$</span><span class="n">predicted_prob</span><span class="o">&gt;</span><span class="n">threshold</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;Up&quot;</span><span class="w"> </span><span class="c1">#find the rows that have prob &gt; threshold and cast as &#39;up&#39;</span>
 
 <span class="c1"># Now let&#39;s look at the prediction accuracy</span>
-<span class="n">confusion_df</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">glm_prob_df</span><span class="o">$</span><span class="n">predicted_binary</span><span class="p">,</span> <span class="n">Smarket</span><span class="o">$</span><span class="n">Direction</span><span class="p">)</span>
-<span class="nf">colnames</span><span class="p">(</span><span class="n">confusion_df</span><span class="p">)</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;predicted&#39;</span><span class="p">,</span> <span class="s">&#39;actual&#39;</span><span class="p">)</span>
+<span class="n">confusion_df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">glm_prob_df</span><span class="o">$</span><span class="n">predicted_binary</span><span class="p">,</span><span class="w"> </span><span class="n">Smarket</span><span class="o">$</span><span class="n">Direction</span><span class="p">)</span>
+<span class="nf">colnames</span><span class="p">(</span><span class="n">confusion_df</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;predicted&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;actual&#39;</span><span class="p">)</span>
 
 <span class="nf">table</span><span class="p">(</span><span class="n">confusion_df</span><span class="p">)</span>
 </pre></div>
@@ -1353,7 +888,7 @@ predicted Down  Up
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can calculate the prediction accuracy by counting the number of times our</span>
 <span class="c1"># prediction vector matched the real data and taking the average</span>
-<span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Accuracy:&quot;</span><span class="p">,</span><span class="nf">mean</span><span class="p">(</span><span class="n">confusion_df</span><span class="o">$</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">confusion_df</span><span class="o">$</span><span class="n">actual</span><span class="p">)))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Accuracy:&quot;</span><span class="p">,</span><span class="nf">mean</span><span class="p">(</span><span class="n">confusion_df</span><span class="o">$</span><span class="n">predicted</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">confusion_df</span><span class="o">$</span><span class="n">actual</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -1374,9 +909,9 @@ predicted Down  Up
 
 
 <span class="c1"># Can now make a whole new Smarket dataset just for 2005 (it&#39;s the last year, so anything not train is 2005)</span>
-<span class="n">Smarket.2005_test</span> <span class="o">=</span> <span class="n">Smarket</span><span class="p">[</span><span class="o">!</span><span class="n">train_idx</span><span class="p">,]</span> <span class="c1">#find rows that do not (! = not) occupy the training data indices</span>
+<span class="n">Smarket.2005_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Smarket</span><span class="p">[</span><span class="o">!</span><span class="n">train_idx</span><span class="p">,]</span><span class="w"> </span><span class="c1">#find rows that do not (! = not) occupy the training data indices</span>
 
-<span class="nf">dim</span><span class="p">(</span><span class="n">Smarket.2005_test</span><span class="p">)</span> <span class="c1">#get dimensions of the test data </span>
+<span class="nf">dim</span><span class="p">(</span><span class="n">Smarket.2005_test</span><span class="p">)</span><span class="w"> </span><span class="c1">#get dimensions of the test data </span>
 
 <span class="c1"># Now let&#39;s extract the Direction for just 2005</span>
 <span class="n">Direction.2005_test</span><span class="o">=</span><span class="n">Smarket.2005_test</span><span class="o">$</span><span class="n">Direction</span>
@@ -1397,16 +932,16 @@ $<span class="math notranslate nohighlight">\( y_{direction} = \beta_0 + \beta_1
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train the logistic model, but use only the subset of the data from pre-2005 (i.e., training data)</span>
-<span class="n">glm.fit</span><span class="o">=</span><span class="nf">glm</span><span class="p">(</span><span class="n">Direction</span><span class="o">~</span><span class="n">Lag1</span><span class="o">+</span><span class="n">Lag2</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Smarket</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="n">binomial</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">train_idx</span><span class="p">)</span> <span class="c1">#give the training indices to the glm function </span>
+<span class="n">glm.fit</span><span class="o">=</span><span class="nf">glm</span><span class="p">(</span><span class="n">Direction</span><span class="o">~</span><span class="n">Lag1</span><span class="o">+</span><span class="n">Lag2</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">Smarket</span><span class="p">,</span><span class="w"> </span><span class="n">family</span><span class="o">=</span><span class="n">binomial</span><span class="p">,</span><span class="w"> </span><span class="n">subset</span><span class="o">=</span><span class="n">train_idx</span><span class="p">)</span><span class="w"> </span><span class="c1">#give the training indices to the glm function </span>
 
 <span class="c1"># Predict the 2005 performance from the model trained on the pre-2005 data</span>
-<span class="n">glm.probs</span><span class="o">=</span><span class="nf">predict</span><span class="p">(</span><span class="n">glm.fit</span><span class="p">,</span> <span class="n">Smarket.2005_test</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
-<span class="n">glm.pred</span><span class="o">=</span><span class="nf">rep</span><span class="p">(</span><span class="s">&quot;Down&quot;</span><span class="p">,</span><span class="nf">nrow</span><span class="p">(</span><span class="n">Smarket.2005_test</span><span class="p">))</span> <span class="c1"># There are only 252 observations in the test set.</span>
-<span class="n">glm.pred</span><span class="p">[</span><span class="n">glm.probs</span><span class="o">&gt;</span><span class="m">0.5</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;Up&quot;</span> <span class="c1">#binarize the result</span>
+<span class="n">glm.probs</span><span class="o">=</span><span class="nf">predict</span><span class="p">(</span><span class="n">glm.fit</span><span class="p">,</span><span class="w"> </span><span class="n">Smarket.2005_test</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
+<span class="n">glm.pred</span><span class="o">=</span><span class="nf">rep</span><span class="p">(</span><span class="s">&quot;Down&quot;</span><span class="p">,</span><span class="nf">nrow</span><span class="p">(</span><span class="n">Smarket.2005_test</span><span class="p">))</span><span class="w"> </span><span class="c1"># There are only 252 observations in the test set.</span>
+<span class="n">glm.pred</span><span class="p">[</span><span class="n">glm.probs</span><span class="o">&gt;</span><span class="m">0.5</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;Up&quot;</span><span class="w"> </span><span class="c1">#binarize the result</span>
 
 
-<span class="n">confusion_df</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">glm.pred</span><span class="p">,</span> <span class="n">Direction.2005_test</span><span class="p">)</span> <span class="c1">#create confusion df</span>
-<span class="nf">colnames</span><span class="p">(</span><span class="n">confusion_df</span><span class="p">)</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;predicted&#39;</span><span class="p">,</span> <span class="s">&#39;actual&#39;</span><span class="p">)</span>
+<span class="n">confusion_df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">glm.pred</span><span class="p">,</span><span class="w"> </span><span class="n">Direction.2005_test</span><span class="p">)</span><span class="w"> </span><span class="c1">#create confusion df</span>
+<span class="nf">colnames</span><span class="p">(</span><span class="n">confusion_df</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;predicted&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;actual&#39;</span><span class="p">)</span>
 
 <span class="c1"># Show the confusion matrix</span>
 <span class="nf">table</span><span class="p">(</span><span class="n">confusion_df</span><span class="p">)</span>
@@ -1425,7 +960,7 @@ predicted Down  Up
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now let&#39;s look at the overall test accuracy</span>
-<span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Accuracy:&quot;</span><span class="p">,</span><span class="nf">mean</span><span class="p">(</span><span class="n">confusion_df</span><span class="o">$</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">confusion_df</span><span class="o">$</span><span class="n">actual</span><span class="p">)))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Accuracy:&quot;</span><span class="p">,</span><span class="nf">mean</span><span class="p">(</span><span class="n">confusion_df</span><span class="o">$</span><span class="n">predicted</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">confusion_df</span><span class="o">$</span><span class="n">actual</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -1440,7 +975,7 @@ predicted Down  Up
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="lda">
-<h1>LDA<a class="headerlink" href="#lda" title="Permalink to this headline">#</a></h1>
+<h1>LDA<a class="headerlink" href="#lda" title="Permalink to this heading">#</a></h1>
 <p>Let’s now move on to using LDA. The <code class="docutils literal notranslate"><span class="pre">lda</span></code> function is built into the MASS library that we have used previously. We’ll use that one here (although there are other LDA libraries that you can install if you’d like).</p>
 <p>First let’s replicate our prediction problem using the stock market data.</p>
 <div class="cell docutils container">
@@ -1449,8 +984,8 @@ predicted Down  Up
 
 <span class="c1"># LDA syntax is just like for linear regression fitting </span>
 <span class="c1"># Let&#39;s conduct LDA on the training subset now</span>
-<span class="n">lda.fit</span> <span class="o">=</span> <span class="nf">lda</span><span class="p">(</span><span class="n">Direction</span><span class="o">~</span><span class="n">Lag1</span><span class="o">+</span><span class="n">Lag2</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Smarket</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">train_idx</span><span class="p">)</span>
-<span class="n">lda.fit</span> <span class="c1"># The summary() function gives you something different</span>
+<span class="n">lda.fit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lda</span><span class="p">(</span><span class="n">Direction</span><span class="o">~</span><span class="n">Lag1</span><span class="o">+</span><span class="n">Lag2</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">Smarket</span><span class="p">,</span><span class="w"> </span><span class="n">subset</span><span class="o">=</span><span class="n">train_idx</span><span class="p">)</span>
+<span class="n">lda.fit</span><span class="w"> </span><span class="c1"># The summary() function gives you something different</span>
 <span class="nf">plot</span><span class="p">(</span><span class="n">lda.fit</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1474,13 +1009,13 @@ Lag1 -0.6420190
 Lag2 -0.5135293
 </pre></div>
 </div>
-<img alt="../_images/classifiers_28_1.png" src="../_images/classifiers_28_1.png" />
+<img alt="../_images/be7879070fb361bd741f78dab15dfca020e8fcf7781865334694698eae5e449f.png" src="../_images/be7879070fb361bd741f78dab15dfca020e8fcf7781865334694698eae5e449f.png" />
 </div>
 </div>
 <p>This indicates that 49.2% of the training observations correspond to days during which the market went down.</p>
 <p>The coefficients of linear discriminants indicate the distance of each value from
 the discrimination boundary.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>If <span class="math notranslate nohighlight">\(w_1*x_{Lag1} - w_2*x_{Lag2}\)</span> is positive, then the classifier predicts the market will increase</p></li>
 <li><p>If <span class="math notranslate nohighlight">\(w_1*x_{Lag1} - w_2*x_{Lag2}\)</span> is negative, then the classifier predicts the market will decrease</p></li>
 </ol>
@@ -1488,11 +1023,11 @@ the discrimination boundary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predict from your LDA coefficients</span>
-<span class="n">lda.pred</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">lda.fit</span><span class="p">,</span> <span class="n">Smarket.2005_test</span><span class="p">)</span>
+<span class="n">lda.pred</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">lda.fit</span><span class="p">,</span><span class="w"> </span><span class="n">Smarket.2005_test</span><span class="p">)</span>
 
 <span class="c1"># We next extract the output of the prediction </span>
-<span class="n">lda.class</span> <span class="o">=</span> <span class="n">lda.pred</span><span class="o">$</span><span class="n">class</span>
-<span class="nf">table</span><span class="p">(</span><span class="n">lda.class</span><span class="p">,</span> <span class="n">Direction.2005_test</span><span class="p">)</span>
+<span class="n">lda.class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lda.pred</span><span class="o">$</span><span class="n">class</span>
+<span class="nf">table</span><span class="p">(</span><span class="n">lda.class</span><span class="p">,</span><span class="w"> </span><span class="n">Direction.2005_test</span><span class="p">)</span>
 <span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Accuracy:&quot;</span><span class="p">,</span><span class="nf">mean</span><span class="p">(</span><span class="n">lda.class</span><span class="o">==</span><span class="n">Direction.2005_test</span><span class="p">)))</span>
 </pre></div>
 </div>
@@ -1540,31 +1075,31 @@ lda.class Down  Up
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show the relationship between the Lag 1 variable </span>
 <span class="c1"># and the posterior probability from LDA</span>
 
-<span class="n">lag1_posterior_df</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">Smarket.2005_test</span><span class="o">$</span><span class="n">Lag1</span><span class="p">,</span> <span class="n">lda.pred</span><span class="o">$</span><span class="n">posterior</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span>
-<span class="nf">colnames</span><span class="p">(</span><span class="n">lag1_posterior_df</span><span class="p">)</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#39;lag1_return&#39;</span><span class="p">,</span> <span class="s">&#39;down_posterior_prob&#39;</span><span class="p">)</span>
+<span class="n">lag1_posterior_df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">Smarket.2005_test</span><span class="o">$</span><span class="n">Lag1</span><span class="p">,</span><span class="w"> </span><span class="n">lda.pred</span><span class="o">$</span><span class="n">posterior</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span>
+<span class="nf">colnames</span><span class="p">(</span><span class="n">lag1_posterior_df</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;lag1_return&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;down_posterior_prob&#39;</span><span class="p">)</span>
 
-<span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">lag1_posterior_df</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">lag1_return</span><span class="p">,</span> <span class="n">down_posterior_prob</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span> <span class="nf">xlab</span><span class="p">(</span><span class="s">&#39;Return from one day ago&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="nf">ylab</span><span class="p">(</span><span class="s">&#39;Posterior probability of the stock going down&#39;</span><span class="p">)</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">lag1_posterior_df</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">lag1_return</span><span class="p">,</span><span class="w"> </span><span class="n">down_posterior_prob</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&#39;Return from one day ago&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&#39;Posterior probability of the stock going down&#39;</span><span class="p">)</span>
 <span class="c1">#getting the lag 1 percentage return &amp; the posterior prob. of the stock going down</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/classifiers_34_0.png" src="../_images/classifiers_34_0.png" />
+<img alt="../_images/539989a3220dc40d5970aba1208628c2edeb5a8e6a91111ef4fb0152af67adaa.png" src="../_images/539989a3220dc40d5970aba1208628c2edeb5a8e6a91111ef4fb0152af67adaa.png" />
 </div>
 </div>
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="qda">
-<h1>QDA<a class="headerlink" href="#qda" title="Permalink to this headline">#</a></h1>
+<h1>QDA<a class="headerlink" href="#qda" title="Permalink to this heading">#</a></h1>
 <p>Remember that QDA is a special case of LDA where you do not assume that the underlying distributions have equal variances. So let’s use QDA for the same problem we have been working on so far. First off, let’s check how the distributions of <code class="docutils literal notranslate"><span class="pre">Lag1</span></code> and <code class="docutils literal notranslate"><span class="pre">Lag2</span></code> look in the case of <code class="docutils literal notranslate"><span class="pre">Direction=&quot;Up&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">Direction=&quot;Down&quot;</span></code>. This will help us think about whether QDA might be a better tool than LDA for our question.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">Smarket</span><span class="p">[</span><span class="n">train_idx</span><span class="p">,],</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Lag1</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Lag2</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span> <span class="nf">facet_grid</span><span class="p">(</span><span class="n">.</span><span class="o">~</span><span class="n">Direction</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">Smarket</span><span class="p">[</span><span class="n">train_idx</span><span class="p">,],</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Lag1</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Lag2</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">facet_grid</span><span class="p">(</span><span class="n">.</span><span class="o">~</span><span class="n">Direction</span><span class="p">)</span>
 
 <span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Covariance of Lag1, Lag2 for Up observations:&quot;</span><span class="p">,</span>
-  <span class="nf">cov</span><span class="p">(</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Lag1</span><span class="p">[</span><span class="n">train_idx</span><span class="p">][</span><span class="nf">which</span><span class="p">(</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Direction</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span><span class="o">==</span><span class="s">&quot;Up&quot;</span><span class="p">)],</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Lag2</span><span class="p">[</span><span class="n">train_idx</span><span class="p">][</span><span class="nf">which</span><span class="p">(</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Direction</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span><span class="o">==</span><span class="s">&quot;Up&quot;</span><span class="p">)])))</span>
+<span class="w">  </span><span class="nf">cov</span><span class="p">(</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Lag1</span><span class="p">[</span><span class="n">train_idx</span><span class="p">][</span><span class="nf">which</span><span class="p">(</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Direction</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span><span class="o">==</span><span class="s">&quot;Up&quot;</span><span class="p">)],</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Lag2</span><span class="p">[</span><span class="n">train_idx</span><span class="p">][</span><span class="nf">which</span><span class="p">(</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Direction</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span><span class="o">==</span><span class="s">&quot;Up&quot;</span><span class="p">)])))</span>
 <span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Covariance of Lag1, Lag2 for Down observations:&quot;</span><span class="p">,</span>
-  <span class="nf">cov</span><span class="p">(</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Lag1</span><span class="p">[</span><span class="n">train_idx</span><span class="p">][</span><span class="nf">which</span><span class="p">(</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Direction</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span><span class="o">==</span><span class="s">&quot;Down&quot;</span><span class="p">)],</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Lag2</span><span class="p">[</span><span class="n">train_idx</span><span class="p">][</span><span class="nf">which</span><span class="p">(</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Direction</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span><span class="o">==</span><span class="s">&quot;Down&quot;</span><span class="p">)])))</span>
+<span class="w">  </span><span class="nf">cov</span><span class="p">(</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Lag1</span><span class="p">[</span><span class="n">train_idx</span><span class="p">][</span><span class="nf">which</span><span class="p">(</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Direction</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span><span class="o">==</span><span class="s">&quot;Down&quot;</span><span class="p">)],</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Lag2</span><span class="p">[</span><span class="n">train_idx</span><span class="p">][</span><span class="nf">which</span><span class="p">(</span><span class="n">Smarket</span><span class="o">$</span><span class="n">Direction</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span><span class="o">==</span><span class="s">&quot;Down&quot;</span><span class="p">)])))</span>
 </pre></div>
 </div>
 </div>
@@ -1573,7 +1108,7 @@ lda.class Down  Up
 [1] &quot;Covariance of Lag1, Lag2 for Down observations: -0.0392480610374496&quot;
 </pre></div>
 </div>
-<img alt="../_images/classifiers_36_1.png" src="../_images/classifiers_36_1.png" />
+<img alt="../_images/e9059bec816cdd79fd775ccebe987997ffb0b30effa2c338aeecf0bf6f50eaa4.png" src="../_images/e9059bec816cdd79fd775ccebe987997ffb0b30effa2c338aeecf0bf6f50eaa4.png" />
 </div>
 </div>
 <p>There is definitely a fair amount of overlap in these distribution (which helps us understand why all our classifiers have low accuracy: the means of the two distributions, <span class="math notranslate nohighlight">\(\mu_{1}\)</span> and <span class="math notranslate nohighlight">\(\mu_{2}\)</span>, are very close). However, the main advantage of QDA is allowing for differences in <em>variance</em> of the two distributions. Looking at the clusters and statistics above, the “Down” observations might have a slightly more negative covariance than the “Up” observations. Note that since there are only two predictor variables here, <code class="docutils literal notranslate"><span class="pre">Lag1</span></code> and <code class="docutils literal notranslate"><span class="pre">Lag2</span></code>, covariance is a single value instead of a matrix (like <span class="math notranslate nohighlight">\(\Sigma_k\)</span> described in Chapter 4 of the James et al., 2013 text).</p>
@@ -1581,13 +1116,13 @@ lda.class Down  Up
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># QDA is also part of the MASS library</span>
-<span class="n">qda.fit</span> <span class="o">=</span> <span class="nf">qda</span><span class="p">(</span><span class="n">Direction</span><span class="o">~</span><span class="n">Lag1</span><span class="o">+</span><span class="n">Lag2</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Smarket</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">train_idx</span><span class="p">)</span>
+<span class="n">qda.fit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">qda</span><span class="p">(</span><span class="n">Direction</span><span class="o">~</span><span class="n">Lag1</span><span class="o">+</span><span class="n">Lag2</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">Smarket</span><span class="p">,</span><span class="w"> </span><span class="n">subset</span><span class="o">=</span><span class="n">train_idx</span><span class="p">)</span>
 <span class="n">qda.fit</span>
 
 <span class="c1"># Same basic predictions as LDA, just assuming that each distribution has its own variance. </span>
 <span class="c1"># But we work with coefficients the same way.</span>
-<span class="n">qda.class</span><span class="o">=</span><span class="nf">predict</span><span class="p">(</span><span class="n">qda.fit</span><span class="p">,</span> <span class="n">Smarket.2005_test</span><span class="p">)</span><span class="o">$</span><span class="n">class</span>
-<span class="nf">table</span><span class="p">(</span><span class="n">qda.class</span><span class="p">,</span> <span class="n">Direction.2005_test</span><span class="p">)</span>
+<span class="n">qda.class</span><span class="o">=</span><span class="nf">predict</span><span class="p">(</span><span class="n">qda.fit</span><span class="p">,</span><span class="w"> </span><span class="n">Smarket.2005_test</span><span class="p">)</span><span class="o">$</span><span class="n">class</span>
+<span class="nf">table</span><span class="p">(</span><span class="n">qda.class</span><span class="p">,</span><span class="w"> </span><span class="n">Direction.2005_test</span><span class="p">)</span>
 <span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Accuracy:&quot;</span><span class="p">,</span><span class="nf">mean</span><span class="p">(</span><span class="n">qda.class</span><span class="o">==</span><span class="n">Direction.2005_test</span><span class="p">)))</span>
 </pre></div>
 </div>
@@ -1633,7 +1168,7 @@ qda.class Down  Up
             mode: "r"
         },
         kernelOptions: {
-            kernelName: "ir",
+            name: "ir",
             path: "./notebooks"
         },
         predefinedOutput: true
@@ -1641,50 +1176,115 @@ qda.class Down  Up
     </script>
     <script>kernelName = 'ir'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../lectures/classifiers.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Classifiers</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../lectures/classifiers.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Classifiers</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="../discussions/classifiers.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="../discussions/classifiers.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Discussion questions</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis, Fiona Horner<br/>
-  
-      &copy; Copyright 2023.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
-
-
       </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tutorial: Basics classifiers</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-with-glm">Logistic regression with glm</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-the-stock-market">Predicting the stock market</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lda">LDA</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#qda">QDA</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis, Fiona Horner
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

@@ -1,48 +1,59 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Tutorial: Basic PCA approaches &#8212; Data explorations</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -50,61 +61,95 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/principal-component-methods';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Discussion questions" href="../discussions/principal-component-methods.html" />
     <link rel="prev" title="Principal component methods" href="../lectures/principal-component-methods.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/information.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Data explorations</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/information.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/information.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -113,947 +158,450 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Information and Meaning
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Information and Meaning</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/quantitative-epistemology.html">
-   Quantitative epsitemology
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="quantitative-epistemology.html">
-     Tutorial: Getting started
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/quantitative-epistemology.html">
-     Discussion questions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/the-value-of-openness.html">
-   The value of openness
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="the-value-of-openness.html">
-     Tutorial: Repositories and version control
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/the-value-of-openness.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/the-value-of-openness.html">
-     Exercise 1: Github &amp; Jupyter
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/what-is-a-theory.html">
-   What is a theory?
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/what-is-a-theory.html">
-     Discussion questions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/models-as-testable-hypotheses.html">
-   Models as testable hypotheses
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="models-as-testable-hypotheses.html">
-     Tutorial: Introduction to R, functions, and good coding habits
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/models-as-testable-hypotheses.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/models-as-testable-hypotheses.html">
-     Exercise 2: Coding Habits &amp; Functions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/data-as-objects-and-architectures.html">
-   Data as objects and architectures
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="data-as-objects-and-architectures.html">
-     Tutorial: Data as Objects and Tidy Data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/data-as-objects-and-architectures.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/data-as-objects-and-architectures.html">
-     Exercise 3: Data objects
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/techniques-for-data-cleansing.html">
-   Techniques for data cleansing
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="techniques-for-data-cleansing.html">
-     Tutorial: Data Cleansing and the Tidyverse
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/techniques-for-data-cleansing.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/techniques-for-data-cleansing.html">
-     Exercise 4: Data tables and manipulation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/visualization-as-analysis.html">
-   Visualization as analysis
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="visualization-as-analysis.html">
-     Tutorial: Basics of plotting
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/visualization-as-analysis.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/visualization-as-analysis.html">
-     Exercise 5: Using ggplot
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/visualization-through-human-eyes.html">
-   Visualization through human eyes
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="visualization-through-human-eyes.html">
-     Tutorial: More advanced plotting
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/visualization-through-human-eyes.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/visualization-through-human-eyes.html">
-     Exercise 6: More plotting options
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/quantitative-epistemology.html">Quantitative epsitemology</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quantitative-epistemology.html">Tutorial: Getting started</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/quantitative-epistemology.html">Discussion questions</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Knowledge
- </span>
-</p>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/the-value-of-openness.html">The value of openness</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="the-value-of-openness.html">Tutorial: Repositories and version control</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/the-value-of-openness.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/the-value-of-openness.html">Exercise 1: Github &amp; Jupyter</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/what-is-a-theory.html">What is a theory?</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../discussions/what-is-a-theory.html">Discussion questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/models-as-testable-hypotheses.html">Models as testable hypotheses</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="models-as-testable-hypotheses.html">Tutorial: Introduction to R, functions, and good coding habits</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/models-as-testable-hypotheses.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/models-as-testable-hypotheses.html">Exercise 2: Coding Habits &amp; Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/data-as-objects-and-architectures.html">Data as objects and architectures</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="data-as-objects-and-architectures.html">Tutorial: Data as Objects and Tidy Data</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/data-as-objects-and-architectures.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/data-as-objects-and-architectures.html">Exercise 3: Data objects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/techniques-for-data-cleansing.html">Techniques for data cleansing</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="techniques-for-data-cleansing.html">Tutorial: Data Cleansing and the Tidyverse</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/techniques-for-data-cleansing.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/techniques-for-data-cleansing.html">Exercise 4: Data tables and manipulation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/visualization-as-analysis.html">Visualization as analysis</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="visualization-as-analysis.html">Tutorial: Basics of plotting</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/visualization-as-analysis.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/visualization-as-analysis.html">Exercise 5: Using ggplot</a></li>
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/visualization-through-human-eyes.html">Visualization through human eyes</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="visualization-through-human-eyes.html">Tutorial: More advanced plotting</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/visualization-through-human-eyes.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/visualization-through-human-eyes.html">Exercise 6: More plotting options</a></li>
+
+
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Knowledge</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/statistical-learning-theory.html">
-   The bias-variance tradeoff
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/statistical-learning-theory.html">
-     Discussion questions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/linear-models.html">
-   Linear models
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="linear-models.html">
-     Tutorial: Refresher on working with matrices
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/linear-models.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/linear-models.html">
-     Exercise 7:  Linear models
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/the-ordinary-least-squares-solution.html">
-   The ordinary least squares solution
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="the-ordinary-least-squares-solution.html">
-     Tutorial: Refresher for solving oridinary least squares
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/the-ordinary-least-squares-solution.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/the-ordinary-least-squares-solution.html">
-     Exercise 8:  Linear models, continued
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/limits-of-linear-regression.html">
-   Limits and variations of linear regression
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-  <label for="toctree-checkbox-12">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="limits-of-linear-regression.html">
-     Tutorial: More on linear models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/limits-of-linear-regression.html">
-     Discussion questions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/mixed-effects-models.html">
-   Mixed effects models
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="mixed-effects-models.html">
-     Tutorial: Running linear mixed effects models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/mixed-effects-models.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/mixed-effects-models.html">
-     Exercise 9: Mixed effects
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/classifiers.html">
-   Classifiers
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-  <label for="toctree-checkbox-14">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="classifiers.html">
-     Tutorial: Basics classifiers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/classifiers.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/classifiers.html">
-     Exercise 10: Classification
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/the-beauty-of-knn.html">
-   The beauty of kNN
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
-  <label for="toctree-checkbox-15">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="the-beauty-of-knn.html">
-     Tutorial: Running kNN models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/the-beauty-of-knn.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/the-beauty-of-knn.html">
-     Exercise 11: The Beauty of kNN
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/cross-validation.html">
-   Cross validation
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
-  <label for="toctree-checkbox-16">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="cross-validation.html">
-     Tutorial: Implementing cross validation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/cross-validation.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/cross-validation.html">
-     Exercise 12: Cross Validation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/resampling-methods.html">
-   Resampling methods
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/>
-  <label for="toctree-checkbox-17">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="resampling-methods.html">
-     Tutorial: Boostrap and permutation tests
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/resampling-methods.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/resampling-methods.html">
-     Exercise 13:  Resampling methods
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/mediation-and-moderation.html">
-   Mediation and moderation
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/>
-  <label for="toctree-checkbox-18">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="mediation-and-moderation.html">
-     Tutorial: Running mediation and moderation models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/mediation-and-moderation.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/mediation-and-moderation.html">
-     Exercise 14: Mediation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/power-analysis-via-simulations.html">
-   Power analysis via simulations
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/>
-  <label for="toctree-checkbox-19">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="power-analysis-via-simulations.html">
-     Tutorial: Running basic power analyses
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/power-analysis-via-simulations.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/power-analysis-via-simulations.html">
-     Exercise 15: Power Analyses
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/selecting-the-best-model.html">
-   Selecting the best model
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/>
-  <label for="toctree-checkbox-20">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="selecting-the-best-model.html">
-     Tutorial: Model selection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/selecting-the-best-model.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/selecting-the-best-model.html">
-     Exercise 16: Model selection
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/regularized-regression.html">
-   Regularized regression
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/>
-  <label for="toctree-checkbox-21">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="regularized-regression.html">
-     Tutorial: Basic ridge and LASSO models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/regularized-regression.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/regularized-regression.html">
-     Exercise 17: Regularized regression
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../lectures/principal-component-methods.html">
-   Principal component methods
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/>
-  <label for="toctree-checkbox-22">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Tutorial: Basic PCA approaches
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/principal-component-methods.html">
-     Discussion questions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../exercises/principal-component-methods.html">
-     Exercise 18: Principal component methods
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/statistical-learning-theory.html">The bias-variance tradeoff</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../discussions/statistical-learning-theory.html">Discussion questions</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Understanding
- </span>
-</p>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/linear-models.html">Linear models</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="linear-models.html">Tutorial: Refresher on working with matrices</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/linear-models.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/linear-models.html">Exercise 7:  Linear models</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/the-ordinary-least-squares-solution.html">The ordinary least squares solution</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="the-ordinary-least-squares-solution.html">Tutorial: Refresher for solving oridinary least squares</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/the-ordinary-least-squares-solution.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/the-ordinary-least-squares-solution.html">Exercise 8:  Linear models, continued</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/limits-of-linear-regression.html">Limits and variations of linear regression</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="limits-of-linear-regression.html">Tutorial: More on linear models</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/limits-of-linear-regression.html">Discussion questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/mixed-effects-models.html">Mixed effects models</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="mixed-effects-models.html">Tutorial: Running linear mixed effects models</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/mixed-effects-models.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/mixed-effects-models.html">Exercise 9: Mixed effects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/classifiers.html">Classifiers</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="classifiers.html">Tutorial: Basics classifiers</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/classifiers.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/classifiers.html">Exercise 10: Classification</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/the-beauty-of-knn.html">The beauty of kNN</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="the-beauty-of-knn.html">Tutorial: Running kNN models</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/the-beauty-of-knn.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/the-beauty-of-knn.html">Exercise 11: The Beauty of kNN</a></li>
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/cross-validation.html">Cross validation</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="cross-validation.html">Tutorial: Implementing cross validation</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/cross-validation.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/cross-validation.html">Exercise 12: Cross Validation</a></li>
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/resampling-methods.html">Resampling methods</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="resampling-methods.html">Tutorial: Boostrap and permutation tests</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/resampling-methods.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/resampling-methods.html">Exercise 13:  Resampling methods</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/mediation-and-moderation.html">Mediation and moderation</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="mediation-and-moderation.html">Tutorial: Running mediation and moderation models</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/mediation-and-moderation.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/mediation-and-moderation.html">Exercise 14: Mediation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/power-analysis-via-simulations.html">Power analysis via simulations</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="power-analysis-via-simulations.html">Tutorial: Running basic power analyses</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/power-analysis-via-simulations.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/power-analysis-via-simulations.html">Exercise 15: Power Analyses</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/selecting-the-best-model.html">Selecting the best model</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="selecting-the-best-model.html">Tutorial: Model selection</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/selecting-the-best-model.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/selecting-the-best-model.html">Exercise 16: Model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/regularized-regression.html">Regularized regression</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="regularized-regression.html">Tutorial: Basic ridge and LASSO models</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/regularized-regression.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/regularized-regression.html">Exercise 17: Regularized regression</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../lectures/principal-component-methods.html">Principal component methods</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Tutorial: Basic PCA approaches</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/principal-component-methods.html">Discussion questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/principal-component-methods.html">Exercise 18: Principal component methods</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Understanding</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/reconsidering-the-p-value.html">
-   Reconsidering the p-value
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/>
-  <label for="toctree-checkbox-23">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/reconsidering-the-p-value.html">
-     Discussion questions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/bayes-factor-accepting-the-null.html">
-   Bayes factor
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/>
-  <label for="toctree-checkbox-24">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="bayes-factor-accepting-the-null.html">
-     Tutorial: Estimating Bayes factors
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/bayes-factor-accepting-the-null.html">
-     Discussion questions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/errors-and-inferences.html">
-   Errors and inferences
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/>
-  <label for="toctree-checkbox-25">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/errors-and-inferences.html">
-     Discussion questions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/telling-your-data-story.html">
-   Telling your data story
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/>
-  <label for="toctree-checkbox-26">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/telling-your-data-story.html">
-     Discussion questions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lectures/theories-as-social-constructs.html">
-   Theories as social constructs
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/>
-  <label for="toctree-checkbox-27">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../discussions/theories-as-social-constructs.html">
-     Discussion questions
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/reconsidering-the-p-value.html">Reconsidering the p-value</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../discussions/reconsidering-the-p-value.html">Discussion questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/bayes-factor-accepting-the-null.html">Bayes factor</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="bayes-factor-accepting-the-null.html">Tutorial: Estimating Bayes factors</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../discussions/bayes-factor-accepting-the-null.html">Discussion questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/errors-and-inferences.html">Errors and inferences</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../discussions/errors-and-inferences.html">Discussion questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/telling-your-data-story.html">Telling your data story</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../discussions/telling-your-data-story.html">Discussion questions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/theories-as-social-constructs.html">Theories as social constructs</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-27"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../discussions/theories-as-social-constructs.html">Discussion questions</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
-          
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
 <div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/notebooks/principal-component-methods.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/notebooks/principal-component-methods.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../_static/images/logo_binder.svg">
   </span>
-<span class="headerbtn__text-container">Binder</span>
+<span class="btn__text-container">Binder</span>
 </a>
-
-      </li>
+</li>
       
-      <li>
-        <a href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/notebooks/principal-component-methods.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/notebooks/principal-component-methods.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</li>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/principal-component-methods.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/notebooks/principal-component-methods.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Tutorial: Basic PCA approaches
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#goals">
-     Goals:
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#principal-component-analysis-the-big-picture">
-   Principal component analysis: the big picture
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#principal-component-regression">
-   Principal component regression
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#partial-least-squares">
-   Partial least squares
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Tutorial: Basic PCA approaches</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Tutorial: Basic PCA approaches
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#goals">
-     Goals:
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#principal-component-analysis-the-big-picture">
-   Principal component analysis: the big picture
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#principal-component-regression">
-   Principal component regression
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#partial-least-squares">
-   Partial least squares
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tutorial: Basic PCA approaches</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tutorial: Basic PCA approaches</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-analysis-the-big-picture">Principal component analysis: the big picture</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-regression">Principal component regression</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#partial-least-squares">Partial least squares</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-basic-pca-approaches">
-<h1>Tutorial: Basic PCA approaches<a class="headerlink" href="#tutorial-basic-pca-approaches" title="Permalink to this headline">#</a></h1>
+<h1>Tutorial: Basic PCA approaches<a class="headerlink" href="#tutorial-basic-pca-approaches" title="Permalink to this heading">#</a></h1>
 <p>This lab focuses on principal component analysis and regression as well as partial least squares regression in R.</p>
 <section id="goals">
-<h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">#</a></h2>
+<h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Understand principal component analysis, and use it for visualization</p></li>
 <li><p>Implement principal component regression using <code class="docutils literal notranslate"><span class="pre">pcr()</span></code> in the <code class="docutils literal notranslate"><span class="pre">pls</span></code> library</p></li>
@@ -1064,7 +612,7 @@ title="Print to PDF"
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="principal-component-analysis-the-big-picture">
-<h1>Principal component analysis: the big picture<a class="headerlink" href="#principal-component-analysis-the-big-picture" title="Permalink to this headline">#</a></h1>
+<h1>Principal component analysis: the big picture<a class="headerlink" href="#principal-component-analysis-the-big-picture" title="Permalink to this heading">#</a></h1>
 <p>Principal component analysis (PCA) is a handy way to decrease the dimensionality of your data. PCA helps you identify the dimensions along which your data varies the most, so you can capture the important variance while also simplifying.</p>
 <p>This can be a bit hard to get a physical intuition for, so if you’d like more discussion about how to think about PCA and dimensionality reduction more generally, I’d recommend checking out <a class="reference external" href="https://www.youtube.com/watch?v=_UVHneBUBW0">this video from StatQuest</a>.</p>
 <p>However, before we move on to PCR and PLS, let’s do a quick example of applying PCA in a simple context. In this example, we’ll focus on PCA as a tool for visualization using the <code class="docutils literal notranslate"><span class="pre">iris</span></code> dataset. This data set reports petal and sepal lengths for three different subspecies of iris flowers.</p>
@@ -1119,21 +667,21 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">require</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
-<span class="nf">ggplot</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Sepal.Length</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">Species</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span> <span class="nf">theme_light</span><span class="p">()</span>
-<span class="nf">ggplot</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Width</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Sepal.Width</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">Species</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span> <span class="nf">theme_light</span><span class="p">()</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sepal.Length</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="n">Species</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">theme_light</span><span class="p">()</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">iris</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Petal.Width</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sepal.Width</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="n">Species</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">theme_light</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/principal-component-methods_8_0.png" src="../_images/principal-component-methods_8_0.png" />
-<img alt="../_images/principal-component-methods_8_1.png" src="../_images/principal-component-methods_8_1.png" />
+<img alt="../_images/51e84acf2c21c8c78a8a521843ab011a4abdf7dd1d71c01a4e785bea60c2232a.png" src="../_images/51e84acf2c21c8c78a8a521843ab011a4abdf7dd1d71c01a4e785bea60c2232a.png" />
+<img alt="../_images/ba775e7653010e9be4c90f97515aaecb2847d1aef01f232f7a2e6ae4e46d9331.png" src="../_images/ba775e7653010e9be4c90f97515aaecb2847d1aef01f232f7a2e6ae4e46d9331.png" />
 </div>
 </div>
 <p>There are other combinations of variables we could plot, of course, but this is enough to show that all of these variables are providing some information about how these species differ.</p>
 <p>How can we decrease the dimensionality of this data from 4 variables to 2 without losing too much information? We’ll use the <code class="docutils literal notranslate"><span class="pre">prcomp()</span></code> function to do this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">iris.pca</span> <span class="o">&lt;-</span> <span class="nf">prcomp</span><span class="p">(</span><span class="n">iris</span><span class="p">[,</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">],</span><span class="n">scale.</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span> 
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">iris.pca</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">prcomp</span><span class="p">(</span><span class="n">iris</span><span class="p">[,</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">],</span><span class="n">scale.</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> </span>
 <span class="c1"># ^^ &quot;scale.&quot; just indicates that all variables should be scaled before PCA is applied, so that units don&#39;t matter</span>
 </pre></div>
 </div>
@@ -1143,14 +691,14 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">pc</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span><span class="n">var.exp</span><span class="o">=</span><span class="n">iris.pca</span><span class="o">$</span><span class="n">sdev</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">iris.pca</span><span class="o">$</span><span class="n">sdev</span><span class="p">)),</span>
-        <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">pc</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">var.exp</span><span class="p">))</span> <span class="o">+</span> 
-    <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span> 
-    <span class="nf">theme_light</span><span class="p">()</span>
+<span class="w">        </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">pc</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">var.exp</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">    </span><span class="nf">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">    </span><span class="nf">theme_light</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/principal-component-methods_12_0.png" src="../_images/principal-component-methods_12_0.png" />
+<img alt="../_images/532befb6a88f7041856f2b09a8a8bf5a8ba3ef4d447e64727180f1cb7238803f.png" src="../_images/532befb6a88f7041856f2b09a8a8bf5a8ba3ef4d447e64727180f1cb7238803f.png" />
 </div>
 </div>
 <p>As you can see, together the first and second components explain over 80% of the variance present with all 4 variables.</p>
@@ -1205,30 +753,30 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">PC1</span><span class="o">=</span><span class="n">iris.pca</span><span class="o">$</span><span class="n">x</span><span class="p">[,</span><span class="m">1</span><span class="p">],</span><span class="n">PC2</span><span class="o">=</span><span class="n">iris.pca</span><span class="o">$</span><span class="n">x</span><span class="p">[,</span><span class="m">2</span><span class="p">],</span><span class="n">Species</span><span class="o">=</span><span class="n">iris</span><span class="o">$</span><span class="n">Species</span><span class="p">),</span>
-        <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">PC1</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">PC2</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">Species</span><span class="p">))</span> <span class="o">+</span> 
-    <span class="nf">geom_point</span><span class="p">()</span> <span class="o">+</span> 
-    <span class="nf">theme_light</span><span class="p">()</span>
+<span class="w">        </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">PC1</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">PC2</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">Species</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">    </span><span class="nf">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">    </span><span class="nf">theme_light</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/principal-component-methods_19_0.png" src="../_images/principal-component-methods_19_0.png" />
+<img alt="../_images/88ad256ec3c226a2a11567bb00f495bf09fa20b6f17a2d1e8c69e924511a6280.png" src="../_images/88ad256ec3c226a2a11567bb00f495bf09fa20b6f17a2d1e8c69e924511a6280.png" />
 </div>
 </div>
 <p>We can see that the first two PCs do a pretty good job of capturing the variance across the four original variables. Compare this plot to the two original scatter plots. Reason about why it looks the way it does, given how the first two PCs drew from the original variables.</p>
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="principal-component-regression">
-<h1>Principal component regression<a class="headerlink" href="#principal-component-regression" title="Permalink to this headline">#</a></h1>
+<h1>Principal component regression<a class="headerlink" href="#principal-component-regression" title="Permalink to this heading">#</a></h1>
 <p>Now that we’ve got a firmer grasp on what PCA is doing generally, let’s try out principal component regression using the <code class="docutils literal notranslate"><span class="pre">pcr()</span></code> function from the <code class="docutils literal notranslate"><span class="pre">pls</span></code> library. We’ll use the <code class="docutils literal notranslate"><span class="pre">Hitters</span></code> dataset for this example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;pls&quot;</span><span class="p">)</span> <span class="c1"># Uncomment if not installed</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">pls</span><span class="p">)</span> <span class="c1"># load for the pcr function</span>
-<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;ISLR&quot;</span><span class="p">)</span> <span class="c1"># Uncomment if not installed</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">ISLR</span><span class="p">)</span> <span class="c1"># For Hitters dataset</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;pls&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1"># Uncomment if not installed</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">pls</span><span class="p">)</span><span class="w"> </span><span class="c1"># load for the pcr function</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;ISLR&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1"># Uncomment if not installed</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">ISLR</span><span class="p">)</span><span class="w"> </span><span class="c1"># For Hitters dataset</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
-<span class="n">hit.dat</span> <span class="o">&lt;-</span> <span class="n">Hitters</span> <span class="o">%&gt;%</span> <span class="nf">drop_na</span><span class="p">()</span> <span class="c1"># get rid of missing values in Hitters dataset.</span>
+<span class="n">hit.dat</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">Hitters</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">drop_na</span><span class="p">()</span><span class="w"> </span><span class="c1"># get rid of missing values in Hitters dataset.</span>
 </pre></div>
 </div>
 </div>
@@ -1237,7 +785,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
-<span class="n">pcr.fit</span><span class="o">=</span><span class="nf">pcr</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">hit.dat</span> <span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">validation</span> <span class="o">=</span><span class="s">&quot;CV&quot;</span><span class="p">)</span>
+<span class="n">pcr.fit</span><span class="o">=</span><span class="nf">pcr</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">hit.dat</span><span class="w"> </span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">validation</span><span class="w"> </span><span class="o">=</span><span class="s">&quot;CV&quot;</span><span class="p">)</span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">pcr.fit</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1278,12 +826,12 @@ Salary     53.01     53.85     54.61     54.61
 <p>The <code class="docutils literal notranslate"><span class="pre">VALIDATION</span></code> section of the output above shows us the cross-validated root mean squared-error for each number of components used (we can just square this to get the normally used mean squared-error). We can also visualize this using the <code class="docutils literal notranslate"><span class="pre">validationplot()</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">validationplot</span><span class="p">(</span><span class="n">pcr.fit</span><span class="p">,</span><span class="n">val.type</span><span class="o">=</span><span class="s">&quot;MSEP&quot;</span><span class="p">)</span> <span class="c1"># MSEP shows cross-validated mean-squared error as error metric. </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">validationplot</span><span class="p">(</span><span class="n">pcr.fit</span><span class="p">,</span><span class="n">val.type</span><span class="o">=</span><span class="s">&quot;MSEP&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1"># MSEP shows cross-validated mean-squared error as error metric. </span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/principal-component-methods_28_0.png" src="../_images/principal-component-methods_28_0.png" />
+<img alt="../_images/dba93d92032c6475fd1d4d62b558409b3a4112a92100e7cc2dd92abb1fd6eced.png" src="../_images/dba93d92032c6475fd1d4d62b558409b3a4112a92100e7cc2dd92abb1fd6eced.png" />
 </div>
 </div>
 <p>The best performance is around 16 PCs, but it looks like that doesn’t do much better than 6 PCs.</p>
@@ -1291,23 +839,23 @@ Salary     53.01     53.85     54.61     54.61
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
-<span class="n">train</span><span class="o">=</span><span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">hit.dat</span><span class="p">),</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">hit.dat</span><span class="p">)</span><span class="o">/</span><span class="m">2</span><span class="p">)</span> <span class="c1"># Identify train observations</span>
-<span class="n">test</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">train</span><span class="p">)</span> <span class="c1"># Identify test observations</span>
-<span class="n">y.test</span><span class="o">=</span><span class="n">hit.dat</span><span class="o">$</span><span class="n">Salary</span><span class="p">[</span><span class="n">test</span><span class="p">]</span> <span class="c1"># Identify test dependent variable values</span>
-<span class="n">x.test</span><span class="o">=</span><span class="nf">select</span><span class="p">(</span><span class="n">hit.dat</span><span class="p">,</span><span class="o">-</span><span class="n">Salary</span><span class="p">)[</span><span class="n">test</span><span class="p">,]</span> <span class="c1"># Identify test independent variable values</span>
+<span class="n">train</span><span class="o">=</span><span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">hit.dat</span><span class="p">),</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">hit.dat</span><span class="p">)</span><span class="o">/</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="c1"># Identify train observations</span>
+<span class="n">test</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">train</span><span class="p">)</span><span class="w"> </span><span class="c1"># Identify test observations</span>
+<span class="n">y.test</span><span class="o">=</span><span class="n">hit.dat</span><span class="o">$</span><span class="n">Salary</span><span class="p">[</span><span class="n">test</span><span class="p">]</span><span class="w"> </span><span class="c1"># Identify test dependent variable values</span>
+<span class="n">x.test</span><span class="o">=</span><span class="nf">select</span><span class="p">(</span><span class="n">hit.dat</span><span class="p">,</span><span class="o">-</span><span class="n">Salary</span><span class="p">)[</span><span class="n">test</span><span class="p">,]</span><span class="w"> </span><span class="c1"># Identify test independent variable values</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pcr.fit</span><span class="o">=</span><span class="nf">pcr</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">hit.dat</span><span class="p">,</span><span class="n">subset</span><span class="o">=</span><span class="n">train</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">validation</span> <span class="o">=</span><span class="s">&quot;CV&quot;</span><span class="p">)</span> <span class="c1"># Run cross-validated PCR fit on training set</span>
-<span class="nf">validationplot</span><span class="p">(</span><span class="n">pcr.fit</span><span class="p">,</span><span class="n">val.type</span><span class="o">=</span><span class="s">&quot;MSEP&quot;</span><span class="p">)</span> <span class="c1"># plot CV MSE for num of PCs</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pcr.fit</span><span class="o">=</span><span class="nf">pcr</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">hit.dat</span><span class="p">,</span><span class="n">subset</span><span class="o">=</span><span class="n">train</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">validation</span><span class="w"> </span><span class="o">=</span><span class="s">&quot;CV&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1"># Run cross-validated PCR fit on training set</span>
+<span class="nf">validationplot</span><span class="p">(</span><span class="n">pcr.fit</span><span class="p">,</span><span class="n">val.type</span><span class="o">=</span><span class="s">&quot;MSEP&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1"># plot CV MSE for num of PCs</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/principal-component-methods_32_0.png" src="../_images/principal-component-methods_32_0.png" />
+<img alt="../_images/12f98236cbee26375986cf89854dc4939a2e45512c0f2d9cb5c50037bf7c3a78.png" src="../_images/12f98236cbee26375986cf89854dc4939a2e45512c0f2d9cb5c50037bf7c3a78.png" />
 </div>
 </div>
 <p>It looks like, for the training set, the best number of PCs is 5. How does that look on the test set?</p>
@@ -1325,7 +873,7 @@ Salary     53.01     53.85     54.61     54.61
 <p>Now that we’ve got a good model selected (with M = 7 principal components), let’s fit it to the whole dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pcr.fit</span> <span class="o">=</span> <span class="nf">pcr</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">hit.dat</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">ncomp</span><span class="o">=</span><span class="m">5</span><span class="p">)</span> <span class="c1"># fit PCR to the full data set using our selected number of PCs, M = 5</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pcr.fit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">pcr</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">hit.dat</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">ncomp</span><span class="o">=</span><span class="m">5</span><span class="p">)</span><span class="w"> </span><span class="c1"># fit PCR to the full data set using our selected number of PCs, M = 5</span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">pcr.fit</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1346,12 +894,12 @@ Salary    40.63    41.58    42.17    43.22    44.90
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="partial-least-squares">
-<h1>Partial least squares<a class="headerlink" href="#partial-least-squares" title="Permalink to this headline">#</a></h1>
+<h1>Partial least squares<a class="headerlink" href="#partial-least-squares" title="Permalink to this heading">#</a></h1>
 <p>The function for performing partial least squares is <code class="docutils literal notranslate"><span class="pre">plsr()</span></code>, also in the <code class="docutils literal notranslate"><span class="pre">pls</span></code> package. Let’s apply cross-validated PLS to the <code class="docutils literal notranslate"><span class="pre">Hitters</span></code> training dataset, again trying to predict <code class="docutils literal notranslate"><span class="pre">Salary</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
-<span class="n">pls.fit</span> <span class="o">&lt;-</span> <span class="nf">plsr</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="n">data</span> <span class="o">=</span> <span class="n">hit.dat</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">validation</span><span class="o">=</span><span class="s">&quot;CV&quot;</span><span class="p">)</span>
+<span class="n">pls.fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">plsr</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hit.dat</span><span class="p">,</span><span class="w"> </span><span class="n">subset</span><span class="o">=</span><span class="n">train</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">validation</span><span class="o">=</span><span class="s">&quot;CV&quot;</span><span class="p">)</span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">pls.fit</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1391,8 +939,8 @@ Salary     58.17     58.49     58.56     58.62
 <p>Interestingly, the lowest RMSE is when only one partial least squares direction is used. Let’s look at how a model with only one PLS direction performs on the test data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pls.pred</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">pls.fit</span><span class="p">,</span><span class="n">x.test</span><span class="p">,</span><span class="n">ncomp</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
-<span class="nf">mean</span><span class="p">((</span><span class="n">pls.pred</span> <span class="o">-</span> <span class="n">y.test</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pls.pred</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">pls.fit</span><span class="p">,</span><span class="n">x.test</span><span class="p">,</span><span class="n">ncomp</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+<span class="nf">mean</span><span class="p">((</span><span class="n">pls.pred</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y.test</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1402,7 +950,7 @@ Salary     58.17     58.49     58.56     58.62
 <p>This is higher than the test error we got using 5 principal components in the PCR example above, but still comparable. Now let’s look at PLS for the full data set, using M = 1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pls.fit</span> <span class="o">=</span> <span class="nf">plsr</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">hit.dat</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="n">ncomp</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pls.fit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">plsr</span><span class="p">(</span><span class="n">Salary</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">hit.dat</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="n">ncomp</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">pls.fit</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1436,7 +984,7 @@ Salary    43.05
             mode: "r"
         },
         kernelOptions: {
-            kernelName: "ir",
+            name: "ir",
             path: "./notebooks"
         },
         predefinedOutput: true
@@ -1444,50 +992,112 @@ Salary    43.05
     </script>
     <script>kernelName = 'ir'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../lectures/principal-component-methods.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Principal component methods</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../lectures/principal-component-methods.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Principal component methods</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="../discussions/principal-component-methods.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="../discussions/principal-component-methods.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Discussion questions</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis, Fiona Horner<br/>
-  
-      &copy; Copyright 2023.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
-
-
       </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tutorial: Basic PCA approaches</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-analysis-the-big-picture">Principal component analysis: the big picture</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-regression">Principal component regression</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#partial-least-squares">Partial least squares</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy Sentis, Fiona Horner
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

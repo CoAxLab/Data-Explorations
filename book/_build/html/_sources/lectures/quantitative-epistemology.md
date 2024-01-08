@@ -3,7 +3,9 @@
 
 ## Required readings
 
-- Dretske, F. I. (1983). Précis of Knowledge and the Flow of Information. Behavioral and Brain Sciences, 6(1), 55-63.
+
+[- Dretske, F. I. (1983). Précis of Knowledge and the Flow of Information. Behavioral and Brain Sciences, 6(1), 55-63.](https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/abs/precis-of-knowledge-and-the-flow-of-information/A2B3E1424980A41232AB9ECE92D2CCBE)
+
 
 - Vlastelica M. (2019). Learning Theory: Empirical Risk Minimization. Towards Data Science.
 
