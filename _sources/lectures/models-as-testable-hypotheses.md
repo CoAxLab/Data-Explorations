@@ -10,7 +10,7 @@
 
 ## Lecture (Video)
 
-[![Models as testable hypotheses](../thumbnails/models-as-testable-hypotheses.jpeg)](https://youtu.be/2IJ8pAP7xiI "Models as testable hypotheses")
+[![Models as testable hypotheses](../thumbnails/models-as-testable-hypotheses.jpeg)](https://youtu.be/aJUWPnRpnpQ "Models as testable hypotheses")
 
 ## Slides (PDF)
 
