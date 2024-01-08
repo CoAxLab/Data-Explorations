@@ -9,7 +9,7 @@
 
 ## Lecture (Video)
 
-[![Mixed effects models](../thumbnails/mixed-effects-models.jpeg)](https://www.youtube.com/watch?v=ZyeCP5H9K5A "Mixed effects models")
+[![Mixed effects models](../thumbnails/mixed-effects-models.jpeg)](https://youtu.be/w-niplAO22I "Mixed effects models")
 
 ## Slides (PDF)
 
