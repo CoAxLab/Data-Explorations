@@ -3,9 +3,9 @@
 
 ## Required readings
 
-- A Survey of Some Fundamental Problems. In Popper, K. (1959). The logic of scientific discovery. Routledge.
+[A Survey of Some Fundamental Problems. In Popper, K. (1959). The logic of scientific discovery. Routledge.](https://books.google.com/books?hl=en&lr=&id=LWSBAgAAQBAJ&oi=fnd&pg=PP1&dq=A+Survey+of+Some+Fundamental+Problems.+In+Popper,+K.+(1959).+The+logic+of+scientific+discovery&ots=pBCh1Y-LfM&sig=As904u9ySGdgrjTL8X-HCqsFdco#v=onepage&q&f=false)
 
-- Guest, O., & Martin, A. E. (2021). On logical inference over brains, behaviour, and artificial neural networks. Psyarxiv
+[Guest, O., & Martin, A. E. (2023). On logical inference over brains, behaviour, and artificial neural networks. Computational Brain & Behavior, 1-15.](https://link.springer.com/article/10.1007/s42113-022-00166-x)
 
 
 ## Lecture (Video)

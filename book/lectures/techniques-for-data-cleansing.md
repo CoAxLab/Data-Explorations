@@ -3,7 +3,7 @@
 
 ## Required readings
 
-- Müller, H., & Freytag, J. C. (2003). Problems, Methods, and Challenges in Data Cleansing. Berlin: HUB-IB-164.
+[Müller, H., & Freytag, J. C. (2003). Problems, Methods, and Challenges in Data Cleansing. Berlin: HUB-IB-164.](https://www.semanticscholar.org/paper/Problems-%2C-Methods-%2C-and-Challenges-in-Data-Mueller-Freytag/0168304c626a5b186bf559bf774a1dca52b04931)
 
 ## Lecture (Video)
 

@@ -3,7 +3,7 @@
 
 ## Required readings
 
-- Franconeri, S., L. Padilla, P. Shah, J. Zacks, & J. Hullman (2021). The science of visual data communication: What works. Psychological Science in the Public Interest
+[Franconeri, S. L., Padilla, L. M., Shah, P., Zacks, J. M., & Hullman, J. (2021). The science of visual data communication: What works. Psychological Science in the public interest, 22(3), 110-161.](https://journals.sagepub.com/doi/abs/10.1177/15291006211051956)
 
 ## Lecture (Video)
 

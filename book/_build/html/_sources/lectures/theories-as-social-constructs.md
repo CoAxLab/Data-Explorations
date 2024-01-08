@@ -3,7 +3,7 @@
 
 ## Required readings
 
-- De Regt, H. W., & Dieks, D. (2005). A contextual approach to scientific understanding. Synthese, 144(1), 137-170. 
+[De Regt, H. W., & Dieks, D. (2005). A contextual approach to scientific understanding. Synthese, 144(1), 137-170.](https://link.springer.com/article/10.1007/s11229-005-5000-4)
 
 ## Lecture (Video)
 

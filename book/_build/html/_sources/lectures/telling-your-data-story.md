@@ -3,7 +3,7 @@
 
 ## Required readings
 
-- Mensh, B., & Kording, K. (2017). Ten simple rules for structuring papers. PLoS Comput Biol, 13(9), e1005619
+[Mensh, B., & Kording, K. (2017). Ten simple rules for structuring papers. PLoS Comput Biol, 13(9), e1005619](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005619)
 
 ## Lecture (Video)
 

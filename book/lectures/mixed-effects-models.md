@@ -3,9 +3,9 @@
 
 ## Required readings
 
-- Bates, Douglas M. "lme4: Mixed-effects modeling with R." (2010): 470-474. 
+[Bates, Douglas M. "lme4: Mixed-effects modeling with R." (2010): 470-474.](http://lme4.r-forge.r-project.org/book/front.pdf)
 
-- Yarkoni, T. (2019). The generalizability crisis. PsyArXiv
+[Yarkoni, T. (2022). The generalizability crisis. Behavioral and Brain Sciences, 45, e1.](https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/generalizability-crisis/AD386115BA539A759ACB3093760F4824)
 
 ## Lecture (Video)
 

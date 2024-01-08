@@ -3,7 +3,7 @@
 
 ## Required readings
 
-- Beaujean, A. A. (2014). Sample size determination for regression models using Monte Carlo methods in R. Practical Assessment, Research, and Evaluation, 19(1), 12.
+[Beaujean, A. A. (2014). Sample size determination for regression models using Monte Carlo methods in R. Practical Assessment, Research, and Evaluation, 19(1), 12.](https://scholarworks.umass.edu/pare/vol19/iss1/12/)
 
 ## Lecture (Video)
 

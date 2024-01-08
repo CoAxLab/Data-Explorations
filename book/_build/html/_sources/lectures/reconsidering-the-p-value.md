@@ -3,7 +3,7 @@
 
 ## Required readings
 
-- Wasserstein, R. L., Schirm, A. L., & Lazar, N. A. (2019). Moving to a World Beyond "p < 0.05". The American Statistician, 73(S1), 1-19.
+[Wasserstein, R. L., Schirm, A. L., & Lazar, N. A. (2019). Moving to a World Beyond "p < 0.05". The American Statistician, 73(S1), 1-19.](https://www.tandfonline.com/doi/abs/10.1080/00031305.2019.1583913)
 
 ## Lecture (Video)
 

@@ -3,9 +3,9 @@
 
 ## Required readings
 
-- van Rooij, I., & Baggio, G. (2020). Theory before the test: How to build high-verisimilitude explanatory theories in psychological science. PsyArXiv
+[van Rooij, I., & Baggio, G. (2021). Theory before the test: How to build high-verisimilitude explanatory theories in psychological science. Perspectives on Psychological Science, 16(4), 682-697.](https://journals.sagepub.com/doi/full/10.1177/1745691620970604)
 
-- Guest, O., & Martin, A. E. (2020). How computational modeling can force theory building in psychological science. PsyArXiv
+[Guest, O., & Martin, A. E. (2021). How computational modeling can force theory building in psychological science. Perspectives on Psychological Science, 16(4), 789-802.](https://journals.sagepub.com/doi/full/10.1177/1745691620970585)
 
 ## Lecture (Video)
 
