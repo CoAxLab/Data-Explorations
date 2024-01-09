@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Exercise 12: Cross Validation &#8212; Data explorations</title>
+    <title>Exercise 12: Cross validation &#8212; Data explorations</title>
   
   
   
@@ -204,7 +204,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/techniques-for-data-cleansing.html">Discussion questions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="techniques-for-data-cleansing.html">Exercise 4: Data tables and manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="techniques-for-data-cleansing.html">Exercise 4: Data cleansing</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/visualization-as-analysis.html">Visualization as analysis</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -284,7 +284,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../notebooks/the-beauty-of-knn.html">Tutorial: Running kNN models</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/the-beauty-of-knn.html">Discussion questions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="the-beauty-of-knn.html">Exercise 11: The Beauty of kNN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="the-beauty-of-knn.html">Exercise 11: The beauty of kNN</a></li>
 
 
 </ul>
@@ -296,7 +296,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/cross-validation.html">Discussion questions</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Exercise 12: Cross Validation</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Exercise 12: Cross validation</a></li>
 
 
 
@@ -326,7 +326,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/power-analysis-via-simulations.html">Discussion questions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="power-analysis-via-simulations.html">Exercise 15: Power Analyses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="power-analysis-via-simulations.html">Exercise 15: Power analyses</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/selecting-the-best-model.html">Selecting the best model</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -566,7 +566,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercise 12: Cross Validation</h1>
+    <h1>Exercise 12: Cross validation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -576,7 +576,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 12: Cross Validation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 12: Cross validation</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-1-pts">1: Data (1 pts)</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#leave-one-out-cross-validation-4-pts">2. Leave-one-out Cross Validation (4 pts)</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-to-cv-glm-3-pts">3. Compare to <code class="docutils literal notranslate"><span class="pre">cv.glm</span></code> (3 pts)</a></li>
@@ -597,7 +597,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-12-cross-validation">
-<h1>Exercise 12: Cross Validation<a class="headerlink" href="#exercise-12-cross-validation" title="Permalink to this heading">#</a></h1>
+<h1>Exercise 12: Cross validation<a class="headerlink" href="#exercise-12-cross-validation" title="Permalink to this heading">#</a></h1>
 <hr class="docutils" />
 <p>In this exercise, we’ll practice implementing cross validation techniques, including leave-one-out and k-fold cross validation. We’ll use the <code class="docutils literal notranslate"><span class="pre">PimaIndiansDiabetes2</span></code> practice dataset, which has medical data on a group of Pima Native American women, including whether or not they have diabetes. This dataset is part of the <code class="docutils literal notranslate"><span class="pre">mlbench</span></code> package. We’ll be using each person’s medical history to predict whether or not they have been diagnosed with diabetes.</p>
 </section>
@@ -741,7 +741,7 @@ document.write(`
 <li></li>
 </ul>
 </div></blockquote>
-<p><strong>DUE:</strong> 5pm March 27, 2023</p>
+<p><strong>DUE:</strong> 5pm March 25, 2024</p>
 <p><strong>IMPORTANT</strong> Did you collaborate with anyone on this assignment? If so, list their names here.</p>
 <blockquote>
 <div><p><em>Someone’s Name</em></p>
@@ -816,7 +816,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 12: Cross Validation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise 12: Cross validation</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-1-pts">1: Data (1 pts)</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#leave-one-out-cross-validation-4-pts">2. Leave-one-out Cross Validation (4 pts)</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-to-cv-glm-3-pts">3. Compare to <code class="docutils literal notranslate"><span class="pre">cv.glm</span></code> (3 pts)</a></li>
