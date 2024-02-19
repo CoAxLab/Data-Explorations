@@ -640,13 +640,13 @@ document.write(`
 <p>A vector is a series of numbers, arranged in either a column or a row. The numbers stored in a vector are called <strong>elements</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data_point</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="c1">#this is one element </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data_point</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="c1">#this is one element</span>
 <span class="nf">print</span><span class="p">(</span><span class="n">data_point</span><span class="p">)</span>
 
 <span class="n">vector_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">data_point</span><span class="p">,</span><span class="w"> </span><span class="n">data_point</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
 <span class="n">vector_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">data_point</span><span class="m">+4</span><span class="p">,</span><span class="w"> </span><span class="n">data_point</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">6</span><span class="p">)</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="n">vector_1</span><span class="p">)</span><span class="w"> </span>
+<span class="nf">print</span><span class="p">(</span><span class="n">vector_1</span><span class="p">)</span>
 <span class="nf">print</span><span class="p">(</span><span class="n">vector_2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -724,7 +724,7 @@ A row vector with elements 7 and 9: <span class="math notranslate nohighlight">\
 <p>You can create a matrix in R by calling the function <code class="docutils literal notranslate"><span class="pre">matrix</span></code> and supplying it with data, the number of rows and/or columns you would like, and a method for filling the matrix (by row or by column).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="w"> </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span>
 <span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>
 <span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span>
 
@@ -732,7 +732,7 @@ A row vector with elements 7 and 9: <span class="math notranslate nohighlight">\
 <span class="n">sample_matrix_by_col</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="p">,</span><span class="w"> </span><span class="n">byrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="c1">#fill matrix by column, not by rows</span>
 <span class="n">sample_matrix_by_row</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="p">,</span><span class="w"> </span><span class="n">byrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
 
-<span class="c1">#note the difference in the structure of the matrix when it&#39;s filled by row vs. by column </span>
+<span class="c1">#note the difference in the structure of the matrix when it&#39;s filled by row vs. by column</span>
 <span class="nf">head</span><span class="p">(</span><span class="n">sample_matrix_by_col</span><span class="p">)</span>
 <span class="nf">head</span><span class="p">(</span><span class="n">sample_matrix_by_row</span><span class="p">)</span>
 </pre></div>
@@ -813,13 +813,13 @@ However, to avoid errors, it’s best to be explicit to the extent that it makes
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">symmetric_matrix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">16</span><span class="p">,</span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">)</span>
 
-<span class="c1">#replace lower triangular portion with lower triangular portion of transpose </span>
-<span class="n">symmetric_matrix</span><span class="p">[</span><span class="n">lower_tri</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">t</span><span class="p">(</span><span class="n">symmetric_matrix</span><span class="p">)[</span><span class="n">lower_tri</span><span class="p">]</span><span class="w"> </span>
+<span class="c1">#replace lower triangular portion with lower triangular portion of transpose</span>
+<span class="n">symmetric_matrix</span><span class="p">[</span><span class="nf">lower.tri</span><span class="p">(</span><span class="n">symmetric_matrix</span><span class="p">)]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">t</span><span class="p">(</span><span class="n">symmetric_matrix</span><span class="p">)[</span><span class="nf">lower.tri</span><span class="p">(</span><span class="n">symmetric_matrix</span><span class="p">)]</span>
 
 <span class="n">symmetric_matrix</span><span class="w"> </span><span class="c1">#an example of a symmetric matrix</span>
 
 <span class="c1">#a transposed symmetric matrix is equal to the original matrix</span>
-<span class="nf">t</span><span class="p">(</span><span class="n">symmetric_matrix</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">symmetric_matrix</span><span class="w"> </span>
+<span class="nf">t</span><span class="p">(</span><span class="n">symmetric_matrix</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">symmetric_matrix</span>
 </pre></div>
 </div>
 </div>
@@ -985,8 +985,8 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 <p><strong>Note</strong>: R will let you perform matrix addition and subtraction when two matrices are NOT of the same dimension, so watch out for this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#addition </span>
-<span class="nf">print</span><span class="p">(</span><span class="n">mat_1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">mat_2</span><span class="p">)</span><span class="w"> </span><span class="c1">#each element is added to the next in-place </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#addition</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">mat_1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">mat_2</span><span class="p">)</span><span class="w"> </span><span class="c1">#each element is added to the next in-place</span>
 </pre></div>
 </div>
 </div>
@@ -1016,7 +1016,7 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#subtraction</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">mat_2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">mat_1</span><span class="p">)</span><span class="w"> </span><span class="c1">#each element is subtracted from the next in-place </span>
+<span class="nf">print</span><span class="p">(</span><span class="n">mat_2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">mat_1</span><span class="p">)</span><span class="w"> </span><span class="c1">#each element is subtracted from the next in-place</span>
 </pre></div>
 </div>
 </div>
@@ -1064,8 +1064,8 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 <p>The transposition switches rows and columns:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#transposition </span>
-<span class="n">transposed_mat_2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">t</span><span class="p">(</span><span class="n">mat_2</span><span class="p">)</span><span class="w"> </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#transposition</span>
+<span class="n">transposed_mat_2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">t</span><span class="p">(</span><span class="n">mat_2</span><span class="p">)</span>
 <span class="nf">print</span><span class="p">(</span><span class="n">transposed_mat_2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1132,7 +1132,7 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 <p><span class="math notranslate nohighlight">\(\begin{bmatrix} a,b \\ c,d\end{bmatrix} * \begin{bmatrix} e, f\\ g, h\end{bmatrix} = \begin{bmatrix} ae + bg,af+bh \\ ce + dg,cf + dh\end{bmatrix}\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#matrix multiplication </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#matrix multiplication</span>
 <span class="nf">print</span><span class="p">(</span><span class="n">mat_1</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="nf">t</span><span class="p">(</span><span class="n">mat_2</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -1152,7 +1152,7 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 <p>Matrices can be divided element-wise.<br></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#division </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#division</span>
 <span class="nf">print</span><span class="p">(</span><span class="n">mat_1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">mat_2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1185,12 +1185,12 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 <h3>Inversion<a class="headerlink" href="#inversion" title="Permalink to this heading">#</a></h3>
 <p>The inverse of a matrix can be thought of as the matrix version of taking the reciprocal of a real number. In equations, the inverse of the matrix A is denoted <span class="math notranslate nohighlight">\(\bf{A^{-1}}\)</span>. Usually, inversion can only be performed on square matrices. The formula for the inverse of a 2x2 matrix is:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{bmatrix} a&amp;b \\ c&amp;d\end{bmatrix}^{-1}  = \frac{1}{(ad-bc)} * 
+\[\begin{split}\begin{bmatrix} a&amp;b \\ c&amp;d\end{bmatrix}^{-1}  = \frac{1}{(ad-bc)} *
 \begin{bmatrix} d&amp;-b \\ -c&amp;a\end{bmatrix}\end{split}\]</div>
 <p>The method of calculating inverses for larger matrices is more complicated and is usually included in most software.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#taking the inverse </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#taking the inverse</span>
 <span class="nf">print</span><span class="p">(</span><span class="nf">solve</span><span class="p">(</span><span class="n">mat_2</span><span class="p">[,</span><span class="w"> </span><span class="m">2</span><span class="o">:</span><span class="m">3</span><span class="p">]))</span>
 <span class="nf">print</span><span class="p">(</span><span class="n">mat_2</span><span class="p">[,</span><span class="w"> </span><span class="m">2</span><span class="o">:</span><span class="m">3</span><span class="p">]</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="nf">solve</span><span class="p">(</span><span class="n">mat_2</span><span class="p">[,</span><span class="w"> </span><span class="m">2</span><span class="o">:</span><span class="m">3</span><span class="p">]))</span>
 </pre></div>
