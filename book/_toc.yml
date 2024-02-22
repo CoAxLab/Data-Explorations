@@ -60,16 +60,16 @@ parts:
       sections: 
       - file: notebooks/limits-of-linear-regression
       - file: discussions/limits-of-linear-regression
-    - file: lectures/mixed-effects-models
-      sections: 
-      - file: notebooks/mixed-effects-models
-      - file: discussions/mixed-effects-models
-      - file: exercises/mixed-effects-models
     - file: lectures/classifiers
       sections:
       - file: notebooks/classifiers
       - file: discussions/classifiers
       - file: exercises/classifiers
+    - file: lectures/mixed-effects-models
+      sections: 
+      - file: notebooks/mixed-effects-models
+      - file: discussions/mixed-effects-models
+      - file: exercises/mixed-effects-models
     - file: lectures/the-beauty-of-knn
       sections:
       - file: notebooks/the-beauty-of-knn
