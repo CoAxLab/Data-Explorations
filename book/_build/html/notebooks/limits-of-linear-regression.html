@@ -618,14 +618,14 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Libaries to install</span>
-<span class="c1">#install.packages(&quot;glmnet&quot;)</span>
-<span class="c1">#install.packages(&quot;matrixStats&quot;)</span>
-<span class="c1">#install.packages(&quot;denoiseR&quot;)</span>
-<span class="c1">#install.packages(&quot;gplots&quot;)</span>
-<span class="c1">#install.packages(&quot;RColorBrewer&quot;)</span>
-<span class="c1">#install.packages(&quot;plot3D&quot;) </span>
-<span class="c1"># install.packages(&quot;car&quot;) </span>
-<span class="c1">#install.packages(&quot;ISLR&quot;)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;glmnet&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;matrixStats&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;denoiseR&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;gplots&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;RColorBrewer&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;plot3D&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;car&quot;</span><span class="p">)</span>
+<span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;ISLR&quot;</span><span class="p">)</span>
 
 <span class="c1"># Load the libraries</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">MASS</span><span class="p">)</span>
@@ -636,8 +636,86 @@ document.write(`
 <span class="nf">library</span><span class="p">(</span><span class="n">denoiseR</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">gplots</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">RColorBrewer</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">plot3D</span><span class="p">)</span><span class="w"> </span>
+<span class="nf">library</span><span class="p">(</span><span class="n">plot3D</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">ISLR</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+
+also installing the dependencies ‘iterators’, ‘foreach’, ‘shape’, ‘Rcpp’, ‘RcppEigen’
+
+
+Installing package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+
+Installing package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+
+also installing the dependencies ‘SparseM’, ‘MatrixModels’, ‘minqa’, ‘nloptr’, ‘later’, ‘lazyeval’, ‘carData’, ‘abind’, ‘pbkrtest’, ‘quantreg’, ‘lme4’, ‘htmlwidgets’, ‘httpuv’, ‘crosstalk’, ‘promises’, ‘estimability’, ‘numDeriv’, ‘mvtnorm’, ‘car’, ‘DT’, ‘ellipse’, ‘emmeans’, ‘flashClust’, ‘leaps’, ‘multcompView’, ‘scatterplot3d’, ‘ggrepel’, ‘irlba’, ‘FactoMineR’
+
+
+Installing package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+
+also installing the dependencies ‘bitops’, ‘gtools’, ‘caTools’
+
+
+Installing package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+
+Installing package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+
+also installing the dependency ‘misc3d’
+
+
+Installing package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+
+Installing package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+
+Loading required package: Matrix
+
+Loaded glmnet 4.1-8
+
+── <span class=" -Color -Color-Bold">Attaching core tidyverse packages</span> ──────────────────────── tidyverse 2.0.0 ──
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">dplyr    </span> 1.1.4     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">readr    </span> 2.1.5
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">forcats  </span> 1.0.0     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">stringr  </span> 1.5.1
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">ggplot2  </span> 3.4.4     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">tibble   </span> 3.2.1
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">lubridate</span> 1.9.3     <span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">tidyr    </span> 1.3.1
+<span class=" -Color -Color-Green">✔</span> <span class=" -Color -Color-Blue">purrr    </span> 1.0.2     
+── <span class=" -Color -Color-Bold">Conflicts</span> ────────────────────────────────────────── tidyverse_conflicts() ──
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">tidyr</span>::<span class=" -Color -Color-Green">expand()</span> masks <span class=" -Color -Color-Blue">Matrix</span>::expand()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">filter()</span> masks <span class=" -Color -Color-Blue">stats</span>::filter()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">lag()</span>    masks <span class=" -Color -Color-Blue">stats</span>::lag()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">tidyr</span>::<span class=" -Color -Color-Green">pack()</span>   masks <span class=" -Color -Color-Blue">Matrix</span>::pack()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">dplyr</span>::<span class=" -Color -Color-Green">select()</span> masks <span class=" -Color -Color-Blue">MASS</span>::select()
+<span class=" -Color -Color-Red">✖</span> <span class=" -Color -Color-Blue">tidyr</span>::<span class=" -Color -Color-Green">unpack()</span> masks <span class=" -Color -Color-Blue">Matrix</span>::unpack()
+<span class=" -Color -Color-Cyan">ℹ</span> Use the conflicted package (<span class=" -Color -Color-Blue">&lt;http://conflicted.r-lib.org/&gt;</span>) to force all conflicts to become errors
+
+Attaching package: ‘matrixStats’
+
+
+The following object is masked from ‘package:dplyr’:
+
+    count
+
+
+
+Attaching package: ‘gplots’
+
+
+The following object is masked from ‘package:stats’:
+
+    lowess
+
+
+Warning message:
+“no DISPLAY variable so Tk is not available”
 </pre></div>
 </div>
 </div>
@@ -656,14 +734,14 @@ document.write(`
 <section class="tex2jax_ignore mathjax_ignore" id="regression-with-multiple-predictors">
 <h1>Regression with multiple predictors<a class="headerlink" href="#regression-with-multiple-predictors" title="Permalink to this heading">#</a></h1>
 <br>
-In the examples we have done so far, we have only looked at models where p = 1. 
+In the examples we have done so far, we have only looked at models where p = 1.
 <div class="math notranslate nohighlight">
 \[ Y_{medv} = \hat{\beta_0} + \hat{\beta_1}X_{lstat} + \epsilon \]</div>
 <p>Now let us explore the case where p &gt; 1. For this we will be using the <code class="docutils literal notranslate"><span class="pre">Cars93</span></code> dataset which is part of the <code class="docutils literal notranslate"><span class="pre">MASS</span></code> package. This dataset has information on the dimensions and weight (<a class="reference external" href="https://www.rdocumentation.org/packages/MASS/versions/7.3-58.2/topics/Cars93">among other things</a>) for different types of cars.</p>
 <p>Let’s just look at the data along the dimensions of width, length, and weight.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">scatter3D</span><span class="p">(</span><span class="n">Cars93</span><span class="o">$</span><span class="n">Width</span><span class="p">,</span><span class="w"> </span><span class="n">Cars93</span><span class="o">$</span><span class="n">Length</span><span class="p">,</span><span class="w"> </span><span class="n">Cars93</span><span class="o">$</span><span class="n">Weight</span><span class="p">,</span><span class="w"> </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">scatter3D</span><span class="p">(</span><span class="n">Cars93</span><span class="o">$</span><span class="n">Width</span><span class="p">,</span><span class="w"> </span><span class="n">Cars93</span><span class="o">$</span><span class="n">Length</span><span class="p">,</span><span class="w"> </span><span class="n">Cars93</span><span class="o">$</span><span class="n">Weight</span><span class="p">,</span>
 <span class="w">          </span><span class="n">phi</span><span class="o">=</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">theta</span><span class="o">=</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="c1">#phi controls tilt and theta controls angle</span>
 <span class="w">          </span><span class="n">xlab</span><span class="o">=</span><span class="s">&quot;Width&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ylab</span><span class="o">=</span><span class="s">&quot;Length&quot;</span><span class="p">,</span><span class="n">zlab</span><span class="o">=</span><span class="s">&quot;Weight&quot;</span><span class="p">)</span>
 </pre></div>
@@ -710,7 +788,7 @@ F-statistic: 168.1 on 2 and 90 DF,  p-value: &lt; 2.2e-16
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">num_cols</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">unlist</span><span class="p">(</span><span class="nf">lapply</span><span class="p">(</span><span class="n">Cars93</span><span class="p">,</span><span class="w"> </span><span class="n">is.numeric</span><span class="p">))</span><span class="w"> </span><span class="c1"># Find just the numeric columns</span>
 
-<span class="n">lm.fit</span><span class="o">=</span><span class="nf">lm</span><span class="p">(</span><span class="n">Weight</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="w"> </span>
+<span class="n">lm.fit</span><span class="o">=</span><span class="nf">lm</span><span class="p">(</span><span class="n">Weight</span><span class="o">~</span><span class="n">.</span><span class="p">,</span>
 <span class="w">          </span><span class="n">data</span><span class="o">=</span><span class="n">Cars93</span><span class="p">[,</span><span class="n">num_cols</span><span class="p">])</span><span class="w"> </span><span class="c1">#using indexing to select columns</span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">)</span>
 </pre></div>
@@ -760,7 +838,7 @@ F-statistic: 111.8 on 17 and 64 DF,  p-value: &lt; 2.2e-16
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#excluding EngineSize and Passengers using &quot;-&quot;</span>
-<span class="n">lm.fit_new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">Weight</span><span class="o">~</span><span class="n">.</span><span class="o">-</span><span class="n">EngineSize</span><span class="w"> </span><span class="o">-</span><span class="n">Passengers</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">Cars93</span><span class="p">[,</span><span class="n">num_cols</span><span class="p">])</span><span class="w"> </span>
+<span class="n">lm.fit_new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">Weight</span><span class="o">~</span><span class="n">.</span><span class="o">-</span><span class="n">EngineSize</span><span class="w"> </span><span class="o">-</span><span class="n">Passengers</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">Cars93</span><span class="p">[,</span><span class="n">num_cols</span><span class="p">])</span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">lm.fit_new</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -897,7 +975,7 @@ F-statistic: 128.7 on 15 and 66 DF,  p-value: &lt; 2.2e-16
 <p>The below model includes all the individual predictors (using <code class="docutils literal notranslate"><span class="pre">.</span></code>), and also fits some interaction terms using the <code class="docutils literal notranslate"><span class="pre">:</span></code> between two variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">lm.fit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">Sales</span><span class="o">~</span><span class="n">.</span><span class="o">+</span><span class="n">Income</span><span class="o">:</span><span class="n">Advertising</span><span class="o">+</span><span class="n">Price</span><span class="o">:</span><span class="n">Age</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">Carseats</span><span class="p">)</span><span class="w"> </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">lm.fit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">Sales</span><span class="o">~</span><span class="n">.</span><span class="o">+</span><span class="n">Income</span><span class="o">:</span><span class="n">Advertising</span><span class="o">+</span><span class="n">Price</span><span class="o">:</span><span class="n">Age</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">Carseats</span><span class="p">)</span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -980,9 +1058,9 @@ F-statistic:   210 on 13 and 386 DF,  p-value: &lt; 2.2e-16
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">make_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">s</span><span class="p">){</span>
-<span class="w">  </span>
+
 <span class="w">  </span><span class="nf">if </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">p</span><span class="p">){</span>
-<span class="w">    </span><span class="c1"># If number of features is greater </span>
+<span class="w">    </span><span class="c1"># If number of features is greater</span>
 <span class="w">    </span><span class="c1"># than number of observations, increase</span>
 <span class="w">    </span><span class="c1"># observations for the PCA to work</span>
 <span class="w">    </span><span class="n">m</span><span class="o">=</span><span class="n">p</span>
@@ -990,7 +1068,7 @@ F-statistic:   210 on 13 and 386 DF,  p-value: &lt; 2.2e-16
 <span class="w">    </span><span class="c1"># Otheriwse use the input n</span>
 <span class="w">    </span><span class="n">m</span><span class="o">=</span><span class="n">n</span>
 <span class="w">  </span><span class="p">}</span>
-<span class="w">  </span>
+
 <span class="w">  </span><span class="nf">if </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1"># Make full rank until p=k</span>
 <span class="w">    </span><span class="c1"># degree_diff = k-p</span>
@@ -1001,25 +1079,25 @@ F-statistic:   210 on 13 and 386 DF,  p-value: &lt; 2.2e-16
 
 <span class="w">  </span><span class="c1"># Recover low-d components</span>
 <span class="w">  </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">princomp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="w">  </span>
+
 <span class="w">  </span><span class="c1"># Set the first k components to 1, otherwise 0</span>
 <span class="w">  </span><span class="nf">if </span><span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0</span><span class="p">){</span>
 <span class="w">    </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="c1">#rnorm(p,mean=1,sd=0.5)</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="n">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="n">k</span><span class="p">),</span><span class="nf">matrix</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">nrow</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="n">ncol</span><span class="o">=</span><span class="n">p</span><span class="o">-</span><span class="n">k</span><span class="p">))</span>
 <span class="w">  </span><span class="p">}</span>
-<span class="w">  </span>
+
 <span class="w">  </span><span class="c1"># Calculate the weights in the data space</span>
 <span class="w">  </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">t</span><span class="p">(</span><span class="n">u</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="nf">t</span><span class="p">(</span><span class="n">z</span><span class="o">$</span><span class="n">loadings</span><span class="p">))</span>
-<span class="w">  </span>
-<span class="w">  </span><span class="c1"># In case we needed to set m=p for the </span>
+
+<span class="w">  </span><span class="c1"># In case we needed to set m=p for the</span>
 <span class="w">  </span><span class="c1"># PCA to work, take the first n observations</span>
 <span class="w">  </span><span class="c1"># of x</span>
 <span class="w">  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="n">n</span><span class="p">,]</span>
-<span class="w">  </span>
+
 <span class="w">  </span><span class="c1"># Generate your output</span>
 <span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-<span class="w">  </span>
+
 <span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="o">=</span><span class="n">b</span><span class="p">))</span>
 <span class="p">}</span>
 </pre></div>
@@ -1085,7 +1163,7 @@ F-statistic: 5.577 on 20 and 479 DF,  p-value: 5.266e-13
 <p>Now we can visualize the correlational structure of our data set. Here we’ll use single-linkage clustering for illustrative purposes. For this we will rely on the <em>heatmap.2</em> function from the <em>gplots</em> package that you loaded above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">heatmap.2</span><span class="p">(</span><span class="nf">cor</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">X</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="nf">brewer.pal</span><span class="p">(</span><span class="m">11</span><span class="p">,</span><span class="s">&quot;RdBu&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">trace</span><span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">,</span><span class="w"> </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">heatmap.2</span><span class="p">(</span><span class="nf">cor</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">X</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="nf">brewer.pal</span><span class="p">(</span><span class="m">11</span><span class="p">,</span><span class="s">&quot;RdBu&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">trace</span><span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">,</span>
 <span class="w">          </span><span class="n">key.title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">key.ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">key.xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Correlation&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1098,9 +1176,9 @@ F-statistic: 5.577 on 20 and 479 DF,  p-value: 5.266e-13
 <p>For comparison, take a look at what a full rank version of <span class="math notranslate nohighlight">\(X\)</span> looks like.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="w"> </span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span>
 <span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">make_data</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
-<span class="nf">heatmap.2</span><span class="p">(</span><span class="nf">cor</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">X</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="nf">brewer.pal</span><span class="p">(</span><span class="m">11</span><span class="p">,</span><span class="s">&quot;RdBu&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">trace</span><span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="nf">heatmap.2</span><span class="p">(</span><span class="nf">cor</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">X</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="nf">brewer.pal</span><span class="p">(</span><span class="m">11</span><span class="p">,</span><span class="s">&quot;RdBu&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">trace</span><span class="o">=</span><span class="s">&quot;none&quot;</span><span class="p">,</span>
 <span class="w">          </span><span class="n">key.title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">key.ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">key.xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Correlation&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1115,7 +1193,7 @@ F-statistic: 5.577 on 20 and 479 DF,  p-value: 5.266e-13
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">## ------------------------------</span>
-<span class="c1"># LM split validation function </span>
+<span class="c1"># LM split validation function</span>
 <span class="c1">## ------------------------------</span>
 <span class="n">bv_lm</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">degree</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1"># Set up the arrays for storing the results</span>
@@ -1134,7 +1212,7 @@ F-statistic: 5.577 on 20 and 479 DF,  p-value: 5.266e-13
 
 <span class="w">        </span><span class="c1"># Use simple GLM</span>
 <span class="w">        </span><span class="n">lm.fit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">Y</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">train</span><span class="p">)</span><span class="w"> </span><span class="c1">#, subset=set_id)</span>
-<span class="w">    </span>
+
 <span class="w">        </span><span class="c1"># Get your model prediction on both the training</span>
 <span class="w">        </span><span class="c1"># and test sets</span>
 <span class="w">        </span><span class="n">yhat_train</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">lm.fit</span><span class="p">)</span>
@@ -1144,7 +1222,7 @@ F-statistic: 5.577 on 20 and 479 DF,  p-value: 5.266e-13
 <span class="w">        </span><span class="n">train_rss</span><span class="p">[</span><span class="n">p</span><span class="o">-</span><span class="n">degree</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="m">+1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">median</span><span class="p">((</span><span class="n">train</span><span class="o">$</span><span class="n">Y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">yhat_train</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
 <span class="w">        </span><span class="n">test_rss</span><span class="p">[</span><span class="n">p</span><span class="o">-</span><span class="n">degree</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="m">+1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">median</span><span class="p">((</span><span class="n">test</span><span class="o">$</span><span class="n">Y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">yhat_test</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">  </span>
+
 <span class="w">    </span><span class="c1"># Store the RSS in a data frame</span>
 <span class="w">    </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">degree</span><span class="p">,</span><span class="w"> </span><span class="n">train</span><span class="o">=</span><span class="n">train_rss</span><span class="p">,</span><span class="w"> </span><span class="n">test</span><span class="o">=</span><span class="n">test_rss</span><span class="p">)</span>
 <span class="p">}</span>
@@ -1157,7 +1235,7 @@ F-statistic: 5.577 on 20 and 479 DF,  p-value: 5.266e-13
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">500</span>
-<span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w"> </span>
+<span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span>
 <span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span>
 <span class="n">degree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">20</span><span class="p">)</span>
 
@@ -1183,7 +1261,7 @@ F-statistic: 5.577 on 20 and 479 DF,  p-value: 5.266e-13
 <span class="c1"># Parameters</span>
 <span class="n">n_iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2000</span>
 <span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">500</span>
-<span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="w"> </span>
+<span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span>
 <span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span>
 <span class="n">degree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">20</span><span class="p">)</span>
 
@@ -1206,7 +1284,7 @@ F-statistic: 5.577 on 20 and 479 DF,  p-value: 5.266e-13
 <span class="nf">ggplot</span><span class="p">(</span><span class="n">run_df</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">p</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
 <span class="w">  </span><span class="nf">geom_line</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">test</span><span class="p">),</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;darkred&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
 <span class="w">  </span><span class="nf">geom_line</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">train</span><span class="p">),</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="s">&quot;steelblue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">linetype</span><span class="o">=</span><span class="s">&quot;twodash&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-<span class="w">   </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;Median sum squared error&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;p&quot;</span><span class="p">)</span><span class="w"> </span>
+<span class="w">   </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;Median sum squared error&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;p&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
