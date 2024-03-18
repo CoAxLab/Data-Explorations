@@ -63,11 +63,9 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/cross-validation';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/cross-validation.old';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Discussion questions" href="../discussions/cross-validation.html" />
-    <link rel="prev" title="Cross validation" href="../lectures/cross-validation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -231,7 +229,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Knowledge</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/statistical-learning-theory.html">The bias-variance tradeoff</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../discussions/statistical-learning-theory.html">Discussion questions</a></li>
 </ul>
@@ -291,8 +289,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../lectures/cross-validation.html">Cross validation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Tutorial: Implementing cross validation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/cross-validation.html">Cross validation</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="cross-validation.html">Tutorial: Implementing cross validation</a></li>
 
 
 
@@ -437,7 +435,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/notebooks/cross-validation.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/notebooks/cross-validation.old.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -455,7 +453,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/notebooks/cross-validation.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/notebooks/cross-validation.old.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -486,7 +484,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/notebooks/cross-validation.ipynb" target="_blank"
+      <li><a href="../_sources/notebooks/cross-validation.old.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -638,18 +636,12 @@ document.write(`
 <p>First, we should acknowledge that you’ll need to reset the seed for your random number generator. For this use the <a class="reference external" href="https://www.rdocumentation.org/packages/simEd/versions/1.0.3/topics/set.seed"><em>set.seed()</em></a> function. We want to use the same seed as the book so that you get the same results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;ISLR&quot;</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#install.packages(&quot;ISLR&quot;)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">ISLR</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
 <span class="nf">set.seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="c1">#set the seed for the random number generator. resetting the seed will give different results.</span>
 
 <span class="n">train</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sample</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">392</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">196</span><span class="p">)</span><span class="w">  </span><span class="c1"># sample 196 indices from the vector 1:392</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing package into ‘/usr/local/lib/R/site-library’
-(as ‘lib’ is unspecified)
 </pre></div>
 </div>
 </div>
@@ -662,7 +654,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/531ace7bf470d25af555e7b06f0a1c6268e2dfee41cc4d43f625fc083495082f.png" src="../_images/531ace7bf470d25af555e7b06f0a1c6268e2dfee41cc4d43f625fc083495082f.png" />
+<img alt="../_images/145ef6af12400fb42c255a41dd93dae74b16bea74e8ebd0301c0ebb9bd72c362.png" src="../_images/145ef6af12400fb42c255a41dd93dae74b16bea74e8ebd0301c0ebb9bd72c362.png" />
 </div>
 </div>
 <p>Now let’s fit some models doing the training-testing approach that we’ve used so far in this class.</p>
@@ -691,7 +683,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Notice that if we use a different subsample we&#39;d get different results</span>
-<span class="nf">set.seed</span><span class="p">(</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="c1">#using a different seed</span>
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="c1">#using a different seed </span>
 <span class="n">train</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sample</span><span class="p">(</span><span class="m">392</span><span class="p">,</span><span class="w"> </span><span class="m">196</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -757,7 +749,7 @@ document.write(`
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#run LOOCV by setting k to the number of observations</span>
 <span class="n">cv.err</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nf">cv.glm</span><span class="p">(</span><span class="n">Auto</span><span class="p">,</span><span class="w"> </span><span class="n">glm.fit</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="o">=</span><span class="nf">nrow</span><span class="p">(</span><span class="n">Auto</span><span class="p">))</span>
 
-<span class="n">cv.err</span><span class="o">$</span><span class="n">delta</span>
+<span class="n">cv.err</span><span class="o">$</span><span class="n">delta</span><span class="w"> </span>
 </pre></div>
 </div>
 </div>
@@ -767,7 +759,7 @@ document.write(`
 .list-inline>li {display: inline-block}
 .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
 </style>
-<ol class=list-inline><li>24.2315135179292</li><li>24.2311440937561</li></ol>
+<ol class=list-inline><li>24.2315135179292</li><li>24.2311440937562</li></ol>
 </div></div>
 </div>
 <p>Note that if you don’t define <code class="docutils literal notranslate"><span class="pre">k</span></code> in the <code class="docutils literal notranslate"><span class="pre">cv.glm</span></code> function, the default is LOOCV. So an equivalent way to run the above model is:</p>
@@ -775,12 +767,9 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#if you don&#39;t define k in the cv.glm() function, the default is LOOCV</span>
 <span class="n">cv.err</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nf">cv.glm</span><span class="p">(</span><span class="n">Auto</span><span class="p">,</span><span class="w"> </span><span class="n">glm.fit</span><span class="p">)</span>
-<span class="n">cv.err</span><span class="o">$</span><span class="n">delta</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">24.2315135179292</div></div>
 </div>
 <p>Also, the default prediction error function for <code class="docutils literal notranslate"><span class="pre">cv.glm()</span></code> is MSE, but you can change that with “cost” variable if needed. <em>Foreshadowing the exercises for this lesson…</em></p>
 <p>The first entry of <code class="docutils literal notranslate"><span class="pre">cv.err$delta</span></code> above is the raw cross-validation estimate of prediction error (equation above) and the second is the adjusted cross-validation estimate designed to compensate for the bias introduced by not using leave-one-out cross-validation. The thing is, we <em>did</em> use leave-one-out cross-validation (<code class="docutils literal notranslate"><span class="pre">K=nrow(Auto)</span></code>), so the two values above are very close. But for smaller values of K (i.e., fewer groupings or folds over which cross-validation is run) the bias is greater and thus the error is also greater. The “corrected” value on the right estimates what the estimated MSE would be if we’d used LOOCV instead. Try changing <code class="docutils literal notranslate"><span class="pre">K</span></code> to a smaller value to see how the difference between the left and right <code class="docutils literal notranslate"><span class="pre">delta</span></code> values changes.</p>
@@ -791,16 +780,16 @@ document.write(`
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Repeat for polynomial models up to a factor of 10</span>
 
 <span class="c1"># specify your output object - where you&#39;ll save the MSE estimates for each poly value</span>
-<span class="n">cv.error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">10</span><span class="p">)</span>
+<span class="n">cv.error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">10</span><span class="p">)</span><span class="w"> </span>
 <span class="n">start.time</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">Sys.time</span><span class="p">()</span>
 <span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">glm.fit</span><span class="o">=</span><span class="nf">glm</span><span class="p">(</span><span class="n">mpg</span><span class="o">~</span><span class="nf">poly</span><span class="p">(</span><span class="n">horsepower</span><span class="p">,</span><span class="n">i</span><span class="p">),</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">Auto</span><span class="p">)</span>
 <span class="w">    </span><span class="c1"># do LOO crossval for polynomial fits from 1 to 10</span>
-<span class="w">    </span><span class="n">cv.error</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cv.glm</span><span class="p">(</span><span class="n">Auto</span><span class="p">,</span><span class="w"> </span><span class="n">glm.fit</span><span class="p">)</span><span class="o">$</span><span class="n">delta</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
+<span class="w">    </span><span class="n">cv.error</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cv.glm</span><span class="p">(</span><span class="n">Auto</span><span class="p">,</span><span class="w"> </span><span class="n">glm.fit</span><span class="p">)</span><span class="o">$</span><span class="n">delta</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span>
 <span class="p">}</span>
 <span class="n">end.time</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">Sys.time</span><span class="p">()</span>
 <span class="c1"># how long did this for-loop take to run?</span>
-<span class="n">LOOtime</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">end.time</span><span class="o">-</span><span class="n">start.time</span>
+<span class="n">LOOtime</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">end.time</span><span class="o">-</span><span class="n">start.time</span><span class="w"> </span>
 <span class="n">LOOtime</span>
 
 <span class="nf">plot</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="n">cv.error</span><span class="p">)</span><span class="w"> </span><span class="c1"># plot the error</span>
@@ -808,23 +797,23 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time difference of 18.46528 secs
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time difference of 9.253145 secs
 </pre></div>
 </div>
-<img alt="../_images/06342abc9822de325ff5c2ef63a0d180a85cd170b32cb6b22c8b23c144e8ccff.png" src="../_images/06342abc9822de325ff5c2ef63a0d180a85cd170b32cb6b22c8b23c144e8ccff.png" />
+<img alt="../_images/e718caf7cc4e83ee8d33263827aefc9f99f113f922862717282d2877f2a559ff.png" src="../_images/e718caf7cc4e83ee8d33263827aefc9f99f113f922862717282d2877f2a559ff.png" />
 </div>
 </div>
 <p>The first entry in the <code class="docutils literal notranslate"><span class="pre">cv.error</span></code> array is the linear model we estimated above. Notice that we get an initial improvement in accuracy when you move to the 2nd order polynomial, but more complex models (i.e., higher order polynomials) only provide a modest decrease in error. This suggests it would be worth upgrading to a 2nd order polynomial model, but the benefits to increasing the complexity of our model drop off after that. This makes sense when you look at a 2nd order polynomical fit to the data (below) - adding extra bends in the curve won’t improve the error much more. We can trust what the “test” error is telling us about the best model fit more because we used LOOCV instead of the simpler, set-aside-random-test-items approach.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">Auto</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span><span class="n">horsepower</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
-<span class="w">    </span><span class="nf">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">mpg</span><span class="p">),</span><span class="n">data</span><span class="o">=</span><span class="n">Auto</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">    </span><span class="nf">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
 <span class="w">    </span><span class="nf">stat_smooth</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;lm&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">formula</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="nf">poly</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="n">se</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/45a55c3aab8197479683cf7f49dce4916c99952e4f0abf11f8033474c27beccb.png" src="../_images/45a55c3aab8197479683cf7f49dce4916c99952e4f0abf11f8033474c27beccb.png" />
+<img alt="../_images/e9a36697d42724100a727754200049c0b1906538a5a09b53fda2089a28d1d51b.png" src="../_images/e9a36697d42724100a727754200049c0b1906538a5a09b53fda2089a28d1d51b.png" />
 </div>
 </div>
 </section>
@@ -849,12 +838,6 @@ document.write(`
 <span class="p">}</span>
 <span class="n">end.time</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">Sys.time</span><span class="p">()</span>
 <span class="n">Kfoldtime</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">end.time</span><span class="o">-</span><span class="n">start.time</span><span class="w"> </span><span class="c1"># how long did this for-loop take to run?</span>
-<span class="n">Kfoldtime</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time difference of 0.6577539 secs
 </pre></div>
 </div>
 </div>
@@ -868,7 +851,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/691a2b6fa62b8a478133236c502393a8ea365ac26fa90deda5660761c1789373.png" src="../_images/691a2b6fa62b8a478133236c502393a8ea365ac26fa90deda5660761c1789373.png" />
+<img alt="../_images/09e1f8249c0c0ac10ab0101fc0e63bc5230aabfc924f80c8ad53192a977572cb.png" src="../_images/09e1f8249c0c0ac10ab0101fc0e63bc5230aabfc924f80c8ad53192a977572cb.png" />
 </div>
 </div>
 <p>Notice how similar the results are for 10-fold CV &amp; LOOCV. Since we measured how long the leave-one-out and 10-fold methods took to run, we can compare the run times:</p>
@@ -880,8 +863,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Leave-one-out runtime: 18.4652769565582&quot;
-[1] &quot;10-fold runtime: 0.657753944396973&quot;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Leave-one-out runtime: 9.25314497947693&quot;
+[1] &quot;10-fold runtime: 0.246827840805054&quot;
 </pre></div>
 </div>
 </div>
@@ -921,24 +904,6 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../lectures/cross-validation.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Cross validation</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../discussions/cross-validation.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Discussion questions</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div></div>
   
 </div>
