@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Tutorial: Repositories and version control &#8212; Data explorations</title>
   
@@ -15,52 +14,52 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/the-value-of-openness';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -68,6 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="The value of openness" href="../lectures/the-value-of-openness.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -75,23 +75,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+  <div id="pst-scroll-pixel-helper"></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -99,7 +92,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -107,16 +99,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -129,9 +130,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../intro.html">
+  
   
   
   
@@ -141,12 +146,19 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/information.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/information.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/information.png" class="logo__image only-light" alt="Data explorations - Home"/>
+    <img src="../_static/information.png" class="logo__image only-dark pst-js-only" alt="Data explorations - Home"/>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -158,15 +170,15 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Information and Meaning</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/quantitative-epistemology.html">Quantitative epsitemology</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/quantitative-epistemology.html">Quantitative epsitemology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="quantitative-epistemology.html">Tutorial: Getting started</a></li>
 
 
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/quantitative-epistemology.html">Discussion questions</a></li>
 </ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../lectures/the-value-of-openness.html">The value of openness</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../lectures/the-value-of-openness.html">The value of openness</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Tutorial: Repositories and version control</a></li>
 
 
@@ -175,12 +187,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../discussions/the-value-of-openness.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/the-value-of-openness.html">Exercise 1: Github &amp; Jupyter</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/what-is-a-theory.html">What is a theory?</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/what-is-a-theory.html">What is a theory?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../discussions/what-is-a-theory.html">Discussion questions</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/models-as-testable-hypotheses.html">Models as testable hypotheses</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/models-as-testable-hypotheses.html">Models as testable hypotheses</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="models-as-testable-hypotheses.html">Tutorial: Introduction to R, functions, and good coding habits</a></li>
 
 
@@ -188,16 +200,16 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../discussions/models-as-testable-hypotheses.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/models-as-testable-hypotheses.html">Exercise 2: Coding Habits &amp; Functions</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/data-as-objects-and-architectures.html">Data as objects and architectures</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/data-as-objects-and-architectures.html">Data as objects and architectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="data-as-objects-and-architectures.html">Tutorial: Data as Objects and Tidy Data</a></li>
 
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/data-as-objects-and-architectures.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/data-as-objects-and-architectures.html">Exercise 3: Data objects</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/techniques-for-data-cleansing.html">Techniques for data cleansing</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/techniques-for-data-cleansing.html">Techniques for data cleansing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="techniques-for-data-cleansing.html">Tutorial: Data Cleansing and the Tidyverse</a></li>
 
 
@@ -206,8 +218,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../discussions/techniques-for-data-cleansing.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/techniques-for-data-cleansing.html">Exercise 4: Data cleansing</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/visualization-as-analysis.html">Visualization as analysis</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/visualization-as-analysis.html">Visualization as analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="visualization-as-analysis.html">Tutorial: Basics of plotting</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/visualization-as-analysis.html">Discussion questions</a></li>
@@ -215,8 +227,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/visualization-through-human-eyes.html">Visualization through human eyes</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/visualization-through-human-eyes.html">Visualization through human eyes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="visualization-through-human-eyes.html">Tutorial: More advanced plotting</a></li>
 
 
@@ -226,15 +238,15 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Knowledge</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/statistical-learning-theory.html">The bias-variance tradeoff</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/statistical-learning-theory.html">The bias-variance tradeoff</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../discussions/statistical-learning-theory.html">Discussion questions</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/linear-models.html">Linear models</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/linear-models.html">Linear models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="linear-models.html">Tutorial: Refresher on working with matrices</a></li>
 
 
@@ -245,8 +257,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../discussions/linear-models.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/linear-models.html">Exercise 7:  Linear models</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/the-ordinary-least-squares-solution.html">The ordinary least squares solution</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/the-ordinary-least-squares-solution.html">The ordinary least squares solution</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="the-ordinary-least-squares-solution.html">Tutorial: Refresher for solving oridinary least squares</a></li>
 
 
@@ -254,8 +266,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../discussions/the-ordinary-least-squares-solution.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/the-ordinary-least-squares-solution.html">Exercise 8:  Linear models, continued</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/limits-of-linear-regression.html">Limits and variations of linear regression</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/limits-of-linear-regression.html">Limits and variations of linear regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="limits-of-linear-regression.html">Tutorial: More on linear models</a></li>
 
 
@@ -263,8 +275,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/limits-of-linear-regression.html">Discussion questions</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/classifiers.html">Classifiers</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/classifiers.html">Classifiers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="classifiers.html">Tutorial: Basics classifiers</a></li>
 
 
@@ -272,15 +284,15 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../discussions/classifiers.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/classifiers.html">Exercise 9: Classification</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/mixed-effects-models.html">Mixed effects models</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/mixed-effects-models.html">Mixed effects models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="mixed-effects-models.html">Tutorial: Running linear mixed effects models</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/mixed-effects-models.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/mixed-effects-models.html">Exercise 10: Mixed effects</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/the-beauty-of-knn.html">The beauty of kNN</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/the-beauty-of-knn.html">The beauty of kNN</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="the-beauty-of-knn.html">Tutorial: Running kNN models</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/the-beauty-of-knn.html">Discussion questions</a></li>
@@ -288,8 +300,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/cross-validation.html">Cross validation</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/cross-validation.html">Cross validation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="cross-validation.html">Tutorial: Implementing cross validation</a></li>
 
 
@@ -302,8 +314,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/resampling-methods.html">Resampling methods</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/resampling-methods.html">Resampling methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="resampling-methods.html">Tutorial: Boostrap and permutation tests</a></li>
 
 
@@ -311,8 +323,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../discussions/resampling-methods.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/resampling-methods.html">Exercise 13:  Resampling methods</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/mediation-and-moderation.html">Mediation and moderation</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/mediation-and-moderation.html">Mediation and moderation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="mediation-and-moderation.html">Tutorial: Running mediation and moderation models</a></li>
 
 
@@ -320,23 +332,23 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../discussions/mediation-and-moderation.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/mediation-and-moderation.html">Exercise 14: Mediation</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/power-analysis-via-simulations.html">Power analysis via simulations</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/power-analysis-via-simulations.html">Power analysis via simulations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="power-analysis-via-simulations.html">Tutorial: Running basic power analyses</a></li>
 
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/power-analysis-via-simulations.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/power-analysis-via-simulations.html">Exercise 15: Power analyses</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/selecting-the-best-model.html">Selecting the best model</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/selecting-the-best-model.html">Selecting the best model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="selecting-the-best-model.html">Tutorial: Model selection</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/selecting-the-best-model.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/selecting-the-best-model.html">Exercise 16: Model selection</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/regularized-regression.html">Regularized regression</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/regularized-regression.html">Regularized regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="regularized-regression.html">Tutorial: Basic ridge and LASSO models</a></li>
 
 
@@ -344,8 +356,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../discussions/regularized-regression.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/regularized-regression.html">Exercise 17: Regularized regression</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/principal-component-methods.html">Principal component methods</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/principal-component-methods.html">Principal component methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="principal-component-methods.html">Tutorial: Basic PCA approaches</a></li>
 
 
@@ -353,34 +365,34 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../discussions/principal-component-methods.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/principal-component-methods.html">Exercise 18: Principal component methods</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Understanding</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/reconsidering-the-p-value.html">Reconsidering the p-value</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/reconsidering-the-p-value.html">Reconsidering the p-value</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../discussions/reconsidering-the-p-value.html">Discussion questions</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/bayes-factor-accepting-the-null.html">Bayes factor</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/bayes-factor-accepting-the-null.html">Bayes factor</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="bayes-factor-accepting-the-null.html">Tutorial: Estimating Bayes factors</a></li>
 
 
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/bayes-factor-accepting-the-null.html">Discussion questions</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/errors-and-inferences.html">Errors and inferences</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/errors-and-inferences.html">Errors and inferences</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../discussions/errors-and-inferences.html">Discussion questions</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/telling-your-data-story.html">Telling your data story</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/telling-your-data-story.html">Telling your data story</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../discussions/telling-your-data-story.html">Discussion questions</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/theories-as-social-constructs.html">Theories as social constructs</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-27"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/theories-as-social-constructs.html">Theories as social constructs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../discussions/theories-as-social-constructs.html">Discussion questions</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 
     </div>
@@ -389,14 +401,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -405,14 +422,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -437,14 +454,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/notebooks/the-value-of-openness.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -455,14 +472,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/notebooks/the-value-of-openness.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onColab"
+   title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../_static/images/logo_colab.png">
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -536,26 +553,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -606,13 +617,13 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-repositories-and-version-control">
-<h1>Tutorial: Repositories and version control<a class="headerlink" href="#tutorial-repositories-and-version-control" title="Permalink to this heading">#</a></h1>
+<h1>Tutorial: Repositories and version control<a class="headerlink" href="#tutorial-repositories-and-version-control" title="Link to this heading">#</a></h1>
 <p>This lab introduces the concept of version control and goes through the process of setting up a GitHub repository and tracking changes with git.</p>
 <section id="goals">
-<h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this heading">#</a></h2>
+<h2>Goals:<a class="headerlink" href="#goals" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Set up git and GitHub</p></li>
 <li><p>Learn how to use git for version control</p></li>
@@ -621,13 +632,13 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="why-version-control">
-<h1>Why version control?<a class="headerlink" href="#why-version-control" title="Permalink to this heading">#</a></h1>
+<h1>Why version control?<a class="headerlink" href="#why-version-control" title="Link to this heading">#</a></h1>
 <p>Keeping with the “document everything you do” mentality, it’s useful to have a plan for managing changes to your analysis and modelling projects early on. Imagine the following common situation: you have a working analysis script, but you decide to do additional analyses requested by your colleague (or advisor, or reviewer). You make the required changes, and while your new analysis works fine, suddenly you find that you can’t replicate your previous results - they give you an error, or your results look different than before.</p>
 <p>This type of thing happens surprisingly often. One way to deal with that is to always backup and then copy your script, and make changes to the copy. While this may work for simple cases, it becomes unwieldy quickly and you can end up with 10 versions of your analyses. At this point you are in a similarly confusing situation, because you have to figure out which file is the right one. If you work with other people on the same analyses, this becomes even more problematic.</p>
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="what-are-git-and-github">
-<h1>What are git and GitHub?<a class="headerlink" href="#what-are-git-and-github" title="Permalink to this heading">#</a></h1>
+<h1>What are git and GitHub?<a class="headerlink" href="#what-are-git-and-github" title="Link to this heading">#</a></h1>
 <p>This is where version control with <a class="reference external" href="https://git-scm.com/">git</a> comes in handy! Git is a system that allows you to track the changes you or others make to your files, log the purpose of those changes, and go back and forth between different versions.</p>
 <p>The basic idea is that for each project that you manage, you establish what is called a <em>repository</em> for that project with git. That repository contains the files for your project, and using various commands you can instruct it to do certain things when you make changes to your files.</p>
 <p>Git is a command-line tool, which you control by typing commands in a console/terminal. If you are not comfortable doing that, you can use a GUI (graphical user interface) application. One is provided when you install git, but a much better one comes with GitHub (see next paragraph), which has a familiar user-interface that allows you to just point-and-click to the most common options. There is also <a class="reference external" href="https://www.gitkraken.com/">GitKraken</a> which is independent of GitHub but a more comprehensive GUI. The command-line tool is more versatile, but if you prefer to use the app that is a-okay.</p>
@@ -643,10 +654,10 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="use-git-and-github">
-<h1>Use Git and GitHub<a class="headerlink" href="#use-git-and-github" title="Permalink to this heading">#</a></h1>
+<h1>Use Git and GitHub<a class="headerlink" href="#use-git-and-github" title="Link to this heading">#</a></h1>
 <p><em>Note: This section has a lot of commands and concepts to keep track of, but you don’t need to memorize them all. Come back to this tutorial for reference as you need it! Section 4 of this tutorial walks you through an example of how to use the tools discussed in Section 3, and you’ll also get practice with git and GitHub by submitting work for this class.</em></p>
 <section id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h2>
 <p>You need to configure some settings before you start. Run the following commands in your terminal, replacing them with your email and name. Use the email you used to set up your GitHub account:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;you@andrew.cmu.edu&quot;</span>
 git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Your Name&quot;</span>
@@ -654,12 +665,12 @@ git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"
 </div>
 </section>
 <section id="updated-authentication-process">
-<h2>Updated Authentication Process<a class="headerlink" href="#updated-authentication-process" title="Permalink to this heading">#</a></h2>
+<h2>Updated Authentication Process<a class="headerlink" href="#updated-authentication-process" title="Link to this heading">#</a></h2>
 <p>In 2021, Github changed the way they authenticate users trying to push from the command line. Instead of using your GitHub username and password, you now have to use what is called a <strong>personal access token</strong>. If you are new to git and github, you’ll need to set this up before proceeding.</p>
 <p>Log into your GitHub account and go to <strong>Settings</strong> –&gt; <strong>Developer Settings</strong> (bottom left) –&gt; <strong>Personal access tokens</strong> –&gt; <strong>Tokens (classic)</strong>. Then click <strong>“Generate new token”</strong> in the upper right corner (again choose “classic” if there are options). This will give you a long string of letters and numbers – your personal access token. Copy this, and use it in lieu of your GitHub password when prompted for your login information. (You should get this prompt when you clone your first repo, or when running other commands that communicate with your GitHub account.) You can learn more about this process, including how to select permissions, <a class="reference external" href="https://docs.github.com/en/enterprise-server&#64;3.4/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">here</a></p>
 </section>
 <section id="basic-bash-scripting">
-<h2>Basic Bash scripting<a class="headerlink" href="#basic-bash-scripting" title="Permalink to this heading">#</a></h2>
+<h2>Basic Bash scripting<a class="headerlink" href="#basic-bash-scripting" title="Link to this heading">#</a></h2>
 <p>Before we do anything with git, let’s walk through some basic Bash scripting in the terminal. Bash is a command language (sometimes called Unix Shell) to navigate the Unix system. We will mostly use it for navigating between folders in the terminal. For more on how to open and use the terminal (AKA command line, console) - check out <a class="reference external" href="https://www.digitalcitizen.life/command-prompt-how-use-basic-commands">this</a> site for windows and <a class="reference external" href="https://maker.pro/linux/projects/basic-unix-commands-to-work-on-mac-terminal">this</a> site for mac, unix, or linux.</p>
 <p>When you open your terminal, you should see your home directory printed on the screen. To navigate to a
 different folder, we simply type</p>
@@ -695,7 +706,7 @@ different folder, we simply type</p>
 <p>You can use bash to perform very complicated processing. If you are interested, read more about bash scripting <a class="reference external" href="https://flaviocopes.com/bash/">here</a>. Knowing bash scripting will save you so much hassle down the line!</p>
 </section>
 <section id="set-up-a-new-repository">
-<h2>Set up a new repository<a class="headerlink" href="#set-up-a-new-repository" title="Permalink to this heading">#</a></h2>
+<h2>Set up a new repository<a class="headerlink" href="#set-up-a-new-repository" title="Link to this heading">#</a></h2>
 <p>You can clone a repository that exists on GitHub. This will download all files present in that repository to a folder with the name of the repository and will have the repository all set up and ready to go. The folder will be created in whatever folder your terminal is currently in! Then you can navigate to the repository folder by using the <strong><code class="docutils literal notranslate"><span class="pre">cd</span></code></strong> command.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/CoAxLab/DataSciencePsychNeuro_CMU85732.git
 <span class="nb">cd</span><span class="w"> </span>DataSciencePsychNeuro_CMU85732
@@ -730,7 +741,7 @@ git<span class="w"> </span>init
 <p>You will need to create this remote repository on GitHub before doing so. Note: <strong>don’t</strong> check the box that says “Add a README file” when making your remote repo on GitHub– this will confuse git when you try to connect your local repo.</p>
 </section>
 <section id="pulling-changes">
-<h2>Pulling changes<a class="headerlink" href="#pulling-changes" title="Permalink to this heading">#</a></h2>
+<h2>Pulling changes<a class="headerlink" href="#pulling-changes" title="Link to this heading">#</a></h2>
 <p>Let’s pretend that we are collaborating on this project together. You just cloned the repository. But after your download, I decided to make some changes to the repository by adding a file. How would this change be updated to the local version on your laptop? You “pull” the changes to your laptop by using:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>pull
 </pre></div>
@@ -738,7 +749,7 @@ git<span class="w"> </span>init
 <p>You can also use this command when you switch to another laptop of yours and pull the most recent version of your code to the new laptop.</p>
 </section>
 <section id="adding-files-to-be-tracked">
-<h2>Adding files to be tracked<a class="headerlink" href="#adding-files-to-be-tracked" title="Permalink to this heading">#</a></h2>
+<h2>Adding files to be tracked<a class="headerlink" href="#adding-files-to-be-tracked" title="Link to this heading">#</a></h2>
 <p>So now you have the most recent version of everything on your local computer, and you can start working. Let’s say you create a new file in your local directory. Even if you save that file to your computer, at this point git doesn’t know that, because it is not yet tracking that change. You need to explicitly tell git which files in the folder need to be tracked.</p>
 <p>To do so, you need to <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code> or “stage” your changes.</p>
 <p>You can add all files in your folder by using a period <code class="docutils literal notranslate"><span class="pre">.</span></code> rather than a specific filename:</p>
@@ -756,7 +767,7 @@ git<span class="w"> </span>init
 </div>
 </section>
 <section id="committing-changes">
-<h2>Committing changes<a class="headerlink" href="#committing-changes" title="Permalink to this heading">#</a></h2>
+<h2>Committing changes<a class="headerlink" href="#committing-changes" title="Link to this heading">#</a></h2>
 <p>Adding files means telling git which files it should keep track of. However, in contrast to the “Track changes” options in Word, it does not do it continuously and automatically - you have to tell git when you want the changes you’ve made to be recorded! Git calls this “committing”. There is a good reason for this - you want to record changes at specific identifiable moments which can allow you to go back to a specific version you need. Let’s say that you have just spent some time revising your analysis script by changing the regression model you are using. You can commit your new changes with the <code class="docutils literal notranslate"><span class="pre">commit</span></code> command. You also want to briefly describe the changes you’ve made so that you can identify the version later. You do this by adding <code class="docutils literal notranslate"><span class="pre">-m</span> <span class="pre">&quot;My</span> <span class="pre">description&quot;</span></code> to the commit command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Change regression model to logistic&quot;</span>
 </pre></div>
@@ -768,7 +779,7 @@ git<span class="w"> </span>init
 <p>An important thing to keep in mind is that committing changes only updates your <strong>local</strong> repository. To merge these changes into a remote repository (e.g., GitHub), you need to <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> the changes. More on that below.</p>
 </section>
 <section id="working-on-a-different-branch">
-<h2>Working on a different branch<a class="headerlink" href="#working-on-a-different-branch" title="Permalink to this heading">#</a></h2>
+<h2>Working on a different branch<a class="headerlink" href="#working-on-a-different-branch" title="Link to this heading">#</a></h2>
 <p>At this point you might be asking, what is the point of all of this? You have made changes and saved them, but this hasn’t really affected any part of your workflow. Let’s talk about branches.</p>
 <p>If you imagine your project as a tree, you can think of each branch of a tree as an alternative version of your project. You can work on multiple versions/branches of your project at the same time. Your main branch is called <strong>master</strong>. It is automatically created when you initialize a repository and unless you create other branches, it will be the only one. At any point in time, you will always be in a certain branch, and any changes you make to your files at that time will only be made to files in that branch. When you create a new branch, you make a copy of the branch from which you created it. Importantly, this does not actually copy your files, and if you go into your project folder you will not see anything different at that point. Once you’ve made and commit any changes, you can switch between branches. Any time you switch to a branch, the files in your folder will be replaced with the files corresponding to the last changes in the branch. You can also merge branches together, implementing changes from one branch into another.</p>
 <p><img alt="picture" src="https://drive.google.com/uc?export=view&amp;id=12FwkUrkU3RMa7ed_tA9D-KZLwbZsJhsy" /></p>
@@ -790,7 +801,7 @@ git<span class="w"> </span>init
 <p>There are many different ways to use branches. If you are simultaneously testing several different versions of your analyses, you can create one branch for each, and easily switch back and forth between them, until you decide which version you want to keep.</p>
 </section>
 <section id="merging-branches">
-<h2>Merging branches<a class="headerlink" href="#merging-branches" title="Permalink to this heading">#</a></h2>
+<h2>Merging branches<a class="headerlink" href="#merging-branches" title="Link to this heading">#</a></h2>
 <p>You’ve finished making your changes on your development  branch (called <strong>dev</strong>), you have tested them, and you want to finalize them. You need to merge your <strong>dev</strong> branch with your <strong>master</strong>. Any time you merge two branches together, git compares their contents, checks for conflicts and combines any changes made in the different branches. In the simplest case, where you’ve only made changes to one of the branches, it will just replace the files in the other with the newer version. If, you’ve made changes to the same file under different branches, it will try to merge them. If the changes are about different parts of the file, it will combine them with no problem most of the time. If the changes are to the same lines in a file, it will create a conflict error that you will have to resolve manually before merging can occur. For now, just avoid doing that, and let’s assume you’ve made changes only to one branch. When you merge branches, you implement the changes in whatever branch you are currently in. So, to update our master branch with the contents of <strong>dev</strong>, we first switch to <strong>master</strong>, and then invoke the merge command like this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>master
 git<span class="w"> </span>merge<span class="w"> </span>dev
@@ -806,7 +817,7 @@ git<span class="w"> </span>merge<span class="w"> </span>dev
 </div>
 </section>
 <section id="merge-only-a-specific-file-from-a-branch">
-<h2>Merge only a specific file from a branch<a class="headerlink" href="#merge-only-a-specific-file-from-a-branch" title="Permalink to this heading">#</a></h2>
+<h2>Merge only a specific file from a branch<a class="headerlink" href="#merge-only-a-specific-file-from-a-branch" title="Link to this heading">#</a></h2>
 <p>Sometimes you made a lot of changes to your project in a development branch, and you decide that while most of them are to be discarded, you want to keep the changes to a specific file. You can use the <strong><code class="docutils literal notranslate"><span class="pre">checkout</span></code></strong> command while in your target branch like this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>dev<span class="w"> </span>--<span class="w"> </span>filetokeep.R
 </pre></div>
@@ -820,7 +831,7 @@ git<span class="w"> </span>merge<span class="w"> </span>dev
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="putting-it-all-together-example-workflow">
-<h1>Putting it all together - example workflow<a class="headerlink" href="#putting-it-all-together-example-workflow" title="Permalink to this heading">#</a></h1>
+<h1>Putting it all together - example workflow<a class="headerlink" href="#putting-it-all-together-example-workflow" title="Link to this heading">#</a></h1>
 <p>You are starting a new project. Here’s an example workflow with everything we have discussed.</p>
 <p>  1. Install git, make a github account</p>
 <p>  2. Setup git:</p>
@@ -920,11 +931,10 @@ git<span class="w"> </span>push<span class="w"> </span>--set-upstream<span class
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../lectures/the-value-of-openness.html"
@@ -944,17 +954,16 @@ git<span class="w"> </span>push<span class="w"> </span>--set-upstream<span class
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1004,6 +1013,7 @@ By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -1030,8 +1040,8 @@ By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
