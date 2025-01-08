@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Tutorial: Refresher on working with matrices &#8212; Data explorations</title>
   
@@ -15,52 +14,52 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/linear-models';</script>
@@ -70,6 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Linear models" href="../lectures/linear-models.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -77,23 +77,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+  <div id="pst-scroll-pixel-helper"></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -101,7 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -109,16 +101,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -131,9 +132,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../intro.html">
+  
   
   
   
@@ -143,12 +148,19 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/information.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/information.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/information.png" class="logo__image only-light" alt="Data explorations - Home"/>
+    <img src="../_static/information.png" class="logo__image only-dark pst-js-only" alt="Data explorations - Home"/>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -160,15 +172,15 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Information and Meaning</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/quantitative-epistemology.html">Quantitative epsitemology</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/quantitative-epistemology.html">Quantitative epsitemology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="quantitative-epistemology.html">Tutorial: Getting started</a></li>
 
 
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/quantitative-epistemology.html">Discussion questions</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/the-value-of-openness.html">The value of openness</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/the-value-of-openness.html">The value of openness</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="the-value-of-openness.html">Tutorial: Repositories and version control</a></li>
 
 
@@ -177,12 +189,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../discussions/the-value-of-openness.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/the-value-of-openness.html">Exercise 1: Github &amp; Jupyter</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/what-is-a-theory.html">What is a theory?</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/what-is-a-theory.html">What is a theory?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../discussions/what-is-a-theory.html">Discussion questions</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/models-as-testable-hypotheses.html">Models as testable hypotheses</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/models-as-testable-hypotheses.html">Models as testable hypotheses</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="models-as-testable-hypotheses.html">Tutorial: Introduction to R, functions, and good coding habits</a></li>
 
 
@@ -190,16 +202,16 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../discussions/models-as-testable-hypotheses.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/models-as-testable-hypotheses.html">Exercise 2: Coding Habits &amp; Functions</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/data-as-objects-and-architectures.html">Data as objects and architectures</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/data-as-objects-and-architectures.html">Data as objects and architectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="data-as-objects-and-architectures.html">Tutorial: Data as Objects and Tidy Data</a></li>
 
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/data-as-objects-and-architectures.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/data-as-objects-and-architectures.html">Exercise 3: Data objects</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/techniques-for-data-cleansing.html">Techniques for data cleansing</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/techniques-for-data-cleansing.html">Techniques for data cleansing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="techniques-for-data-cleansing.html">Tutorial: Data Cleansing and the Tidyverse</a></li>
 
 
@@ -208,8 +220,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../discussions/techniques-for-data-cleansing.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/techniques-for-data-cleansing.html">Exercise 4: Data cleansing</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/visualization-as-analysis.html">Visualization as analysis</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/visualization-as-analysis.html">Visualization as analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="visualization-as-analysis.html">Tutorial: Basics of plotting</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/visualization-as-analysis.html">Discussion questions</a></li>
@@ -217,8 +229,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/visualization-through-human-eyes.html">Visualization through human eyes</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/visualization-through-human-eyes.html">Visualization through human eyes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="visualization-through-human-eyes.html">Tutorial: More advanced plotting</a></li>
 
 
@@ -228,15 +240,15 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Knowledge</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/statistical-learning-theory.html">The bias-variance tradeoff</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/statistical-learning-theory.html">The bias-variance tradeoff</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../discussions/statistical-learning-theory.html">Discussion questions</a></li>
 </ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../lectures/linear-models.html">Linear models</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../lectures/linear-models.html">Linear models</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Tutorial: Refresher on working with matrices</a></li>
 
 
@@ -247,8 +259,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../discussions/linear-models.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/linear-models.html">Exercise 7:  Linear models</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/the-ordinary-least-squares-solution.html">The ordinary least squares solution</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/the-ordinary-least-squares-solution.html">The ordinary least squares solution</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="the-ordinary-least-squares-solution.html">Tutorial: Refresher for solving oridinary least squares</a></li>
 
 
@@ -256,8 +268,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../discussions/the-ordinary-least-squares-solution.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/the-ordinary-least-squares-solution.html">Exercise 8:  Linear models, continued</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/limits-of-linear-regression.html">Limits and variations of linear regression</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/limits-of-linear-regression.html">Limits and variations of linear regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="limits-of-linear-regression.html">Tutorial: More on linear models</a></li>
 
 
@@ -265,8 +277,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/limits-of-linear-regression.html">Discussion questions</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/classifiers.html">Classifiers</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/classifiers.html">Classifiers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="classifiers.html">Tutorial: Basics classifiers</a></li>
 
 
@@ -274,15 +286,15 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../discussions/classifiers.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/classifiers.html">Exercise 9: Classification</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/mixed-effects-models.html">Mixed effects models</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/mixed-effects-models.html">Mixed effects models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="mixed-effects-models.html">Tutorial: Running linear mixed effects models</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/mixed-effects-models.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/mixed-effects-models.html">Exercise 10: Mixed effects</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/the-beauty-of-knn.html">The beauty of kNN</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/the-beauty-of-knn.html">The beauty of kNN</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="the-beauty-of-knn.html">Tutorial: Running kNN models</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/the-beauty-of-knn.html">Discussion questions</a></li>
@@ -290,8 +302,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/cross-validation.html">Cross validation</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/cross-validation.html">Cross validation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="cross-validation.html">Tutorial: Implementing cross validation</a></li>
 
 
@@ -304,8 +316,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/resampling-methods.html">Resampling methods</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/resampling-methods.html">Resampling methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="resampling-methods.html">Tutorial: Boostrap and permutation tests</a></li>
 
 
@@ -313,8 +325,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../discussions/resampling-methods.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/resampling-methods.html">Exercise 13:  Resampling methods</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/mediation-and-moderation.html">Mediation and moderation</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/mediation-and-moderation.html">Mediation and moderation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="mediation-and-moderation.html">Tutorial: Running mediation and moderation models</a></li>
 
 
@@ -322,23 +334,23 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../discussions/mediation-and-moderation.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/mediation-and-moderation.html">Exercise 14: Mediation</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/power-analysis-via-simulations.html">Power analysis via simulations</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/power-analysis-via-simulations.html">Power analysis via simulations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="power-analysis-via-simulations.html">Tutorial: Running basic power analyses</a></li>
 
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/power-analysis-via-simulations.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/power-analysis-via-simulations.html">Exercise 15: Power analyses</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/selecting-the-best-model.html">Selecting the best model</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/selecting-the-best-model.html">Selecting the best model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="selecting-the-best-model.html">Tutorial: Model selection</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/selecting-the-best-model.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/selecting-the-best-model.html">Exercise 16: Model selection</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/regularized-regression.html">Regularized regression</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/regularized-regression.html">Regularized regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="regularized-regression.html">Tutorial: Basic ridge and LASSO models</a></li>
 
 
@@ -346,8 +358,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../discussions/regularized-regression.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/regularized-regression.html">Exercise 17: Regularized regression</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/principal-component-methods.html">Principal component methods</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/principal-component-methods.html">Principal component methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="principal-component-methods.html">Tutorial: Basic PCA approaches</a></li>
 
 
@@ -355,34 +367,34 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../discussions/principal-component-methods.html">Discussion questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exercises/principal-component-methods.html">Exercise 18: Principal component methods</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Understanding</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/reconsidering-the-p-value.html">Reconsidering the p-value</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/reconsidering-the-p-value.html">Reconsidering the p-value</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../discussions/reconsidering-the-p-value.html">Discussion questions</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/bayes-factor-accepting-the-null.html">Bayes factor</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/bayes-factor-accepting-the-null.html">Bayes factor</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="bayes-factor-accepting-the-null.html">Tutorial: Estimating Bayes factors</a></li>
 
 
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/bayes-factor-accepting-the-null.html">Discussion questions</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/errors-and-inferences.html">Errors and inferences</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/errors-and-inferences.html">Errors and inferences</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../discussions/errors-and-inferences.html">Discussion questions</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/telling-your-data-story.html">Telling your data story</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/telling-your-data-story.html">Telling your data story</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../discussions/telling-your-data-story.html">Discussion questions</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/theories-as-social-constructs.html">Theories as social constructs</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-27"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/theories-as-social-constructs.html">Theories as social constructs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../discussions/theories-as-social-constructs.html">Discussion questions</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 
     </div>
@@ -391,14 +403,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -407,14 +424,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -439,14 +456,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/notebooks/linear-models.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -457,14 +474,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/notebooks/linear-models.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onColab"
+   title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../_static/images/logo_colab.png">
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -538,26 +555,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -621,13 +632,13 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-refresher-on-working-with-matrices">
-<h1>Tutorial: Refresher on working with matrices<a class="headerlink" href="#tutorial-refresher-on-working-with-matrices" title="Permalink to this heading">#</a></h1>
+<h1>Tutorial: Refresher on working with matrices<a class="headerlink" href="#tutorial-refresher-on-working-with-matrices" title="Link to this heading">#</a></h1>
 <p>In this tutorial and the next one we’ll walk through some math concepts that will be helpful for understanding the lectures and homeworks. If you’re comfortable with these concepts already, feel free to simply skim and reference as needed to do the homeworks.</p>
 <section id="goals">
-<h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this heading">#</a></h2>
+<h2>Goals:<a class="headerlink" href="#goals" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Get everyone on the same place with vectors, sums and products, and matrices</p></li>
 </ul>
@@ -636,7 +647,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="vectors">
-<h1>Vectors<a class="headerlink" href="#vectors" title="Permalink to this heading">#</a></h1>
+<h1>Vectors<a class="headerlink" href="#vectors" title="Link to this heading">#</a></h1>
 <p>A vector is a series of numbers, arranged in either a column or a row. The numbers stored in a vector are called <strong>elements</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -670,7 +681,7 @@ A row vector with elements 7 and 9: <span class="math notranslate nohighlight">\
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="working-with-sums-and-products-in-equations">
-<h1>Working with Sums and Products in Equations<a class="headerlink" href="#working-with-sums-and-products-in-equations" title="Permalink to this heading">#</a></h1>
+<h1>Working with Sums and Products in Equations<a class="headerlink" href="#working-with-sums-and-products-in-equations" title="Link to this heading">#</a></h1>
 <p>While we’re talking about vectors and indexing, let’s address a few tricks for dealing with summation (<span class="math notranslate nohighlight">\(\Sigma\)</span>) and product (<span class="math notranslate nohighlight">\(\Pi\)</span>) notation in equations. This will be handy for understanding the math shown in lecture and for completing the homeworks.</p>
 <p>First thing is to understand the structure of summation notation:</p>
 <p><span class="math notranslate nohighlight">\(\sum_{i=1}^{n}x_i\)</span></p>
@@ -684,7 +695,7 @@ A row vector with elements 7 and 9: <span class="math notranslate nohighlight">\
 <p><span class="math notranslate nohighlight">\(\prod_{i=1}^{3}x_i = x_1 \times x_2 \times x_3\)</span></p>
 <p>Below I’ll describe three tricks for working with summation notation that may be handy when you’re doing the homework.</p>
 <section id="trick-1-pulling-terms-out-of-a-sum">
-<h2>Trick 1: Pulling terms out of a sum<a class="headerlink" href="#trick-1-pulling-terms-out-of-a-sum" title="Permalink to this heading">#</a></h2>
+<h2>Trick 1: Pulling terms out of a sum<a class="headerlink" href="#trick-1-pulling-terms-out-of-a-sum" title="Link to this heading">#</a></h2>
 <p>The first trick that I’ll cover is knowing when and how to pull terms out of a sum. If the expression inside of the sum includes terms that don’t involve the variable being iterated over, i.e., terms that don’t include <span class="math notranslate nohighlight">\(x_i\)</span>, you can take those out of the sum expression and just multiply them by the number of times they would’ve been added in. Here’s an example, trying to simplify the expression of the function <span class="math notranslate nohighlight">\(g\)</span> of vector <span class="math notranslate nohighlight">\(x\)</span>:</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(g(x) = \sum_{i=1}^{3}(3 - x_i)^2\)</span></p>
@@ -700,7 +711,7 @@ A row vector with elements 7 and 9: <span class="math notranslate nohighlight">\
 <p>Ta-da!</p>
 </section>
 <section id="trick-2-splitting-up-a-sum">
-<h2>Trick 2: Splitting up a sum<a class="headerlink" href="#trick-2-splitting-up-a-sum" title="Permalink to this heading">#</a></h2>
+<h2>Trick 2: Splitting up a sum<a class="headerlink" href="#trick-2-splitting-up-a-sum" title="Link to this heading">#</a></h2>
 <p>Now we can actually simplify the expression above a bit further. Any terms that are separated by a <span class="math notranslate nohighlight">\(+\)</span> or a <span class="math notranslate nohighlight">\(-\)</span> can be split into separate sum terms.</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(g(x) = 27 + \sum_{i=1}^{3}- 6x_i + \sum_{i=1}^{3}{x_i}^2\)</span></p>
@@ -708,7 +719,7 @@ A row vector with elements 7 and 9: <span class="math notranslate nohighlight">\
 <p>This makes sense if you think about the commutative property of addition: if you’re adding things together, it doesn’t matter what order you add them in. <span class="math notranslate nohighlight">\(-6x_1 + x_{1}^2 - 6x_2 + x_{2}^2 - 6x_3 + x_{3}^2\)</span> is the same as <span class="math notranslate nohighlight">\( -6x_1-6x_2-6x_3  + x_{1}^2 + x_{2}^2 + x_{3}^2\)</span></p>
 </section>
 <section id="trick-3-pulling-coefficients-out-of-a-sum">
-<h2>Trick 3: Pulling coefficients out of a sum<a class="headerlink" href="#trick-3-pulling-coefficients-out-of-a-sum" title="Permalink to this heading">#</a></h2>
+<h2>Trick 3: Pulling coefficients out of a sum<a class="headerlink" href="#trick-3-pulling-coefficients-out-of-a-sum" title="Link to this heading">#</a></h2>
 <p>Lastly, since <span class="math notranslate nohighlight">\(-6(x_1 + x_2 + x_3)\)</span> is the same as <span class="math notranslate nohighlight">\(-6x_1 - 6x_2 - 6x_3\)</span>, we can simplify the <span class="math notranslate nohighlight">\(\sum_{i=1}^{3}- 6x_i\)</span> by bringing the <span class="math notranslate nohighlight">\(-6\)</span> outside:</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(g(x) = 27 - 6\sum_{i=1}^{3}x_i + \sum_{i=1}^{3}{x_i}^2\)</span></p>
@@ -718,7 +729,7 @@ A row vector with elements 7 and 9: <span class="math notranslate nohighlight">\
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="what-is-a-matrix">
-<h1>What is a matrix?<a class="headerlink" href="#what-is-a-matrix" title="Permalink to this heading">#</a></h1>
+<h1>What is a matrix?<a class="headerlink" href="#what-is-a-matrix" title="Link to this heading">#</a></h1>
 <p>A matrix is a rectangular array of vectors with one or more rows or columns. Matrices are described by the number of rows ( <span class="math notranslate nohighlight">\(m\)</span>) and the number of columns ( <span class="math notranslate nohighlight">\(n\)</span>) they have; a matrix with <span class="math notranslate nohighlight">\(m\)</span> rows and <span class="math notranslate nohighlight">\(n\)</span> columns is an <span class="math notranslate nohighlight">\(m  x  n\)</span> or “<span class="math notranslate nohighlight">\(m\)</span> by <span class="math notranslate nohighlight">\(n\)</span>” matrix. The image below demonstrates such a matrix, and the element labels show you how to index a particular element in the matrix. <span class="math notranslate nohighlight">\(a_{i,j}\)</span> refers to the element in the <span class="math notranslate nohighlight">\(i\)</span>th row and the <span class="math notranslate nohighlight">\(j\)</span>th column.</p>
 <p><img alt="picture" src="https://drive.google.com/uc?id=10CFkJufrLPQLimp2jCOXU01WQLAzeBbh" /></p>
 <p>You can create a matrix in R by calling the function <code class="docutils literal notranslate"><span class="pre">matrix</span></code> and supplying it with data, the number of rows and/or columns you would like, and a method for filling the matrix (by row or by column).</p>
@@ -761,10 +772,10 @@ However, to avoid errors, it’s best to be explicit to the extent that it makes
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="basic-kinds-of-matrices">
-<h1>Basic kinds of matrices<a class="headerlink" href="#basic-kinds-of-matrices" title="Permalink to this heading">#</a></h1>
+<h1>Basic kinds of matrices<a class="headerlink" href="#basic-kinds-of-matrices" title="Link to this heading">#</a></h1>
 <p>These types of matrices will come up at different points in the class (and in life?). Just trust us that they’ll be useful :)</p>
 <section id="square">
-<h2>Square<a class="headerlink" href="#square" title="Permalink to this heading">#</a></h2>
+<h2>Square<a class="headerlink" href="#square" title="Link to this heading">#</a></h2>
 <p>A square matrix is a matrix that has an equal number of rows and columns (<span class="math notranslate nohighlight">\(m = n\)</span>). So a matrix with 4 columns and 4 rows is square, a matrix with 10 rows and 10 columns is square, and so on.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -805,7 +816,7 @@ However, to avoid errors, it’s best to be explicit to the extent that it makes
 </div>
 </section>
 <section id="symmetric">
-<h2>Symmetric<a class="headerlink" href="#symmetric" title="Permalink to this heading">#</a></h2>
+<h2>Symmetric<a class="headerlink" href="#symmetric" title="Link to this heading">#</a></h2>
 <p>A square matrix is symmetric if the elements are reflected about the diagonal line of numbers. You can imagine that if you folded a square matrix in half along the diagonal, the reflected elements would touch.</p>
 <img src="imgs/symmetric_matrix.png" alt="drawing" width="300"/>
 <p><em>You can also think of a symmetric matrix as a matrix equal to its transposed form: <span class="math notranslate nohighlight">\(A = A^T\)</span></em></p>
@@ -846,7 +857,7 @@ However, to avoid errors, it’s best to be explicit to the extent that it makes
 </div>
 </section>
 <section id="identity">
-<h2>Identity<a class="headerlink" href="#identity" title="Permalink to this heading">#</a></h2>
+<h2>Identity<a class="headerlink" href="#identity" title="Link to this heading">#</a></h2>
 <p>An identity matrix is a special case of a square, symmetric matrix. Specifically, it has ones on the diagonal line and zeros everywhere else.</p>
 <img src="imgs/identity_matrix.png" alt="drawing" width="300"/>
 <p>Why is this important?
@@ -874,7 +885,7 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 </div>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>A <strong>square matrix</strong> has an equal number of rows and columns.
 <br></p></li>
@@ -885,9 +896,9 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="matrix-manipulation">
-<h1>Matrix manipulation<a class="headerlink" href="#matrix-manipulation" title="Permalink to this heading">#</a></h1>
+<h1>Matrix manipulation<a class="headerlink" href="#matrix-manipulation" title="Link to this heading">#</a></h1>
 <section id="basic-indexing">
-<h2>Basic indexing<a class="headerlink" href="#basic-indexing" title="Permalink to this heading">#</a></h2>
+<h2>Basic indexing<a class="headerlink" href="#basic-indexing" title="Link to this heading">#</a></h2>
 <p>Review: We talked about indexing a little bit in the tutorial on basic R. The same principle applies to matrices.</p>
 <p><code class="docutils literal notranslate"><span class="pre">matrix[row_index,</span> <span class="pre">column_index]</span></code>
 <br></p>
@@ -941,7 +952,7 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 </div>
 </section>
 <section id="basic-matrix-operations">
-<h2>Basic matrix operations<a class="headerlink" href="#basic-matrix-operations" title="Permalink to this heading">#</a></h2>
+<h2>Basic matrix operations<a class="headerlink" href="#basic-matrix-operations" title="Link to this heading">#</a></h2>
 <p>Now that we know what a matrix is, how to create one in R, and how to access their elements, let’s review how to manipulate them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -980,7 +991,7 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 </div>
 </div>
 <section id="addition-and-subtraction">
-<h3>Addition and subtraction<a class="headerlink" href="#addition-and-subtraction" title="Permalink to this heading">#</a></h3>
+<h3>Addition and subtraction<a class="headerlink" href="#addition-and-subtraction" title="Link to this heading">#</a></h3>
 <p>Addition and subtraction is an element-wise operation in the world of matrices. That is, when two matrices are added, each element of the first matrix is added to the corresponding element in the second matrix. Importantly, matrices may only be added or subtracted when they are of the same <strong>dimension</strong>.</p>
 <p><strong>Note</strong>: R will let you perform matrix addition and subtraction when two matrices are NOT of the same dimension, so watch out for this.</p>
 <div class="cell docutils container">
@@ -1044,7 +1055,7 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 </div>
 </section>
 <section id="transposition">
-<h3>Transposition<a class="headerlink" href="#transposition" title="Permalink to this heading">#</a></h3>
+<h3>Transposition<a class="headerlink" href="#transposition" title="Link to this heading">#</a></h3>
 <p>When a matrix is transposed, the columns become the rows. R uses the <code class="docutils literal notranslate"><span class="pre">t()</span></code> function to transpose matrices. In equations, a transposed matrix is denoted <strong>A’</strong>.</p>
 <p>As an example, look at the original matrix, <code class="docutils literal notranslate"><span class="pre">mat_2</span></code>:</p>
 <div class="cell docutils container">
@@ -1096,7 +1107,7 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 </div>
 </section>
 <section id="multiplication">
-<h3>Multiplication<a class="headerlink" href="#multiplication" title="Permalink to this heading">#</a></h3>
+<h3>Multiplication<a class="headerlink" href="#multiplication" title="Link to this heading">#</a></h3>
 <p>As mentioned before, multiplying a matrix by a constant multiplies each element of a matrix by that number.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1148,7 +1159,7 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 <p>Note that <strong>order matters</strong> in matrix multiplication, and that the number of columns for the first matrix must equal the number of rows for the second matrix. Matrix multiplication in R uses the <code class="docutils literal notranslate"><span class="pre">%*%</span></code> operator.</p>
 </section>
 <section id="division">
-<h3>Division<a class="headerlink" href="#division" title="Permalink to this heading">#</a></h3>
+<h3>Division<a class="headerlink" href="#division" title="Link to this heading">#</a></h3>
 <p>Matrices can be divided element-wise.<br></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1182,7 +1193,7 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 </div>
 </section>
 <section id="inversion">
-<h3>Inversion<a class="headerlink" href="#inversion" title="Permalink to this heading">#</a></h3>
+<h3>Inversion<a class="headerlink" href="#inversion" title="Link to this heading">#</a></h3>
 <p>The inverse of a matrix can be thought of as the matrix version of taking the reciprocal of a real number. In equations, the inverse of the matrix A is denoted <span class="math notranslate nohighlight">\(\bf{A^{-1}}\)</span>. Usually, inversion can only be performed on square matrices. The formula for the inverse of a 2x2 matrix is:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix} a&amp;b \\ c&amp;d\end{bmatrix}^{-1}  = \frac{1}{(ad-bc)} *
@@ -1209,7 +1220,7 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 </div>
 </section>
 <section id="determinant">
-<h3>Determinant<a class="headerlink" href="#determinant" title="Permalink to this heading">#</a></h3>
+<h3>Determinant<a class="headerlink" href="#determinant" title="Link to this heading">#</a></h3>
 <p>In the matrix inversion formula shown above, the term</p>
 <div class="math notranslate nohighlight">
 \[\begin{equation*}\frac{1}{ad-bc}\end{equation*}\]</div>
@@ -1226,7 +1237,7 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="use-matrix-manipulation-to-solve-a-linear-regression-problem-by-hand">
-<h1>Use matrix manipulation to solve a linear regression problem “by hand”<a class="headerlink" href="#use-matrix-manipulation-to-solve-a-linear-regression-problem-by-hand" title="Permalink to this heading">#</a></h1>
+<h1>Use matrix manipulation to solve a linear regression problem “by hand”<a class="headerlink" href="#use-matrix-manipulation-to-solve-a-linear-regression-problem-by-hand" title="Link to this heading">#</a></h1>
 <p>First, a <em>brief</em> introduction to linear regression.</p>
 <p>Linear regression usually takes the basic form of</p>
 <p><span class="math notranslate nohighlight">\(y = \beta X + \epsilon\)</span></p>
@@ -1265,11 +1276,10 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../lectures/linear-models.html"
@@ -1289,17 +1299,16 @@ As you’ll see later, the identity matrix acts like the number 1 in the real nu
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1362,6 +1371,7 @@ By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023.
@@ -1388,8 +1398,8 @@ By Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patience Stevens, Amy
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
