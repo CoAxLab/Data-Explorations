@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Exercise 11: The beauty of kNN &#8212; Data explorations</title>
   
@@ -30,13 +31,13 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -44,22 +45,20 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/the-beauty-of-knn';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -611,10 +610,10 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-11-the-beauty-of-knn">
-<h1>Exercise 11: The beauty of kNN<a class="headerlink" href="#exercise-11-the-beauty-of-knn" title="Link to this heading">#</a></h1>
+<h1>Exercise 11: The beauty of kNN<a class="headerlink" href="#exercise-11-the-beauty-of-knn" title="Permalink to this heading">#</a></h1>
 <p>In this exercise, you’ll gain practice working with kNN. We’ll use the <a class="reference external" href="https://ggplot2.tidyverse.org/reference/diamonds.html">diamonds</a> dataset, which comes as part of <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code>. This dataset provides information on the quality and price of 50,000 diamonds</p>
 <section id="data-plotting-and-train-test-sets-2-pts">
-<h2>1. Data, Plotting, and Train/Test Sets (2 pts)<a class="headerlink" href="#data-plotting-and-train-test-sets-2-pts" title="Link to this heading">#</a></h2>
+<h2>1. Data, Plotting, and Train/Test Sets (2 pts)<a class="headerlink" href="#data-plotting-and-train-test-sets-2-pts" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <ul class="simple">
 <li><p>Load the the <code class="docutils literal notranslate"><span class="pre">class</span></code> and <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code> packages.</p></li>
@@ -631,7 +630,7 @@
 </div>
 </div>
 <section id="plot">
-<h3>Plot<a class="headerlink" href="#plot" title="Link to this heading">#</a></h3>
+<h3>Plot<a class="headerlink" href="#plot" title="Permalink to this heading">#</a></h3>
 <p>Create a scatterplot of the link between <code class="docutils literal notranslate"><span class="pre">carat</span></code> and <code class="docutils literal notranslate"><span class="pre">depth</span></code>, and use the <code class="docutils literal notranslate"><span class="pre">color</span></code> aesthetics mapping to differentiate between diamonds that cost above versus below the mean price.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -649,7 +648,7 @@
 </div></blockquote>
 </section>
 <section id="test-vs-train">
-<h3>Test vs Train<a class="headerlink" href="#test-vs-train" title="Link to this heading">#</a></h3>
+<h3>Test vs Train<a class="headerlink" href="#test-vs-train" title="Permalink to this heading">#</a></h3>
 <p>Before we run KNN on these data, we need to set aside a portion of the observations as our test set. Below, randomly divide the data such that 30% are allotted to the <code class="docutils literal notranslate"><span class="pre">test</span></code> set and the rest are allotted to the <code class="docutils literal notranslate"><span class="pre">train</span></code> set. Print the first few lines of each set, and print the dimensions of each set to double check your division of the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -663,7 +662,7 @@
 </section>
 </section>
 <section id="knn-3-points">
-<h2>2: KNN (3 points)<a class="headerlink" href="#knn-3-points" title="Link to this heading">#</a></h2>
+<h2>2: KNN (3 points)<a class="headerlink" href="#knn-3-points" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Now, use the <code class="docutils literal notranslate"><span class="pre">knn()</span></code> function from the <code class="docutils literal notranslate"><span class="pre">class</span></code> library to predict <code class="docutils literal notranslate"><span class="pre">price_bin</span></code> from the <code class="docutils literal notranslate"><span class="pre">carat</span></code> and <code class="docutils literal notranslate"><span class="pre">depth</span></code>. Set <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">3</span></code>.</p>
 <p><em>Hint: Review the format required for the arguments of knn()</em></p>
@@ -709,7 +708,7 @@
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="for-loop-3-points">
-<h1>3: for loop (3 points)<a class="headerlink" href="#for-loop-3-points" title="Link to this heading">#</a></h1>
+<h1>3: for loop (3 points)<a class="headerlink" href="#for-loop-3-points" title="Permalink to this heading">#</a></h1>
 <hr class="docutils" />
 <p>So adding additional predictors didn’t shift our error much. Let’s see if adjusting <code class="docutils literal notranslate"><span class="pre">k</span></code> has a larger impact on model accuracy.</p>
 <p>Using your initial model above with just <code class="docutils literal notranslate"><span class="pre">carat</span></code> and <code class="docutils literal notranslate"><span class="pre">depth</span></code>, run a <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code> that runs the same model 30 times, for <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">1:30</span></code>.</p>
@@ -758,7 +757,7 @@
 </div></blockquote>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="standardizing-predictors-2">
-<h1>4: Standardizing predictors (2)<a class="headerlink" href="#standardizing-predictors-2" title="Link to this heading">#</a></h1>
+<h1>4: Standardizing predictors (2)<a class="headerlink" href="#standardizing-predictors-2" title="Permalink to this heading">#</a></h1>
 <hr class="docutils" />
 <p>Because knn is based on distances between points, it is very sensitive to the scale of your variables. Looking at our predictor variables, we can see that <code class="docutils literal notranslate"><span class="pre">carat</span></code> and <code class="docutils literal notranslate"><span class="pre">depth</span></code> are orders of magnitude different in terms of scales. Maybe we can improve our fit even more by addressing this!</p>
 <p>Below, use the <code class="docutils literal notranslate"><span class="pre">scale()</span></code> function to standardize your predictors. (Note that you don’t need to standardize <code class="docutils literal notranslate"><span class="pre">price_bin</span></code>.)</p>

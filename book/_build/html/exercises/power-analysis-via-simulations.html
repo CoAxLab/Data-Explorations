@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Exercise 15: Power analyses &#8212; Data explorations</title>
   
@@ -30,13 +31,13 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -44,22 +45,20 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/power-analysis-via-simulations';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -604,11 +603,11 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-15-power-analyses">
-<h1>Exercise 15: Power analyses<a class="headerlink" href="#exercise-15-power-analyses" title="Link to this heading">#</a></h1>
+<h1>Exercise 15: Power analyses<a class="headerlink" href="#exercise-15-power-analyses" title="Permalink to this heading">#</a></h1>
 <p>This  assignment is designed to give you practice with Monte Carlo methods to conduct power analyses via simulation. You won’t need to load in any data for this homework. We will, however, be using parts of the homework from last week.</p>
 <hr class="docutils" />
 <section id="simulating-data-1-points">
-<h2>1. Simulating data (1 points)<a class="headerlink" href="#simulating-data-1-points" title="Link to this heading">#</a></h2>
+<h2>1. Simulating data (1 points)<a class="headerlink" href="#simulating-data-1-points" title="Permalink to this heading">#</a></h2>
 <p>Pull your <code class="docutils literal notranslate"><span class="pre">simulate_data()</span></code> function from your last homework and add it below.</p>
 <p>As a reminder, this function simulates the relationship between age, word reading experience, and reading comprehension skill.</p>
 <p><code class="docutils literal notranslate"><span class="pre">c</span></code> is reading comprehension, and <code class="docutils literal notranslate"><span class="pre">x</span></code> is word reading experience.</p>
@@ -640,7 +639,7 @@
 </section>
 <hr class="docutils" />
 <section id="run-analysis-function-2-pts">
-<h2>2. <code class="docutils literal notranslate"><span class="pre">run_analysis()</span></code> function (2 pts)<a class="headerlink" href="#run-analysis-function-2-pts" title="Link to this heading">#</a></h2>
+<h2>2. <code class="docutils literal notranslate"><span class="pre">run_analysis()</span></code> function (2 pts)<a class="headerlink" href="#run-analysis-function-2-pts" title="Permalink to this heading">#</a></h2>
 <p>Last week, we looked at whether word reading experience(<code class="docutils literal notranslate"><span class="pre">x</span></code>) mediated the relation between <code class="docutils literal notranslate"><span class="pre">age</span></code> and reading comprehension (<code class="docutils literal notranslate"><span class="pre">c</span></code>).</p>
 <p>Now we’re going to use our <code class="docutils literal notranslate"><span class="pre">simulate_data()</span></code> function to conduct a power analysis. The goal is to determine how many participants we would need in order to detect both the mediated and the direct effects in this data.</p>
 <p><em>Note: We’re going to pretend for the sake of simplicity that we don’t have any control over the ages of the children we get (so ages are generated using <code class="docutils literal notranslate"><span class="pre">runif(sample_size,</span> <span class="pre">age_lo,</span> <span class="pre">age_hi)</span></code>, although of course this would be an unusual situation in reality.</em></p>
@@ -656,7 +655,7 @@
 </section>
 <hr class="docutils" />
 <section id="repeat-analysis-function-3-pts">
-<h2>3. <code class="docutils literal notranslate"><span class="pre">repeat_analysis()</span></code> function (3 pts)<a class="headerlink" href="#repeat-analysis-function-3-pts" title="Link to this heading">#</a></h2>
+<h2>3. <code class="docutils literal notranslate"><span class="pre">repeat_analysis()</span></code> function (3 pts)<a class="headerlink" href="#repeat-analysis-function-3-pts" title="Permalink to this heading">#</a></h2>
 <p>Next fill in the function <code class="docutils literal notranslate"><span class="pre">repeat_analysis()</span></code> below so that it simulates and analyzes data <code class="docutils literal notranslate"><span class="pre">num_simulations</span></code> times. Store the outputs from each simulation in the <code class="docutils literal notranslate"><span class="pre">simouts</span></code> matrix. Calculate and return the coverage across all the simulations run for both ACME and ADE.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -692,7 +691,7 @@
 </section>
 <hr class="docutils" />
 <section id="testing-different-sample-sizes-2-pts">
-<h2>4. Testing different sample sizes (2 pts)<a class="headerlink" href="#testing-different-sample-sizes-2-pts" title="Link to this heading">#</a></h2>
+<h2>4. Testing different sample sizes (2 pts)<a class="headerlink" href="#testing-different-sample-sizes-2-pts" title="Permalink to this heading">#</a></h2>
 <p>Finally, do the same thing (10 simulations, alpha criterion of 0.01) but for 5 different sample sizes: 50, 75, 100, 125, 150. You can do this using <code class="docutils literal notranslate"><span class="pre">map</span></code> (as in the tutorial), or a simple <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, or by calculating each individually. Up to you! This should take around 3 minutes to run.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -711,7 +710,7 @@
 </div>
 </section>
 <section id="reflection-2-pts">
-<h2>5. Reflection (2 pts)<a class="headerlink" href="#reflection-2-pts" title="Link to this heading">#</a></h2>
+<h2>5. Reflection (2 pts)<a class="headerlink" href="#reflection-2-pts" title="Permalink to this heading">#</a></h2>
 <p>If this were a real power analysis, we’d want to run more simulations per sample size (to get a more precise estimate of power) and we may also want to test out some other values of the parameters we used to simulate our data. However, what would you conclude just based on the results above?</p>
 <blockquote>
 <div><p><em>Write your response here.</em></p>

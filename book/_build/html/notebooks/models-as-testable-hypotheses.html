@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Tutorial: Introduction to R, functions, and good coding habits &#8212; Data explorations</title>
   
@@ -30,13 +31,13 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -44,22 +45,20 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/models-as-testable-hypotheses';</script>
@@ -626,9 +625,9 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-introduction-to-r-functions-and-good-coding-habits">
-<h1>Tutorial: Introduction to R, functions, and good coding habits<a class="headerlink" href="#tutorial-introduction-to-r-functions-and-good-coding-habits" title="Link to this heading">#</a></h1>
+<h1>Tutorial: Introduction to R, functions, and good coding habits<a class="headerlink" href="#tutorial-introduction-to-r-functions-and-good-coding-habits" title="Permalink to this heading">#</a></h1>
 <section id="goals">
-<h2>Goals:<a class="headerlink" href="#goals" title="Link to this heading">#</a></h2>
+<h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Learn some basic R commands</p></li>
 <li><p>Learn how to write a function in R</p></li>
@@ -639,9 +638,9 @@
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="basic-r-commands">
-<h1>Basic R Commands<a class="headerlink" href="#basic-r-commands" title="Link to this heading">#</a></h1>
+<h1>Basic R Commands<a class="headerlink" href="#basic-r-commands" title="Permalink to this heading">#</a></h1>
 <section id="arithmetic">
-<h2>Arithmetic<a class="headerlink" href="#arithmetic" title="Link to this heading">#</a></h2>
+<h2>Arithmetic<a class="headerlink" href="#arithmetic" title="Permalink to this heading">#</a></h2>
 <p>In R, you can do basic arithmetic just like any other programming language e.g.,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -656,9 +655,9 @@
 </div>
 </section>
 <section id="data-structures">
-<h2>Data structures<a class="headerlink" href="#data-structures" title="Link to this heading">#</a></h2>
+<h2>Data structures<a class="headerlink" href="#data-structures" title="Permalink to this heading">#</a></h2>
 <section id="vectors">
-<h3>Vectors<a class="headerlink" href="#vectors" title="Link to this heading">#</a></h3>
+<h3>Vectors<a class="headerlink" href="#vectors" title="Permalink to this heading">#</a></h3>
 <p>Vectors are lists of numbers or strings.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -694,7 +693,7 @@
 </div>
 </section>
 <section id="data-frames">
-<h3>Data frames<a class="headerlink" href="#data-frames" title="Link to this heading">#</a></h3>
+<h3>Data frames<a class="headerlink" href="#data-frames" title="Permalink to this heading">#</a></h3>
 <p>Data frames can contain data of mixed types such as numbers and strings. Usually, each column is a different variable (e.g., Age, Test Score), and items within each column are of the same type.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -723,7 +722,7 @@
 </section>
 </section>
 <section id="indexing">
-<h2>Indexing<a class="headerlink" href="#indexing" title="Link to this heading">#</a></h2>
+<h2>Indexing<a class="headerlink" href="#indexing" title="Permalink to this heading">#</a></h2>
 <p>In a vector, you can index data by its position (starting at index 1):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -823,7 +822,7 @@
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="how-to-write-a-function-in-r">
-<h1>How to write a function in R<a class="headerlink" href="#how-to-write-a-function-in-r" title="Link to this heading">#</a></h1>
+<h1>How to write a function in R<a class="headerlink" href="#how-to-write-a-function-in-r" title="Permalink to this heading">#</a></h1>
 <p>In the lecture and readings, you went over how to construct a testable hypothesis of the form:</p>
 <p><span class="math notranslate nohighlight">\(Y=f(X)\)</span></p>
 <p>This also describes the basic form of a function. A function takes an input set of variables (<span class="math notranslate nohighlight">\(X\)</span>), perfoms a basic operation on them (<span class="math notranslate nohighlight">\(f\)</span>), and generates an output or set of outputs (<span class="math notranslate nohighlight">\(Y\)</span>). What you will learn here is how to implement that with code.</p>
@@ -928,11 +927,11 @@
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="good-research-code-practices">
-<h1>Good research code practices<a class="headerlink" href="#good-research-code-practices" title="Link to this heading">#</a></h1>
+<h1>Good research code practices<a class="headerlink" href="#good-research-code-practices" title="Permalink to this heading">#</a></h1>
 <p>The <a class="reference external" href="https://goodresearch.dev">Good Research Code Handbook</a> is an excellent resource written by Patrick Mineault, a software engineer at Google with a PhD in computational neuroscience. The handbook is particularly useful for grad students and postdocs whose research incorporates lots of programming. It contains helpful information about code organization such that it is clear and easy to understand and work reliably.</p>
 <p>Let’s walk through some gems together:</p>
 <section id="keep-code-consistent">
-<h2>Keep code consistent<a class="headerlink" href="#keep-code-consistent" title="Link to this heading">#</a></h2>
+<h2>Keep code consistent<a class="headerlink" href="#keep-code-consistent" title="Permalink to this heading">#</a></h2>
 <blockquote>
 <div><p>“Good coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread.” - The tidyverse style guide</p>
 </div></blockquote>
@@ -1039,13 +1038,13 @@
 <p><strong>Logical variables and vectors</strong> should be dfined using <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> and <code class="docutils literal notranslate"><span class="pre">FALSE</span></code> instead of the shortened <code class="docutils literal notranslate"><span class="pre">T</span></code> and <code class="docutils literal notranslate"><span class="pre">F</span></code> forms.</p>
 </section>
 <section id="keep-jupyter-notebooks-tidy">
-<h2>Keep jupyter notebooks tidy<a class="headerlink" href="#keep-jupyter-notebooks-tidy" title="Link to this heading">#</a></h2>
+<h2>Keep jupyter notebooks tidy<a class="headerlink" href="#keep-jupyter-notebooks-tidy" title="Permalink to this heading">#</a></h2>
 <p>There are additional considerations to keep in mind when working with jupyter notebooks. Since they are particularly useful for literate programming (combining code, graphics and text), they provide lots of flexibility and don’t necessitate a rigid, linear flow through the notebook cells. It therefore requires even more discipline to maintain notebooks and the code within them.</p>
 <p>One of the most helpful tips for keeping a notebook tidy is to ensure that your notebook runs from top to bottom. Restarting the notebook kernel and running through all the cells before commiting to git is a good habit to get into and can save time in the future.</p>
 <p>Thinking more broadly, using jupyter notebook for everything is not best practice. Developing code and analysis pipeline inside an integrated development environment (<a class="reference external" href="https://en.wikipedia.org/wiki/Integrated_development_environment">IDE</a>), such as RStudio for R, is helpful for efficiency and developing good coding habits.</p>
 </section>
 <section id="delete-dead-code">
-<h2>Delete dead code<a class="headerlink" href="#delete-dead-code" title="Link to this heading">#</a></h2>
+<h2>Delete dead code<a class="headerlink" href="#delete-dead-code" title="Permalink to this heading">#</a></h2>
 <img src="https://goodresearch.dev/_images/final.doc.gif" alt="FINAL.doc" width="400"/><p>Code that gets developed over time, as is often the case in research, can accumulate lots of no-longer-necessary components. This can lead to the phenomenon of dead code, code that never gets called or run.</p>
 <blockquote>
 <div><p>“You know who hates dead code? You, in three months.” - Patrick Mineault.</p>
@@ -1053,7 +1052,7 @@
 <p>Not only can dead code create problems, it can also be an enormous waste of time to wade through. It is good to develop a habit of cleaning up code projects as you work, but particularly when wrapping up a project or putting it on the back burner. Remember that when using git to version control your projects, it is always possible to go back in time and recover deleted code or old versions if necessary.</p>
 </section>
 <section id="use-pure-functions">
-<h2>Use pure functions<a class="headerlink" href="#use-pure-functions" title="Link to this heading">#</a></h2>
+<h2>Use pure functions<a class="headerlink" href="#use-pure-functions" title="Permalink to this heading">#</a></h2>
 <p>Pure functions follow a particular structure, with inputs coming from the input parameters and outputs returning in the return statement. For instance, using our sum function from earlier in the tutorial:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_sum</span> <span class="o">&lt;-</span> <span class="n">function</span><span class="p">(</span><span class="n">input_1</span><span class="p">,</span> <span class="n">input_2</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">output</span> <span class="o">&lt;-</span> <span class="n">input_1</span> <span class="o">+</span> <span class="n">input_2</span>
@@ -1081,7 +1080,7 @@
 </div>
 </section>
 <section id="bad-code-things-not-to-do">
-<h2>Bad code: things not to do<a class="headerlink" href="#bad-code-things-not-to-do" title="Link to this heading">#</a></h2>
+<h2>Bad code: things not to do<a class="headerlink" href="#bad-code-things-not-to-do" title="Permalink to this heading">#</a></h2>
 <p>Sometimes it can be equally helpful to know what not to do. Here’s a brief list of some common pitfalls to avoid in your code:</p>
 <ul class="simple">
 <li><p>mysterious object names that don’t provide helpful info about function</p></li>
@@ -1092,7 +1091,7 @@
 </ul>
 </section>
 <section id="documenting">
-<h2>Documenting<a class="headerlink" href="#documenting" title="Link to this heading">#</a></h2>
+<h2>Documenting<a class="headerlink" href="#documenting" title="Permalink to this heading">#</a></h2>
 <p>Most of you are probably familiar with comments within code as a way of documenting. However, this is only one type of documentation, albeit a very useful form. Documentation can really be though of as any meta-information that you write about the code. Therefore, all of the following can be considered documentation, and indeed, all are helpful to incorporate into your own practice:</p>
 <ul class="simple">
 <li><p>comments (both single-line and multi-line)</p></li>

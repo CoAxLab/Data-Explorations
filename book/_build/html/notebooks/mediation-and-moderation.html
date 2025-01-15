@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Tutorial: Running mediation and moderation models &#8212; Data explorations</title>
   
@@ -30,13 +31,13 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -44,22 +45,20 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/mediation-and-moderation';</script>
@@ -609,10 +608,10 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-running-mediation-and-moderation-models">
-<h1>Tutorial: Running mediation and moderation models<a class="headerlink" href="#tutorial-running-mediation-and-moderation-models" title="Link to this heading">#</a></h1>
+<h1>Tutorial: Running mediation and moderation models<a class="headerlink" href="#tutorial-running-mediation-and-moderation-models" title="Permalink to this heading">#</a></h1>
 <p>This lab focuses on mediation and moderation and implementing these techniques in R.</p>
 <section id="goals">
-<h2>Goals:<a class="headerlink" href="#goals" title="Link to this heading">#</a></h2>
+<h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Understand the difference between moderation and mediation.</p></li>
 <li><p>Learn how to detect mediation effects using the <code class="docutils literal notranslate"><span class="pre">mediate</span></code> function.</p></li>
@@ -623,7 +622,7 @@
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="the-difference-between-mediation-and-moderation">
-<h1>The difference between mediation and moderation<a class="headerlink" href="#the-difference-between-mediation-and-moderation" title="Link to this heading">#</a></h1>
+<h1>The difference between mediation and moderation<a class="headerlink" href="#the-difference-between-mediation-and-moderation" title="Permalink to this heading">#</a></h1>
 <p>First, let’s reiterate the difference between mediation and moderation.</p>
 <p>For an independent variable <span class="math notranslate nohighlight">\(X\)</span>, a dependent variable <span class="math notranslate nohighlight">\(Y\)</span> and a third variable <span class="math notranslate nohighlight">\(M_e\)</span>, <strong>mediation</strong> is when the value of <span class="math notranslate nohighlight">\(X\)</span> impacts the value of <span class="math notranslate nohighlight">\(M_e\)</span>, which in turn predicts the value of <span class="math notranslate nohighlight">\(Y\)</span>. Put differently, if <span class="math notranslate nohighlight">\(X\)</span> operates on <span class="math notranslate nohighlight">\(Y\)</span> through <span class="math notranslate nohighlight">\(M_e\)</span>, then <span class="math notranslate nohighlight">\(M_e\)</span> is a mediating variable: <span class="math notranslate nohighlight">\(X \rightarrow M_e \rightarrow Y\)</span></p>
 <p>A couple examples of mediation:</p>
@@ -640,7 +639,7 @@
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="mediation-in-r">
-<h1>Mediation in R<a class="headerlink" href="#mediation-in-r" title="Link to this heading">#</a></h1>
+<h1>Mediation in R<a class="headerlink" href="#mediation-in-r" title="Permalink to this heading">#</a></h1>
 <p>Now let’s try finding evidence for mediation using R. We’ll use the <code class="docutils literal notranslate"><span class="pre">Cars93</span></code> dataset we’ve used in previous tutorials.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -781,7 +780,7 @@ Simulations: 1000
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="moderation-in-r">
-<h1>Moderation in R<a class="headerlink" href="#moderation-in-r" title="Link to this heading">#</a></h1>
+<h1>Moderation in R<a class="headerlink" href="#moderation-in-r" title="Permalink to this heading">#</a></h1>
 <p>As discussed above, looking for moderation is basically the same as looking for an interaction. If the relationship between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> is moderated by <span class="math notranslate nohighlight">\(M_o\)</span>, then the interaction between <span class="math notranslate nohighlight">\(X\)</span> amd <span class="math notranslate nohighlight">\(M_o\)</span> should be significant. We can look at this using the simple <code class="docutils literal notranslate"><span class="pre">lm()</span></code> function.</p>
 <p>We’ll stick with the <code class="docutils literal notranslate"><span class="pre">Cars93</span></code> data set, and see if the relationship between <code class="docutils literal notranslate"><span class="pre">Weight</span></code> and <code class="docutils literal notranslate"><span class="pre">MPG.highway</span></code> is moderated by <code class="docutils literal notranslate"><span class="pre">Horsepower</span></code> - in other words, do cars with more powerful engines show a different relationship between <code class="docutils literal notranslate"><span class="pre">Weight</span></code> and <code class="docutils literal notranslate"><span class="pre">MPG.highway</span></code> than cars with less powerful engines do?</p>
 <div class="cell docutils container">

@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Tutorial: Running basic power analyses &#8212; Data explorations</title>
   
@@ -30,13 +31,13 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -44,22 +45,20 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/power-analysis-via-simulations';</script>
@@ -620,10 +619,10 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-running-basic-power-analyses">
-<h1>Tutorial: Running basic power analyses<a class="headerlink" href="#tutorial-running-basic-power-analyses" title="Link to this heading">#</a></h1>
+<h1>Tutorial: Running basic power analyses<a class="headerlink" href="#tutorial-running-basic-power-analyses" title="Permalink to this heading">#</a></h1>
 <p>This lab focuses on power analyses and introduces how to simulate power in R.</p>
 <section id="goals">
-<h2>Goals:<a class="headerlink" href="#goals" title="Link to this heading">#</a></h2>
+<h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Learn the algorithm for simulating power analyses</p></li>
 <li><p>Learn how to write a function to simulate data</p></li>
@@ -633,7 +632,7 @@
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="simulating-power">
-<h1>Simulating power<a class="headerlink" href="#simulating-power" title="Link to this heading">#</a></h1>
+<h1>Simulating power<a class="headerlink" href="#simulating-power" title="Permalink to this heading">#</a></h1>
 <p>How do you determine the sample size necessary to obtain a real effect (with a desired probability)? The typical approach to this is to run a power analysis for known distributions, which analytically calculates how many participants you need to have in order to have an 80% chance, for example, to detect an effect. One tool to accomplish this is called <a class="reference external" href="http://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower.html">G-power</a>.</p>
 <p>The problems with using G-power and similar analytical tools are that:</p>
 <ul class="simple">
@@ -642,7 +641,7 @@
 </ul>
 <p>One solution to these problems is to analyze the power to detect an effect by simulation. The idea is quite simple - you generate artificial data by choosing plausible parameters based on the existing literature (this will be described in more detail below), then you run the analysis of your choice on the simulated data. The proportion of simulations in which you find a statistically significant result is the power of your study, or the probability with which you can expect to find a real effect of that size in your sample.</p>
 <section id="basic-algorithm">
-<h2>Basic algorithm<a class="headerlink" href="#basic-algorithm" title="Link to this heading">#</a></h2>
+<h2>Basic algorithm<a class="headerlink" href="#basic-algorithm" title="Permalink to this heading">#</a></h2>
 <p>Simulation power analyses follow these steps, on which we’ll expand in the subsequent sections:</p>
 <ol class="arabic simple">
 <li><p>Determine the sources of variance - between subject variability, trial-by-trial variability, etc.</p></li>
@@ -674,7 +673,7 @@
 </li>
 </ol>
 <section id="determine-the-sources-of-variance">
-<h3>Determine the sources of variance<a class="headerlink" href="#determine-the-sources-of-variance" title="Link to this heading">#</a></h3>
+<h3>Determine the sources of variance<a class="headerlink" href="#determine-the-sources-of-variance" title="Permalink to this heading">#</a></h3>
 <p>The outcome of any statistical analysis depends on how much your observations vary as you sample them. Variance comes from many sources – there are individual differences, noisy sampling, trial-by-trial variability, etc. Which of these variance sources you need to specify depends on the analysis you want to run.</p>
 <p>Let’s start with a simple example. Say you want to determine whether horses are on average taller than zebras using a t-test. There is a “true” underlying difference in the population (fun fact: horses are taller than zebras). So let’s that if you measure the heights of all horses and all zebras you would get the following population parameters:</p>
 <div class="math notranslate nohighlight">
@@ -695,7 +694,7 @@
 \[Height_z \sim \mathcal{N}(\mu_z,\,\sigma_z^{2})\]</div>
 </section>
 <section id="write-a-function-to-simulate-artificial-data">
-<h3>Write a function to simulate artificial data<a class="headerlink" href="#write-a-function-to-simulate-artificial-data" title="Link to this heading">#</a></h3>
+<h3>Write a function to simulate artificial data<a class="headerlink" href="#write-a-function-to-simulate-artificial-data" title="Permalink to this heading">#</a></h3>
 <p>Now let’s write a function to simulate some data consistent with the above parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -733,7 +732,7 @@
 </div>
 </section>
 <section id="write-a-function-to-conduct-your-intended-analysis">
-<h3>Write a function to conduct your intended analysis<a class="headerlink" href="#write-a-function-to-conduct-your-intended-analysis" title="Link to this heading">#</a></h3>
+<h3>Write a function to conduct your intended analysis<a class="headerlink" href="#write-a-function-to-conduct-your-intended-analysis" title="Permalink to this heading">#</a></h3>
 <p>Now we can write a function to perform the t-test for the two groups.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -876,7 +875,7 @@
 <p>When <span class="math notranslate nohighlight">\(n = 10\)</span>, nearly all the samples yielded <span class="math notranslate nohighlight">\(p\)</span>-values below 0.05. The distribution of <span class="math notranslate nohighlight">\(p\)</span>-values for <span class="math notranslate nohighlight">\(n=5\)</span> is wider, with more non-significant values.</p>
 </section>
 <section id="vary-the-sample-size-and-alpha-levels">
-<h3>Vary the sample size and alpha levels<a class="headerlink" href="#vary-the-sample-size-and-alpha-levels" title="Link to this heading">#</a></h3>
+<h3>Vary the sample size and alpha levels<a class="headerlink" href="#vary-the-sample-size-and-alpha-levels" title="Permalink to this heading">#</a></h3>
 <p>Before, we asked what the power was when we varied the number of samples, or the number of people that we collected data from. Now, for the inverse question. How many <strong>animals</strong> do we need to be 95% certain that we will detect the true significant difference in heights between horses and zebras? Yes, you could manually vary the above function’s parameters until you obtain a desired level of power, but we can instead simulate data for different sample sizes in an automated way and choose the sample size that gives us the desired power.</p>
 <p>To do this, we can use the <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code> package to create a dataframe with parameters, then simulate data for each row of the dataframe, store the results in a column, then run the analysis on that column and store the resulting p.value. If you need a reminder of the details of <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code>, revisit the tutorial for “05 - Data as objects and architectures”.</p>
 <div class="cell docutils container">
@@ -945,7 +944,7 @@
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="extending-to-more-complicated-analyses-example-with-mixed-models">
-<h1>Extending to more complicated analyses: example with mixed-models<a class="headerlink" href="#extending-to-more-complicated-analyses-example-with-mixed-models" title="Link to this heading">#</a></h1>
+<h1>Extending to more complicated analyses: example with mixed-models<a class="headerlink" href="#extending-to-more-complicated-analyses-example-with-mixed-models" title="Permalink to this heading">#</a></h1>
 <p>The basic procedure outlined above and the functions presented can be extended to any type of analysis in which there is a significance threshold (e.g., alpha). The only thing that has to be changed is the generation of the data and the analysis function. In generating the data, the most complicated thing is specifying the variance structure.</p>
 <p>Let’s take for example a mixed-effects regression of reaction times in a priming lexical decision experiment. We are interested in whether people make a lexical decision (“Is this string a word or not?”) faster after semantically congruent prime (seeing “red” before “orange”) rather than semantically incongruent prime (seeing “rod” before “orange”).</p>
 <p>How do we generate data for this? Typical psycholinguistic experiments use repeated measures designs where each participant performs many trials in each condition. The reaction time to any trial is determined by:</p>
@@ -1249,7 +1248,7 @@ Call `lifecycle::last_warnings()` to see where this warning was generated.”
 <p>Neither of the bias estimates show a clear trend with respect to number of subjects. We’d expect this for <code class="docutils literal notranslate"><span class="pre">theta_bias</span></code>, but <code class="docutils literal notranslate"><span class="pre">sigma_bias</span></code> typically does go down with more trials as discussed above. The lack of an effect may be because there were only a thousand of each set of simulations. However, we can see that all of the <code class="docutils literal notranslate"><span class="pre">theta_bias</span></code> terms for sufficiently powered subject-trial combinations are between -0.008 and 0.005, which seems acceptably close to 0. <code class="docutils literal notranslate"><span class="pre">sigma_bias</span></code> is much more positive for 30 subjects, 60 trials than for 40 subjects, 60 trials, meaning that the model estimates of variance are more inflated relative to actual variance in this case. But again, we may need to increase the number of simulations per subject-trial combination to make these bias estimates more interpretable.</p>
 <p>Our main takeaway from this analysis would be that 30 subjects, with 60 trials per subject may be sufficiently powered (&gt;80%), but using closer to 40 subjects may yield a more accurate model.</p>
 <section id="but-what-is-more-important-number-of-subjects-or-number-of-trials">
-<h2>But what is more important, number of subjects or number of trials?<a class="headerlink" href="#but-what-is-more-important-number-of-subjects-or-number-of-trials" title="Link to this heading">#</a></h2>
+<h2>But what is more important, number of subjects or number of trials?<a class="headerlink" href="#but-what-is-more-important-number-of-subjects-or-number-of-trials" title="Permalink to this heading">#</a></h2>
 <p>This depends on the relative sizes of the <span class="math notranslate nohighlight">\(\sigma_{trial}\)</span> and <span class="math notranslate nohighlight">\(\sigma_{slope}\)</span>, i.e., how much observations vary from trial to trial, and how much the true effect varies from subject to subject. If the variability associated wtih the <span class="math notranslate nohighlight">\(\sigma_{slope}\)</span> is relatively large, adding more subjects will be more important for estimating the population level difference, because it will improve its estimation more than adding more trials. If, however, people are more homogeneous, and respond similarly to the manipulation, then adding more trials would be more efficient. To test this out, you can run the above simulation for different values of <span class="math notranslate nohighlight">\(\sigma_{trial}\)</span> and <span class="math notranslate nohighlight">\(\sigma_{slope}\)</span>, and see it for yourself.</p>
 <p><em>Notebook authored by Ven Popov and edited by Krista Bond, Charles Wu, Patience Stevens, and Amy Sentis.</em></p>
 </section>
