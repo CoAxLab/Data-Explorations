@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Tutorial: Estimating Bayes factors &#8212; Data explorations</title>
   
@@ -31,13 +30,13 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -45,20 +44,22 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/bayes-factor-accepting-the-null';</script>
@@ -609,13 +610,13 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-estimating-bayes-factors">
-<h1>Tutorial: Estimating Bayes factors<a class="headerlink" href="#tutorial-estimating-bayes-factors" title="Permalink to this heading">#</a></h1>
+<h1>Tutorial: Estimating Bayes factors<a class="headerlink" href="#tutorial-estimating-bayes-factors" title="Link to this heading">#</a></h1>
 <blockquote>
 <div><p>“I have approximate answers and possible beliefs and different degrees of uncertainty about different things, but I am not absolutely sure of anything […]” - Richard Feynman</p>
 </div></blockquote>
 <p>This lab introduces the Bayes factor and its implementation in R.</p>
 <section id="goals">
-<h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this heading">#</a></h2>
+<h2>Goals:<a class="headerlink" href="#goals" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Learn how to use the <a class="reference external" href="https://cran.r-project.org/web/packages/BayesFactor/BayesFactor.pdf">BayesFactor</a> library</p></li>
 <li><p>Learn how to quantify the amount of evidence for alternative hypotheses (instead of fully supporting or fully rejecting them altogether)</p></li>
@@ -625,7 +626,7 @@
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="what-is-a-bayes-factor">
-<h1>What is a Bayes factor?<a class="headerlink" href="#what-is-a-bayes-factor" title="Permalink to this heading">#</a></h1>
+<h1>What is a Bayes factor?<a class="headerlink" href="#what-is-a-bayes-factor" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>The Bayes factor is the analytical response to the question: What is the strength of the evidence for my model, given a competing hypothesis? If you’re interested in the <em>relative</em> weight of evidence for competing hypotheses, then the Bayes Factor is for you.</p></li>
 <li><p>The Bayes factor is a ratio of the evidence for one model over another. It can be expressed as the relative likelihood of the data given a set of hypotheses:</p></li>
@@ -639,7 +640,7 @@
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="implementing-the-bayes-factor-with-a-simple-example">
-<h1>Implementing the Bayes factor with a simple example<a class="headerlink" href="#implementing-the-bayes-factor-with-a-simple-example" title="Permalink to this heading">#</a></h1>
+<h1>Implementing the Bayes factor with a simple example<a class="headerlink" href="#implementing-the-bayes-factor-with-a-simple-example" title="Link to this heading">#</a></h1>
 <p>First, install and load the <code class="docutils literal notranslate"><span class="pre">BayesFactor</span></code> library. Also load <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code> for some data manipulation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -915,7 +916,7 @@ Bayes factor type: BFoneSample, JZS
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="calculating-the-bayes-factor-for-comparison-of-candidate-mixed-effect-models">
-<h1>Calculating the Bayes Factor for comparison of candidate mixed effect models<a class="headerlink" href="#calculating-the-bayes-factor-for-comparison-of-candidate-mixed-effect-models" title="Permalink to this heading">#</a></h1>
+<h1>Calculating the Bayes Factor for comparison of candidate mixed effect models<a class="headerlink" href="#calculating-the-bayes-factor-for-comparison-of-candidate-mixed-effect-models" title="Link to this heading">#</a></h1>
 <p>Now let’s see how to apply this to hierarchical linear regression, using the <code class="docutils literal notranslate"><span class="pre">ToothGrowth</span></code> data set. The dependent variable is <code class="docutils literal notranslate"><span class="pre">len</span></code>, the length of the tooth, and the independent variables are <code class="docutils literal notranslate"><span class="pre">supp</span></code>, the type of supplement they took (Vitamin C or Orange Juice), and <code class="docutils literal notranslate"><span class="pre">dose</span></code>, the amount of supplement they took.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

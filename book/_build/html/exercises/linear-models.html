@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Exercise 7: Linear models &#8212; Data explorations</title>
   
@@ -31,13 +30,13 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -45,20 +44,22 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/linear-models';</script>
@@ -606,13 +607,13 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-7-linear-models">
-<h1>Exercise 7:  Linear models<a class="headerlink" href="#exercise-7-linear-models" title="Permalink to this heading">#</a></h1>
+<h1>Exercise 7:  Linear models<a class="headerlink" href="#exercise-7-linear-models" title="Link to this heading">#</a></h1>
 <p>This homework assignment is designed to give you practice with linear models and the bias-variance tradeoff.</p>
 <p>You will need to download the <strong>unrestricted_trimmed_1_7_2020_10_50_44.csv</strong> file from the <em>Homework/hcp_data</em> folder in the class GitHub repository.</p>
 <p>This data is a portion of the <a class="reference external" href="http://www.humanconnectomeproject.org/">Human Connectome Project database</a>. It provides measures of cognitive tasks and brain morphology measuresments from 1206 participants. The full description of each variable is provided in the <strong>HCP_S1200_DataDictionary_April_20_2018.csv</strong> file in the <em>Homework datasets/hcp_data</em> folder in the class GitHub repository.</p>
 <hr class="docutils" />
 <section id="loading-the-data-1-point">
-<h2>1. Loading the Data (1 point)<a class="headerlink" href="#loading-the-data-1-point" title="Permalink to this heading">#</a></h2>
+<h2>1. Loading the Data (1 point)<a class="headerlink" href="#loading-the-data-1-point" title="Link to this heading">#</a></h2>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">setwd</span></code> and <code class="docutils literal notranslate"><span class="pre">read.csv</span></code> functions to load data from the <strong>unrestricted_trimmed_1_7_2020_10_50_44.csv</strong> file.</p>
 <p>Using the tidyverse tools, make a new dataframe <code class="docutils literal notranslate"><span class="pre">d1</span></code> that only inclues the subject ID (<code class="docutils literal notranslate"><span class="pre">Subject</span></code>), gender (<code class="docutils literal notranslate"><span class="pre">Gender</span></code>), Flanker Task performance (<code class="docutils literal notranslate"><span class="pre">Flanker_Unadj</span></code>), total white matter volume (<code class="docutils literal notranslate"><span class="pre">FS_Tot_WM_Vol</span></code>), and total grey matter volume (<code class="docutils literal notranslate"><span class="pre">FS_Total_GM_Vol</span></code>) variables and remove all <em>na</em> values.</p>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">head</span></code> function to look at the first few rows of each data frame.</p>
@@ -634,7 +635,7 @@
 </section>
 <hr class="docutils" />
 <section id="initial-data-visualization-2-point">
-<h2>2. Initial data visualization (2 point)<a class="headerlink" href="#initial-data-visualization-2-point" title="Permalink to this heading">#</a></h2>
+<h2>2. Initial data visualization (2 point)<a class="headerlink" href="#initial-data-visualization-2-point" title="Link to this heading">#</a></h2>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">pairs</span></code> function to look at all the pairwise scatterplots of the variables in <code class="docutils literal notranslate"><span class="pre">d1</span></code>. Describe which variables seem positively correlated, negatively correlated, or not correlated at all.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -649,7 +650,7 @@
 </section>
 <hr class="docutils" />
 <section id="linear-regression-4-points">
-<h2>3. Linear regression (4 points)<a class="headerlink" href="#linear-regression-4-points" title="Permalink to this heading">#</a></h2>
+<h2>3. Linear regression (4 points)<a class="headerlink" href="#linear-regression-4-points" title="Link to this heading">#</a></h2>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">lm</span></code> (linear model) function to determine the association between Flanker Task performance and total grey matter volume from the <code class="docutils literal notranslate"><span class="pre">d1</span></code> data frame.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -669,7 +670,7 @@ Y_{flanker} = \beta_0 + \beta_1 X_{GM volume}
 </section>
 <hr class="docutils" />
 <section id="plotting-2-points">
-<h2>4. Plotting (2 points)<a class="headerlink" href="#plotting-2-points" title="Permalink to this heading">#</a></h2>
+<h2>4. Plotting (2 points)<a class="headerlink" href="#plotting-2-points" title="Link to this heading">#</a></h2>
 <p>Use <code class="docutils literal notranslate"><span class="pre">ggplot</span></code> to plot the <code class="docutils literal notranslate"><span class="pre">FS_Total_GM_Vol</span></code> variable (x axis) against the <code class="docutils literal notranslate"><span class="pre">Flanker_Unadj</span></code> variable (y axis), as well as the regression line with confidence intervals on the regrssion line. Qualitatively describe what you see.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -684,7 +685,7 @@ Y_{flanker} = \beta_0 + \beta_1 X_{GM volume}
 </section>
 <hr class="docutils" />
 <section id="reflection-1-point">
-<h2>5. Reflection (1 point)<a class="headerlink" href="#reflection-1-point" title="Permalink to this heading">#</a></h2>
+<h2>5. Reflection (1 point)<a class="headerlink" href="#reflection-1-point" title="Link to this heading">#</a></h2>
 <p>What do you conclude based on the analyses above?</p>
 <blockquote>
 <div><p><em>Write your response here.</em></p>

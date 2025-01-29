@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Exercise 17: Regularized regression &#8212; Data explorations</title>
   
@@ -31,13 +30,13 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -45,20 +44,22 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/regularized-regression';</script>
@@ -606,12 +607,12 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-17-regularized-regression">
-<h1>Exercise 17: Regularized regression<a class="headerlink" href="#exercise-17-regularized-regression" title="Permalink to this heading">#</a></h1>
+<h1>Exercise 17: Regularized regression<a class="headerlink" href="#exercise-17-regularized-regression" title="Link to this heading">#</a></h1>
 <p>This homework assignment is designed to give you an intuition as an interesting property of regularization in the context of ultra-high dimensional statistical problems.</p>
 <p>You won’t need to load in any data for this homework.</p>
 <hr class="docutils" />
 <section id="simulating-visualizing-data-2-points">
-<h2>1. Simulating &amp; visualizing data (2 points)<a class="headerlink" href="#simulating-visualizing-data-2-points" title="Permalink to this heading">#</a></h2>
+<h2>1. Simulating &amp; visualizing data (2 points)<a class="headerlink" href="#simulating-visualizing-data-2-points" title="Link to this heading">#</a></h2>
 <p>We are going to be looking at what happens in the context where <span class="math notranslate nohighlight">\(p&gt;n\)</span>. In order to have total control over our data, we will use simulations for this homework. First, we will need to load the <code class="docutils literal notranslate"><span class="pre">glmnet</span></code>, <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code>, and <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> libraries for this assignment.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -658,7 +659,7 @@
 </section>
 <hr class="docutils" />
 <section id="bias-variance-tradeoff-polynomial-regression-4-points">
-<h2>2. Bias-variance tradeoff: polynomial regression (4 points)<a class="headerlink" href="#bias-variance-tradeoff-polynomial-regression-4-points" title="Permalink to this heading">#</a></h2>
+<h2>2. Bias-variance tradeoff: polynomial regression (4 points)<a class="headerlink" href="#bias-variance-tradeoff-polynomial-regression-4-points" title="Link to this heading">#</a></h2>
 <p>Recall that in polynomial regression we increase model complexity by expanding <span class="math notranslate nohighlight">\(x\)</span> out to the power <span class="math notranslate nohighlight">\(k\)</span> (which we call degree).</p>
 <div class="math notranslate nohighlight">
 \[Y = \hat{\beta}_0 + \sum_{j=1}^K \hat{\beta}_jX^j \]</div>
@@ -731,7 +732,7 @@
 </section>
 <hr class="docutils" />
 <section id="applying-regularization-to-the-model-fits-2-points">
-<h2>3. Applying regularization to the model fits (2 points)<a class="headerlink" href="#applying-regularization-to-the-model-fits-2-points" title="Permalink to this heading">#</a></h2>
+<h2>3. Applying regularization to the model fits (2 points)<a class="headerlink" href="#applying-regularization-to-the-model-fits-2-points" title="Link to this heading">#</a></h2>
 <p>Repeat the previous bias-variance tradeoff test, going up to <span class="math notranslate nohighlight">\(k=150\)</span>, but now use ridge regression with a sparsity parameter of <span class="math notranslate nohighlight">\(\lambda=0.00005\)</span>. Plot your results the same way as last time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -761,7 +762,7 @@
 </section>
 <hr class="docutils" />
 <section id="reflection-2-points">
-<h2>4. Reflection (2 points)<a class="headerlink" href="#reflection-2-points" title="Permalink to this heading">#</a></h2>
+<h2>4. Reflection (2 points)<a class="headerlink" href="#reflection-2-points" title="Link to this heading">#</a></h2>
 <p>The simulations above should have shown that, when applying a regularization (i.e., a sparsity constraint), the behavior of the bias-variance tradeoff changes. Explain why this happens.</p>
 <blockquote>
 <div><p><em>Write your response here</em></p>
@@ -769,7 +770,7 @@
 </section>
 <hr class="docutils" />
 <section id="bonus-1-extra-credit-point">
-<h2>Bonus (1 extra credit point)<a class="headerlink" href="#bonus-1-extra-credit-point" title="Permalink to this heading">#</a></h2>
+<h2>Bonus (1 extra credit point)<a class="headerlink" href="#bonus-1-extra-credit-point" title="Link to this heading">#</a></h2>
 <p>Recall that the <span class="math notranslate nohighlight">\(p=n\)</span> threshold defines the limit for finding a <em>unique</em> solution to <span class="math notranslate nohighlight">\(Y=F(X)\)</span> (i.e., there is only one combination of regression coefficients that is <em>best</em> at explaining variance in <span class="math notranslate nohighlight">\(Y\)</span>). With this in mind, what is regularization doing that works around this upper limit?</p>
 <blockquote>
 <div><p><em>Write your response here</em></p>

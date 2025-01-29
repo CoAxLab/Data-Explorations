@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Tutorial: Getting started &#8212; Data explorations</title>
   
@@ -31,13 +30,13 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -45,20 +44,22 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/art-of-data-investigations';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -614,10 +615,10 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-getting-started">
-<h1>Tutorial: Getting started<a class="headerlink" href="#tutorial-getting-started" title="Permalink to this heading">#</a></h1>
+<h1>Tutorial: Getting started<a class="headerlink" href="#tutorial-getting-started" title="Link to this heading">#</a></h1>
 <p>Welcome to you first tutorial for Data Science for Psychology and Neuroscience! This tutorial will get help you get set up using R and Jupyter notebooks. All coding for this class will be done in R, and you will submit all homeworks as Jupyter notebooks.</p>
 <section id="goals">
-<h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this heading">#</a></h2>
+<h2>Goals:<a class="headerlink" href="#goals" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Learn how to set up and begin to use R and RStudio</p></li>
 <li><p>Learn how to set up and use Jupyter notebooks</p></li>
@@ -626,12 +627,12 @@
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="installing-r-and-rstudio">
-<h1>Installing R and RStudio<a class="headerlink" href="#installing-r-and-rstudio" title="Permalink to this heading">#</a></h1>
+<h1>Installing R and RStudio<a class="headerlink" href="#installing-r-and-rstudio" title="Link to this heading">#</a></h1>
 <p>R is an excellent tool for statistical computing, and it’s free! To download <strong>the latest version of R (currently, 4.1.2)</strong> on your computer, go to <a class="reference external" href="http://lib.stat.cmu.edu/R/CRAN/">http://lib.stat.cmu.edu/R/CRAN/</a> and get the correct one for your operating system (Mac, Windows, etc). If you run into problems, you can check out <a class="reference external" href="https://www.datacamp.com/community/tutorials/installing-R-windows-mac-ubuntu">this tutorial</a> and <a class="reference external" href="http://lib.stat.cmu.edu/R/CRAN/faqs.html">this FAQ page</a>. If that doesn’t help, you can email one of the instructors.
 R is great on its own, but RStudio is software that will make it a little nicer to view your code, see documentation about functions, and look at plots. Go <a class="reference external" href="https://rstudio.com/products/rstudio/download/">here</a> to download RStudio.
 The tutorial linked above also has instructions for installing RStudio, if you need them.</p>
 <section id="trying-it-out">
-<h2>Trying it out<a class="headerlink" href="#trying-it-out" title="Permalink to this heading">#</a></h2>
+<h2>Trying it out<a class="headerlink" href="#trying-it-out" title="Link to this heading">#</a></h2>
 <p>Once you’ve got both of these set up, test it out! Open RStudio and type the following:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>?hist
 </pre></div>
@@ -651,9 +652,9 @@ The tutorial linked above also has instructions for installing RStudio, if you n
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="jupyter-julia-python-and-r-notebooks">
-<h1>Jupyter [Julia, Python, and R] Notebooks<a class="headerlink" href="#jupyter-julia-python-and-r-notebooks" title="Permalink to this heading">#</a></h1>
+<h1>Jupyter [Julia, Python, and R] Notebooks<a class="headerlink" href="#jupyter-julia-python-and-r-notebooks" title="Link to this heading">#</a></h1>
 <section id="why-use-jupyter-notebooks">
-<h2>Why use Jupyter notebooks?<a class="headerlink" href="#why-use-jupyter-notebooks" title="Permalink to this heading">#</a></h2>
+<h2>Why use Jupyter notebooks?<a class="headerlink" href="#why-use-jupyter-notebooks" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>They are an effective form of scientific communication for a variety of audiences</p>
 <ul>
@@ -679,7 +680,7 @@ The tutorial linked above also has instructions for installing RStudio, if you n
 </ul>
 </section>
 <section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
 <p>First, download and install <a class="reference external" href="https://www.anaconda.com/download/#macosx">anaconda</a>, choosing the version associated with the latest version of Python. Anaconda is a distribution of scientific computing packages that makes it easy to install jupyter along with all of its prerequisites in a single step.</p>
 <p>Note that if you’re using Windows, you should check the option presented during installation to “add Anaconda to your PATH environment variable”. This will allow you to launch notebooks from the terminal (heads up: the terminal is also referred to as the console or the command line - we’ll try to stick with “terminal” in these tutorials, though).</p>
 <p>Now you should be able to run</p>
@@ -696,7 +697,7 @@ For more about jupyter notebooks, including lots of ways to customize them, see 
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="installing-the-r-kernel-for-jupyter-notebooks">
-<h1>Installing the R kernel for Jupyter notebooks<a class="headerlink" href="#installing-the-r-kernel-for-jupyter-notebooks" title="Permalink to this heading">#</a></h1>
+<h1>Installing the R kernel for Jupyter notebooks<a class="headerlink" href="#installing-the-r-kernel-for-jupyter-notebooks" title="Link to this heading">#</a></h1>
 <p>First, you must have Jupyter notebooks and a native R installation installed. Then you can install the R kernel for jupyter notebooks.</p>
 <p><strong>If you are using OS X</strong>, you must execute these lines from the terminal. First, invoke R:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>R

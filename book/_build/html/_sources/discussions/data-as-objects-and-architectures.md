@@ -1,5 +1,5 @@
 # Discussion questions
 
-1. Provide 2 hypothetical examples of how “dirty” (aka- not tidy) data tables could hamper data analysis.
+1.	BIDS was originally designed for few-participant functional imaging studies with the intention to create standardized data architecture. However, for large-scale psychological behavioral studies having a directory structure where each participant is a higher-ordered directory is cumbersome. Moreover, which measures are used often vary a lot between studies and across labs. What would be a more appropriate data architecture that would be suited for large-scale psychological data? Consider a study that contains multiple measurements. What would the metadata look like? Consider factors like being able to efficiently reference participants across files. Can you consider edge cases that might complicate proposed data architecture?
 
-2. The concept of a tidy data table is linked to the goals of the analysis to be done. Give an example where the same data table would be considered tidy for one set of questions but not tidy for another (and vice versa). Use a spreadsheet or table in a text editor to show your examples.
+2.	The concept of a tidy data table is linked to the goals of the analysis to be done. Give an example where the same data table would be considered tidy for one set of questions but not tidy for another (and vice versa). Feel free to use a spreadsheet to help conceptualize your example if applicable. 

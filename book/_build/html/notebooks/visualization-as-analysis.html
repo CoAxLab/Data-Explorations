@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Tutorial: Basics of plotting &#8212; Data explorations</title>
   
@@ -31,13 +30,13 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -45,20 +44,22 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/visualization-as-analysis';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -614,10 +615,10 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-basics-of-plotting">
-<h1>Tutorial: Basics of plotting<a class="headerlink" href="#tutorial-basics-of-plotting" title="Permalink to this heading">#</a></h1>
+<h1>Tutorial: Basics of plotting<a class="headerlink" href="#tutorial-basics-of-plotting" title="Link to this heading">#</a></h1>
 <p>This lab serves as an introduction to data visualization in R.</p>
 <section id="goals">
-<h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this heading">#</a></h2>
+<h2>Goals:<a class="headerlink" href="#goals" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Learn the basics of using <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code></p></li>
 </ul>
@@ -625,7 +626,7 @@
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="plotting-distributions">
-<h1>Plotting &amp; distributions<a class="headerlink" href="#plotting-distributions" title="Permalink to this heading">#</a></h1>
+<h1>Plotting &amp; distributions<a class="headerlink" href="#plotting-distributions" title="Link to this heading">#</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> is an R package for creating figures. It has many strengths over the base R graphics, including being easier to use. Since you could write a whole book on ggplot2 <a class="reference external" href="https://www.amazon.com/dp/0387981403/ref=cm_sw_su_dp?tag=ggplot2-20">(and, in fact, there is one)</a>, the goal of this tutorial isn’t to present everything in detail, but to walk you through the basic use and structure of ggplot2 commands and to give you some examples. This will give you the basic tools needed to use ggplot2 and from there you can find additional information as to how to do things in various places. Before we get to the basics, here are two very useful references if you ever feel lost or need more information:</p>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="http://ggplot2.tidyverse.org/reference/">Reference sheet of ggplot2 elements and commands</a></p></li>
@@ -633,7 +634,7 @@
 </ol>
 <p>In the tutorial below we’ll be using the <code class="docutils literal notranslate"><span class="pre">diamonds</span></code> dataset from the ggplot2 package. It contains “the prices and other attributes of almost 54,000 diamonds”. You can get information about the variables by typing <code class="docutils literal notranslate"><span class="pre">?diamonds'</span></code> or at this <a class="reference external" href="http://ggplot2.tidyverse.org/reference/diamonds.html">link</a>.</p>
 <section id="basics-first">
-<h2>Basics first<a class="headerlink" href="#basics-first" title="Permalink to this heading">#</a></h2>
+<h2>Basics first<a class="headerlink" href="#basics-first" title="Link to this heading">#</a></h2>
 <p>The two basic ideas behind <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> are that:</p>
 <ol class="arabic simple">
 <li><p>You add elements to a plot in layers</p></li>
@@ -673,7 +674,7 @@
 <p><img alt="picture" src="https://drive.google.com/uc?export=view&amp;id=1cFOvatsCpFjf-zHX5Ydtf-n-Twm3W8_p" /></p>
 </section>
 <section id="aesthetics">
-<h2>Aesthetics<a class="headerlink" href="#aesthetics" title="Permalink to this heading">#</a></h2>
+<h2>Aesthetics<a class="headerlink" href="#aesthetics" title="Link to this heading">#</a></h2>
 <p>Aside from formatting the x and y axes, you can change the following aspects of the plot according to variables in your dataframe:</p>
 <ul class="simple">
 <li><p>color: color of the points/lines, etc</p></li>
@@ -746,7 +747,7 @@ Warning message:
 </div>
 </section>
 <section id="geoms">
-<h2>Geoms<a class="headerlink" href="#geoms" title="Permalink to this heading">#</a></h2>
+<h2>Geoms<a class="headerlink" href="#geoms" title="Link to this heading">#</a></h2>
 <p>There are four broad types of geoms, depending on whether you are plotting raw data (e.g., every data point should be displayed), data distributions (e.g. density plots, histograms), summary data (e.g., only the mean of variable y for each level of x), and model_fits (e.g. fitting a regression line to the data).</p>
 <p><strong>Raw data is plotted with</strong>:</p>
 <ul class="simple">
@@ -775,7 +776,7 @@ Warning message:
 </ul>
 <p><strong>Remember that the type of plot you should use depends on your <a class="reference external" href="https://github.com/ft-interactive/chart-doctor/blob/master/visual-vocabulary/Visual-vocabulary.pdf">purpose</a>.</strong></p>
 <section id="correlation">
-<h3>Correlation<a class="headerlink" href="#correlation" title="Permalink to this heading">#</a></h3>
+<h3>Correlation<a class="headerlink" href="#correlation" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># overplotting</span>
@@ -923,7 +924,7 @@ Warning message:
 </div>
 </section>
 <section id="distribution">
-<h3>Distribution<a class="headerlink" href="#distribution" title="Permalink to this heading">#</a></h3>
+<h3>Distribution<a class="headerlink" href="#distribution" title="Link to this heading">#</a></h3>
 <p>We already saw how to create histograms and density plots. What if we want to show the distribution separately for multiple groups? There are many ways we can do that. One option is boxplots:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

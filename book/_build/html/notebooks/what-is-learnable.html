@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Tutorial: Fitting and prediction &#8212; Data explorations</title>
   
@@ -31,13 +30,13 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -45,20 +44,22 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/what-is-learnable';</script>
@@ -613,10 +614,10 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-fitting-and-prediction">
-<h1>Tutorial: Fitting and prediction<a class="headerlink" href="#tutorial-fitting-and-prediction" title="Permalink to this heading">#</a></h1>
+<h1>Tutorial: Fitting and prediction<a class="headerlink" href="#tutorial-fitting-and-prediction" title="Link to this heading">#</a></h1>
 <p>In this tutorial, we will practice implementing linear regression models in R.</p>
 <section id="goals">
-<h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this heading">#</a></h2>
+<h2>Goals:<a class="headerlink" href="#goals" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Learn to use the <code class="docutils literal notranslate"><span class="pre">lm</span></code> function</p></li>
 <li><p>Learn to use the <code class="docutils literal notranslate"><span class="pre">predict</span></code> function</p></li>
@@ -626,7 +627,7 @@
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="simple-linear-regression-with-a-single-predictor">
-<h1>Simple linear regression with a single predictor<a class="headerlink" href="#simple-linear-regression-with-a-single-predictor" title="Permalink to this heading">#</a></h1>
+<h1>Simple linear regression with a single predictor<a class="headerlink" href="#simple-linear-regression-with-a-single-predictor" title="Link to this heading">#</a></h1>
 <p>First, we will look at a simple case, where <span class="math notranslate nohighlight">\(X\)</span> has only one predictor (i.e., p = 1). For these first examples we will be using the <a class="reference external" href="https://cran.r-project.org/web/packages/MASS/MASS.pdf">MASS</a> library.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -672,7 +673,7 @@
 </div>
 </div>
 <section id="model-fitting">
-<h2>Model fitting<a class="headerlink" href="#model-fitting" title="Permalink to this heading">#</a></h2>
+<h2>Model fitting<a class="headerlink" href="#model-fitting" title="Link to this heading">#</a></h2>
 <p>Now we want to use the built-in <code class="docutils literal notranslate"><span class="pre">lm</span></code> function in r. We already went over this a little bit in the recitation tutorial about model objects. But let’s go a bit more in-depth.</p>
 <p>First, let’s do some basic analysis.</p>
 <div class="cell docutils container">
@@ -779,7 +780,7 @@ F-statistic: 169.1 on 1 and 91 DF,  p-value: &lt; 2.2e-16
 </div>
 </section>
 <section id="inference">
-<h2>Inference<a class="headerlink" href="#inference" title="Permalink to this heading">#</a></h2>
+<h2>Inference<a class="headerlink" href="#inference" title="Link to this heading">#</a></h2>
 <p>The coefficients table tells us that the effect of <code class="docutils literal notranslate"><span class="pre">Width</span></code> on <code class="docutils literal notranslate"><span class="pre">Weight</span></code> is statistically significant (the three stars next to each coefficient row in the output table). We can use the <code class="docutils literal notranslate"><span class="pre">coef</span></code> function to extract the estimated regression coefficients.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -814,7 +815,7 @@ Length         27.59531    37.54727
 <p>Do you accept or reject the null hypothesis that the width of a car associates with its weight?</p>
 </section>
 <section id="prediction">
-<h2>Prediction<a class="headerlink" href="#prediction" title="Permalink to this heading">#</a></h2>
+<h2>Prediction<a class="headerlink" href="#prediction" title="Link to this heading">#</a></h2>
 <p>Along with inferring the effect of <code class="docutils literal notranslate"><span class="pre">Width</span></code> on <code class="docutils literal notranslate"><span class="pre">Weight</span></code>, we can also use the model that we just trained to <em>predict</em> a car’s weight for specific weight values. For this we will use the <code class="docutils literal notranslate"><span class="pre">predict</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -851,7 +852,7 @@ Length         27.59531    37.54727
 <p>The predicted <code class="docutils literal notranslate"><span class="pre">Weight</span></code> values for each of the three <code class="docutils literal notranslate"><span class="pre">Length</span></code> values are returned, along with the lower and upper bounds of the 95% confidence interval of those predictions (i.e., we are 95% confident that the real value rests between those two bounds). For example, when <code class="docutils literal notranslate"><span class="pre">length</span></code>=180, we are 95% confident that the car’s weight will be between 2894.53 lbs and 3042.54 lbs.</p>
 </section>
 <section id="plotting">
-<h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this heading">#</a></h2>
+<h2>Plotting<a class="headerlink" href="#plotting" title="Link to this heading">#</a></h2>
 <p>So far in this lab we have:</p>
 <ol class="arabic simple">
 <li><p>Estimated a model.</p></li>

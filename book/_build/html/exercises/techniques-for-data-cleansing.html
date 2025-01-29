@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Exercise 4: Data cleansing &#8212; Data explorations</title>
   
@@ -31,13 +30,13 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -45,20 +44,22 @@
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/techniques-for-data-cleansing';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -603,14 +604,14 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-4-data-cleansing">
-<h1>Exercise 4: Data cleansing<a class="headerlink" href="#exercise-4-data-cleansing" title="Permalink to this heading">#</a></h1>
+<h1>Exercise 4: Data cleansing<a class="headerlink" href="#exercise-4-data-cleansing" title="Link to this heading">#</a></h1>
 <p>This homework assignment is designed to get you comfortable loading and working with data tables.</p>
 <p>You will need to download the <strong>LexicalData_toclean.csv</strong> file from the <em>Homework/lexDat</em> folder in the class GitHub repository.</p>
 <p>This data is a subset of the <a class="reference external" href="https://elexicon.wustl.edu/">English Lexicon Project database</a>. It provides the reaction times (in milliseconds) of many subjects as they are presented with letter strings and asked to decide, as quickly and as accurately as possible, whether the letter string is a word or not.</p>
 <p><em>Data courtesy of Balota, D.A., Yap, M.J., Cortese, M.J., Hutchison, K.A., Kessler, B., Loftis, B., Neely, J.H., Nelson, D.L., Simpson, G.B., &amp; Treiman, R. (2007). The English Lexicon Project. Behavior Research Methods, 39, 445-459.</em></p>
 <hr class="docutils" />
 <section id="loading-the-data-1-point">
-<h2>1. Loading the Data (1 point)<a class="headerlink" href="#loading-the-data-1-point" title="Permalink to this heading">#</a></h2>
+<h2>1. Loading the Data (1 point)<a class="headerlink" href="#loading-the-data-1-point" title="Link to this heading">#</a></h2>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">setwd</span></code> and <code class="docutils literal notranslate"><span class="pre">read.csv</span></code> functions to load the data table from the <strong>LexicalData_toclean.csv</strong> file. Use the <code class="docutils literal notranslate"><span class="pre">head</span></code> function to look at the first few rows of the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -630,7 +631,7 @@
 </section>
 <hr class="docutils" />
 <section id="data-cleansing-4-points">
-<h2>2. Data Cleansing (4 points)<a class="headerlink" href="#data-cleansing-4-points" title="Permalink to this heading">#</a></h2>
+<h2>2. Data Cleansing (4 points)<a class="headerlink" href="#data-cleansing-4-points" title="Link to this heading">#</a></h2>
 <p>There are three things we want to do to make this data more useable:</p>
 <ul class="simple">
 <li><p>Get rid of the commas in the reaction time values, and make this variable numeric (hint: check out the functions <code class="docutils literal notranslate"><span class="pre">gsub</span></code> and <code class="docutils literal notranslate"><span class="pre">as.numeric</span></code>).</p></li>
@@ -657,7 +658,7 @@
 </section>
 <hr class="docutils" />
 <section id="data-manipulation-with-tidyverse-4-points">
-<h2>3. Data Manipulation with Tidyverse (4 points)<a class="headerlink" href="#data-manipulation-with-tidyverse-4-points" title="Permalink to this heading">#</a></h2>
+<h2>3. Data Manipulation with Tidyverse (4 points)<a class="headerlink" href="#data-manipulation-with-tidyverse-4-points" title="Link to this heading">#</a></h2>
 <p>Now let’s use <code class="docutils literal notranslate"><span class="pre">tidyverse</span></code> functions to play around with this data a bit. Use the piping operator (<code class="docutils literal notranslate"><span class="pre">%&gt;%</span></code>) in both of these code cells.</p>
 <p>First, let’s get some useful summary <strong>statistics</strong> using <code class="docutils literal notranslate"><span class="pre">summarise</span></code>. Output a table that tells us how many observations there are in the data set, as well as the mean and standard deviation of the reaction times.</p>
 <div class="cell docutils container">
@@ -678,7 +679,7 @@
 </section>
 <hr class="docutils" />
 <section id="plotting-data-1-point">
-<h2>4. Plotting Data (1 point)<a class="headerlink" href="#plotting-data-1-point" title="Permalink to this heading">#</a></h2>
+<h2>4. Plotting Data (1 point)<a class="headerlink" href="#plotting-data-1-point" title="Link to this heading">#</a></h2>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> function to visualize the data, in a way that helps you see if there’s a relationship between <code class="docutils literal notranslate"><span class="pre">D_RT</span></code> and your new trial variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
