@@ -614,7 +614,7 @@
 <p>Install and load the <code class="docutils literal notranslate"><span class="pre">gapminder</span></code> dataset. Look at the first few rows of the data frame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
@@ -622,7 +622,7 @@
 <p>Now, let’s create a basic scatterplot using <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> that shows how life expectancy has changed over time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
@@ -631,7 +631,7 @@
 <p>What trends can you identify in the data?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
@@ -643,7 +643,7 @@
 <p>Using a scatterplot probably isn’t the best type of plot for effectively visualizing change over time. Instead, modify the code from the previous question to create a line plot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
@@ -656,7 +656,7 @@
 <p>Now, let’s try to separate the data by country, plotting one line for each country. Modify the code from the previous plot to do so.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
@@ -670,7 +670,7 @@
 <p><em>Hint: to control the color of the points, think about where the aesthetic color attribute should be located e.g., in the global plot options or in a specific layer.</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 
 <span class="c1"># method 1</span>
 </pre></div>
@@ -679,7 +679,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 
 <span class="c1"># method 2</span>
 </pre></div>
@@ -688,7 +688,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Aside: colorful points</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Aside: colorful points</span>
 </pre></div>
 </div>
 </div>
@@ -701,8 +701,8 @@
 <p>The graph below shows the relationship between life expectency and GDP per capita:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gapminder</span><span class="p">,</span><span class="w"> </span><span class="n">mapping</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gdpPercap</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lifeExp</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
-<span class="w">  </span><span class="nf">geom_point</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">gapminder</span><span class="p">,</span> <span class="n">mapping</span> <span class="o">=</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">gdpPercap</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">lifeExp</span><span class="p">))</span> <span class="o">+</span>
+  <span class="n">geom_point</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -715,7 +715,7 @@
 <p>Modify the code above to incorporate these two changes (scale and transparency).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
@@ -724,7 +724,7 @@
 <p>Next, let’s overlay statistics by fiting a simple relationship to the data. Modify the code from the previous question by adding a <code class="docutils literal notranslate"><span class="pre">geom_smooth</span></code> layer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
@@ -733,13 +733,13 @@
 <p>Modify the code from the previous question to add these elements.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>When you are finished, save the notebook as Exercise5.ipynb, push it to your class GitHub repository and send the instructors a link to your notebook via Canvas.</p>
-<p><strong>DUE:</strong> 5pm EST, Feb 14, 2024</p>
+<p><strong>DUE:</strong> 5pm EST, Feb 12, 2025</p>
 <p><strong>IMPORTANT</strong> Did you collaborate with anyone on this assignment? If so, list their names here.</p>
 <blockquote>
 <div><p><em>Someone’s Name</em></p>
@@ -755,16 +755,16 @@
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "r"
+            mode: "python"
         },
         kernelOptions: {
-            name: "ir",
+            name: "python3",
             path: "./exercises"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'ir'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
