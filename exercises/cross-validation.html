@@ -620,7 +620,7 @@
 <p>Load the <code class="docutils literal notranslate"><span class="pre">PimaIndiansDiabetes2</span></code> dataset using the <code class="docutils literal notranslate"><span class="pre">data()</span></code> function. Drop the <code class="docutils literal notranslate"><span class="pre">insulin</span></code> column (it just has a lot of missing data) and then drop <code class="docutils literal notranslate"><span class="pre">NA</span></code>s from the rest of the dataset. Save your updated dataset to a new variable name. Finally, print the dimensions of your new dataset, and look at the first few lines of data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
@@ -635,7 +635,7 @@
 <p>Compare your result to the actual response in row one above. Did your model correctly classify this observation?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
@@ -650,23 +650,23 @@
 <p>After you run your loop, print the first few lines of <code class="docutils literal notranslate"><span class="pre">results</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize `results` data frame</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize `results` data frame</span>
 <span class="c1"># INSERT CODE HERE</span>
 
 <span class="c1">#for loop</span>
-<span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">dat</span><span class="p">)){</span><span class="w"> </span><span class="c1">#don&#39;t forget to change this to your data set name</span>
-<span class="w">    </span><span class="c1"># separate individual observation `i` from the rest of your data</span>
-<span class="w">    </span><span class="c1"># INSERT CODE HERE</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="c1"># train your model</span>
-<span class="w">    </span><span class="c1"># INSERT CODE HERE</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="c1"># test model on hold out observation</span>
-<span class="w">    </span><span class="c1"># INSERT CODE HERE</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="c1"># classify model prediction as &quot;pos&quot; or &quot;neg&quot; and add to `results`</span>
-<span class="w">    </span><span class="c1"># INSERT CODE HERE</span>
-<span class="w">    </span>
+<span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="ow">in</span> <span class="mi">1</span><span class="p">:</span><span class="n">nrow</span><span class="p">(</span><span class="n">dat</span><span class="p">)){</span> <span class="c1">#don&#39;t forget to change this to your data set name</span>
+    <span class="c1"># separate individual observation `i` from the rest of your data</span>
+    <span class="c1"># INSERT CODE HERE</span>
+    
+    <span class="c1"># train your model</span>
+    <span class="c1"># INSERT CODE HERE</span>
+    
+    <span class="c1"># test model on hold out observation</span>
+    <span class="c1"># INSERT CODE HERE</span>
+    
+    <span class="c1"># classify model prediction as &quot;pos&quot; or &quot;neg&quot; and add to `results`</span>
+    <span class="c1"># INSERT CODE HERE</span>
+    
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -675,7 +675,7 @@
 <p>Now, calculate the overall error of your model. What proportion of cases were incorrectly classified?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
@@ -687,7 +687,7 @@
 <p>Note that, because this is a <code class="docutils literal notranslate"><span class="pre">classification</span></code> problem and not a regression problem like in the tutorial, we need to adjust the <code class="docutils literal notranslate"><span class="pre">cost</span></code> argument of <code class="docutils literal notranslate"><span class="pre">cv.glm</span></code>. We can read more about this in the docs:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#?cv.glm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#?cv.glm</span>
 </pre></div>
 </div>
 </div>
@@ -701,7 +701,7 @@
 <p>Where <code class="docutils literal notranslate"><span class="pre">r</span></code> is the vector of observed responses (technically “pos” and “neg”, but R treats these as 1 and 0 under the hood), and <code class="docutils literal notranslate"><span class="pre">pi</span></code> is the vector of <em>probabilities</em> (not log-odds) fit by the model. Thus, this boils down to our error: what proportion of observations were incorrectly classified. You will need to include this code below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
@@ -720,7 +720,7 @@
 <p>Below, re-run your cross validation using <code class="docutils literal notranslate"><span class="pre">cv.glm</span></code> with <code class="docutils literal notranslate"><span class="pre">k</span></code> set to 3, 5, 10, and 15.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="c1">#INSERT CODE BELOW</span>
 
 <span class="c1"># K = 3</span>
@@ -753,7 +753,7 @@
 <li></li>
 </ul>
 </div></blockquote>
-<p><strong>DUE:</strong> 5pm March 25, 2024</p>
+<p><strong>DUE:</strong> 5pm March 24, 2025</p>
 <p><strong>IMPORTANT</strong> Did you collaborate with anyone on this assignment? If so, list their names here.</p>
 <blockquote>
 <div><p><em>Someone’s Name</em></p>
@@ -770,16 +770,16 @@
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "r"
+            mode: "python"
         },
         kernelOptions: {
-            name: "ir",
+            name: "python3",
             path: "./exercises"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'ir'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               

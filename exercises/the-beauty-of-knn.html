@@ -626,7 +626,7 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
@@ -636,7 +636,7 @@
 <p>Create a scatterplot of the link between <code class="docutils literal notranslate"><span class="pre">carat</span></code> and <code class="docutils literal notranslate"><span class="pre">depth</span></code>, and use the <code class="docutils literal notranslate"><span class="pre">color</span></code> aesthetics mapping to differentiate between diamonds that cost above versus below the mean price.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
@@ -654,7 +654,7 @@
 <p>Before we run KNN on these data, we need to set aside a portion of the observations as our test set. Below, randomly divide the data such that 30% are allotted to the <code class="docutils literal notranslate"><span class="pre">test</span></code> set and the rest are allotted to the <code class="docutils literal notranslate"><span class="pre">train</span></code> set. Print the first few lines of each set, and print the dimensions of each set to double check your division of the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">2023</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2023</span><span class="p">)</span>
 
 <span class="c1"># INSERT CODE HERE</span>
 </pre></div>
@@ -670,7 +670,7 @@
 <p><em>Hint: Review the format required for the arguments of knn()</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">2023</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2023</span><span class="p">)</span>
 <span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
@@ -679,7 +679,7 @@
 <p>Now, output a confusion matrix and calculate the test error to evaluate model performance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
@@ -694,7 +694,7 @@
 <p>Let’s try to improve our model by adding all of the other variables in our data set as predictors. Rerun your <code class="docutils literal notranslate"><span class="pre">knn()</span></code> below, keeping <code class="docutils literal notranslate"><span class="pre">k</span> <span class="pre">=</span> <span class="pre">3</span></code>. Again, output a confusion matrix and error rate for your updated model fit.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">2023</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2023</span><span class="p">)</span>
 <span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
@@ -718,26 +718,26 @@
 <p>The structure of the output data frame and <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code> are provided for you below. Note that your loop will take a minute or two to run because there are so many observations in the dataset. It may be helpful while you are writing and testing your loop to run it on a subset of the data with only a handful of rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># this is provided</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this is provided</span>
 <span class="c1"># setting up empty table to store for loop output</span>
-<span class="n">output</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">30</span><span class="p">),</span>
-<span class="w">                     </span><span class="n">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="m">30</span><span class="p">))</span>
-<span class="nf">head</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+<span class="n">output</span>  <span class="o">&lt;-</span> <span class="n">data</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="n">seq</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">30</span><span class="p">),</span>
+                     <span class="n">error</span> <span class="o">=</span> <span class="n">rep</span><span class="p">(</span><span class="n">NA</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="n">head</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">for </span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">30</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">knn_fits</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="c1"># your knn function here</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="c1">#overall error</span>
-<span class="w">    </span><span class="n">conf_df</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="c1"># data frame of test predictions versus actual test</span>
-<span class="w">    </span><span class="n">output</span><span class="o">$</span><span class="n">error</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="c1">#calculate error from conf_df and add to your output dataframe</span>
-<span class="w">   </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">k</span> <span class="ow">in</span> <span class="n">seq</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">30</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">knn_fits</span>  <span class="o">&lt;-</span> <span class="c1"># your knn function here</span>
+    
+    <span class="c1">#overall error</span>
+    <span class="n">conf_df</span>  <span class="o">&lt;-</span> <span class="c1"># data frame of test predictions versus actual test</span>
+    <span class="n">output</span><span class="err">$</span><span class="n">error</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>  <span class="o">&lt;-</span> <span class="c1">#calculate error from conf_df and add to your output dataframe</span>
+   
 <span class="p">}</span>
-<span class="nf">head</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+<span class="n">head</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -745,7 +745,7 @@
 <p>Create a line plot of your <code class="docutils literal notranslate"><span class="pre">output</span></code> object using <code class="docutils literal notranslate"><span class="pre">ggplot</span></code>. Add a (non-linear) <code class="docutils literal notranslate"><span class="pre">geom_smooth</span></code> layer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># INSERT CODE HERE</span>
 </pre></div>
 </div>
 </div>
@@ -766,7 +766,7 @@
 <p>Then, run your model a final time with your standardized predictors (just <code class="docutils literal notranslate"><span class="pre">carat</span></code> and <code class="docutils literal notranslate"><span class="pre">depth</span></code> still). Set <code class="docutils literal notranslate"><span class="pre">k</span></code> to the optimal value you determined in your plot above. Output the confusion matrix and error rate again.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">2023</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2023</span><span class="p">)</span>
 <span class="c1">#INSERT CODE HERE</span>
 </pre></div>
 </div>
@@ -779,7 +779,7 @@
 <li></li>
 </ul>
 </div></blockquote>
-<p><strong>DUE:</strong> 5pm March 20, 2024</p>
+<p><strong>DUE:</strong> 5pm March 19, 2025</p>
 <p><strong>IMPORTANT</strong> Did you collaborate with anyone on this assignment? If so, list their names here.</p>
 <blockquote>
 <div><p><em>Someone’s Name</em></p>
@@ -795,16 +795,16 @@
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "r"
+            mode: "python"
         },
         kernelOptions: {
-            name: "ir",
+            name: "python3",
             path: "./exercises"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'ir'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               

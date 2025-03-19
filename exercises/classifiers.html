@@ -617,7 +617,7 @@
 <p><em>Note: We’re just working with <code class="docutils literal notranslate"><span class="pre">Correct</span></code> in this homework, so no need to worry about reformatting reaction times.</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
 </pre></div>
 </div>
 </div>
@@ -629,11 +629,11 @@
 <p>First, we’ll try to visualize whether trials that are responded to correctly versus incorrectly differ from each other in terms of word length and log frequency. The code is included below, so that this homework doesn’t get too cumbersome. All you have to do is <strong>change the name of the data set</strong>, <strong>run the code</strong>, and <strong>write some observations about the output</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">vrequire</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span><span class="w"> </span><span class="c1"># Load the tidyverse package, if you haven&#39;t yet</span>
-<span class="n">fdata</span><span class="o">$</span><span class="n">Correct</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.factor</span><span class="p">(</span><span class="n">fdata</span><span class="o">$</span><span class="n">Correct</span><span class="p">)</span><span class="w"> </span><span class="c1"># so that R knows that Correct is categorical, not numeric. </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vrequire</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span> <span class="c1"># Load the tidyverse package, if you haven&#39;t yet</span>
+<span class="n">fdata</span><span class="err">$</span><span class="n">Correct</span> <span class="o">&lt;-</span> <span class="k">as</span><span class="o">.</span><span class="n">factor</span><span class="p">(</span><span class="n">fdata</span><span class="err">$</span><span class="n">Correct</span><span class="p">)</span> <span class="c1"># so that R knows that Correct is categorical, not numeric. </span>
 
 <span class="c1"># plot the Correct / Incorrect clusters</span>
-<span class="nf">ggplot</span><span class="p">(</span><span class="n">fdata</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">Log_Freq_HAL</span><span class="p">,</span><span class="m">1</span><span class="p">),</span><span class="n">y</span><span class="o">=</span><span class="n">Length</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">Correct</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="s">&quot;jitter&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">theme_light</span><span class="p">()</span><span class="w"> </span>
+<span class="n">ggplot</span><span class="p">(</span><span class="n">fdata</span><span class="p">,</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nb">round</span><span class="p">(</span><span class="n">Log_Freq_HAL</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">y</span><span class="o">=</span><span class="n">Length</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="n">Correct</span><span class="p">))</span> <span class="o">+</span> <span class="n">geom_point</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="s2">&quot;jitter&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">+</span> <span class="n">theme_light</span><span class="p">()</span> 
 </pre></div>
 </div>
 </div>
@@ -649,7 +649,7 @@
 <p>Fit a logistic regression model to the data using <code class="docutils literal notranslate"><span class="pre">Length</span></code>, <code class="docutils literal notranslate"><span class="pre">Log_Freq_HAL</span></code>, and their interaction to predict <code class="docutils literal notranslate"><span class="pre">Correct</span></code>. Use <code class="docutils literal notranslate"><span class="pre">glm()</span></code> to fit the model, and look at its output using <code class="docutils literal notranslate"><span class="pre">summary()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
 </pre></div>
 </div>
 </div>
@@ -666,7 +666,7 @@
 <p><em>Hint: see the Classifiers tutorial.</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
 </pre></div>
 </div>
 </div>
@@ -682,7 +682,7 @@
 <p><em>Hint: see the Classifiers tutorial.</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
 </pre></div>
 </div>
 </div>
@@ -690,7 +690,7 @@
 <p>Now look at how well the predicted <code class="docutils literal notranslate"><span class="pre">Correct</span></code> values compare with actual <code class="docutils literal notranslate"><span class="pre">Correct</span></code> values for the whole data set. Output a confusion matrix and overall prediction accuracy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE YOUR CODE HERE</span>
 </pre></div>
 </div>
 </div>
@@ -699,7 +699,7 @@
 <blockquote>
 <div><p><em>Write your response here</em></p>
 </div></blockquote>
-<p><strong>DUE:</strong> 5pm EST, March 11, 2024</p>
+<p><strong>DUE:</strong> 5pm EST, March 12, 2025</p>
 <p><strong>IMPORTANT</strong> Did you collaborate with anyone on this assignment? If so, list their names here.</p>
 <blockquote>
 <div><p><em>Someone’s Name</em></p>
@@ -716,16 +716,16 @@
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "r"
+            mode: "python"
         },
         kernelOptions: {
-            name: "ir",
+            name: "python3",
             path: "./exercises"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'ir'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
