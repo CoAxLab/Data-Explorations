@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -69,7 +66,6 @@
     <link rel="prev" title="Limits and variations of linear regression" href="../lectures/limits-of-linear-regression.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -85,8 +81,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -94,6 +101,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -101,8 +109,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -118,8 +126,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -149,17 +156,21 @@
     
     
     <img src="../_static/information.png" class="logo__image only-light" alt="Data explorations - Home"/>
-    <img src="../_static/information.png" class="logo__image only-dark pst-js-only" alt="Data explorations - Home"/>
+    <script>document.write(`<img src="../_static/information.png" class="logo__image only-dark" alt="Data explorations - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -187,7 +198,7 @@
 
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/the-value-of-openness.html">Discussion questions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../exercises/the-value-of-openness.html">Exercise 1: Github &amp; Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/01_the-value-of-openness.html">Exercise 1: Github &amp; Jupyter</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/what-is-a-theory.html">What is a theory?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -201,7 +212,7 @@
 
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/models-as-testable-hypotheses.html">Discussion questions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../exercises/models-as-testable-hypotheses.html">Exercise 2: Coding Habits &amp; Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/02_models-as-testable-hypotheses.html">Exercise 2: Coding Habits &amp; Functions</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/data-as-objects-and-architectures.html">Data as objects and architectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -404,14 +415,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -557,16 +563,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -760,7 +774,8 @@ In the examples we have done so far, we have only looked at models where p = 1.
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/e18aac658dba52cdd37dfc3a9f44438b66cbbdf09661a98e8a26a04bba1d9256.png"><img alt="../_images/e18aac658dba52cdd37dfc3a9f44438b66cbbdf09661a98e8a26a04bba1d9256.png" src="../_images/e18aac658dba52cdd37dfc3a9f44438b66cbbdf09661a98e8a26a04bba1d9256.png" style="width: 420px; height: 420px;" /></a>
+<a class="reference internal image-reference" href="../_images/e18aac658dba52cdd37dfc3a9f44438b66cbbdf09661a98e8a26a04bba1d9256.png"><img alt="../_images/e18aac658dba52cdd37dfc3a9f44438b66cbbdf09661a98e8a26a04bba1d9256.png" src="../_images/e18aac658dba52cdd37dfc3a9f44438b66cbbdf09661a98e8a26a04bba1d9256.png" style="width: 420px; height: 420px;" />
+</a>
 </div>
 </div>
 <p>Interpeting the 3 dimensional scatterplot is the same as interpreting a 2 dimensional plot. You want a “football” shaped clustering where changes in <code class="docutils literal notranslate"><span class="pre">Weight</span></code> follow changes in the other two variables. So here, as the width and length of the car increase, the weight of the car increases too.</p>
@@ -1069,23 +1084,23 @@ F-statistic:   210 on 13 and 386 DF,  p-value: &lt; 2.2e-16
 <p>We will rely on something called singular value decomposition (SVD) to create a low rank data set. You don’t need to know what SVD does at the moment. We will come back to this in later classes. For now, just trust us that it generates low rank, (i.e. intercorrelated) data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">make_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">s</span><span class="p">){</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">make_data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">s</span><span class="p">){</span>
 
-<span class="w">  </span><span class="nf">if </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">p</span><span class="p">){</span>
+<span class="w">  </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">p</span><span class="p">){</span>
 <span class="w">    </span><span class="c1"># If number of features is greater</span>
 <span class="w">    </span><span class="c1"># than number of observations, increase</span>
 <span class="w">    </span><span class="c1"># observations for the PCA to work</span>
 <span class="w">    </span><span class="n">m</span><span class="o">=</span><span class="n">p</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="n">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1"># Otheriwse use the input n</span>
 <span class="w">    </span><span class="n">m</span><span class="o">=</span><span class="n">n</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="w">  </span><span class="nf">if </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1"># Make full rank until p=k</span>
 <span class="w">    </span><span class="c1"># degree_diff = k-p</span>
 <span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">LRsim</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">s</span><span class="p">)</span><span class="o">$</span><span class="n">X</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="n">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">LRsim</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">s</span><span class="p">)</span><span class="o">$</span><span class="n">X</span>
 <span class="w">  </span><span class="p">}</span>
 
@@ -1093,9 +1108,9 @@ F-statistic:   210 on 13 and 386 DF,  p-value: &lt; 2.2e-16
 <span class="w">  </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">princomp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
 <span class="w">  </span><span class="c1"># Set the first k components to 1, otherwise 0</span>
-<span class="w">  </span><span class="nf">if </span><span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0</span><span class="p">){</span>
+<span class="w">  </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0</span><span class="p">){</span>
 <span class="w">    </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="c1">#rnorm(p,mean=1,sd=0.5)</span>
-<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="n">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="n">k</span><span class="p">),</span><span class="nf">matrix</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">nrow</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="n">ncol</span><span class="o">=</span><span class="n">p</span><span class="o">-</span><span class="n">k</span><span class="p">))</span>
 <span class="w">  </span><span class="p">}</span>
 
@@ -1110,7 +1125,7 @@ F-statistic:   210 on 13 and 386 DF,  p-value: &lt; 2.2e-16
 <span class="w">  </span><span class="c1"># Generate your output</span>
 <span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">%*%</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 
-<span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="o">=</span><span class="n">b</span><span class="p">))</span>
+<span class="w">  </span><span class="kr">return</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="o">=</span><span class="n">b</span><span class="p">))</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1181,7 +1196,8 @@ F-statistic: 5.577 on 20 and 479 DF,  p-value: 5.266e-13
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/99d666602005bf3b5a537da102c1a096f16a811586af24aa85056d193cc3a937.png"><img alt="../_images/99d666602005bf3b5a537da102c1a096f16a811586af24aa85056d193cc3a937.png" src="../_images/99d666602005bf3b5a537da102c1a096f16a811586af24aa85056d193cc3a937.png" style="width: 420px; height: 420px;" /></a>
+<a class="reference internal image-reference" href="../_images/99d666602005bf3b5a537da102c1a096f16a811586af24aa85056d193cc3a937.png"><img alt="../_images/99d666602005bf3b5a537da102c1a096f16a811586af24aa85056d193cc3a937.png" src="../_images/99d666602005bf3b5a537da102c1a096f16a811586af24aa85056d193cc3a937.png" style="width: 420px; height: 420px;" />
+</a>
 </div>
 </div>
 <p>Notice that there are a lot of non-zero off diagonal values in this correlation matrix. This means that there is rich correlational structure in <span class="math notranslate nohighlight">\(X\)</span> as expected.</p>
@@ -1196,7 +1212,8 @@ F-statistic: 5.577 on 20 and 479 DF,  p-value: 5.266e-13
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/53e730b587a004b402ac2f3994cded7e97df3acee8789e075dfb587cc40da178.png"><img alt="../_images/53e730b587a004b402ac2f3994cded7e97df3acee8789e075dfb587cc40da178.png" src="../_images/53e730b587a004b402ac2f3994cded7e97df3acee8789e075dfb587cc40da178.png" style="width: 420px; height: 420px;" /></a>
+<a class="reference internal image-reference" href="../_images/53e730b587a004b402ac2f3994cded7e97df3acee8789e075dfb587cc40da178.png"><img alt="../_images/53e730b587a004b402ac2f3994cded7e97df3acee8789e075dfb587cc40da178.png" src="../_images/53e730b587a004b402ac2f3994cded7e97df3acee8789e075dfb587cc40da178.png" style="width: 420px; height: 420px;" />
+</a>
 </div>
 </div>
 <p>Notice the difference? There is very little correlational structure here because each column in <span class="math notranslate nohighlight">\(X\)</span> is independent of the other.</p>
@@ -1207,14 +1224,14 @@ F-statistic: 5.577 on 20 and 479 DF,  p-value: 5.266e-13
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">## ------------------------------</span>
 <span class="c1"># LM split validation function</span>
 <span class="c1">## ------------------------------</span>
-<span class="n">bv_lm</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">degree</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="n">bv_lm</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">degree</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1"># Set up the arrays for storing the results</span>
 <span class="w">    </span><span class="n">train_rss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="o">=</span><span class="n">degree</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
 <span class="w">    </span><span class="n">test_rss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="o">=</span><span class="n">degree</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
 <span class="w">    </span><span class="n">p_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">degree</span><span class="p">[</span><span class="nf">length</span><span class="p">(</span><span class="n">degree</span><span class="p">)]</span>
 
 <span class="w">    </span><span class="c1"># Loop through for each set of p-features</span>
-<span class="w">    </span><span class="nf">for </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">degree</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="n">degree</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1"># Set up the data, split into training and test</span>
 <span class="w">        </span><span class="c1"># sets of size n</span>
 <span class="w">        </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">make_data</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="m">2</span><span class="p">,</span><span class="n">p_max</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
@@ -1260,7 +1277,8 @@ F-statistic: 5.577 on 20 and 479 DF,  p-value: 5.266e-13
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/3f614811d2084b17b29a82f8ac54025fbbffa23a93ff572db36e207d8dcc8b9e.png"><img alt="../_images/3f614811d2084b17b29a82f8ac54025fbbffa23a93ff572db36e207d8dcc8b9e.png" src="../_images/3f614811d2084b17b29a82f8ac54025fbbffa23a93ff572db36e207d8dcc8b9e.png" style="width: 420px; height: 420px;" /></a>
+<a class="reference internal image-reference" href="../_images/3f614811d2084b17b29a82f8ac54025fbbffa23a93ff572db36e207d8dcc8b9e.png"><img alt="../_images/3f614811d2084b17b29a82f8ac54025fbbffa23a93ff572db36e207d8dcc8b9e.png" src="../_images/3f614811d2084b17b29a82f8ac54025fbbffa23a93ff572db36e207d8dcc8b9e.png" style="width: 420px; height: 420px;" />
+</a>
 </div>
 </div>
 <p>It is noisy, but you should notice that the test error skyrockets as <span class="math notranslate nohighlight">\(p\)</span> gets larger. If you squint, somewhere around <span class="math notranslate nohighlight">\(p=12\)</span> the test error is minimized. If you run this multiple times, you’ll get slightly different plots because the data is getting randomly simulated each time.</p>
@@ -1282,7 +1300,7 @@ F-statistic: 5.577 on 20 and 479 DF,  p-value: 5.266e-13
 <span class="n">test_rss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">NA</span><span class="p">,</span><span class="n">nrow</span><span class="o">=</span><span class="nf">length</span><span class="p">(</span><span class="n">degree</span><span class="p">),</span><span class="n">ncol</span><span class="o">=</span><span class="n">n_iter</span><span class="p">)</span>
 
 <span class="c1"># Loop through n_iter times</span>
-<span class="nf">for </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">n_iter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">n_iter</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">bv_df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">bv_lm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">degree</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
 <span class="w">  </span><span class="n">train_rss</span><span class="p">[,</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">bv_df</span><span class="o">$</span><span class="n">train</span>
 <span class="w">  </span><span class="n">test_rss</span><span class="p">[,</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="n">bv_df</span><span class="o">$</span><span class="n">test</span>
@@ -1301,7 +1319,8 @@ F-statistic: 5.577 on 20 and 479 DF,  p-value: 5.266e-13
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/c2cf8221c3af38a28aef7265bf79b16a5e0d353dfffff9e1ab7f7e57169144de.png"><img alt="../_images/c2cf8221c3af38a28aef7265bf79b16a5e0d353dfffff9e1ab7f7e57169144de.png" src="../_images/c2cf8221c3af38a28aef7265bf79b16a5e0d353dfffff9e1ab7f7e57169144de.png" style="width: 420px; height: 420px;" /></a>
+<a class="reference internal image-reference" href="../_images/c2cf8221c3af38a28aef7265bf79b16a5e0d353dfffff9e1ab7f7e57169144de.png"><img alt="../_images/c2cf8221c3af38a28aef7265bf79b16a5e0d353dfffff9e1ab7f7e57169144de.png" src="../_images/c2cf8221c3af38a28aef7265bf79b16a5e0d353dfffff9e1ab7f7e57169144de.png" style="width: 420px; height: 420px;" />
+</a>
 </div>
 </div>
 <p>In the plot above, the red line shows the test error and the blue dashed line shows the training error. Notice the classic bias-variance tradeoff where training error continues to decrease as <span class="math notranslate nohighlight">\(p\)</span> increases, but test error has a “U” shape that bottoms out close to <span class="math notranslate nohighlight">\(p=k\)</span>. Classic bias-variance tradeoff.</p>
@@ -1364,8 +1383,7 @@ F-statistic: 5.577 on 20 and 479 DF,  p-value: 5.266e-13
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1407,7 +1425,7 @@ By Roberto Vargas, Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patie
 
   <p class="copyright">
     
-      © Copyright 2025.
+      © Copyright 2026.
       <br/>
     
   </p>
@@ -1431,8 +1449,8 @@ By Roberto Vargas, Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patie
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

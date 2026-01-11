@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -67,7 +64,6 @@
     <link rel="prev" title="Visualization as analysis" href="../lectures/visualization-as-analysis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -83,8 +79,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -92,6 +99,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -99,8 +107,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -116,8 +124,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -147,17 +154,21 @@
     
     
     <img src="../_static/information.png" class="logo__image only-light" alt="Data explorations - Home"/>
-    <img src="../_static/information.png" class="logo__image only-dark pst-js-only" alt="Data explorations - Home"/>
+    <script>document.write(`<img src="../_static/information.png" class="logo__image only-dark" alt="Data explorations - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -185,7 +196,7 @@
 
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/the-value-of-openness.html">Discussion questions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../exercises/the-value-of-openness.html">Exercise 1: Github &amp; Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/01_the-value-of-openness.html">Exercise 1: Github &amp; Jupyter</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/what-is-a-theory.html">What is a theory?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -199,7 +210,7 @@
 
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/models-as-testable-hypotheses.html">Discussion questions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../exercises/models-as-testable-hypotheses.html">Exercise 2: Coding Habits &amp; Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exercises/02_models-as-testable-hypotheses.html">Exercise 2: Coding Habits &amp; Functions</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/data-as-objects-and-architectures.html">Data as objects and architectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -402,14 +413,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -555,16 +561,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -655,7 +669,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/fadd12f9430f2ebc8a065d4c3cb8d9dcfa516a07395364042616137183d3842f.png"><img alt="../_images/fadd12f9430f2ebc8a065d4c3cb8d9dcfa516a07395364042616137183d3842f.png" src="../_images/fadd12f9430f2ebc8a065d4c3cb8d9dcfa516a07395364042616137183d3842f.png" style="width: 420px; height: 420px;" /></a>
+<a class="reference internal image-reference" href="../_images/fadd12f9430f2ebc8a065d4c3cb8d9dcfa516a07395364042616137183d3842f.png"><img alt="../_images/fadd12f9430f2ebc8a065d4c3cb8d9dcfa516a07395364042616137183d3842f.png" src="../_images/fadd12f9430f2ebc8a065d4c3cb8d9dcfa516a07395364042616137183d3842f.png" style="width: 420px; height: 420px;" />
+</a>
 </div>
 </div>
 <p>The above function contains almost all of the basic <strong>ggplot components</strong> in their simplest form. Namely:</p>
@@ -696,7 +711,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/6e9a78b515bdabaaa692eef0cd69fb74c4f717bfdd6f6ee4e94d87f8e0c8d177.png"><img alt="../_images/6e9a78b515bdabaaa692eef0cd69fb74c4f717bfdd6f6ee4e94d87f8e0c8d177.png" src="../_images/6e9a78b515bdabaaa692eef0cd69fb74c4f717bfdd6f6ee4e94d87f8e0c8d177.png" style="width: 480px; height: 480px;" /></a>
+<a class="reference internal image-reference" href="../_images/6e9a78b515bdabaaa692eef0cd69fb74c4f717bfdd6f6ee4e94d87f8e0c8d177.png"><img alt="../_images/6e9a78b515bdabaaa692eef0cd69fb74c4f717bfdd6f6ee4e94d87f8e0c8d177.png" src="../_images/6e9a78b515bdabaaa692eef0cd69fb74c4f717bfdd6f6ee4e94d87f8e0c8d177.png" style="width: 480px; height: 480px;" />
+</a>
 </div>
 </div>
 <div class="cell docutils container">
@@ -728,7 +744,8 @@ Warning message:
 “Removed 5 rows containing missing values (geom_point).”
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../_images/4f03731296b1b8a5dd2cf177592b08614376479fd5cc20c8a30fc4ca63b6dd21.png"><img alt="../_images/4f03731296b1b8a5dd2cf177592b08614376479fd5cc20c8a30fc4ca63b6dd21.png" src="../_images/4f03731296b1b8a5dd2cf177592b08614376479fd5cc20c8a30fc4ca63b6dd21.png" style="width: 480px; height: 480px;" /></a>
+<a class="reference internal image-reference" href="../_images/4f03731296b1b8a5dd2cf177592b08614376479fd5cc20c8a30fc4ca63b6dd21.png"><img alt="../_images/4f03731296b1b8a5dd2cf177592b08614376479fd5cc20c8a30fc4ca63b6dd21.png" src="../_images/4f03731296b1b8a5dd2cf177592b08614376479fd5cc20c8a30fc4ca63b6dd21.png" style="width: 480px; height: 480px;" />
+</a>
 </div>
 </div>
 <div class="cell docutils container">
@@ -742,7 +759,8 @@ Warning message:
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/484e1c37519a7f875a1c53f68d8d21db6b7a3d9a7ee5e449a09a5c118c487170.png"><img alt="../_images/484e1c37519a7f875a1c53f68d8d21db6b7a3d9a7ee5e449a09a5c118c487170.png" src="../_images/484e1c37519a7f875a1c53f68d8d21db6b7a3d9a7ee5e449a09a5c118c487170.png" style="width: 480px; height: 480px;" /></a>
+<a class="reference internal image-reference" href="../_images/484e1c37519a7f875a1c53f68d8d21db6b7a3d9a7ee5e449a09a5c118c487170.png"><img alt="../_images/484e1c37519a7f875a1c53f68d8d21db6b7a3d9a7ee5e449a09a5c118c487170.png" src="../_images/484e1c37519a7f875a1c53f68d8d21db6b7a3d9a7ee5e449a09a5c118c487170.png" style="width: 480px; height: 480px;" />
+</a>
 </div>
 </div>
 </section>
@@ -800,7 +818,8 @@ Warning message:
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/fcd525d0ba1afd9d96c0a11add37bab711e427e768f89c19e946f36b76669bc9.png"><img alt="../_images/fcd525d0ba1afd9d96c0a11add37bab711e427e768f89c19e946f36b76669bc9.png" src="../_images/fcd525d0ba1afd9d96c0a11add37bab711e427e768f89c19e946f36b76669bc9.png" style="width: 480px; height: 480px;" /></a>
+<a class="reference internal image-reference" href="../_images/fcd525d0ba1afd9d96c0a11add37bab711e427e768f89c19e946f36b76669bc9.png"><img alt="../_images/fcd525d0ba1afd9d96c0a11add37bab711e427e768f89c19e946f36b76669bc9.png" src="../_images/fcd525d0ba1afd9d96c0a11add37bab711e427e768f89c19e946f36b76669bc9.png" style="width: 480px; height: 480px;" />
+</a>
 </div>
 </div>
 <p>In the plot above, rather than showing individual datapoints, we see the average price for each recorded carat level. But since carat is a continuous variable, it would make more sense if we bin carat into groups, and then plot the mean price for those groups. One easy way is to just round carat to one significant digit, which would give us 10 bins for each carat unit, e.g., 0.1, 0.2,…. We can transform the x variable directly in the ggplot function:</p>
@@ -813,7 +832,8 @@ Warning message:
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/6035d2e2f95d412a76d801b2cb49299d2b46aee8842ff8b7586f0961ea042abf.png"><img alt="../_images/6035d2e2f95d412a76d801b2cb49299d2b46aee8842ff8b7586f0961ea042abf.png" src="../_images/6035d2e2f95d412a76d801b2cb49299d2b46aee8842ff8b7586f0961ea042abf.png" style="width: 480px; height: 480px;" /></a>
+<a class="reference internal image-reference" href="../_images/6035d2e2f95d412a76d801b2cb49299d2b46aee8842ff8b7586f0961ea042abf.png"><img alt="../_images/6035d2e2f95d412a76d801b2cb49299d2b46aee8842ff8b7586f0961ea042abf.png" src="../_images/6035d2e2f95d412a76d801b2cb49299d2b46aee8842ff8b7586f0961ea042abf.png" style="width: 480px; height: 480px;" />
+</a>
 </div>
 </div>
 <p>This has made it much easier to see the general trend. It would help if we add a line connecting the dots. You can just layer geoms like this:</p>
@@ -827,7 +847,8 @@ Warning message:
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/8f3fd300aaf5315ea93d6a1bc15969ac8cbe0bcd288595230ca62b733b3d9eb4.png"><img alt="../_images/8f3fd300aaf5315ea93d6a1bc15969ac8cbe0bcd288595230ca62b733b3d9eb4.png" src="../_images/8f3fd300aaf5315ea93d6a1bc15969ac8cbe0bcd288595230ca62b733b3d9eb4.png" style="width: 480px; height: 480px;" /></a>
+<a class="reference internal image-reference" href="../_images/8f3fd300aaf5315ea93d6a1bc15969ac8cbe0bcd288595230ca62b733b3d9eb4.png"><img alt="../_images/8f3fd300aaf5315ea93d6a1bc15969ac8cbe0bcd288595230ca62b733b3d9eb4.png" src="../_images/8f3fd300aaf5315ea93d6a1bc15969ac8cbe0bcd288595230ca62b733b3d9eb4.png" style="width: 480px; height: 480px;" />
+</a>
 </div>
 </div>
 <p>One issue is that we have now lost the variability in price. To represent the variability, we can add error bars to each point:</p>
@@ -848,7 +869,8 @@ Warning message:
 “Removed 18 rows containing missing values (geom_segment).”
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../_images/0bda2e18107d6d472baec318ec0fe2747a51fa700755b7013b0e87db98b043e4.png"><img alt="../_images/0bda2e18107d6d472baec318ec0fe2747a51fa700755b7013b0e87db98b043e4.png" src="../_images/0bda2e18107d6d472baec318ec0fe2747a51fa700755b7013b0e87db98b043e4.png" style="width: 480px; height: 480px;" /></a>
+<a class="reference internal image-reference" href="../_images/0bda2e18107d6d472baec318ec0fe2747a51fa700755b7013b0e87db98b043e4.png"><img alt="../_images/0bda2e18107d6d472baec318ec0fe2747a51fa700755b7013b0e87db98b043e4.png" src="../_images/0bda2e18107d6d472baec318ec0fe2747a51fa700755b7013b0e87db98b043e4.png" style="width: 480px; height: 480px;" />
+</a>
 </div>
 </div>
 <p>We see the error bars for many points, but not all. <strong>Why?</strong></p>
@@ -873,8 +895,10 @@ Warning message:
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../_images/b35a93ea158f3588c11715e20324fd5f9930538f92d21cb388b2a7534a7ef90b.png"><img alt="../_images/b35a93ea158f3588c11715e20324fd5f9930538f92d21cb388b2a7534a7ef90b.png" src="../_images/b35a93ea158f3588c11715e20324fd5f9930538f92d21cb388b2a7534a7ef90b.png" style="width: 480px; height: 480px;" /></a>
-<a class="reference internal image-reference" href="../_images/78cf7a9659a865db7119cf669207d4fe1ca184e642d46fbfcdce68b630a24187.png"><img alt="../_images/78cf7a9659a865db7119cf669207d4fe1ca184e642d46fbfcdce68b630a24187.png" src="../_images/78cf7a9659a865db7119cf669207d4fe1ca184e642d46fbfcdce68b630a24187.png" style="width: 480px; height: 480px;" /></a>
+<a class="reference internal image-reference" href="../_images/b35a93ea158f3588c11715e20324fd5f9930538f92d21cb388b2a7534a7ef90b.png"><img alt="../_images/b35a93ea158f3588c11715e20324fd5f9930538f92d21cb388b2a7534a7ef90b.png" src="../_images/b35a93ea158f3588c11715e20324fd5f9930538f92d21cb388b2a7534a7ef90b.png" style="width: 480px; height: 480px;" />
+</a>
+<a class="reference internal image-reference" href="../_images/78cf7a9659a865db7119cf669207d4fe1ca184e642d46fbfcdce68b630a24187.png"><img alt="../_images/78cf7a9659a865db7119cf669207d4fe1ca184e642d46fbfcdce68b630a24187.png" src="../_images/78cf7a9659a865db7119cf669207d4fe1ca184e642d46fbfcdce68b630a24187.png" style="width: 480px; height: 480px;" />
+</a>
 </div>
 </div>
 <p><strong><em>Note</em></strong>: When attributes such as fill or color are assigned outside of <code class="docutils literal notranslate"><span class="pre">aes</span></code>, they are not interpreted as a mapping. Instead, they apply to all of the data, which can be advantageous if you want consistent formatting. In this case we have a white histogram with black borders for all of the data.</p>
@@ -896,7 +920,8 @@ Warning message:
 “Removed 5 rows containing missing values (geom_segment).”
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../_images/6c118ccad6f846ab7832a9ec9148159462c91cec242ed1a45bb419265b321830.png"><img alt="../_images/6c118ccad6f846ab7832a9ec9148159462c91cec242ed1a45bb419265b321830.png" src="../_images/6c118ccad6f846ab7832a9ec9148159462c91cec242ed1a45bb419265b321830.png" style="width: 480px; height: 480px;" /></a>
+<a class="reference internal image-reference" href="../_images/6c118ccad6f846ab7832a9ec9148159462c91cec242ed1a45bb419265b321830.png"><img alt="../_images/6c118ccad6f846ab7832a9ec9148159462c91cec242ed1a45bb419265b321830.png" src="../_images/6c118ccad6f846ab7832a9ec9148159462c91cec242ed1a45bb419265b321830.png" style="width: 480px; height: 480px;" />
+</a>
 </div>
 </div>
 <p>One good thing about tidyverse and ggplot is that ggplot also takes a dataframe as the first argument! If you remember from the <a class="reference external" href="https://coaxlab.github.io/Data-Explorations/notebooks/data-as-objects-and-architectures.html">tidy data tutorial</a>, you can chain tidyverse functions. In this case, to make the code clearer we could transform the variables with tidyverse, mutate,  then pass the result to ggplot like this:</p>
@@ -919,7 +944,8 @@ Warning message:
 “Removed 5 rows containing missing values (geom_segment).”
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../_images/42850b8c0853667628b99422c75ddbfeaeec6f608f242d0ea5bb97411944994b.png"><img alt="../_images/42850b8c0853667628b99422c75ddbfeaeec6f608f242d0ea5bb97411944994b.png" src="../_images/42850b8c0853667628b99422c75ddbfeaeec6f608f242d0ea5bb97411944994b.png" style="width: 480px; height: 480px;" /></a>
+<a class="reference internal image-reference" href="../_images/42850b8c0853667628b99422c75ddbfeaeec6f608f242d0ea5bb97411944994b.png"><img alt="../_images/42850b8c0853667628b99422c75ddbfeaeec6f608f242d0ea5bb97411944994b.png" src="../_images/42850b8c0853667628b99422c75ddbfeaeec6f608f242d0ea5bb97411944994b.png" style="width: 480px; height: 480px;" />
+</a>
 </div>
 </div>
 </section>
@@ -934,7 +960,8 @@ Warning message:
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/3b616d9ca75b9c4b2f240fd8c19b8851bab07eb119e869c0dd333fdbd285540f.png"><img alt="../_images/3b616d9ca75b9c4b2f240fd8c19b8851bab07eb119e869c0dd333fdbd285540f.png" src="../_images/3b616d9ca75b9c4b2f240fd8c19b8851bab07eb119e869c0dd333fdbd285540f.png" style="width: 480px; height: 480px;" /></a>
+<a class="reference internal image-reference" href="../_images/3b616d9ca75b9c4b2f240fd8c19b8851bab07eb119e869c0dd333fdbd285540f.png"><img alt="../_images/3b616d9ca75b9c4b2f240fd8c19b8851bab07eb119e869c0dd333fdbd285540f.png" src="../_images/3b616d9ca75b9c4b2f240fd8c19b8851bab07eb119e869c0dd333fdbd285540f.png" style="width: 480px; height: 480px;" />
+</a>
 </div>
 </div>
 <p>We could also do violin plots:</p>
@@ -946,7 +973,8 @@ Warning message:
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="../_images/e9525af9686444aa7eb6ecf2233ead1ceef91d8db5761fc28fec6aeb979d6e06.png"><img alt="../_images/e9525af9686444aa7eb6ecf2233ead1ceef91d8db5761fc28fec6aeb979d6e06.png" src="../_images/e9525af9686444aa7eb6ecf2233ead1ceef91d8db5761fc28fec6aeb979d6e06.png" style="width: 480px; height: 480px;" /></a>
+<a class="reference internal image-reference" href="../_images/e9525af9686444aa7eb6ecf2233ead1ceef91d8db5761fc28fec6aeb979d6e06.png"><img alt="../_images/e9525af9686444aa7eb6ecf2233ead1ceef91d8db5761fc28fec6aeb979d6e06.png" src="../_images/e9525af9686444aa7eb6ecf2233ead1ceef91d8db5761fc28fec6aeb979d6e06.png" style="width: 480px; height: 480px;" />
+</a>
 </div>
 </div>
 <p>One that I personally find useful when I’m feeling paranoid and want to be able to see <em>every</em> data point is this one:</p>
@@ -960,7 +988,8 @@ Warning message:
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>`stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../_images/4772b2f0c31e30bd66dd6750ba05c301c55bda7aae059ac21761d0b4d597261b.png"><img alt="../_images/4772b2f0c31e30bd66dd6750ba05c301c55bda7aae059ac21761d0b4d597261b.png" src="../_images/4772b2f0c31e30bd66dd6750ba05c301c55bda7aae059ac21761d0b4d597261b.png" style="width: 240px; height: 180px;" /></a>
+<a class="reference internal image-reference" href="../_images/4772b2f0c31e30bd66dd6750ba05c301c55bda7aae059ac21761d0b4d597261b.png"><img alt="../_images/4772b2f0c31e30bd66dd6750ba05c301c55bda7aae059ac21761d0b4d597261b.png" src="../_images/4772b2f0c31e30bd66dd6750ba05c301c55bda7aae059ac21761d0b4d597261b.png" style="width: 240px; height: 180px;" />
+</a>
 </div>
 </div>
 <p>Visualizations like these are useful for helping you see what your data really look like before you start analyzing it and are often a bit of a reality check.</p>
@@ -1024,8 +1053,7 @@ Warning message:
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1073,7 +1101,7 @@ By Roberto Vargas, Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patie
 
   <p class="copyright">
     
-      © Copyright 2025.
+      © Copyright 2026.
       <br/>
     
   </p>
@@ -1097,8 +1125,8 @@ By Roberto Vargas, Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patie
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

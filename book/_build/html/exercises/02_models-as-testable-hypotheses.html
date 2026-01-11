@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Exercise 1: Github &amp; Jupyter &#8212; Data explorations</title>
+    <title>Exercise 2: Coding Habits &amp; Functions &#8212; Data explorations</title>
   
   
   
@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -60,14 +57,15 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/the-value-of-openness';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises/02_models-as-testable-hypotheses';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="What is a theory?" href="../lectures/what-is-a-theory.html" />
-    <link rel="prev" title="Discussion questions" href="../discussions/the-value-of-openness.html" />
+    <link rel="next" title="Data as objects and architectures" href="../lectures/data-as-objects-and-architectures.html" />
+    <link rel="prev" title="Discussion questions" href="../discussions/models-as-testable-hypotheses.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -83,8 +81,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -92,6 +101,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -99,8 +109,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -116,8 +126,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -147,17 +156,21 @@
     
     
     <img src="../_static/information.png" class="logo__image only-light" alt="Data explorations - Home"/>
-    <img src="../_static/information.png" class="logo__image only-dark pst-js-only" alt="Data explorations - Home"/>
+    <script>document.write(`<img src="../_static/information.png" class="logo__image only-dark" alt="Data explorations - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -178,14 +191,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../discussions/quantitative-epistemology.html">Discussion questions</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../lectures/the-value-of-openness.html">The value of openness</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/the-value-of-openness.html">The value of openness</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../notebooks/the-value-of-openness.html">Tutorial: Repositories and version control</a></li>
 
 
 
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/the-value-of-openness.html">Discussion questions</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Exercise 1: Github &amp; Jupyter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_the-value-of-openness.html">Exercise 1: Github &amp; Jupyter</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/what-is-a-theory.html">What is a theory?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -193,13 +206,13 @@
 
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/models-as-testable-hypotheses.html">Models as testable hypotheses</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../lectures/models-as-testable-hypotheses.html">Models as testable hypotheses</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../notebooks/models-as-testable-hypotheses.html">Tutorial: Introduction to R, functions, and good coding habits</a></li>
 
 
 
 <li class="toctree-l2"><a class="reference internal" href="../discussions/models-as-testable-hypotheses.html">Discussion questions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models-as-testable-hypotheses.html">Exercise 2: Coding Habits &amp; Functions</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Exercise 2: Coding Habits &amp; Functions</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lectures/data-as-objects-and-architectures.html">Data as objects and architectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -402,14 +415,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -453,7 +461,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/exercises/the-value-of-openness.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/CoAxLab/Data-Explorations/main?urlpath=tree/book/exercises/02_models-as-testable-hypotheses.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -471,7 +479,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/exercises/the-value-of-openness.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/CoAxLab/Data-Explorations/blob/main/book/exercises/02_models-as-testable-hypotheses.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -502,7 +510,7 @@
       
       
       
-      <li><a href="../_sources/exercises/the-value-of-openness.ipynb" target="_blank"
+      <li><a href="../_sources/exercises/02_models-as-testable-hypotheses.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -555,17 +563,27 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </button>
-
 </div></div>
       
     </div>
@@ -576,11 +594,21 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercise 1: Github & Jupyter</h1>
+    <h1>Exercise 2: Coding Habits & Functions</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics-4-pts">1. Summary statistics (4 pts)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t-test-function-4-pts">2. T-test function (4 pts)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-default-values-2-pts">3. Setting default values (2 pts)</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -590,32 +618,97 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exercise-1-github-jupyter">
-<h1>Exercise 1: Github &amp; Jupyter<a class="headerlink" href="#exercise-1-github-jupyter" title="Link to this heading">#</a></h1>
-<p>You first assignemnt is designed to get you setup and started with GitHub and Jupyter notebooks as discussed in your first recitation.</p>
-<p>For help with this assignment, see the Wiki on the <a class="reference external" href="https://github.com/CoAxLab/DataSciencePsychNeuro_CMU85732/wiki">class Github repository</a>, the tutorials for lectures 1 and 2, and the video titled “00 - Accessing and submitting materials with GitHub” on Canvas.</p>
-<p><strong>Note:</strong> This repository will be where you post your homeworks and other assignments throughout the semester.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="exercise-2-coding-habits-functions">
+<h1>Exercise 2: Coding Habits &amp; Functions<a class="headerlink" href="#exercise-2-coding-habits-functions" title="Link to this heading">#</a></h1>
+<p>This assignment will give you some practice writing your own functions and using the coding best practices discussed in the tutorial.</p>
 <hr class="docutils" />
-<p>  1. Setup a GitHub account and create a new repository with the following name:</p>
-<ul class="simple">
-<li><p>&lt;your_last_name&gt;_DSPN_S25</p></li>
-<li><p>Add the users <em>coaxlab0</em> (that’s a zero at the end) and the TA (<em>LarryRJ07</em>) as collaborators.</p></li>
-</ul>
-<p>  2. Clone the class repository locally on your computer</p>
-<p>  3. Open this notebook in Collaboratory (use the rocket button above)</p>
-<p>  4. Save the notebook either to your local computer or Google Drive, titled Homework1_HelloWorld.ipynb</p>
-<p>  5. Type “#Hello world!” in the code cell below (note that the “#” is for a comment)</p>
+<section id="summary-statistics-4-pts">
+<h2>1. Summary statistics (4 pts)<a class="headerlink" href="#summary-statistics-4-pts" title="Link to this heading">#</a></h2>
+<p>Write a function that takes a vector of numbers <code class="docutils literal notranslate"><span class="pre">x</span></code> and returns the length, mean, and standard deviation of <code class="docutils literal notranslate"><span class="pre">x</span></code> as a new vector.</p>
+<p>In keeping with our best practices, give the function a short but descriptive name, and use snake case if it involves multiple words.</p>
+<p>Hint: Vectors are defined in R using the <code class="docutils literal notranslate"><span class="pre">c()</span></code> command.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Write your function here</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>  6. Save the notebook.</p>
-<p>  7. Push your Jupyter notebook to the repository that you made on Github.</p>
-<p>  8. Email the TA and instructor a link to the notebook via Canvas. This is how we will turn in all homeworks this semester.</p>
-<p><strong>Due:</strong> 5pm EST, Jan 22, 2025.</p>
+<p>Calculate the summary statistics of vector <code class="docutils literal notranslate"><span class="pre">v1</span></code>.</p>
+<p><em>Hint</em>: Note the “NA” in the vector. This is short for “not available” and is a placeholder for missing values. You’ll want to look up the <em><a class="reference external" href="http://is.na">is.na</a></em> function (and the not operator <em>!</em>), as well as options for removing NA’s in the functions that you will use to summarize the vector. Look at the documentation for the functions that you will use to see how to work with NA’s.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">11</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="m">9</span><span class="p">)</span>
+
+<span class="c1">#your_function_name(v1)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="t-test-function-4-pts">
+<h2>2. T-test function (4 pts)<a class="headerlink" href="#t-test-function-4-pts" title="Link to this heading">#</a></h2>
+<p>The formula for a t-test is:</p>
+<div class="math notranslate nohighlight">
+\[ \frac{m- \mu}{ \frac{s}{\sqrt{n}}} \]</div>
+<p>Where m is the sample mean, <span class="math notranslate nohighlight">\(\mu\)</span> (mu) is the population mean, s is the standard deviation, and n is the sample size.</p>
+<p>Using your function above as a starting point, write a new function <code class="docutils literal notranslate"><span class="pre">ttest_fun</span></code> that compares a vector <code class="docutils literal notranslate"><span class="pre">x</span></code> to a given population mean <code class="docutils literal notranslate"><span class="pre">mu</span></code> and calculates the t-statistic. Keep the coding best practices in mind.</p>
+<p>Hint: You will need to add another argument for mu.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write ttest_fun here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Use your function to compare the mean of v1 to 10.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ttest_fun</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="setting-default-values-2-pts">
+<h2>3. Setting default values (2 pts)<a class="headerlink" href="#setting-default-values-2-pts" title="Link to this heading">#</a></h2>
+<p>Set the default value of mu to 0. Test your modified function below by supplying only <code class="docutils literal notranslate"><span class="pre">v2</span></code> as an argument.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Write your modified ttest_fun here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">v2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">7</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">)</span>
+<span class="nf">ttest_fun</span><span class="p">(</span><span class="n">v2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>How does your result compare to R’s built-in <code class="docutils literal notranslate"><span class="pre">t.test()</span></code> function?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">t.test</span><span class="p">(</span><span class="n">v2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>When you are finished, save the notebook as Exercise2.ipynb, push it to your class GitHub repository (the one you made for Exercise 1) and send the instructors a link to your notebook via Canvas. You can send messages via Canvas by clicking “Inbox” on the left and then pressing the icon with a pencil inside a square.</p>
+<p><strong>DUE:</strong> 5pm EST, Feb 5, 2026</p>
+<p><strong>IMPORTANT</strong> Did you collaborate with anyone on this assignment? If so, list their names here.</p>
+<blockquote>
+<div><p><em>Someone’s Name</em></p>
+</div></blockquote>
+<p><strong>Generative AI Notice</strong> Did you utilize GenAI tools on this assignment? If so, list the specific tool, the questions you used it for, and the prompts that you used.</p>
+<blockquote>
+<div><p><em>Insert here</em></p>
+</div></blockquote>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -649,7 +742,7 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../discussions/the-value-of-openness.html"
+       href="../discussions/models-as-testable-hypotheses.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
@@ -658,11 +751,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="../lectures/what-is-a-theory.html"
+       href="../lectures/data-as-objects-and-architectures.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">What is a theory?</p>
+        <p class="prev-next-title">Data as objects and architectures</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -672,6 +765,23 @@
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics-4-pts">1. Summary statistics (4 pts)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t-test-function-4-pts">2. T-test function (4 pts)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-default-values-2-pts">3. Setting default values (2 pts)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
@@ -692,7 +802,7 @@ By Roberto Vargas, Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patie
 
   <p class="copyright">
     
-      © Copyright 2025.
+      © Copyright 2026.
       <br/>
     
   </p>
@@ -716,8 +826,8 @@ By Roberto Vargas, Timothy Verstynen, Venn Popov, Krista Bond, Charles Wu, Patie
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

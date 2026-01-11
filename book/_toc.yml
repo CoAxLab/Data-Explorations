@@ -12,7 +12,7 @@ parts:
       sections:
       - file: notebooks/the-value-of-openness
       - file: discussions/the-value-of-openness
-      - file: exercises/the-value-of-openness
+      - file: exercises/01_the-value-of-openness
     - file: lectures/what-is-a-theory
       sections: 
       - file: discussions/what-is-a-theory
@@ -20,7 +20,7 @@ parts:
       sections:
       - file: notebooks/models-as-testable-hypotheses
       - file: discussions/models-as-testable-hypotheses
-      - file: exercises/models-as-testable-hypotheses
+      - file: exercises/02_models-as-testable-hypotheses
     - file: lectures/data-as-objects-and-architectures
       sections:
       - file: notebooks/data-as-objects-and-architectures
